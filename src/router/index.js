@@ -25,66 +25,60 @@ export default new Router({
 			meta: {
 				title: '云信平台'
 			},
-			component: () => import('@/page/home.vue')
-		}, {
-			path: '/project',
-			name: 'project',
-			meta: {
-				title: '云信平台 - 项目管控'
-			},
-			component: () => import('@/page/project/project.vue')
-		}, {
-			path: '/company',
-			name: 'company',
-			meta: {
-				title: '云信平台 - 企业填报'
-			},
-			component: () => import('@/page/company/index.vue'),
-			children: [
-				{
-					path: 'base',
-					name: 'base',
-					redirect: '/base/index',//重定向到工商基本信息
-					children: [
-						{
-							path: 'index',//工商基本信息
-							name: 'base_index',
-							component: () => import('@/page/company/base/index.vue'),
-						},
-						{
-							path: 'history',//公司历史信息
-							name: 'history',
-							component: () => import('@/page/company/base/history.vue'),
-						}
-					]
-				}, {
-					path: 'resource',
-					name: 'resource',
-					component: () => import('@/page/company/resource/resource.vue')
-				}, {
-					path: 'credit',
-					name: 'credit',
-					component: () => import('@/page/company/credit/credit.vue')
-				}, {
-					path: 'business',
-					name: 'business',
-					component: () => import('@/page/company/business/business.vue')
-				}, {
-					path: 'finance',
-					name: 'finance',
-					component: () => import('@/page/company/finance/finance.vue')
+			component: () => import('@/components/layout.vue'),
+			children: [{
+				path: '/company',
+				name: 'company',
+				meta: {
+					title: '云信平台 - 企业填报'
 				},
-				, {
-					path: 'risk',
-					name: 'risk',
-					component: () => import('@/page/company/risk/risk.vue')
-				}, , {
-					path: 'business',
-					name: 'business',
-					component: () => import('@/page/company/business/business.vue')
-				},
+				component: () => import('@/page/company/index.vue'),
+				children: [
+					{
+						path: 'base',
+						name: 'base',
+						redirect: '/base/index',//重定向到工商基本信息
+						children: [
+							{
+								path: 'index',//工商基本信息
+								name: 'base_index',
+								component: () => import('@/page/company/base/index.vue'),
+							},
+							{
+								path: 'history',//公司历史信息
+								name: 'history',
+								component: () => import('@/page/company/base/history.vue'),
+							}
+						]
+					}, {
+						path: 'resource',
+						name: 'resource',
+						component: () => import('@/page/company/resource/resource.vue')
+					}, {
+						path: 'credit',
+						name: 'credit',
+						component: () => import('@/page/company/credit/credit.vue')
+					}, {
+						path: 'business',
+						name: 'business',
+						component: () => import('@/page/company/business/business.vue')
+					}, {
+						path: 'finance',
+						name: 'finance',
+						component: () => import('@/page/company/finance/finance.vue')
+					},
+					, {
+						path: 'risk',
+						name: 'risk',
+						component: () => import('@/page/company/risk/risk.vue')
+					}, , {
+						path: 'business',
+						name: 'business',
+						component: () => import('@/page/company/business/business.vue')
+					},
 
-			]
-		}
+				]
+			}]
+		},
 	]
 })
