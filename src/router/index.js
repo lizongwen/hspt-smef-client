@@ -25,14 +25,7 @@ export default new Router({
 			meta: {
 				title: '云信平台'
 			},
-			component: () => import('@/page/main.vue')
-		}, {
-			path: '/home',
-			name: 'home',
-			meta: {
-				title: '云信平台 - 首页'
-			},
-			component: () => import('@/page/home/home.vue')
+			component: () => import('@/page/home.vue')
 		}, {
 			path: '/project',
 			name: 'project',
