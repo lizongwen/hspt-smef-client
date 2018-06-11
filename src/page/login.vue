@@ -61,7 +61,8 @@ export default {
         return;
       }
       let loginParams = { username: this.username, password: this.password };
-      this.isBtnLoading = true;
+	  this.isBtnLoading = true;
+	  this.$router.push({path:'./index'})
       //   requestLogin(loginParams).then(data => {
       //     this.isBtnLoading = false;
       //     let { msg, code, user } = data;

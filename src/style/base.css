@@ -1,15 +1,111 @@
 /* global styles */
-html{
-	height: 100%;
-	margin: 0;
-	font-size: 62.5%;
-  }
-  
-body {
-	font-size: 1.4rem;
-	padding: 0;
-	margin: 0;
-	font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-	font-weight: 400;
-	-webkit-font-smoothing: antialiased;
+
+html {
+    height: 100%;
+    margin: 0;
+    font-size: 62.5%;
 }
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 1.4rem;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.block {
+    display: block
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.pull-left,
+.fl {
+    float: left !important;
+}
+
+.pull-right,
+.fr {
+    float: right !important;
+}
+
+.hide,
+.hidden {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+.align-center,
+.text-center {
+    text-align: center !important;
+}
+
+.align-left,
+.text-left {
+    text-align: left !important;
+}
+
+.align-right,
+.text-right {
+    text-align: right !important;
+}
+
+.align-justify,
+.text-justify {
+    text-align: justify
+}
+
+.invisible {
+    visibility: hidden;
+}
+.over-hiden {
+    overflow: hidden !important;
+}
+.text-hide {
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+
+.affix {
+    position: fixed;
+}
+
+.text-indent {
+    text-indent: 30px;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.no-border-radius {
+    border-radius: 0 !important;
+}
+
+.no-border {
+    border: none !important;
+}
+
