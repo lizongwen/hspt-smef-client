@@ -10,7 +10,7 @@
 			</div>
 		</el-header>
 		<el-main>
-			
+			<slot></slot>
 		</el-main>
 		<el-footer>Footer</el-footer>
 	</el-container>
