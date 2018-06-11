@@ -1,31 +1,27 @@
 <template>
-	<layout>
-		<div class="main-header">
-			<el-breadcrumb separator="/">
-				<el-breadcrumb-item>首页</el-breadcrumb-item>
-			</el-breadcrumb>
-			<div>
-				<div class="proj-num-wrap">
-					<ul>
-						<li>
+	<div class="main-header">
+		<el-breadcrumb separator="/">
+			<el-breadcrumb-item>首页</el-breadcrumb-item>
+		</el-breadcrumb>
+		<div>
+			<div class="proj-num-wrap">
+				<ul>
+					<li>
 1
-						</li>
-						<li>
+					</li>
+					<li>
 2
-						</li>
-					</ul>
-				</div>
-				<div class="user-wrap">
+					</li>
+				</ul>
+			</div>
+			<div class="user-wrap">
 
-				</div>
 			</div>
 		</div>
-	</layout>
-	
+	</div>
 </template>
 
 <script>
-import layout from "@/components/layout.vue";
 export default {
   components: {
     layout

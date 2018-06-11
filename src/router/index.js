@@ -22,11 +22,20 @@ export default new Router({
 		}, {
 			path: '/index',
 			name: 'index',
+			redirect: '/home',
 			meta: {
 				title: '云信平台'
 			},
 			component: () => import('@/components/layout.vue'),
 			children: [{
+				path: '/home',
+				name: 'home',
+				meta: {
+					title: '云信平台'
+				},
+				component: () => import('@/page/home.vue'),
+
+			}, {
 				path: '/company',
 				name: 'company',
 				meta: {
@@ -75,8 +84,7 @@ export default new Router({
 						path: 'business',
 						name: 'business',
 						component: () => import('@/page/company/business/business.vue')
-					},
-
+					}
 				]
 			}]
 		},
