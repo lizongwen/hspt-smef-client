@@ -33,8 +33,7 @@ export default new Router({
 				meta: {
 					title: '云信平台'
 				},
-				component: () => import('@/page/home.vue'),
-
+				component: () => import('@/page/home.vue')
 			}, {
 				path: '/company',
 				name: 'company',
@@ -51,12 +50,12 @@ export default new Router({
 							{
 								path: 'index',//工商基本信息
 								name: 'base_index',
-								component: () => import('@/page/company/base/index.vue'),
+								component: () => import('@/page/company/base/index.vue')
 							},
 							{
 								path: 'history',//公司历史信息
 								name: 'history',
-								component: () => import('@/page/company/base/history.vue'),
+								component: () => import('@/page/company/base/history.vue')
 							}
 						]
 					}, {
