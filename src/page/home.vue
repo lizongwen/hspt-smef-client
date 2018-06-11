@@ -10,7 +10,26 @@
 			</div>
 		</el-header>
 		<el-main>
-			<div class="main-header"></div>
+			<div class="main-header">
+				<el-breadcrumb separator="/">
+					<el-breadcrumb-item>首页</el-breadcrumb-item>
+				</el-breadcrumb>
+				<div>
+					<div class="proj-num-wrap">
+						<ul>
+							<li>
+								
+							</li>
+							<li>
+
+							</li>
+						</ul>
+					</div>
+					<div class="user-wrap">
+
+					</div>
+				</div>
+			</div>
 			<div class="content"></div>
 		</el-main>
 		<el-footer>Footer</el-footer>
@@ -37,7 +56,7 @@ export default {};
         vertical-align: top;
       }
       .pro-name {
-		margin-top: 14px;
+        margin-top: 14px;
         padding-left: 15px;
         display: inline-block;
         line-height: 33px;
@@ -58,6 +77,11 @@ export default {};
           color: #1790ff;
         }
       }
+    }
+  }
+  .el-main {
+    .main-header {
+      height: 134px;
     }
   }
 }
