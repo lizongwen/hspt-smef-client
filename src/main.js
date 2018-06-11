@@ -2,9 +2,10 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import ElementUI from 'element-ui';
-import './style/base.css';
-import './style/icon/iconfont.css';
 import 'element-ui/lib/theme-chalk/index.css';
+import './style/icon/iconfont.css';
+import './style/base.css';
+import './style/common.css';
 import App from './App';
 import router from './router';
 import axios from 'axios';

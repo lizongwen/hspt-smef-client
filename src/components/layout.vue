@@ -25,6 +25,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   height: 100%;
+  min-width: 1300px;
   .el-header {
     padding: 0;
     background-color: #2d2d2d;
@@ -60,6 +61,10 @@ export default {
         }
       }
     }
+  }
+  .el-main{
+	  padding: 0;
+	  background-color: #F7F6F5
   }
 }
 </style>
