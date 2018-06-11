@@ -6,7 +6,7 @@
 			</div>
 			<div class="header-bar">
 				<div class="logo"><img src="../image/logo.png" alt="" srcset=""></div>
-				<div class="pro-name">中小企业征信平台</div>
+				<div class="proj-name">中小企业征信平台</div>
 			</div>
 		</el-header>
 		<el-main>
@@ -37,7 +37,7 @@ export default {
         margin: 11px 15px 0 30px;
         vertical-align: top;
       }
-      .pro-name {
+      .proj-name {
         margin-top: 14px;
         padding-left: 15px;
         display: inline-block;
