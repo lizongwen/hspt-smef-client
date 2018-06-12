@@ -1,5 +1,5 @@
 <template>
-	<div></div>
+	<div>招标信息</div>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-	<div></div>
+	<div>市场风险</div>
 </template>
 
 <script>

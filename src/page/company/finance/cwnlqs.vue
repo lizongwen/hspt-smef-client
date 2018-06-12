@@ -1,5 +1,5 @@
 <template>
-	<div></div>
+	<div>财务能力趋势与分析</div>
 </template>
 
 <script>
