@@ -1,7 +1,7 @@
 <template>
 	<div class="main-header">
 		<el-breadcrumb separator="/">
-			<el-breadcrumb-item>首页</el-breadcrumb-item>
+			<el-breadcrumb-item v-for="item in currentPath" :key="item.name">{{item.title}}</el-breadcrumb-item>
 		</el-breadcrumb>
 		<div class="clearfix">
 			<div class="proj-num-wrap">
@@ -36,6 +36,11 @@ export default {
       finishNum: 33,
       postName: "项目经理"
     };
+  },
+  computed: {
+    currentPath() {
+      return this.$store.state.app.currentPath; // 当前面包屑数组
+    }
   }
 };
 </script>
