@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<company-header></company-header>
+
 		<router-view/>
 	</div>
 
@@ -15,5 +16,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+
 </style>
 

@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import util from '@/utils/util.js'
+import util from "@/utils/util.js";
 export default {
   data() {
     return {
@@ -43,14 +43,14 @@ export default {
       return this.$store.state.app.currentPath; // 当前面包屑数组
     }
   },
-  methods:{
-	  init(){
-		  console.log(this.$route.name)
-		 let pathArr = util.setCurrentPath(this, this.$route.name);
-	  }
+  methods: {
+    init() {
+      console.log(this.$route.name);
+      let pathArr = util.setCurrentPath(this, this.$route.name);
+    }
   },
-  mounted(){
-	  this.init()
+  mounted() {
+    this.init();
   }
 };
 </script>
@@ -70,6 +70,7 @@ export default {
       flex: 1;
       text-align: right;
       .proj-num-item-title {
+        font-size: 16px;
         color: #9b9b9b;
       }
       .proj-num {
