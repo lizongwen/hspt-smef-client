@@ -35,6 +35,13 @@ export default new Router({
 				},
 				component: () => import('@/page/home.vue')
 			}, {
+				path: '/project',
+				name: 'project',
+				meta: {
+					title: '云信平台'
+				},
+				component: () => import('@/page/project/project.vue')
+			},{
 				path: '/company',
 				name: 'company',
 				meta: {

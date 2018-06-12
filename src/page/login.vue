@@ -62,17 +62,17 @@ export default {
       }
       let loginParams = { username: this.username, password: this.password };
 	  this.isBtnLoading = true;
-	  //this.$router.push({path:'./index'})
+	  this.$router.push({path:'./index'})
 
-	this.$http({
-        method: "post",
-        url: "/api/getDemoJson",
-        data: {
+	// this.$http({
+    //     method: "post",
+    //     url: "/api/getDemoJson",
+    //     data: {
           
-        }
-      }).then(resp => {
-		  console.log(resp.data)
-    	});
+    //     }
+    //   }).then(resp => {
+	// 	  console.log(resp.data)
+    // 	});
 
 
 
