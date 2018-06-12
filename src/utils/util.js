@@ -45,6 +45,23 @@ util.setCurrentPath = function (vm, name) {
 				name: 'project'
 			}
 		];
+	}else if(name=='company'){
+		currentPathArr = [
+			{
+				title:'首页',
+				path: '/home',
+				name: 'home'
+			},{
+				title:'返回上一级',
+				path: '/project',
+				name: 'project'
+			},
+			{
+				title:'项目详情',
+				path: '/company',
+				name: 'company'
+			}
+		];
 	}
     // if (name === 'home_index') {
     //     currentPathArr = [

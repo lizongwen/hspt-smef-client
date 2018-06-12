@@ -1,17 +1,19 @@
 <template>
 	<div>
-		<div>公司名称</div>
+		<company-header></company-header>
 		<router-view/>
 	</div>
 
 </template>
 
 <script>
+import companyHeader from "@/components/companyHeader.vue";
 export default {
-
-}
+  components: {
+    companyHeader
+  }
+};
 </script>
-
-<style>
-
+<style lang="scss" scoped>
 </style>
+

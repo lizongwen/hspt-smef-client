@@ -1,0 +1,65 @@
+<template>
+	<div class="main-header">
+		<el-breadcrumb separator="/">
+			<el-breadcrumb-item v-for="item in currentPath" :key="item.name" :to="{ path:item.path}">{{item.title}}</el-breadcrumb-item>
+		</el-breadcrumb>
+		<!-- <div class="clearfix">
+			<div class="proj-num-wrap">
+				<div class="proj-num-item">
+					<span class="proj-num-item-title">项目数量</span>
+					<div class="proj-num">{{projNum}}</div>
+				</div>
+				<div class="septal-line"></div>
+				<div class="proj-num-item">
+					<span class="proj-num-item-title">完成数量</span>
+					<div class="proj-num">{{finishNum}}</div>
+				</div>
+			</div>
+			<div class="user-wrap">
+				<div class="user-name">您好，
+					<span>哇哈哈</span>
+				</div>
+				<div class="user-post-wrap">
+					<span class="post-name">{{postName}}</span>
+					<span>惠国征信-金融服务中心</span>
+				</div>
+			</div>
+		</div> -->
+	</div>
+</template>
+
+<script>
+import util from '@/utils/util.js';
+export default {
+  data() {
+    return {
+      projNum: 56,
+      finishNum: 33,
+      postName: "项目经理"
+    };
+  },
+  computed: {
+    currentPath() {
+      return this.$store.state.app.currentPath; // 当前面包屑数组
+    }
+  },
+  methods: {
+    init() {
+      console.log(this.$route.name);
+      let pathArr = util.setCurrentPath(this, this.$route.name);
+    }
+  },
+  mounted() {
+    this.init();
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.main-header {
+  height: 134px;
+  padding: 20px 30px;
+  background-color: #fff;
+}
+</style>
+
