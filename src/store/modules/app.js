@@ -15,7 +15,9 @@ const app = {
         ]
 	},
     mutations: {
-
+		setCurrentPath(state, pathArr){
+			state.currentPath = pathArr;
+		}
 	}
 };
 

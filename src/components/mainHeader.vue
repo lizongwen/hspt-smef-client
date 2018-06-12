@@ -1,7 +1,7 @@
 <template>
 	<div class="main-header">
 		<el-breadcrumb separator="/">
-			<el-breadcrumb-item v-for="item in currentPath" :key="item.name">{{item.title}}</el-breadcrumb-item>
+			<el-breadcrumb-item v-for="item in currentPath" :key="item.name" :to="{ path:item.path}">{{item.title}}</el-breadcrumb-item>
 		</el-breadcrumb>
 		<div class="clearfix">
 			<div class="proj-num-wrap">
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import util from '@/utils/util.js'
 export default {
   data() {
     return {
@@ -41,6 +42,15 @@ export default {
     currentPath() {
       return this.$store.state.app.currentPath; // 当前面包屑数组
     }
+  },
+  methods:{
+	  init(){
+		  console.log(this.$route.name)
+		 let pathArr = util.setCurrentPath(this, this.$route.name);
+	  }
+  },
+  mounted(){
+	  this.init()
   }
 };
 </script>
