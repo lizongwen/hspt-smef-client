@@ -4,6 +4,7 @@ import Vue from 'vue';
 
 const app = {
     state: {
+		//职位ID
 		postId:'1',
 		// 面包屑数组
 		currentPath:[
