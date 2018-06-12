@@ -15,6 +15,8 @@
 						<el-table-column prop="address" label="地址">
 						</el-table-column>
 					</el-table>
+					<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[100, 200, 300, 400]" :page-size="10" layout="total, sizes, prev, pager, next, jumper" :total="400">
+					</el-pagination>
 				</div>
 			</el-card>
 		</div>
@@ -47,8 +49,17 @@ export default {
           name: "王小虎",
           address: "上海市普陀区金沙江路 1516 弄"
         }
-      ]
+      ],
+      currentPage: 1
     };
+  },
+  methods: {
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+    }
   },
   components: {
     mainHeader
