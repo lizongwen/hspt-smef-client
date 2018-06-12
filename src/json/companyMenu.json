@@ -1,0 +1,85 @@
+[
+  {
+    "groupName": "公司基本信息",
+    "items": [
+      {
+        "name": "工商基本信息",
+        "path": "/company/index"
+      },
+      {
+        "name": "公司历史沿革",
+        "path": "/company/history"
+      },
+      {
+        "name": "股权机构及分支机构",
+        "path": "/company/history"
+      },
+      {
+        "name": "公司荣誉与认证",
+        "path": "/company/history"
+      },
+      {
+        "name": "只是产权",
+        "path": "/company/history"
+      },
+      {
+        "name": "环保信息",
+        "path": "/company/history"
+      }
+    ]
+  },
+  {
+    "groupName": "公司资源信息",
+    "items": [
+      {
+        "name": "企业经营资源",
+        "path": "/company/index"
+      },
+      {
+        "name": "人力资源分析",
+        "path": "/company/history"
+      },
+      {
+        "name": "产品研发技术情况",
+        "path": "/company/history"
+      },
+      {
+        "name": "招投标信息",
+        "path": "/company/history"
+      },
+      {
+        "name": "企业社保及公积金缴纳人数",
+        "path": "/company/history"
+      },
+      {
+        "name": "企业工资发放情况",
+        "path": "/company/history"
+      }
+    ]
+  },
+  {
+    "groupName": "企业信用概况",
+    "items": [
+      {
+        "name": "股东和法人代表",
+        "path": "/company/index"
+      },
+      {
+        "name": "融资信息",
+        "path": "/company/history"
+      },
+      {
+        "name": "对外担保信息",
+        "path": "/company/history"
+      },
+      {
+        "name": "司法信息",
+        "path": "/company/history"
+      },
+      {
+        "name": "被非银行信贷机构查询信息",
+        "path": "/company/history"
+      }
+    ]
+  }
+]
