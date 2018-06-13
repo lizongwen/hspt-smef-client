@@ -1,7 +1,5 @@
 <template>
-	<div>
-    <h1>我是基本信息页面</h1>
-  </div>
+	<div>企业资源信息</div>
 </template>
 
 <script>

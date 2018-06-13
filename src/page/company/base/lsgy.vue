@@ -1,5 +1,7 @@
 <template>
-	<div></div>
+	<div>
+    <h1>我是历史页面</h1>
+  </div>
 </template>
 
 <script>
