@@ -178,6 +178,7 @@ export default {
 	.report-btn-wrap{
 		float: right;
 		margin-top: 15px;
+		margin-right:30px;
 	}
   }
 }
