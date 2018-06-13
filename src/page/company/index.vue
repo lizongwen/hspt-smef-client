@@ -1,9 +1,8 @@
 <template>
   <div>
     <company-header></company-header>
-
-    <div>
-      <div>此处是查看报告组件</div>
+    <div class="wrap">
+      <div class="reportNav">此处是查看报告组件</div>
       <div class="aside">
         <el-collapse v-model="activeName" accordion>
           <el-collapse-item class="groupTitle" v-for="(menuGroup,index) in asideMenus"
@@ -58,9 +57,22 @@
 <style lang="scss" scoped>
   @import '@/style/commonStyle.scss';
 
+  .wrap {
+    position: relative;
+    .reportNav {
+      height: 72px;
+      background: $background-color-inside;
+      border-top: 1px solid $border-color-light;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+      margin-bottom: 20px;
+    }
+  }
+
   .aside {
+    position: absolute;
     width: 200px;
-    float: left;
+    margin-top: 0px;
+    left: 0px;
 
     .el-collapse {
       color: #4A4A4A;
@@ -91,5 +103,10 @@
     }
   }
 
+  .content {
+    margin-left: 220px;
+    min-height: 1000px;
+    background: $background-color-inside;
+  }
 </style>
 

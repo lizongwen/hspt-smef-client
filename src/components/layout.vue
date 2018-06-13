@@ -23,6 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '@/style/commonStyle.scss';
 .container {
   height: 100%;
   min-width: 1300px;
@@ -64,7 +65,7 @@ export default {
   }
   .el-main{
 	  padding: 0;
-	  background-color: #F7F6F5
+	  background-color: $background-color-main;
   }
 }
 </style>
