@@ -3,8 +3,8 @@
 		<el-breadcrumb separator="/">
 			<el-breadcrumb-item v-for="item in currentPath" :key="item.name" :to="{ path:item.path}">{{item.title}}</el-breadcrumb-item>
 		</el-breadcrumb>
-		<div class="clearfix">
-			<div class="company-wrap">
+		<div class="clearfix company-wrap">
+			<div class="company-info-wrap">
 				<div class="company-name">{{companyName}}</div>
 				<div class="company-state">
 					<div>
@@ -23,20 +23,36 @@
 					</div>
 				</div>
 			</div>
-			<div class="company-info-wrap">
-				<div class="company-info-item">
-					<span class="company-info-item-title">资信分数</span>
+			<div class="company-credit-wrap">
+				<div class="company-credit-item">
+					<span class="company-credit-item-title">资信分数</span>
 					<div class="credit-num">{{creditScore}}</div>
 				</div>
 				<div class="septal-line"></div>
-				<div class="company-info-item">
-					<span class="company-info-item-title">惠国评级</span>
+				<div class="company-credit-item">
+					<span class="company-credit-item-title">惠国评级</span>
 					<div class="credit-num" :class="creditLevelColor">{{creditLevel}}</div>
 				</div>
 			</div>
-
+		</div>
+		<div class="clearfix company-toolbar">
+			<ul class="fl">
+				<li>
+					<a href="">查看报告</a>
+				</li>
+				<li>
+					<a href="">版本管理</a>
+				</li>
+				<li>
+					<a href="">日志查询</a>
+				</li>
+			</ul>
+			<div class="report-btn-wrap">
+				<el-button type="primary">生成报告</el-button>
+			</div>
 		</div>
 	</div>
+
 </template>
 
 <script>
@@ -86,60 +102,83 @@ export default {
 
 <style lang="scss" scoped>
 .main-header {
-  height: 209px;
-  padding: 20px 30px;
   background-color: #fff;
+  overflow: hidden;
   .company-wrap {
-    float: left;
-    .company-name {
-      font-size: 22px;
-      color: #000;
-      margin-bottom: 9px;
-    }
-    .company-state {
-      display: flex;
-      color: #9b9b9b;
-      > div {
-        margin-right: 20px;
+    margin: 0 30px 10px 30px;
+    .company-info-wrap {
+      float: left;
+      .company-name {
+        font-size: 22px;
+        color: #000;
+        margin-bottom: 9px;
       }
-      .progress-wrap {
-        display: inline-block;
-        width: 300px;
+      .company-state {
+        display: flex;
+        color: #9b9b9b;
+        > div {
+          margin-right: 20px;
+        }
+        .progress-wrap {
+          display: inline-block;
+          width: 300px;
+        }
+      }
+    }
+    .company-credit-wrap {
+      float: right;
+      display: flex;
+      min-width: 173px;
+      justify-content: space-between;
+      align-items: center;
+      .company-credit-item {
+        flex: 1;
+        text-align: right;
+        .company-credit-item-title {
+          font-size: 16px;
+          color: #9b9b9b;
+        }
+        .credit-num {
+          font-size: 34px;
+        }
+        .credit-level-a {
+          color: lightcoral;
+        }
+        .credit-level-b {
+          color: lightblue;
+        }
+        .credit-level-c {
+          color: greenyellow;
+        }
+      }
+      .septal-line {
+        height: 43px;
+        width: 1px;
+        margin: 0 30px;
+        background-color: #ebebeb;
       }
     }
   }
-  .company-info-wrap {
-    float: right;
-    display: flex;
-    min-width: 173px;
-    justify-content: space-between;
-    align-items: center;
-    .company-info-item {
-      flex: 1;
-      text-align: right;
-      .company-info-item-title {
-        font-size: 16px;
-        color: #9b9b9b;
+  .company-toolbar {
+    height: 72px;
+    padding-left: 20px;
+    border-top: 1px solid #ebebeb;
+    ul {
+      display: flex;
+      li {
+        height: 72px;
+        line-height: 72px;
+        text-align: center;
+        a {
+          display: block;
+          padding: 0 15px;
+        }
       }
-      .credit-num {
-        font-size: 34px;
-      }
-      .credit-level-a {
-        color: lightcoral;
-      }
-      .credit-level-b {
-        color: lightblue;
-      }
-      .credit-level-c {
-        color: greenyellow;
-      }
-    }
-    .septal-line {
-      height: 43px;
-      width: 1px;
-      margin: 0 30px;
-      background-color: #ebebeb;
-    }
+	}
+	.report-btn-wrap{
+		float: right;
+		margin-top: 15px;
+	}
   }
 }
 </style>

@@ -11,7 +11,7 @@
 }
 /* el样式重置 */
 .el-breadcrumb{
-	margin-bottom: 17px;
+	margin: 20px 30px 17px 30px;
 }
 .el-card__body{
 	padding: 0;
