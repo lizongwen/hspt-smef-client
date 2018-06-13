@@ -12,7 +12,7 @@
 		<el-main>
 			<router-view/>
 		</el-main>
-		<!-- <el-footer>Footer</el-footer> -->
+		<!--<el-footer>Footer</el-footer>-->
 	</el-container>
 </template>
 
@@ -21,6 +21,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+  @import '@/style/commonStyle.scss';
 .container {
   height: 100%;
   min-width: 1300px;
@@ -60,9 +61,10 @@ export default {};
       }
     }
   }
-  .el-main {
-    padding: 0;
-    background-color: #f7f6f5;
+
+  .el-main{
+	  padding: 0;
+	  background-color: $background-color-main;
   }
 }
 </style>
