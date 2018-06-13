@@ -44,11 +44,20 @@ export default new Router({
 			}, {
 				path: '/company',
 				name: 'company',
+				redirect: '/company/home',
 				meta: {
 					title: '云信平台 - 企业填报'
 				},
 				component: () => import('@/page/company/index.vue'),
 				children: [
+					{
+						path: 'home',//公司填报主页
+						name: 'home',
+						meta: {
+							title: '云信平台 - 企业填报 -首页'
+						},
+						component: () => import('@/page/company/home.vue'),
+					},
 					{
 						path: 'gsxx',//工商基本信息
 						name: 'gsxx',

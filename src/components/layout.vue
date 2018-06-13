@@ -12,14 +12,12 @@
 		<el-main>
 			<router-view/>
 		</el-main>
-		<el-footer>Footer</el-footer>
+		<!-- <el-footer>Footer</el-footer> -->
 	</el-container>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style lang="scss" scoped>
@@ -62,9 +60,9 @@ export default {
       }
     }
   }
-  .el-main{
-	  padding: 0;
-	  background-color: #F7F6F5
+  .el-main {
+    padding: 0;
+    background-color: #f7f6f5;
   }
 }
 </style>
