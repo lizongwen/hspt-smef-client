@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>11</h1>
     <company-header></company-header>
     <div class="wrap">
       <div class="reportNav">
