@@ -2,7 +2,12 @@
   <div>
     <company-header></company-header>
     <div class="wrap">
-      <div class="reportNav">此处是查看报告组件</div>
+      <div class="reportNav">
+        <router-link to="/">查看报告</router-link>
+        <router-link to="/">版本管理</router-link>
+        <router-link to="/">日志查询</router-link>
+        <router-link to="/">生成报告</router-link>
+      </div>
       <div class="aside">
         <el-collapse v-model="activeName" accordion>
           <el-collapse-item class="groupTitle" v-for="(menuGroup,index) in asideMenus"

@@ -60,97 +60,97 @@ export default new Router({
             component: () => import('@/page/company/home.vue'),
           },
           {
-            path: 'gsxx',//工商基本信息
+            path: 'base/gsxx',//工商基本信息
             name: 'gsxx',
             component: () => import('@/page/company/base/gsxx.vue')
           },
           {
-            path: 'lsgy',//公司历史信息
+            path: 'base/lsgy',//公司历史信息
             name: 'lsgy',
             component: () => import('@/page/company/base/lsgy.vue')
           },
           {
-            path: 'gqjgfz',//股权机构及分支机构
+            path: 'base/gqjgfz',//股权机构及分支机构
             name: 'gqjgfz',
             component: () => import('@/page/company/base/gqjgfz.vue')
           },
           {
-            path: 'ryrz',//公司荣誉与认证
+            path: 'base/ryrz',//公司荣誉与认证
             name: 'ryrz',
             component: () => import('@/page/company/base/ryrz.vue')
           },
           {
-            path: 'zscq',//知识产权
+            path: 'base/zscq',//知识产权
             name: 'zscq',
             component: () => import('@/page/company/base/zscq.vue')
           },
           {
-            path: 'hbxx',//环保信息
+            path: 'base/hbxx',//环保信息
             name: 'hbxx',
             component: () => import('@/page/company/base/hbxx.vue')
           },
           {
-            path: 'jyzy',//经营资源
+            path: 'resource/jyzy',//经营资源
             name: 'jyzy',
             component: () => import('@/page/company/resource/jyzy.vue')
           },
           {
-            path: 'rlzy',//人力资源
+            path: 'resource/rlzy',//人力资源
             name: 'rlzy',
             component: () => import('@/page/company/resource/rlzy.vue')
           },
           {
-            path: 'cpyf',//产品研发
+            path: 'resource/cpyf',//产品研发
             name: 'cpyf',
             component: () => import('@/page/company/resource/cpyf.vue')
           },
           {
-            path: 'zbxx',//招标信息
+            path: 'resource/zbxx',//招标信息
             name: 'zbxx',
             component: () => import('@/page/company/resource/zbxx.vue')
           },
           {
-            path: 'sbgjj',//社保及公积金
+            path: 'resource/sbgjj',//社保及公积金
             name: 'sbgjj',
             component: () => import('@/page/company/resource/sbgjj.vue')
           },
           {
-            path: 'gzxx',//工资发放情况
+            path: 'resource/gzxx',//工资发放情况
             name: 'gzxx',
             component: () => import('@/page/company/resource/gzxx.vue')
           },
           {
-            path: 'gdfrfx',//股东和法人风险信息
+            path: 'credit/gdfrfx',//股东和法人风险信息
             name: 'gdfrfx',
             component: () => import('@/page/company/credit/gdfrfx.vue')
           },
           {
-            path: 'rzxx',//融资信息
+            path: 'credit/rzxx',//融资信息
             name: 'rzxx',
             component: () => import('@/page/company/credit/rzxx.vue')
           },
           {
-            path: 'dwdb',//对外担保信息
+            path: 'credit/dwdb',//对外担保信息
             name: 'dwdb',
             component: () => import('@/page/company/credit/dwdb.vue')
           },
           {
-            path: 'sfxx',//司法信息
+            path: 'credit/sfxx',//司法信息
             name: 'sfxx',
             component: () => import('@/page/company/credit/sfxx.vue')
           },
           {
-            path: 'bcxxx',//被非银行机构查询信息
+            path: 'credit/bcxxx',//被非银行机构查询信息
             name: 'bcxxx',
             component: () => import('@/page/company/credit/bcxxx.vue')
           },
           {
-            path: 'zyyw',//主要业务介绍
+            path: 'business/zyyw',//主要业务介绍
             name: 'zyyw',
             component: () => import('@/page/company/business/zyyw.vue')
           },
           {
-            path: 'sxyjy',//上下游交易信息
+            path: 'business/sxyjy',//上下游交易信息
             name: 'sxyjy',
             component: () => import('@/page/company/business/sxyjy.vue')
           },
