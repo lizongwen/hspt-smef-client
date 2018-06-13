@@ -6,10 +6,14 @@
       <div>此处是查看报告组件</div>
       <div class="aside">
         <el-collapse v-model="activeName" accordion>
-          <el-collapse-item :title="menuGroup.groupName" v-for="(menuGroup,index) in asideMenus"
-                            :key="index" class="group" name="1">
+          <el-collapse-item class="groupTitle" v-for="(menuGroup,index) in asideMenus"
+                            :key="index" :name="index">
+            <template slot="title">
+              <i class="menuIcon" :class="menuGroup.icon"></i>
+              <span class="menuTitle">{{menuGroup.groupName}}</span>
+            </template>
             <div v-for="(item,index) in menuGroup.items" :key="index" class="item">
-              <router-link :to="{path:item.path}">{{item.name}}</router-link>
+              <router-link tag='div' :to="{path:item.path}">{{item.name}}</router-link>
             </div>
           </el-collapse-item>
         </el-collapse>
@@ -30,7 +34,7 @@
     },
     data(){
       return {
-        activeName: '1',
+        activeName: 0,
         asideMenus: []
       }
     },
@@ -52,9 +56,40 @@
   };
 </script>
 <style lang="scss" scoped>
+  @import '@/style/commonStyle.scss';
+
   .aside {
-    width: 15%;
+    width: 200px;
     float: left;
+
+    .el-collapse {
+      color: #4A4A4A;
+      .menuIcon {
+        margin-left: 22px;
+      }
+      .menuTitle {
+        margin-left: 15px;
+        font-size: 16px;
+      }
+      .el-collapse-item__header.is-active {
+        color: $main-color
+      }
+      .item {
+        height: 45px;
+        line-height: 45px;
+        font-size: 14px;
+
+        border-bottom: 1px solid #CCC;
+        background: #ECECEC;
+        text-align: center;
+        cursor: pointer;
+      }
+      .router-link-exact-active.router-link-active {
+        background: $main-color;
+        color: #fff;
+      }
+    }
   }
+
 </style>
 

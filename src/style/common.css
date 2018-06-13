@@ -1,18 +1,19 @@
+
 /* 自定义通用样式 */
 .bg-white{
-	background-color: #fff;
+  background-color: #fff;
 }
 .w-pct100{
-	width:100%
+  width:100%
 }
 .card-title{
-	font-size: 18px;
-	color:#000;
+  font-size: 18px;
+  color:#000;
 }
 /* el样式重置 */
 .el-breadcrumb{
-	margin-bottom: 17px;
+  margin-bottom: 17px;
 }
 .el-card__body{
-	padding: 0;
+  padding: 0;
 }

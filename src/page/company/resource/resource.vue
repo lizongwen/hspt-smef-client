@@ -1,5 +1,5 @@
 <template>
-	<div></div>
+	<div>企业资源信息</div>
 </template>
 
 <script>
