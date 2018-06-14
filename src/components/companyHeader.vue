@@ -38,13 +38,13 @@
 		<div class="clearfix company-toolbar">
 			<ul class="fl">
 				<li>
-					<a href="">查看报告</a>
+					<router-link to="/">查看报告</router-link>
 				</li>
 				<li>
-					<a href="">版本管理</a>
+					<router-link to="/">版本管理</router-link>
 				</li>
 				<li>
-					<a href="">日志查询</a>
+					<router-link to="/">日志查询</router-link>
 				</li>
 			</ul>
 			<div class="report-btn-wrap">
