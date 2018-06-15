@@ -14,6 +14,11 @@
 						</el-table-column>
 						<el-table-column prop="address" label="地址">
 						</el-table-column>
+						<el-table-column fixed="right" label="操作" width="100">
+							<template slot-scope="scope">
+								<el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+							</template>
+						</el-table-column>
 					</el-table>
 					<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[100, 200, 300, 400]" :page-size="10" layout="total, sizes, prev, pager, next, jumper" :total="400">
 					</el-pagination>
@@ -59,7 +64,10 @@ export default {
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
-    }
+	},
+	handleClick(row){
+		this.$router.push({path:'/company'})
+	}
   },
   components: {
     mainHeader
