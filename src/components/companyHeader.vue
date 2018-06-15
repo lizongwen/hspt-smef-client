@@ -41,7 +41,7 @@
 					<router-link to="/">查看报告</router-link>
 				</li>
 				<li>
-					<router-link to="/">版本管理</router-link>
+					<router-link to="/company/version">版本管理</router-link>
 				</li>
 				<li>
 					<router-link to="/">日志查询</router-link>
@@ -90,7 +90,6 @@ export default {
   },
   methods: {
     init() {
-      console.log(this.$route.name);
       let pathArr = util.setCurrentPath(this, this.$route.name);
     }
   },

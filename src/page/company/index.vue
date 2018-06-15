@@ -37,15 +37,19 @@ export default {
   components: {
     companyHeader
   },
+  mounted() {
+	let name=this.$route.name;
+	if(name=='version'){
+		this.isAside=false
+	}
+  },
   methods: {
     init() {
-      console.log("获取菜单数据！");
       this.$http({
         method: "get",
         url: "/api/getCompanyMenu"
       }).then(resp => {
         this.asideMenus = resp.data;
-        console.log("获取的数据是：", this.asideMenus);
       });
     }
   },
