@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import companyHeader from "@/components/companyHeader.vue";
+import companyHeader from "@/components/dataEnter/companyHeader.vue";
 export default {
   data() {
     return {

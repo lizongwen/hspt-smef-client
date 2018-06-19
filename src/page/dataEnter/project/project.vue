@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import mainHeader from "@/components/mainHeader.vue";
+import mainHeader from "@/components/dataEnter/mainHeader.vue";
 export default {
   data() {
     return {

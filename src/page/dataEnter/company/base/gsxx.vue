@@ -123,7 +123,7 @@
 </template>
 
 <script>
-  import getAndSaveData from '@/components/getAndSaveData.vue';
+  import getAndSaveData from '@/components/dataEnter/getAndSaveData.vue';
   export default {
     components: {
       'v-getAndSaveData': getAndSaveData
