@@ -62,36 +62,19 @@ export default {
       }
       let loginParams = { username: this.username, password: this.password };
 	  this.isBtnLoading = true;
-	  this.$router.push({path:'./index'})
+	  
 
-	// this.$http({
-    //     method: "post",
-    //     url: "/api/getDemoJson",
-    //     data: {
-          
-    //     }
-    //   }).then(resp => {
-	// 	  console.log(resp.data)
-    // 	});
-
-
-
-
-
-      //   requestLogin(loginParams).then(data => {
-      //     this.isBtnLoading = false;
-      //     let { msg, code, user } = data;
-      //     if (code !== 200) {
-      //       this.$message.error(msg);
-      //     } else {
-      //       localStorage.setItem('user', JSON.stringify(user));
-      //       if (this.$route.query.redirect) {
-      //         this.$router.push({path: this.$route.query.redirect});
-      //       } else {
-      //         this.$router.push({path: '/list'});
-      //       }
-      //     }
-      //   });
+	  this.$http({
+        method: "post",
+		url: "/hspt-web-api/login",
+		data:{
+			username:'aitime',
+			password:123456
+		}
+      }).then(resp => {
+		console.log(resp.data);
+		this.$router.push({path:'./index'})
+      });
     }
   }
 };

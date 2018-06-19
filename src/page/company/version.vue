@@ -47,15 +47,18 @@ export default {
     //初始化页面
     init() {
       //获取版本信息
-      //this.getVersion();
+      this.getVersion();
     },
     // 获取版本列表
     getVersion() {
       this.$http({
         method: "get",
-        url: "/api/getCompanyMenu"
+		url: "/hspt-web-api/version/list",
+		data:{
+			token:'',
+			creditCode:''
+		}
       }).then(resp => {
-        console.log(resp);
         console.log(resp.data);
         //this.tableData = resp.data;
       });
