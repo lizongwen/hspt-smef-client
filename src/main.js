@@ -9,14 +9,17 @@ import './style/base.css';
 import './style/common.css';
 import App from './App';
 import router from './router';
-import axios from 'axios';
-import Qs from 'qs';
+// import axios from 'axios';
+// import Qs from 'qs';
+import http from './utils/http';
+import api from './utils/api';
 
 // import './style/commonStyle.scss'
 
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
-Vue.prototype.$http = axios;
+Vue.prototype.$http=http;
+Vue.prototype.$api=api;
 // require('./mock.js');
 
 /* eslint-disable no-new */

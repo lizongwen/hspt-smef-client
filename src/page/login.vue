@@ -40,11 +40,11 @@ export default {
       return "登录";
     }
   },
-  mounted(){
-	  this.username=sessionStorage.getItem("username")||"";
+  mounted() {
+    this.username = sessionStorage.getItem("username") || "";
   },
   methods: {
-    login() {
+    checkInput() {
       if (!this.username) {
         this.$message.error("请填写用户名！！！");
         return;
@@ -53,24 +53,31 @@ export default {
         this.$message.error("请填写密码");
         return;
       }
-      let loginParams = { username: this.username, password: this.password };
+    },
+    login: async function() {
+      let params = { username: this.username, password: this.password };
 	  this.isBtnLoading = true;
-	  this.$http({
-        method: "post",
-		url: "/hspt-web-api/login",
-		data:loginParams
-      }).then(resp => {
-		this.isBtnLoading = false;
-		let rs=resp.data;
-		console.log(rs)
-		if(rs.resultCode=="0"){
-			sessionStorage.setItem('username',loginParams.username);
-			sessionStorage.setItem('token',rs.resultData.token)
-			this.$router.push({path:'./index'})
-		}else{
-			this.$message.error(rs.resultMsg);
-		}
-      });
+	  const res = await this.$http.post(this.$api.login, params);
+	  console.log(res)
+    //   if (res.data.success) {
+    //     alert("请求成功");
+    //   }
+      //   this.$http({
+      //     method: "post",
+      // 	url: "/hspt-web-api/login",
+      // 	data:loginParams
+      //   }).then(resp => {
+      // 	this.isBtnLoading = false;
+      // 	let rs=resp.data;
+      // 	console.log(rs)
+      // 	if(rs.resultCode=="0"){
+      // 		sessionStorage.setItem('username',loginParams.username);
+      // 		sessionStorage.setItem('token',rs.resultData.token)
+      // 		this.$router.push({path:'./index'})
+      // 	}else{
+      // 		this.$message.error(rs.resultMsg);
+      // 	}
+      //   });
     }
   }
 };
@@ -104,10 +111,10 @@ export default {
     }
     .input-group {
       margin-bottom: 30px;
-	  width: 80%;
-	  &:last-child{
-		  margin-top:0;
-	  }
+      width: 80%;
+      &:last-child {
+        margin-top: 0;
+      }
       button {
         width: 100%;
       }
