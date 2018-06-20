@@ -33,4 +33,9 @@
       margin-right:10px;
     }
   }
+  .contentWrap {
+    margin-top: 4px;
+    padding: 43px 20px;
+    background: $background-color-inside;
+  }
 </style>
