@@ -312,7 +312,9 @@ export default {
   data() {
     return {};
   },
- 
+ mounted(){
+	 this.$emit('child-side',true)
+ },
   methods: {},
   components: {}
 };
