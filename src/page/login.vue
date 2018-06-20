@@ -18,14 +18,6 @@
           v-model="password">
         </el-input>
       </div>
-      <!-- <div class="input-group">
-        <label>记住我？</label>
-        <el-switch
-          v-model="rememberMe"
-          on-text=""
-          off-text="">
-        </el-switch>
-      </div> -->
       <div class="input-group">
         <el-button @click.native="login" type="primary" :loading="isBtnLoading">{{btnText}}</el-button>
       </div>
@@ -34,13 +26,11 @@
 </template>
 
 <script>
-// import { requestLogin } from '../../api/api';
 export default {
   data() {
     return {
-      username: "admin",
-      password: "123456",
-    //   rememberMe: false,
+      username: "",
+      password: "",
       isBtnLoading: false
     };
   },
@@ -49,6 +39,9 @@ export default {
       if (this.isBtnLoading) return "登录中...";
       return "登录";
     }
+  },
+  mounted(){
+	  this.username=sessionStorage.getItem("username")||"";
   },
   methods: {
     login() {
@@ -62,18 +55,20 @@ export default {
       }
       let loginParams = { username: this.username, password: this.password };
 	  this.isBtnLoading = true;
-	  
-
 	  this.$http({
         method: "post",
 		url: "/hspt-web-api/login",
-		data:{
-			username:'aitime',
-			password:123456
-		}
+		data:loginParams
       }).then(resp => {
-		console.log(resp.data);
-		this.$router.push({path:'./index'})
+		this.isBtnLoading = false;
+		let rs=resp.data;
+		if(rs.resultCode=="0"){
+			sessionStorage.setItem('username',loginParams.username);
+			sessionStorage.setItem('token',rs.resultData.token)
+			this.$router.push({path:'./index'})
+		}else{
+			this.$message.error(rs.resultMsg);
+		}
       });
     }
   }

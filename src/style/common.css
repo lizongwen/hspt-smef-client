@@ -17,3 +17,6 @@
 .el-card__body{
   padding: 0;
 }
+.el-message-box {
+	width: 325px;
+}

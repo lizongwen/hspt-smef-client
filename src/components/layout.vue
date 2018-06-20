@@ -1,7 +1,7 @@
 <template>
 	<el-container class="container">
 		<el-header>
-			<div class="logout">
+			<div class="logout" @click="logout">
 				<i class="icon iconfont icon-poweroff"></i>
 			</div>
 			<div class="header-bar">
@@ -17,11 +17,25 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    logout() {
+      this.$confirm("退出系统, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+        center: true
+      }).then(() => {
+        sessionStorage.removeItem("token");
+        this.$router.push({path:'./login'})
+      });
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-  @import '@/style/commonStyle.scss';
+@import "@/style/commonStyle.scss";
 .container {
   height: 100%;
   min-width: 1300px;
@@ -62,9 +76,9 @@ export default {};
     }
   }
 
-  .el-main{
-	  padding: 0;
-	  background-color: $background-color-main;
+  .el-main {
+    padding: 0;
+    background-color: $background-color-main;
   }
 }
 </style>

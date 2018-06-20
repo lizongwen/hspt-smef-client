@@ -17,7 +17,7 @@
 			</div>
 			<div class="user-wrap">
 				<div class="user-name">您好，
-					<span>哇哈哈</span>
+					<span>{{username}}</span>
 				</div>
 				<div class="user-post-wrap">
 					<span class="post-name">{{postName}}</span>
@@ -35,7 +35,8 @@ export default {
     return {
       projNum: 56,
       finishNum: 33,
-      postName: "项目经理"
+	  postName: "项目经理",
+	  username:"哇哈哈"
     };
   },
   computed: {
@@ -45,8 +46,7 @@ export default {
   },
   methods: {
     init() {
-      console.log(this.$route.name);
-      let pathArr = util.setCurrentPath(this, this.$route.name);
+	  let pathArr = util.setCurrentPath(this, this.$route.name);
     }
   },
   mounted() {

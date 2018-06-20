@@ -4,7 +4,19 @@
 		<div class="main-content">
 			<el-card class="box-card">
 				<div slot="header" class="clearfix">
-					<span class="card-title">全部项目</span>
+					<div class="card-title">全部项目</div>
+					<div class="search-form">
+						<el-form :inline="true" :model="searchForm" class="demo-form-inline">
+							<el-form-item>
+								<el-input v-model="searchForm.searchInput" placeholder="请输入内容">
+									<el-button slot="append" type="primary" @click="onSubmit">查询</el-button>
+								</el-input>
+							</el-form-item>
+							<el-form-item>
+								<el-button type="primary" @click="addCompany">新增企业</el-button>
+							</el-form-item>
+						</el-form>
+					</div>
 				</div>
 				<div>
 					<el-table :data="tableData" style="width: 100%">
@@ -33,23 +45,27 @@ import mainHeader from "@/components/dataEnter/mainHeader.vue";
 export default {
   data() {
     return {
+      searchForm: {
+        searchInput: "",
+      },
       tableData: [
         {
+			id:'1-1',
           date: "2016-05-02",
           name: "王小虎",
           address: "上海市普陀区金沙江路 1518 弄"
         },
-        {
+        {id:'1-2',
           date: "2016-05-04",
           name: "王小虎",
           address: "上海市普陀区金沙江路 1517 弄"
         },
-        {
+        {id:'1-3',
           date: "2016-05-01",
           name: "王小虎",
           address: "上海市普陀区金沙江路 1519 弄"
         },
-        {
+        {id:'1-4',
           date: "2016-05-03",
           name: "王小虎",
           address: "上海市普陀区金沙江路 1516 弄"
@@ -64,9 +80,16 @@ export default {
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
+    },
+    handleClick(row) {
+		console.log(row.id)
+      this.$router.push({ path: "/company" });
+    },
+    onSubmit() {
+      console.log("submit!");
 	},
-	handleClick(row){
-		this.$router.push({path:'/company'})
+	addCompany(){
+		alert('新增企业');
 	}
   },
   components: {
@@ -78,7 +101,20 @@ export default {
 <style lang="scss" scoped>
 .el-main {
   .main-content {
-    padding: 20px;
+	padding: 20px;
+	.card-title{
+		float: left;
+		margin-top:8px;
+	}
+	.search-form{
+		float: right;
+		.el-form-item{
+			.el-input{
+				min-width:400px;
+			}
+			margin-bottom: 0
+		}
+	}
   }
 }
 </style>
