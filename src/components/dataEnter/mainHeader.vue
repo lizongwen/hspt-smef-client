@@ -35,8 +35,8 @@ export default {
     return {
       projNum: 56,
       finishNum: 33,
-	  postName: "项目经理",
-	  username:"哇哈哈"
+      postName: "",
+      username: ""
     };
   },
   computed: {
@@ -46,11 +46,29 @@ export default {
   },
   methods: {
     init() {
-	  let pathArr = util.setCurrentPath(this, this.$route.name);
+      let pathArr = util.setCurrentPath(this, this.$route.name);
+      this.$http({
+        method: "post",
+		url: "/hspt-web-api/user/findByLoginName",
+		
+        data: {
+			loginName:sessionStorage.getItem('username'),
+			token:sessionStorage.getItem('token')
+		}
+      }).then(resp => {
+        let rs = resp.data;
+        if (rs.resultCode == "0") {
+		 //this.username=rs.loginName
+		 this.postName=rs.resultData;
+        } else {
+          //this.$message.error(rs.resultMsg);
+        }
+      });
     }
   },
   mounted() {
-    this.init();
+	this.init();
+	this.username=sessionStorage.getItem('username')
   }
 };
 </script>
@@ -60,7 +78,7 @@ export default {
   overflow: hidden;
   background-color: #fff;
   .proj-wrap {
-	  margin: 0 30px 10px 30px;
+    margin: 0 30px 10px 30px;
     .proj-num-wrap {
       float: left;
       display: flex;

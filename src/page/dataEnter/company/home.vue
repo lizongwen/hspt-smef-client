@@ -12,7 +12,7 @@
 						<li class="mod-list-item">
 							<div class="sub-name">工商基本信息：</div>
 							<div class="sub-progress">0/4</div>
-							<div class="mod-list-item_op">
+							<div class="mod-list-item_op" @click="openMod">
 								<i class="icon iconfont icon-edit1"></i>
 							</div>
 						</li>
@@ -312,8 +312,14 @@ export default {
   data() {
     return {};
   },
- 
-  methods: {},
+ mounted(){
+	 this.$emit('child-side',true)
+ },
+  methods: {
+	  openMod(){
+		  console.log()
+	  }
+  },
   components: {}
 };
 </script>
