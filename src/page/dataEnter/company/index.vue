@@ -21,9 +21,9 @@
 								<i class="el-icon-location"></i>
 								<span>公司基本信息</span>
 							</template>
-							<el-menu-item index="1-1">工商基本信息</el-menu-item>
-							<el-menu-item index="1-2">公司历史沿革</el-menu-item>
-							<el-menu-item index="1-3">股权机构及分支机构</el-menu-item>
+							<el-menu-item index="1-1"><router-link tag='div' to="/company/base/gsxx">工商基本信息</router-link></el-menu-item>
+							<el-menu-item index="1-2"><router-link tag='div' to="/company/base/lsgy">公司历史沿革</router-link></el-menu-item>
+							<el-menu-item index="1-3"><router-link tag='div' to="/company/base/gqjgfz">股权机构及分支机构</router-link></el-menu-item>
 							<el-menu-item index="1-4">公司荣誉与认证</el-menu-item>
 							<el-menu-item index="1-5">知识产权</el-menu-item>
 							<el-menu-item index="1-6">环保信息</el-menu-item>
@@ -52,10 +52,6 @@
 							<el-menu-item index="2-5">企业社保及公积金缴纳人数</el-menu-item>
 							<el-menu-item index="2-6">企业工资发放情况</el-menu-item>
 						</el-submenu>
-						<el-menu-item index="88">
-							<i class="el-icon-menu"></i>
-							<span slot="title">导航二</span>
-						</el-menu-item>
 					</el-menu>
 				</el-aside>
 				<el-main>
