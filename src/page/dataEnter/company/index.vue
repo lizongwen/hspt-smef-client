@@ -24,9 +24,9 @@
 							<el-menu-item index="1-1"><router-link tag='div' to="/company/base/gsxx">工商基本信息</router-link></el-menu-item>
 							<el-menu-item index="1-2"><router-link tag='div' to="/company/base/lsgy">公司历史沿革</router-link></el-menu-item>
 							<el-menu-item index="1-3"><router-link tag='div' to="/company/base/gqjgfz">股权机构及分支机构</router-link></el-menu-item>
-							<el-menu-item index="1-4">公司荣誉与认证</el-menu-item>
-							<el-menu-item index="1-5">知识产权</el-menu-item>
-							<el-menu-item index="1-6">环保信息</el-menu-item>
+							<el-menu-item index="1-4"><router-link tag='div' to="/company/base/ryrz">公司荣誉与认证</router-link></el-menu-item>
+							<el-menu-item index="1-5"><router-link tag='div' to="/company/base/zscq">知识产权</router-link></el-menu-item>
+							<el-menu-item index="1-6"><router-link tag='div' to="/company/base/hbxx">环保信息</router-link></el-menu-item>
 						</el-submenu>
 						<el-submenu index="2">
 							<template slot="title">	
@@ -77,6 +77,7 @@ export default {
   },
   mounted() {
 	let name=this.$route.name;
+	console.log(name)
 	if(name=='version'){
 		this.isAside=false
 	}
