@@ -10,13 +10,14 @@ import './style/common.css';
 import App from './App';
 import router from './router';
 import axios from 'axios';
+import Qs from 'qs';
 
 // import './style/commonStyle.scss'
 
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
 Vue.prototype.$http = axios;
-require('./mock.js');
+// require('./mock.js');
 
 /* eslint-disable no-new */
 new Vue({
