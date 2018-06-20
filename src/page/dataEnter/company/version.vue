@@ -54,6 +54,7 @@ export default {
       this.$http({
         method: "get",
 		url: "/hspt-web-api/version/list",
+		// headers: {'X-Requested-With': },
 		data:{
 			token:'',
 			creditCode:''

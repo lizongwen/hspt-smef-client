@@ -62,6 +62,7 @@ export default {
       }).then(resp => {
 		this.isBtnLoading = false;
 		let rs=resp.data;
+		console.log(rs)
 		if(rs.resultCode=="0"){
 			sessionStorage.setItem('username',loginParams.username);
 			sessionStorage.setItem('token',rs.resultData.token)
