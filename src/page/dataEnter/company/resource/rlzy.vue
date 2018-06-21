@@ -21,7 +21,48 @@
 									</el-col>
 									<el-col :offset="1" :span="10">
 										<el-form-item label="是否参与日常运营:">
-											<el-input v-model="form.isJoin"></el-input>
+											<el-select v-model="value" placeholder="请选择">
+												<el-option label="是" value="1"></el-option>
+												<el-option label="否" value="0"></el-option>
+											</el-select>
+										</el-form-item>
+									</el-col>
+								</el-row>
+								<el-row>
+									<el-col :offset="1" :span="10">
+										<el-form-item label="姓名:">
+											<el-input v-model="form.post"></el-input>
+										</el-form-item>
+									</el-col>
+									<el-col :offset="1" :span="10">
+										<el-form-item label="性别:">
+											<el-select v-model="value" placeholder="请选择">
+												<el-option label="男" value="1">
+												</el-option>
+												<el-option label="女" value="0">
+												</el-option>
+											</el-select>
+										</el-form-item>
+									</el-col>
+								</el-row>
+								<el-row>
+									<el-col :offset="1" :span="10">
+										<el-form-item label="文化程度:">
+											<el-select v-model="value" placeholder="请选择">
+												<el-option label="小学" value="1"></el-option>
+												<el-option label="初中" value="2"></el-option>
+												<el-option label="高中" value="3"></el-option>
+												<el-option label="大专" value="4"></el-option>
+												<el-option label="本科" value="5"></el-option>
+												<el-option label="研究生" value="6"></el-option>
+												<el-option label="博士生" value="7"></el-option>
+											</el-select>
+										</el-form-item>
+									</el-col>
+									<el-col :offset="1" :span="10">
+										<el-form-item label="出生年月:">
+											<el-date-picker v-model="form.birth" type="date" placeholder="选择日期">
+											</el-date-picker>
 										</el-form-item>
 									</el-col>
 								</el-row>
@@ -178,11 +219,12 @@ export default {
   data() {
     return {
       activeName: "first",
-	  textarea: "",
-	  form:{
-		  post:'',
-		  isJoin:''
-	  }
+      textarea: "",
+      form: {
+        post: "",//职位
+		isJoin: "",
+		birth:""//出生年月
+      }
     };
   },
   methods: {
