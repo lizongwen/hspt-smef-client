@@ -1,7 +1,7 @@
 <template>
   <div>
     <span v-if="!newFlag">
-      <a href="" @click.stop.prevent="update(rowData,index)">编辑</a>
+      <a href="" @click.prevent="update(rowData,index)">编辑</a>
       <a href="" @click.stop.prevent="deleteRow(rowData,index)">删除</a>
     </span>
     <span v-if="newFlag">
