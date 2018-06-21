@@ -21,7 +21,7 @@
 									</el-col>
 									<el-col :offset="1" :span="10">
 										<el-form-item label="是否参与日常运营:">
-											<el-select v-model="value" placeholder="请选择">
+											<el-select v-model="value" placeholder="请选择" style="width:100%">
 												<el-option label="是" value="1"></el-option>
 												<el-option label="否" value="0"></el-option>
 											</el-select>
@@ -36,7 +36,7 @@
 									</el-col>
 									<el-col :offset="1" :span="10">
 										<el-form-item label="性别:">
-											<el-select v-model="value" placeholder="请选择">
+											<el-select v-model="value" placeholder="请选择"  style="width:100%">
 												<el-option label="男" value="1">
 												</el-option>
 												<el-option label="女" value="0">
@@ -48,7 +48,7 @@
 								<el-row>
 									<el-col :offset="1" :span="10">
 										<el-form-item label="文化程度:">
-											<el-select v-model="value" placeholder="请选择">
+											<el-select v-model="value" placeholder="请选择" style="width:100%">
 												<el-option label="小学" value="1"></el-option>
 												<el-option label="初中" value="2"></el-option>
 												<el-option label="高中" value="3"></el-option>
@@ -61,109 +61,41 @@
 									</el-col>
 									<el-col :offset="1" :span="10">
 										<el-form-item label="出生年月:">
-											<el-date-picker v-model="form.birth" type="date" placeholder="选择日期">
-											</el-date-picker>
-										</el-form-item>
-									</el-col>
-								</el-row>
-								<!-- <el-row>
-									<el-col :offset="1" :span="10">
-										<el-form-item label="社会信用代码:">
-											<el-input :disabled="true" v-model="form.creditCode"></el-input>
-										</el-form-item>
-									</el-col>
-									<el-col :offset="1" :span="10">
-										<el-form-item label="组织机构代码:">
-											<el-input v-model="form.orgCode"></el-input>
+											<el-date-picker v-model="form.birth" type="date" placeholder="选择日期" style="width:100%"></el-date-picker>
 										</el-form-item>
 									</el-col>
 								</el-row>
 								<el-row>
 									<el-col :offset="1" :span="10">
-										<el-form-item label="注册号:">
-											<el-input v-model="form.regNum"></el-input>
+										<el-form-item label="相关工作年限:">
+											<el-input v-model="form.post"></el-input>
 										</el-form-item>
 									</el-col>
 									<el-col :offset="1" :span="10">
-										<el-form-item label="注册资本:">
-											<el-input v-model="form.regAsset"></el-input>
-										</el-form-item>
-									</el-col>
-								</el-row>
-								<el-row>
-									<el-col :offset="1" :span="10">
-										<el-form-item label="企业类型:">
-											<el-input v-model="form.companyType"></el-input>
-										</el-form-item>
-									</el-col>
-									<el-col :offset="1" :span="10">
-										<el-form-item label="成立年份:">
-											<el-input v-model="form.foundedYear"></el-input>
+										<el-form-item label="婚姻状况:">
+											<el-select v-model="value" placeholder="请选择"  style="width:100%">
+												<el-option label="未婚" value="1">
+												</el-option>
+												<el-option label="已婚" value="0">
+												</el-option>
+											</el-select>
 										</el-form-item>
 									</el-col>
 								</el-row>
 								<el-row>
 									<el-col :offset="1" :span="10">
-										<el-form-item label="营业期限:">
-											<el-input v-model="form.operationTerm"></el-input>
-										</el-form-item>
-									</el-col>
-									<el-col :offset="1" :span="10">
-										<el-form-item label="注册地址:">
-											<el-input v-model="form.address"></el-input>
-										</el-form-item>
-									</el-col>
-								</el-row>
-								<el-row>
-									<el-col :offset="1" :span="10">
-										<el-form-item label="法人代表:">
-											<el-input v-model="form.legalRepresentative"></el-input>
-										</el-form-item>
-									</el-col>
-									<el-col :offset="1" :span="10">
-										<el-form-item label="电话:">
-											<el-input v-model="form.phoneNum"></el-input>
-										</el-form-item>
-									</el-col>
-								</el-row>
-								<el-row>
-									<el-col :offset="1" :span="10">
-										<el-form-item label="传真:">
-											<el-input v-model="form.faxNum"></el-input>
-										</el-form-item>
-									</el-col>
-									<el-col :offset="1" :span="10">
-										<el-form-item label="网站:">
-											<el-input v-model="form.website"></el-input>
-										</el-form-item>
-									</el-col>
-								</el-row>
-								<el-row>
-									<el-col :offset="1" :span="10">
-										<el-form-item label="公司人数:">
-											<el-input v-model="form.staffNum"></el-input>
-										</el-form-item>
-									</el-col>
-									<el-col :offset="1" :span="10">
-										<el-form-item label="销售收入:">
-											<el-input v-model="form.saleRevenue"></el-input>
-										</el-form-item>
-									</el-col>
-								</el-row>
-								<el-row>
-									<el-col :offset="1" :span="10">
-										<el-form-item label="净资产:">
-											<el-input v-model="form.netAsset"></el-input>
+										<el-form-item label="任务性质:">
+											<el-input v-model="form.post"></el-input>
 										</el-form-item>
 									</el-col>
 								</el-row>
 								<el-row>
 									<el-col :offset="1" :span="21">
-										<el-form-item label="经营范围:">
-											<el-input type="textarea" v-model="form.businessScope"></el-input>
+										<el-form-item label="工作履历:">
+											<el-input type="textarea" v-model="form.workExperience"></el-input>
 										</el-form-item>
 									</el-col>
-								</el-row> -->
+								</el-row>
 							</el-form>
 						</div>
 					</el-card>
@@ -223,7 +155,8 @@ export default {
       form: {
         post: "",//职位
 		isJoin: "",
-		birth:""//出生年月
+		birth:"",//出生年月
+		workExperience:"",//工作经历
       }
     };
   },
