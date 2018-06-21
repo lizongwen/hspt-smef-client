@@ -1,8 +1,13 @@
 import Cookies from 'js-cookie';
 
 const user = {
-    state: {},
+    state: {
+		token:""
+	},
     mutations: {
+		setToken(token){
+			state.token = token;
+		},
         logout (state, vm) {
             Cookies.remove('user');
             Cookies.remove('password');

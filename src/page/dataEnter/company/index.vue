@@ -67,7 +67,7 @@
 					</el-menu>
 				</el-aside>
 				<el-main>
-					<router-view @child-side="changeSide"/>
+					<router-view @change-side="changeSide"/>
 				</el-main>
 			</el-container>
 		</div>
