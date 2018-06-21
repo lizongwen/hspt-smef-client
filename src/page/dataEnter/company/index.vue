@@ -3,7 +3,7 @@
 		<company-header></company-header>
 		<div class="main-content">
 			<el-container>
-				<el-aside width="200px" v-if="isAside" >
+				<el-aside width="200px" v-if="isAside">
 					<!-- <el-collapse v-model="activeName" accordion>
 						<el-collapse-item class="groupTitle" v-for="(menuGroup,index) in asideMenus" :key="index" :name="index">
 							<template slot="title">
@@ -45,12 +45,24 @@
 								<i class="el-icon-location"></i>
 								<span>公司资源信息</span>
 							</template>
-							<el-menu-item index="2-1">企业经营资源</el-menu-item>
-							<el-menu-item index="2-2">人力资源分析</el-menu-item>
-							<el-menu-item index="2-3">产品研发技术情况</el-menu-item>
-							<el-menu-item index="2-4">招投标信息</el-menu-item>
-							<el-menu-item index="2-5">企业社保及公积金缴纳人数</el-menu-item>
-							<el-menu-item index="2-6">企业工资发放情况</el-menu-item>
+							<el-menu-item index="2-1">
+								<router-link tag='div' to="/company/resource/jyzy">企业经营资源</router-link>
+							</el-menu-item>
+							<el-menu-item index="2-2">
+								<router-link tag='div' to="/company/resource/rlzy">人力资源分析</router-link>
+							</el-menu-item>
+							<el-menu-item index="2-3">
+								<router-link tag='div' to="/company/resource/cpyf">产品研发技术情况</router-link>
+							</el-menu-item>
+							<el-menu-item index="2-4">
+								<router-link tag='div' to="/company/resource/zbxx">招投标信息</router-link>
+							</el-menu-item>
+							<el-menu-item index="2-5">
+								<router-link tag='div' to="/company/resource/sbgjj">企业社保及公积金缴纳人数</router-link>
+							</el-menu-item>
+							<el-menu-item index="2-6">
+								<router-link tag='div' to="/company/resource/gzxx">企业工资发放情况</router-link>
+							</el-menu-item>
 						</el-submenu>
 						<el-submenu index="3">
 							<template slot="title">
@@ -67,7 +79,7 @@
 					</el-menu>
 				</el-aside>
 				<el-main>
-					<router-view @change-side="changeSide"/>
+					<router-view @change-side="changeSide" />
 				</el-main>
 			</el-container>
 		</div>
@@ -88,9 +100,9 @@ export default {
     companyHeader
   },
   mounted() {
-	let name = this.$route.name;
+    let name = this.$route.name;
     if (name == "version") {
-		this.changeSide(false)
+      this.changeSide(false);
     }
   },
   methods: {
@@ -107,11 +119,11 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
-	},
-	//显示隐藏侧栏
-	changeSide(val){
-		this.isAside=val;
-	}
+    },
+    //显示隐藏侧栏
+    changeSide(val) {
+      this.isAside = val;
+    }
   },
   created() {
     //this.init();
