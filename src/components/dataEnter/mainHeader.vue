@@ -46,17 +46,27 @@ export default {
   },
   methods: {
     init() {
-      this.findByLoginName();
-    },
+	  this.findByLoginName();
+	  this.findDept();
+	},
+	//查询用户的职位
     findByLoginName: async function() {
       let params = {
         token: sessionStorage.getItem("token"),
         loginName: sessionStorage.getItem("username")
 	  };
-	  console.log(params)
       const res = await this.$http.post(this.$api.findByLoginName, params);
+	},
+	//查询用户的部门
+	findDept: async function() {
+      let params = {
+        token: sessionStorage.getItem("token"),
+        loginName: sessionStorage.getItem("username")
+	  };
+	  console.log(params)
+      const res = await this.$http.post(this.$api.findDept, params);
       console.log(res);
-    }
+	},
   },
   mounted() {
     this.init();

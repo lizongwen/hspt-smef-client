@@ -5,7 +5,7 @@
 		</el-breadcrumb>
 		<div class="clearfix company-wrap">
 			<div class="company-info-wrap">
-				<div class="company-name">{{companyName}}</div>
+				<div class="company-name"><router-link tag='div' to="/company/home">{{companyName}}</router-link></div>
 				<div class="company-state">
 					<div>
 						<label>修改人：</label>

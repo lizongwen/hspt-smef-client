@@ -39,10 +39,7 @@ export default {
   },
   mounted() {
     this.init();
-    // console.log(this.$parent)
-    //this.$parent.isAside=false;
-    // console.log(this.$parent.isAside)
-    this.$emit("child-side", false);
+    this.$emit("change-side", false);
   },
   methods: {
     //初始化页面
