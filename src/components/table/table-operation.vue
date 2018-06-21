@@ -1,12 +1,12 @@
 <template>
   <div>
-    <span v-if="!newFlag">
+    <span v-if="!editingFlag">
       <a href="" @click.prevent="update(rowData,index)">编辑</a>
       <a href="" @click.stop.prevent="deleteRow(rowData,index)">删除</a>
     </span>
-    <span v-if="newFlag">
-      <a href="" @click.stop.prevent="save(rowData,index)">保存</a>
-      <a href="" @click.stop.prevent="cancel(rowData,index)">取消</a>
+    <span v-if="editingFlag">
+    <a href="" @click.stop.prevent="save(rowData,index)">保存</a>
+    <a href="" @click.stop.prevent="cancel(rowData,index)">取消</a>
     </span>
   </div>
 
@@ -24,9 +24,9 @@
         type: Number
       }
     },
-    data(){
-      return {
-        newFlag: false
+    computed: {
+      editingFlag(){
+        return this.$store.state.company.editingState;
       }
     },
     methods: {
@@ -46,9 +46,6 @@
         let params = {type: 'cancel', index: this.index, rowData: this.rowData};
         this.$emit('on-custom-comp', params);
       }
-    },
-    mounted(){
-      this.newFlag = this.$store.state.company.historyNewFlag;
     }
   }
 </script>

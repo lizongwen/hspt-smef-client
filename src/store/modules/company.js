@@ -1,14 +1,17 @@
 import Vue from 'vue';
 
 const company = {
-  state: {
-    historyNewFlag: false
-  },
-  mutations: {
-    setHistoryNewFlag(state,newValObj){
-      state.historyNewFlag = newValObj.newFlag;
+    state: {
+      editingState: false
+    },
+    mutations: {
+      setEditingFlag(state, newValObj)
+      {
+        state.editingState = newValObj.editingFlag;
+      }
     }
+
   }
-};
+;
 
 export default company;
