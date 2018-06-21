@@ -22,6 +22,7 @@
 <script>
   import getAndSaveData from '@/components/dataEnter/getAndSaveData.vue';
   import tabelAddBtn from '@/components/table/table-add-btn.vue';
+//  import tableOperation from '@/components/table/table-operation.vue';
 
   let mockData = [{"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"},
     {"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"},
@@ -47,19 +48,26 @@
               return (rowIndex + 1)
             }, isFrozen: true
           },
-          {field: 'modifiedDate', title: '变更日期', width: 100, isEdit: true, titleAlign: 'center', columnAlign: 'center'},
           {
-            field: 'modifiedEvent',
-            title: '变更事项',
-            width: 100, isEdit: true,
+            field: 'modifiedDate',
+            title: '变更日期',
+            width: 100,
+            isEdit: false,
             titleAlign: 'center',
             columnAlign: 'center'
           },
-          {field: 'beforeModify', title: '变更前', width: 240, isEdit: true, titleAlign: 'center', columnAlign: 'center'},
+          {
+            field: 'modifiedEvent',
+            title: '变更事项',
+            width: 100, isEdit: false,
+            titleAlign: 'center',
+            columnAlign: 'center'
+          },
+          {field: 'beforeModify', title: '变更前', width: 240, isEdit: false, titleAlign: 'center', columnAlign: 'center'},
           {
             field: 'afterModify',
             title: '变更后',
-            width: 200, isEdit: true,
+            width: 200, isEdit: false,
             titleAlign: 'center',
             columnAlign: 'center',
             isResize: true
@@ -80,13 +88,8 @@
       console.log('in created');
       this.tableData = mockData;
     },
-    mounted(){
-      console.log('in mounted');
-      this.$store.commit('setHistoryNewFlag', {newFlag: false});
-    },
     methods: {
       customCompFunc(params){
-//        console.log(params);
         switch (params.type) {
           case 'delete':
             this.$delete(this.tableData, params.index);
@@ -94,14 +97,17 @@
           case 'edit':
             //改变该行背景色，且让该行可编辑文本框呈现可编辑状态
             this.clickIndex = params.index;
+            this.$store.commit('setEditingFlag', {editingFlag: true});
+            alert(`行号：${params.index} 姓名：${params.rowData['name']}`)
 //            this.setColumnsEditable(true);
             break;
           case 'cancel':
             this.tableData.splice(params.index, 1);
             break;
           case 'save':
-            this.$store.commit('setHistoryNewFlag', {newFlag: false});
-            console.log(this.$store.state.company.historyNewFlag);
+            this.$store.commit('setEditingFlag', {editingFlag: false});
+            console.log('save setEditingFlag:', this.$store.state.company.editingState);
+//            console.log('store historyNewFlag 变为：',this.$store.state.company.historyNewFlag);
         }
       },
       cellEditDone(newValue, oldValue, rowIndex, rowData, field){
