@@ -1,40 +1,14 @@
 <template>
 	<div>
-
 		<el-table :data="list" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
-			<!-- <el-table-column align="center" label="ID" width="80">
-				<template slot-scope="scope">
-					<span>{{scope.row.id}}</span>
-				</template>
-			</el-table-column>
-
-			<el-table-column width="180px" align="center" label="Date">
-				<template slot-scope="scope">
-					<span>{{scope.row.timestamp}}</span>
-				</template>
-			</el-table-column>
-
-			<el-table-column width="120px" align="center" label="Author">
-				<template slot-scope="scope">
-					<span>{{scope.row.author}}---{{scope.column.label}}</span>
-				</template>
-			</el-table-column>
-
-			<el-table-column width="100px" label="Importance">
-				<template slot-scope="scope">
-					<svg-icon v-for="n in +scope.row.importance" icon-class="star" class="meta-item__icon" :key="n"></svg-icon>
-				</template>
-			</el-table-column>
-
-			<el-table-column class-name="status-col" label="Status" width="110">
-				<template slot-scope="scope">
-					<el-tag :type="scope.row.status">{{scope.row.status}}</el-tag>
-				</template>
-			</el-table-column> -->
 			<el-table-column min-width="300px" label="Title1">
 				<template slot-scope="scope">
 					<template v-if="scope.row.edit">
-						<el-input class="edit-input" size="small" v-model="scope.row.title1"></el-input>
+						<el-form :model="scope.row" :rules="rules" :id="'Title1'+scope.$index" :ref="'form_Title1_'+scope.$index" :show-message="false">
+							 <el-form-item prop="title1" class="td-form-item">
+									<el-input class="edit-input" size="small" v-model="scope.row.title1"></el-input>
+							 </el-form-item>
+						</el-form>
 						<!-- <el-button class='cancel-btn' size="small" icon="el-icon-refresh" type="warning" @click="cancelEdit(scope.row)">cancel</el-button> -->
 					</template>
 					<span v-else>{{ scope.row.title1 }}</span>
@@ -49,14 +23,14 @@
 					<span v-else>{{ scope.row.title2}}</span>
 				</template>
 			</el-table-column>
-
-			<el-table-column align="center" label="Actions" width="120">
+			<el-table-column align="center" label="Actions" width="240">
 				<template slot-scope="scope">
-					<el-button v-if="scope.row.edit" type="success" @click="confirmEdit(scope.row)" size="small" icon="el-icon-circle-check-outline">Ok</el-button>
-					<el-button v-else type="primary" @click='edit(scope.row)' size="small" icon="el-icon-edit">Edit</el-button>
+					<el-button v-if="scope.row.edit" type="success" @click="saveEdit(scope.row,scope.$index)" size="small" icon="el-icon-circle-check-outline">保存</el-button>
+					<el-button v-else type="primary" @click='edit(scope.row)' size="small" icon="el-icon-edit">编辑</el-button>
+					<el-button v-if="scope.row.edit" type="success" @click="confirmEdit(scope.row)" size="small" icon="el-icon-circle-check-outline">取消</el-button>
+					<el-button v-else type="primary" @click='edit(scope.row)' size="small" icon="el-icon-edit">删除</el-button>
 				</template>
 			</el-table-column>
-
 		</el-table>
 	</div>
 </template>
@@ -72,7 +46,10 @@ export default {
       listQuery: {
         page: 1,
         limit: 10
-      }
+	  },
+	  rules:{
+		  title1:[{ required: true, message: '请输入名称', trigger: "null" }]
+	  }
     };
   },
   mounted() {
@@ -163,10 +140,27 @@ export default {
         message: "The title has been edited",
         type: "success"
       });
-    }
+	},
+	saveEdit(row,index){
+		let form="form_Title1_"+index;
+		this.$refs[form].validate( (result,object)=>{
+			console.log(result,object)
+			if(result){
+				console.log(1)
+			}else{
+				this.$message({
+					message: object.title1[0].message,
+					type: "warning"
+				});
+			}
+		})
+	}
   }
 };
 </script>
 
 <style>
+.td-form-item{
+	margin:0
+}
 </style>
