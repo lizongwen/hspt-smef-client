@@ -5,8 +5,8 @@ const company = {
     historyNewFlag: false
   },
   mutations: {
-    setHistoryNewFlag(state,newVal){
-      state.historyNewFlag = newVal;
+    setHistoryNewFlag(state,newValObj){
+      state.historyNewFlag = newValObj.newFlag;
     }
   }
 };

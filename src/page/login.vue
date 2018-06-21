@@ -56,15 +56,14 @@ export default {
     },
     login: async function() {
       let params = { username: this.username, password: this.password };
-      this.isBtnLoading = true;
-      const res = await this.$http.post(this.$api.login, params);
-      console.log(res);
-      sessionStorage.setItem("username", params.username);
-      sessionStorage.setItem("token", res.data.resultData.token);
-      this.$router.push({ path: "./index" });
-      //   if (res.data.success) {
-      //     alert("请求成功");
-      //   }
+	  this.isBtnLoading = true;
+
+//	  const res = await this.$http.post(this.$api.login, params);
+      this.$router.push({path:'./index'})
+	  console.log(res)
+    //   if (res.data.success) {
+    //     alert("请求成功");
+    //   }
       //   this.$http({
       //     method: "post",
       // 	url: "/hspt-web-api/login",

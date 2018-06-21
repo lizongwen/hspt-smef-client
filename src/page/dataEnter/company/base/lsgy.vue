@@ -22,7 +22,15 @@
 <script>
   import getAndSaveData from '@/components/dataEnter/getAndSaveData.vue';
   import tabelAddBtn from '@/components/table/table-add-btn.vue';
-  //  import tableOperation from '@/components/table/table-operation.vue';
+
+  let mockData = [{"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"},
+    {"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"},
+    {"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"},
+    {"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"},
+    {"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"}
+  ];
+
+
   export default {
     components: {
       'v-getAndSaveData': getAndSaveData,
@@ -31,16 +39,10 @@
     data: function () {
       return {
         newFlag: false,
-        tableData: [
-          {"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"},
-          {"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"},
-          {"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"},
-          {"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"},
-          {"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"}
-        ],
+        tableData: [],
         columns: [
           {
-            field: 'custome', title: '序号', width: 50, titleAlign: 'center', columnAlign: 'center',
+            field: 'custome', title: '序号', width: 50, isEdit: false, titleAlign: 'center', columnAlign: 'center',
             formatter: function (rowData, rowIndex, pagingIndex, field) {
               return (rowIndex + 1)
             }, isFrozen: true
@@ -49,8 +51,7 @@
           {
             field: 'modifiedEvent',
             title: '变更事项',
-            width: 100,
-            isEdit: true,
+            width: 100, isEdit: true,
             titleAlign: 'center',
             columnAlign: 'center'
           },
@@ -58,8 +59,7 @@
           {
             field: 'afterModify',
             title: '变更后',
-            width: 200,
-            isEdit: true,
+            width: 200, isEdit: true,
             titleAlign: 'center',
             columnAlign: 'center',
             isResize: true
@@ -76,34 +76,51 @@
         ]
       }
     },
+    created(){
+      console.log('in created');
+      this.tableData = mockData;
+    },
+    mounted(){
+      console.log('in mounted');
+      this.$store.commit('setHistoryNewFlag', {newFlag: false});
+    },
     methods: {
       customCompFunc(params){
-        console.log(params);
-
-        if (params.type === 'delete') { // do delete operation
-
-          this.$delete(this.tableData, params.index);
-
-        } else if (params.type === 'edit') { // do edit operation
-          //改变该行背景色，且让该行可编辑文本框呈现可编辑状态
-          this.clickIndex = params.index;
-          console.log('点击编辑:', this.clickIndex)
-          //alert(`行号：${params.index} 姓名：${params.rowData['name']}`)
-        }
-      },
-      columnCellClass(rowIndex, columnName, rowData){
-        if (rowIndex == this.clickIndex) {
-          return 'column-cell-class-name-test';
+//        console.log(params);
+        switch (params.type) {
+          case 'delete':
+            this.$delete(this.tableData, params.index);
+            break;
+          case 'edit':
+            //改变该行背景色，且让该行可编辑文本框呈现可编辑状态
+            this.clickIndex = params.index;
+//            this.setColumnsEditable(true);
+            break;
+          case 'cancel':
+            this.tableData.splice(params.index, 1);
+            break;
+          case 'save':
+            this.$store.commit('setHistoryNewFlag', {newFlag: false});
+            console.log(this.$store.state.company.historyNewFlag);
         }
       },
       cellEditDone(newValue, oldValue, rowIndex, rowData, field){
         this.tableData[rowIndex][field] = newValue;
-        // 接下来处理你的业务逻辑，数据持久化等...
       },
       addData(){
+        console.log('点击addData');
         this.$store.commit('setHistoryNewFlag', {newFlag: true});
-        this.tableData.push({"name": "", "tel": "", "hobby": "", "address": ""});
+        this.tableData.push({"modifiedDate": "", "modifiedEvent": "", "beforeModify": "", "afterModify": ""});
       }
+//      ,
+//      setColumnsEditable(editflag){
+//        this.columns.forEach(function (item, index, array) {
+//          if (index != 0 && index != array.length) {
+//            item.isEdit = true;
+//          }
+//        })
+//        console.log(this.columns);
+//      }
     }
   }
 </script>
