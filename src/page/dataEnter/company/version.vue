@@ -6,7 +6,7 @@
 				<el-form :inline="true" :model="searchForm" class="demo-form-inline">
 					<el-form-item>
 						<el-input v-model="searchForm.searchInput" placeholder="请输入内容">
-							<el-button slot="append" type="primary" @click="onSubmit">查询</el-button>
+							<el-button slot="append" type="primary" @click="searchBatch">查询</el-button>
 						</el-input>
 					</el-form-item>
 				</el-form>
@@ -50,29 +50,30 @@ export default {
       //获取版本信息
       this.getVersion();
     },
-    //查询版本
-    onSubmit() {
-      let searchInput = this.searchForm.searchInput;
-      console.log(searchInput);
-    },
     // 获取版本列表
-    getVersion() {
-      this.$http({
-        method: "post",
-        url: "/hspt-web-api/version/list",
-        transformRequest: [
-          function(data) {
-            // 对 data 进行任意转换处理
-            return Qs.stringify(data);
-          }
-        ],
-        data: {
-          token:"eyJhbGciOiJIUzI1NiJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzU0NjQ2MzZ9.BG4w9PKt0CufJBrm6kK40nrvRI5kHjq61fxdwGWAM_k",
-          creditCode: "123"
-        }
-      }).then(resp => {
-        this.tableData = resp.data.resultData.data;
-      });
+    getVersion: async function() {
+      let params = {
+        token: sessionStorage.getItem("token"),
+        username: sessionStorage.getItem("username"),
+        creditCode: 123
+      };
+      console.log(params);
+      const res = await this.$http.post(this.$api.getVersion, params);
+      console.log(res.data);
+      this.tableData = res.data.resultData.data;
+    },
+    //搜索版本
+    searchBatch: async function() {
+      let params = {
+        token: sessionStorage.getItem("token"),
+        username: sessionStorage.getItem("username"),
+		creditCode: 123,
+		batchNo:this.searchInput
+      };
+      console.log(params);
+      const res = await this.$http.post(this.$api.getBatch, params);
+      console.log(res.data);
+      this.tableData = res.data.resultData.data;
     }
   }
 };

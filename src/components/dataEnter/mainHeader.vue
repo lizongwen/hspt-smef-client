@@ -46,29 +46,21 @@ export default {
   },
   methods: {
     init() {
-      let pathArr = util.setCurrentPath(this, this.$route.name);
-      this.$http({
-        method: "post",
-		url: "/hspt-web-api/user/findByLoginName",
-		
-        data: {
-			loginName:sessionStorage.getItem('username'),
-			token:sessionStorage.getItem('token')
-		}
-      }).then(resp => {
-        let rs = resp.data;
-        if (rs.resultCode == "0") {
-		 //this.username=rs.loginName
-		 this.postName=rs.resultData;
-        } else {
-          //this.$message.error(rs.resultMsg);
-        }
-      });
+      this.findByLoginName();
+    },
+    findByLoginName: async function() {
+      let params = {
+        token: sessionStorage.getItem("token"),
+        loginName: sessionStorage.getItem("username")
+	  };
+	  console.log(params)
+      const res = await this.$http.post(this.$api.findByLoginName, params);
+      console.log(res);
     }
   },
   mounted() {
-	this.init();
-	this.username=sessionStorage.getItem('username')
+    this.init();
+    this.username = sessionStorage.getItem("username");
   }
 };
 </script>
