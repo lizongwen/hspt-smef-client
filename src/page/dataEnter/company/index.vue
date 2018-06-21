@@ -15,7 +15,7 @@
 							</div>
 						</el-collapse-item>
 					</el-collapse> -->
-					<el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" unique-opened="true">
+					<el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :unique-opened="true">
 						<el-submenu index="1">
 							<template slot="title">
 								<i class="el-icon-location"></i>
