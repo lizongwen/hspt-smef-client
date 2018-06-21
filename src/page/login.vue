@@ -58,8 +58,8 @@ export default {
       let params = { username: this.username, password: this.password };
 	  this.isBtnLoading = true;
 
-	  const res = await this.$http.post(this.$api.login, params);
-//      this.$router.push({path:'./index'})
+//	  const res = await this.$http.post(this.$api.login, params);
+      this.$router.push({path:'./index'})
 	  console.log(res)
     //   if (res.data.success) {
     //     alert("请求成功");

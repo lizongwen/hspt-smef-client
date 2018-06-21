@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!--公司历史沿革-->
     <v-getAndSaveData title="公司历史沿革"></v-getAndSaveData>
     <div class="contentWrap">
       <v-table
@@ -29,6 +30,7 @@
     },
     data: function () {
       return {
+        newFlag: false,
         tableData: [
           {"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"},
           {"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"},
@@ -44,7 +46,14 @@
             }, isFrozen: true
           },
           {field: 'modifiedDate', title: '变更日期', width: 100, isEdit: true, titleAlign: 'center', columnAlign: 'center'},
-          {field: 'modifiedEvent', title: '变更事项', width: 100, isEdit: true, titleAlign: 'center', columnAlign: 'center'},
+          {
+            field: 'modifiedEvent',
+            title: '变更事项',
+            width: 100,
+            isEdit: true,
+            titleAlign: 'center',
+            columnAlign: 'center'
+          },
           {field: 'beforeModify', title: '变更前', width: 240, isEdit: true, titleAlign: 'center', columnAlign: 'center'},
           {
             field: 'afterModify',
@@ -69,7 +78,6 @@
     },
     methods: {
       customCompFunc(params){
-
         console.log(params);
 
         if (params.type === 'delete') { // do delete operation
@@ -77,8 +85,15 @@
           this.$delete(this.tableData, params.index);
 
         } else if (params.type === 'edit') { // do edit operation
-
-          alert(`行号：${params.index} 姓名：${params.rowData['name']}`)
+          //改变该行背景色，且让该行可编辑文本框呈现可编辑状态
+          this.clickIndex = params.index;
+          console.log('点击编辑:', this.clickIndex)
+          //alert(`行号：${params.index} 姓名：${params.rowData['name']}`)
+        }
+      },
+      columnCellClass(rowIndex, columnName, rowData){
+        if (rowIndex == this.clickIndex) {
+          return 'column-cell-class-name-test';
         }
       },
       cellEditDone(newValue, oldValue, rowIndex, rowData, field){
@@ -86,6 +101,7 @@
         // 接下来处理你的业务逻辑，数据持久化等...
       },
       addData(){
+        this.$store.commit('setHistoryNewFlag', {newFlag: true});
         this.tableData.push({"name": "", "tel": "", "hobby": "", "address": ""});
       }
     }
