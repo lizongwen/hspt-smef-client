@@ -5,7 +5,7 @@
       <el-container>
         <el-aside width="220px" v-if="isAside">
           <el-menu default-active="1-1" :unique-opened="true" class="el-menu-vertical-demo" @open="handleOpen"
-                   @close="handleClose">
+                   @close="handleClose" >
             <el-submenu :index="menuGroup.index" v-for="(menuGroup,index) in menuAsideData" :key="index">
               <template slot="title">
                 <i :class="menuGroup.icon"></i>
