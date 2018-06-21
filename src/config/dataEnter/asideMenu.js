@@ -30,7 +30,7 @@ let menuAsideData = [
         "path": "/company/base/zscq"
       },
       {
-        "index": "1-5",
+        "index": "1-6",
         "name": "环保信息",
         "path": "/company/base/hbxx"
       }
