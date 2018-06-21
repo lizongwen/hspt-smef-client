@@ -21,7 +21,7 @@
 				</div>
 				<div class="user-post-wrap">
 					<span class="post-name">{{postName}}</span>
-					<span>惠国征信-金融服务中心</span>
+					<span>惠国征信-{{deptName}}</span>
 				</div>
 			</div>
 		</div>
@@ -36,7 +36,8 @@ export default {
       projNum: 56,
       finishNum: 33,
       postName: "",
-      username: ""
+      username: "",
+      deptName: ""
     };
   },
   computed: {
@@ -56,6 +57,7 @@ export default {
         loginName: sessionStorage.getItem("username")
 	  };
       const res = await this.$http.post(this.$api.findByLoginName, params);
+      this.postName = res.data.resultData;
 	},
 	//查询用户的部门
 	findDept: async function() {
@@ -63,9 +65,8 @@ export default {
         token: sessionStorage.getItem("token"),
         loginName: sessionStorage.getItem("username")
 	  };
-	  console.log(params)
       const res = await this.$http.post(this.$api.findDept, params);
-      console.log(res);
+      this.deptName = res.data.resultData;
 	},
   },
   mounted() {
