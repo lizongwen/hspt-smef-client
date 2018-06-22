@@ -69,7 +69,7 @@ export default {
     },
     handleClick(row) {
       console.log(row.creditCode);
-    
+      sessionStorage.setItem("creditCode", row.creditCode);
       this.$router.push({
         path: "/company",
         query: { creditCode: row.creditCode }
