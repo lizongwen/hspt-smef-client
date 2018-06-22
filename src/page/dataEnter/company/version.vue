@@ -39,7 +39,7 @@ export default {
   },
   mounted() {
     this.init();
-    this.$emit("change-side", false);
+	this.$store.commit('changeSide', false);
   },
   methods: {
     //初始化页面
@@ -54,9 +54,7 @@ export default {
         username: sessionStorage.getItem("username"),
         creditCode: 123
       };
-      console.log(params);
       const res = await this.$http.post(this.$api.getVersion, params);
-      console.log(res.data);
       this.tableData = res.data.resultData.data;
     },
     //搜索版本

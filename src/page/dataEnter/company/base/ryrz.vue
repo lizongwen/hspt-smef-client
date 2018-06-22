@@ -185,7 +185,11 @@ export default {
         },
         () => {}
       );
-    },
+	},
+	//增加行
+	addRow(){
+
+	},
     //点击标签页触发事件
     handleClick(tab, event) {
       console.log(tab, event);
@@ -194,11 +198,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.card-right-wrap {
-  float: right;
-  + .card-title {
-    float: left;
-  }
-}
+
 </style>
 

@@ -5,7 +5,7 @@ const user = {
 		token:""
 	},
     mutations: {
-		setToken(token){
+		setToken(state,token){
 			state.token = token;
 		},
         logout (state, vm) {

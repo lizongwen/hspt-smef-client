@@ -2,7 +2,7 @@
   <div>
     <company-header></company-header>
     <div class="main-content">
-      <el-container>
+      <el-container>		
         <el-aside width="220px" v-if="isAside">
           <el-menu default-active="1-1" :unique-opened="true" class="el-menu-vertical-demo" @open="handleOpen"
                    @close="handleClose" >
@@ -18,7 +18,7 @@
           </el-menu>
         </el-aside>
         <el-main>
-          <router-view @change-side="changeSide"/>
+          <router-view />
         </el-main>
       </el-container>
     </div>
@@ -33,41 +33,28 @@
       return {
         menuAsideData: menuAsideData,
         activeName: 0,
-        asideMenus: [],
-        isAside: true
+		asideMenus: [],
       };
-    },
+	},
+	computed:{
+		isAside(){
+			return this.$store.state.company.isAside;
+		}
+	},
     components: {
       companyHeader
     },
     mounted() {
-      let name = this.$route.name;
-      if (name == "version") {
-        this.changeSide(false);
-      }
+		
     },
     methods: {
-//      init() {
-//        this.$http({
-//          method: "get",
-//          url: "/api/getCompanyMenu"
-//        }).then(resp => {
-//          this.asideMenus = resp.data;
-//        });
-//      },
+
       handleOpen(key, keyPath) {
         console.log(key, keyPath);
       },
       handleClose(key, keyPath) {
         console.log(key, keyPath);
       },
-      //显示隐藏侧栏
-      changeSide(val) {
-        this.isAside = val;
-      }
-    },
-    created() {
-      //this.init();
     }
   };
 </script>

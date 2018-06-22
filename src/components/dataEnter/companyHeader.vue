@@ -5,7 +5,7 @@
 		</el-breadcrumb>
 		<div class="clearfix company-wrap">
 			<div class="company-info-wrap">
-				<div class="company-name"><router-link tag='div' to="/company/home">{{companyName}}</router-link></div>
+				<div class="company-name" @click="toHome">{{companyName}}</div>
 				<div class="company-state">
 					<div>
 						<label>修改人：</label>
@@ -91,7 +91,12 @@ export default {
   methods: {
     init() {
       let pathArr = util.setCurrentPath(this, this.$route.name);
-    }
+	},
+	toHome(){
+		this.$store.commit('changeSide', true);
+		this.$router.push({ path: "/company/home" });
+	}
+	
   },
   mounted() {
     this.init();

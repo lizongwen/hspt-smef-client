@@ -2,13 +2,17 @@ import Vue from 'vue';
 
 const company = {
     state: {
-      editingState: false
+	  editingState: false,
+	  isAside:true,
     },
     mutations: {
       setEditingFlag(state, newValObj)
       {
         state.editingState = newValObj.editingFlag;
-      }
+	  },
+	  changeSide(state,newVal){
+		state.isAside =newVal;
+	  }
     }
 
   }
