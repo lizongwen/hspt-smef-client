@@ -12,6 +12,44 @@
 						</div>
 						<!-- 表格容器 -->
 						<div>
+							<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
+								<el-table-column min-width="300px" label="年份">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-form :model="scope.row" :rules="rules" :id="'year'+scope.$index" :ref="'form_year_'+scope.$index" :show-message="false">
+												<el-form-item prop="year" class="td-form-item">
+													<el-input class="edit-input" size="small" v-model="scope.row.year"></el-input>
+												</el-form-item>
+											</el-form>
+										</template>
+										<span v-else>{{scope.row.year}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="300px" label="荣誉">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-form :model="scope.row" :rules="rules" :id="'year'+scope.$index" :ref="'form_record_'+scope.$index" :show-message="false">
+												<el-form-item prop="record" class="td-form-item">
+													<el-input class="edit-input" size="small" v-model="scope.row.record"></el-input>
+												</el-form-item>
+											</el-form>
+										</template>
+										<span v-else>{{ scope.row.record}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column align="center" label="操作" width="240">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-button type="success" @click="confirmEdit(scope.row,scope.$index)" size="small" icon="el-icon-circle-check-outline">确定</el-button>
+											<el-button type="success" @click="cacelEdit(scope.row)" size="small" icon="el-icon-circle-check-outline">取消</el-button>
+										</template>
+										<template v-else>
+											<el-button type="primary" @click='edit(scope.row)' size="small" icon="el-icon-edit">编辑</el-button>
+											<el-button type="primary" @click='deleteRow(scope.row)' size="small" icon="el-icon-edit">删除</el-button>
+										</template>
+									</template>
+								</el-table-column>
+							</el-table>
 						</div>
 					</el-card>
 				</div>
@@ -54,10 +92,73 @@
 export default {
   data() {
     return {
-      activeName: "first"
+      activeName: "first",
+	  listLoading:false,
+      tableData: [], //表格数据
+      //规则
+      rules: {
+        year: [
+          {
+            required: true,
+            message: "请选择年份",
+            trigger: "null"
+          }
+        ],
+        record: [{
+			required: true,
+            message: "请输入荣誉信息",
+            trigger: "null"
+		}]
+      }
     };
   },
+  mounted() {
+    this.init();
+  },
   methods: {
+    //初始化
+    init() {
+      this.getTableData();
+    },
+    //获取表格数据
+    getTableData() {
+      this.tableData = [
+        {
+          year: "2017年",
+          record: "优秀企业创新科技大奖",
+          edit: false
+        },
+        {
+          year: "2018年",
+          record: "优秀企业创新科技大奖2",
+          edit: false
+        }
+      ];
+    },
+    //编辑
+    edit(row) {
+      row.edit = true;
+    },
+	//确认编辑
+	confirmEdit(row,index){
+		this.$refs[`form_year_${index}`].validate((res,obj)=>{
+			console.log(res,obj);
+			if(res){
+				//验证通过
+			}else{
+				//验证不通过
+			}
+		});
+		this.$refs[`form_year_${index}`].validate((res,obj)=>{
+			console.log(res,obj);
+			if(res){
+				//验证通过
+			}else{
+				//验证不通过
+			}
+		});
+
+	},
     //点击标签页触发事件
     handleClick(tab, event) {
       console.log(tab, event);

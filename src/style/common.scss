@@ -1,32 +1,48 @@
-
 /* 自定义通用样式 */
-.bg-white{
-  background-color: #fff;
+
+.bg-white {
+    background-color: #fff;
 }
-.w-pct100{
-  width:100%
+
+.w-pct100 {
+    width: 100%
 }
-.card-title{
-  font-size: 18px;
-  color:#000;
+
+.card-title {
+    font-size: 18px;
+    color: #000;
 }
+
 .card-right-wrap {
-	float: right;
-	+ .card-title {
-	  float: left;
-	  margin-top: 8px;
-	}
-  }
+    float: right;
+    +.card-title {
+        float: left;
+        margin-top: 8px;
+    }
+}
+
+// 单元格表单项
+.td-form-item{
+	margin:0
+}
+
+
+
+
 /* el样式重置 */
-.el-breadcrumb{
-	margin: 20px 30px 17px 30px;
+
+.el-breadcrumb {
+    margin: 20px 30px 17px 30px;
 }
-.el-card__body{
-  padding: 0;
+
+.el-card__body {
+    padding: 0;
 }
+
 .el-message-box {
-	width: 325px;
+    width: 325px;
 }
-.el-card{
-	border-radius: 0
+
+.el-card {
+    border-radius: 0
 }
