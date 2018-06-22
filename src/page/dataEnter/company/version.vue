@@ -14,13 +14,13 @@
 		</div>
 		<div>
 			<el-table :data="tableData" style="width: 100%">
-				<el-table-column prop="batchNo" label="版本号" width="180">
+				<el-table-column prop="batchNo" label="版本号" min-width="180">
 				</el-table-column>
-				<el-table-column prop="version" label="报告编号" width="180">
+				<el-table-column prop="version" label="报告编号" min-width="180">
 				</el-table-column>
-				<el-table-column prop="updateBy" label="修改人" width="180">
+				<el-table-column prop="updateBy" label="修改人" min-width="180">
 				</el-table-column>
-				<el-table-column prop="updateTime" label="修改时间" width="180">
+				<el-table-column prop="updateTime" label="修改时间" min-width="180">
 				</el-table-column>
 			</el-table>
 		</div>
