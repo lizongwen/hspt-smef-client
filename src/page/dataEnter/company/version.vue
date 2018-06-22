@@ -39,7 +39,7 @@ export default {
   },
   mounted() {
     this.init();
-	this.$store.commit('changeSide', false);
+    this.$store.commit("changeSide", false);
   },
   methods: {
     //初始化页面
@@ -62,8 +62,8 @@ export default {
       let params = {
         token: sessionStorage.getItem("token"),
         username: sessionStorage.getItem("username"),
-		creditCode: 123,
-		batchNo:this.searchInput
+        creditCode: 123,
+        batchNo: this.searchInput
       };
       console.log(params);
       const res = await this.$http.post(this.$api.getBatch, params);
