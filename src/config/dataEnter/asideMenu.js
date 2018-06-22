@@ -63,7 +63,7 @@ let menuAsideData = [
       },
       {
         "index": "2-5",
-        "name": "企业社保及公积金缴纳人数",
+        "name": "企业社保及公积金情况",
         "path": "/company/resource/sbgjj"
       },
       {
@@ -80,7 +80,7 @@ let menuAsideData = [
     "items": [
       {
         "index": "3-1",
-        "name": "股东和法人代表",
+        "name": "股东和法人代表风险",
         "path": "/company/credit/gdfrfx"
       },
       {

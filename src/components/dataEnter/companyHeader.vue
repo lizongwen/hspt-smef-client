@@ -115,7 +115,11 @@ export default {
       .company-name {
         font-size: 22px;
         color: #000;
-        margin-bottom: 9px;
+		margin-bottom: 9px;
+		cursor: pointer;
+		&:hover{
+			color:#409EFF;
+		}
       }
       .company-state {
         display: flex;
