@@ -154,7 +154,7 @@ export default {
           a = false;
         } else {
 		  //验证不通过
-		  console.log(obj.year.message);
+		  console.log(obj.year[0].message);
         }
       });
       this.$refs[`form_record_${index}`].validate((res, obj) => {
@@ -163,7 +163,7 @@ export default {
           b = false;
         } else {
 		  //验证不通过
-		  console.log(obj.record.message);
+		  console.log(obj.record[0].message);
         }
       });
       if (!a && !b) {
