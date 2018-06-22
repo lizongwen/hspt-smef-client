@@ -29,6 +29,11 @@
 
 <script>
 export default {
+  props: {
+    creditCode: {
+      type: String
+    }
+  },
   data() {
     return {
       tableData: [],
@@ -52,7 +57,7 @@ export default {
       let params = {
         token: sessionStorage.getItem("token"),
         username: sessionStorage.getItem("username"),
-        creditCode: 123
+        creditCode: this.creditCode
       };
       const res = await this.$http.post(this.$api.getVersion, params);
       this.tableData = res.data.resultData.data;
@@ -62,8 +67,8 @@ export default {
       let params = {
         token: sessionStorage.getItem("token"),
         username: sessionStorage.getItem("username"),
-		creditCode: 123,
-		batchNo:this.searchForm.searchInput
+        creditCode: 123,
+        batchNo: this.searchForm.searchInput
       };
       const res = await this.$http.post(this.$api.getBatch, params);
       this.tableData = res.data.resultData.data;

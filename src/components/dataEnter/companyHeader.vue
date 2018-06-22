@@ -5,7 +5,7 @@
 		</el-breadcrumb>
 		<div class="clearfix company-wrap">
 			<div class="company-info-wrap">
-				<div class="company-name" @click="toHome">{{companyName}}</div>
+				<div class="company-name" @click="toHome" :id="creditCode">{{companyName}}</div>
 				<div class="company-state">
 					<div>
 						<label>修改人：</label>
@@ -58,6 +58,11 @@
 <script>
 import util from "@/utils/util.js";
 export default {
+  props: {
+    creditCode: {
+      type: String
+    }
+  },
   data() {
     return {
       creditScore: 56,
@@ -91,12 +96,11 @@ export default {
   methods: {
     init() {
       let pathArr = util.setCurrentPath(this, this.$route.name);
-	},
-	toHome(){
-		this.$store.commit('changeSide', true);
-		this.$router.push({ path: "/company/home" });
-	}
-	
+    },
+    toHome() {
+      this.$store.commit("changeSide", true);
+      this.$router.push({ path: "/company/home" });
+    }
   },
   mounted() {
     this.init();
@@ -115,11 +119,11 @@ export default {
       .company-name {
         font-size: 22px;
         color: #000;
-		margin-bottom: 9px;
-		cursor: pointer;
-		&:hover{
-			color:#409EFF;
-		}
+        margin-bottom: 9px;
+        cursor: pointer;
+        &:hover {
+          color: #409eff;
+        }
       }
       .company-state {
         display: flex;
@@ -182,12 +186,12 @@ export default {
           padding: 0 15px;
         }
       }
-	}
-	.report-btn-wrap{
-		float: right;
-		margin-top: 15px;
-		margin-right:30px;
-	}
+    }
+    .report-btn-wrap {
+      float: right;
+      margin-top: 15px;
+      margin-right: 30px;
+    }
   }
 }
 </style>

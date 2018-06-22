@@ -20,11 +20,13 @@
 				</div>
 				<div>
 					<el-table :data="tableData" style="width: 100%">
-						<el-table-column prop="date" label="日期" width="180">
+						<el-table-column prop="companyName" label="企业名称" min-width="180">
 						</el-table-column>
-						<el-table-column prop="name" label="姓名" width="180">
+						<el-table-column prop="" label="报告进度" width="180">
 						</el-table-column>
-						<el-table-column prop="address" label="地址">
+						<el-table-column prop="updateBy" label="修改人">
+						</el-table-column>
+						<el-table-column prop="updateTime" label="修改时间">
 						</el-table-column>
 						<el-table-column fixed="right" label="操作" width="100">
 							<template slot-scope="scope">
@@ -46,35 +48,19 @@ export default {
   data() {
     return {
       searchForm: {
-        searchInput: "",
+        searchInput: ""
       },
-      tableData: [
-        {
-			id:'1-1',
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄"
-        },
-        {id:'1-2',
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄"
-        },
-        {id:'1-3',
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1519 弄"
-        },
-        {id:'1-4',
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄"
-        }
-      ],
+      tableData: [],
       currentPage: 1
     };
   },
+  mounted() {
+    this.init();
+  },
   methods: {
+    init() {
+      this.getProject();
+    },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
     },
@@ -82,15 +68,30 @@ export default {
       console.log(`当前页: ${val}`);
     },
     handleClick(row) {
-		console.log(row.id)
-      this.$router.push({ path: "/company" });
+      console.log(row.creditCode);
+    
+      this.$router.push({
+        path: "/company",
+        query: { creditCode: row.creditCode }
+      });
     },
     onSubmit() {
       console.log("submit!");
-	},
-	addCompany(){
-		alert('新增企业');
-	}
+    },
+    addCompany() {
+      alert("新增企业");
+    },
+    getProject: async function() {
+      let params = {
+        token: sessionStorage.getItem("token"),
+        pageNo: 1,
+        pageSize: 10,
+        loginName: sessionStorage.getItem("username")
+      };
+      const res = await this.$http.post(this.$api.projectList, params);
+      console.log(res);
+      this.tableData = res.data.resultData;
+    }
   },
   components: {
     mainHeader
@@ -101,20 +102,20 @@ export default {
 <style lang="scss" scoped>
 .el-main {
   .main-content {
-	padding: 20px;
-	.card-title{
-		float: left;
-		margin-top:8px;
-	}
-	.search-form{
-		float: right;
-		.el-form-item{
-			.el-input{
-				min-width:400px;
-			}
-			margin-bottom: 0
-		}
-	}
+    padding: 20px;
+    .card-title {
+      float: left;
+      margin-top: 8px;
+    }
+    .search-form {
+      float: right;
+      .el-form-item {
+        .el-input {
+          min-width: 400px;
+        }
+        margin-bottom: 0;
+      }
+    }
   }
 }
 </style>

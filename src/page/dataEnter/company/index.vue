@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<company-header></company-header>
+		<company-header :creditCode="creditCode"></company-header>
 		<div class="main-content">
 			<el-container>
 				<el-aside width="220px" v-if="isAside">
@@ -17,7 +17,9 @@
 					</el-menu>
 				</el-aside>
 				<el-main>
-					<router-view />
+					<keep-alive>
+						<router-view :creditCode="creditCode"/>
+					</keep-alive>
 				</el-main>
 			</el-container>
 		</div>
@@ -32,7 +34,8 @@ export default {
     return {
       menuAsideData: menuAsideData,
       activeName: 0,
-      asideMenus: []
+	  asideMenus: [],
+	  creditCode:""
     };
   },
   computed: {
@@ -43,7 +46,9 @@ export default {
   components: {
     companyHeader
   },
-  mounted() {},
+  mounted() {
+	  this.creditCode=this.$route.query.creditCode;
+  },
   methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
