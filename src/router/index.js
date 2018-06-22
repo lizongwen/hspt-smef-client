@@ -156,67 +156,67 @@ export default new Router({
 						component: () => import('@/page/dataEnter/company/business/sxyjy.vue')
 					},
 					{
-						path: 'hyqs',//行业及市场发展趋势
+						path: 'business/hyqs',//行业及市场发展趋势
 						name: 'hyqs',
 						component: () => import('@/page/dataEnter/company/business/hyqs.vue')
 					},
 					{
-						path: 'jzts',//竞争态势和市场机遇
+						path: 'business/jzts',//竞争态势和市场机遇
 						name: 'jzts',
 						component: () => import('@/page/dataEnter/company/business/jzts.vue')
 					},
 					{
-						path: 'scfx',//市场风险
+						path: 'business/scfx',//市场风险分析
 						name: 'scfx',
 						component: () => import('@/page/dataEnter/company/business/scfx.vue')
 					},
 					{
-						path: 'zycwsj',//主要财务数据
+						path: 'finance/zycwsj',//主要财务数据
 						name: 'zycwsj',
 						component: () => import('@/page/dataEnter/company/finance/zycwsj.vue')
 					},
 					{
-						path: 'cwnlqs',//财务能力趋势与分析
+						path: 'finance/cwnlqs',//财务能力趋势与分析
 						name: 'cwnlqs',
 						component: () => import('@/page/dataEnter/company/finance/cwnlqs.vue')
 					},
 					{
-						path: 'nsqkfx',//纳税情况与分析
+						path: 'finance/nsqkfx',//纳税情况与分析
 						name: 'nsqkfx',
 						component: () => import('@/page/dataEnter/company/finance/nsqkfx.vue')
 					},
 					{
-						path: 'zyjysj',//主要经营数据
+						path: 'finance/zyjysj',//主要经营数据
 						name: 'zyjysj',
 						component: () => import('@/page/dataEnter/company/finance/zyjysj.vue')
 					},
 					{
-						path: 'jysjjy',//经营与相关数据校验分析
+						path: 'finance/jysjjy',//经营与相关数据校验分析
 						name: 'jysjjy',
 						component: () => import('@/page/dataEnter/company/finance/jysjjy.vue')
 					},
 					{
-						path: 'cwzkzs',//财务状况综述
+						path: 'finance/cwzkzs',//财务状况综述
 						name: 'cwzkzs',
 						component: () => import('@/page/dataEnter/company/finance/cwzkzs.vue')
 					},
 					{
-						path: 'cwjgh',//财务结构分化
+						path: 'finance/cwjgh',//财务结构分化
 						name: 'cwjgh',
 						component: () => import('@/page/dataEnter/company/finance/cwjgh.vue')
 					},
 					{
-						path: 'tqsjdb',//同期数据对比
+						path: 'finance/tqsjdb',//同期数据对比
 						name: 'tqsjdb',
 						component: () => import('@/page/dataEnter/company/finance/tqsjdb.vue')
 					},
 					{
-						path: 'zdysjjy',//自定义数据校验
+						path: 'finance/zdysjjy',//自定义数据校验
 						name: 'zdysjjy',
 						component: () => import('@/page/dataEnter/company/finance/zdysjjy.vue')
 					},
 					{
-						path: 'fxxfx',//风险性分析
+						path: 'risk/fxxfx',//风险性分析
 						name: 'fxxfx',
 						component: () => import('@/page/dataEnter/company/risk/fxxfx.vue')
 					}, {

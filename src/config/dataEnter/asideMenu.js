@@ -91,20 +91,116 @@ let menuAsideData = [
       {
         "index": "3-3",
         "name": "对外担保信息",
-        "path": "/company/33"
+        "path": "/company/credit/dwdb"
       },
       {
         "index": "3-4",
         "name": "司法信息",
-        "path": "/company/34"
+        "path": "/company/credit/sfxx"
       },
       {
         "index": "3-5",
-        "name": "被非银行信贷机构查询信息",
-        "path": "/company/35"
+        "name": "被非银行信贷机构查询",
+        "path": "/company/credit/bcxxx"
       }
     ]
-  }
+  },
+  {
+    "groupName": "行业及市场概况",
+    "icon": "header-icon el-icon-info",
+    "index": "4",
+    "items": [
+      {
+        "index": "4-1",
+        "name": "主要业务介绍",
+        "path": "/company/business/zyyw"
+      },
+      {
+        "index": "4-2",
+        "name": "上下游交易信息",
+        "path": "/company/business/sxyjy"
+      },
+      {
+        "index": "4-3",
+        "name": "行业及市场发展趋势",
+        "path": "/company/business/hyqs"
+      },
+      {
+        "index": "4-4",
+        "name": "竞争态势及市场机遇",
+        "path": "/company/business/jzts"
+      },
+      {
+        "index": "4-5",
+        "name": "市场风险分析",
+        "path": "/company/business/scfx"
+      }
+    ]
+  },
+  {
+    "groupName": "财务状况",
+    "icon": "header-icon el-icon-info",
+    "index": "5",
+    "items": [
+      {
+        "index": "5-1",
+        "name": "主要财务数据",
+        "path": "/finance/zycwsj"
+      },
+      {
+        "index": "5-2",
+        "name": "财务能力趋势分析",
+        "path": "/finance/cwnlqs"
+      },
+      {
+        "index": "5-3",
+        "name": "纳税情况与分析",
+        "path": "/finance/nsqkfx"
+      },
+      {
+        "index": "5-4",
+        "name": "主要经营数据",
+        "path": "/finance/zyjysj"
+      },
+      {
+        "index": "5-5",
+        "name": "经营相关数据分析",
+        "path": "/finance/jysjjy"
+      },
+      {
+        "index": "5-6",
+        "name": "财务状况综述",
+        "path": "/finance/cwzkzs"
+      },
+      {
+        "index": "5-7",
+        "name": "财务结构分化",
+        "path": "/finance/cwjgh"
+      },
+      {
+        "index": "5-8",
+        "name": "同期数据对比",
+        "path": "/finance/tqsjdb"
+      },
+      {
+        "index": "5-9",
+        "name": "自定义数据校验",
+        "path": "/finance/zdysjjy"
+      }
+    ]
+  },
+  {
+    "groupName": "风险性分析",
+    "icon": "header-icon el-icon-info",
+    "index": "6",
+    "items": [
+      {
+        "index": "6-1",
+        "name": "风险性分析",
+        "path": "/risk/fxxfx"
+      }
+    ]
+  },
 ];
 
 export {menuAsideData}
