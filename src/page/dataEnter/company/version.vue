@@ -18,9 +18,9 @@
 				</el-table-column>
 				<el-table-column prop="version" label="报告编号" width="180">
 				</el-table-column>
-				<el-table-column prop="updateBy" label="修改人">
+				<el-table-column prop="updateBy" label="修改人" width="180">
 				</el-table-column>
-				<el-table-column prop="updateTime" label="修改时间">
+				<el-table-column prop="updateTime" label="修改时间" width="180">
 				</el-table-column>
 			</el-table>
 		</div>
@@ -62,12 +62,10 @@ export default {
       let params = {
         token: sessionStorage.getItem("token"),
         username: sessionStorage.getItem("username"),
-        creditCode: 123,
-        batchNo: this.searchInput
+		creditCode: 123,
+		batchNo:this.searchForm.searchInput
       };
-      console.log(params);
       const res = await this.$http.post(this.$api.getBatch, params);
-      console.log(res.data);
       this.tableData = res.data.resultData.data;
     }
   }
