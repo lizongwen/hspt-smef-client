@@ -45,7 +45,7 @@
 										</template>
 										<template v-else>
 											<el-button type="primary" @click='edit(scope.row)' size="small" icon="el-icon-edit">编辑</el-button>
-											<el-button type="primary" @click='deleteRow(scope.row)' size="small" icon="el-icon-edit">删除</el-button>
+											<el-button type="primary" @click='deleteRow(scope.row,scope.$index)' size="small" icon="el-icon-edit">删除</el-button>
 										</template>
 									</template>
 								</el-table-column>
@@ -93,7 +93,7 @@ export default {
   data() {
     return {
       activeName: "first",
-	  listLoading:false,
+      listLoading: false,
       tableData: [], //表格数据
       //规则
       rules: {
@@ -104,11 +104,13 @@ export default {
             trigger: "null"
           }
         ],
-        record: [{
-			required: true,
+        record: [
+          {
+            required: true,
             message: "请输入荣誉信息",
             trigger: "null"
-		}]
+          }
+        ]
       }
     };
   },
@@ -139,26 +141,51 @@ export default {
     edit(row) {
       row.edit = true;
     },
-	//确认编辑
-	confirmEdit(row,index){
-		this.$refs[`form_year_${index}`].validate((res,obj)=>{
-			console.log(res,obj);
-			if(res){
-				//验证通过
-			}else{
-				//验证不通过
-			}
-		});
-		this.$refs[`form_year_${index}`].validate((res,obj)=>{
-			console.log(res,obj);
-			if(res){
-				//验证通过
-			}else{
-				//验证不通过
-			}
-		});
-
-	},
+    //取消编辑
+    cacelEdit(row) {
+      row.edit = false;
+    },
+    //确认编辑
+    confirmEdit(row, index) {
+		var a=true,b=true;
+      this.$refs[`form_year_${index}`].validate((res, obj) => {
+        if (res) {
+          //验证通过
+          a = false;
+        } else {
+		  //验证不通过
+		  console.log(obj.year.message);
+        }
+      });
+      this.$refs[`form_record_${index}`].validate((res, obj) => {
+        if (res) {
+          //验证通过
+          b = false;
+        } else {
+		  //验证不通过
+		  console.log(obj.record.message);
+        }
+      });
+      if (!a && !b) {
+        row.edit = false;
+      }else{
+		  //弹出错误消息汇总
+	  }
+    },
+    //删除行
+    deleteRow(row, index) {
+      this.$confirm("确认删除?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+        center: true
+      }).then(
+        () => {
+          this.tableData.splice(index, 1);
+        },
+        () => {}
+      );
+    },
     //点击标签页触发事件
     handleClick(tab, event) {
       console.log(tab, event);
