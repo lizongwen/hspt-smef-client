@@ -130,7 +130,6 @@ export default {
   mounted() {},
   methods: {
     addData() {
-      console.log("点击addData");
       this.tableData.push({
         changeDate: "",
         changeThing: "",
@@ -140,7 +139,6 @@ export default {
       });
     },
     verify(row, index) {
-		console.log(row,index)
       var a = true,
         b = true,
         c = true,
