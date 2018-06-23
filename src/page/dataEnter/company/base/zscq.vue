@@ -12,7 +12,7 @@
 							<div class="card-title">商标</div>
 						</div>
 						<!-- 表格容器 -->
-						<div class="table-wrap">
+						<div>
 							<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="300px" label="商标名">
@@ -100,7 +100,7 @@
 							<div class="card-title">专利</div>
 						</div>
 						<!-- 表格容器 -->
-						<div class="table-wrap">
+						<div>
 						</div>
 					</el-card>
 				</div>
@@ -113,7 +113,7 @@
 							<div class="card-title">授权有权专利明细</div>
 						</div>
 						<!-- 表格容器 -->
-						<div class="table-wrap">
+						<div>
 							<el-table :data="tableData_1" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="300px" label="申请号">
@@ -236,7 +236,7 @@
 							</div>
 							<div class="card-title">著作权</div>
 						</div>
-						<div class="table-wrap">
+						<div>
 							<el-table :data="tableData_2" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="300px" label="著作权名称">
@@ -332,7 +332,7 @@
 							</div>
 							<div class="card-title">网站备案</div>
 						</div>
-						<div class="table-wrap">
+						<div>
 							<el-table :data="tableData_3" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="300px" label="网站名称">

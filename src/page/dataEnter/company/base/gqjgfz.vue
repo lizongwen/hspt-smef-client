@@ -10,7 +10,7 @@
 							</div>
 							<div class="card-title">股权结构（非上市公司）</div>
 						</div>
-						<div class="table-wrap">
+						<div>
 							<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
 								<el-table-column min-width="300px" label="股东姓名" prop="name">
 									<template slot-scope="scope">
@@ -78,7 +78,7 @@
 							</div>
 							<div class="card-title">股权结构（上市公司）</div>
 						</div>
-						<div class="table-wrap">
+						<div>
 							<el-table :data="tableData_1" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
 								<el-table-column min-width="300px" label="股东姓名" prop="name">
 									<template slot-scope="scope">
@@ -164,7 +164,7 @@
 							<div class="card-title">分支及下属企业情况</div>
 						</div>
 						<!-- 表格容器 -->
-						<div class="table-wrap">
+						<div>
 							<el-table :data="tableData_2" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column min-width="300px" label="下属公司/分公司名称" prop="name">
 									<template slot-scope="scope">
@@ -248,7 +248,7 @@
 							<div class="card-title">关联企业</div>
 						</div>
 						<!-- 表格容器 -->
-						<div class="table-wrap">
+						<div>
 							<el-table :data="tableData_3" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
 								<el-table-column min-width="300px" label="股东姓名" prop="name">
 									<template slot-scope="scope">

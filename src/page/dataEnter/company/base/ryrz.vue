@@ -11,7 +11,7 @@
 							<div class="card-title">荣誉信息</div>
 						</div>
 						<!-- 表格容器 -->
-						<div class="table-wrap">
+						<div>
 							<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column min-width="300px" label="年份">
 									<template slot-scope="scope">
@@ -58,7 +58,7 @@
 							<div class="card-title">行政许可</div>
 						</div>
 						<!-- 表格容器 -->
-						<div class="table-wrap">
+						<div>
 							<el-table :data="tableData_1" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="300px" label="主体名称">
@@ -130,7 +130,7 @@
 							<div class="card-title">主要认证与资质</div>
 						</div>
 						<!-- 表格容器 -->
-						<div class="table-wrap">
+						<div>
 							<el-table :data="tableData_2" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="300px" label="主体名称">
