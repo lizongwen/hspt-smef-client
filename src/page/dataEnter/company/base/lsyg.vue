@@ -66,6 +66,7 @@
 						</template>
 					</el-table-column>
 				</el-table>
+				<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData"></v-tabelAddBtn>
 			</div>
 		</el-card>
 	</div>
@@ -129,15 +130,6 @@ export default {
   },
   mounted() {},
   methods: {
-    addData() {
-      this.tableData.push({
-        changeDate: "",
-        changeThing: "",
-        beforeThing: "",
-        afterThing: "",
-        edit: false
-      });
-    },
     verify(row, index) {
       var a = true,
         b = true,
@@ -173,18 +165,26 @@ export default {
       this.$refs[`form_afterThing_${index}`].validate((res, obj) => {
         if (res) {
           //验证通过
-         d = false;
+          d = false;
         } else {
           //验证不通过
           console.log(obj.afterThing[0].message);
         }
       });
       if (!a && !b && !c && !d) {
-		  console.log(444)
         row.edit = false;
       } else {
         //弹出错误消息汇总
       }
+    },
+    addRow() {
+      this.tableData.push({
+        changeDate: "",
+        changeThing: "",
+        beforeThing: "",
+        afterThing: "",
+        edit: false
+      });
     }
   },
   components: {

@@ -2,11 +2,11 @@
 	<div class="yyy">
 		<template v-if="scope.row.edit">
 			<el-button type="success" @click="confirmEdit(scope.row,scope.$index)" size="small" icon="el-icon-circle-check-outline">确定</el-button>
-			<el-button type="success" @click="cacelEdit(scope.row)" size="small" icon="el-icon-circle-check-outline">取消</el-button>
+			<el-button type="success" @click="cacelEdit(scope.row)" size="small" icon="el-icon-circle-close-outline">取消</el-button>
 		</template>
 		<template v-else>
 			<el-button type="primary" @click='edit(scope.row)' size="small" icon="el-icon-edit">编辑</el-button>
-			<el-button type="primary" @click='deleteRow(scope.row,scope.$index)' size="small" icon="el-icon-edit">删除</el-button>
+			<el-button type="primary" @click='deleteRow(scope.row,scope.$index)' size="small" icon="el-icon-delete">删除</el-button>
 		</template>
 	</div>
 </template>

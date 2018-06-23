@@ -187,9 +187,15 @@ export default {
       );
 	},
 	//增加行
-	addRow(){
-
-	},
+	addRow() {
+    //   this.tableData.push({
+    //     changeDate: "",
+    //     changeThing: "",
+    //     beforeThing: "",
+    //     afterThing: "",
+    //     edit: false
+    //   });
+    },
     //点击标签页触发事件
     handleClick(tab, event) {
       console.log(tab, event);

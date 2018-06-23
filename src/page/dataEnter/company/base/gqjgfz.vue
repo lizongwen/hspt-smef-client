@@ -48,7 +48,7 @@
 										<span v-else>{{ scope.row.subscribe}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="实缴出资" prop="paidIn">
+								<el-table-column min-width="300px" label="实缴出资（万元）" prop="paidIn">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
 											<el-form :model="scope.row" :rules="rules" :id="'paidIn'+scope.$index" :ref="'form_paidIn_'+scope.$index" :show-message="false">
@@ -66,6 +66,7 @@
 									</template>
 								</el-table-column>
 							</el-table>
+							<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -78,6 +79,62 @@
 							</div>
 						</div>
 						<div>
+							<el-table :data="tableData_1" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
+								<el-table-column min-width="300px" label="股东姓名" prop="name">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-form :model="scope.row" :rules="rules" :id="'name'+scope.$index" :ref="'form_name_'+scope.$index" :show-message="false">
+												<el-form-item prop="name" class="td-form-item">
+													<el-input class="edit-input" size="small" v-model="scope.row.name"></el-input>
+												</el-form-item>
+											</el-form>
+										</template>
+										<span v-else>{{scope.row.name}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="300px" label="出资比例" prop="ratio">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-form :model="scope.row" :rules="rules" :id="'ratio'+scope.$index" :ref="'form_ratio_'+scope.$index" :show-message="false">
+												<el-form-item prop="ratio" class="td-form-item">
+													<el-input class="edit-input" size="small" v-model="scope.row.ratio"></el-input>
+												</el-form-item>
+											</el-form>
+										</template>
+										<span v-else>{{ scope.row.ratio}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="300px" label="认缴出资（万元）" prop="subscribe">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-form :model="scope.row" :rules="rules" :id="'subscribe'+scope.$index" :ref="'form_subscribe_'+scope.$index" :show-message="false">
+												<el-form-item prop="subscribe" class="td-form-item">
+													<el-input class="edit-input" size="small" v-model="scope.row.subscribe"></el-input>
+												</el-form-item>
+											</el-form>
+										</template>
+										<span v-else>{{ scope.row.subscribe}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="300px" label="实缴出资（万元）" prop="paidIn">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-form :model="scope.row" :rules="rules" :id="'paidIn'+scope.$index" :ref="'form_paidIn_'+scope.$index" :show-message="false">
+												<el-form-item prop="paidIn" class="td-form-item">
+													<el-input class="edit-input" size="small" v-model="scope.row.paidIn"></el-input>
+												</el-form-item>
+											</el-form>
+										</template>
+										<span v-else>{{ scope.row.paidIn}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column align="center" label="操作" width="240">
+									<template slot-scope="scope">
+										<v-tableOperation :scope="scope" :tableData="tableData_1" v-on:verify="verify"></v-tableOperation>
+									</template>
+								</el-table-column>
+							</el-table>
+							<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData_1"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -108,7 +165,62 @@
 						</div>
 						<!-- 表格容器 -->
 						<div>
-
+							<el-table :data="tableData_2" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
+								<el-table-column min-width="300px" label="股东姓名" prop="name">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-form :model="scope.row" :rules="rules" :id="'name'+scope.$index" :ref="'form_name_'+scope.$index" :show-message="false">
+												<el-form-item prop="name" class="td-form-item">
+													<el-input class="edit-input" size="small" v-model="scope.row.name"></el-input>
+												</el-form-item>
+											</el-form>
+										</template>
+										<span v-else>{{scope.row.name}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="300px" label="出资比例" prop="ratio">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-form :model="scope.row" :rules="rules" :id="'ratio'+scope.$index" :ref="'form_ratio_'+scope.$index" :show-message="false">
+												<el-form-item prop="ratio" class="td-form-item">
+													<el-input class="edit-input" size="small" v-model="scope.row.ratio"></el-input>
+												</el-form-item>
+											</el-form>
+										</template>
+										<span v-else>{{ scope.row.ratio}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="300px" label="认缴出资（万元）" prop="subscribe">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-form :model="scope.row" :rules="rules" :id="'subscribe'+scope.$index" :ref="'form_subscribe_'+scope.$index" :show-message="false">
+												<el-form-item prop="subscribe" class="td-form-item">
+													<el-input class="edit-input" size="small" v-model="scope.row.subscribe"></el-input>
+												</el-form-item>
+											</el-form>
+										</template>
+										<span v-else>{{ scope.row.subscribe}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="300px" label="实缴出资（万元）" prop="paidIn">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-form :model="scope.row" :rules="rules" :id="'paidIn'+scope.$index" :ref="'form_paidIn_'+scope.$index" :show-message="false">
+												<el-form-item prop="paidIn" class="td-form-item">
+													<el-input class="edit-input" size="small" v-model="scope.row.paidIn"></el-input>
+												</el-form-item>
+											</el-form>
+										</template>
+										<span v-else>{{ scope.row.paidIn}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column align="center" label="操作" width="240">
+									<template slot-scope="scope">
+										<v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify"></v-tableOperation>
+									</template>
+								</el-table-column>
+							</el-table>
+							<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData_2"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -155,9 +267,9 @@ import tableOperation from "@/components/table/table-operation.vue";
 export default {
   data() {
     return {
-	  activeName: "first",
-	  listLoading:false,
-	  //规则
+      activeName: "first",
+      listLoading: false,
+      //验证规则
       rules: {
         name: [
           {
@@ -187,111 +299,184 @@ export default {
             trigger: "null"
           }
         ]
-	  },
-	  tableData:[{
-		  name:"name1",
-		  ratio:1,
-		  subscribe:5,
-		  paidIn:9,
-		  edit:false
-	  },{
-		  name:"name2",
-		  ratio:2,
-		  subscribe:5,
-		  paidIn:10,
-		  edit:false
-	  }]
-	}
+      },
+      tableData: [
+        {
+          name: "name1",
+          ratio: 1,
+          subscribe: 5,
+          paidIn: 9,
+          edit: false
+        },
+        {
+          name: "name2",
+          ratio: 2,
+          subscribe: 5,
+          paidIn: 10,
+          edit: false
+        }
+      ],
+      tableData_columns: {
+        name: "",
+        ratio: null,
+        subscribe: null,
+        paidIn: null,
+        edit: false
+      },
+      tableData_1: [
+        {
+          name: "name1",
+          ratio: 1,
+          subscribe: 5,
+          paidIn: 9,
+          edit: false
+        },
+        {
+          name: "name2",
+          ratio: 2,
+          subscribe: 5,
+          paidIn: 10,
+          edit: false
+        }
+      ],
+      tableData_1_columns: {
+        name: "",
+        ratio: null,
+        subscribe: null,
+        paidIn: null,
+        edit: false
+      },
+      tableData_2: [],
+      tableData_2_columns: {
+        name: "",
+        ratio: null,
+        subscribe: null,
+        paidIn: null,
+        edit: false
+      },
+      tableData_3: [
+        {
+          name: "name1",
+          ratio: 1,
+          subscribe: 5,
+          paidIn: 9,
+          edit: false
+        }
+      ],
+      tableData_3_columns: {
+        name: "",
+        ratio: null,
+        subscribe: null,
+        paidIn: null,
+        edit: false
+      }
+    };
+  },
+  mounted() {
+    // var obj = {
+    //   a: 1,
+    //   b: 2
+    // };
+    // var rs = Object.keys(obj);
+    // var ttt = rs.map(item => {
+    //   return {
+    //     [item]: ""
+    //   };
+    // });
+    /*{
+		 a:"",
+		 b:""
+	 }*/
   },
   methods: {
     //点击标签页触发事件
     handleClick(tab, event) {
-      console.log(tab, event);
+    //   console.log(tab, event);
     },
-	verify(row, index) {
+    //验证单元格数据
+    verify(row, index) {
       var a = true,
         b = true,
         c = true,
         d = true;
-    //   this.$refs[`form_changeDate_${index}`].validate((res, obj) => {
-    //     if (res) {
-    //       //验证通过
-    //       a = false;
-    //     } else {
-    //       //验证不通过
-    //       console.log(obj.changeDate[0].message);
-    //     }
-    //   });
-    //   this.$refs[`form_changeThing_${index}`].validate((res, obj) => {
-    //     if (res) {
-    //       //验证通过
-    //       b = false;
-    //     } else {
-    //       //验证不通过
-    //       console.log(obj.changeThing[0].message);
-    //     }
-    //   });
-    //   this.$refs[`form_beforeThing_${index}`].validate((res, obj) => {
-    //     if (res) {
-    //       //验证通过
-    //       c = false;
-    //     } else {
-    //       //验证不通过
-    //       console.log(obj.beforeThing[0].message);
-    //     }
-    //   });
-    //   this.$refs[`form_afterThing_${index}`].validate((res, obj) => {
-    //     if (res) {
-    //       //验证通过
-    //      d = false;
-    //     } else {
-    //       //验证不通过
-    //       console.log(obj.afterThing[0].message);
-    //     }
-    //   });
+      this.$refs[`form_name_${index}`].validate((res, obj) => {
+        if (res) {
+          //验证通过
+          a = false;
+        } else {
+          //验证不通过
+          console.log(obj.name[0].message);
+        }
+      });
+      this.$refs[`form_ratio_${index}`].validate((res, obj) => {
+        if (res) {
+          //验证通过
+          b = false;
+        } else {
+          //验证不通过
+          console.log(obj.ratio[0].message);
+        }
+      });
+      this.$refs[`form_subscribe_${index}`].validate((res, obj) => {
+        if (res) {
+          //验证通过
+          c = false;
+        } else {
+          //验证不通过
+          console.log(obj.subscribe[0].message);
+        }
+      });
+      this.$refs[`form_paidIn_${index}`].validate((res, obj) => {
+        if (res) {
+          //验证通过
+          d = false;
+        } else {
+          //验证不通过
+          console.log(obj.paidIn[0].message);
+        }
+      });
       if (!a && !b && !c && !d) {
-		  console.log(444)
         row.edit = false;
       } else {
         //弹出错误消息汇总
       }
-	},
-	
-	getSummaries(param) {
-        const { columns, data } = param;
-        const sums = [];
-        columns.forEach((column, index) => {
-          if (index === 0) {
-            sums[index] = '总价';
-            return;
-		  }
-          const values = data.map(item => Number(item[column.property]));
-          if (!values.every(value => isNaN(value))) {
-            sums[index] = values.reduce((prev, curr) => {
-              const value = Number(curr);
-              if (!isNaN(value)) {
-                return prev + curr;
-              } else {
-                return prev;
-              }
-			}, 0);
-			//根据列名不同，确定不同的单位
-			if(column.property=='ratio'){
-				sums[index] += '%';
-			}else if(column.property=='subscribe'){
-				sums[index] += ' 万元';
-			}else if(column.property=='paidIn'){
-				sums[index] += ' 元';
-			}
-          } else {
-            sums[index] = '';
-          }
-        });
-		return sums;
-	},
+    },
 
-    addData() {
-      this.tableData.push({ name: "", tel: "", hobby: "", address: "" });
+    getSummaries(param) {
+      const { columns, data } = param;
+      const sums = [];
+      columns.forEach((column, index) => {
+        if (index === 0) {
+          sums[index] = "合计";
+          return;
+        }
+        const values = data.map(item => Number(item[column.property]));
+        if (!values.every(value => isNaN(value))) {
+          sums[index] = values.reduce((prev, curr) => {
+            const value = Number(curr);
+            if (!isNaN(value)) {
+              return prev + curr;
+            } else {
+              return prev;
+            }
+          }, 0);
+          //根据列名不同，确定不同的合计单位
+          if (column.property == "ratio") {
+            sums[index] += "%";
+          } else if (
+            column.property == "subscribe" ||
+            column.property == "paidIn"
+          ) {
+            sums[index] += " 万元";
+          }
+        } else {
+          sums[index] = "";
+        }
+      });
+      return sums;
+    },
+    addRow(tableIndex) {
+      this[tableIndex].push(this[`${tableIndex}_columns`]);
     }
   },
   components: {
