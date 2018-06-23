@@ -1,136 +1,206 @@
 <template>
-  <div>
-    <!--公司历史沿革-->
-    <v-getAndSaveData title="公司历史沿革"></v-getAndSaveData>
-    <div class="contentWrap">
-      <v-table
-        is-horizontal-resize
-        style="width:100%"
-        :columns="columns"
-        :table-data="tableData"
-        :show-vertical-border="false"
-        row-hover-color="#eee"
-        row-click-color="#edf7ff"
-        @on-custom-comp="customCompFunc"
-        :cell-edit-done="cellEditDone"
-      ></v-table>
-      <v-tabelAddBtn @addEvent="addData"></v-tabelAddBtn>
-    </div>
-  </div>
+	<div>
+		<el-card class="box-card">
+			<div slot="header" class="clearfix">
+				<div class="card-right-wrap">
+					<el-button class="save" type="primary" size="medium">保存</el-button>
+				</div>
+				<div class="card-title">工商基本信息</div>
+			</div>
+			<!-- 表格容器 -->
+			<div>
+				<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
+					<el-table-column label="序号" type="index" width="50">
+					</el-table-column>
+					<el-table-column min-width="300px" label="变更日期">
+						<template slot-scope="scope">
+							<template v-if="scope.row.edit">
+								<el-form :model="scope.row" :rules="rules" :id="'changeDate'+scope.$index" :ref="'form_changeDate_'+scope.$index" :show-message="false">
+									<el-form-item prop="changeDate" class="td-form-item">
+										<el-input class="edit-input" size="small" v-model="scope.row.changeDate"></el-input>
+									</el-form-item>
+								</el-form>
+							</template>
+							<span v-else>{{scope.row.changeDate}}</span>
+						</template>
+					</el-table-column>
+					<el-table-column min-width="300px" label="变更事项">
+						<template slot-scope="scope">
+							<template v-if="scope.row.edit">
+								<el-form :model="scope.row" :rules="rules" :id="'changeThing'+scope.$index" :ref="'form_changeThing_'+scope.$index" :show-message="false">
+									<el-form-item prop="changeThing" class="td-form-item">
+										<el-input class="edit-input" size="small" v-model="scope.row.changeThing"></el-input>
+									</el-form-item>
+								</el-form>
+							</template>
+							<span v-else>{{ scope.row.changeThing}}</span>
+						</template>
+					</el-table-column>
+					<el-table-column min-width="300px" label="变更前">
+						<template slot-scope="scope">
+							<template v-if="scope.row.edit">
+								<el-form :model="scope.row" :rules="rules" :id="'beforeThing'+scope.$index" :ref="'form_beforeThing_'+scope.$index" :show-message="false">
+									<el-form-item prop="beforeThing" class="td-form-item">
+										<el-input class="edit-input" size="small" v-model="scope.row.beforeThing"></el-input>
+									</el-form-item>
+								</el-form>
+							</template>
+							<span v-else>{{ scope.row.beforeThing}}</span>
+						</template>
+					</el-table-column>
+					<el-table-column min-width="300px" label="变更后">
+						<template slot-scope="scope">
+							<template v-if="scope.row.edit">
+								<el-form :model="scope.row" :rules="rules" :id="'afterThing'+scope.$index" :ref="'form_afterThing_'+scope.$index" :show-message="false">
+									<el-form-item prop="afterThing" class="td-form-item">
+										<el-input class="edit-input" size="small" v-model="scope.row.afterThing"></el-input>
+									</el-form-item>
+								</el-form>
+							</template>
+							<span v-else>{{ scope.row.afterThing}}</span>
+						</template>
+					</el-table-column>
+					<el-table-column align="center" label="操作" width="240">
+						<template slot-scope="scope">
+							<v-tableOperation :scope="scope" :tableData="tableData" v-on:verify="verify"></v-tableOperation>
+						</template>
+					</el-table-column>
+				</el-table>
+			</div>
+		</el-card>
+	</div>
 </template>
 
 <script>
-  import getAndSaveData from '@/components/dataEnter/getAndSaveData.vue';
-  import tabelAddBtn from '@/components/table/table-add-btn.vue';
-//  import tableOperation from '@/components/table/table-operation.vue';
-
-  let mockData = [{"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"},
-    {"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"},
-    {"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"},
-    {"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"},
-    {"modifiedDate": "2018/06/08", "modifiedEvent": "经营范围变更", "beforeModify": "-", "afterModify": "-"}
-  ];
-
-
-  export default {
-    components: {
-      'v-getAndSaveData': getAndSaveData,
-      'v-tabelAddBtn': tabelAddBtn
-    },
-    data: function () {
-      return {
-        newFlag: false,
-        tableData: [],
-        columns: [
+import tabelAddBtn from "@/components/table/table-add-btn.vue";
+import tableOperation from "@/components/table/table-operation.vue";
+export default {
+  data() {
+    return {
+      listLoading: false,
+      tableData: [
+        {
+          changeDate: "2018/01/01",
+          changeThing: "变更事项1",
+          beforeThing: "变更前1",
+          afterThing: "变更后1",
+          edit: false
+        },
+        {
+          changeDate: "2018/01/02",
+          changeThing: "变更事项2",
+          beforeThing: "变更前2",
+          afterThing: "变更后2",
+          edit: false
+        }
+      ],
+      //规则
+      rules: {
+        changeDate: [
           {
-            field: 'custome', title: '序号', width: 50, isEdit: false, titleAlign: 'center', columnAlign: 'center',
-            formatter: function (rowData, rowIndex, pagingIndex, field) {
-              return (rowIndex + 1)
-            }, isFrozen: true
-          },
+            required: true,
+            message: "请选择年份",
+            trigger: "null"
+          }
+        ],
+        changeThing: [
           {
-            field: 'modifiedDate',
-            title: '变更日期',
-            width: 100,
-            isEdit: false,
-            titleAlign: 'center',
-            columnAlign: 'center'
-          },
+            required: true,
+            message: "请输入荣誉信息",
+            trigger: "null"
+          }
+        ],
+        beforeThing: [
           {
-            field: 'modifiedEvent',
-            title: '变更事项',
-            width: 100, isEdit: false,
-            titleAlign: 'center',
-            columnAlign: 'center'
-          },
-          {field: 'beforeModify', title: '变更前', width: 240, isEdit: false, titleAlign: 'center', columnAlign: 'center'},
+            required: true,
+            message: "请输入荣誉信息",
+            trigger: "null"
+          }
+        ],
+        afterThing: [
           {
-            field: 'afterModify',
-            title: '变更后',
-            width: 200, isEdit: false,
-            titleAlign: 'center',
-            columnAlign: 'center',
-            isResize: true
-          },
-          {
-            field: 'custome-adv',
-            title: '操作',
-            width: 200,
-            titleAlign: 'center',
-            columnAlign: 'center',
-            componentName: 'v-table-operation',
-            isResize: true
+            required: true,
+            message: "请输入荣誉信息",
+            trigger: "null"
           }
         ]
       }
+    };
+  },
+  mounted() {},
+  methods: {
+    addData() {
+      console.log("点击addData");
+      this.tableData.push({
+        changeDate: "",
+        changeThing: "",
+        beforeThing: "",
+        afterThing: "",
+        edit: false
+      });
     },
-    created(){
-      console.log('in created');
-      this.tableData = mockData;
-    },
-    methods: {
-      customCompFunc(params){
-        switch (params.type) {
-          case 'delete':
-            this.$delete(this.tableData, params.index);
-            break;
-          case 'edit':
-            //改变该行背景色，且让该行可编辑文本框呈现可编辑状态
-            this.clickIndex = params.index;
-            this.$store.commit('setEditingFlag', {editingFlag: true});
-            alert(`行号：${params.index} 姓名：${params.rowData['name']}`)
-//            this.setColumnsEditable(true);
-            break;
-          case 'cancel':
-            this.tableData.splice(params.index, 1);
-            break;
-          case 'save':
-            this.$store.commit('setEditingFlag', {editingFlag: false});
-            console.log('save setEditingFlag:', this.$store.state.company.editingState);
-//            console.log('store historyNewFlag 变为：',this.$store.state.company.historyNewFlag);
+    verify(row, index) {
+		console.log(row,index)
+      var a = true,
+        b = true,
+        c = true,
+        d = true;
+      this.$refs[`form_changeDate_${index}`].validate((res, obj) => {
+        if (res) {
+          //验证通过
+          a = false;
+        } else {
+          //验证不通过
+          console.log(obj.changeDate[0].message);
         }
-      },
-      cellEditDone(newValue, oldValue, rowIndex, rowData, field){
-        this.tableData[rowIndex][field] = newValue;
-      },
-      addData(){
-        console.log('点击addData');
-        this.$store.commit('setHistoryNewFlag', {newFlag: true});
-        this.tableData.push({"modifiedDate": "", "modifiedEvent": "", "beforeModify": "", "afterModify": ""});
+      });
+      this.$refs[`form_changeThing_${index}`].validate((res, obj) => {
+        if (res) {
+          //验证通过
+          b = false;
+        } else {
+          //验证不通过
+          console.log(obj.changeThing[0].message);
+        }
+      });
+      this.$refs[`form_beforeThing_${index}`].validate((res, obj) => {
+        if (res) {
+          //验证通过
+          c = false;
+        } else {
+          //验证不通过
+          console.log(obj.beforeThing[0].message);
+        }
+      });
+      this.$refs[`form_afterThing_${index}`].validate((res, obj) => {
+        if (res) {
+          //验证通过
+         d = false;
+        } else {
+          //验证不通过
+          console.log(obj.afterThing[0].message);
+        }
+      });
+      if (!a && !b && !c && !d) {
+		  console.log(444)
+        row.edit = false;
+      } else {
+        //弹出错误消息汇总
       }
-//      ,
-//      setColumnsEditable(editflag){
-//        this.columns.forEach(function (item, index, array) {
-//          if (index != 0 && index != array.length) {
-//            item.isEdit = true;
-//          }
-//        })
-//        console.log(this.columns);
-//      }
     }
+  },
+  components: {
+    "v-tabelAddBtn": tabelAddBtn,
+    "v-tableOperation": tableOperation
   }
+};
 </script>
 
 <style lang="scss" scoped>
-
+@import "@/style/commonStyle.scss";
+.contentWrap {
+  margin-top: 4px;
+  padding: 43px 20px;
+  background: $background-color-inside;
+}
 </style>

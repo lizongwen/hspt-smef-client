@@ -39,6 +39,20 @@
 				</div>
 			</el-card>
 		</div>
+		<el-dialog title="新增企业" :visible.sync="dialogFormVisible" width="600px">
+			<el-form :model="addForm">
+				<el-form-item label="公司名称" label-width="120px">
+					<el-input v-model="addForm.companyName" auto-complete="off" placeholder="公司名称" style="width:370px"></el-input>
+				</el-form-item>
+				<el-form-item label="信用代码" label-width="120px">
+					<el-input v-model="addForm.creditCode" auto-complete="off" placeholder="信用代码" style="width:370px"></el-input>
+				</el-form-item>
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button @click="dialogFormVisible = false">取 消</el-button>
+				<el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+			</div>
+		</el-dialog>
 	</div>
 </template>
 
@@ -50,8 +64,13 @@ export default {
       searchForm: {
         searchInput: ""
       },
+	  addForm:{
+		  companyName:"",
+		  creditCode:""
+	  },
       tableData: [],
-      currentPage: 1
+      currentPage: 1,
+	  dialogFormVisible: false,
     };
   },
   mounted() {
@@ -79,7 +98,7 @@ export default {
       console.log("submit!");
     },
     addCompany() {
-      alert("新增企业");
+	  this.dialogFormVisible = true
     },
     getProject: async function() {
       let params = {

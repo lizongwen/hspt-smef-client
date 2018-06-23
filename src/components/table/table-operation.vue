@@ -1,54 +1,59 @@
 <template>
-  <div>
-    <span v-if="!editingFlag">
-      <a href="" @click.prevent="update(rowData,index)">编辑</a>
-      <a href="" @click.stop.prevent="deleteRow(rowData,index)">删除</a>
-    </span>
-    <span v-if="editingFlag">
-    <a href="" @click.stop.prevent="save(rowData,index)">保存</a>
-    <a href="" @click.stop.prevent="cancel(rowData,index)">取消</a>
-    </span>
-  </div>
-
+	<div class="yyy">
+		<template v-if="scope.row.edit">
+			<el-button type="success" @click="confirmEdit(scope.row,scope.$index)" size="small" icon="el-icon-circle-check-outline">确定</el-button>
+			<el-button type="success" @click="cacelEdit(scope.row)" size="small" icon="el-icon-circle-check-outline">取消</el-button>
+		</template>
+		<template v-else>
+			<el-button type="primary" @click='edit(scope.row)' size="small" icon="el-icon-edit">编辑</el-button>
+			<el-button type="primary" @click='deleteRow(scope.row,scope.$index)' size="small" icon="el-icon-edit">删除</el-button>
+		</template>
+	</div>
 </template>
 <script type='text/ecmascript-6'>
-  export default{
-    props: {
-      rowData: {
-        type: Object
-      },
-      field: {
-        type: String
-      },
-      index: {
-        type: Number
-      }
+export default {
+  props: {
+    scope: {
+      type: Object
     },
-    computed: {
-      editingFlag(){
-        return this.$store.state.company.editingState;
-      }
+    tableData: {
+      type: Array
+    }
+  },
+  mounted() {
+    // this.init();
+    console.log(this.scope);
+  },
+  computed: {},
+  methods: {
+    //编辑
+    edit(row) {
+      row.edit = true;
     },
-    methods: {
-      update(){
-        let params = {type: 'edit', index: this.index, rowData: this.rowData};
-        this.$emit('on-custom-comp', params);
-      },
-      deleteRow(){
-        let params = {type: 'delete', index: this.index};
-        this.$emit('on-custom-comp', params);
-      },
-      save(){
-        let params = {type: 'save', index: this.index, rowData: this.rowData};
-        this.$emit('on-custom-comp', params);
-      },
-      cancel(){
-        let params = {type: 'cancel', index: this.index, rowData: this.rowData};
-        this.$emit('on-custom-comp', params);
-      }
+    //取消编辑
+    cacelEdit(row) {
+      row.edit = false;
+    },
+    //确认编辑
+    confirmEdit(row, index) {
+      this.$emit("verify", row, index);
+    },
+    //删除行
+    deleteRow(row, index) {
+      this.$confirm("确认删除?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+        center: true
+      }).then(
+        () => {
+          this.tableData.splice(index, 1);
+        },
+        () => {}
+      );
     }
   }
+};
 </script>
 <style lang='scss' rel="stylesheet/scss">
-
 </style>

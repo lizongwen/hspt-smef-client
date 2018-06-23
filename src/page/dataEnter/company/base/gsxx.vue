@@ -111,7 +111,7 @@
 				<el-row>
 					<el-col :offset="1" :span="21">
 						<el-form-item label="经营范围:">
-							<el-input type="textarea" v-model="form.businessScope"></el-input>
+							<el-input type="textarea" v-model="form.businessScope" :rows="5"></el-input>
 						</el-form-item>
 					</el-col>
 				</el-row>
@@ -130,7 +130,6 @@ export default {
   },
   data() {
     return {
-		_creditCode:this.creditCode,
       labelPosition: "right",
       form: {
         regDate: "",
@@ -155,7 +154,6 @@ export default {
   },
   mounted() {
 	this.init();
-	console.log(this._creditCode)
   },
   methods: {
     init() {
