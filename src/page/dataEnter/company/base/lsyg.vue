@@ -3,15 +3,15 @@
 		<el-card class="box-card">
 			<div slot="header" class="clearfix">
 				<div class="card-right-wrap">
-					<el-button class="save" type="primary" size="medium">保存</el-button>
+					<el-button type="default" size="medium">获取数据</el-button>
+					<el-button type="primary" size="medium">保存</el-button>
 				</div>
 				<div class="card-title">公司历史沿革</div>
 			</div>
 			<!-- 表格容器 -->
 			<div>
 				<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
-					<el-table-column label="序号" type="index" width="50">
-					</el-table-column>
+					<el-table-column label="序号" type="index" width="50"></el-table-column>
 					<el-table-column min-width="300px" label="变更日期">
 						<template slot-scope="scope">
 							<template v-if="scope.row.edit">
