@@ -54,7 +54,7 @@ export default new Router({
 
 					{
 						path: 'home',//公司填报主页
-						name: 'company',
+						name: 'company_home',
 						meta: {
 							title: '云信平台 - 企业填报 -首页'
 						},
