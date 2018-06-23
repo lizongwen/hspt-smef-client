@@ -22,7 +22,7 @@
 							<div class="sub-name">公司历史沿革：</div>
 							<div class="sub-progress">0/4</div>
 							<div class="mod-list-item_op">
-								<router-link tag="div" to="/company/base/lsgy">
+								<router-link tag="div" to="/company/base/lsyg">
 									<i class="icon iconfont icon-edit1"></i>
 								</router-link>
 							</div>

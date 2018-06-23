@@ -5,7 +5,7 @@
 				<div class="card-right-wrap">
 					<el-button class="save" type="primary" size="medium">保存</el-button>
 				</div>
-				<div class="card-title">工商基本信息</div>
+				<div class="card-title">公司历史沿革</div>
 			</div>
 			<!-- 表格容器 -->
 			<div>

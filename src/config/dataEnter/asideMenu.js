@@ -12,7 +12,7 @@ let menuAsideData = [
       {
         "index": "1-2",
         "name": "公司历史沿革",
-        "path": "/company/base/lsgy"
+        "path": "/company/base/lsyg"
       },
       {
         "index": "1-3",

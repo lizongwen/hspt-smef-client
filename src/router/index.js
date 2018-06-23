@@ -66,9 +66,9 @@ export default new Router({
 						component: () => import('@/page/dataEnter/company/base/gsxx.vue')
 					},
 					{
-						path: 'base/lsgy',//公司历史信息
-						name: 'lsgy',
-						component: () => import('@/page/dataEnter/company/base/lsgy.vue')
+						path: 'base/lsyg',//公司历史信息
+						name: 'lsyg',
+						component: () => import('@/page/dataEnter/company/base/lsyg.vue')
 					},
 					{
 						path: 'base/gqjgfz',//股权机构及分支机构
