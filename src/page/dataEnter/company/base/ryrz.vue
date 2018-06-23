@@ -39,17 +39,11 @@
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-button type="success" @click="confirmEdit(scope.row,scope.$index)" size="small" icon="el-icon-circle-check-outline">确定</el-button>
-											<el-button type="success" @click="cacelEdit(scope.row)" size="small" icon="el-icon-circle-check-outline">取消</el-button>
-										</template>
-										<template v-else>
-											<el-button type="primary" @click='edit(scope.row)' size="small" icon="el-icon-edit">编辑</el-button>
-											<el-button type="primary" @click='deleteRow(scope.row,scope.$index)' size="small" icon="el-icon-edit">删除</el-button>
-										</template>
+										<v-tableOperation :scope="scope" :tableData="tableData" v-on:verify="verify"></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
+							<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -89,12 +83,19 @@
 </template>
 
 <script>
+import tabelAddBtn from "@/components/table/table-add-btn.vue";
+import tableOperation from "@/components/table/table-operation.vue";
 export default {
   data() {
     return {
       activeName: "first",
       listLoading: false,
       tableData: [], //表格数据
+      tableData_columns: {
+        year: "",
+        record: "",
+        edit: false
+      },
       //规则
       rules: {
         year: [
@@ -121,6 +122,53 @@ export default {
     //初始化
     init() {
       this.getTableData();
+	},
+	verify(row, index) {
+    //   var a = true,
+    //     b = true,
+    //     c = true,
+    //     d = true;
+    //   this.$refs[`form_changeDate_${index}`].validate((res, obj) => {
+    //     if (res) {
+    //       //验证通过
+    //       a = false;
+    //     } else {
+    //       //验证不通过
+    //       console.log(obj.changeDate[0].message);
+    //     }
+    //   });
+    //   this.$refs[`form_changeThing_${index}`].validate((res, obj) => {
+    //     if (res) {
+    //       //验证通过
+    //       b = false;
+    //     } else {
+    //       //验证不通过
+    //       console.log(obj.changeThing[0].message);
+    //     }
+    //   });
+    //   this.$refs[`form_beforeThing_${index}`].validate((res, obj) => {
+    //     if (res) {
+    //       //验证通过
+    //       c = false;
+    //     } else {
+    //       //验证不通过
+    //       console.log(obj.beforeThing[0].message);
+    //     }
+    //   });
+    //   this.$refs[`form_afterThing_${index}`].validate((res, obj) => {
+    //     if (res) {
+    //       //验证通过
+    //       d = false;
+    //     } else {
+    //       //验证不通过
+    //       console.log(obj.afterThing[0].message);
+    //     }
+    //   });
+    //   if (!a && !b && !c && !d) {
+        row.edit = false;
+    //   } else {
+        //弹出错误消息汇总
+    //   }
     },
     //获取表格数据
     getTableData() {
@@ -137,73 +185,21 @@ export default {
         }
       ];
     },
-    //编辑
-    edit(row) {
-      row.edit = true;
-    },
-    //取消编辑
-    cacelEdit(row) {
-      row.edit = false;
-    },
-    //确认编辑
-    confirmEdit(row, index) {
-		var a=true,b=true;
-      this.$refs[`form_year_${index}`].validate((res, obj) => {
-        if (res) {
-          //验证通过
-          a = false;
-        } else {
-		  //验证不通过
-		  console.log(obj.year[0].message);
-        }
-      });
-      this.$refs[`form_record_${index}`].validate((res, obj) => {
-        if (res) {
-          //验证通过
-          b = false;
-        } else {
-		  //验证不通过
-		  console.log(obj.record[0].message);
-        }
-      });
-      if (!a && !b) {
-        row.edit = false;
-      }else{
-		  //弹出错误消息汇总
-	  }
-    },
-    //删除行
-    deleteRow(row, index) {
-      this.$confirm("确认删除?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-        center: true
-      }).then(
-        () => {
-          this.tableData.splice(index, 1);
-        },
-        () => {}
-      );
-	},
-	//增加行
-	addRow() {
-    //   this.tableData.push({
-    //     changeDate: "",
-    //     changeThing: "",
-    //     beforeThing: "",
-    //     afterThing: "",
-    //     edit: false
-    //   });
+    //增加行
+    addRow(tableIndex) {
+      this[tableIndex].push(this[`${tableIndex}_columns`]);
     },
     //点击标签页触发事件
     handleClick(tab, event) {
-      console.log(tab, event);
+    //   console.log(tab, event);
     }
+  },
+  components: {
+    "v-tabelAddBtn": tabelAddBtn,
+    "v-tableOperation": tableOperation
   }
 };
 </script>
 <style lang="scss" scoped>
-
 </style>
 

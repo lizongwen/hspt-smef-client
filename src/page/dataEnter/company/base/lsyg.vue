@@ -95,6 +95,13 @@ export default {
           edit: false
         }
       ],
+      tableData_columns: {
+        changeDate: "",
+        changeThing: "",
+        beforeThing: "",
+        afterThing: "",
+        edit: false
+      },
       //规则
       rules: {
         changeDate: [
@@ -177,14 +184,8 @@ export default {
         //弹出错误消息汇总
       }
     },
-    addRow() {
-      this.tableData.push({
-        changeDate: "",
-        changeThing: "",
-        beforeThing: "",
-        afterThing: "",
-        edit: false
-      });
+    addRow(tableIndex) {
+      this[tableIndex].push(this[`${tableIndex}_columns`]);
     }
   },
   components: {

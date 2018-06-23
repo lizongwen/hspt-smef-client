@@ -5,10 +5,10 @@
 				<div>
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
-							<div class="card-title">股权结构（非上市公司）</div>
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium">保存</el-button>
 							</div>
+							<div class="card-title">股权结构（非上市公司）</div>
 						</div>
 						<div>
 							<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
@@ -73,10 +73,10 @@
 				<div>
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
-							<div class="card-title">股权结构（上市公司）</div>
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium">保存</el-button>
 							</div>
+							<div class="card-title">股权结构（上市公司）</div>
 						</div>
 						<div>
 							<el-table :data="tableData_1" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
@@ -130,7 +130,7 @@
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_1" v-on:verify="verify"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_1" v-on:verify="verify1"></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
@@ -143,11 +143,11 @@
 				<div>
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
-							<div class="card-title">股权结构（非上市公司）</div>
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium">上传图片</el-button>
 								<el-button class="save" type="primary" size="medium">保存</el-button>
 							</div>
+							<div class="card-title">股权结构（非上市公司）</div>
 						</div>
 						<!-- 图片容器 -->
 						<div class="img-preview">
@@ -158,14 +158,99 @@
 				<div>
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
-							<div class="card-title">分支及下属企业情况</div>
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium">保存</el-button>
 							</div>
+							<div class="card-title">分支及下属企业情况</div>
 						</div>
 						<!-- 表格容器 -->
 						<div>
-							<el-table :data="tableData_2" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
+							<el-table :data="tableData_2" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
+								<el-table-column min-width="300px" label="下属公司/分公司名称" prop="name">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-form :model="scope.row" :rules="rules" :id="'name'+scope.$index" :ref="'form_name_'+scope.$index" :show-message="false">
+												<el-form-item prop="name" class="td-form-item">
+													<el-input class="edit-input" size="small" v-model="scope.row.name"></el-input>
+												</el-form-item>
+											</el-form>
+										</template>
+										<span v-else>{{scope.row.name}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="300px" label="所在地" prop="addr">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-form :model="scope.row" :rules="rules" :id="'addr'+scope.$index" :ref="'form_addr_'+scope.$index" :show-message="false">
+												<el-form-item prop="addr" class="td-form-item">
+													<el-input class="edit-input" size="small" v-model="scope.row.addr"></el-input>
+												</el-form-item>
+											</el-form>
+										</template>
+										<span v-else>{{ scope.row.addr}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="300px" label="注册资本（万元）" prop="regMoney">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-form :model="scope.row" :rules="rules" :id="'regMoney'+scope.$index" :ref="'form_regMoney_'+scope.$index" :show-message="false">
+												<el-form-item prop="regMoney" class="td-form-item">
+													<el-input class="edit-input" size="small" v-model="scope.row.regMoney"></el-input>
+												</el-form-item>
+											</el-form>
+										</template>
+										<span v-else>{{ scope.row.regMoney}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="300px" label="业务内容" prop="businessScope">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-form :model="scope.row" :rules="rules" :id="'businessScope'+scope.$index" :ref="'form_businessScope_'+scope.$index" :show-message="false">
+												<el-form-item prop="businessScope" class="td-form-item">
+													<el-input class="edit-input" size="small" v-model="scope.row.businessScope"></el-input>
+												</el-form-item>
+											</el-form>
+										</template>
+										<span v-else>{{ scope.row.businessScope}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="100px" label="是否合并报表" prop="isMerge">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-form :model="scope.row" :rules="rules" :id="'isMerge'+scope.$index" :ref="'form_isMerge_'+scope.$index" :show-message="false">
+												<el-form-item prop="isMerge" class="td-form-item">
+													<el-select v-model="isMerge" placeholder="请选择">
+														<el-option value="1" label="是"></el-option>
+														<el-option value="0" label="否"></el-option>
+													</el-select>
+													<!-- <el-input class="edit-input" size="small" v-model="scope.row.isMerge"></el-input> -->
+												</el-form-item>
+											</el-form>
+										</template>
+										<span v-else>{{ scope.row.isMerge==null?"":(scope.row.isMerge?"是":"否")}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column align="center" label="操作" width="240">
+									<template slot-scope="scope">
+										<v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify1"></v-tableOperation>
+									</template>
+								</el-table-column>
+							</el-table>
+							<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData_2"></v-tabelAddBtn>
+						</div>
+					</el-card>
+				</div>
+				<div>
+					<el-card class="box-card">
+						<div slot="header" class="clearfix">
+							<div class="card-right-wrap">
+								<el-button class="save" type="primary" size="medium">保存</el-button>
+							</div>
+							<div class="card-title">关联企业</div>
+						</div>
+						<!-- 表格容器 -->
+						<div>
+							<el-table :data="tableData_3" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
 								<el-table-column min-width="300px" label="股东姓名" prop="name">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
@@ -216,25 +301,11 @@
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify"></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
-							<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData_2"></v-tabelAddBtn>
-						</div>
-					</el-card>
-				</div>
-				<div>
-					<el-card class="box-card">
-						<div slot="header" class="clearfix">
-							<div class="card-title">关联企业</div>
-							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
-							</div>
-						</div>
-						<!-- 表格容器 -->
-						<div>
-
+							<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData_3"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -244,11 +315,11 @@
 				<div>
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
-							<div class="card-title">股权结构（非上市公司）</div>
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium">上传图片</el-button>
 								<el-button class="save" type="primary" size="medium">保存</el-button>
 							</div>
+							<div class="card-title">股权结构（非上市公司）</div>
 						</div>
 						<!-- 图片容器 -->
 						<div class="img-preview">
@@ -346,12 +417,22 @@ export default {
         paidIn: null,
         edit: false
       },
-      tableData_2: [],
+      tableData_2: [
+        {
+          name: "马冬梅串串",
+          addr: "安徽省芜湖市",
+          regMoney: 200,
+          businessScope: "经营麻辣烫",
+          isMerge: 0,
+          edit: false
+        }
+      ],
       tableData_2_columns: {
         name: "",
-        ratio: null,
-        subscribe: null,
-        paidIn: null,
+        addr: "",
+        regMoney: null,
+        businessScope: "",
+        isMerge: null,
         edit: false
       },
       tableData_3: [
@@ -372,6 +453,11 @@ export default {
       }
     };
   },
+  computed: {
+    isMerge() {
+      return this.tableData_2.isMerge ? "是" : "否";
+    }
+  },
   mounted() {
     // var obj = {
     //   a: 1,
@@ -391,7 +477,7 @@ export default {
   methods: {
     //点击标签页触发事件
     handleClick(tab, event) {
-    //   console.log(tab, event);
+      //   console.log(tab, event);
     },
     //验证单元格数据
     verify(row, index) {
@@ -441,7 +527,9 @@ export default {
         //弹出错误消息汇总
       }
     },
-
+    verify1(row, index) {
+      row.edit = false;
+    },
     getSummaries(param) {
       const { columns, data } = param;
       const sums = [];
@@ -489,12 +577,6 @@ export default {
 <style lang="scss" scoped>
 .gqjgfz {
   background-color: #fff;
-}
-.card-title {
-  float: left;
-}
-.card-right-wrap {
-  float: right;
 }
 
 .img-preview {
