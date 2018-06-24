@@ -15,7 +15,7 @@
 						<div>
 							<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
-								<el-table-column min-width="300px" label="商标名">
+								<el-table-column min-width="100px" label="商标名">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
 											<el-form :model="scope.row" :rules="rules" :id="'trademarkName'+scope.$index" :ref="'form_trademarkName_'+scope.$index" :show-message="false">
@@ -27,14 +27,14 @@
 										<span v-else>{{scope.row.trademarkName}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="状态">
+								<el-table-column min-width="100px" label="状态">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
 											<el-form :model="scope.row" :rules="rules" :id="'status'+scope.$index" :ref="'form_status_'+scope.$index" :show-message="false">
 												<el-form-item prop="status" class="td-form-item">
-													<el-select v-model="status" placeholder="请选择">
-														<el-option value="1" label="有效"></el-option>
-														<el-option value="0" label="无效"></el-option>
+													<el-select v-model="scope.row.status" placeholder="请选择">
+														<el-option :value="1" label="有效"></el-option>
+														<el-option :value="0" label="无效"></el-option>
 													</el-select>
 												</el-form-item>
 											</el-form>
@@ -42,7 +42,7 @@
 										<span v-else>{{ scope.row.status==null?"":(scope.row.status?"有效":"无效")}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="申请时间">
+								<el-table-column min-width="100px" label="申请时间">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
 											<el-form :model="scope.row" :rules="rules" :id="'applyTime'+scope.$index" :ref="'form_applyTime_'+scope.$index" :show-message="false">
@@ -205,9 +205,9 @@
 										<template v-if="scope.row.edit">
 											<el-form :model="scope.row" :rules="rules" :id="'isEff'+scope.$index" :ref="'form_isEff_'+scope.$index" :show-message="false">
 												<el-form-item prop="isEff" class="td-form-item">
-													<el-select v-model="isEff" placeholder="请选择">
-														<el-option value="1" label="有权"></el-option>
-														<el-option value="0" label="无权"></el-option>
+													<el-select v-model="scope.row.isEff" placeholder="请选择">
+														<el-option :value="1" label="有权"></el-option>
+														<el-option :value="0" label="无权"></el-option>
 													</el-select>
 												</el-form-item>
 											</el-form>
@@ -376,9 +376,9 @@
 										<template v-if="scope.row.edit">
 											<el-form :model="scope.row" :rules="rules" :id="'siteStatus'+scope.$index" :ref="'form_siteStatus_'+scope.$index" :show-message="false">
 												<el-form-item prop="siteStatus" class="td-form-item">
-													<el-select v-model="siteStatus" placeholder="请选择">
-														<el-option value="1" label="正常"></el-option>
-														<el-option value="0" label="异常"></el-option>
+													<el-select v-model="scope.row.siteStatus" placeholder="请选择">
+														<el-option :value="1" label="正常"></el-option>
+														<el-option :value="0" label="异常"></el-option>
 													</el-select>
 												</el-form-item>
 											</el-form>
@@ -422,34 +422,6 @@ export default {
       activeName: "first",
       listLoading: false,
       rules: {
-        changeDate: [
-          {
-            required: true,
-            message: "请选择年份",
-            trigger: "null"
-          }
-        ],
-        changeThing: [
-          {
-            required: true,
-            message: "请输入荣誉信息",
-            trigger: "null"
-          }
-        ],
-        beforeThing: [
-          {
-            required: true,
-            message: "请输入荣誉信息",
-            trigger: "null"
-          }
-        ],
-        afterThing: [
-          {
-            required: true,
-            message: "请输入荣誉信息",
-            trigger: "null"
-          }
-        ]
       },
       tableData: [
         {
@@ -457,6 +429,13 @@ export default {
           status: 0,
           applyTime: "2018/02/01",
           regNo: "05415785",
+          category: "科研服务",
+          edit: false
+        },{
+          trademarkName: "爱福特环保1",
+          status: 1,
+          applyTime: "2018/02/02",
+          regNo: "05415788",
           category: "科研服务",
           edit: false
         }
@@ -534,15 +513,7 @@ export default {
     };
   },
   computed: {
-    status() {
-      return this.tableData.status ? "有效" : "无效";
-    },
-    isEff() {
-      return this.tableData_1.isEff ? "有权" : "无权";
-    },
-    siteStatus() {
-      return this.tableData_3.siteStatus ? "正常" : "异常";
-    }
+  
   },
   methods: {
     handleClick(tab, event) {
