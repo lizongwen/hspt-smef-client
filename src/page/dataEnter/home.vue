@@ -86,7 +86,8 @@
           token: sessionStorage.getItem("token"),
           loginName: sessionStorage.getItem("username")
         };
-        const res = await this.$http.post(this.$api.findAllProjectMember, params);
+		const res = await this.$http.post(this.$api.findAllProjectMember, params);
+		console.log(res)
         this.rightMember = res.data.resultData;
       },
       showProjs() {
