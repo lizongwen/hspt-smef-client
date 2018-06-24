@@ -4,7 +4,7 @@
 		<div class="main-content">
 			<el-container>
 				<el-aside width="220px" v-if="isAside">
-					<el-menu default-active="1-1" :unique-opened="true" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
+					<el-menu :default-active="defaultActive" :unique-opened="true" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
 						<el-submenu :index="menuGroup.index" v-for="(menuGroup,index) in menuAsideData" :key="index">
 							<template slot="title">
 								<i :class="menuGroup.icon"></i>
@@ -18,7 +18,7 @@
 				</el-aside>
 				<el-main>
 					<keep-alive>
-						<router-view :creditCode="creditCode"/>
+						<router-view :creditCode="creditCode" />
 					</keep-alive>
 				</el-main>
 			</el-container>
@@ -32,6 +32,7 @@ import { menuAsideData } from "@/config/dataEnter/asideMenu.js";
 export default {
   data() {
     return {
+		defaultActive:"1-1",
       menuAsideData: menuAsideData,
       activeName: 0,
 	  asideMenus: [],
@@ -48,6 +49,7 @@ export default {
   },
   mounted() {
 	  this.creditCode=this.$route.query.creditCode||sessionStorage.getItem('creditCode');
+	  this.defaultActive=this.$route.meta.index;
   },
   methods: {
     handleOpen(key, keyPath) {
