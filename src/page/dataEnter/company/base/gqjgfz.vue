@@ -231,7 +231,7 @@
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify1"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify2"></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
@@ -300,7 +300,7 @@
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify3"></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
@@ -527,6 +527,12 @@ export default {
       }
     },
     verify1(row, index) {
+      row.edit = false;
+    },
+	verify2(row, index) {
+      row.edit = false;
+    },
+	verify3(row, index) {
       row.edit = false;
     },
     getSummaries(param) {
