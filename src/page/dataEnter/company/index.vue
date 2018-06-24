@@ -32,11 +32,11 @@ import { menuAsideData } from "@/config/dataEnter/asideMenu.js";
 export default {
   data() {
     return {
-		defaultActive:"1-1",
+      defaultActive: "1",
       menuAsideData: menuAsideData,
       activeName: 0,
-	  asideMenus: [],
-	  creditCode:""
+      asideMenus: [],
+      creditCode: ""
     };
   },
   computed: {
@@ -48,15 +48,16 @@ export default {
     companyHeader
   },
   mounted() {
-	  this.creditCode=this.$route.query.creditCode||sessionStorage.getItem('creditCode');
-	  this.defaultActive=this.$route.meta.index;
+    this.creditCode =
+      this.$route.query.creditCode || sessionStorage.getItem("creditCode");
+    this.defaultActive = this.$route.meta.index;
   },
   methods: {
     handleOpen(key, keyPath) {
-    //   console.log(key, keyPath);
+      //   console.log(key, keyPath);
     },
     handleClose(key, keyPath) {
-    //   console.log(key, keyPath);
+      //   console.log(key, keyPath);
     }
   }
 };
