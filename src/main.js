@@ -14,6 +14,9 @@ import router from './router';
 import http from './utils/http';
 import api from './utils/api';
 
+// 引入mock.js
+require('./mock.js');
+
 // import './style/commonStyle.scss'
 import 'vue-easytable/libs/themes-base/index.css'
 // 导入 table 和 分页组件
