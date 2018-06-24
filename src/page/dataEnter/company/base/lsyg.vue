@@ -196,10 +196,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/style/commonStyle.scss";
-.contentWrap {
-  margin-top: 4px;
-  padding: 43px 20px;
-  background: $background-color-inside;
-}
+
 </style>

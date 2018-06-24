@@ -1,166 +1,113 @@
 <template>
 	<div>
-		<el-table :data="list" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
-			<el-table-column min-width="300px" label="Title1">
-				<template slot-scope="scope">
-					<template v-if="scope.row.edit">
-						<el-form :model="scope.row" :rules="rules" :id="'Title1'+scope.$index" :ref="'form_Title1_'+scope.$index" :show-message="false">
-							 <el-form-item prop="title1" class="td-form-item">
-									<el-input class="edit-input" size="small" v-model="scope.row.title1"></el-input>
-							 </el-form-item>
-						</el-form>
-						<!-- <el-button class='cancel-btn' size="small" icon="el-icon-refresh" type="warning" @click="cancelEdit(scope.row)">cancel</el-button> -->
-					</template>
-					<span v-else>{{ scope.row.title1 }}</span>
-				</template>
-			</el-table-column>
-			<el-table-column min-width="300px" label="Title">
-				<template slot-scope="scope">
-					<template v-if="scope.row.edit">
-						<el-input class="edit-input" size="small" v-model="scope.row.title2"></el-input>
-						<!-- <el-button class='cancel-btn' size="small" icon="el-icon-refresh" type="warning" @click="cancelEdit(scope.row)">cancel</el-button> -->
-					</template>
-					<span v-else>{{ scope.row.title2}}</span>
-				</template>
-			</el-table-column>
-			<el-table-column align="center" label="Actions" width="240">
-				<template slot-scope="scope">
-					<el-button v-if="scope.row.edit" type="success" @click="saveEdit(scope.row,scope.$index)" size="small" icon="el-icon-circle-check-outline">保存</el-button>
-					<el-button v-else type="primary" @click='edit(scope.row)' size="small" icon="el-icon-edit">编辑</el-button>
-					<el-button v-if="scope.row.edit" type="success" @click="confirmEdit(scope.row)" size="small" icon="el-icon-circle-check-outline">取消</el-button>
-					<el-button v-else type="primary" @click='edit(scope.row)' size="small" icon="el-icon-edit">删除</el-button>
-				</template>
-			</el-table-column>
-		</el-table>
+		<el-card class="box-card">
+			<div slot="header" class="clearfix">
+				<div class="card-right-wrap">
+					<el-button type="default" size="medium">模板下载</el-button>
+					<el-button type="default" size="medium">数据导入</el-button>
+					<el-button type="default" size="medium">生成图表</el-button>
+					<el-button type="primary" size="medium">保存</el-button>
+				</div>
+				<div class="card-title">企业工资发放情况</div>
+			</div>
+			<div>
+				<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
+					<el-table-column label="序号" type="index" width="50"></el-table-column>
+					<el-table-column min-width="300px" label="日期">
+						<template slot-scope="scope">
+							<template v-if="scope.row.edit">
+								<el-form :model="scope.row" :rules="rules" :id="'date'+scope.$index" :ref="'form_date_'+scope.$index" :show-message="false">
+									<el-form-item prop="date" class="td-form-item">
+										<el-input class="edit-input" size="small" v-model="scope.row.date"></el-input>
+									</el-form-item>
+								</el-form>
+							</template>
+							<span v-else>{{ scope.row.date }}</span>
+						</template>
+					</el-table-column>
+					<el-table-column min-width="300px" label="发放人数">
+						<template slot-scope="scope">
+							<template v-if="scope.row.edit">
+								<el-form :model="scope.row" :rules="rules" :id="'num'+scope.$index" :ref="'form_num_'+scope.$index" :show-message="false">
+									<el-form-item prop="num" class="td-form-item">
+										<el-input class="edit-input" size="small" v-model="scope.row.num"></el-input>
+									</el-form-item>
+								</el-form>
+							</template>
+							<span v-else>{{scope.row.num}}</span>
+						</template>
+					</el-table-column>
+					<el-table-column min-width="300px" label="发放金额">
+						<template slot-scope="scope">
+							<template v-if="scope.row.edit">
+								<el-form :model="scope.row" :rules="rules" :id="'money'+scope.$index" :ref="'form_money_'+scope.$index" :show-message="false">
+									<el-form-item prop="money" class="td-form-item">
+										<el-input class="edit-input" size="small" v-model="scope.row.money"></el-input>
+									</el-form-item>
+								</el-form>
+							</template>
+							<span v-else>{{scope.row.money}}</span>
+						</template>
+					</el-table-column>
+					<el-table-column align="center" label="Actions" width="240">
+						<template slot-scope="scope">
+							<v-tableOperation :scope="scope" :tableData="tableData" v-on:verify="verify"></v-tableOperation>
+						</template>
+					</el-table-column>
+				</el-table>
+				<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData"></v-tabelAddBtn>
+			</div>
+		</el-card>
 	</div>
 </template>
 
 <script>
+import tabelAddBtn from "@/components/table/table-add-btn.vue";
+import tableOperation from "@/components/table/table-operation.vue";
 export default {
   name: "inlineEditTable",
   data() {
     return {
-      editFlag: false,
-      list: null,
       listLoading: false,
-      listQuery: {
-        page: 1,
-        limit: 10
-	  },
-	  rules:{
-		  title1:[{ required: true, message: '请输入名称', trigger: "null" }]
-	  }
+      tableData: [
+        {
+          date: "2018/01/02",
+          num: 50,
+          money: 100,
+          edit: false
+        }
+      ],
+      tableData_columns: {
+        date: "",
+        num: null,
+        money: null,
+        edit: false
+      },
+      rules: {}
     };
   },
   mounted() {
     this.getList();
   },
   methods: {
-    getList() {
-      this.list = [
-        {
-          author: "Helen",
-          comment_disabled: true,
-          content: "我是测试数据我是测试数据",
-          content_short: "我是测试数据",
-          display_time: "1971-06-29 03:26:33",
-          forecast: 86.35,
-          id: 1,
-          image_uri:
-            "https://wpimg.wallstcn.com/e4558086-631c-425c-9430-56ffb46e70b3",
-          importance: 2,
-          pageviews: 3318,
-          platforms: ["a-platform"],
-          reviewer: "Deborah",
-          status: "published",
-          timestamp: 1262822538684,
-          originalTitle: "Cnwvnc Bce Uco Vlzssflg Gehvw Dcuaatdqw Halydnuqx",
-          edit: false,
-          title1: "第一条数据title1",
-          title2: "Cnwvnc Bce Uco Vlzssflg Gehvw Dcuaatdqw Halydnuqx1",
-          //   title1: { value: "title1", edit: false },
-          //   title: {
-          //     value: "Cnwvnc Bce Uco Vlzssflg Gehvw Dcuaatdqw Halydnuqx1",
-          //     edit: false
-          //   },
-          type: "EU"
-        },
-        {
-          author: "Helen",
-          comment_disabled: true,
-          content: "我是测试数据我是测试数据",
-          content_short: "我是测试数据",
-          display_time: "1971-06-29 03:26:33",
-          forecast: 86.35,
-          id: 2,
-          image_uri:
-            "https://wpimg.wallstcn.com/e4558086-631c-425c-9430-56ffb46e70b3",
-          importance: 2,
-          pageviews: 3318,
-          platforms: ["a-platform"],
-          reviewer: "Deborah",
-          status: "published",
-          timestamp: 1262822538684,
-          originalTitle: "Cnwvnc Bce Uco Vlzssflg Gehvw Dcuaatdqw Halydnuqx",
-          edit: false,
-          title1: "第二条数据title1",
-          title2: "Cnwvnc Bce Uco Vlzssflg Gehvw Dcuaatdqw Halydnuqx2",
-          //   title1: { value: "title2", edit: false },
-          //   title: {
-          //     value: "Cnwvnc Bce Uco Vlzssflg Gehvw Dcuaatdqw Halydnuqx2",
-          //     edit: false
-          //   },
-          type: "EU"
-        }
-      ];
+    getList() {},
+    addRow(tableIndex) {
+      this[tableIndex].push(this[`${tableIndex}_columns`]);
     },
-    edit(row) {
-      // for(let i in row){
-      // 	if(row[i].hasOwnProperty("edit")){
-      // 		console.log(row[i].edit)
-      // 		row[i].edit=true;
-      // 	}
-      // }
-      row.edit = !row.edit;
-    },
-    // cancelEdit(row,column,index) {
-    // 	console.log(index)
-    // 	row[i].edit
-    //   //row.title = row.originalTitle;
-    //  // row[].edit = false;
-    //   this.$message({
-    //     message: "The title has been restored to the original value",
-    //     type: "warning"
-    //   });
-    // },
-    confirmEdit(row) {
+    verify(row, index) {
       row.edit = false;
-      //   row.originalTitle = row.title;
-      this.$message({
-        message: "The title has been edited",
-        type: "success"
-      });
-	},
-	saveEdit(row,index){
-		let form="form_Title1_"+index;
-		this.$refs[form].validate( (result,object)=>{
-			console.log(result,object)
-			if(result){
-				console.log(1)
-			}else{
-				this.$message({
-					message: object.title1[0].message,
-					type: "warning"
-				});
-			}
-		})
-	}
+    }
+  },
+
+  components: {
+    "v-tabelAddBtn": tabelAddBtn,
+    "v-tableOperation": tableOperation
   }
 };
 </script>
 
 <style>
-.td-form-item{
-	margin:0
+.td-form-item {
+  margin: 0;
 }
 </style>
