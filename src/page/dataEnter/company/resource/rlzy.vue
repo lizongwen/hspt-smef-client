@@ -204,7 +204,8 @@
 									</template>
 								</el-table-column>
 							</el-table>
-							<v-tabelAddBtn v-on:addRow="addRow" tableIndex="formatterTableData"></v-tabelAddBtn>
+							<!--<v-tabelAddBtn v-on:addRow="addRow" tableIndex="formatterTableData"></v-tabelAddBtn>-->
+              <v-tabelAddBtn :tableData="formatterTableData" :tableData_columns="formatterTableData_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>

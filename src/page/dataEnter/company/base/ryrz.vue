@@ -43,7 +43,8 @@
 									</template>
 								</el-table-column>
 							</el-table>
-							<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData"></v-tabelAddBtn>
+							<!--<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData"></v-tabelAddBtn>-->
+              <v-tabelAddBtn :tableData="tableData" :tableData_columns="tableData_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -115,7 +116,8 @@
 									</template>
 								</el-table-column>
 							</el-table>
-							<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData_1"></v-tabelAddBtn>
+							<!--<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData_1"></v-tabelAddBtn>-->
+              <v-tabelAddBtn :tableData="tableData_1" :tableData_columns="tableData_1_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -187,7 +189,8 @@
 									</template>
 								</el-table-column>
 							</el-table>
-							<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData_2"></v-tabelAddBtn>
+							<!--<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData_2"></v-tabelAddBtn>-->
+              <v-tabelAddBtn :tableData="tableData_2" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -337,10 +340,10 @@ export default {
         }
       ];
     },
-    //增加行
-    addRow(tableIndex) {
-      this[tableIndex].push(this[`${tableIndex}_columns`]);
-    },
+//    //增加行
+//    addRow(tableIndex) {
+//      this[tableIndex].push(this[`${tableIndex}_columns`]);
+//    },
     //点击标签页触发事件
     handleClick(tab, event) {
       //   console.log(tab, event);
