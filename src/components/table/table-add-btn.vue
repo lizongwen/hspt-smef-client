@@ -4,13 +4,20 @@
 <script type='text/ecmascript-6'>
 export default {
   props: {
-    tableIndex: {
-      type: String
+    tableData: {
+      type: Array
+    },
+    tableData_columns:{
+        type:Object
     }
   },
   methods: {
     addhandler() {
-      this.$emit("addRow", this.tableIndex);
+        if(this.tableData!==null){
+          this.tableData.push(JSON.parse(JSON.stringify(this.tableData_columns)));
+        }
+        this.$emit("addRow");
+//      this.$emit("addRow", this.tableIndex);
     }
   }
 };
