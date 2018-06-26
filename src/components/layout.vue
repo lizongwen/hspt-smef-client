@@ -5,8 +5,10 @@
 				<i class="icon iconfont icon-poweroff"></i>
 			</div>
 			<div class="header-bar">
-				<div class="logo"><img src="../image/logo.png" alt="" srcset=""></div>
-				<div class="proj-name">中小企业征信平台</div>
+				<router-link to="/home" >
+					<div class="logo"><img src="../image/logo.png" alt="" srcset=""></div>
+					<div class="proj-name">中小企业征信平台</div>
+				</router-link>
 			</div>
 		</el-header>
 		<el-main>
@@ -58,6 +60,7 @@ export default {
         line-height: 33px;
         border-left: 2px solid #fff;
         font-size: 18px;
+		color:#fff;
       }
     }
     .logout {
