@@ -1,0 +1,32 @@
+{
+	"resultCode": "0",
+	"resultData": {
+		"current": 1,
+		"pages": 1,
+		"records": [
+			{
+				"companyName": "芜湖悠派护理用品科技股份有限公司",
+				"createBy": null,
+				"createTime": null,
+				"creditCode": "91340000790136024X",
+				"dqwcbs": 35,
+				"id": "8d24be94dfb048fba3e375240a066bd2",
+				"jb": null,
+				"jdZbs": 23,
+				"parentId": "0",
+				"sort": null,
+				"tbjdbfb": 27,
+				"tbxmmc": "index",
+				"updateBy": "aitime",
+				"updateTime": 1528253339000,
+				"zbs": 127,
+				"zxtbsj": null
+			}
+		],
+		"size": 6,
+		"total": 1
+	},
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "成功"
+}

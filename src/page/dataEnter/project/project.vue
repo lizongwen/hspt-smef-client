@@ -22,7 +22,7 @@
 					<el-table :data="tableData" style="width: 100%">
 						<el-table-column prop="companyName" label="企业名称" min-width="180">
 						</el-table-column>
-						<el-table-column prop="" label="报告进度" width="180">
+						<el-table-column prop="tbjdbfb" label="报告进度" width="180">
 						</el-table-column>
 						<el-table-column prop="updateBy" label="修改人">
 						</el-table-column>
@@ -87,7 +87,6 @@ export default {
       console.log(`当前页: ${val}`);
     },
     handleClick(row) {
-      console.log(row.creditCode);
       sessionStorage.setItem("creditCode", row.creditCode);
       this.$router.push({
         path: "/company",
@@ -96,6 +95,7 @@ export default {
     },
     onSubmit() {
       console.log("submit!");
+      this.getProject(this.searchForm.searchInput);
     },
     addCompany() {
 	  this.dialogFormVisible = true
@@ -105,11 +105,12 @@ export default {
         token: sessionStorage.getItem("token"),
         pageNo: 1,
         pageSize: 10,
-        loginName: sessionStorage.getItem("username")
+        username: sessionStorage.getItem("username"),
+        parentIds:'0',
+        queryKey:this.searchForm.searchInput
       };
       const res = await this.$http.post(this.$api.projectList, params);
-      console.log(res);
-      this.tableData = res.data.resultData;
+      this.tableData = res.data.resultData.records;
     }
   },
   components: {
