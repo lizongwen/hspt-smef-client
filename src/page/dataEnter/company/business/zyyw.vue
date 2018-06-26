@@ -12,7 +12,6 @@
 </template>
 
 <script>
-// import quillEditor from "@/components/form/quillEditor.vue";
 import quillEditor from "@/components/form/quillEditor.vue";
 export default {
   components: {

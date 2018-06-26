@@ -388,11 +388,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-// .main-content {
-//   padding: 20px;
-//   .el-main {
-//     padding: 0;
-//     overflow: hidden;
 .grid-content {
   height: 425px;
 }
@@ -432,7 +427,5 @@ export default {
     }
   }
 }
-//   }
-// }
 </style>
 

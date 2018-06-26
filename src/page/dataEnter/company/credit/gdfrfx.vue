@@ -53,9 +53,8 @@
 							</template>
 						</el-table-column>
 					</el-table>
-					
-          <v-tabelAddBtn :tableData="tableData_0" :tableData_columns="tableData_0_columns"></v-tabelAddBtn>
-        </div>
+					<v-tabelAddBtn :tableData="tableData_0" :tableData_columns="tableData_0_columns"></v-tabelAddBtn>
+       			</div>
 			</el-card>
 		</div>
 		<el-tabs v-model="activeName" @tab-click="handleClick">
@@ -695,10 +694,7 @@ export default {
     },
     verify4(row, index) {
       row.edit = false;
-    },
-//  addRow(tableIndex) {
-//    this[tableIndex].push(this[`${tableIndex}_columns`]);
-//  }
+    }
   },
   components: {
     "v-tabelAddBtn": tabelAddBtn,

@@ -74,8 +74,7 @@
 							</template>
 						</el-table-column>
 					</el-table>
-					<!--<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData"></v-tabelAddBtn>-->
-          <v-tabelAddBtn :tableData="tableData" :tableData_columns="tableData_columns"></v-tabelAddBtn>
+					<v-tabelAddBtn :tableData="tableData" :tableData_columns="tableData_columns"></v-tabelAddBtn>
 				</div>
 			</el-card>
 		</div>
@@ -144,10 +143,7 @@ export default {
   methods: {
     verify(row, index) {
       row.edit = false;
-    },
-    // addRow(tableIndex) {
-    //   this[tableIndex].push(this[`${tableIndex}_columns`]);
-    // }
+    }
   },
   components: {
     "v-tabelAddBtn": tabelAddBtn,

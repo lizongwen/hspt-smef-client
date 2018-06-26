@@ -131,8 +131,7 @@
 									</template>
 								</el-table-column>
 							</el-table>
-							<!--<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData"></v-tabelAddBtn>-->
-              <v-tabelAddBtn :tableData="tableData" :tableData_columns="tableData_columns"></v-tabelAddBtn>
+							<v-tabelAddBtn :tableData="tableData" :tableData_columns="tableData_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -265,8 +264,7 @@
 									</template>
 								</el-table-column>
 							</el-table>
-							<!--<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData_1"></v-tabelAddBtn>-->
-              <v-tabelAddBtn :tableData="tableData_1" :tableData_columns="tableData_1_columns"></v-tabelAddBtn>
+							<v-tabelAddBtn :tableData="tableData_1" :tableData_columns="tableData_1_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -352,8 +350,7 @@
 									</template>
 								</el-table-column>
 							</el-table>
-							<!--<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData_2"></v-tabelAddBtn>-->
-              <v-tabelAddBtn :tableData="tableData_2" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>
+							<v-tabelAddBtn :tableData="tableData_2" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -496,8 +493,7 @@
 									</template>
 								</el-table-column>
 							</el-table>
-							<!--<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData_4"></v-tabelAddBtn>-->
-              <v-tabelAddBtn :tableData="tableData_4" :tableData_columns="tableData_4_columns"></v-tabelAddBtn>
+							<v-tabelAddBtn :tableData="tableData_4" :tableData_columns="tableData_4_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -669,10 +665,6 @@ export default {
     verify4(row, index) {
       row.edit = false;
     }
-//    ,
-//    addRow(tableIndex) {
-//      this[tableIndex].push(this[`${tableIndex}_columns`]);
-//    }
   },
   components: {
     "v-tabelAddBtn": tabelAddBtn,

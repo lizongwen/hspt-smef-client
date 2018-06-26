@@ -7,17 +7,15 @@ export default {
     tableData: {
       type: Array
     },
-    tableData_columns:{
-        type:Object
+    tableData_columns: {
+      type: Object
     }
   },
   methods: {
     addhandler() {
-        if(this.tableData!==null){
-		  this.tableData.push(JSON.parse(JSON.stringify(this.tableData_columns)));
-        }
-       // this.$emit("addRow");
-//      this.$emit("addRow", this.tableIndex);
+      if (this.tableData !== null) {
+        this.tableData.push(JSON.parse(JSON.stringify(this.tableData_columns)));
+      }
     }
   }
 };

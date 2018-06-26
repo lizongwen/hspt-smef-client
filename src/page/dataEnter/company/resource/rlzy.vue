@@ -204,8 +204,7 @@
 									</template>
 								</el-table-column>
 							</el-table>
-							<!--<v-tabelAddBtn v-on:addRow="addRow" tableIndex="formatterTableData"></v-tabelAddBtn>-->
-              <v-tabelAddBtn :tableData="formatterTableData" :tableData_columns="formatterTableData_columns"></v-tabelAddBtn>
+							<v-tabelAddBtn :tableData="formatterTableData" :tableData_columns="formatterTableData_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -294,21 +293,6 @@ export default {
       });
       return this.tableData;
     }
-    // isJoin(){
-    // 	return this.formArry.isJoin?"参与":"不参与";
-    // },
-    // sex(){
-    // 	return this.formArry.sex?"男":"女";
-    // },
-    // isMarry(){
-    // 	return this.formArry.isMarry?"已婚":"未婚";
-    // },
-    // workYear(){
-    // 	return this.formArry.workYear+"年";
-    // },
-    // subtotal(){
-    // 	return this.tableData
-    // }
   },
   methods: {
     handleClick(tab, event) {
@@ -357,12 +341,7 @@ export default {
         };
       });
       this.formArry.push(obj);
-    },
-    // addRow(tableIndex) {
-	// 	console.log(this[tableIndex]);
-	// 	// return;
-    //   this[tableIndex].push(this[`${tableIndex}_columns`]);
-    // }
+    }
   },
   components: {
     "v-formAddBtn": formAddBtn,

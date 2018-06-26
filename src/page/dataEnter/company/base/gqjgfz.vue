@@ -66,8 +66,7 @@
 									</template>
 								</el-table-column>
 							</el-table>
-							<!--<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData"></v-tabelAddBtn>-->
-              <v-tabelAddBtn :tableData="tableData" :tableData_columns="tableData_columns"></v-tabelAddBtn>
+							<v-tabelAddBtn :tableData="tableData" :tableData_columns="tableData_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -135,8 +134,7 @@
 									</template>
 								</el-table-column>
 							</el-table>
-							<!--<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData_1"></v-tabelAddBtn>-->
-              <v-tabelAddBtn :tableData="tableData_1" :tableData_columns="tableData_1_columns"></v-tabelAddBtn>
+							<v-tabelAddBtn :tableData="tableData_1" :tableData_columns="tableData_1_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -237,8 +235,7 @@
 									</template>
 								</el-table-column>
 							</el-table>
-							<!--<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData_2"></v-tabelAddBtn>-->
-              <v-tabelAddBtn :tableData="tableData_2" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>
+							<v-tabelAddBtn :tableData="tableData_2" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -307,12 +304,10 @@
 									</template>
 								</el-table-column>
 							</el-table>
-							<!--<v-tabelAddBtn v-on:addRow="addRow" tableIndex="tableData_3"></v-tabelAddBtn>-->
-              <v-tabelAddBtn :tableData="tableData_3" :tableData_columns="tableData_3_columns"></v-tabelAddBtn>
+							<v-tabelAddBtn :tableData="tableData_3" :tableData_columns="tableData_3_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
-
 			</el-tab-pane>
 			<el-tab-pane label="组织架构" name="third">
 				<div>
@@ -462,20 +457,6 @@ export default {
     }
   },
   mounted() {
-    // var obj = {
-    //   a: 1,
-    //   b: 2
-    // };
-    // var rs = Object.keys(obj);
-    // var ttt = rs.map(item => {
-    //   return {
-    //     [item]: ""
-    //   };
-    // });
-    /*{
-		 a:"",
-		 b:""
-	 }*/
   },
   methods: {
     //点击标签页触发事件
@@ -533,10 +514,10 @@ export default {
     verify1(row, index) {
       row.edit = false;
     },
-	verify2(row, index) {
+    verify2(row, index) {
       row.edit = false;
     },
-	verify3(row, index) {
+    verify3(row, index) {
       row.edit = false;
     },
     getSummaries(param) {
@@ -571,9 +552,6 @@ export default {
         }
       });
       return sums;
-    },
-    addRow(tableIndex) {
-      this[tableIndex].push(this[`${tableIndex}_columns`]);
     }
   },
   components: {

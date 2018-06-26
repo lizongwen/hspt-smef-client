@@ -68,7 +68,7 @@
     methods: {
       init(){
         this.projectList();
-        //this.findAllProjectMember();
+        this.findAllProjectMember();
       },
       //查询倒序排列后的6个项目
       projectList: async function () {
@@ -79,7 +79,6 @@
           parentIds:'0'
         };
 		const res = await this.$http.post(this.$api.projectList, params);
-		// console.log(res.data.resultData.records)
         this.topProject = res.data.resultData.records;
       },
       //查询项目成员
