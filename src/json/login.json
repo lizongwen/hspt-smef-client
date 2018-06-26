@@ -1,7 +1,8 @@
 {
 	"resultCode": "0",
 	"resultData": {
-		"token": "eyJhbGciOiJIUzI1NiJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzU2NjU2MTR9.doZlmPBA4mW5h6Ub0UfjIvfCXrpWF4eYyooh_TjkotU"
+		"token": "eyJhbGciOiJIUzI1NiJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzU2NjU2MTR9.doZlmPBA4mW5h6Ub0UfjIvfCXrpWF4eYyooh_TjkotU",
+		"username":"aitime"
 	},
 	"resultMsg": "成功(0000)"
 }
