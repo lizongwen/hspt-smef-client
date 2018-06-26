@@ -41,7 +41,7 @@ export default {
     }
   },
   mounted() {
-    this.username = sessionStorage.getItem("username") || "";
+	this.username = sessionStorage.getItem("username") || "";
   },
   methods: {
     checkInput() {
@@ -57,9 +57,9 @@ export default {
     login: async function() {
       let params = { username: this.username, password: this.password };
       this.isBtnLoading = true;
-      const res = await this.$http.post(this.$api.login, params);
-      sessionStorage.setItem("username", params.username);
-      sessionStorage.setItem("token", res.data.resultData.token);
+	  const res = await this.$http.post(this.$api.login, params);
+      sessionStorage.setItem("username", this.username);
+	  sessionStorage.setItem("token", res.data.resultData.token);
       this.$router.push({ path: "./index" });
     }
   }
