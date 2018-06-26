@@ -94,7 +94,6 @@ export default {
       });
     },
     onSubmit() {
-    //   console.log("submit!");
       this.getProject(this.searchForm.searchInput);
     },
     addCompany() {
