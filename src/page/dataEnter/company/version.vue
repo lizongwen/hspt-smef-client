@@ -57,21 +57,16 @@ export default {
       let params = {
         token: sessionStorage.getItem("token"),
         username: sessionStorage.getItem("username"),
-        creditCode: this.creditCode
+		// creditCode: sessionStorage.getItem("creditCode"),
+		creditCode: 123,
+        batchNo: this.searchForm.searchInput || ""
       };
       const res = await this.$http.post(this.$api.getVersion, params);
       this.tableData = res.data.resultData.data;
     },
     //搜索版本
-    searchBatch: async function() {
-    //   let params = {
-    //     token: sessionStorage.getItem("token"),
-    //     username: sessionStorage.getItem("username"),
-    //     creditCode: 123,
-    //     batchNo: this.searchForm.searchInput
-    //   };
-    //   const res = await this.$http.post(this.$api.getBatch, params);
-    //   this.tableData = res.data.resultData.data;
+    searchBatch() {
+      this.getVersion();
     }
   }
 };

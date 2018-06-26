@@ -48,8 +48,10 @@ export default {
     companyHeader
   },
   mounted() {
+	  console.log(this.$store.state.company.isAside)
     this.creditCode =
-      this.$route.query.creditCode || sessionStorage.getItem("creditCode");
+	  this.$route.query.creditCode || sessionStorage.getItem("creditCode");
+	  console.log(this.creditCode)
     this.defaultActive = this.$route.meta.index;
   },
   methods: {
@@ -59,7 +61,11 @@ export default {
     handleClose(key, keyPath) {
       //   console.log(key, keyPath);
     }
-  }
+  },
+//   beforeRouteEnter(to, from, next){
+// 	  console.log(333);
+// 	  next();
+//   }
 };
 </script>
 <style lang="scss" scoped>
