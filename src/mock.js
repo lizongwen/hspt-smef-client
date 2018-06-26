@@ -10,7 +10,7 @@ import findByLoginName from '@/json/findByLoginName.json';
 import findDeptByIdData from '@/json/findDeptById.json';
 import findAllProjectMemberData from '@/json/findAllProjectMember.json';
 import projectData from '@/json/projectData.json';
-import version from '@/json/version.json';
+import versionData from '@/json/version.json';
 
 
 
@@ -55,12 +55,9 @@ Mock.mock(api.projectList, 'post', function (req) {
 	return projectData;
 });
 
-
-
-
-// Mock.mock(api.getVersion, 'post', function (req) {
-// 	return listData;
-// });
+Mock.mock(api.getVersion, 'post', function (req) {
+	return versionData;
+});
 
 
 Mock.mock(api.genReport, 'post', function (req) {
