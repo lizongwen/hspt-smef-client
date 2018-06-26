@@ -36,19 +36,16 @@
       //编辑
       edit(row) {
         row.edit = true;
-        this.oldRow = JSON.parse(JSON.stringify(row));
+		this.oldRow = JSON.parse(JSON.stringify(row));
       },
       //取消编辑
       cacelEdit(row) {
-        console.log('row:', row);
-        console.log('testData:',this.testData);
-        console.log('tableData:',this.tableData);
         this.oldRow.edit = false;
         let rowAttrList = Object.keys(row);
         rowAttrList.forEach((item) => {
-          row[item] = JSON.parse(JSON.stringify(this.oldRow[item]));
-        })
-
+			row[item]=this.oldRow[item];
+        //   row[item] = JSON.parse(JSON.stringify(this.oldRow[item]));
+		})
       },
       //确认编辑
       confirmEdit(row, index) {
