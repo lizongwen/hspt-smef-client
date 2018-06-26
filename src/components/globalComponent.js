@@ -1,4 +1,5 @@
 import tableOperation from './table/table-operation.vue';
-export default (Vue)=>{
-  Vue.component('v-table-operation',tableOperation)
+// import {VTable} from 'vue-easytable'
+export default (Vue) => {
+  Vue.component('v-tableOperation', tableOperation)
 }

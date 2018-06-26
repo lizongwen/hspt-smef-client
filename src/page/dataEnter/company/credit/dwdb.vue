@@ -8,137 +8,104 @@
         </div>
         <div class="card-title">对外担保信息</div>
       </div>
-      <el-table @cell-click="cellClickHanle" :data="tableData" style="width:100%" :span-method="amountSpanMethod">
-        <el-table-column label="" prop="firstItem.value" width="100">
-        </el-table-column>
-        <el-table-column label="笔数" width="100">
-          <template slot-scope="scope">
-            <template v-if="scope.row.num.editing">
-              <el-form :model="scope.row">
-                <el-form-item prop="num.value" class="td-form-item">
-                  <el-input class="edit-input" size="small" v-model="scope.row.num.value"></el-input>
-                </el-form-item>
-              </el-form>
-            </template>
-            <span v-else>{{scope.row.num.value}}</span>
-          </template>
-        </el-table-column>
-        <el-table-column label="担保金额" prop="guaranteeAmount.value" width="100">
-        </el-table-column>
-        <el-table-column label="被担保业务余额">
-          <el-table-column label="正常" prop="regular.value"></el-table-column>
-          <el-table-column label="关注" prop="attention.value"></el-table-column>
-          <el-table-column label="不良" prop="badness.value"></el-table-column>
-        </el-table-column>
-        <el-table-column label="合计" prop="amount.value">
-        </el-table-column>
-      </el-table>
-      <button @click="makeCellEdit">makeCellEdit</button>
-      <button @click="makeCellNoEdit">makeCellNoEdit</button>
+      <v-table
+        is-horizontal-resize
+        style="width:100%"
+        :height="500"
+        :title-rows="titleRows"
+        :columns="columns"
+        :table-data="tableData"
+        row-hover-color="#eee"
+        row-click-color="#edf7ff"
+        :cell-edit-done="cellEditDone"
+        :cell-merge="cellMerge"
+      ></v-table>
     </el-card>
   </div>
 </template>
 
+<style>
+</style>
+
 <script>
-  export default {
-    data() {
+
+  export default{
+    data(){
       return {
+        total: 0,
         tableData: [{
-          firstItem: {'value': '保证汇总', 'edit': false},
-          num: {'value': '0', 'edit': true, editing: false},
-          guaranteeAmount: {'value': '0', 'edit': true, editing: false},
-          regular: {'value': '0', 'edit': true, editing: false},
-          attention: {'value': '0', 'edit': true, editing: false},
-          badness: {'value': '0', 'edit': true, editing: false},
-          amount: {'value': '0', 'edit': true, editing: false}
+          firstItem: '保证汇总',
+          num: '0',
+          guaranteeAmount: '0',
+          regular: '0',
+          attention: '0',
+          badness: '0',
+          amount: '0'
         }, {
-          firstItem: {'value': '抵押汇总', 'edit': false},
-          num: {'value': '0', 'edit': true},
-          guaranteeAmount: {'value': '0', 'edit': true},
-          regular: {'value': '0', 'edit': true},
-          attention: {'value': '0', 'edit': true},
-          badness: {'value': '0', 'edit': true},
-          amount: {'value': '0', 'edit': true}
+          firstItem: '抵押汇总',
+          num: '1',
+          guaranteeAmount: '0',
+          regular: '0',
+          attention: '0',
+          badness: '0',
+          amount: '0'
         }, {
-          firstItem: {'value': '质押汇总', 'edit': false},
-          num: {'value': '0', 'edit': true},
-          guaranteeAmount: {'value': '0', 'edit': true},
-          regular: {'value': '0', 'edit': true},
-          attention: {'value': '0', 'edit': true},
-          badness: {'value': '0', 'edit': true},
-          amount: {'value': '0', 'edit': true}
-//          firstItem: '质押汇总',
-//          num: '0',
-//          guaranteeAmount: '0',
-//          regular: '0',
-//          attention: '0',
-//          badness: 0,
-//          amount: 0
-        }]
+          firstItem: '质押汇总',
+          num: '2',
+          guaranteeAmount: '0',
+          regular: '0',
+          attention: '0',
+          badness: '0',
+          amount: '0'
+        }],
+        columns: [
+          {field: 'firstItem', width: 100, columnAlign: 'center', isFrozen: true},
+          {field: 'num', width: 110, columnAlign: 'center', isEdit: true},
+          {field: 'guaranteeAmount', width: 110, columnAlign: 'center', isEdit: true},
+          {field: 'regular', width: 110, columnAlign: 'center', isEdit: true},
+          {field: 'attention', width: 110, columnAlign: 'center', isEdit: true},
+          {field: 'badness', width: 110, columnAlign: 'center', isEdit: true},
+          {field: 'amount', width: 110, columnAlign: 'center', isResize: true}
+        ],
+
+        titleRows: [
+          [
+            {fields: ['firstItem'], title: '', titleAlign: 'center'},
+            {fields: ['num'], title: '笔数', titleAlign: 'center'},
+            {fields: ['guaranteeAmount'], title: '担保金额', titleAlign: 'center'},
+            {fields: ['regular', 'attention', 'badness'], title: '被担保业务余额', titleAlign: 'center'},
+            {fields: ['amount'], title: '合计', titleAlign: 'center'}
+          ]
+        ]
+      }
+    },
+    computed: {
+      totalNum()
+      {
+        let all = 0;
+        this.tableData.forEach((items, index, array) => {
+          console.log('items:', items);
+          for (let item in items) {
+            if (item === 'firstItem') continue;
+            all += parseInt(items[item]);
+          }
+        })
+        return all;
       }
     },
     methods: {
-      cellClickHanle(row, column, cell, event) {
-        console.log('value:', event.path[0].innerText);
-        console.log('columnIndex:', event.path[1].cellIndex);
-        console.log('RowIndex:', event.path[2].rowIndex);
-        let columnIndex = event.path[1].cellIndex;
-        let rowIndex = event.path[2].rowIndex;
-        let cellValue = event.path[0].innerText;
-        if (columnIndex != 0 && columnIndex != 6) {
-          console.log(event);
-          console.log(cell);
-          console.log('before:', event.target);
-          event.target.innerHTML = "";
-          console.log('after:', event.target);
-          let cellInput = document.createElement("input");
-          cellInput.value = cellValue;
-          cellInput.setAttribute("type", "text");
-          cellInput.style.width = "100%";
-          cellInput.style.height = "100%";
-          cellInput.focus();
-          cellInput.select();
-
-          event.target.appendChild(cellInput);
-
-          cellInput.onblur = function () {
-            console.log('onblur');
-//            event.target.innerHTML = "";
-            event.target.removeChild(cellInput);
-            event.target.innerHTML = cellInput.value;
-          };
-        }
+      cellEditDone(newValue, oldValue, rowIndex, rowData, field){
+        this.tableData[rowIndex][field] = newValue;
       },
-      cellClickHanle1(row, column, cell, event){
-        console.log(event.path[1].cellIndex);
-        console.log(column);
-
-      },
-      makeCellEdit(){
-
-      },
-      makeCellNoEdit(){
-
-      },
-      amountSpanMethod({row, column, rowIndex, columnIndex}){
-        if (columnIndex === 6) {
-          if (rowIndex % 3 === 0) {
-            return {
-              rowspan: 3,
-              colspan: 1
-            };
-          } else {
-            return {
-              rowspan: 0,
-              colspan: 0
-            };
+      cellMerge(rowIndex, rowData, field){
+        if (field === 'amount') {
+          return {
+            colSpan: 1,
+            rowSpan: 3,
+            content: this.totalNum
           }
         }
       }
     }
   }
 </script>
-
-<style>
-
-</style>
