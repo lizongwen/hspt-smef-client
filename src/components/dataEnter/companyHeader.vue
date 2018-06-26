@@ -48,7 +48,7 @@
 				</li>
 			</ul>
 			<div class="report-btn-wrap">
-				<el-button type="primary">生成报告</el-button>
+				<el-button type="primary"  @click="genReport">生成报告</el-button>
 			</div>
 		</div>
 	</div>
@@ -100,7 +100,16 @@ export default {
     toHome() {
       this.$store.commit("changeSide", true);
       this.$router.push({ path: "/company/home" });
-    }
+    },
+	genReport:async function() {
+		 let params = {
+         token: sessionStorage.getItem("token"),
+         username: sessionStorage.getItem("username"),
+         creditCode: "123",
+         companyName:"123"
+      };
+      const res = await this.$http.post(this.$api.genReport, params);
+	}
   },
   mounted() {
     this.init();
