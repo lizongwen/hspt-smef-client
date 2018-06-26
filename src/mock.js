@@ -55,3 +55,6 @@ Mock.mock(api.projectList, 'post', function (req) {
 Mock.mock(api.findAllProjectMember, 'post', function (req) {
   return findAllProjectMemberData;
 });
+Mock.mock(api.genReport, 'post', function (req) {
+	return {};
+  });
