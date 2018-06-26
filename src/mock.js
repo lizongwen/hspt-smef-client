@@ -10,7 +10,7 @@ import findByLoginName from '@/json/findByLoginName.json';
 import findDeptByIdData from '@/json/findDeptById.json';
 import findAllProjectMemberData from '@/json/findAllProjectMember.json';
 import projectData from '@/json/projectData.json';
-
+import version from '@/json/version.json';
 
 
 
