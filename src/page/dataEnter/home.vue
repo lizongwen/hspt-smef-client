@@ -15,7 +15,7 @@
                   <div class="proj-name">{{item.companyName}}</div>
                   <div class="proj-progress-wrap">
                     <p>报告填报进度</p>
-                    <el-progress :percentage="70"></el-progress>
+                    <el-progress :percentage="item.tbjdbfb"></el-progress>
                   </div>
                   <div class="proj-state">
                     <div class="modify-name">修改人：
@@ -74,11 +74,12 @@
       findLatestProject: async function () {
         let params = {
           token: sessionStorage.getItem("token"),
-          createName: sessionStorage.getItem("username"),
-          pageSize: 6
+          username: sessionStorage.getItem("username"),
+          pageSize: 6,
+          parentIds:'0'
         };
         const res = await this.$http.post(this.$api.findLatestProject, params);
-        this.topProject = res.data.resultData;
+        this.topProject = res.data.resultData.records;
       },
       //查询项目成员
       findAllProjectMember: async function () {
@@ -87,7 +88,6 @@
           loginName: sessionStorage.getItem("username")
         };
 		const res = await this.$http.post(this.$api.findAllProjectMember, params);
-		console.log(res)
         this.rightMember = res.data.resultData;
       },
       showProjs() {
