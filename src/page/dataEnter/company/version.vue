@@ -63,7 +63,7 @@ export default {
       this.tableData = res.data.resultData.data;
     },
     //搜索版本
-    // searchBatch: async function() {
+    searchBatch: async function() {
     //   let params = {
     //     token: sessionStorage.getItem("token"),
     //     username: sessionStorage.getItem("username"),
@@ -72,7 +72,7 @@ export default {
     //   };
     //   const res = await this.$http.post(this.$api.getBatch, params);
     //   this.tableData = res.data.resultData.data;
-    // }
+    }
   }
 };
 </script>

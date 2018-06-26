@@ -1,3 +1,47 @@
 {
-	"a":1
+	"resultCode": "0",
+	"resultData": {
+		"data": [
+			{
+				"batchNo": "201806150007",
+				"createBy": null,
+				"createTime": 1529041514000,
+				"creditCode": "123",
+				"id": "022ade0ab8ae4bae965983319ede5a48",
+				"location": null,
+				"name": null,
+				"updateBy": null,
+				"updateTime": 1529041514000,
+				"version": "hgzx-0553-2018-000217"
+			},
+			{
+				"batchNo": "201806150006",
+				"createBy": null,
+				"createTime": 1529041492000,
+				"creditCode": "123",
+				"id": "f2adb438f9ff409ca66cdf57559da7aa",
+				"location": null,
+				"name": null,
+				"updateBy": null,
+				"updateTime": 1529041492000,
+				"version": "hgzx-0553-2018-000217"
+			},
+			{
+				"batchNo": "201806150005",
+				"createBy": null,
+				"createTime": 1529040265000,
+				"creditCode": "123",
+				"id": "2f6739a658a04bf88ac41cd726a91cca",
+				"location": null,
+				"name": null,
+				"updateBy": null,
+				"updateTime": 1529041398000,
+				"version": "hgzx-0553-2018-000217"
+			}
+		],
+		"token": "eyJhbGciOiJIUzI1NiJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzYwMTYzNjB9._8dws9Ti41BEsB0QQL0pAkzJPHgDUs6-58-8mnBuZKM"
+	},
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "成功"
 }
