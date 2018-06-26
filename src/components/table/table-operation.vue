@@ -24,14 +24,15 @@
         type: Array
       }
     },
+    data(){
+        return{
+            testData:{a:1}
+        }
+    },
     mounted() {
       // this.init();
     },
     methods: {
-      objClone(origin){
-          let originProto = Object.getPrototypeOf(origin);
-          return Object.assign(Object.create(originProto),origin);
-      },
       //编辑
       edit(row) {
         row.edit = true;
@@ -39,11 +40,15 @@
       },
       //取消编辑
       cacelEdit(row) {
+        console.log('row:', row);
+        console.log('testData:',this.testData);
+        console.log('tableData:',this.tableData);
         this.oldRow.edit = false;
         let rowAttrList = Object.keys(row);
-        rowAttrList.forEach((item)=>{
-            row[item] = this.oldRow[item];
+        rowAttrList.forEach((item) => {
+          row[item] = JSON.parse(JSON.stringify(this.oldRow[item]));
         })
+
       },
       //确认编辑
       confirmEdit(row, index) {
