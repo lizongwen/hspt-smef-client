@@ -8,4 +8,5 @@ export default {
 	findAllProjectMember: 'hspt-web-api/user/findAllProjectMember',//查询部门成员
 	projectList:'hspt-web-api/role/findRoleByLoginName',
 	gsjbxxModify:'hspt-web-api/data_entry/gsjbxx/modify',//工商基本信息
+	genReport:'/hspt-web-api/report/onlineEdit/doc/open'//信用报告生成触发
 }
