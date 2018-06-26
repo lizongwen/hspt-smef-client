@@ -15,7 +15,7 @@ import http from './utils/http';
 import api from './utils/api';
 
 // 引入mock.js
-require('./mock.js');
+// require('./mock.js');
 
 // import './style/commonStyle.scss'
 // 使用vue-easytable组件
