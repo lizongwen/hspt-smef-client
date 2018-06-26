@@ -15,7 +15,7 @@ import http from './utils/http';
 import api from './utils/api';
 
 // 引入mock.js
-require('./mock.js');
+// require('./mock.js');
 
 // import './style/commonStyle.scss'
 import 'vue-easytable/libs/themes-base/index.css'
