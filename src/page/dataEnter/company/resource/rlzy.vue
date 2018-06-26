@@ -358,11 +358,11 @@ export default {
       });
       this.formArry.push(obj);
     },
-    addRow(tableIndex) {
-		console.log(this[tableIndex]);
-		// return;
-      this[tableIndex].push(this[`${tableIndex}_columns`]);
-    }
+    // addRow(tableIndex) {
+	// 	console.log(this[tableIndex]);
+	// 	// return;
+    //   this[tableIndex].push(this[`${tableIndex}_columns`]);
+    // }
   },
   components: {
     "v-formAddBtn": formAddBtn,

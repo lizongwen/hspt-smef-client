@@ -145,9 +145,9 @@ export default {
     verify(row, index) {
       row.edit = false;
     },
-    addRow(tableIndex) {
-      this[tableIndex].push(this[`${tableIndex}_columns`]);
-    }
+    // addRow(tableIndex) {
+    //   this[tableIndex].push(this[`${tableIndex}_columns`]);
+    // }
   },
   components: {
     "v-tabelAddBtn": tabelAddBtn,

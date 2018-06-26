@@ -14,9 +14,9 @@ export default {
   methods: {
     addhandler() {
         if(this.tableData!==null){
-          this.tableData.push(JSON.parse(JSON.stringify(this.tableData_columns)));
+		  this.tableData.push(JSON.parse(JSON.stringify(this.tableData_columns)));
         }
-        this.$emit("addRow");
+       // this.$emit("addRow");
 //      this.$emit("addRow", this.tableIndex);
     }
   }
