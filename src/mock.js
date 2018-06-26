@@ -4,11 +4,12 @@ const Mock = require('mockjs');
 // import demoJson from '@/json/demo.json';//仓库管理JSON
 // import companyMenu from '@/json/companyMenu.json';
 import api from './utils/api';
-import loginData from '@/json/login.json';
+import loginData from '@/json/login.json';//登录接口
 import findByLoginName from '@/json/findByLoginName.json';
-import listData from '@/json/list.json';
+import projectData from '@/json/projectData.json';
+import AlllistData from '@/json/AlllistData.json';
 import findDeptByIdData from '@/json/findDeptById.json';
-import findLatestProjectData from '@/json/findLatestProject.json';
+
 import findRoleByLoginNameData from '@/json/findRoleByLoginName.json';
 import findAllProjectMemberData from '@/json/findAllProjectMember.json';
 
@@ -27,34 +28,37 @@ const Random = Mock.Random;
 // Mock.mock('/api/getDemoJson', 'post', DemoJson);
 // Mock.mock('/api/getCompanyMenu', 'get', MenuData);
 
-
+//登录接口
 Mock.mock(api.login, 'post', function (req) {
-  return loginData;
+	return loginData;
 });
 
+//查询职位
 Mock.mock(api.findByLoginName, 'post', function (req) {
-  return findByLoginName;
+	return findByLoginName;
 });
-
-Mock.mock(api.getVersion, 'post', function (req) {
-  return listData;
-});
-
+//查询部门
 Mock.mock(api.findDept, 'post', function (req) {
-  return findDeptByIdData;
+	return findDeptByIdData;
 });
 
-Mock.mock(api.findLatestProject, 'post', function (req) {
-  return findLatestProjectData;
-});
-
+//查询所有项目
 Mock.mock(api.projectList, 'post', function (req) {
-  return findRoleByLoginNameData;
+	return projectData;
 });
 
+//查询部门成员
 Mock.mock(api.findAllProjectMember, 'post', function (req) {
-  return findAllProjectMemberData;
+	return findAllProjectMemberData;
 });
+
+
+
+// Mock.mock(api.getVersion, 'post', function (req) {
+// 	return listData;
+// });
+
+
 Mock.mock(api.genReport, 'post', function (req) {
 	return {};
-  });
+});

@@ -67,18 +67,18 @@
     },
     methods: {
       init(){
-        this.findLatestProject();
+        this.projectList();
         this.findAllProjectMember();
       },
       //查询倒序排列后的6个项目
-      findLatestProject: async function () {
+      projectList: async function () {
         let params = {
           token: sessionStorage.getItem("token"),
           username: sessionStorage.getItem("username"),
           pageSize: 6,
           parentIds:'0'
         };
-        const res = await this.$http.post(this.$api.findLatestProject, params);
+        const res = await this.$http.post(this.$api.projectList, params);
         this.topProject = res.data.resultData.records;
       },
       //查询项目成员
