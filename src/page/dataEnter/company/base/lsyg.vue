@@ -15,53 +15,28 @@
           <el-table-column label="序号" type="index" width="50"></el-table-column>
           <el-table-column min-width="110px" label="变更日期">
             <template slot-scope="scope">
-              <template v-if="scope.row.edit">
-                <el-form :model="scope.row" :rules="rules" :id="'changeDate'+scope.$index"
-                         :ref="'form_changeDate_'+scope.$index" :show-message="false">
-                  <el-form-item prop="changeDate" class="td-form-item">
-                    <el-input class="edit-input" size="small" v-model="scope.row.changeDate"></el-input>
-                  </el-form-item>
-                </el-form>
-              </template>
+              <el-date-picker v-if="scope.row.edit" type="date" placeholder="选择日期" v-model="scope.row.changeDate"
+                              style="width: 100%;"></el-date-picker>
               <span v-else>{{scope.row.changeDate}}</span>
             </template>
           </el-table-column>
           <el-table-column min-width="200px" label="变更事项">
             <template slot-scope="scope">
-              <template v-if="scope.row.edit">
-                <el-form :model="scope.row" :rules="rules" :id="'changeThing'+scope.$index"
-                         :ref="'form_changeThing_'+scope.$index" :show-message="false">
-                  <el-form-item prop="changeThing" class="td-form-item">
-                    <el-input class="edit-input" size="small" v-model="scope.row.changeThing"></el-input>
-                  </el-form-item>
-                </el-form>
-              </template>
+              <el-input v-if="scope.row.edit" class="edit-input" size="small"
+                        v-model.number="scope.row.changeThing"></el-input>
               <span v-else>{{ scope.row.changeThing}}</span>
             </template>
           </el-table-column>
           <el-table-column min-width="200px" label="变更前">
             <template slot-scope="scope">
-              <template v-if="scope.row.edit">
-                <el-form :model="scope.row" :rules="rules" :id="'beforeThing'+scope.$index"
-                         :ref="'form_beforeThing_'+scope.$index" :show-message="false">
-                  <el-form-item prop="beforeThing" class="td-form-item">
-                    <el-input class="edit-input" size="small" v-model="scope.row.beforeThing"></el-input>
-                  </el-form-item>
-                </el-form>
-              </template>
+              <el-input v-if="scope.row.edit" class="edit-input" size="small"
+                        v-model="scope.row.beforeThing"></el-input>
               <span v-else>{{ scope.row.beforeThing}}</span>
             </template>
           </el-table-column>
           <el-table-column min-width="200px" label="变更后">
             <template slot-scope="scope">
-              <template v-if="scope.row.edit">
-                <el-form :model="scope.row" :rules="rules" :id="'afterThing'+scope.$index"
-                         :ref="'form_afterThing_'+scope.$index" :show-message="false">
-                  <el-form-item prop="afterThing" class="td-form-item">
-                    <el-input class="edit-input" size="small" v-model="scope.row.afterThing"></el-input>
-                  </el-form-item>
-                </el-form>
-              </template>
+              <el-input v-if="scope.row.edit" class="edit-input" size="small" v-model="scope.row.afterThing"></el-input>
               <span v-else>{{ scope.row.afterThing}}</span>
             </template>
           </el-table-column>
@@ -78,8 +53,10 @@
 </template>
 
 <script>
+  import tableValidates from "@/utils/validateTable/tableValidates.js";
   import tabelAddBtn from "@/components/table/table-add-btn.vue";
   import tableOperation from "@/components/table/table-operation.vue";
+
   export default {
     data() {
       return {
@@ -110,32 +87,17 @@
         //规则
         rules: {
           changeDate: [
-            {
-              required: true,
-              message: "请选择年份",
-              trigger: "null"
-            }
+            {type: 'date', required: true, message: '请选择变更日期'}
           ],
           changeThing: [
-            {
-              required: true,
-              message: "请输入荣誉信息",
-              trigger: "null"
-            }
+            {type: 'number', required: true, message: "变更事项是必填项，且需要录入数字"}
           ],
           beforeThing: [
-            {
-              required: true,
-              message: "请输入荣誉信息",
-              trigger: "null"
-            }
+            {required: true, message: "变更前是必填项"},
+            {min: 3, max: 5, message: '变更前字符长度需要 3 到 5 个字符'}
           ],
           afterThing: [
-            {
-              required: true,
-              message: "请输入荣誉信息",
-              trigger: "null"
-            }
+            {required: true, message: "变更后是必填项"}
           ]
         }
       };
@@ -144,51 +106,52 @@
     },
     methods: {
       verify(row, index) {
-        var a = true,
-          b = true,
-          c = true,
-          d = true;
-        this.$refs[`form_changeDate_${index}`].validate((res, obj) => {
-          if (res) {
-            //验证通过
-            a = false;
-          } else {
-            //验证不通过
-            console.log(obj.changeDate[0].message);
-          }
-        });
-        this.$refs[`form_changeThing_${index}`].validate((res, obj) => {
-          if (res) {
-            //验证通过
-            b = false;
-          } else {
-            //验证不通过
-            console.log(obj.changeThing[0].message);
-          }
-        });
-        this.$refs[`form_beforeThing_${index}`].validate((res, obj) => {
-          if (res) {
-            //验证通过
-            c = false;
-          } else {
-            //验证不通过
-            console.log(obj.beforeThing[0].message);
-          }
-        });
-        this.$refs[`form_afterThing_${index}`].validate((res, obj) => {
-          if (res) {
-            //验证通过
-            d = false;
-          } else {
-            //验证不通过
-            console.log(obj.afterThing[0].message);
-          }
-        });
-        if (!a && !b && !c && !d) {
-          row.edit = false;
-        } else {
-          //弹出错误消息汇总
-        }
+        tableValidates.validateByRow(row, index, this.rules, this);
+//        var a = true,
+//          b = true,
+//          c = true,
+//          d = true;
+//        this.$refs[`form_changeDate_${index}`].validate((res, obj) => {
+//          if (res) {
+//            //验证通过
+//            a = false;
+//          } else {
+//            //验证不通过
+//            console.log(obj.changeDate[0].message);
+//          }
+//        });
+//        this.$refs[`form_changeThing_${index}`].validate((res, obj) => {
+//          if (res) {
+//            //验证通过
+//            b = false;
+//          } else {
+//            //验证不通过
+//            console.log(obj.changeThing[0].message);
+//          }
+//        });
+//        this.$refs[`form_beforeThing_${index}`].validate((res, obj) => {
+//          if (res) {
+//            //验证通过
+//            c = false;
+//          } else {
+//            //验证不通过
+//            console.log(obj.beforeThing[0].message);
+//          }
+//        });
+//        this.$refs[`form_afterThing_${index}`].validate((res, obj) => {
+//          if (res) {
+//            //验证通过
+//            d = false;
+//          } else {
+//            //验证不通过
+//            console.log(obj.afterThing[0].message);
+//          }
+//        });
+//        if (!a && !b && !c && !d) {
+//          row.edit = false;
+//        } else {
+//          //弹出错误消息汇总
+//        }
       }
     },
     components: {

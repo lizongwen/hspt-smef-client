@@ -28,35 +28,36 @@
 </style>
 
 <script>
-
+  import AsyncValidator from 'async-validator';
+  import popMsg from '@/utils/notice/notice';
   export default{
     data(){
       return {
         total: 0,
         tableData: [{
           firstItem: '保证汇总',
-          num: '0',
-          guaranteeAmount: '0',
-          regular: '0',
-          attention: '0',
-          badness: '0',
-          amount: '0'
+          num: 1,
+          guaranteeAmount: 0,
+          regular: 0,
+          attention: 0,
+          badness: 0,
+          amount: 0
         }, {
           firstItem: '抵押汇总',
-          num: '1',
-          guaranteeAmount: '0',
-          regular: '0',
-          attention: '0',
-          badness: '0',
-          amount: '0'
+          num: 2,
+          guaranteeAmount: 0,
+          regular: 0,
+          attention: 0,
+          badness: 0,
+          amount: 0
         }, {
           firstItem: '质押汇总',
-          num: '2',
-          guaranteeAmount: '0',
-          regular: '0',
-          attention: '0',
-          badness: '0',
-          amount: '0'
+          num: 3,
+          guaranteeAmount: 0,
+          regular: 0,
+          attention: 0,
+          badness: 0,
+          amount: 0
         }],
         columns: [
           {field: 'firstItem', width: 100, columnAlign: 'center', isFrozen: true},
@@ -67,7 +68,6 @@
           {field: 'badness', width: 110, columnAlign: 'center', isEdit: true},
           {field: 'amount', width: 110, columnAlign: 'center', isResize: true}
         ],
-
         titleRows: [
           [
             {fields: ['firstItem'], title: '', titleAlign: 'center'},
@@ -76,7 +76,31 @@
             {fields: ['regular', 'attention', 'badness'], title: '被担保业务余额', titleAlign: 'center'},
             {fields: ['amount'], title: '合计', titleAlign: 'center'}
           ]
-        ]
+        ],
+        rules: {
+          num: [
+            {required: true, message: '此项必填'},
+            {type: 'number', message: '此项必须为数字值'},
+            {len: '5', message: '请填写5位数'}
+          ],
+          guaranteeAmount: [
+            {required: true, message: '此项必填'},
+            {type: 'number', message: '此项必须为数字值'}
+
+          ],
+          regular: [
+            {required: true, message: '此项必填'},
+            {type: 'number', message: '此项必须为数字值'}
+          ],
+          attention: [
+            {required: true, message: '此项必填'},
+            {type: 'number', message: '此项必须为数字值'}
+          ],
+          badness: [
+            {required: true, message: '此项必填'},
+            {type: 'number', message: '此项必须为数字值'}
+          ]
+        }
       }
     },
     computed: {
@@ -84,7 +108,7 @@
       {
         let all = 0;
         this.tableData.forEach((items, index, array) => {
-          console.log('items:', items);
+//          console.log('items:', items);
           for (let item in items) {
             if (item === 'firstItem') continue;
             all += parseInt(items[item]);
@@ -94,8 +118,44 @@
       }
     },
     methods: {
+      validateData(field, rowIndex, newValue, rowData){
+        let rules, obj, rule;
+        rules = this.rules;
+        obj = {};
+        rule = {};
+        //取到当前规则
+        rule[field] = rules[field];
+
+        //粗犷的处理
+        //需要转化input中的value为数字类型
+        try {
+          obj[field] = Number(newValue.trim());
+          //tableData[rowIndex][field] = Number(newValue.trim());
+          //console.log('rowData[rowIndex][field] typeof:', typeof Number(tableData[rowIndex][field]))
+        } catch (ex) {
+          console.log('in catch!!!');
+          obj[field] = newValue.trim();
+        }
+
+        const validator = new AsyncValidator(rule);
+        validator.validate(obj, (errors, invalidFields) => {
+          console.log('typeof obj[field]:', typeof obj[field]);
+          if (errors) {
+            let notice = '';
+            //构造错误信息
+            invalidFields[field].forEach((item, index) => {
+              notice += `${(index + 1)}. ${item.message}`;
+            });
+            //弹出错误信息
+            popMsg.popErrorMsg(this, notice);
+            //高亮该单元格，且让该单元格聚焦
+          }
+        });
+      },
       cellEditDone(newValue, oldValue, rowIndex, rowData, field){
         this.tableData[rowIndex][field] = newValue;
+        //数据验证
+        this.validateData(field, rowIndex, newValue, rowData);
       },
       cellMerge(rowIndex, rowData, field){
         if (field === 'amount') {
