@@ -62,10 +62,6 @@ export default {
       //   console.log(key, keyPath);
     }
   },
-//   beforeRouteEnter(to, from, next){
-// 	  console.log(333);
-// 	  next();
-//   }
 };
 </script>
 <style lang="scss" scoped>

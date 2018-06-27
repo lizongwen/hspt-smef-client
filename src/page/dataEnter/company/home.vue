@@ -410,13 +410,9 @@ export default {
   mounted() {
     this.init();
   },
-  beforeRouteEnter(to,form,next){
-	  console.log('进入home')
-	  next();
-  },
   methods: {
     init() {
-      //this.getProjDetail();
+      this.getProjDetail();
     },
     openMod() {
       console.log();
