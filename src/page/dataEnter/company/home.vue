@@ -408,8 +408,11 @@ export default {
     };
   },
   mounted() {
-    this.$emit("child-side", true);
     this.init();
+  },
+  beforeRouteEnter(to,form,next){
+	  console.log('进入home')
+	  next();
   },
   methods: {
     init() {
