@@ -6,7 +6,7 @@
 					<h3 class="mod-name">公司基本信息</h3>
 					<div class="company-progress">
 						<span>{{projDetail.qyjbxx.progress}}%</span>
-						<el-progress :percentage="10" :show-text="false"></el-progress>
+						<el-progress :percentage="projDetail.qyjbxx.progress" :show-text="false"></el-progress>
 					</div>
 					<ul class="mod-list">
 						<li class="mod-list-item">
