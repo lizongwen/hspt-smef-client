@@ -317,6 +317,13 @@ let router = new Router({
 						},
 						component: () => import('@/page/dataEnter/company/risk/fxxfx.vue')
 					}, {
+						path: 'jbxxzy/jbxxzy',//基本信息及摘要
+						name: 'fxxfx',
+						meta: {
+							index: '7-1'
+						},
+						component: () => import('@/page/dataEnter/company/jbxxzy/jbxxzy.vue')
+					}, {
 						path: 'version',//版本管理
 						name: 'version',
 						meta: {
@@ -324,14 +331,14 @@ let router = new Router({
 						},
 						component: () => import('@/page/dataEnter/company/version.vue'),
 					}, {
-						path: 'report',//版本管理
+						path: 'report',//查看报告
 						name: 'report',
 						meta: {
 							title: '云信平台 - 企业填报 -查看报告'
 						},
 						component: () => import('@/page/dataEnter/company/report.vue'),
 					}, {
-						path: 'log',//版本管理
+						path: 'log',//日志查询
 						name: 'log',
 						meta: {
 							title: '云信平台 - 企业填报 -日志查询'

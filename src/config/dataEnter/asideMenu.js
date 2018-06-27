@@ -145,47 +145,47 @@ let menuAsideData = [
       {
         "index": "5-1",
         "name": "主要财务数据",
-        "path": "/finance/zycwsj"
+        "path": "/company/finance/zycwsj"
       },
       {
         "index": "5-2",
         "name": "财务能力趋势分析",
-        "path": "/finance/cwnlqs"
+        "path": "/company/finance/cwnlqs"
       },
       {
         "index": "5-3",
         "name": "纳税情况与分析",
-        "path": "/finance/nsqkfx"
+        "path": "/company/finance/nsqkfx"
       },
       {
         "index": "5-4",
         "name": "主要经营数据",
-        "path": "/finance/zyjysj"
+        "path": "/company/finance/zyjysj"
       },
       {
         "index": "5-5",
         "name": "经营相关数据分析",
-        "path": "/finance/jysjjy"
+        "path": "/company/finance/jysjjy"
       },
       {
         "index": "5-6",
         "name": "财务状况综述",
-        "path": "/finance/cwzkzs"
+        "path": "/company/finance/cwzkzs"
       },
       {
         "index": "5-7",
         "name": "财务结构分化",
-        "path": "/finance/cwjgh"
+        "path": "/company/finance/cwjgh"
       },
       {
         "index": "5-8",
         "name": "同期数据对比",
-        "path": "/finance/tqsjdb"
+        "path": "/company/finance/tqsjdb"
       },
       {
         "index": "5-9",
         "name": "自定义数据校验",
-        "path": "/finance/zdysjjy"
+        "path": "/company/finance/zdysjjy"
       }
     ]
   },
@@ -197,7 +197,19 @@ let menuAsideData = [
       {
         "index": "6-1",
         "name": "风险性分析",
-        "path": "/risk/fxxfx"
+        "path": "/company/risk/fxxfx"
+      }
+    ]
+  },
+  {
+    "groupName": "基本信息及摘要",
+    "icon": "header-icon el-icon-info",
+    "index": "7",
+    "items": [
+      {
+        "index": "7-1",
+        "name": "基本信息及摘要",
+        "path": "/company/jbxxzy/jbxxzy"
       }
     ]
   },
