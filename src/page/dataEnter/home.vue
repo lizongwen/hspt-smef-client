@@ -78,7 +78,8 @@
           pageSize: 6,
           parentIds:'0'
         };
-		const res = await this.$http.post(this.$api.projectList, params);
+		const res = await this.$http.post('hspt-web-api/project/list', params);
+		console.log(res.data)
         this.topProject = res.data.resultData.records;
       },
       //查询项目成员

@@ -52,7 +52,7 @@ Mock.mock(api.findAllProjectMember, 'post', function (req) {
 
 
 //查询所有项目
-Mock.mock(api.projectList, 'post', function (req) {
+Mock.mock('hspt-web-api/project/list', 'post', function (req) {
 	return projectData;
 });
 

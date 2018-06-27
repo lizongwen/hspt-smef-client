@@ -47,41 +47,41 @@ export default {
   },
   methods: {
     init() {
-	  this.findByLoginName();
-	  this.findDept();
-	  this.getProjectCount();
-	},
-	//查询用户的职位
+      this.findByLoginName();
+      this.findDept();
+      this.getProjectCount();
+    },
+    //查询用户的职位
     findByLoginName: async function() {
       let params = {
         token: sessionStorage.getItem("token"),
         loginName: sessionStorage.getItem("username")
-	  };
+      };
       const res = await this.$http.post(this.$api.findByLoginName, params);
       this.postName = res.data.resultData;
-	},
-	//查询用户的部门
-	findDept: async function() {
+    },
+    //查询用户的部门
+    findDept: async function() {
       let params = {
         token: sessionStorage.getItem("token"),
         loginName: sessionStorage.getItem("username")
-	  };
+      };
       const res = await this.$http.post(this.$api.findDept, params);
       this.deptName = res.data.resultData;
-	},
-	//获取填报项目数量
-	getProjectCount:async function() {
-		let params = {
+    },
+    //获取填报项目数量
+    getProjectCount: async function() {
+      let params = {
         token: sessionStorage.getItem("token"),
         pageNo: 1,
         pageSize: 1000,
         username: sessionStorage.getItem("username"),
-        parentIds:'0',
-        queryKey:''
+        parentIds: "0",
+        queryKey: ""
       };
-      const res = await this.$http.post('/hspt-web-api/project/list', params);
-	  this.projNum=res.data.resultData.records.length;
-	}
+      const res = await this.$http.post("hspt-web-api/project/list", params);
+      this.projNum = res.data.resultData.records.length;
+    }
   },
   mounted() {
     this.init();
