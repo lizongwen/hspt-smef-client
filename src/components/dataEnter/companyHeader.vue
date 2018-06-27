@@ -98,7 +98,7 @@ export default {
       let pathArr = util.setCurrentPath(this, this.$route.name);
     },
     toHome() {
-      this.$store.commit("changeSide", true);
+      //this.$store.commit("changeSide", true);
       this.$router.push({ path: "/company/home" });
     },
 	genReport:async function() {

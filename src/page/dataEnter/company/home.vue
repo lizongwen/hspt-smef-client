@@ -6,7 +6,7 @@
 					<h3 class="mod-name">公司基本信息</h3>
 					<div class="company-progress">
 						<span>{{projDetail.qyjbxx.progress}}%</span>
-						<el-progress :percentage="10" :show-text="false"></el-progress>
+						<el-progress :percentage="projDetail.qyjbxx.progress" :show-text="false"></el-progress>
 					</div>
 					<ul class="mod-list">
 						<li class="mod-list-item">
@@ -359,7 +359,22 @@
 			</el-col>
 			<el-col :span="6">
 				<div class="grid-content bg-white company-mod">
-
+					<h3 class="mod-name">基本信息摘要</h3>
+					<div class="company-progress">
+						<span>{{projDetail.jbxxjzy.progress}}%</span>
+						<el-progress :percentage="projDetail.jbxxjzy.progress" :show-text="false"></el-progress>
+					</div>
+					<ul class="mod-list">
+						<li class="mod-list-item">
+							<div class="sub-name">基本信息摘要</div>
+							<div class="sub-progress">{{projDetail.jbxxjzy.jbxxjzy.jbxxjzy}}</div>
+							<div class="mod-list-item_op">
+								<router-link tag="div" to="/company/jbxxzy/jbxxzy">
+									<i class="icon iconfont icon-edit1"></i>
+								</router-link>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</el-col>
 			<el-col :span="6">
@@ -403,17 +418,20 @@ export default {
         qyjbxx: {
           progress: 0,
           qyjbxx: {}
+        },
+        jbxxjzy: {
+          progress: 0,
+          jbxxjzy: {}
         }
       }
     };
   },
   mounted() {
-    this.$emit("child-side", true);
     this.init();
   },
   methods: {
     init() {
-      //this.getProjDetail();
+      this.getProjDetail();
     },
     openMod() {
       console.log();
