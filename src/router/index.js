@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-export default new Router({
+let router =  new Router({
 	mode: 'history',
 	routes: [
 		{
@@ -331,4 +331,6 @@ export default new Router({
 			component: () => import('@/components/p404.vue')
 		}
 	]
-})
+});
+
+export default router;

@@ -24,10 +24,21 @@ import {VTable} from 'vue-easytable'
 Vue.component(VTable.name, VTable)
 
 // import tableOperation from './components/globalComponent'
-
 //全局注册table操作列组件
 // Vue.use(tableOperation);
 
+// 解决点击“版本切换”后侧边栏需要隐藏，和导航后退时把侧边栏设置为可展开的问题。
+router.beforeEach((to,from,next)=>{
+  // console.log('路由改变');
+  // console.log('from:',from);
+  if(from.name=='version'){
+    store.commit('changeSide',true);
+  }
+  if(to.name=='version'){
+    store.commit('changeSide',false);
+  }
+  next();
+})
 
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
