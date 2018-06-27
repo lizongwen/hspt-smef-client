@@ -1,4 +1,5 @@
 import AsyncValidator from 'async-validator';
+
 import popMsg from '@/utils/notice/notice';
 let table_validates = {
   validateByRow(row, index, rules,vm)
