@@ -6,7 +6,7 @@
 					<h3 class="mod-name">公司基本信息</h3>
 					<div class="company-progress">
 						<span>{{projDetail.qyjbxx.progress}}%</span>
-						<el-progress :percentage="projDetail.qyjbxx.progress" :show-text="false"></el-progress>
+						<el-progress :percentage="10" :show-text="false"></el-progress>
 					</div>
 					<ul class="mod-list">
 						<li class="mod-list-item">
@@ -375,8 +375,37 @@
 export default {
   data() {
     return {
-		projDetail:{}
-	};
+      projDetail: {
+        hysc: {
+          hysc: {},
+          progress: 0
+        },
+        fxfx: {
+          fxfx: {},
+          progress: 0
+        },
+        fxgk: {
+          fxgk: {},
+          progress: 0
+        },
+        jbxx: {
+          jbxx: {},
+          progress: 0
+        },
+        cwzk: {
+          progress: 0,
+          cwzk: {}
+        },
+        gsyy: {
+          progress: 0,
+          gsyy: {}
+        },
+        qyjbxx: {
+          progress: 0,
+          qyjbxx: {}
+        }
+      }
+    };
   },
   mounted() {
     this.$emit("child-side", true);
@@ -384,8 +413,8 @@ export default {
   },
   methods: {
     init() {
-		this.getProjDetail();
-	},
+      //this.getProjDetail();
+    },
     openMod() {
       console.log();
     },
@@ -394,8 +423,8 @@ export default {
         token: sessionStorage.getItem("token"),
         creditCode: 123
       };
-      const res = await this.$http.post('/hspt-web-api/project/detail', params);
-	  this.projDetail=res.data.resultData
+      const res = await this.$http.post("/hspt-web-api/project/detail", params);
+      this.projDetail = res.data.resultData;
     }
   },
   components: {}

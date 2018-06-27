@@ -43,7 +43,8 @@ export default {
     };
   },
   mounted() {
-    this.init();
+	this.init();
+	console.log(11)
     this.$store.commit("changeSide", false);
   },
   methods: {
