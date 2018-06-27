@@ -10,10 +10,10 @@ import findByLoginName from '@/json/findByLoginName.json';
 import findDeptByIdData from '@/json/findDeptById.json';
 import findAllProjectMemberData from '@/json/findAllProjectMember.json';
 import projectData from '@/json/projectData.json';
-import versionData from '@/json/version.json';
+
 import projDetailData from '@/json/projDetail.json';
-
-
+import versionData from '@/json/version.json';
+import fspjData from '@/json/fspj.json';
 
 
 // 获取 mock.Random 对象
@@ -60,11 +60,17 @@ Mock.mock(api.projectList, 'post', function (req) {
 Mock.mock('/hspt-web-api/project/detail', 'post', function (req) {
 	return projDetailData;
 });
-
+//获取版本信息
 Mock.mock(api.getVersion, 'post', function (req) {
 	return versionData;
 });
 
+
+//获取资信分数及惠国评级
+
+Mock.mock('/hspt-web-api/project/fspj', 'post', function (req) {
+	return fspjData;
+});
 
 Mock.mock(api.genReport, 'post', function (req) {
 	return {};

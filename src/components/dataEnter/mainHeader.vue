@@ -33,7 +33,7 @@ import util from "@/utils/util.js";
 export default {
   data() {
     return {
-      projNum: 56,
+      projNum: 0,
       finishNum: 33,
       postName: "",
       username: "",
@@ -49,6 +49,7 @@ export default {
     init() {
 	  this.findByLoginName();
 	  this.findDept();
+	  this.getProjectCount();
 	},
 	//查询用户的职位
     findByLoginName: async function() {
@@ -68,6 +69,19 @@ export default {
       const res = await this.$http.post(this.$api.findDept, params);
       this.deptName = res.data.resultData;
 	},
+	//获取填报项目数量
+	getProjectCount:async function() {
+		let params = {
+        token: sessionStorage.getItem("token"),
+        pageNo: 1,
+        pageSize: 1000,
+        username: sessionStorage.getItem("username"),
+        parentIds:'0',
+        queryKey:''
+      };
+      const res = await this.$http.post('/hspt-web-api/project/list', params);
+	  this.projNum=res.data.resultData.records.length;
+	}
   },
   mounted() {
     this.init();

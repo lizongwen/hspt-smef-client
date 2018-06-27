@@ -65,8 +65,8 @@ export default {
   },
   data() {
     return {
-      creditScore: 56,
-      creditLevel: "A-",
+      creditScore: "-",
+      creditLevel: "-",
       companyName: "哇哈哈科技企业有限公司",
       modifyName: "CS00040",
       modifyTime: "2018/05/01 15:04",
@@ -96,9 +96,9 @@ export default {
   methods: {
     init() {
       let pathArr = util.setCurrentPath(this, this.$route.name);
+      this.getFspj();
     },
     toHome() {
-      //this.$store.commit("changeSide", true);
       this.$router.push({ path: "/company/home" });
     },
 	genReport:async function() {
@@ -109,6 +109,17 @@ export default {
          companyName:"123"
       };
       const res = await this.$http.post(this.$api.genReport, params);
+	},
+	
+	//获取资信分数及惠国评级
+	getFspj: async function() {
+		let params = {
+			token: sessionStorage.getItem("token"),
+			creditCode:'123'
+		};
+		const res = await this.$http.post('/hspt-web-api/project/fspj', params);
+	    this.creditScore=res.data.resultData.zxpf;
+	    this.creditLevel=res.data.resultData.dqpj;
 	}
   },
   mounted() {
