@@ -11,6 +11,7 @@ import findDeptByIdData from '@/json/findDeptById.json';
 import findAllProjectMemberData from '@/json/findAllProjectMember.json';
 import projectData from '@/json/projectData.json';
 import versionData from '@/json/version.json';
+import projDetailData from '@/json/projDetail.json';
 
 
 
@@ -53,6 +54,11 @@ Mock.mock(api.findAllProjectMember, 'post', function (req) {
 //查询所有项目
 Mock.mock(api.projectList, 'post', function (req) {
 	return projectData;
+});
+
+//查询项目详情
+Mock.mock('/hspt-web-api/project/detail', 'post', function (req) {
+	return projDetailData;
 });
 
 Mock.mock(api.getVersion, 'post', function (req) {

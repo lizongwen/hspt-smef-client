@@ -28,9 +28,11 @@ export default {
         type: "warning",
         center: true
       }).then(() => {
-        sessionStorage.removeItem("token");
-        this.$router.push({path:'./login'})
-      });
+		sessionStorage.removeItem("token");
+        this.$router.push({path:'/login'})
+      },()=>{
+
+	  });
     }
   }
 };

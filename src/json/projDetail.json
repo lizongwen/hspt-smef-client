@@ -1,0 +1,78 @@
+{
+	"resultCode": "0",
+	"resultData": {
+		"hysc": {
+			"hysc": {
+				"hysc_fxfx": "0/1",
+				"qyxx_ywjs": "0/3",
+				"hysc_fzqs": "0/1",
+				"qyxx_sxyjy": "0/8",
+				"hysc_jzjy": "0/1",
+				"hysc_jzds": "0/1"
+			},
+			"progress": 0
+		},
+		"fxfx": {
+			"fxfx": {
+				"fxfx": "0/1"
+			},
+			"progress": 0
+		},
+		"fxgk": {
+			"fxgk": {
+				"fxgk_sfxx": "0/4",
+				"fxgk_dwdb": "0/2",
+				"qyxx_zrrdgd": "1/11",
+				"fxgk_rzxx": "1/8",
+				"fxgk_dcdy": "0/1",
+				"fxgk_fyxdcx": "0/1"
+			},
+			"progress": 0
+		},
+		"jbxx": {
+			"jbxx": {
+				"jbxx": "1/10"
+			},
+			"progress": 0
+		},
+		"cwzk": {
+			"progress": 0,
+			"cwzk": {
+				"cwzk_cwjgfx": "0/8",
+				"cwzk_sjjy": "0/6",
+				"cwzk_tqsjdb": "0/1",
+				"cwzk_cwnl": "0/4",
+				"cwzk_nsqk": "0/3",
+				"cwzk_cwzs": "0/1",
+				"cwzk_zdysjjy": "0/4",
+				"cwzk_cwsj": "0/3",
+				"cwzk_jysj": "0/5"
+			}
+		},
+		"gsyy": {
+			"progress": 0,
+			"gsyy": {
+				"qyxx_jyzy": "0/7",
+				"qyxx_ztb": "0/1",
+				"qyxx_gzff": "0/2",
+				"qyxx_sbgjj": "0/4",
+				"qyxx_cpyf": "0/2",
+				"qyxx_jygltd": "0/4"
+			}
+		},
+		"qyjbxx": {
+			"progress": 0,
+			"qyjbxx": {
+				"qyxx_gqjg": "0/7",
+				"qyxx_hbxx": "0/2",
+				"qyxx_ryrz": "0/3",
+				"qyxx_zscq": "0/5",
+				"qyxx_gsxx": "0/1",
+				"qyxx_lsyg": "0/1"
+			}
+		}
+	},
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "成功"
+}
