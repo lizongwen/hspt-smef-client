@@ -14,11 +14,14 @@ let table_validates = {
 
     // 清理 is_error和is_success状态
     for (let i = 0; i < cellList.length; i++) {
-      let tempName = cellList[i].className.m_Replace('is-error', '').m_Replace('is-success', '');
-      let newClassName = tempName.split(' ').filter((item, index) => {
-        return item != '' && item != ' ';
-      }).join(' ');
+      let newClassName = cellList[i].className.m_Replace(' is-error', '').m_Replace(' is-success', '').m_Replace('is-error ', '').m_Replace('is-success ', '');
+      // console.log('tempName:',tempName);
+      // let newClassName = tempName.split(' ').filter((item, index) => {
+      //   return item != '' && item != ' ';
+      // }).join(' ');
+      // cellList[i].className = newClassName;
       cellList[i].className = newClassName;
+
     }
 
     // 验证
@@ -33,9 +36,10 @@ let table_validates = {
           for (let i = 0; i < cellList.length; i++) {
             let haveFlag = cellList[i].className.includes(invalidKey);
             if (haveFlag) {
-              let tempList = cellList[i].className.split(' ');
-              tempList.push("is-" + validateState);
-              cellList[i].className = tempList.join(' ');
+              cellList[i].className += " is-" + validateState;
+              // let tempList = cellList[i].className.split(' ');
+              // tempList.push("is-" + validateState);
+              // cellList[i].className = tempList.join(' ');
             }
           }
 
