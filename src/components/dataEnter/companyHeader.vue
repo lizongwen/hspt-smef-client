@@ -48,7 +48,7 @@
 				</li>
 			</ul>
 			<div class="report-btn-wrap">
-				<el-button type="primary"  @click="genReport">生成报告</el-button>
+				<el-button type="primary" @click="genReport">生成报告</el-button>
 			</div>
 		</div>
 	</div>
@@ -61,6 +61,9 @@ export default {
   props: {
     creditCode: {
       type: String
+    },
+    percent: {
+      type: Number
     }
   },
   data() {
@@ -69,9 +72,11 @@ export default {
       creditLevel: "-",
       companyName: "哇哈哈科技企业有限公司",
       modifyName: "CS00040",
-      modifyTime: "2018/05/01 15:04",
-      percent: 70
+      modifyTime: "2018/05/01 15:04"
     };
+  },
+  mounted() {
+    this.init();
   },
   computed: {
     currentPath() {
@@ -101,29 +106,26 @@ export default {
     toHome() {
       this.$router.push({ path: "/company/home" });
     },
-	genReport:async function() {
-		 let params = {
-         token: sessionStorage.getItem("token"),
-         username: sessionStorage.getItem("username"),
-         creditCode: "123",
-         companyName:"123"
+    genReport: async function() {
+      let params = {
+        token: sessionStorage.getItem("token"),
+        username: sessionStorage.getItem("username"),
+        creditCode: "123",
+        companyName: "123"
       };
       const res = await this.$http.post(this.$api.genReport, params);
-	},
-	
-	//获取资信分数及惠国评级
-	getFspj: async function() {
-		let params = {
-			token: sessionStorage.getItem("token"),
-			creditCode:'123'
-		};
-		const res = await this.$http.post('/hspt-web-api/project/fspj', params);
-	    this.creditScore=res.data.resultData.zxpf;
-	    this.creditLevel=res.data.resultData.dqpj;
-	}
-  },
-  mounted() {
-    this.init();
+    },
+
+    //获取资信分数及惠国评级
+    getFspj: async function() {
+      let params = {
+        token: sessionStorage.getItem("token"),
+        creditCode: "123"
+      };
+      const res = await this.$http.post("/hspt-web-api/project/fspj", params);
+      this.creditScore = res.data.resultData.zxpf;
+      this.creditLevel = res.data.resultData.dqpj;
+    }
   }
 };
 </script>

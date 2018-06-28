@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<company-header :creditCode="creditCode"></company-header>
+		<company-header :creditCode="creditCode" :percent="tbjdbfb"></company-header>
 		<div class="main-content">
 			<el-container>
 				<el-aside width="220px" v-if="isAside">
@@ -36,7 +36,8 @@ export default {
       menuAsideData: menuAsideData,
       activeName: 0,
       asideMenus: [],
-      creditCode: ""
+      creditCode: "",
+      tbjdbfb: 0
     };
   },
   computed: {
@@ -48,10 +49,9 @@ export default {
     companyHeader
   },
   mounted() {
-	  console.log(this.$store.state.company.isAside)
     this.creditCode =
-	  this.$route.query.creditCode || sessionStorage.getItem("creditCode");
-	  console.log(this.creditCode)
+      this.$route.query.creditCode || sessionStorage.getItem("creditCode");
+    this.tbjdbfb = parseInt(this.$route.query.tbjdbfb || 0);
     this.defaultActive = this.$route.meta.index;
   },
   methods: {
@@ -61,7 +61,7 @@ export default {
     handleClose(key, keyPath) {
       //   console.log(key, keyPath);
     }
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>

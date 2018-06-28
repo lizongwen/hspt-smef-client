@@ -64,13 +64,13 @@ export default {
       searchForm: {
         searchInput: ""
       },
-	  addForm:{
-		  companyName:"",
-		  creditCode:""
-	  },
+      addForm: {
+        companyName: "",
+        creditCode: ""
+      },
       tableData: [],
       currentPage: 1,
-	  dialogFormVisible: false,
+      dialogFormVisible: false
     };
   },
   mounted() {
@@ -81,23 +81,24 @@ export default {
       this.getProject();
     },
     handleSizeChange(val) {
-    //   console.log(`每页 ${val} 条`);
+      //   console.log(`每页 ${val} 条`);
     },
     handleCurrentChange(val) {
-    //   console.log(`当前页: ${val}`);
+      //   console.log(`当前页: ${val}`);
     },
     handleClick(row) {
       sessionStorage.setItem("creditCode", row.creditCode);
+      //   this.$router.push({ name: 'company', params: { creditCode:row.creditCode,p:row.tbjdbfb }})
       this.$router.push({
         path: "/company",
-        query: { creditCode: row.creditCode }
+        query: { creditCode: row.creditCode, tbjdbfb: row.tbjdbfb }
       });
     },
     onSubmit() {
       this.getProject(this.searchForm.searchInput);
     },
     addCompany() {
-	  this.dialogFormVisible = true
+      this.dialogFormVisible = true;
     },
     getProject: async function() {
       let params = {
@@ -105,10 +106,10 @@ export default {
         pageNo: 1,
         pageSize: 10,
         username: sessionStorage.getItem("username"),
-        parentIds:'0',
-        queryKey:this.searchForm.searchInput
+        parentIds: "0",
+        queryKey: this.searchForm.searchInput
       };
-      const res = await this.$http.post('hspt-web-api/project/list', params);
+      const res = await this.$http.post("hspt-web-api/project/list", params);
       this.tableData = res.data.resultData.records;
     }
   },
