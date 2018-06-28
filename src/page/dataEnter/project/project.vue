@@ -91,7 +91,7 @@ export default {
       //   this.$router.push({ name: 'company', params: { creditCode:row.creditCode,p:row.tbjdbfb }})
       this.$router.push({
         path: "/company",
-        query: { creditCode: row.creditCode, tbjdbfb: row.tbjdbfb }
+        query: { creditCode: row.creditCode}
       });
     },
     onSubmit() {
