@@ -167,7 +167,8 @@ export default {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token")
       };
-      const res = await this.$http.post('/hspt-web-api/data_entry/qyjbxx/gsjbxx/list', params);
+	  const res = await this.$http.post('/hspt-web-api/data_entry/qyjbxx/gsjbxx/list', params);
+	  console.log(res.data)
       //this.form.regData=new Date("2018-06-28");
       this.form.user=res.data.resultData.data.zcjg;
       this.form.creditCode=res.data.resultData.data.creditCode;

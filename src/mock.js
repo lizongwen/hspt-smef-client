@@ -14,7 +14,7 @@ import projectData from '@/json/projectData.json';
 import projDetailData from '@/json/projDetail.json';
 import versionData from '@/json/version.json';
 import fspjData from '@/json/fspj.json';
-
+import gsxxData from '@/json/gsxx.json';
 
 // 获取 mock.Random 对象
 const Random = Mock.Random;
@@ -52,7 +52,7 @@ Mock.mock(api.findAllProjectMember, 'post', function (req) {
 
 
 //查询所有项目
-Mock.mock('hspt-web-api/project/list', 'post', function (req) {
+Mock.mock('/hspt-web-api/project/list', 'post', function (req) {
 	return projectData;
 });
 
@@ -71,6 +71,12 @@ Mock.mock(api.getVersion, 'post', function (req) {
 Mock.mock('/hspt-web-api/project/fspj', 'post', function (req) {
 	return fspjData;
 });
+
+//获取公司基本信息
+Mock.mock("/hspt-web-api/data_entry/qyjbxx/gsjbxx/list", 'post', function (req) {
+	return gsxxData;
+});
+
 
 Mock.mock(api.genReport, 'post', function (req) {
 	return {};
