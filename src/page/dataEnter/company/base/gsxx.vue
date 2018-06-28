@@ -54,7 +54,7 @@
 						</el-col>
 						<el-col :offset="1" :span="10">
 							<el-form-item label="成立年份:">
-								<el-date-picker size="small" v-model="form.regDate" type="date" placeholder="选择日期">
+								<el-date-picker size="small" v-model="form.foundedYear" type="date" placeholder="选择日期">
 								</el-date-picker>
 							</el-form-item>
 						</el-col>
@@ -134,6 +134,7 @@ export default {
       labelPosition: "right",
       form: {
         regDate: "",
+        user: "",
         creditCode: "",
         orgCode: "",
         regNum: "",
@@ -166,12 +167,28 @@ export default {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token")
       };
-      console.log(params);
-      const res = await this.$http.post(this.$api.gsjbxxModify, params);
-      console.log(res.data);
+      const res = await this.$http.post('/hspt-web-api/data_entry/qyjbxx/gsjbxx/list', params);
+      //this.form.regData=new Date("2018-06-28");
+      this.form.user=res.data.resultData.data.zcjg;
+      this.form.creditCode=res.data.resultData.data.creditCode;
+      this.form.orgCode=res.data.resultData.data.zzjgdm;
+      this.form.regNum=res.data.resultData.data.zch;
+      this.form.regAsset=res.data.resultData.data.zczb;
+      this.form.companyType=res.data.resultData.data.qylx;
+      //this.form.foundedYear=res.data.resultData.data.clnf;
+      this.form.operationTerm=res.data.resultData.data.yyqx;
+      this.form.address=res.data.resultData.data.zcdz;
+      this.form.legalRepresentative=res.data.resultData.data.frdb;
+      this.form.phoneNum=res.data.resultData.data.dh;
+      this.form.faxNum=res.data.resultData.data.cz;
+      this.form.website=res.data.resultData.data.wz;
+      this.form.staffNum=res.data.resultData.data.gsrs;
+      this.form.saleRevenue=res.data.resultData.data.xssr;
+      this.form.netAsset=res.data.resultData.data.jzc;
+      this.form.businessScope=res.data.resultData.data.jyfw;
     },
     onSubmit() {
-      console.log("submit!");
+      //console.log("submit!");
     }
   },
   components: {}
