@@ -13,7 +13,7 @@
 					</div>
 					<div>
 						<label>修改时间：</label>
-						<span>{{modifyName}}</span>
+						<span>{{modifyTime}}</span>
 					</div>
 					<div>
 						<label>报告填报进度：</label>
