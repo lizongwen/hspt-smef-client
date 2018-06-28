@@ -13,7 +13,7 @@ import router from './router';
 // import Qs from 'qs';
 import http from './utils/http';
 import api from './utils/api';
-
+import stingApi from './utils/string';
 // 引入mock.js
 // require('./mock.js');
 
