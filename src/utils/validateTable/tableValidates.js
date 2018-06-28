@@ -8,31 +8,44 @@ let table_validates = {
     const validator = new AsyncValidator(rules);
     validateState = 'validating';
     let count = 1;
+    let cellList = document.querySelectorAll('.cellItem');
+    let columnsList = Object.keys(vm.tableData_columns);
+
+
+    // 清理 is_error和is_success状态
+    for (let i = 0; i < cellList.length; i++) {
+      let tempName = cellList[i].className.m_Replace('is-error', '').m_Replace('is-success', '');
+      let newClassName = tempName.split(' ').filter((item, index) => {
+        return item != '' && item != ' ';
+      }).join(' ');
+      cellList[i].className = newClassName;
+    }
+
+    // 验证
     validator.validate(row, (errors, invalidFields) => {
       validateState = !errors ? 'success' : 'error';
       let notice = "";
       if (errors) {
         let notice = '';
-        console.log('invalidFields:', invalidFields);
-        for (let key in invalidFields) {
-          invalidFields[key].forEach((item, index, array) => {
-            //1.构造错误提示信息
+        // console.log('invalidFields:', invalidFields);
+        for (let invalidKey in invalidFields) {
+          // 对验证不通过的单元格高亮显示
+          for (let i = 0; i < cellList.length; i++) {
+            let haveFlag = cellList[i].className.includes(invalidKey);
+            if (haveFlag) {
+              let tempList = cellList[i].className.split(' ');
+              tempList.push("is-" + validateState);
+              cellList[i].className = tempList.join(' ');
+            }
+          }
+
+          //构造错误提示信息
+          invalidFields[invalidKey].forEach((item, index, array) => {
             notice += `<p>${count++}. ${item.message}; </p> `;
-            //2.修改当前单元格样式
-            // document.className += ' is-' + value;
           })
-          console.log('key:', key);
         }
-        let nodeList = document.querySelectorAll('.cellItem');
-        console.log(nodeList);
-
-        for (let i = 0; i < nodeList.length; i++) {
-          nodeList[i].className += ' is-' + validateState;
-        }
-        console.log(notice);
-//            //弹出错误信息
+// 弹出错误信息
         popMsg.popErrorHtmlMsg(vm, notice);
-
       }
       else {
         row.edit = false;

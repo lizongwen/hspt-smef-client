@@ -13,41 +13,41 @@
       <div>
         <el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
           <el-table-column label="序号" type="index" width="50"></el-table-column>
-          <el-table-column min-width="110px" :label="tableData_columns.changeDate">
+          <el-table-column min-width="110px" :label="tableData_columns.m_changeDate">
             <template slot-scope="scope">
               <el-date-picker class="cellItem el-form-item"
                               :class="Object.keys(tableData_columns)[0]"
-                              v-if="scope.row.edit" type="date" placeholder="选择日期" v-model="scope.row.changeDate"
+                              v-if="scope.row.edit" type="date" placeholder="选择日期" v-model="scope.row.m_changeDate"
                               style="width: 100%;"></el-date-picker>
-              <span v-else>{{scope.row.changeDate}}</span>
+              <span v-else>{{scope.row.m_changeDate}}</span>
             </template>
           </el-table-column>
-          <el-table-column min-width="200px" :label="tableData_columns.changeThing">
+          <el-table-column min-width="200px" :label="tableData_columns.m_changeThing">
             <template slot-scope="scope">
               <el-input class="edit-input cellItem el-form-item"
                         :class="Object.keys(tableData_columns)[1]"
                         v-if="scope.row.edit" size="small"
-                        v-model.number="scope.row.changeThing"
+                        v-model.number="scope.row.m_changeThing"
               ></el-input>
-              <span v-else>{{ scope.row.changeThing}}</span>
+              <span v-else>{{ scope.row.m_changeThing}}</span>
             </template>
           </el-table-column>
-          <el-table-column min-width="200px" :label="tableData_columns.beforeThing">
+          <el-table-column min-width="200px" :label="tableData_columns.m_beforeThing">
             <template slot-scope="scope">
               <el-input class="edit-input cellItem el-form-item"
                         :class="Object.keys(tableData_columns)[2]"
                         v-if="scope.row.edit" size="small"
-                        v-model="scope.row.beforeThing"></el-input>
-              <span v-else>{{ scope.row.beforeThing}}</span>
+                        v-model="scope.row.m_beforeThing"></el-input>
+              <span v-else>{{ scope.row.m_beforeThing}}</span>
             </template>
           </el-table-column>
-          <el-table-column min-width="200px" :label="tableData_columns.afterThing">
+          <el-table-column min-width="200px" :label="tableData_columns.m_afterThing">
             <template slot-scope="scope">
               <el-input class="edit-input cellItem el-form-item"
                         :class="Object.keys(tableData_columns)[3]"
                         v-if="scope.row.edit" size="small"
-                        v-model="scope.row.afterThing"></el-input>
-              <span v-else>{{ scope.row.afterThing}}</span>
+                        v-model="scope.row.m_afterThing"></el-input>
+              <span v-else>{{ scope.row.m_afterThing}}</span>
             </template>
           </el-table-column>
           <el-table-column align="center" label="操作" width="240">
@@ -74,41 +74,41 @@
         listLoading: false,
         tableData: [
           {
-            changeDate: "2018/01/01",
-            changeThing: "变更事项1",
-            beforeThing: "变更前1",
-            afterThing: "变更后1",
+            m_changeDate: "2018/01/01",
+            m_changeThing: "变更事项1",
+            m_beforeThing: "变更前1",
+            m_afterThing: "变更后1",
             edit: false
           },
           {
-            changeDate: "2018/01/02",
-            changeThing: "变更事项2",
-            beforeThing: "变更前2",
-            afterThing: "变更后2",
+            m_changeDate: "2018/01/02",
+            m_changeThing: "变更事项2",
+            m_beforeThing: "变更前2",
+            m_afterThing: "变更后2",
             edit: false
           }
         ],
         tableData_columns: {
-          changeDate: "变更日期",
-          changeThing: "变更事项",
-          beforeThing: "变更前",
-          afterThing: "变更后",
+          m_changeDate: "变更日期",
+          m_changeThing: "变更事项",
+          m_beforeThing: "变更前",
+          m_afterThing: "变更后",
           //edit: false
         },
         //规则
         rules: {
-          changeDate: [
+          m_changeDate: [
             {type: 'date', required: true, message: '请选择变更日期'}
           ],
-          changeThing: [
+          m_changeThing: [
             {required: true, message: "变更事项是必填项"},
             {type: 'number', message: "变更事项需要录入数字"}
           ],
-          beforeThing: [
+          m_beforeThing: [
             {required: true, message: "变更前是必填项"},
             {min: 3, max: 5, message: '变更前字符长度需要 3 到 5 个字符'}
           ],
-          afterThing: [
+          m_afterThing: [
             {required: true, message: "变更后是必填项"}
           ]
         }
