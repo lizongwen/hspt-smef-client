@@ -4,7 +4,6 @@ const company = {
 	state: {
 		editingState: false,
 		isAside: true,
-		creditCode: ''
 	},
 	mutations: {
 		setEditingFlag(state, newValObj) {
@@ -12,9 +11,6 @@ const company = {
 		},
 		changeSide(state, newVal) {
 			state.isAside = newVal;
-		},
-		setCreditCode(state, newVal) {
-			state.creditCode = newVal;
 		}
 	}
 
