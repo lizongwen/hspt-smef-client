@@ -79,7 +79,7 @@ export default {
         parentIds: "0",
         queryKey: ""
       };
-      const res = await this.$http.post("hspt-web-api/project/list", params);
+      const res = await this.$http.post("/hspt-web-api/project/list", params);
       this.projNum = res.data.resultData.records.length;
     }
   },

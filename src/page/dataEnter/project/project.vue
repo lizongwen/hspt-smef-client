@@ -108,7 +108,7 @@ export default {
         parentIds: "0",
         queryKey: this.searchForm.searchInput
       };
-      const res = await this.$http.post("hspt-web-api/project/list", params);
+      const res = await this.$http.post("/hspt-web-api/project/list", params);
       this.tableData = res.data.resultData.records;
     }
   },
