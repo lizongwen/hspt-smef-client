@@ -13,32 +13,39 @@
       <div>
         <el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
           <el-table-column label="序号" type="index" width="50"></el-table-column>
-          <el-table-column min-width="110px" label="变更日期">
+          <el-table-column min-width="110px" :label="tableData_columns.changeDate">
             <template slot-scope="scope">
               <el-date-picker class="cellItem el-form-item"
+                              :class="Object.keys(tableData_columns)[0]"
                               v-if="scope.row.edit" type="date" placeholder="选择日期" v-model="scope.row.changeDate"
                               style="width: 100%;"></el-date-picker>
               <span v-else>{{scope.row.changeDate}}</span>
             </template>
           </el-table-column>
-          <el-table-column min-width="200px" label="变更事项">
+          <el-table-column min-width="200px" :label="tableData_columns.changeThing">
             <template slot-scope="scope">
-              <el-input class="edit-input cellItem el-form-item" v-if="scope.row.edit" size="small"
+              <el-input class="edit-input cellItem el-form-item"
+                        :class="Object.keys(tableData_columns)[1]"
+                        v-if="scope.row.edit" size="small"
                         v-model.number="scope.row.changeThing"
               ></el-input>
               <span v-else>{{ scope.row.changeThing}}</span>
             </template>
           </el-table-column>
-          <el-table-column min-width="200px" label="变更前">
+          <el-table-column min-width="200px" :label="tableData_columns.beforeThing">
             <template slot-scope="scope">
-              <el-input class="edit-input cellItem el-form-item" v-if="scope.row.edit" size="small"
+              <el-input class="edit-input cellItem el-form-item"
+                        :class="Object.keys(tableData_columns)[2]"
+                        v-if="scope.row.edit" size="small"
                         v-model="scope.row.beforeThing"></el-input>
               <span v-else>{{ scope.row.beforeThing}}</span>
             </template>
           </el-table-column>
-          <el-table-column min-width="200px" label="变更后">
+          <el-table-column min-width="200px" :label="tableData_columns.afterThing">
             <template slot-scope="scope">
-              <el-input class="edit-input cellItem el-form-item" v-if="scope.row.edit" size="small"
+              <el-input class="edit-input cellItem el-form-item"
+                        :class="Object.keys(tableData_columns)[3]"
+                        v-if="scope.row.edit" size="small"
                         v-model="scope.row.afterThing"></el-input>
               <span v-else>{{ scope.row.afterThing}}</span>
             </template>
@@ -82,11 +89,11 @@
           }
         ],
         tableData_columns: {
-          changeDate: "",
-          changeThing: "",
-          beforeThing: "",
-          afterThing: "",
-          edit: false
+          changeDate: "变更日期",
+          changeThing: "变更事项",
+          beforeThing: "变更前",
+          afterThing: "变更后",
+          //edit: false
         },
         //规则
         rules: {
@@ -94,7 +101,8 @@
             {type: 'date', required: true, message: '请选择变更日期'}
           ],
           changeThing: [
-            {type: 'number', required: true, message: "变更事项是必填项，且需要录入数字"}
+            {required: true, message: "变更事项是必填项"},
+            {type: 'number', message: "变更事项需要录入数字"}
           ],
           beforeThing: [
             {required: true, message: "变更前是必填项"},
@@ -106,19 +114,20 @@
         }
       };
     },
-    watch: {
-      validateState(value) {
-        console.log('in validateStatus!!');
-        let nodeList = document.querySelectorAll(".cellItem");
-        nodeList.forEach((item, index, array) => {
-          item.className += ' is-' + value;
-        })
-      }
-    },
+//    watch: {
+//      validateState(value) {
+//        console.log('in validateStatus!!');
+//        let nodeList = document.querySelectorAll(".cellItem");
+//        nodeList.forEach((item, index, array) => {
+//          item.className += ' is-' + value;
+//        })
+//      }
+//    },
     methods: {
       verify(rowObj, rowIndex) {
 //        console.log('row:',row);
         tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
+
 //        var a = true,
 //          b = true,
 //          c = true,
