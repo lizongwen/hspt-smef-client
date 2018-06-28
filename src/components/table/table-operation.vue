@@ -33,25 +33,25 @@ export default {
   },
   methods: {
     //编辑
-    edit(row) {
-      row.edit = true;
-      this.oldRow = JSON.parse(JSON.stringify(row));
+    edit(rowObj) {
+      rowObj.edit = true;
+      this.oldRow = JSON.parse(JSON.stringify(rowObj));
     },
     //取消编辑
-    cacelEdit(row) {
+    cacelEdit(rowObj) {
       this.oldRow.edit = false;
-      let rowAttrList = Object.keys(row);
+      let rowAttrList = Object.keys(rowObj);
       rowAttrList.forEach(item => {
         // row[item] = this.oldRow[item];
-        row[item] = JSON.parse(JSON.stringify(this.oldRow[item]));
+        rowObj[item] = JSON.parse(JSON.stringify(this.oldRow[item]));
       });
     },
     //确认编辑
-    confirmEdit(row, index) {
-      this.$emit("verify", row, index);
+    confirmEdit(rowObj, rowIndex) {
+      this.$emit("verify", rowObj, rowIndex);
     },
     //删除行
-    deleteRow(row, index) {
+    deleteRow(rowObj, index) {
       this.$confirm("确认删除?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
