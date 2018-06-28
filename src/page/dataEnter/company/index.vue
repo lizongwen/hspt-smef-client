@@ -49,9 +49,7 @@ export default {
     companyHeader
   },
   mounted() {
-    this.creditCode =
-      this.$route.query.creditCode || sessionStorage.getItem("creditCode");
-    this.tbjdbfb = parseInt(this.$route.query.tbjdbfb || 0);
+    this.creditCode = this.$route.query.creditCode || sessionStorage.getItem("creditCode");
     this.defaultActive = this.$route.meta.index;
   },
   methods: {

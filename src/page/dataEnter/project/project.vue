@@ -88,7 +88,6 @@ export default {
     },
     handleClick(row) {
       sessionStorage.setItem("creditCode", row.creditCode);
-      //   this.$router.push({ name: 'company', params: { creditCode:row.creditCode,p:row.tbjdbfb }})
       this.$router.push({
         path: "/company",
         query: { creditCode: row.creditCode}
