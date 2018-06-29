@@ -74,14 +74,14 @@
         listLoading: false,
         tableData: [
           {
-            m_changeDate: "2018/01/01",
+            m_changeDate: new Date("2018/01/01"),
             m_changeThing: "变更事项1",
             m_beforeThing: "变更前1",
             m_afterThing: "变更后1",
             edit: false
           },
           {
-            m_changeDate: "2018/01/02",
+            m_changeDate: new Date("2018/01/02"),
             m_changeThing: "变更事项2",
             m_beforeThing: "变更前2",
             m_afterThing: "变更后2",
@@ -93,7 +93,6 @@
           m_changeThing: "变更事项",
           m_beforeThing: "变更前",
           m_afterThing: "变更后",
-          //edit: false
         },
         //规则
         rules: {
@@ -114,65 +113,9 @@
         }
       };
     },
-//    watch: {
-//      validateState(value) {
-//        console.log('in validateStatus!!');
-//        let nodeList = document.querySelectorAll(".cellItem");
-//        nodeList.forEach((item, index, array) => {
-//          item.className += ' is-' + value;
-//        })
-//      }
-//    },
     methods: {
       verify(rowObj, rowIndex) {
-//        console.log('row:',row);
         tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
-
-//        var a = true,
-//          b = true,
-//          c = true,
-//          d = true;
-//        this.$refs[`form_changeDate_${index}`].validate((res, obj) => {
-//          if (res) {
-//            //验证通过
-//            a = false;
-//          } else {
-//            //验证不通过
-//            console.log(obj.changeDate[0].message);
-//          }
-//        });
-//        this.$refs[`form_changeThing_${index}`].validate((res, obj) => {
-//          if (res) {
-//            //验证通过
-//            b = false;
-//          } else {
-//            //验证不通过
-//            console.log(obj.changeThing[0].message);
-//          }
-//        });
-//        this.$refs[`form_beforeThing_${index}`].validate((res, obj) => {
-//          if (res) {
-//            //验证通过
-//            c = false;
-//          } else {
-//            //验证不通过
-//            console.log(obj.beforeThing[0].message);
-//          }
-//        });
-//        this.$refs[`form_afterThing_${index}`].validate((res, obj) => {
-//          if (res) {
-//            //验证通过
-//            d = false;
-//          } else {
-//            //验证不通过
-//            console.log(obj.afterThing[0].message);
-//          }
-//        });
-//        if (!a && !b && !c && !d) {
-//          row.edit = false;
-//        } else {
-//          //弹出错误消息汇总
-//        }
       }
     },
     components: {

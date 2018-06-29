@@ -11,7 +11,6 @@ let table_validates = {
     let cellList = document.querySelectorAll('.cellItem');
     let columnsList = Object.keys(vm.tableData_columns);
 
-
     // 清理 is_error和is_success状态
     for (let i = 0; i < cellList.length; i++) {
       let index = 0;
@@ -22,14 +21,13 @@ let table_validates = {
       newClassName = (index == 0) ? newClassName.replace('is-success ', '') : newClassName.m_Replace(' is-success', '');
       cellList[i].className = newClassName;
     }
-
+    
     // 验证
     validator.validate(row, (errors, invalidFields) => {
       validateState = !errors ? 'success' : 'error';
       let notice = "";
       if (errors) {
         let notice = '';
-        // console.log('invalidFields:', invalidFields);
         for (let invalidCellKey in invalidFields) {
           // 对验证不通过的单元格高亮显示
           for (let i = 0; i < cellList.length; i++) {
