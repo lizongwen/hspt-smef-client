@@ -14,14 +14,13 @@ let table_validates = {
 
     // 清理 is_error和is_success状态
     for (let i = 0; i < cellList.length; i++) {
-      let newClassName = cellList[i].className.m_Replace(' is-error', '').m_Replace(' is-success', '').m_Replace('is-error ', '').m_Replace('is-success ', '');
-      // console.log('tempName:',tempName);
-      // let newClassName = tempName.split(' ').filter((item, index) => {
-      //   return item != '' && item != ' ';
-      // }).join(' ');
-      // cellList[i].className = newClassName;
+      let index = 0;
+      let newClassName = '';
+      index = cellList[i].className.indexOf('is-error');
+      newClassName = (index == 0) ? cellList[i].className.replace('is-error ', '') : cellList[i].className.m_Replace(' is-error', '');
+      index = cellList[i].className.indexOf('is-success');
+      newClassName = (index == 0) ? newClassName.replace('is-success ', '') : newClassName.m_Replace(' is-success', '');
       cellList[i].className = newClassName;
-
     }
 
     // 验证
@@ -31,24 +30,20 @@ let table_validates = {
       if (errors) {
         let notice = '';
         // console.log('invalidFields:', invalidFields);
-        for (let invalidKey in invalidFields) {
+        for (let invalidCellKey in invalidFields) {
           // 对验证不通过的单元格高亮显示
           for (let i = 0; i < cellList.length; i++) {
-            let haveFlag = cellList[i].className.includes(invalidKey);
+            let haveFlag = cellList[i].className.includes(invalidCellKey);
             if (haveFlag) {
               cellList[i].className += " is-" + validateState;
-              // let tempList = cellList[i].className.split(' ');
-              // tempList.push("is-" + validateState);
-              // cellList[i].className = tempList.join(' ');
             }
           }
-
           //构造错误提示信息
-          invalidFields[invalidKey].forEach((item, index, array) => {
+          invalidFields[invalidCellKey].forEach((item, index, array) => {
             notice += `<p>${count++}. ${item.message}; </p> `;
           })
         }
-// 弹出错误信息
+        // 弹出错误信息
         popMsg.popErrorHtmlMsg(vm, notice);
       }
       else {
