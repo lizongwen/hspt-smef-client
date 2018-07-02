@@ -1,7 +1,7 @@
 <template>
 <!-- <div></div> -->
-	<quill-editor v-model="content" ref="myTextEditor" :options="editorOption" @change="onChange" placeholder="111">
-		<div id="toolbar" slot="toolbar">
+	<quill-editor v-model="content" ref="myTextEditor" :options="editorOption" @change="onChange">
+		<!-- <div id="toolbar" slot="toolbar">
 			<span class="ql-formats">
 				<button type="button" class="ql-bold"></button>
 			</span>
@@ -195,7 +195,7 @@
 			</span>
 			<span class="ql-formats">
 			</span>
-		</div>
+		</div> -->
 	</quill-editor>
 </template>
 <script>
@@ -216,17 +216,17 @@ export default {
     /*图片大小*/
     maxSize: {
       type: Number,
-      default: 400 //kb
+      default:  10240//kb
     }
   },
   data() {
     return {
       content: "",
       editorOption: {
-        modules: {
-          toolbar: "#toolbar"
-        },
-        placeholder: "您想说点什么？"
+        // modules: {
+        //   toolbar: "#toolbar"
+        // },
+        placeholder: "请输入"
       }
     };
   },
@@ -307,19 +307,19 @@ export default {
   mounted() {
     this.content = this.value;
   },
-  watch: {
-    value(newVal, oldVal) {
-      if (this.editor) {
-        if (newVal !== this.content) {
-          this.content = newVal;
-        }
-      }
-    }
-  }
+//   watch: {
+//     value(newVal, oldVal) {
+//       if (this.editor) {
+//         if (newVal !== this.content) {
+//           this.content = newVal;
+//         }
+//       }
+//     }
+//   }
 };
 </script>
 <style>
-.ql-picker-label {
+/* .ql-picker-label {
   display: block !important;
   line-height: 24px;
 }
@@ -337,5 +337,8 @@ export default {
 }
 .ql-tooltip[data-mode="video"]::before {
   content: "输入视频:" !important;
-}
+} */
+/* .ql-editor{
+	height:300px;
+} */
 </style>
