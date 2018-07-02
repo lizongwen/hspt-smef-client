@@ -12,6 +12,14 @@
 						</div>
 						<div>
 							<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
+								<!-- <el-table-column min-width="200px" :label="tableData_columns.m_beforeThing">
+									<template slot-scope="scope">
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[2]" v-if="scope.row.edit" size="small" v-model="scope.row.m_beforeThing"></el-input>
+										<span v-else>{{ scope.row.name}}</span>
+									</template>
+								</el-table-column> -->
+
+
 								<el-table-column min-width="300px" label="股东姓名" prop="name">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
@@ -331,6 +339,7 @@
 </template>
 
 <script>
+import tableValidates from "@/utils/validateTable/tableValidates.js";
 import tabelAddBtn from "@/components/table/table-add-btn.vue";
 import tableOperation from "@/components/table/table-operation.vue";
 export default {
@@ -456,8 +465,7 @@ export default {
       return this.tableData_2.isMerge ? "是" : "否";
     }
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     //点击标签页触发事件
     handleClick(tab, event) {

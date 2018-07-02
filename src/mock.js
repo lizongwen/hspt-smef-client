@@ -15,6 +15,7 @@ import projDetailData from '@/json/projDetail.json';
 import versionData from '@/json/version.json';
 import fspjData from '@/json/fspj.json';
 import gsxxData from '@/json/gsxx.json';
+import lsygData from '@/json/lsyg.json';
 
 // 获取 mock.Random 对象
 const Random = Mock.Random;
@@ -89,4 +90,11 @@ Mock.mock("/hspt-web-api/data_entry/qyjbxx/gsjbxx/list", 'post', function (req) 
 
 Mock.mock(api.genReport, 'post', function (req) {
 	return {};
+});
+
+
+
+//获取历史沿革
+Mock.mock('/hspt-web-api/data_entry/qyjbxx/lsyg', 'post', function (req) {
+	return lsygData;
 });
