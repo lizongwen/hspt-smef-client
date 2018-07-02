@@ -362,13 +362,14 @@ router.beforeEach((to, from, next) => {
 	if (to.name == 'version' || to.name == 'report' || to.name == 'log') {
 		store.commit('changeSide', false);
 	}
-	if(!sessionStorage.getItem('token')&&to.name !== 'login'){
+	//如果访问不是登录页，并且token不存在，则直接跳登录页面
+	if (!sessionStorage.getItem('token') && to.name !== 'login') {
 		next({
 			name: 'login'
 		});
 	}
 	next();
-	
+
 })
 
 export default router;
