@@ -12,58 +12,36 @@
 						</div>
 						<div>
 							<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
-								<!-- <el-table-column min-width="200px" :label="tableData_columns.m_beforeThing">
+								<el-table-column min-width="200px" :label="tableData_columns.name">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[2]" v-if="scope.row.edit" size="small" v-model="scope.row.m_beforeThing"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.name" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.name}}</span>
 									</template>
-								</el-table-column> -->
-
-								<el-table-column min-width="300px" label="股东姓名" prop="name">
-									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'name'+scope.$index" :ref="'form_name_'+scope.$index" :show-message="false">
-												<el-form-item prop="name" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.name"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{scope.row.name}}</span>
-									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="出资比例" prop="ratio">
+								<el-table-column min-width="200px" :label="tableData_columns.ratio" prop="ratio">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'ratio'+scope.$index" :ref="'form_ratio_'+scope.$index" :show-message="false">
-												<el-form-item prop="ratio" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.ratio"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.ratio" :class="Object.keys(tableData_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.ratio}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="认缴出资（万元）" prop="subscribe">
+								<!-- <el-table-column min-width="200px" :label="tableData_columns.isEff">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'subscribe'+scope.$index" :ref="'form_subscribe_'+scope.$index" :show-message="false">
-												<el-form-item prop="subscribe" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.subscribe"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
+										<el-select v-model="scope.row.isEff" class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[3]" placeholder="请选择" size="small" v-if="scope.row.edit">
+											<el-option :value="1" label="有效"></el-option>
+											<el-option :value="0" label="无效"></el-option>
+										</el-select>
+										<span v-else>{{ scope.row.isEff==null?"":(scope.row.isEff?"有效":"无效")}}</span>
+									</template>
+								</el-table-column> -->
+								<el-table-column min-width="200px" :label="tableData_columns.subscribe" prop="subscribe">
+									<template slot-scope="scope">
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.subscribe" :class="Object.keys(tableData_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.subscribe}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="实缴出资（万元）" prop="paidIn">
+								<el-table-column min-width="200px" :label="tableData_columns.paidIn" prop="paidIn">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'paidIn'+scope.$index" :ref="'form_paidIn_'+scope.$index" :show-message="false">
-												<el-form-item prop="paidIn" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.paidIn"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.paidIn" :class="Object.keys(tableData_columns)[5]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.paidIn}}</span>
 									</template>
 								</el-table-column>
@@ -347,40 +325,12 @@ export default {
       activeName: "first",
       listLoading: false,
       //验证规则
-      rules: {
-        name: [
-          {
-            required: true,
-            message: "请选择年份",
-            trigger: "null"
-          }
-        ],
-        ratio: [
-          {
-            required: true,
-            message: "请输入荣誉信息",
-            trigger: "null"
-          }
-        ],
-        subscribe: [
-          {
-            required: true,
-            message: "请输入荣誉信息",
-            trigger: "null"
-          }
-        ],
-        paidIn: [
-          {
-            required: true,
-            message: "请输入荣誉信息",
-            trigger: "null"
-          }
-        ]
-      },
+      rules: {},
       tableData: [
         {
           name: "name1",
           ratio: 1,
+          isEff: 1,
           subscribe: 5,
           paidIn: 9,
           edit: false
@@ -388,16 +338,18 @@ export default {
         {
           name: "name2",
           ratio: 2,
+          isEff: 0,
           subscribe: 5,
           paidIn: 10,
           edit: false
         }
       ],
       tableData_columns: {
-        name: "",
-        ratio: null,
-        subscribe: null,
-        paidIn: null,
+        name: "股东姓名",
+        ratio: "出资比例（%）",
+        isEff: "是否有效",
+        subscribe: "认缴出资（万元）",
+        paidIn: "实缴出资（万元）",
         edit: false
       },
       tableData_1: [
@@ -464,18 +416,15 @@ export default {
       return this.tableData_2.isMerge ? "是" : "否";
     }
   },
-  mounted() {
-   
-  },
+  mounted() {},
   methods: {
     //点击标签页触发事件
     handleClick(tab, event) {
       //   console.log(tab, event);
     },
-    
+
     //验证单元格数据
     verify(rowObj, rowIndex) {
-      console.log(rowObj, rowIndex);
       tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
     },
     verify1(row, index) {
