@@ -318,7 +318,7 @@ let router = new Router({
 						component: () => import('@/page/dataEnter/company/risk/fxxfx.vue')
 					}, {
 						path: 'jbxxzy/jbxxzy',//基本信息及摘要
-						name: 'fxxfx',
+						name: 'jbxxzy',
 						meta: {
 							index: '7-1'
 						},
@@ -362,7 +362,13 @@ router.beforeEach((to, from, next) => {
 	if (to.name == 'version' || to.name == 'report' || to.name == 'log') {
 		store.commit('changeSide', false);
 	}
+	if(!sessionStorage.getItem('token')&&to.name !== 'login'){
+		next({
+			name: 'login'
+		});
+	}
 	next();
+	
 })
 
 export default router;
