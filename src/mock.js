@@ -16,6 +16,11 @@ import versionData from '@/json/version.json';
 import fspjData from '@/json/fspj.json';
 import gsxxData from '@/json/gsxx.json';
 import lsygData from '@/json/lsyg.json';
+import landData from '@/json/land.json';
+import houseData from '@/json/house.json';
+import deviceData from '@/json/device.json';
+import carData from '@/json/car.json'
+
 
 // 获取 mock.Random 对象
 const Random = Mock.Random;
@@ -97,4 +102,25 @@ Mock.mock(api.genReport, 'post', function (req) {
 //获取历史沿革
 Mock.mock('/hspt-web-api/data_entry/qyjbxx/lsyg', 'post', function (req) {
 	return lsygData;
+});
+
+
+//获取土地信息
+Mock.mock('/hspt-web-api/data_entry/gsyyxx/qyjyzy/qytdxx/list', 'post', function (req) {
+	return landData;
+});
+
+//获取房产信息
+Mock.mock('/hspt-web-api/data_entry/gsyyxx/qyjyzy/qyfcxx/list', 'post', function (req) {
+	return houseData;
+});
+
+// 获取企业主要生产设备
+Mock.mock('/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/list', 'post', function (req) {
+	return deviceData;
+});
+
+// 获取车辆信息
+Mock.mock('/hspt-web-api/data_entry/gsyyxx/qyjyzy/clqkmx/list', 'post', function (req) {
+	return carData;
 });
