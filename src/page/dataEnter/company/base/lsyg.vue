@@ -17,7 +17,7 @@
             <template slot-scope="scope">
               <el-date-picker class="cellItem el-form-item"
                               :class="Object.keys(tableData_columns)[0]"
-                              v-if="scope.row.edit" type="date" placeholder="选择日期" v-model="scope.row.m_changeDate"
+                              v-if="scope.row.edit" type="date" placeholder="选择日期" v-model="scope.row.m_changeDate" :editable='false'
                               style="width: 100%;"></el-date-picker>
               <span v-else>{{scope.row.m_changeDate}}</span>
             </template>

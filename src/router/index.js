@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../store'
+import axios from 'axios'
+import qs from 'qs'
+
 
 Vue.use(Router)
 
@@ -356,20 +359,52 @@ let router = new Router({
 });
 // 解决点击“版本切换”后侧边栏需要隐藏，和导航后退时把侧边栏设置为可展开的问题。
 router.beforeEach((to, from, next) => {
+	//如果访问不是登录页，并且token不存在，则直接跳登录页面
+	if (!sessionStorage.getItem('token') && to.name !== 'login') {
+		console.log(555)
+		next({
+			name: 'login'
+		});
+	}
+	if (sessionStorage.getItem('token') && to.name !== 'login') {
+		console.log(sessionStorage.getItem('token'))
+		console.log(444)
+		let params = { token: sessionStorage.getItem('token') };
+		axios({
+			method: 'post',
+			baseURL: '',
+			url: '/hspt-web-api/verifyToken',
+			data: qs.stringify(params),
+			timeout: 10000,
+			headers: {
+				'X-Requested-With': 'XMLHttpRequest',
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			}
+		}).then(
+			(res) => {
+				if (res.data.resultCode != '0') {
+					console.log(res.data)
+					next({
+						name: 'login'
+					});
+				}
+			}
+		).then(
+			(res) => {}
+		)
+	}
 	if (from.name == 'version' || from.name == 'report' || from.name == 'log') {
 		store.commit('changeSide', true);
 	}
 	if (to.name == 'version' || to.name == 'report' || to.name == 'log') {
 		store.commit('changeSide', false);
 	}
-	//如果访问不是登录页，并且token不存在，则直接跳登录页面
-	if (!sessionStorage.getItem('token') && to.name !== 'login') {
-		next({
-			name: 'login'
-		});
-	}
 	next();
 
 })
 
+// async function verifyToken(){
+// let params = { token: sessionStorage.getItem('token') };
+
+// }
 export default router;

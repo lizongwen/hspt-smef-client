@@ -36,6 +36,15 @@ Mock.mock(api.login, 'post', function (req) {
 	return loginData;
 });
 
+//判断token有效无效
+
+Mock.mock('/hspt-web-api/verifyToken', 'post', function (req) {
+	return {
+		"resultCode": "0",
+		"resultMsg": "成功(0000)"
+	};
+});
+
 //查询职位
 Mock.mock(api.findByLoginName, 'post', function (req) {
 	return findByLoginName;

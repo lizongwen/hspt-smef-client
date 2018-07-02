@@ -41,7 +41,7 @@ export default {
     }
   },
   mounted() {
-	this.username = sessionStorage.getItem("username") || "";
+    this.username = sessionStorage.getItem("username") || "";
   },
   methods: {
     checkInput() {
@@ -57,10 +57,15 @@ export default {
     login: async function() {
       let params = { username: this.username, password: this.password };
       this.isBtnLoading = true;
-	  const res = await this.$http.post(this.$api.login, params);
-      sessionStorage.setItem("username", this.username);
-	  sessionStorage.setItem("token", res.data.resultData.token);
-      this.$router.push({ path: "./index" });
+      const res = await this.$http.post(this.$api.login, params);
+      if (res.data.resultCode == "0") {
+		  console.log('登陆成功')
+        sessionStorage.setItem("username", this.username);
+        sessionStorage.setItem("token", res.data.resultData.token);
+        this.$router.push({ path: "./index" });
+      } else {
+        this.$router.push({ path: "./login" });
+      }
     }
   }
 };
