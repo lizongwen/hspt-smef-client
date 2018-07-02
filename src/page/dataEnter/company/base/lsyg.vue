@@ -132,7 +132,6 @@ export default {
     //获取数据
 
     verify(rowObj, rowIndex) {
-	console.log(rowObj,rowIndex)
       tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
     }
   },

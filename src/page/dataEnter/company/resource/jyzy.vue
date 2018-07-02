@@ -14,118 +14,61 @@
 						<div>
 							<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
-								<el-table-column min-width="300px" label="土地证号">
+								<el-table-column min-width="200px" :label="tableData_columns.syzh">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'landDeed'+scope.$index" :ref="'form_landDeed_'+scope.$index" :show-message="false">
-												<el-form-item prop="landDeed" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.landDeed"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{scope.row.landDeed}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" size="small" v-model.number="scope.row.syzh"></el-input>
+										<span v-else>{{ scope.row.syzh}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="100px" label="坐落">
+								<el-table-column min-width="200px" :label="tableData_columns.zl">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'seat'+scope.$index" :ref="'form_seat_'+scope.$index" :show-message="false">
-												<el-form-item prop="seat" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.seat"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.seat}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[2]" v-if="scope.row.edit" size="small" v-model.number="scope.row.zl"></el-input>
+										<span v-else>{{ scope.row.zl}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="100px" label="用途">
+								<el-table-column min-width="50px" :label="tableData_columns.yt">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'use'+scope.$index" :ref="'form_use_'+scope.$index" :show-message="false">
-												<el-form-item prop="use" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.use"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.use}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[3]" v-if="scope.row.edit" size="small" v-model.number="scope.row.yt"></el-input>
+										<span v-else>{{ scope.row.yt}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="100px" label="取得价格（万元）">
+								<el-table-column min-width="150px" :label="tableData_columns.qdjg">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'price'+scope.$index" :ref="'form_price_'+scope.$index" :show-message="false">
-												<el-form-item prop="price" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.price"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.price}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[4]" v-if="scope.row.edit" size="small" v-model.number="scope.row.qdjg"></el-input>
+										<span v-else>{{ scope.row.qdjg}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="100px" label="使用权类型">
+								<el-table-column min-width="100px" :label="tableData_columns.syqlx">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'useType'+scope.$index" :ref="'form_useType_'+scope.$index" :show-message="false">
-												<el-form-item prop="useType" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.useType"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.useType}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[5]" v-if="scope.row.edit" size="small" v-model.number="scope.row.syqlx"></el-input>
+										<span v-else>{{ scope.row.syqlx}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="100px" label="终止日期">
+								<el-table-column min-width="130px" :label="tableData_columns.zzrq">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'expDate'+scope.$index" :ref="'form_expDate_'+scope.$index" :show-message="false">
-												<el-form-item prop="expDate" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.expDate"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.expDate}}</span>
+										<el-date-picker class="cellItem el-form-item" v-model="scope.row.zzrq"  value-format="yyyy-MM-dd" :class="Object.keys(tableData_columns)[6]" v-if="scope.row.edit" type="date" placeholder="选择日期" style="width: 100%;" :clearable='false' ></el-date-picker>
+										<span v-else>{{scope.row.zzrq}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="100px" label="面积">
+								<el-table-column min-width="120px" :label="tableData_columns.mj">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'landArea'+scope.$index" :ref="'form_landArea_'+scope.$index" :show-message="false">
-												<el-form-item prop="landArea" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.landArea"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.landArea}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[7]" v-if="scope.row.edit" size="small" v-model.number="scope.row.mj"></el-input>
+										<span v-else>{{ scope.row.mj}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="100px" label="有无他项权利">
+								<el-table-column min-width="120px" :label="tableData_columns.ywtxql">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'hasMortgage'+scope.$index" :ref="'form_hasMortgage_'+scope.$index" :show-message="false">
-												<el-form-item prop="hasMortgage" class="td-form-item">
-													<el-select v-model="hasMortgage" placeholder="请选择">
-														<el-option value="1" label="有"></el-option>
-														<el-option value="0" label="无"></el-option>
-													</el-select>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.hasMortgage==null?"":(scope.row.hasMortgage?"有":"无")}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[8]" v-if="scope.row.edit" size="small" v-model.number="scope.row.ywtxql"></el-input>
+										<span v-else>{{ scope.row.ywtxql}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="100px" label="融资额度">
+								<el-table-column min-width="100px" :label="tableData_columns.rzed">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'quota'+scope.$index" :ref="'form_quota_'+scope.$index" :show-message="false">
-												<el-form-item prop="quota" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.quota"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.quota}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[9]" v-if="scope.row.edit" size="small" v-model.number="scope.row.rzed"></el-input>
+										<span v-else>{{ scope.row.rzed}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column align="center" label="操作" width="240">
+								<el-table-column align="center" label="操作" width="200">
 									<template slot-scope="scope">
 										<v-tableOperation :scope="scope" :tableData="tableData" v-on:verify="verify"></v-tableOperation>
 									</template>
@@ -219,7 +162,7 @@
 										<span v-else>{{ scope.row.expDate}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="100px" label="面积">
+								<el-table-column min-width="150px" label="面积">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
 											<el-form :model="scope.row" :rules="rules" :id="'landArea'+scope.$index" :ref="'form_landArea_'+scope.$index" :show-message="false">
@@ -511,30 +454,17 @@ export default {
       activeName: "first",
       listLoading: false,
       textarea: "",
-      tableData: [
-        {
-          landDeed: "2018/01/01",
-          seat: "变更事项1",
-          use: "变更前1",
-          price: "变更后1",
-          useType: "使用权类型一",
-          expDate: "终止日期一",
-          landArea: "1000平米",
-          hasMortgage: 1,
-          quota: 100,
-          edit: false
-        }
-      ],
+      tableData: [],
       tableData_columns: {
-        landDeed: "",
-        seat: "",
-        use: "",
-        price: "",
-        useType: "",
-        expDate: "",
-        landArea: "",
-        hasMortgage: null,
-        quota: null,
+        syzh: "土地证号",
+        zl: "坐落",
+        yt: "用途",
+        qdjg: "取得价格（万元）",
+        syqlx: "使用权类型",
+        zzrq: "终止日期",
+        mj: "面积（平米）",
+        ywtxql: '有无他项权利',
+        rzed: '融资额度',
         edit: false
       },
       tableData_1: [
@@ -602,7 +532,9 @@ export default {
         edit: false
       },
       //规则
-      rules: {}
+      rules: {
+
+	  }
     };
   },
   computed: {
@@ -616,9 +548,28 @@ export default {
       return this.tableData.mortgageMark ? "已抵押" : "未抵押";
     }
   },
+  mounted(){
+	   this.getLandList();
+  },
   methods: {
     handleClick(tab, event) {
       //   console.log(tab, event);
+	},
+	// 获取土地信息
+	getLandList: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsyyxx/qyjyzy/qytdxx/list",
+        params
+      );
+      if (res.data.resultCode == "0") {
+		console.log(res.data);
+		this.tableData=res.data.resultData.data.rows
+      } else {
+      }
     },
     getSummaries(param) {
       const { columns, data } = param;

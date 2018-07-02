@@ -19,7 +19,6 @@
 									</template>
 								</el-table-column> -->
 
-
 								<el-table-column min-width="300px" label="股东姓名" prop="name">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
@@ -465,59 +464,19 @@ export default {
       return this.tableData_2.isMerge ? "是" : "否";
     }
   },
-  mounted() {},
+  mounted() {
+   
+  },
   methods: {
     //点击标签页触发事件
     handleClick(tab, event) {
       //   console.log(tab, event);
     },
+    
     //验证单元格数据
-    verify(row, index) {
-      var a = true,
-        b = true,
-        c = true,
-        d = true;
-      this.$refs[`form_name_${index}`].validate((res, obj) => {
-        if (res) {
-          //验证通过
-          a = false;
-        } else {
-          //验证不通过
-          console.log(obj.name[0].message);
-        }
-      });
-      this.$refs[`form_ratio_${index}`].validate((res, obj) => {
-        if (res) {
-          //验证通过
-          b = false;
-        } else {
-          //验证不通过
-          console.log(obj.ratio[0].message);
-        }
-      });
-      this.$refs[`form_subscribe_${index}`].validate((res, obj) => {
-        if (res) {
-          //验证通过
-          c = false;
-        } else {
-          //验证不通过
-          console.log(obj.subscribe[0].message);
-        }
-      });
-      this.$refs[`form_paidIn_${index}`].validate((res, obj) => {
-        if (res) {
-          //验证通过
-          d = false;
-        } else {
-          //验证不通过
-          console.log(obj.paidIn[0].message);
-        }
-      });
-      if (!a && !b && !c && !d) {
-        row.edit = false;
-      } else {
-        //弹出错误消息汇总
-      }
+    verify(rowObj, rowIndex) {
+      console.log(rowObj, rowIndex);
+      tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
     },
     verify1(row, index) {
       row.edit = false;
