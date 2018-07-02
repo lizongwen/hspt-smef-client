@@ -361,14 +361,11 @@ let router = new Router({
 router.beforeEach((to, from, next) => {
 	//如果访问不是登录页，并且token不存在，则直接跳登录页面
 	if (!sessionStorage.getItem('token') && to.name !== 'login') {
-		console.log(555)
 		next({
 			name: 'login'
 		});
 	}
 	if (sessionStorage.getItem('token') && to.name !== 'login') {
-		console.log(sessionStorage.getItem('token'))
-		console.log(444)
 		let params = { token: sessionStorage.getItem('token') };
 		axios({
 			method: 'post',
@@ -383,7 +380,6 @@ router.beforeEach((to, from, next) => {
 		}).then(
 			(res) => {
 				if (res.data.resultCode != '0') {
-					console.log(res.data)
 					next({
 						name: 'login'
 					});
