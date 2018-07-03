@@ -102,7 +102,7 @@ export default {
     init() {
       let pathArr = util.setCurrentPath(this, this.$route.name);
       this.getFspj();
-	  this.getCompanySjtbSummary();
+      this.getCompanySjtbSummary();
     },
     toHome() {
       this.$router.push({ path: "/company/home" });
@@ -127,19 +127,25 @@ export default {
       this.creditScore = res.data.resultData.zxpf;
       this.creditLevel = res.data.resultData.dqpj;
     },
-	
-	//获取企业填报摘要信息
-	getCompanySjtbSummary: async function(){
-	   let params = {
+
+    //获取企业填报摘要信息
+    getCompanySjtbSummary: async function() {
+      let params = {
         token: sessionStorage.getItem("token"),
         creditCode: "123"
-		};
-	    const res = await this.$http.post("/hspt-web-api/project/company/sjtb/summary", params);
-		this.companyName=res.data.resultData.companyName;
-		this.modifyName=res.data.resultData.updateBy;
-		this.modifyTime=res.data.resultData.updateTime;
-		this.percent=res.data.resultData.tbjdbfb;
-	}
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/project/company/sjtb/summary",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.companyName = res.data.resultData.companyName;
+        this.modifyName = res.data.resultData.updateBy;
+        this.modifyTime = res.data.resultData.updateTime;
+		this.percent = res.data.resultData.tbjdbfb;
+		sessionStorage.setItem('companyName',this.companyName);
+      }
+    }
   }
 };
 </script>
