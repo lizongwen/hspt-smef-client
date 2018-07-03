@@ -416,12 +416,21 @@ export default {
       return this.tableData_2.isMerge ? "是" : "否";
     }
   },
-  mounted() {},
+  mounted() {
+	  
+  },
   methods: {
     //点击标签页触发事件
     handleClick(tab, event) {
       //   console.log(tab, event);
     },
+	//获取股权结构（非上市公司）
+
+	//获取股权结构（上市公司）
+
+	//获取分支及下属企业情况
+	
+	//获取关联企业
 
     //验证单元格数据
     verify(rowObj, rowIndex) {

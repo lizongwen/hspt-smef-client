@@ -122,4 +122,6 @@ a {
 .no-border {
     border: none !important;
 }
-
+.strong{
+	font-weight: bold
+}

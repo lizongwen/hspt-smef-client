@@ -1,0 +1,25 @@
+{
+	"resultCode": "0",
+	"resultData": {
+		"data": [
+			{
+				"createBy": null,
+				"createTime": null,
+				"creditCode": "91340000790136024X",
+				"id": "913400007901360240",
+				"isDeleted": "0",
+				"lb": null,
+				"sbm": "商标",
+				"sqsj": null,
+				"updateBy": null,
+				"updateTime": null,
+				"zch": "001",
+				"zt": "有效"
+			}
+		],
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzY1OTg4MjYsImlhdCI6MTUzMDU5ODgyNn0.wrndRAL23sdcGPAGfOqSJ2NGz-4MzhRdBjJkeHanU8U"
+	},
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "成功"
+}

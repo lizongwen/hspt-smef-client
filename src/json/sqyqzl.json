@@ -1,0 +1,32 @@
+{
+	"resultCode": "0",
+	"resultData": {
+		"data": [
+			{
+				"createBy": null,
+				"createTime": null,
+				"creditCode": "91340000790136024X",
+				"detail": null,
+				"flh": null,
+				"flzt": "授权",
+				"fmr": null,
+				"gkh": "CN205455744",
+				"id": "913400007901360241",
+				"isDeleted": "0",
+				"mc": "开关寿命试验机",
+				"sqgj": "中国（CN）",
+				"sqh": "054457",
+				"sqlx": "25358745",
+				"sqr": 1522512000000,
+				"syzlbhqx": null,
+				"updateBy": null,
+				"updateTime": null,
+				"yxx": "无权"
+			}
+		],
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzY1OTg4MjYsImlhdCI6MTUzMDU5ODgyNn0.wrndRAL23sdcGPAGfOqSJ2NGz-4MzhRdBjJkeHanU8U"
+	},
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "成功"
+}

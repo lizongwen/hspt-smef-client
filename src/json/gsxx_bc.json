@@ -1,0 +1,38 @@
+{
+	"resultCode": "0",
+	"resultData": {
+		"data": {
+			"bgdz": null,
+			"clnf": null,
+			"createBy": null,
+			"createTime": null,
+			"creditCode": "91340000790136024X",
+			"cz": null,
+			"dh": null,
+			"djzt": null,
+			"frdb": null,
+			"gsrs": null,
+			"hzrq": null,
+			"id": "3dcb410b8f3542eca304525df0e4b33b",
+			"jyfw": null,
+			"jzc": null,
+			"qylx": null,
+			"qymc": null,
+			"updateBy": "aitime",
+			"updateTime": "2018-07-03",
+			"wz": null,
+			"xssr": null,
+			"yyqx": null,
+			"zcdz": null,
+			"zch": null,
+			"zcjg": null,
+			"zcrq": null,
+			"zczb": null,
+			"zzjgdm": null
+		},
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzY1ODQwNjQsImlhdCI6MTUzMDU4NDA2NH0.n7vG0YiFiNxasEg1BKhBqi66tXpUSjJs-qnPWNbrv40"
+	},
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "保存成功"
+}

@@ -45,7 +45,8 @@ let table_validates = {
         popMsg.popErrorHtmlMsg(vm, notice);
       }
       else {
-        row.edit = false;
+		row.edit = false;
+		return true
       }
     })
   }

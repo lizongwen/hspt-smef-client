@@ -17,7 +17,7 @@ export default {
         //清空this.tableData_columns的value值，保证初值为空。
         let newData = JSON.parse(JSON.stringify(this.tableData_columns));
         for(let key in newData){
-            newData[key]='';
+            newData[key]=null;
         }
         newData.edit = false;
         this.tableData.push(newData);

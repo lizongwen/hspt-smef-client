@@ -4,7 +4,7 @@
 		<el-card class="box-card">
 			<div slot="header" class="clearfix">
 				<div class="card-right-wrap">
-					<el-button type="default" size="medium">获取数据</el-button>
+					<el-button type="default" size="medium" @click="getData">获取数据</el-button>
 					<el-button type="primary" size="medium" @click="saveLsyg">保存</el-button>
 				</div>
 				<div class="card-title">公司历史沿革</div>
@@ -15,31 +15,31 @@
 					<el-table-column label="序号" type="index" width="50"></el-table-column>
 					<el-table-column min-width="110px" :label="tableData_columns.bgrq">
 						<template slot-scope="scope">
-							<el-date-picker class="cellItem el-form-item" value-format="yyyy-MM-dd" :class="Object.keys(tableData_columns)[0]" v-if="scope.row.edit" type="date" placeholder="选择日期" v-model="scope.row.bgrq" style="width: 100%;" :clearable='false' ></el-date-picker>
+							<el-date-picker class="cellItem el-form-item" value-format="yyyy-MM-dd" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" type="date" placeholder="选择日期" v-model="scope.row.bgrq" style="width: 100%;" :clearable='false'></el-date-picker>
 							<span v-else>{{scope.row.bgrq}}</span>
 						</template>
 					</el-table-column>
 					<el-table-column min-width="200px" :label="tableData_columns.bgsx">
 						<template slot-scope="scope">
-							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" size="small" v-model.number="scope.row.bgsx"></el-input>
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[2]" v-if="scope.row.edit" size="small" v-model.number="scope.row.bgsx"></el-input>
 							<span v-else>{{ scope.row.bgsx}}</span>
 						</template>
 					</el-table-column>
 					<el-table-column min-width="200px" :label="tableData_columns.bgqnr">
 						<template slot-scope="scope">
-							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[2]" v-if="scope.row.edit" size="small" v-model="scope.row.bgqnr"></el-input>
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[3]" v-if="scope.row.edit" size="small" v-model="scope.row.bgqnr"></el-input>
 							<span v-else>{{ scope.row.bgqnr}}</span>
 						</template>
 					</el-table-column>
 					<el-table-column min-width="200px" :label="tableData_columns.bghnr">
 						<template slot-scope="scope">
-							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[3]" v-if="scope.row.edit" size="small" v-model="scope.row.bghnr"></el-input>
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[4]" v-if="scope.row.edit" size="small" v-model="scope.row.bghnr"></el-input>
 							<span v-else>{{ scope.row.bghnr}}</span>
 						</template>
 					</el-table-column>
 					<el-table-column align="center" label="操作" width="240">
 						<template slot-scope="scope">
-							<v-tableOperation :scope="scope" :tableData="tableData" v-on:verify="verify"></v-tableOperation>
+							<v-tableOperation :scope="scope" :tableData="tableData" v-on:verify="verify" v-on:acceptDelRow='acceptDelRow'></v-tableOperation>
 						</template>
 					</el-table-column>
 				</el-table>
@@ -59,16 +59,12 @@ export default {
     return {
       validateState: "",
       listLoading: false,
-      tableData: [
-        {
-          bgrq: new Date("2018/01/01"),
-          bgsx: "变更事项1",
-          bgqnr: "变更后1",
-          bghnr: "变更前1",
-          edit: false
-        }
-      ],
+      tableData: [],
+      delRowData: [],
+      addData: [],
+      updateData: [],
       tableData_columns: {
+        id: "id",
         bgrq: "变更日期",
         bgsx: "变更事项",
         bgqnr: "变更前",
@@ -78,12 +74,12 @@ export default {
       rules: {
         // bgrq: [{ type: "date", required: true, message: "请选择变更日期" }],
         bgsx: [
-          { required: true, message: "变更事项是必填项" },
-        //   { type: "number", message: "变更事项需要录入数字" }
+          { required: true, message: "变更事项是必填项" }
+          //   { type: "number", message: "变更事项需要录入数字" }
         ],
         bgqnr: [
-          { required: true, message: "变更前是必填项" },
-        //   { min: 3, max: 5, message: "变更前字符长度需要 3 到 5 个字符" }
+          { required: true, message: "变更前是必填项" }
+          //   { min: 3, max: 5, message: "变更前字符长度需要 3 到 5 个字符" }
         ],
         bghnr: [{ required: true, message: "变更后是必填项" }]
       }
@@ -95,10 +91,10 @@ export default {
   methods: {
     init() {
       this.getGslsyg();
-	},
-	saveLsyg(){
-		this.setGslsyg();
-	},
+    },
+    saveLsyg() {
+      this.setGslsyg();
+    },
     //获取公司历史沿革信息
     getGslsyg: async function() {
       let params = {
@@ -106,33 +102,62 @@ export default {
         token: sessionStorage.getItem("token")
       };
       const res = await this.$http.post(
-        "/hspt-web-api/data_entry/qyjbxx/lsyg",
+        "/hspt-web-api/data_entry/qyjbxx/lsyg/display",
         params
       );
-	  if(res.data.resultCode=='0'){
-		    this.tableData = res.data.resultData.data;
-	  }
+      if (res.data.resultCode == "0") {
+        this.tableData = res.data.resultData.data.data.rows;
+      }
+    },
+    //获取数据
+    getData: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        gslsyg: JSON.stringify(this.tableData)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/qyjbxx/lsyg/interface/retrieve",
+        params
+      );
     },
     //保存数据
     setGslsyg: async function() {
+      this.tableData.forEach((item, index) => {
+        if (item.id != null) {
+          this.addData.push(item);
+        }
+	  });
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
-		token: sessionStorage.getItem("token"),
-		gslsyg:JSON.stringify(this.tableData)
-      };
+        token: sessionStorage.getItem("token"),
+        addData: this.addData,
+        updateData: this.updateData,
+        delData: this.delRowData
+	  };
+	  console.log(this.addData)
+	   console.log(this.updateData)
+	    console.log(this.delRowData)
       const res = await this.$http.post(
         "/hspt-web-api/data_entry/qyjbxx/gslsyg/modify",
         params
-	  );
-	  if(res.data.resultCode=='0'){
-		   alert('保存成功')
-	  }
+      );
+      if (res.data.resultCode == "0") {
+        this.$message("保存成功");
+        this.delRowData = [];
+      }
     },
-
-    //获取数据
-
+    //接受删除的数据
+    acceptDelRow(val) {
+      this.delRowData.push(val);
+    },
+    //验证数据
     verify(rowObj, rowIndex) {
-      tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
+	 var isValid= tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
+	 console.log(isValid);
+	 if(rowObj.id){
+		this.updateData.push(rowObj);
+	 }
     }
   },
   components: {

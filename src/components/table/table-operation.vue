@@ -61,7 +61,8 @@
           center: true
         }).then(
           () => {
-            this.tableData.splice(index, 1);
+			let rowData=this.tableData.splice(index, 1);
+			this.$emit('acceptDelRow',rowData[0])
           },
           () => {
           }

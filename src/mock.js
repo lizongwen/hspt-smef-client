@@ -15,11 +15,14 @@ import projDetailData from '@/json/projDetail.json';
 import versionData from '@/json/version.json';
 import fspjData from '@/json/fspj.json';
 import gsxxData from '@/json/gsxx.json';
+import gsxx_bc from '@/json/gsxx_bc.json'
 import lsygData from '@/json/lsyg.json';
 import landData from '@/json/land.json';
 import houseData from '@/json/house.json';
 import deviceData from '@/json/device.json';
-import carData from '@/json/car.json'
+import carData from '@/json/car.json';
+import sbData from '@/json/sb.json';
+import sqyqzlData from '@/json/sqyqzl.json';
 
 
 // 获取 mock.Random 对象
@@ -91,7 +94,10 @@ Mock.mock('/hspt-web-api/project/fspj', 'post', function (req) {
 Mock.mock("/hspt-web-api/data_entry/qyjbxx/gsjbxx/list", 'post', function (req) {
 	return gsxxData;
 });
-
+//保存公司基本信息
+Mock.mock("/hspt-web-api/data_entry/qyjbxx/gsjbxx/modify", 'post', function (req) {
+	return gsxx_bc;
+});
 
 Mock.mock(api.genReport, 'post', function (req) {
 	return {};
@@ -123,4 +129,15 @@ Mock.mock('/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/list', 'post', function (
 // 获取车辆信息
 Mock.mock('/hspt-web-api/data_entry/gsyyxx/qyjyzy/clqkmx/list', 'post', function (req) {
 	return carData;
+});
+
+
+//获取商标信息
+Mock.mock('/hspt-web-api/data_entry/gsjbxx/zscq/sbxx/list', 'post', function (req) {
+	return sbData;
+});
+
+//获取授权有权专利明细
+Mock.mock('/hspt-web-api/data_entry/gsjbxx/zscq/sqyqzlmx/list', 'post', function (req) {
+	return sqyqzlData;
 });
