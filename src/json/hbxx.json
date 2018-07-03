@@ -1,0 +1,20 @@
+{
+	"resultCode": "0",
+	"resultData": [
+		{
+			"createBy": "wywdata",
+			"createTime": 1521011393000,
+			"creditCode": "91340000790136024X",
+			"id": "2cb8905d2a9446378c777599baf2c1bd",
+			"isDeleted": "0",
+			"pfjg": "芜湖市环保局",
+			"pw": "环验【2015】105号",
+			"updateBy": "wywdata",
+			"updateTime": 1521011393000,
+			"zt": "已验收"
+		}
+	],
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "查询成功"
+}

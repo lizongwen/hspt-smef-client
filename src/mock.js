@@ -26,6 +26,8 @@ import sbData from '@/json/sb.json';
 import sqyqzlData from '@/json/sqyqzl.json';
 import zzqData from '@/json/zzq.json'
 import wzData from '@/json/wz.json'
+import hbxxData from '@/json/hbxx.json'
+import summaryData from '@/json/summary.json'
 
 
 // 获取 mock.Random 对象
@@ -88,10 +90,16 @@ Mock.mock(api.getVersion, 'post', function (req) {
 
 
 //获取资信分数及惠国评级
-
 Mock.mock('/hspt-web-api/project/fspj', 'post', function (req) {
 	return fspjData;
 });
+
+//
+
+Mock.mock('/hspt-web-api/project/company/sjtb/summary', 'post', function (req) {
+	return summaryData;
+});
+
 
 //获取公司基本信息
 Mock.mock("/hspt-web-api/data_entry/qyjbxx/gsjbxx/list", 'post', function (req) {
@@ -156,4 +164,9 @@ Mock.mock("/hspt-web-api/data_entry/gsjbxx/zscq/zzq/list", 'post', function (req
 //获取网站备案
 Mock.mock("/hspt-web-api/data_entry/gsjbxx/zscq/wzba/list", 'post', function (req) {
 	return wzData;
+});
+
+//获取环保信息
+Mock.mock("/hspt-web-api/data_entry/gsjbxx/hbxx/hbxx/list", 'post', function (req) {
+	return hbxxData;
 });

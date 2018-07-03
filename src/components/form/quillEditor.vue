@@ -1,5 +1,4 @@
 <template>
-<!-- <div></div> -->
 	<quill-editor v-model="content" ref="myTextEditor" :options="editorOption" @change="onChange">
 		<!-- <div id="toolbar" slot="toolbar">
 			<span class="ql-formats">
@@ -211,12 +210,13 @@ export default {
   props: {
     /*编辑器的内容*/
     value: {
-      type: String
+      type: String,
+      default: ""
     },
     /*图片大小*/
     maxSize: {
       type: Number,
-      default:  10240//kb
+      default: 10240 //kb
     }
   },
   data() {
@@ -230,9 +230,26 @@ export default {
       }
     };
   },
+  computed: {
+    editor() {
+      return this.$refs.myTextEditor.quill;
+    }
+  },
+  mounted() {
+    this.content = this.value;
+  },
+   watch: {
+      value(newVal, oldVal) {
+        if (this.editor) {
+          if (newVal !== this.content) {
+            this.content = newVal;
+          }
+        }
+      }
+    },
   methods: {
     onChange() {
-      this.$emit("input", this.content);
+      this.$emit("changeInput", this.content);
     },
 
     /*裁切上传成功 res根据上传接口值获取*/
@@ -298,24 +315,7 @@ export default {
       }
     }
   },
-  computed: {
-    editor() {
-      return this.$refs.myTextEditor.quill;
-    }
-  },
-
-  mounted() {
-    this.content = this.value;
-  },
-//   watch: {
-//     value(newVal, oldVal) {
-//       if (this.editor) {
-//         if (newVal !== this.content) {
-//           this.content = newVal;
-//         }
-//       }
-//     }
-//   }
+   
 };
 </script>
 <style>

@@ -1,0 +1,24 @@
+{
+	"resultCode": "0",
+	"resultData": {
+		"companyName": "新亚特电缆股份有限公司",
+		"createBy": null,
+		"createTime": null,
+		"creditCode": "123",
+		"dqwcbs": 3,
+		"id": "adc665893cbe42ce898110640669577b",
+		"jb": null,
+		"jdZbs": 23,
+		"parentId": "0",
+		"sort": null,
+		"tbjdbfb": 0,
+		"tbxmmc": "index",
+		"updateBy": "hgdata",
+		"updateTime": "2018-06-06",
+		"zbs": 127,
+		"zxtbsj": null
+	},
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "成功"
+}

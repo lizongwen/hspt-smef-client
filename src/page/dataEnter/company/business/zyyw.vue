@@ -59,6 +59,7 @@ export default {
   },
   data() {
     return {
+		activeName: "first",
       newsContent: "我是富文本的返回内容"
     };
   },
@@ -66,7 +67,10 @@ export default {
   methods: {
     changInput(val) {
       console.log(val);
-    }
+	},
+	handleClick(){
+
+	}
   }
 };
 </script>
