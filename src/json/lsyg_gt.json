@@ -1,0 +1,123 @@
+{
+	"resultCode": "0",
+	"resultData": {
+		"data": [
+			{
+				"bghnr": "电线电缆,电缆绝缘护套材料,铜杆,铜丝,电伴热带,电加热器,桥架母线槽设计,加工,制造;热处理配件,仪表设计,制造,加工,自营和代理各类商品和技术的进出口业务(国家限定公司经营或禁止进出口的商品和技术除外),木材包装物收购,加工(涉及行政许可的除外).(依法须经批准的项目,经相关部门批准后方可开展经营活动)***",
+				"bgqnr": "电线电缆,电缆绝缘护套材料,铜杆,铜丝,电伴热带,电加热器,桥架母线槽加工,制造;热处理配件,仪表制造,加工,自营和代理各类商品和技术的进出口业务(国家限定公司经营或禁止进出口的商品和技术除外),木材包装物收购,加工(涉及行政许可的除外).***",
+				"bgrq": "2016-01-20",
+				"bgsx": "经营范围",
+				"createBy": null,
+				"createTime": null,
+				"creditCode": null,
+				"edit": false,
+				"id": "400000000335495163",
+				"isDeleted": "0",
+				"updateBy": null,
+				"updateTime": null
+			},
+			{
+				"bghnr": "50",
+				"bgqnr": "6",
+				"bgrq": "2015-06-17",
+				"bgsx": "经营期限",
+				"createBy": null,
+				"createTime": null,
+				"creditCode": null,
+				"edit": false,
+				"id": "400000000185705525",
+				"isDeleted": "0",
+				"updateBy": null,
+				"updateTime": null
+			},
+			{
+				"bghnr": "30000.000000",
+				"bgqnr": "20000.000000",
+				"bgrq": "2013-04-02",
+				"bgsx": "实收资本(或外资中方实收资本)",
+				"createBy": null,
+				"createTime": null,
+				"creditCode": null,
+				"edit": false,
+				"id": "340200000027388187",
+				"isDeleted": "0",
+				"updateBy": null,
+				"updateTime": null
+			},
+			{
+				"bghnr": "30000.000000",
+				"bgqnr": "20000.000000",
+				"bgrq": "2013-04-02",
+				"bgsx": "注册资本(或外资中方认缴资本)",
+				"createBy": null,
+				"createTime": null,
+				"creditCode": null,
+				"edit": false,
+				"id": "340200000027388188",
+				"isDeleted": "0",
+				"updateBy": null,
+				"updateTime": null
+			},
+			{
+				"bghnr": "电线电缆,电缆绝缘护套材料,铜杆,铜丝,电伴热带,电加热器,桥架母线槽加工,制造;热处理配件,仪表制造,加工,自营和代理各类商品和技术的进出口业务(国家限定公司经营或禁止进出口的商品和技术除外),木材包装物收购,加工(涉及行政许可的除外).***",
+				"bgqnr": "电线电缆,热处理配件,仪表制造,加工,自营和代理各类商品和技术的进出口业务(国家限定公司经营或禁止进出口的商品和技术除外),木材包装物收购,加工(涉及行政许可的除外).",
+				"bgrq": "2012-07-12",
+				"bgsx": "经营范围",
+				"createBy": null,
+				"createTime": null,
+				"creditCode": null,
+				"edit": false,
+				"id": "340200000023504959",
+				"isDeleted": "0",
+				"updateBy": null,
+				"updateTime": null
+			},
+			{
+				"bghnr": "20000.000000",
+				"bgqnr": "10000.000000",
+				"bgrq": "2011-04-18",
+				"bgsx": "实收资本(或外资中方实收资本)",
+				"createBy": null,
+				"createTime": null,
+				"creditCode": null,
+				"edit": false,
+				"id": "340200000016373567",
+				"isDeleted": "0",
+				"updateBy": null,
+				"updateTime": null
+			},
+			{
+				"bghnr": "20000.000000",
+				"bgqnr": "10000.000000",
+				"bgrq": "2011-04-18",
+				"bgsx": "注册资本(或外资中方认缴资本)",
+				"createBy": null,
+				"createTime": null,
+				"creditCode": null,
+				"edit": false,
+				"id": "340200000016373566",
+				"isDeleted": "0",
+				"updateBy": null,
+				"updateTime": null
+			},
+			{
+				"bghnr": "10000.0000",
+				"bgqnr": "5000.0000",
+				"bgrq": "2010-02-05",
+				"bgsx": "实收资本(或外资中方实收资本)",
+				"createBy": null,
+				"createTime": null,
+				"creditCode": null,
+				"edit": false,
+				"id": "340200000006920910",
+				"isDeleted": "0",
+				"updateBy": null,
+				"updateTime": null
+			}
+		],
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzY2MjM2MjYsImlhdCI6MTUzMDYyMzYyNn0.Oku6It_lk_ALUYTfCrOBgV32tqiX1MUBVngcsklSH6M"
+	},
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "查询成功"
+}
