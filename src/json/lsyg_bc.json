@@ -1,0 +1,13 @@
+{
+	"resultCode": "0",
+	"resultData": {
+		"data": {
+			"flag": true,
+			"lastUpdate": 1530612334289
+		},
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzY1OTg4MjYsImlhdCI6MTUzMDU5ODgyNn0.wrndRAL23sdcGPAGfOqSJ2NGz-4MzhRdBjJkeHanU8U"
+	},
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "当前操作成功"
+}

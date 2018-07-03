@@ -17,6 +17,7 @@ import fspjData from '@/json/fspj.json';
 import gsxxData from '@/json/gsxx.json';
 import gsxx_bc from '@/json/gsxx_bc.json'
 import lsygData from '@/json/lsyg.json';
+import lsyg_bc from '@/json/lsyg_bc.json'
 import landData from '@/json/land.json';
 import houseData from '@/json/house.json';
 import deviceData from '@/json/device.json';
@@ -111,7 +112,10 @@ Mock.mock(api.genReport, 'post', function (req) {
 Mock.mock('/hspt-web-api/data_entry/qyjbxx/lsyg', 'post', function (req) {
 	return lsygData;
 });
-
+//保存历史沿革
+Mock.mock('/hspt-web-api/data_entry/qyjbxx/lsyg/modify', 'post', function (req) {
+	return lsyg_bc;
+});
 
 //获取土地信息
 Mock.mock('/hspt-web-api/data_entry/gsyyxx/qyjyzy/qytdxx/list', 'post', function (req) {
