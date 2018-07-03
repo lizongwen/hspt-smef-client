@@ -114,12 +114,20 @@ export default {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token"),
-        gslsyg: JSON.stringify(this.tableData)
+        companyName: sessionStorage.getItem("companyName")
       };
       const res = await this.$http.post(
         "/hspt-web-api/data_entry/qyjbxx/lsyg/interface/retrieve",
         params
-      );
+	  );
+	  if(res.data.resultCode=='0'){
+		this.tableData=res.data.resultData.data;
+		this.delRowData = [];
+		this.updateData=[];
+		this.addData=[];
+		// this.addData=res.data.resultData.data;
+		console.log(this.tableData)
+	  }
     },
     //保存数据
     setGslsyg: async function() {
@@ -128,7 +136,7 @@ export default {
           this.addData.push(item);
         }
 	  });
-
+	// console.log()
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token"),
