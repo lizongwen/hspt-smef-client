@@ -124,10 +124,11 @@ export default {
     //保存数据
     setGslsyg: async function() {
       this.tableData.forEach((item, index) => {
-        if (item.id != null) {
+        if (item.id == null) {
           this.addData.push(item);
         }
 	  });
+
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token"),
@@ -135,16 +136,15 @@ export default {
         updateData: JSON.stringify(this.updateData),
         delData: JSON.stringify(this.delRowData)
 	  };
-	  console.log(this.addData)
-	   console.log(this.updateData)
-	    console.log(this.delRowData)
       const res = await this.$http.post(
         "/hspt-web-api/data_entry/qyjbxx/lsyg/modify",
         params
       );
       if (res.data.resultCode == "0") {
         this.$message("保存成功");
-        this.delRowData = [];
+		this.delRowData = [];
+		this.updateData=[];
+		this.addData=[];
       }
     },
     //接受删除的数据
