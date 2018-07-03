@@ -1,0 +1,28 @@
+{
+	"resultCode": "0",
+	"resultData": {
+		"data": [
+			{
+				"bbh": "v3.0",
+				"createBy": null,
+				"createTime": null,
+				"creditCode": "91340000790136024X",
+				"czwcrq": null,
+				"djh": "55225587",
+				"djpzrq": 1530547200000,
+				"id": "913401007901360240",
+				"isDeleted": "0",
+				"lb": "开关寿命试验机",
+				"scfbrq": null,
+				"updateBy": null,
+				"updateTime": null,
+				"zzqmc": "  \n爱瑞特电动车充电控制软件",
+				"zzqr": "惠国征信"
+			}
+		],
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzY1OTg4MjYsImlhdCI6MTUzMDU5ODgyNn0.wrndRAL23sdcGPAGfOqSJ2NGz-4MzhRdBjJkeHanU8U"
+	},
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "成功"
+}

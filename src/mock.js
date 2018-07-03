@@ -23,6 +23,8 @@ import deviceData from '@/json/device.json';
 import carData from '@/json/car.json';
 import sbData from '@/json/sb.json';
 import sqyqzlData from '@/json/sqyqzl.json';
+import zzqData from '@/json/zzq.json'
+import wzData from '@/json/wz.json'
 
 
 // 获取 mock.Random 对象
@@ -140,4 +142,14 @@ Mock.mock('/hspt-web-api/data_entry/gsjbxx/zscq/sbxx/list', 'post', function (re
 //获取授权有权专利明细
 Mock.mock('/hspt-web-api/data_entry/gsjbxx/zscq/sqyqzlmx/list', 'post', function (req) {
 	return sqyqzlData;
+});
+
+//获取著作权
+Mock.mock("/hspt-web-api/data_entry/gsjbxx/zscq/zzq/list", 'post', function (req) {
+	return zzqData;
+});
+
+//获取网站备案
+Mock.mock("/hspt-web-api/data_entry/gsjbxx/zscq/wzba/list", 'post', function (req) {
+	return wzData;
 });

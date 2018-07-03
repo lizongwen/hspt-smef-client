@@ -131,15 +131,15 @@ export default {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token"),
-        addData: this.addData,
-        updateData: this.updateData,
-        delData: this.delRowData
+        addData:  JSON.stringify(this.addData),
+        updateData: JSON.stringify(this.updateData),
+        delData: JSON.stringify(this.delRowData)
 	  };
 	  console.log(this.addData)
 	   console.log(this.updateData)
 	    console.log(this.delRowData)
       const res = await this.$http.post(
-        "/hspt-web-api/data_entry/qyjbxx/gslsyg/modify",
+        "/hspt-web-api/data_entry/qyjbxx/lsyg/modify",
         params
       );
       if (res.data.resultCode == "0") {
