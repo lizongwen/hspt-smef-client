@@ -3,6 +3,7 @@
 		<el-card class="box-card">
 			<div slot="header" class="clearfix">
 				<div class="card-right-wrap">
+					<el-button type="default" size="medium" @click="fetchBaseInfo">获取数据</el-button>
 					<el-button type="primary" size="medium" @click="save">保存</el-button>
 				</div>
 				<div class="card-title">工商基本信息</div>
@@ -162,7 +163,7 @@ export default {
     init() {
       this.getGsjbxx();
     },
-    //获取工商基本信息
+    //初始化工商基本信息
     getGsjbxx: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
@@ -190,10 +191,9 @@ export default {
       this.form.xssr = res.data.resultData.data.xssr;
       this.form.jzc = res.data.resultData.data.jzc;
       this.form.jyfw = res.data.resultData.data.jyfw;
-	},
-	//保存工商基本信息
+    },
+    //保存工商基本信息
     save: async function() {
-      console.log(this.form);
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token"),
@@ -204,10 +204,21 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
-        this.$message({ message: res.data.resultMsg, type: 'success' });
+        this.$message({ message: res.data.resultMsg, type: "success" });
       }
-      console.log(res.data);
-      // console.log("submit!");
+    },
+    fetchBaseInfo: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        companyName: sessionStorage.getItem("companyName")
+	  };
+	  console.log(params)
+    //   const res = await this.$http.post(
+    //     "/hspt-web-api/data_entry/qyjbxx/gsjbxx/modify",
+    //     params
+	//   );
+
     }
   },
   components: {}
