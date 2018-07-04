@@ -16,12 +16,12 @@
 								<el-row>
 									<el-col :offset="1" :span="10">
 										<el-form-item label="职务:">
-											<el-input v-model="formItem.post"></el-input>
+											<el-input v-model="formItem.zw"></el-input>
 										</el-form-item>
 									</el-col>
 									<el-col :offset="1" :span="10">
 										<el-form-item label="是否参与日常运营:">
-											<el-select v-model="formItem.isJoin" placeholder="请选择" style="width:100%">
+											<el-select v-model="formItem.sfcyrcyy" placeholder="请选择" style="width:100%">
 												<el-option label="参与" value="1"></el-option>
 												<el-option label="不参与" value="0"></el-option>
 											</el-select>
@@ -31,12 +31,12 @@
 								<el-row>
 									<el-col :offset="1" :span="10">
 										<el-form-item label="姓名:">
-											<el-input v-model="formItem.name"></el-input>
+											<el-input v-model="formItem.xm"></el-input>
 										</el-form-item>
 									</el-col>
 									<el-col :offset="1" :span="10">
 										<el-form-item label="性别:">
-											<el-select v-model="formItem.sex" placeholder="请选择" style="width:100%">
+											<el-select v-model="formItem.xb" placeholder="请选择" style="width:100%">
 												<el-option label="男" value="1"></el-option>
 												<el-option label="女" value="0"></el-option>
 											</el-select>
@@ -46,7 +46,7 @@
 								<el-row>
 									<el-col :offset="1" :span="10">
 										<el-form-item label="文化程度:">
-											<el-select v-model="formItem.educateLevel" placeholder="请选择" style="width:100%">
+											<el-select v-model="formItem.whcd" placeholder="请选择" style="width:100%">
 												<el-option label="小学" value="1"></el-option>
 												<el-option label="初中" value="2"></el-option>
 												<el-option label="高中" value="3"></el-option>
@@ -59,19 +59,19 @@
 									</el-col>
 									<el-col :offset="1" :span="10">
 										<el-form-item label="出生年月:">
-											<el-date-picker v-model="formItem.birth" type="date" placeholder="选择日期" style="width:100%"></el-date-picker>
+											<el-date-picker v-model="formItem.csny" type="date" placeholder="选择日期" style="width:100%"></el-date-picker>
 										</el-form-item>
 									</el-col>
 								</el-row>
 								<el-row>
 									<el-col :offset="1" :span="10">
 										<el-form-item label="相关工作年限:">
-											<el-input v-model="formItem.workYear"></el-input>
+											<el-input v-model="formItem.xggznl"></el-input>
 										</el-form-item>
 									</el-col>
 									<el-col :offset="1" :span="10">
 										<el-form-item label="婚姻状况:">
-											<el-select v-model="formItem.isMarry" placeholder="请选择" style="width:100%">
+											<el-select v-model="formItem.hyzt" placeholder="请选择" style="width:100%">
 												<el-option label="未婚" value="0"></el-option>
 												<el-option label="已婚" value="1"></el-option>
 											</el-select>
@@ -81,14 +81,14 @@
 								<el-row>
 									<el-col :offset="1" :span="10">
 										<el-form-item label="任职性质:">
-											<el-input v-model="formItem.taskAttr"></el-input>
+											<el-input v-model="formItem.rzxz"></el-input>
 										</el-form-item>
 									</el-col>
 								</el-row>
 								<el-row>
 									<el-col :offset="1" :span="21">
 										<el-form-item label="工作履历:">
-											<el-input type="textarea" :rows="5" v-model="formItem.workHistory"></el-input>
+											<el-input type="textarea" :rows="5" v-model="formItem.gzll"></el-input>
 										</el-form-item>
 									</el-col>
 								</el-row>
@@ -128,11 +128,11 @@
 										<template v-if="scope.row.edit">
 											<el-form :model="scope.row" :rules="rules" :id="'department'+scope.$index" :ref="'form_department_'+scope.$index" :show-message="false">
 												<el-form-item prop="department" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.department"></el-input>
+													<el-input class="edit-input" size="small" v-model="scope.row.bm"></el-input>
 												</el-form-item>
 											</el-form>
 										</template>
-										<span v-else>{{scope.row.department}}</span>
+										<span v-else>{{scope.row.bm}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="100px" label="学历结构">
@@ -141,11 +141,11 @@
 											<template v-if="scope.row.edit">
 												<el-form :model="scope.row" :rules="rules" :id="'junior'+scope.$index" :ref="'form_junior_'+scope.$index" :show-message="false">
 													<el-form-item prop="junior" class="td-form-item">
-														<el-input class="edit-input" size="small" v-model="scope.row.junior"></el-input>
+														<el-input class="edit-input" size="small" v-model="scope.row.czjyx"></el-input>
 													</el-form-item>
 												</el-form>
 											</template>
-											<span v-else>{{ scope.row.junior}}</span>
+											<span v-else>{{ scope.row.czjyx}}</span>
 										</template>
 									</el-table-column>
 									<el-table-column min-width="100px" label="高中" prop="middle">
@@ -153,11 +153,11 @@
 											<template v-if="scope.row.edit">
 												<el-form :model="scope.row" :rules="rules" :id="'middle'+scope.$index" :ref="'form_middle_'+scope.$index" :show-message="false">
 													<el-form-item prop="middle" class="td-form-item">
-														<el-input class="edit-input" size="small" v-model="scope.row.middle"></el-input>
+														<el-input class="edit-input" size="small" v-model="scope.row.gz"></el-input>
 													</el-form-item>
 												</el-form>
 											</template>
-											<span v-else>{{ scope.row.middle}}</span>
+											<span v-else>{{ scope.row.gz}}</span>
 										</template>
 									</el-table-column>
 									<el-table-column min-width="100px" label="大学及以上" prop="senior">
@@ -165,25 +165,36 @@
 											<template v-if="scope.row.edit">
 												<el-form :model="scope.row" :rules="rules" :id="'senior'+scope.$index" :ref="'form_senior_'+scope.$index" :show-message="false">
 													<el-form-item prop="senior" class="td-form-item">
-														<el-input class="edit-input" size="small" v-model="scope.row.senior"></el-input>
+														<el-input class="edit-input" size="small" v-model="scope.row.dxjys"></el-input>
 													</el-form-item>
 												</el-form>
 											</template>
-											<span v-else>{{ scope.row.senior}}</span>
+											<span v-else>{{ scope.row.dxjys}}</span>
 										</template>
 									</el-table-column>
 								</el-table-column>
-								<el-table-column min-width="100px" label="小计" prop="subtotal"></el-table-column>
+                <el-table-column min-width="100px" label="小计" prop="subtotal">
+                  <template slot-scope="scope">
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules" :id="'subtotal'+scope.$index" :ref="'form_subtotal_'+scope.$index" :show-message="false">
+                        <el-form-item prop="subtotal" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.hj"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.hj}}</span>
+                  </template>
+                </el-table-column>
 								<el-table-column min-width="100px" label="在职年限" prop="workYear">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
 											<el-form :model="scope.row" :rules="rules" :id="'workYear'+scope.$index" :ref="'form_workYear_'+scope.$index" :show-message="false">
 												<el-form-item prop="workYear" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.workYear"></el-input>
+													<el-input class="edit-input" size="small" v-model="scope.row.pjzznx"></el-input>
 												</el-form-item>
 											</el-form>
 										</template>
-										<span v-else>{{ scope.row.workYear}}</span>
+										<span v-else>{{ scope.row.pjzznx}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="100px" label="平均年龄" prop="averagAge">
@@ -191,11 +202,11 @@
 										<template v-if="scope.row.edit">
 											<el-form :model="scope.row" :rules="rules" :id="'averagAge'+scope.$index" :ref="'form_averagAge_'+scope.$index" :show-message="false">
 												<el-form-item prop="averagAge" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.averagAge"></el-input>
+													<el-input class="edit-input" size="small" v-model="scope.row.pjnl"></el-input>
 												</el-form-item>
 											</el-form>
 										</template>
-										<span v-else>{{ scope.row.averagAge}}</span>
+										<span v-else>{{ scope.row.pjnl}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
@@ -239,53 +250,39 @@ export default {
       labelPosition: "right",
       formArry: [
         {
-          post: "总经理", //职位
-          isJoin: 0,
-          name: "XXX",
-          sex: 0,
-          educateLevel: "博士后",
-          birth: "1978/02/01", //出生年月
-          workYear: 5,
-          isMarry: 1,
-          taskAttr: "全职",
-          workHistory:
-            "工作历史工作历史工作历史工作历史工作历史工作历史工作历史工作历史工作历史" //工作经历
+          id: "",
+          zw: "",         //职位
+          sfcyrcyy: "",   //是否参与日常运营
+          xm: "",         //姓名
+          xb: "",         //性别
+          whcd: "",       //文化程度
+          csny: "",       //出生年月
+          xggznl: "",     //相关工作年龄
+          hyzt: "",       //婚姻状态
+          rzxz: "",       //任职性质
+          gzll: ""        //工作经历
         }
       ],
-      tableData: [
-        {
-          department: "法利莱数控光纤激光切割",
-          junior: 100,
-          middle: 80,
-          senior: 50,
-          workYear: 8,
-          averagAge: 25,
-          edit: false
-        },
-        {
-          department: "法利莱数控光纤激光切割",
-          junior: 80,
-          middle: 50,
-          senior: 30,
-          workYear: 3,
-          averagAge: 21,
-          edit: false
-        }
-      ],
+      tableData: [],
       formatterTableData_columns: {
-        department: "",
-        junior: null,
-        middle: null,
-        senior: null,
-        subtotal: null,
-        workYear: null,
-        averagAge: null,
+        id: "",
+        bm: "",                 //部门
+        czjyx: null,            //初中及以下
+        gz: null,               //高中
+        dxjys: null,            //大学及以上
+        subtotal: null,         //小计
+        pjzznx: null,           //在职年限
+        pjnl: null,             //平均年龄
         edit: false
       },
       //规则
       rules: {}
     };
   },
+  mounted() {
+    this.init();
+  },
+
   computed: {
     formatterTableData() {
       this.tableData.map((item, index) => {
@@ -295,6 +292,38 @@ export default {
     }
   },
   methods: {
+    init() {
+      this.getJygltd();
+      this.getYgfx();
+    },
+    //获取经营管理团队分析
+    getJygltd: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsyyxx/rlzyfx/jygltdfx/list",
+        params
+      );
+      this.formArry = res.data.resultData.data.rows;
+    },
+
+    //获取员工分析
+    getYgfx: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsyyxx/rlzyfx/gsygfx/list",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.tableData = res.data.resultData.data.rows;
+      }
+    },
+
     handleClick(tab, event) {
       //   console.log(tab, event);
     },

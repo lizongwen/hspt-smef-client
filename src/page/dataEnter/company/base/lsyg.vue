@@ -15,7 +15,7 @@
 					<el-table-column label="序号" type="index" width="50"></el-table-column>
 					<el-table-column min-width="110px" :label="tableData_columns.bgrq">
 						<template slot-scope="scope">
-							<el-date-picker  v-model="scope.row.bgrq" class="cellItem el-form-item" value-format="yyyy-MM-dd" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" type="date" placeholder="选择日期" style="width: 100%;" :clearable='false'></el-date-picker>
+							<el-date-picker v-model="scope.row.bgrq" class="cellItem el-form-item" value-format="yyyy-MM-dd" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" type="date" placeholder="选择日期" style="width: 100%;" :clearable='false'></el-date-picker>
 							<span v-else>{{scope.row.bgrq}}</span>
 						</template>
 					</el-table-column>
@@ -109,7 +109,7 @@ export default {
         this.tableData = res.data.resultData.data.data.rows;
       }
     },
-    //获取数据
+    //获取接口数据
     getData: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
@@ -119,14 +119,16 @@ export default {
       const res = await this.$http.post(
         "/hspt-web-api/data_entry/qyjbxx/lsyg/interface/retrieve",
         params
-	  );
-	  if(res.data.resultCode=='0'){
-		this.tableData=res.data.resultData.data;
-		this.delRowData = [];
-		this.updateData=[];
-		this.addData=[];
-		// this.addData=res.data.resultData.data;
-		console.log(this.tableData)
+      );
+      if (res.data.resultCode == "0") {
+	    this.$message({ message: res.data.resultMsg, type: "success" });
+        this.tableData = res.data.resultData.data;
+        this.delRowData = [];
+        this.updateData = [];
+        this.addData = [];
+        this.addData = res.data.resultData.data;
+      }else{
+	   this.$message({ message: res.data.resultMsg, type: "warning" });
 	  }
     },
     //保存数据
@@ -135,25 +137,26 @@ export default {
         if (item.id == null) {
           this.addData.push(item);
         }
-	  });
-	// console.log()
+      });
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token"),
-        addData:  JSON.stringify(this.addData),
+        addData: JSON.stringify(this.addData),
         updateData: JSON.stringify(this.updateData),
         delData: JSON.stringify(this.delRowData)
-	  };
+      };
       const res = await this.$http.post(
         "/hspt-web-api/data_entry/qyjbxx/lsyg/modify",
         params
       );
       if (res.data.resultCode == "0") {
-        this.$message("保存成功");
-		this.delRowData = [];
-		this.updateData=[];
-		this.addData=[];
-      }
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.delRowData = [];
+        this.updateData = [];
+        this.addData = [];
+      }else{
+	   this.$message({ message: res.data.resultMsg, type: "warning" });
+	  }
     },
     //接受删除的数据
     acceptDelRow(val) {
@@ -161,11 +164,16 @@ export default {
     },
     //验证数据
     verify(rowObj, rowIndex) {
-	 var isValid= tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
-	 console.log(isValid);
-	 if(rowObj.id){
-		this.updateData.push(rowObj);
-	 }
+      var isValid = tableValidates.validateByRow(
+        rowObj,
+        rowIndex,
+        this.rules,
+        this
+      );
+      console.log(isValid);
+      if (rowObj.id) {
+        this.updateData.push(rowObj);
+      }
     }
   },
   components: {

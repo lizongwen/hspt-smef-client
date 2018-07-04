@@ -182,7 +182,8 @@
 						<!-- 表格容器 -->
 						<div>
 							<el-table :data="tableData_2" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
-								<el-table-column min-width="200px" :label="tableData_2_columns.sbmc">
+                <el-table-column label="序号" type="index" width="50"></el-table-column>
+                <el-table-column min-width="200px" :label="tableData_2_columns.sbmc">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.sbmc" :class="Object.keys(tableData_2_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.sbmc}}</span>

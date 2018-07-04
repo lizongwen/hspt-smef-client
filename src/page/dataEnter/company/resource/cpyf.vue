@@ -12,25 +12,24 @@
 					<el-row>
 						<el-col :offset="1" :span="10">
 							<el-form-item label="研发机构或部门：">
-								<el-input v-model="form.department" placeholder="研发机构或部门"></el-input>
+								<el-input v-model="form.yfjghbm" placeholder="研发机构或部门"></el-input>
 							</el-form-item>
 						</el-col>
 						<el-col :offset="1" :span="10">
 							<el-form-item label="研发及技术人员数量：">
-								<el-input v-model="form.num" placeholder="研发及技术人员数量"></el-input>
+								<el-input v-model="form.yfjjsrysl" placeholder="研发及技术人员数量"></el-input>
 							</el-form-item>
 						</el-col>
 					</el-row>
 					<el-row>
-
-						<el-col :offset="1" :span="10">
+            <el-col :offset="1" :span="10">
 							<el-form-item label="上年度研发投入金额：">
-								<el-input v-model="form.lastMoney" placeholder="上年度研发投入金额"></el-input>
+								<el-input v-model="form.sndyftrje" placeholder="上年度研发投入金额"></el-input>
 							</el-form-item>
 						</el-col>
 						<el-col :offset="1" :span="10">
 							<el-form-item label="上年度研发投入占营业收入比例：">
-								<el-input v-model="form.lastRatio" placeholder="上年度研发投入占营业收入比例"></el-input>
+								<el-input v-model="form.sndyftrzyysrbl" placeholder="上年度研发投入占营业收入比例"></el-input>
 							</el-form-item>
 						</el-col>
 					</el-row>
@@ -38,12 +37,12 @@
 
 						<el-col :offset="1" :span="10">
 							<el-form-item label="本年度研发投入金额：">
-								<el-input v-model="form.thisMoney" placeholder="本年度研发投入金额"></el-input>
+								<el-input v-model="form.bndyftrje" placeholder="本年度研发投入金额"></el-input>
 							</el-form-item>
 						</el-col>
 						<el-col :offset="1" :span="10">
 							<el-form-item label="本年度研发投入占营业收入比例：">
-								<el-input v-model="form.thisRatio" placeholder="本年度研发投入占营业收入比例"></el-input>
+								<el-input v-model="form.bndyftrzyysrbl" placeholder="本年度研发投入占营业收入比例"></el-input>
 							</el-form-item>
 						</el-col>
 					</el-row>
@@ -51,14 +50,14 @@
 
 						<el-col :offset="1" :span="10">
 							<el-form-item label="主要研发合作机构：">
-								<el-input v-model="form.org"></el-input>
+								<el-input v-model="form.zyyfhzjg"></el-input>
 							</el-form-item>
 						</el-col>
 					</el-row>
 					<el-row>
 						<el-col :offset="1" :span="21">
 							<el-form-item label="主要研发成果：">
-								<el-input type="textarea" :rows="5" v-model="form.result"></el-input>
+								<el-input type="textarea" :rows="5" v-model="form.zyyfcg"></el-input>
 							</el-form-item>
 						</el-col>
 					</el-row>
@@ -86,26 +85,54 @@
 
 <script>
 export default {
-  
+
   data() {
     return {
       labelPosition: "right",
       form: {
-        department: "",
-        num: "",
-        lastMoney: "",
-        lastRatio: "",
-        thisMoney: "",
-        thisRatio: "",
-        org: "",
-        result: ""
+        id: "",
+        yfjghbm: "",          //研发机构或部门
+        yfjjsrysl: "",        //研发及技术人员数量
+        sndyftrje: "",        //上年度研发投入金额
+        sndyftrzyysrbl: "",   //上年度研发投入占营业收入比例
+        bndyftrje: "",        //本年度研发投入金额
+        bndyftrzyysrbl: "",   //本年度研发投入占营业收入比例
+        zyyfhzjg: "",         //主要研发合作机构
+        zyyfcg: ""            //主要研发成果
       },
       summaryForm: {
         content: "111"
       }
     };
   },
+  mounted() {
+    this.init();
+  },
   methods: {
+    init() {
+      this.getCpyf();
+    },
+    //获取产品研发信息
+    getCpyf:  async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsyyxx/cpyfjsqk/list",
+        params
+      );
+      this.form.yfjghbm = res.data.resultData.data.yfjghbm;
+      this.form.yfjjsrysl = res.data.resultData.data.yfjjsrysl;
+      this.form.sndyftrje = res.data.resultData.data.sndyftrje;
+      this.form.sndyftrzyysrbl = res.data.resultData.data.sndyftrzyysrbl;
+      this.form.bndyftrje = res.data.resultData.data.bndyftrje;
+      this.form.bndyftrzyysrbl = res.data.resultData.data.bndyftrzyysrbl;
+      this.form.zyyfhzjg = res.data.resultData.data.zyyfhzjg;
+      this.form.zyyfcg = res.data.resultData.data.zyyfcg;
+    },
+
+
     onSubmit() {
     //   console.log("submit!");
     }
