@@ -7,7 +7,7 @@
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium">获取数据</el-button>
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="setSb">保存</el-button>
 							</div>
 							<div class="card-title">商标</div>
 						</div>
@@ -51,11 +51,11 @@
 
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData" v-on:verify="verify"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData" v-on:verify="verify" v-on:acceptDelRow='acceptDelRow'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
-							<v-tabelAddBtn :tableData="tableData" :tableData_columns="tableData_columns" v-on:acceptDelRow='acceptDelRow'></v-tabelAddBtn>
+							<v-tabelAddBtn :tableData="tableData" :tableData_columns="tableData_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -66,7 +66,7 @@
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium">获取数据</el-button>
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="setZL">保存</el-button>
 							</div>
 							<div class="card-title">专利</div>
 						</div>
@@ -102,23 +102,23 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.fmzl" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.fmzl.sl" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 										<td>
-											<div class="cell">实用新型</div>
+											<div class="cell strong">实用新型</div>
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.syxx" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.syxx.sl" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 										<td>
-											<div class="cell">外观设计</div>
+											<div class="cell strong">外观设计</div>
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.wgsj" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.wgsj.sl" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 									</tr>
@@ -128,7 +128,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.fmzl_1" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.fmzl.sqyq" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 										<td>
@@ -136,7 +136,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.syxx_1" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.syxx.sqyq" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 										<td>
@@ -144,7 +144,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.wgsj_1" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.wgsj.sqyq" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 									</tr>
@@ -154,7 +154,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.fmzl_2" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.fmzl.wqzz" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 										<td>
@@ -162,7 +162,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.syxx_2" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.syxx.wqzz" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 										<td>
@@ -170,7 +170,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.wgsj_2" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.wgsj.wqzz" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 									</tr>
@@ -180,7 +180,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.fmzl_3" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.fmzl.bhch" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 										<td>
@@ -188,7 +188,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.syxx_3" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.syxx.bhch" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 										<td>
@@ -196,7 +196,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.wgsj_3" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.wgsj.bhch" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 									</tr>
@@ -206,7 +206,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.fmzl_4" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.fmzl.szss" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 										<td>
@@ -214,7 +214,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.syxx_4" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.syxx.szss" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 										<td>
@@ -222,7 +222,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.wgsj_4" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.wgsj.szss" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 									</tr>
@@ -232,7 +232,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.fmzl_5" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.fmzl.gksz" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 										<td>
@@ -240,7 +240,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.syxx_5" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.syxx.gksz" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 										<td>
@@ -248,7 +248,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.wgsj_5" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1.wgsj.gksz" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 									</tr>
@@ -261,7 +261,7 @@
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="setSqyqzlmx">保存</el-button>
 							</div>
 							<div class="card-title">授权有权专利明细</div>
 						</div>
@@ -328,7 +328,7 @@
 								</el-table-column> -->
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify1"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify_2" v-on:acceptDelRow='acceptDelRow_2'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
@@ -343,7 +343,7 @@
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium">获取数据</el-button>
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="setZzq">保存</el-button>
 							</div>
 							<div class="card-title">著作权</div>
 						</div>
@@ -388,7 +388,7 @@
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify3"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify_3" v-on:acceptDelRow='acceptDelRow_3'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
@@ -403,7 +403,7 @@
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium">获取数据</el-button>
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="setWzba">保存</el-button>
 							</div>
 							<div class="card-title">网站备案</div>
 						</div>
@@ -447,7 +447,7 @@
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_4" v-on:verify="verify"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_4" v-on:verify="verify_4" v-on:acceptDelRow='acceptDelRow_4'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
@@ -461,15 +461,19 @@
 </template>
 
 <script>
-import tabelAddBtn from "@/components/table/table-add-btn.vue";
-import tableOperation from "@/components/table/table-operation.vue";
+  import tableValidates from "@/utils/validateTable/tableValidates.js";
+  import tabelAddBtn from "@/components/table/table-add-btn.vue";
+  import tableOperation from "@/components/table/table-operation.vue";
 export default {
   data() {
     return {
       activeName: "four",
       listLoading: false,
       rules: {},
-      tableData: [],
+      tableData: [],        //商标
+      deleteData: [],
+      addData: [],
+      updateData: [],
       tableData_columns: {
         id: null,
         sbm: "商标名称",
@@ -477,10 +481,12 @@ export default {
         sqsj: "申请时间",
         zch: "注册号",
         lb: "类别",
-        edit: false
       },
       tableData_1: {},
-      tableData_2: [], //
+      tableData_2: [],      //授权有权专利明细
+      deleteData_2: [],
+      addData_2: [],
+      updateData_2: [],
       tableData_2_columns: {
         id: null,
         sqh: "申请号",
@@ -491,9 +497,11 @@ export default {
         gkh: "公开（公告）号",
         flzt: "法律状态",
         yxx: "有效性",
-        edit: false
       }, //表格列字段
-      tableData_3: [], //著作权
+      tableData_3: [],      //著作权
+      deleteData_3: [],
+      addData_3: [],
+      updateData_3: [],
       tableData_3_columns: {
         id: null,
         zzqmc: "著作权名称",
@@ -504,7 +512,10 @@ export default {
         djpzrq: "登记批准日期",
         edit: false
       }, //表格列字段
-      tableData_4: [], //网站备案
+      tableData_4: [],      //网站备案
+      deleteData_4: [],
+      addData_4: [],
+      updateData_4: [],
       tableData_4_columns: {
         id: null,
         basj: "备案时间",
@@ -519,14 +530,15 @@ export default {
   },
   computed: {},
   mounted() {
-    this.getSbData();
+    this.getSb();
+    this.getZl();
     this.getSqyqzlmx();
     this.getZzq();
     this.getWzba();
   },
   methods: {
     //获取商标数据
-    getSbData: async function() {
+    getSb: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token")
@@ -536,9 +548,95 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
-        this.tableData = res.data.resultData.data;
+        this.tableData = res.data.resultData.rows;
       }
     },
+    //保存商标数据
+    setSb: async function() {
+      this.tableData.forEach((item, index) => {
+        if (item.id == null) {
+          this.addData.push(item);
+        }
+      });
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        loginName: sessionStorage.getItem("loginName"),
+        addData: JSON.stringify(this.addData),
+        updateData: JSON.stringify(this.updateData),
+        deleteData: JSON.stringify(this.deleteData)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsjbxx/zscq/sbxx/save",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.deleteData = [];
+        this.updateData = [];
+        this.addData = [];
+      }else{
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+    },
+    //接受商标删除的数据
+    acceptDelRow(val) {
+      this.deleteData.push(val);
+    },
+    //验证商标数据
+    verify(rowObj, rowIndex) {
+      var isValid = tableValidates.validateByRow(
+        rowObj,
+        rowIndex,
+        this.rules,
+        this
+      );
+      console.log(isValid);
+      if (rowObj.id) {
+        this.updateData.push(rowObj);
+      }
+    },
+
+
+
+
+
+    //获取专利信息
+    getZl: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsjbxx/zscq/zl/list",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.tableData_1 = res.data.resultData;
+      }
+    },
+
+    //保存专利信息
+    setZL: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        zl: JSON.stringify(this.tableData_1)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsjbxx/zscq/zl/save",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+      }
+    },
+
+
+
+
+
+
     //获取授权有权专利明细
     getSqyqzlmx: async function() {
       let params = {
@@ -550,9 +648,58 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
-        this.tableData_2 = res.data.resultData.data;
+        this.tableData_2 = res.data.resultData.rows;
       }
     },
+    //保存授权有权专利明细
+    setSqyqzlmx: async function() {
+      this.tableData_2.forEach((item, index) => {
+        if (item.id == null) {
+          this.addData_2.push(item);
+        }
+      });
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        loginName: sessionStorage.getItem("loginName"),
+        addData: JSON.stringify(this.addData_2),
+        updateData: JSON.stringify(this.updateData_2),
+        deleteData: JSON.stringify(this.deleteData_2)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsjbxx/zscq/sqyqzlmx/save",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.deleteData_2 = [];
+        this.updateData_2 = [];
+        this.addData_2 = [];
+      }else{
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+    },
+    //接受授权有权专利明细删除的数据
+    acceptDelRow_2(val) {
+      this.deleteData_2.push(val);
+    },
+    //验证授权有权专利明细数据
+    verify_2(rowObj, rowIndex) {
+      var isValid = tableValidates.validateByRow(
+        rowObj,
+        rowIndex,
+        this.rules,
+        this
+      );
+      console.log(isValid);
+      if (rowObj.id) {
+        this.updateData_2.push(rowObj);
+      }
+    },
+
+
+
+
     //获取著作权
     getZzq: async function() {
       let params = {
@@ -564,9 +711,58 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
-        this.tableData_3 = res.data.resultData.data;
+        this.tableData_3 = res.data.resultData.rows;
       }
     },
+    //保存著作权信息
+    setZzq: async function() {
+      this.tableData_3.forEach((item, index) => {
+        if (item.id == null) {
+          this.addData_3.push(item);
+        }
+      });
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        loginName: sessionStorage.getItem("loginName"),
+        addData: JSON.stringify(this.addData_3),
+        updateData: JSON.stringify(this.updateData_3),
+        deleteData: JSON.stringify(this.deleteData_3)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsjbxx/zscq/zzq/save",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.deleteData_3 = [];
+        this.updateData_3 = [];
+        this.addData_3 = [];
+      }else{
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+    },
+    //接受著作权删除的数据
+    acceptDelRow_3(val) {
+      this.deleteData_3.push(val);
+    },
+    //验证著作权数据
+    verify_3(rowObj, rowIndex) {
+      var isValid = tableValidates.validateByRow(
+        rowObj,
+        rowIndex,
+        this.rules,
+        this
+      );
+      console.log(isValid);
+      if (rowObj.id) {
+        this.updateData_3.push(rowObj);
+      }
+    },
+
+
+
+
     //获取网站备案
     getWzba: async function() {
       let params = {
@@ -578,15 +774,55 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
-        this.tableData_4 = res.data.resultData.data;
+        this.tableData_4 = res.data.resultData.rows;
+      }
+    },
+    //保存网站备案
+    setWzba: async function() {
+      this.tableData_4.forEach((item, index) => {
+        if (item.id == null) {
+          this.addData_4.push(item);
+        }
+      });
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        addData: JSON.stringify(this.addData_4),
+        updateData: JSON.stringify(this.updateData_4),
+        deleteData: JSON.stringify(this.deleteData_4)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsjbxx/zscq/wzba/save",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.deleteData_4 = [];
+        this.updateData_4 = [];
+        this.addData_4 = [];
+      }else{
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+    },
+    //接受网站备案删除的数据
+    acceptDelRow_4(val) {
+      this.deleteData_4.push(val);
+    },
+    //验证网站备案数据
+    verify_4(rowObj, rowIndex) {
+      var isValid = tableValidates.validateByRow(
+        rowObj,
+        rowIndex,
+        this.rules,
+        this
+      );
+      console.log(isValid);
+      if (rowObj.id) {
+        this.updateData_4.push(rowObj);
       }
     },
 
-    handleClick(tab, event) {
-      //   console.log(tab, event);
-    },
-    verify(row, index) {
-      row.edit = false;
+    /*handleClick(tab, event) {
     },
     verify1(row, index) {
       row.edit = false;
@@ -597,16 +833,12 @@ export default {
     verify3(row, index) {
       row.edit = false;
     },
-    //接受删除的数据
-    acceptDelRow(val) {
-      //   console.log(delRowData);
-      this.delRowData.push(val);
-    },
+
     //单元格编辑回调
     cellEditDone(newValue, oldValue, rowIndex, rowData, field) {
       this.tableData[rowIndex][field] = newValue;
       // 接下来处理你的业务逻辑，数据持久化等...
-    }
+    }*/
   },
   components: {
     "v-tabelAddBtn": tabelAddBtn,

@@ -170,7 +170,6 @@ export default {
         this.rules,
         this
       );
-      console.log(isValid);
       if (rowObj.id) {
         this.updateData.push(rowObj);
       }

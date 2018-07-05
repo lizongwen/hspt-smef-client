@@ -121,7 +121,7 @@ export default {
     getFspj: async function() {
       let params = {
         token: sessionStorage.getItem("token"),
-        creditCode: "123"
+        creditCode: sessionStorage.getItem("creditCode")
       };
       const res = await this.$http.post("/hspt-web-api/project/fspj", params);
       this.creditScore = res.data.resultData.zxpf;
@@ -132,7 +132,7 @@ export default {
     getCompanySjtbSummary: async function() {
       let params = {
         token: sessionStorage.getItem("token"),
-        creditCode: "123"
+        creditCode: sessionStorage.getItem("creditCode")
       };
       const res = await this.$http.post(
         "/hspt-web-api/project/company/sjtb/summary",

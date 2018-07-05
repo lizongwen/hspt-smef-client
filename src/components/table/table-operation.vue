@@ -62,7 +62,6 @@
         }).then(
           () => {
 			let rowData=this.tableData.splice(index, 1);
-			console.log(rowData)
 			if(rowData[0].id!=null){
 				this.$emit('acceptDelRow',rowData[0])
 			}

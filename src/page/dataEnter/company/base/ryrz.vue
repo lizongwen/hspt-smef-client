@@ -6,13 +6,14 @@
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="saveRyxx">保存</el-button>
 							</div>
 							<div class="card-title">荣誉信息</div>
 						</div>
 						<!-- 表格容器 -->
 						<div>
 							<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
+								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="200px" :label="tableData_columns.nf">
 									<template slot-scope="scope">
 										<el-input v-model.number="scope.row.nf" class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
@@ -27,7 +28,7 @@
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData" v-on:verify="verify"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData" v-on:verify="verify" v-on:acceptDelRow='acceptDelRow'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
@@ -41,7 +42,7 @@
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="saveXzxk">保存</el-button>
 							</div>
 							<div class="card-title">行政许可</div>
 						</div>
@@ -49,57 +50,33 @@
 						<div>
 							<el-table :data="tableData_xzxk" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
-								<el-table-column min-width="300px" label="主体名称">
+								<el-table-column min-width="200px" :label="tableData_xzxk_columns.ztmc">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'ztmc'+scope.$index" :ref="'form_ztmc_'+scope.$index" :show-message="false">
-												<el-form-item prop="ztmc" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.ztmc"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{scope.row.ztmc}}</span>
+										<el-input v-model.number="scope.row.ztmc" class="edit-input cellItem el-form-item" :class="Object.keys(tableData_xzxk_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.ztmc}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="公示类型（行政许可）">
+								<el-table-column min-width="200px" :label="tableData_xzxk_columns.gslx">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'gslx'+scope.$index" :ref="'form_gslx_'+scope.$index" :show-message="false">
-												<el-form-item prop="gslx" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.gslx"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
+										<el-input v-model.number="scope.row.gslx" class="edit-input cellItem el-form-item" :class="Object.keys(tableData_xzxk_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.gslx}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="行政类别/区域">
+								<el-table-column min-width="200px" :label="tableData_xzxk_columns.xzlb">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'xzlb'+scope.$index" :ref="'form_xzlb_'+scope.$index" :show-message="false">
-												<el-form-item prop="xzlb" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.xzlb"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
+										<el-input v-model.number="scope.row.xzlb" class="edit-input cellItem el-form-item" :class="Object.keys(tableData_xzxk_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.xzlb}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="更新时间">
+								<el-table-column min-width="200px" :label="tableData_xzxk_columns.gxsj">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'gxsj'+scope.$index" :ref="'form_gxsj_'+scope.$index" :show-message="false">
-												<el-form-item prop="gxsj" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.gxsj"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
+										<el-input v-model.number="scope.row.gxsj" class="edit-input cellItem el-form-item" :class="Object.keys(tableData_xzxk_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.gxsj}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_xzxk" v-on:verify="verify" v-on:acceptDelRow='acceptDelRow'></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_xzxk" v-on:verify="verify_xzxk" v-on:acceptDelRow='acceptDelRow_xzxk'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
@@ -113,70 +90,46 @@
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="saveZyzzyrz">保存</el-button>
 							</div>
 							<div class="card-title">主要认证与资质</div>
 						</div>
 						<!-- 表格容器 -->
 						<div>
-							<el-table :data="tableData_zyzzyrz" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
+						 <el-table :data="tableData_zyzzyrz" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
-								<el-table-column min-width="300px" label="主体名称">
+								<el-table-column min-width="200px" :label="tableData_zyzzyrz_columns.ztmc">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'ztmc'+scope.$index" :ref="'form_ztmc_'+scope.$index" :show-message="false">
-												<el-form-item prop="ztmc" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.ztmc"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{scope.row.ztmc}}</span>
+										<el-input v-model.number="scope.row.ztmc" class="edit-input cellItem el-form-item" :class="Object.keys(tableData_zyzzyrz_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.ztmc}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="证书编号">
+								<el-table-column min-width="200px" :label="tableData_zyzzyrz_columns.zsbh">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'zsbh'+scope.$index" :ref="'form_zsbh_'+scope.$index" :show-message="false">
-												<el-form-item prop="zsbh" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.zsbh"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
+										<el-input v-model.number="scope.row.zsbh" class="edit-input cellItem el-form-item" :class="Object.keys(tableData_zyzzyrz_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zsbh}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="认证项目/产品类别">
+								<el-table-column min-width="200px" :label="tableData_zyzzyrz_columns.rzxm">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'rzxm'+scope.$index" :ref="'form_rzxm_'+scope.$index" :show-message="false">
-												<el-form-item prop="rzxm" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.rzxm"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
+										<el-input v-model.number="scope.row.rzxm" class="edit-input cellItem el-form-item" :class="Object.keys(tableData_zyzzyrz_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.rzxm}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="证书到期日期">
+								<el-table-column min-width="200px" :label="tableData_zyzzyrz_columns.zsdqrq">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'zsdqrq'+scope.$index" :ref="'form_zsdqrq_'+scope.$index" :show-message="false">
-												<el-form-item prop="zsdqrq" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.zsdqrq"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
+										<el-input v-model.number="scope.row.zsdqrq" class="edit-input cellItem el-form-item" :class="Object.keys(tableData_zyzzyrz_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zsdqrq}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_zyzzyrz" v-on:verify="verify2"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_zyzzyrz" v-on:verify="verify_zyzzyrz" v-on:acceptDelRow='acceptDelRow_zyzzyrz'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
 							<v-tabelAddBtn :tableData="tableData_zyzzyrz" :tableData_columns="tableData_zyzzyrz_columns"></v-tabelAddBtn>
-						</div>
+						</div>	
 					</el-card>
 				</div>
 			</el-tab-pane>
@@ -203,32 +156,70 @@ export default {
         ry: "荣誉",
         edit: false
       },
-      tableData_xzxk: [],
+	  
+      tableData_xzxk: [], //行政许可信息
+      tableData_xzxk_delRowData: [],
+      tableData_xzxk_addData: [],
+      tableData_xzxk_updateData: [],
       tableData_xzxk_columns: {
-        ztmc: "",
-        gslx: "",
-        xzlb: "",
-        gxsj: "",
+	    id: null,
+        ztmc: "主体名称",
+        gslx: "公示类型（行政许可）",
+        xzlb: "行政类别/区域",
+        gxsj: "更新时间",
         edit: false
       },
-      tableData_zyzzyrz: [],
+	  
+      tableData_zyzzyrz: [],//主要认证与资质
+	  tableData_zyzzyrz_delRowData: [],
+      tableData_zyzzyrz_addData: [],
+      tableData_zyzzyrz_updateData: [],
       tableData_zyzzyrz_columns: {
-        ztmc: "",
-        zsbh: "",
-        rzxm: "",
-        zsdqrq: "",
+	    id: null,
+        ztmc: "主体名称",
+        zsbh: "证书编号",
+        rzxm: "认证项目/产品类别",
+        zsdqrq: "证书到期日期",
         edit: false
       },
       //规则
-      rules: {
+      rules_ryxx: {
         // bgrq: [{ type: "date", required: true, message: "请选择变更日期" }],
         nf: [
-          { required: true, message: "变更事项是必填项" }
+          { required: true, message: "年份是必填项" }
           // { type: "number", message: "变更事项需要录入数字" }
         ],
         ry: [
-          { required: true, message: "变更前是必填项" }
+          { required: true, message: "荣誉是必填项" }
           //   { min: 3, max: 5, message: "变更前字符长度需要 3 到 5 个字符" }
+        ]
+      },
+	  rules_xzxk: {
+        ztmc: [
+          { required: true, message: "主体名称是必填项" }
+        ],
+        gslx: [
+          { required: true, message: "公示类型（行政许可）是必填项" }
+        ],
+        xzlb: [
+          { required: true, message: "行政类别/区域是必填项" }
+        ],
+        gxsj: [
+          { required: true, message: "更新时间是必填项" }
+        ]
+      },
+	  rules_zyzzyrz: {
+        ztmc: [
+          { required: true, message: "主体名称是必填项" }
+        ],
+        zsbh: [
+          { required: true, message: "证书编号是必填项" }
+        ],
+        rzxm: [
+          { required: true, message: "认证项目/产品类别是必填项" }
+        ],
+        zsdqrq: [
+          { required: true, message: "证书到期日期是必填项" }
         ]
       }
     };
@@ -236,13 +227,17 @@ export default {
   mounted() {
     this.init();
   },
+  
   methods: {
     //初始化
     init() {
       this.getRyrz(); //获取荣誉信息
-      //this.getXzxk(); //获取行政许可信息
-      //this.getZyzzrz(); //获取主要资质与认证信息
+      this.getXzxk(); //获取行政许可信息
+      this.getZyzzrz(); //获取主要资质与认证信息
     },
+	
+	//////////////////////////////////////////////////////////////荣誉信息
+	
     //接受删除的数据
     acceptDelRow(val) {
       this.tableData_delRowData.push(val);
@@ -252,14 +247,14 @@ export default {
       var isValid = tableValidates.validateByRow(
         rowObj,
         rowIndex,
-        this.rules,
+        this.rules_ryxx,
         this
       );
-      console.log(isValid);
       if (rowObj.id) {
         this.tableData_updateData.push(rowObj);
       }
     },
+	
     //获取荣誉信息表格数据
     getRyrz: async function() {
       let params = {
@@ -274,7 +269,36 @@ export default {
         this.tableData = res.data.resultData;
       }
     },
-
+	//保存荣誉信息
+	saveRyxx: async function() {
+	   this.tableData.forEach((item, index) => {
+        if (item.id == null) {
+          this.tableData_addData.push(item);
+        }
+      });
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        addData: JSON.stringify(this.tableData_addData),
+        updateData: JSON.stringify(this.tableData_updateData),
+        delData: JSON.stringify(this.tableData_delRowData)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsjbxx/ryrz/ryxx/save",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.tableData_delRowData = [];
+        this.tableData_updateData = [];
+        this.tableData_addData = [];
+      }else{
+	   this.$message({ message: res.data.resultMsg, type: "warning" });
+	  }
+	},
+	
+    //////////////////////////////////////////////////////////////////////////////行政许可
+	
     //获取行政许可信息表格数据
     getXzxk: async function() {
       let params = {
@@ -289,6 +313,69 @@ export default {
         this.tableData_xzxk = res.data.resultData;
       }
     },
+	 //接受删除的数据
+    acceptDelRow_xzxk(val) {
+      this.tableData_xzxk_delRowData.push(val);
+    },
+    //验证数据
+	verify_xzxk(rowObj, rowIndex) {
+      var isValid = tableValidates.validateByRow(
+        rowObj,
+        rowIndex,
+        this.rules_xzxk,
+        this
+      );
+      if (rowObj.id) {
+        this.tableData_xzxk_updateData.push(rowObj);
+      }
+    },
+	//保存行政许可信息表格数据
+	saveXzxk: async function() {
+	   this.tableData_xzxk.forEach((item, index) => {
+        if (item.id == null) {
+          this.tableData_xzxk_addData.push(item);
+        }
+      });
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        addData: JSON.stringify(this.tableData_xzxk_addData),
+        updateData: JSON.stringify(this.tableData_xzxk_updateData),
+        delData: JSON.stringify(this.tableData_xzxk_delRowData)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsjbxx/ryrz/xzxk/save",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.tableData_xzxk_delRowData = [];
+        this.tableData_xzxk_updateData = [];
+        this.tableData_xzxk_addData = [];
+      }else{
+	   this.$message({ message: res.data.resultMsg, type: "warning" });
+	  }
+	},
+	
+	/////////////////////////////////////////////////////////////////////////主要资质与认证
+	
+	//接受删除的数据
+    acceptDelRow_zyzzyrz(val) {
+      this.tableData_zyzzyrz_delRowData.push(val);
+    },
+    //验证数据
+	verify_zyzzyrz(rowObj, rowIndex) {
+      var isValid = tableValidates.validateByRow(
+        rowObj,
+        rowIndex,
+        this.rules_zyzzyrz,
+        this
+      );
+      if (rowObj.id) {
+        this.tableData_zyzzyrz_updateData.push(rowObj);
+      }
+    },
+	
     //获取主要资质与认证信息表格数据
     getZyzzrz: async function() {
       let params = {
@@ -303,6 +390,34 @@ export default {
         this.tableData_zyzzyrz = res.data.resultData;
       }
     },
+	//保存主要资质与认证信息表格数据
+	saveZyzzyrz: async function() {
+	   this.tableData_zyzzyrz.forEach((item, index) => {
+        if (item.id == null) {
+          this.tableData_zyzzyrz_addData.push(item);
+        }
+      });
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        addData: JSON.stringify(this.tableData_zyzzyrz_addData),
+        updateData: JSON.stringify(this.tableData_zyzzyrz_updateData),
+        delData: JSON.stringify(this.tableData_zyzzyrz_delRowData)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsjbxx/ryrz/zyzzyrz/save",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.tableData_zyzzyrz_delRowData = [];
+        this.tableData_zyzzyrz_updateData = [];
+        this.tableData_zyzzyrz_addData = [];
+      }else{
+	   this.$message({ message: res.data.resultMsg, type: "warning" });
+	  }
+	},
+	 
     //点击标签页触发事件
     handleClick(tab, event) {
       //   console.log(tab, event);
