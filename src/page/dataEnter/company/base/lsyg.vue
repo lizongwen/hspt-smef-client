@@ -183,7 +183,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/*@charset "UTF-8";*/
 .el-input__suffix,
 .el-tree.is-dragging .el-tree-node__content * {
   pointer-events: none;

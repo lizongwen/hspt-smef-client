@@ -1,13 +1,13 @@
 <template>
 	<div>
-		<el-tabs v-model="activeName" @tab-click="handleClick">
+		<el-tabs v-model="activeName">
 			<el-tab-pane label="商标" name="first">
 				<div>
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="default" size="medium">获取数据</el-button>
-								<el-button class="save" type="primary" size="medium" @click="setSb">保存</el-button>
+								<el-button type="default" size="medium" @click="fetchSbData">获取数据</el-button>
+								<el-button type="primary" size="medium" @click="setSb">保存</el-button>
 							</div>
 							<div class="card-title">商标</div>
 						</div>
@@ -461,16 +461,16 @@
 </template>
 
 <script>
-  import tableValidates from "@/utils/validateTable/tableValidates.js";
-  import tabelAddBtn from "@/components/table/table-add-btn.vue";
-  import tableOperation from "@/components/table/table-operation.vue";
+import tableValidates from "@/utils/validateTable/tableValidates.js";
+import tabelAddBtn from "@/components/table/table-add-btn.vue";
+import tableOperation from "@/components/table/table-operation.vue";
 export default {
   data() {
     return {
-      activeName: "four",
+      activeName: "first",
       listLoading: false,
       rules: {},
-      tableData: [],        //商标
+      tableData: [], //商标
       deleteData: [],
       addData: [],
       updateData: [],
@@ -480,10 +480,16 @@ export default {
         zt: "状态",
         sqsj: "申请时间",
         zch: "注册号",
-        lb: "类别",
+        lb: "类别"
       },
-      tableData_1: {},
-      tableData_2: [],      //授权有权专利明细
+      //---------------------------------------------------
+      //专利
+      tableData_1: {
+        fmzl: {},
+        syxx: {},
+        wgsj: {}
+      },
+      tableData_2: [], //授权有权专利明细
       deleteData_2: [],
       addData_2: [],
       updateData_2: [],
@@ -496,9 +502,9 @@ export default {
         sqgj: "申请国家",
         gkh: "公开（公告）号",
         flzt: "法律状态",
-        yxx: "有效性",
+        yxx: "有效性"
       }, //表格列字段
-      tableData_3: [],      //著作权
+      tableData_3: [], //著作权
       deleteData_3: [],
       addData_3: [],
       updateData_3: [],
@@ -512,7 +518,7 @@ export default {
         djpzrq: "登记批准日期",
         edit: false
       }, //表格列字段
-      tableData_4: [],      //网站备案
+      tableData_4: [], //网站备案
       deleteData_4: [],
       addData_4: [],
       updateData_4: [],
@@ -537,7 +543,10 @@ export default {
     this.getWzba();
   },
   methods: {
-    //获取商标数据
+    /*
+	** 商标
+	*/
+    //初始化商标数据
     getSb: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
@@ -575,9 +584,13 @@ export default {
         this.deleteData = [];
         this.updateData = [];
         this.addData = [];
-      }else{
+      } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
+    },
+    //获取商标数据
+    fetchSbData: async function() {
+      console.log("获取商标业务逻辑");
     },
     //接受商标删除的数据
     acceptDelRow(val) {
@@ -591,17 +604,16 @@ export default {
         this.rules,
         this
       );
-      console.log(isValid);
       if (rowObj.id) {
         this.updateData.push(rowObj);
       }
     },
 
-
-
-
-
-    //获取专利信息
+    //--------------------------------------------------------------------------
+    /*
+	** 专利
+	*/
+    //初始化专利信息
     getZl: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
@@ -631,13 +643,11 @@ export default {
         this.$message({ message: res.data.resultMsg, type: "success" });
       }
     },
-
-
-
-
-
-
-    //获取授权有权专利明细
+    //-------------------------------------------------------------------------------------
+    /*
+	** 授权有权
+	*/
+    //初始化授权有权专利明细
     getSqyqzlmx: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
@@ -675,7 +685,7 @@ export default {
         this.deleteData_2 = [];
         this.updateData_2 = [];
         this.addData_2 = [];
-      }else{
+      } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
@@ -691,16 +701,15 @@ export default {
         this.rules,
         this
       );
-      console.log(isValid);
       if (rowObj.id) {
         this.updateData_2.push(rowObj);
       }
     },
-
-
-
-
-    //获取著作权
+    //---------------------------------------------------------------------------------
+    /*
+	** 授权著作权
+	*/
+    //初始化著作权
     getZzq: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
@@ -738,7 +747,7 @@ export default {
         this.deleteData_3 = [];
         this.updateData_3 = [];
         this.addData_3 = [];
-      }else{
+      } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
@@ -754,14 +763,10 @@ export default {
         this.rules,
         this
       );
-      console.log(isValid);
       if (rowObj.id) {
         this.updateData_3.push(rowObj);
       }
     },
-
-
-
 
     //获取网站备案
     getWzba: async function() {
@@ -800,7 +805,7 @@ export default {
         this.deleteData_4 = [];
         this.updateData_4 = [];
         this.addData_4 = [];
-      }else{
+      } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
@@ -820,25 +825,7 @@ export default {
       if (rowObj.id) {
         this.updateData_4.push(rowObj);
       }
-    },
-
-    /*handleClick(tab, event) {
-    },
-    verify1(row, index) {
-      row.edit = false;
-    },
-    verify2(row, index) {
-      row.edit = false;
-    },
-    verify3(row, index) {
-      row.edit = false;
-    },
-
-    //单元格编辑回调
-    cellEditDone(newValue, oldValue, rowIndex, rowData, field) {
-      this.tableData[rowIndex][field] = newValue;
-      // 接下来处理你的业务逻辑，数据持久化等...
-    }*/
+    }
   },
   components: {
     "v-tabelAddBtn": tabelAddBtn,

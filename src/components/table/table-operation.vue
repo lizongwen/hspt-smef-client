@@ -37,7 +37,6 @@
       edit(rowObj) {
         rowObj.edit = true;
         this.oldRow = JSON.parse(JSON.stringify(rowObj));
-        console.log('scope:', this.scope);
       },
       //取消编辑
       cacelEdit(rowObj) {

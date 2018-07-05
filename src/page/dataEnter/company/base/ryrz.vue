@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<el-tabs v-model="activeName" @tab-click="handleClick">
+		<el-tabs v-model="activeName">
 			<el-tab-pane label="荣誉信息" name="first">
 				<div>
 					<el-card class="box-card">
@@ -417,11 +417,6 @@ export default {
 	   this.$message({ message: res.data.resultMsg, type: "warning" });
 	  }
 	},
-	 
-    //点击标签页触发事件
-    handleClick(tab, event) {
-      //   console.log(tab, event);
-    }
   },
   components: {
     "v-tabelAddBtn": tabelAddBtn,

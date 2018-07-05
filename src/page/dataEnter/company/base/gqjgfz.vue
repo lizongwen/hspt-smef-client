@@ -1,6 +1,6 @@
 <template>
-	<div class="gqjgfz">
-		<el-tabs v-model="activeName" @tab-click="handleClick">
+	<div>
+		<el-tabs v-model="activeName">
 			<el-tab-pane label="股权结构" name="first">
 				<div>
 					<el-card class="box-card">
@@ -421,9 +421,6 @@ export default {
   },
   methods: {
     //点击标签页触发事件
-    handleClick(tab, event) {
-      //   console.log(tab, event);
-    },
 	//获取股权结构（非上市公司）
 
 	//获取股权结构（上市公司）
@@ -487,10 +484,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.gqjgfz {
-  background-color: #fff;
-}
-
 .img-preview {
   height: 200px;
   margin: 20px;
