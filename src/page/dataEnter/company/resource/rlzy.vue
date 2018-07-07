@@ -1,9 +1,9 @@
 <template>
 	<div>
-		<el-tabs v-model="activeName" @tab-click="handleClick">
+		<el-tabs v-model="activeName">
 			<el-tab-pane label="经营管理团队分析" name="first">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium">保存</el-button>
@@ -98,22 +98,22 @@
 					</el-card>
 				</div>
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 						</div>
-						<div>
-							<el-input type="textarea" :rows="5" placeholder="请输入内容" v-model="textarea"></el-input>
+						<div class="text-editor">
+							<quill-editor :value="tdxj" :maxSize="10240" v-on:changeInput="changTdxj"></quill-editor>
 						</div>
 					</el-card>
 				</div>
 			</el-tab-pane>
 			<el-tab-pane label="员工分析" name="second">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium">保存</el-button>
@@ -173,18 +173,18 @@
 										</template>
 									</el-table-column>
 								</el-table-column>
-                <el-table-column min-width="100px" label="小计" prop="subtotal">
-                  <template slot-scope="scope">
-                    <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules" :id="'subtotal'+scope.$index" :ref="'form_subtotal_'+scope.$index" :show-message="false">
-                        <el-form-item prop="subtotal" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.hj"></el-input>
-                        </el-form-item>
-                      </el-form>
-                    </template>
-                    <span v-else>{{ scope.row.hj}}</span>
-                  </template>
-                </el-table-column>
+								<el-table-column min-width="100px" label="小计" prop="subtotal">
+									<template slot-scope="scope">
+										<template v-if="scope.row.edit">
+											<el-form :model="scope.row" :rules="rules" :id="'subtotal'+scope.$index" :ref="'form_subtotal_'+scope.$index" :show-message="false">
+												<el-form-item prop="subtotal" class="td-form-item">
+													<el-input class="edit-input" size="small" v-model="scope.row.hj"></el-input>
+												</el-form-item>
+											</el-form>
+										</template>
+										<span v-else>{{ scope.row.hj}}</span>
+									</template>
+								</el-table-column>
 								<el-table-column min-width="100px" label="在职年限" prop="workYear">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
@@ -220,15 +220,15 @@
 					</el-card>
 				</div>
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 						</div>
-						<div>
-							<el-input type="textarea" :rows="5" placeholder="请输入内容" v-model="textarea"></el-input>
+						<div class="text-editor">
+							<quill-editor :value="ygxj" :maxSize="10240" v-on:changeInput="changYgxj"></quill-editor>
 						</div>
 					</el-card>
 				</div>
@@ -238,6 +238,7 @@
 </template>
 
 <script>
+import quillEditor from "@/components/form/quillEditor.vue";
 import formAddBtn from "@/components/form/form-add-btn.vue";
 import tabelAddBtn from "@/components/table/table-add-btn.vue";
 import tableOperation from "@/components/table/table-operation.vue";
@@ -246,33 +247,34 @@ export default {
     return {
       activeName: "first",
       listLoading: false,
-      textarea: "",
+      tdxj: "团队小结富文本",
+      ygxj: "员工小结富文本",
       labelPosition: "right",
       formArry: [
         {
           id: "",
-          zw: "",         //职位
-          sfcyrcyy: "",   //是否参与日常运营
-          xm: "",         //姓名
-          xb: "",         //性别
-          whcd: "",       //文化程度
-          csny: "",       //出生年月
-          xggznl: "",     //相关工作年龄
-          hyzt: "",       //婚姻状态
-          rzxz: "",       //任职性质
-          gzll: ""        //工作经历
+          zw: "", //职位
+          sfcyrcyy: "", //是否参与日常运营
+          xm: "", //姓名
+          xb: "", //性别
+          whcd: "", //文化程度
+          csny: "", //出生年月
+          xggznl: "", //相关工作年龄
+          hyzt: "", //婚姻状态
+          rzxz: "", //任职性质
+          gzll: "" //工作经历
         }
       ],
       tableData: [],
       formatterTableData_columns: {
         id: "",
-        bm: "",                 //部门
-        czjyx: null,            //初中及以下
-        gz: null,               //高中
-        dxjys: null,            //大学及以上
-        subtotal: null,         //小计
-        pjzznx: null,           //在职年限
-        pjnl: null,             //平均年龄
+        bm: "", //部门
+        czjyx: null, //初中及以下
+        gz: null, //高中
+        dxjys: null, //大学及以上
+        subtotal: null, //小计
+        pjzznx: null, //在职年限
+        pjnl: null, //平均年龄
         edit: false
       },
       //规则
@@ -280,22 +282,23 @@ export default {
     };
   },
   mounted() {
-    this.init();
+    this.getJygltd();
+    this.getYgfx();
   },
 
   computed: {
     formatterTableData() {
       this.tableData.map((item, index) => {
-        item.subtotal = parseInt(item.junior) + parseInt(item.middle) + parseInt(item.senior) || null;
+        item.subtotal =
+          parseInt(item.junior) +
+            parseInt(item.middle) +
+            parseInt(item.senior) || null;
       });
       return this.tableData;
     }
   },
   methods: {
-    init() {
-      this.getJygltd();
-      this.getYgfx();
-    },
+    //--------------------------经营管理团队分析----------------------------------//
     //获取经营管理团队分析
     getJygltd: async function() {
       let params = {
@@ -308,7 +311,16 @@ export default {
       );
       this.formArry = res.data.resultData.data.rows;
     },
+    //保存小结
+    saveTdXj() {
+      alert(this.tdxj);
+    },
+    //改变小结内容
+    changTdxj(val) {
+      this.tdxj = val;
+    },
 
+    //--------------------------员工分析----------------------------------//
     //获取员工分析
     getYgfx: async function() {
       let params = {
@@ -323,10 +335,15 @@ export default {
         this.tableData = res.data.resultData.data.rows;
       }
     },
-
-    handleClick(tab, event) {
-      //   console.log(tab, event);
+    //保存小结
+    saveYgXj() {
+      alert(this.ygxj);
     },
+    //改变小结内容
+    changYgxj(val) {
+      this.ygxj = val;
+    },
+    //------------------------------------------------------------------------
     getSummaries(param) {
       const { columns, data } = param;
       const sums = [];
@@ -375,15 +392,19 @@ export default {
   components: {
     "v-formAddBtn": formAddBtn,
     "v-tabelAddBtn": tabelAddBtn,
-    "v-tableOperation": tableOperation
+    "v-tableOperation": tableOperation,
+    "quill-editor": quillEditor
   }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .form-item {
   border-bottom: 1px solid #ebebeb;
   margin-bottom: 20px;
+}
+.text-editor .ql-editor {
+  height: 300px;
 }
 </style>
 

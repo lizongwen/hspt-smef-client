@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<el-card class="box-card">
+		<el-card class="box-card" shadow='nevner'>
 			<div slot="header" class="clearfix">
 				<div class="card-right-wrap">
 					<el-button class="save" type="primary" size="medium">保存</el-button>
@@ -22,7 +22,7 @@
 						</el-col>
 					</el-row>
 					<el-row>
-            <el-col :offset="1" :span="10">
+						<el-col :offset="1" :span="10">
 							<el-form-item label="上年度研发投入金额：">
 								<el-input v-model="form.sndyftrje" placeholder="上年度研发投入金额"></el-input>
 							</el-form-item>
@@ -64,56 +64,53 @@
 				</el-form>
 			</div>
 		</el-card>
-		<el-card class="box-card">
+		<el-card class="box-card" shadow='nevner'>
 			<div slot="header" class="clearfix">
 				<div class="card-right-wrap">
-					<el-button type="primary" size="medium">保存</el-button>
+					<el-button type="primary" size="medium" @click="saveBdcXj">保存</el-button>
 				</div>
 				<div class="card-title">小结</div>
 
 			</div>
 			<div>
-				<el-form class="form clearfix" size="small" :label-position="labelPosition" :model="summaryForm">
+				<!-- <el-form class="form clearfix" size="small" :label-position="labelPosition" :model="summaryForm">
 					<el-form-item>
 						<el-input type="textarea" :rows="5" v-model="summaryForm.content"></el-input>
 					</el-form-item>
-				</el-form>
+				</el-form> -->
+				<div class="text-editor">
+					<quill-editor :value="cpxj" :maxSize="10240" v-on:changeInput="changCpxj"></quill-editor>
+				</div>
 			</div>
 		</el-card>
 	</div>
 </template>
 
 <script>
+import quillEditor from "@/components/form/quillEditor.vue";
 export default {
-
   data() {
     return {
-      labelPosition: "right",
+      cpxj: "产品小结富文本",
       form: {
         id: "",
-        yfjghbm: "",          //研发机构或部门
-        yfjjsrysl: "",        //研发及技术人员数量
-        sndyftrje: "",        //上年度研发投入金额
-        sndyftrzyysrbl: "",   //上年度研发投入占营业收入比例
-        bndyftrje: "",        //本年度研发投入金额
-        bndyftrzyysrbl: "",   //本年度研发投入占营业收入比例
-        zyyfhzjg: "",         //主要研发合作机构
-        zyyfcg: ""            //主要研发成果
-      },
-      summaryForm: {
-        content: "111"
+        yfjghbm: "", //研发机构或部门
+        yfjjsrysl: "", //研发及技术人员数量
+        sndyftrje: "", //上年度研发投入金额
+        sndyftrzyysrbl: "", //上年度研发投入占营业收入比例
+        bndyftrje: "", //本年度研发投入金额
+        bndyftrzyysrbl: "", //本年度研发投入占营业收入比例
+        zyyfhzjg: "", //主要研发合作机构
+        zyyfcg: "" //主要研发成果
       }
     };
   },
   mounted() {
-    this.init();
+    this.getCpyf();
   },
   methods: {
-    init() {
-      this.getCpyf();
-    },
     //获取产品研发信息
-    getCpyf:  async function() {
+    getCpyf: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token")
@@ -132,16 +129,26 @@ export default {
       this.form.zyyfcg = res.data.resultData.data.zyyfcg;
     },
 
-
+    //保存小结
+    saveBdcXj() {
+      alert(this.bdcxj);
+    },
+    //改变小结内容
+    changCpxj(val) {
+      this.bdcxj = val;
+    },
     onSubmit() {
-    //   console.log("submit!");
+      //   console.log("submit!");
     }
   },
-  components: {
-
+   components: {
+    "quill-editor": quillEditor
   }
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+.text-editor .ql-editor {
+  height: 300px;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div>
-			<el-card class="box-card">
+			<el-card class="box-card" shadow='nevner'>
 				<div slot="header" class="clearfix">
 					<div class="card-right-wrap">
 						<el-button type="primary" size="medium">保存</el-button>
@@ -19,7 +19,7 @@
 			</el-card>
 		</div>
 		<div>
-			<el-card class="box-card">
+			<el-card class="box-card" shadow='nevner'>
 				<div slot="header" class="clearfix">
 					<div class="card-right-wrap">
 						<el-button type="default" size="medium">获取数据</el-button>

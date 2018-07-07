@@ -2,7 +2,7 @@
 	<div>
 		<main-header></main-header>
 		<div class="main-content">
-			<el-card class="box-card">
+			<el-card class="box-card" shadow='nevner'>
 				<div slot="header" class="clearfix">
 					<div class="card-title">全部项目</div>
 					<div class="search-form">

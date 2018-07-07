@@ -3,7 +3,7 @@
 		<el-tabs v-model="activeName" @tab-click="handleClick">
 			<el-tab-pane label="主要产品" name="first">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium">保存</el-button>
@@ -11,14 +11,14 @@
 							<div class="card-title">主要业务</div>
 						</div>
 						<div class="text-editor">
-							<quill-editor :value="newsContent" :maxSize="10240" v-on:input="changInput"></quill-editor>
+							<quill-editor :value="newsContent" :maxSize="10240" v-on:changInput="changInput"></quill-editor>
 						</div>
 					</el-card>
 				</div>
 			</el-tab-pane>
 			<!-- <el-tab-pane label="商业模式" name="second">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium">保存</el-button>
@@ -33,7 +33,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="未来计划" name="third">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium">保存</el-button>

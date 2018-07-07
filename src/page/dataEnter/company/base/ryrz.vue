@@ -3,7 +3,7 @@
 		<el-tabs v-model="activeName">
 			<el-tab-pane label="荣誉信息" name="first">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium" @click="saveRyxx">保存</el-button>
@@ -39,7 +39,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="行政许可" name="second">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium" @click="saveXzxk">保存</el-button>
@@ -87,7 +87,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="主要认证与资质" name="third">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium" @click="saveZyzzyrz">保存</el-button>

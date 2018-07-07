@@ -3,7 +3,7 @@
 		<el-tabs v-model="activeName" @tab-click="handleClick">
 			<el-tab-pane label="主要客户往来信息" name="first">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="primary" size="medium">保存</el-button>
@@ -83,7 +83,7 @@
 					</el-card>
 				</div>
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">模板下载</el-button>
@@ -167,7 +167,7 @@
 					</el-card>
 				</div>
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-title">图表视图</div>
 						</div>
@@ -177,7 +177,7 @@
 					</el-card>
 				</div>
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="primary" size="medium">保存</el-button>
@@ -191,7 +191,7 @@
 					</el-card>
 				</div>
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="primary" size="medium">保存</el-button>
@@ -207,7 +207,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="主要供应商往来信息" name="second">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">模板下载</el-button>
@@ -291,7 +291,7 @@
 					</el-card>
 				</div>
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-title">图表视图</div>
 						</div>
@@ -301,7 +301,7 @@
 					</el-card>
 				</div>
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="primary" size="medium">保存</el-button>
@@ -315,7 +315,7 @@
 					</el-card>
 				</div>
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="primary" size="medium">保存</el-button>

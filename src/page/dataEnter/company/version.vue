@@ -1,5 +1,5 @@
 <template>
-	<el-card class="box-card">
+	<el-card class="box-card" shadow='nevner'>
 		<div slot="header" class="clearfix">
 			<div class="card-title">所有版本</div>
 			<div class="search-form">

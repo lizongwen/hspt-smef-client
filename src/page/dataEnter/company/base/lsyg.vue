@@ -1,7 +1,7 @@
 <template>
 	<!--公司历史沿革-->
 	<div>
-		<el-card class="box-card">
+		<el-card class="box-card" shadow='nevner'>
 			<div slot="header" class="clearfix">
 				<div class="card-right-wrap">
 					<el-button type="default" size="medium" @click="getData">获取数据</el-button>

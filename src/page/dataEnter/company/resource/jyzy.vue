@@ -1,12 +1,12 @@
 <template>
 	<div>
-		<el-tabs v-model="activeName" @tab-click="handleClick">
+		<el-tabs v-model="activeName">
 			<el-tab-pane label="企业不动产信息" name="first">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">企业土地信息</div>
 						</div>
@@ -46,7 +46,7 @@
 								</el-table-column>
 								<el-table-column min-width="130px" :label="tableData_columns.zzrq">
 									<template slot-scope="scope">
-										<el-date-picker class="cellItem el-form-item" v-model="scope.row.zzrq"  value-format="yyyy-MM-dd" :class="Object.keys(tableData_columns)[6]" v-if="scope.row.edit" type="date" placeholder="选择日期" style="width: 100%;" :clearable='false' ></el-date-picker>
+										<el-date-picker class="cellItem el-form-item" v-model="scope.row.zzrq" value-format="yyyy-MM-dd" :class="Object.keys(tableData_columns)[6]" v-if="scope.row.edit" type="date" placeholder="选择日期" style="width: 100%;" :clearable='false'></el-date-picker>
 										<span v-else>{{scope.row.zzrq}}</span>
 									</template>
 								</el-table-column>
@@ -79,10 +79,10 @@
 					</el-card>
 				</div>
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">企业房产信息</div>
 						</div>
@@ -90,7 +90,7 @@
 						<div>
 							<el-table :data="tableData_1" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
-								<el-table-column min-width="200px" :label="tableData_1_columns.fqzh">
+								<el-table-column min-width="120px" :label="tableData_1_columns.fqzh">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.fqzh" :class="Object.keys(tableData_1_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.fqzh}}</span>
@@ -102,13 +102,13 @@
 										<span v-else>{{ scope.row.fwzl}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="200px" :label="tableData_1_columns.yt">
+								<el-table-column min-width="100px" :label="tableData_1_columns.yt">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.yt" :class="Object.keys(tableData_1_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.yt}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="200px" :label="tableData_1_columns.gmjg">
+								<el-table-column min-width="150px" :label="tableData_1_columns.gmjg">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.gmjg" :class="Object.keys(tableData_1_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.gmjg}}</span>
@@ -122,23 +122,23 @@
 								</el-table-column>
 								<el-table-column min-width="130px" :label="tableData_columns.zzrq">
 									<template slot-scope="scope">
-										<el-date-picker class="cellItem el-form-item" v-model="scope.row.zzrq"  value-format="yyyy-MM-dd" :class="Object.keys(tableData_1_columns)[6]" v-if="scope.row.edit" type="date" placeholder="选择日期" style="width: 100%;" :clearable='false' ></el-date-picker>
+										<el-date-picker class="cellItem el-form-item" v-model="scope.row.zzrq" value-format="yyyy-MM-dd" :class="Object.keys(tableData_1_columns)[6]" v-if="scope.row.edit" type="date" placeholder="选择日期" style="width: 100%;" :clearable='false'></el-date-picker>
 										<span v-else>{{scope.row.zzrq}}</span>
 									</template>
 								</el-table-column>
-							<el-table-column min-width="200px" :label="tableData_1_columns.symj">
+								<el-table-column min-width="120px" :label="tableData_1_columns.symj">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.symj" :class="Object.keys(tableData_1_columns)[7]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.symj}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="200px" :label="tableData_1_columns.ywtxql">
+								<el-table-column min-width="120px" :label="tableData_1_columns.ywtxql">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.ywtxql" :class="Object.keys(tableData_1_columns)[8]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.ywtxql}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="200px" :label="tableData_1_columns.rzed">
+								<el-table-column min-width="100px" :label="tableData_1_columns.rzed">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.rzed" :class="Object.keys(tableData_1_columns)[9]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.rzed}}</span>
@@ -155,35 +155,35 @@
 					</el-card>
 				</div>
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button type="primary" size="medium" @click="saveBdcXj">保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 						</div>
-						<div>
-							<el-input type="textarea" :rows="5" placeholder="请输入内容" v-model="textarea"></el-input>
+						<div class="text-editor">
+							<quill-editor :value="bdcxj" :maxSize="10240" v-on:changeInput="changBdcxj"></quill-editor>
 						</div>
 					</el-card>
 				</div>
 			</el-tab-pane>
 			<el-tab-pane label="企业主要生产设备" name="second">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="default" size="medium">模板下载</el-button>
-								<el-button class="save" type="default" size="medium">数据导入</el-button>
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button type="default" size="medium">模板下载</el-button>
+								<el-button type="default" size="medium">数据导入</el-button>
+								<el-button type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">企业主要生产设备</div>
 						</div>
 						<!-- 表格容器 -->
 						<div>
 							<el-table :data="tableData_2" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
-                <el-table-column label="序号" type="index" width="50"></el-table-column>
-                <el-table-column min-width="200px" :label="tableData_2_columns.sbmc">
+								<el-table-column label="序号" type="index" width="50"></el-table-column>
+								<el-table-column min-width="200px" :label="tableData_2_columns.sbmc">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.sbmc" :class="Object.keys(tableData_2_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.sbmc}}</span>
@@ -218,23 +218,23 @@
 					</el-card>
 				</div>
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button type="primary" size="medium" @click="saveZysbXj">保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 						</div>
 						<!-- 表格容器 -->
-						<div>
-							<el-input type="textarea" :rows="5" placeholder="请输入内容" v-model="textarea"></el-input>
+						<div class="text-editor">
+							<quill-editor :value="zysbxj" :maxSize="10240" v-on:changeInput="changZysbxj"></quill-editor>
 						</div>
 					</el-card>
 				</div>
 			</el-tab-pane>
 			<el-tab-pane label="企业车辆情况" name="third">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">获取数据</el-button>
@@ -244,11 +244,48 @@
 						</div>
 						<!-- 表格容器 -->
 						<div>
+							<div class="el-table el-table--border el-table--enable-row-hover el-table--enable-row-transition">
+								<table class="el-table__body text-center" style="width:100%" cellspacing="0" cellpadding="0" border="0">
+									<thead>
+										<tr>
+											<th class=" text-center">
+												<div class="cell">公司车辆数目</div>
+											</th>
+											<th class=" text-center">
+												<div class="cell">抵押车辆情况</div>
+											</th>
+											<th class=" text-center">
+												<div class="cell">累计违章次数</div>
+											</th>
+											
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="el-table__row">
+											<td>
+												<div class="cell strong">
+													<el-input v-model="carTotal" placeholder="请输入车辆数目"></el-input>
+												</div>
+											</td>
+											<td>
+												<div class="cell">
+													<el-input v-model="carInfo" placeholder="请输入车辆情况"></el-input>
+												</div>
+											</td>
+											<td>
+												<div class="cell">
+													<el-input v-model="carNum" placeholder="请输入车辆违章次数"></el-input>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</el-card>
 				</div>
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">获取数据</el-button>
@@ -260,7 +297,7 @@
 						<div>
 							<el-table :data="tableData_4" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
-								<el-table-column min-width="200px" :label="tableData_4_columns.hpzl">
+								<el-table-column min-width="100px" :label="tableData_4_columns.hpzl">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.hpzl" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.hpzl}}</span>
@@ -318,11 +355,14 @@
 </template>
 
 <script>
+import quillEditor from "@/components/form/quillEditor.vue";
 import tabelAddBtn from "@/components/table/table-add-btn.vue";
 import tableOperation from "@/components/table/table-operation.vue";
 export default {
   data() {
     return {
+	  bdcxj: "我是富文本的返回内容",
+	  zysbxj:"我是主要设备富文本的返回内容",
       activeName: "first",
       listLoading: false,
       textarea: "",
@@ -335,8 +375,8 @@ export default {
         syqlx: "使用权类型",
         zzrq: "终止日期",
         mj: "面积（平米）",
-        ywtxql: '有无他项权利',
-        rzed: '融资额度',
+        ywtxql: "有无他项权利",
+        rzed: "融资额度",
         edit: false
       },
       tableData_1: [],
@@ -348,8 +388,8 @@ export default {
         qsxz: "使用权类型",
         zzrq: "终止日期",
         symj: "面积（平米）",
-        ywtxql: '有无他项权利',
-        rzed: '融资额度',
+        ywtxql: "有无他项权利",
+        rzed: "融资额度",
         edit: false
       },
       tableData_2: [],
@@ -359,22 +399,24 @@ export default {
         yz: "原值（万元）",
         jz: "净值（万元）",
         edit: false
-      },
+	  },
+	  //-----------------------------车辆记录----------------------------------//
+	  carTotal:null,
+	  carInfo:"",
+	  carNum:null,
       tableData_4: [],
       tableData_4_columns: {
         hpzl: "号牌种类",
         hphm: "车牌号码",
         zwpp: "中文品牌",
-		cllx:"车辆类型",
+        cllx: "车辆类型",
         zzg: "制造国",
-        jdczt: '机动车状态',
-        dybj: '抵押标记',
+        jdczt: "机动车状态",
+        dybj: "抵押标记",
         edit: false
       },
       //规则
-      rules: {
-
-	  }
+      rules: {}
     };
   },
   computed: {
@@ -388,18 +430,16 @@ export default {
       return this.tableData.mortgageMark ? "已抵押" : "未抵押";
     }
   },
-  mounted(){
-	   this.getLandList();
-	   this.getHouseList();
-	   this.getDeviceList();
-	   this.getCarList();
+  mounted() {
+    this.getLandList();
+    this.getHouseList();
+    this.getDeviceList();
+    this.getCarList();
   },
   methods: {
-    handleClick(tab, event) {
-      //   console.log(tab, event);
-	},
-	// 获取土地信息
-	getLandList: async function() {
+    //---------------------------------------企业不动产信息--------------------------------------------------------------//
+    // 获取土地信息
+    getLandList: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token")
@@ -409,12 +449,12 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
-		this.tableData=res.data.resultData.data.rows
+        this.tableData = res.data.resultData.data.rows;
       } else {
       }
-	},
-	//获取房产信息
-	getHouseList: async function() {
+    },
+    //获取房产信息
+    getHouseList: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token")
@@ -424,12 +464,21 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
-		this.tableData_1=res.data.resultData.data.rows
+        this.tableData_1 = res.data.resultData.data.rows;
       } else {
       }
 	},
-	// 获取企业主要生产设备
-	getDeviceList: async function() {
+	//保存小结
+	saveBdcXj(){
+		alert(this.bdcxj)
+	},
+    //改变小结内容
+    changBdcxj(val) {
+      this.bdcxj=val;
+    },
+    //---------------------------------------企业主要生产设备--------------------------------------------------------------//
+    // 获取企业主要生产设备
+    getDeviceList: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token")
@@ -439,12 +488,21 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
-		this.tableData_2=res.data.resultData.data.rows
+        this.tableData_2 = res.data.resultData.data.rows;
       } else {
       }
 	},
-	//获取车辆信息
-	getCarList: async function() {
+	//保存小结
+	saveZysbXj(){
+		alert(this.bdcxj)
+	},
+	//改变小结内容
+    changZysbxj(val) {
+      this.bdcxj=val;
+    },
+    //---------------------------------------企业车辆信息--------------------------------------------------------------//
+    //获取车辆信息
+    getCarList: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token")
@@ -454,11 +512,10 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
-		this.tableData_4=res.data.resultData.data.rows
+        this.tableData_4 = res.data.resultData.data.rows;
       } else {
       }
-	},
-
+    },
 
     getSummaries(param) {
       const { columns, data } = param;
@@ -508,11 +565,15 @@ export default {
   },
   components: {
     "v-tabelAddBtn": tabelAddBtn,
-    "v-tableOperation": tableOperation
+    "v-tableOperation": tableOperation,
+    "quill-editor": quillEditor
   }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+.text-editor .ql-editor {
+  height: 300px;
+}
 </style>
 

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div style="margin-bottom: 20px;">
-			<el-card class="box-card">
+			<el-card class="box-card" shadow='nevner'>
 				<div slot="header" class="clearfix">
 					<div class="card-right-wrap">
 						<el-button class="save" type="primary" size="medium">保存</el-button>
@@ -60,7 +60,7 @@
 		<el-tabs v-model="activeName" @tab-click="handleClick">
 			<el-tab-pane label="央行报告信息" name="first">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium">保存</el-button>
@@ -179,7 +179,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="法律风险" name="second">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium">保存</el-button>
@@ -275,7 +275,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="公共信息" name="third">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium">获取数据</el-button>
@@ -371,7 +371,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="反欺诈信息" name="four">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium">获取数据</el-button>
@@ -458,7 +458,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="互联网监控信息" name="five">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium">获取数据</el-button>

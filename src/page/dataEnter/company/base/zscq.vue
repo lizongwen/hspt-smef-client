@@ -3,7 +3,7 @@
 		<el-tabs v-model="activeName" @tab-click="handleClick">
 			<el-tab-pane label="商标" name="first">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium" @click="getSbxxIntergaceData">获取数据</el-button>
@@ -62,7 +62,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="专利" name="second">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium" @click="getZlIterfaceData">获取数据</el-button>
@@ -258,7 +258,7 @@
 					</el-card>
 				</div>
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium" @click="setSqyqzlmx">保存</el-button>
@@ -339,7 +339,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="著作权" name="third">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium" @click="getZzqIntergaceData">获取数据</el-button>
@@ -399,7 +399,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="网站备案" name="four">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium">获取数据</el-button>

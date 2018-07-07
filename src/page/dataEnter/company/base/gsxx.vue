@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<el-card class="box-card">
+		<el-card class="box-card"  shadow='nevner'>
 			<div slot="header" class="clearfix">
 				<div class="card-right-wrap">
 					<el-button type="default" size="medium" @click="fetchBaseInfo">获取数据</el-button>

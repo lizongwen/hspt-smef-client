@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div>
-			<el-card class="box-card">
+			<el-card class="box-card" shadow='nevner'>
 				<div slot="header" class="clearfix">
 					<div class="card-right-wrap">
 						<el-button class="save" type="primary" size="medium">保存</el-button>
@@ -81,7 +81,7 @@
 			</el-card>
 		</div>
 		<div>
-			<el-card class="box-card">
+			<el-card class="box-card" shadow='nevner'>
 				<div slot="header" class="clearfix">
 					<div class="card-title">小结</div>
 					<div class="card-right-wrap">

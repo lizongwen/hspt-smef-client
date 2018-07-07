@@ -3,7 +3,7 @@
 		<el-tabs v-model="activeName" @tab-click="handleClick">
 			<el-tab-pane label="法院公告信息" name="first">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium">获取数据</el-button>
@@ -76,7 +76,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="法院判别信息" name="second">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium">保存</el-button>
@@ -184,7 +184,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="企业被执行公告信息" name="third">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium">获取数据</el-button>
@@ -280,7 +280,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="失信联合惩戒信息" name="four">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium">获取数据</el-button>
@@ -364,7 +364,7 @@
 			</el-tab-pane>
 		    <el-tab-pane label="行政处罚信息" name="five">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium">获取数据</el-button>

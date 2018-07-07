@@ -5,7 +5,7 @@
       <el-row :gutter="20">
         <el-col :span="18">
           <div class="grid-content">
-            <el-card class="box-card">
+            <el-card class="box-card" shadow='nevner'>
               <div slot="header" class="clearfix">
                 <span class="card-title">进行中的项目</span>
                 <el-button style="float: right; padding: 3px 0" type="text" @click="showProjs">全部项目</el-button>
@@ -32,7 +32,7 @@
         </el-col>
         <el-col :span="6">
           <div class="grid-content">
-            <el-card class="box-card">
+            <el-card class="box-card" shadow='nevner'>
               <div slot="header" class="clearfix">
                 <span class="card-title">项目组成员</span>
               </div>

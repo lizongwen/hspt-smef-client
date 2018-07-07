@@ -3,7 +3,7 @@
 		<el-tabs v-model="activeName" @tab-click="handleClick">
 			<el-tab-pane label="股权结构" name="first">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card"  shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium" @click="saveFssgsGqjg">保存</el-button>
@@ -69,7 +69,7 @@
 					</el-card>
 				</div>
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card"  shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium" @click="saveSsgsGqjg">保存</el-button>
@@ -116,7 +116,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="企业图谱" name="second">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card"  shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-upload class="upload-button" action="https://jsonplaceholder.typicode.com/posts/" accept='image/*' :show-file-list='false' :on-success="handleSuccess" :on-progress='handleProgess'>
@@ -133,7 +133,7 @@
 					</el-card>
 				</div>
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card"  shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium" @click="saveFzjxsqyqk">保存</el-button>
@@ -192,7 +192,7 @@
 				</div>
 
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card"  shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium" @click="saveGlqy">保存</el-button>
@@ -265,7 +265,7 @@
 			</el-tab-pane>
 			<el-tab-pane label="组织架构" name="third">
 				<div>
-					<el-card class="box-card">
+					<el-card class="box-card"  shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="primary" size="medium">上传图片</el-button>
