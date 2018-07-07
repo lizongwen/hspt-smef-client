@@ -342,7 +342,7 @@
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="default" size="medium">获取数据</el-button>
+								<el-button class="save" type="default" size="medium" @click="getZzqIntergaceData">获取数据</el-button>
 								<el-button class="save" type="primary" size="medium" @click="setZzq">保存</el-button>
 							</div>
 							<div class="card-title">著作权</div>
@@ -861,8 +861,15 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
-        this.tableData_3 = res.data.resultData.rows;
-      }
+		this.$message({ message: res.data.resultMsg, type: "success" });
+        this.tableData_3 = res.data.resultData;
+		this.delRowData_3 = [];
+        this.updateData_3 = [];
+        this.addData_3 = [];
+        this.addData_3 = res.data.resultData.data;
+      }else{
+	   this.$message({ message: res.data.resultMsg, type: "warning" });
+	  }
     },
     //保存著作权信息
     setZzq: async function() {
@@ -874,7 +881,6 @@ export default {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token"),
-        loginName: sessionStorage.getItem("loginName"),
         addData: JSON.stringify(this.addData_3),
         updateData: JSON.stringify(this.updateData_3),
         deleteData: JSON.stringify(this.deleteData_3)
@@ -904,13 +910,32 @@ export default {
         this.rules_zzq,
         this
       );
-      console.log(isValid);
       if (rowObj.id) {
         this.updateData_3.push(rowObj);
       }
     },
 
-
+	//获取著作权接口数据
+    getZzqIntergaceData: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        companyName: sessionStorage.getItem("companyName"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsjbxx/zscq/zzq/remote",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({message: res.data.resultMsg, type: "success"});
+        this.tableData_3= res.data.resultData.data;
+        this.deleteData_3 = [];
+        this.updateData_3 = [];
+        this.addData_3 = [];
+      } else {
+        this.$message({message: res.data.resultMsg, type: "warning"});
+      }
+    },
 
 
     ////////////////////////////////////////////////////////////////获取网站备案

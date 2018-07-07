@@ -1,5 +1,5 @@
 <template>
-	<div class="gqjgfz">
+	<div>
 		<el-tabs v-model="activeName" @tab-click="handleClick">
 			<el-tab-pane label="股权结构" name="first">
 				<div>
@@ -119,14 +119,16 @@
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">上传图片</el-button>
+								<el-upload class="upload-button" action="https://jsonplaceholder.typicode.com/posts/" accept='image/*' :show-file-list='false' :on-success="handleSuccess" :on-progress='handleProgess'>
+									<el-button size="medium" type="primary">上传图片</el-button>
+								</el-upload>
 								<el-button class="save" type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">股权结构（非上市公司）</div>
 						</div>
 						<!-- 图片容器 -->
 						<div class="img-preview">
-
+							<img :src="imgurl_qytp" alt="" srcset="">
 						</div>
 					</el-card>
 				</div>
@@ -188,8 +190,7 @@
 						</div>
 					</el-card>
 				</div>
-				
-				
+
 				<div>
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
@@ -260,7 +261,7 @@
 						</div>
 					</el-card>
 				</div>
-				
+
 			</el-tab-pane>
 			<el-tab-pane label="组织架构" name="third">
 				<div>
@@ -291,28 +292,30 @@ export default {
   data() {
     return {
       activeName: "first",
-      listLoading: false,
+	  listLoading: false,
+	  imgurl_qytp:'',
+	//   fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}, {name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}],
       //验证规则
       rules: {},
-	  
-	  ////////////////股权结构（非上市公司）
+
+      ////////////////股权结构（非上市公司）
       tableData: [],
-	  delRowData: [],
+      delRowData: [],
       addData: [],
       updateData: [],
       tableData_columns: {
-	    id:null,
+        id: null,
         gdxm: "股东姓名",
         czbl: "出资比例（%）",
         rjcz: "认缴出资（万元）",
         rjczrq: "认缴出资日期",
         sjcz: "实缴出资（万元）",
-		sjczrq: "实缴出资日期",
+        sjczrq: "实缴出资日期",
         edit: false
       },
-	  ///////////////////////////股权结构（上市公司）
+      ///////////////////////////股权结构（上市公司）
       tableData_1: [],
-	  delRowData_1: [],
+      delRowData_1: [],
       addData_1: [],
       updateData_1: [],
       tableData_1_columns: {
@@ -322,39 +325,39 @@ export default {
         cgbh: "持股变化（股）",
         edit: false
       },
-	  
-	  //////////////////////////分支及下属企业情况
+
+      //////////////////////////分支及下属企业情况
       tableData_2: [],
-	  delRowData_2: [],
+      delRowData_2: [],
       addData_2: [],
       updateData_2: [],
       tableData_2_columns: {
-	    id:null,
-		xsjgmc:"下属公司/分公司名称",
+        id: null,
+        xsjgmc: "下属公司/分公司名称",
         szd: "所在地",
         ywnr: "业务内容",
         tyshxydm: "统一社会信用代码",
         xsgxbl: "销售贡献比例%",
-		lrgxbl:"利润贡献比例%",
+        lrgxbl: "利润贡献比例%",
         edit: false
       },
-	  
-	  //////////////////////////关联企业
-	  
+
+      //////////////////////////关联企业
+
       tableData_3: [],
-	  delRowData_3: [],
+      delRowData_3: [],
       addData_3: [],
       updateData_3: [],
       tableData_3_columns: {
-	    id:null,
+        id: null,
         gsmc: "公司名称",
         ywnr: "业务内容",
         hbgssfyywwl: "和目标公司之间是否有业务往来",
         sfygljy: "是否有关联交易",
-		sfxsqy:"是否下属企业",
-		zczb:"注册资本 (万元)",
-		cgbl:"持股比例",
-		zw:"职位",
+        sfxsqy: "是否下属企业",
+        zczb: "注册资本 (万元)",
+        cgbl: "持股比例",
+        zw: "职位",
         edit: false
       }
     };
@@ -365,31 +368,31 @@ export default {
     }
   },
   mounted() {
-	  this.getFssgsGqjg();//股权结构（非上市公司）
-	  this.getSsgsGqjg();//股权结构（上市公司）
-	  this.getFzjxsqyqk();//分支及下属企业情况
-	  this.getGlqy();//关联企业
+    this.getFssgsGqjg(); //股权结构（非上市公司）
+    this.getSsgsGqjg(); //股权结构（上市公司）
+    this.getFzjxsqyqk(); //分支及下属企业情况
+    this.getGlqy(); //关联企业
   },
   methods: {
     //点击标签页触发事件
     handleClick(tab, event) {
       //   console.log(tab, event);
     },
-	
-	////////////////////////////////获取股权结构（非上市公司）
-	
-	//接受删除的数据
+
+    ////////////////////////////////获取股权结构（非上市公司）
+
+    //接受删除的数据
     acceptDelRow(val) {
       this.delRowData.push(val);
     },
-     verify(rowObj, rowIndex) {
+    verify(rowObj, rowIndex) {
       tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
-	  if (rowObj.id) {
+      if (rowObj.id) {
         this.updateData.push(rowObj);
       }
-     },
-	 
-	 getFssgsGqjg: async function() {
+    },
+
+    getFssgsGqjg: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token")
@@ -402,9 +405,9 @@ export default {
         this.tableData = res.data.resultData;
       }
     },
-	
-	saveFssgsGqjg: async function(){
-	this.tableData.forEach((item, index) => {
+
+    saveFssgsGqjg: async function() {
+      this.tableData.forEach((item, index) => {
         if (item.id == null) {
           this.addData.push(item);
         }
@@ -412,8 +415,8 @@ export default {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token"),
-		companyName:sessionStorage.getItem("companyName"),
-		isSub:"0",
+        companyName: sessionStorage.getItem("companyName"),
+        isSub: "0",
         addData: JSON.stringify(this.addData),
         updateData: JSON.stringify(this.updateData),
         delData: JSON.stringify(this.delRowData)
@@ -427,25 +430,25 @@ export default {
         this.delRowData = [];
         this.updateData = [];
         this.addData = [];
-      }else{
-	   this.$message({ message: res.data.resultMsg, type: "warning" });
-	  }
-	},
-	 
-	/////////////////////////////////////////////////////获取股权结构（上市公司）
-	
-	//接受删除的数据
+      } else {
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+    },
+
+    /////////////////////////////////////////////////////获取股权结构（上市公司）
+
+    //接受删除的数据
     acceptDelRow1(val) {
       this.delRowData_1.push(val);
     },
-     verify1(rowObj, rowIndex) {
+    verify1(rowObj, rowIndex) {
       tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
-	  if (rowObj.id) {
+      if (rowObj.id) {
         this.updateData_1.push(rowObj);
       }
-     },
-	 
-	 getSsgsGqjg: async function() {
+    },
+
+    getSsgsGqjg: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token")
@@ -458,9 +461,9 @@ export default {
         this.tableData_1 = res.data.resultData;
       }
     },
-	
-	saveSsgsGqjg: async function(){
-	this.tableData_1.forEach((item, index) => {
+
+    saveSsgsGqjg: async function() {
+      this.tableData_1.forEach((item, index) => {
         if (item.id == null) {
           this.addData_1.push(item);
         }
@@ -468,8 +471,8 @@ export default {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token"),
-		companyName:sessionStorage.getItem("companyName"),
-		isSub:"0",
+        companyName: sessionStorage.getItem("companyName"),
+        isSub: "0",
         addData: JSON.stringify(this.addData_1),
         updateData: JSON.stringify(this.updateData_1),
         delData: JSON.stringify(this.delRowData_1)
@@ -483,23 +486,22 @@ export default {
         this.delRowData = [];
         this.updateData = [];
         this.addData = [];
-      }else{
-	   this.$message({ message: res.data.resultMsg, type: "warning" });
-	  }
-	},
-	
+      } else {
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+    },
 
-	/////////////////////////////////////////////////////获取分支及下属企业情况
-	acceptDelRow2(val) {
+    /////////////////////////////////////////////////////获取分支及下属企业情况
+    acceptDelRow2(val) {
       this.delRowData_2.push(val);
     },
-	verify2(rowObj, rowIndex) {
+    verify2(rowObj, rowIndex) {
       tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
-	  if (rowObj.id) {
+      if (rowObj.id) {
         this.updateData_2.push(rowObj);
       }
     },
-	getFzjxsqyqk: async function(){
+    getFzjxsqyqk: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token")
@@ -512,8 +514,8 @@ export default {
         this.tableData_2 = res.data.resultData.data;
       }
     },
-	saveFzjxsqyqk: async function(){
-	this.tableData_2.forEach((item, index) => {
+    saveFzjxsqyqk: async function() {
+      this.tableData_2.forEach((item, index) => {
         if (item.id == null) {
           this.addData_2.push(item);
         }
@@ -534,23 +536,23 @@ export default {
         this.delRowData_2 = [];
         this.updateData_2 = [];
         this.addData_2 = [];
-      }else{
-	   this.$message({ message: res.data.resultMsg, type: "warning" });
-	  }
-	},
-	
-	//////////////////////////////////////////////////获取关联企业	
-		
-	acceptDelRow3(val) {
+      } else {
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+    },
+
+    //////////////////////////////////////////////////获取关联企业
+
+    acceptDelRow3(val) {
       this.delRowData_3.push(val);
     },
-	verify3(rowObj, rowIndex) {
+    verify3(rowObj, rowIndex) {
       tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
-	  if (rowObj.id) {
+      if (rowObj.id) {
         this.updateData_3.push(rowObj);
       }
     },
-	getGlqy: async function(){
+    getGlqy: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token")
@@ -563,8 +565,8 @@ export default {
         this.tableData_3 = res.data.resultData.data;
       }
     },
-	saveGlqy: async function(){
-	   this.tableData_3.forEach((item, index) => {
+    saveGlqy: async function() {
+      this.tableData_3.forEach((item, index) => {
         if (item.id == null) {
           this.addData_3.push(item);
         }
@@ -585,10 +587,10 @@ export default {
         this.delRowData_3 = [];
         this.updateData_3 = [];
         this.addData_3 = [];
-      }else{
-	   this.$message({ message: res.data.resultMsg, type: "warning" });
-	  }
-	},
+      } else {
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+    },
 
     /////////////////////////////////////////////////////////////
     getSummaries(param) {
@@ -612,10 +614,7 @@ export default {
           //根据列名不同，确定不同的合计单位
           if (column.property == "czbl") {
             sums[index] += "%";
-          } else if (
-            column.property == "rjcz" ||
-            column.property == "sjcz"
-          ) {
+          } else if (column.property == "rjcz" || column.property == "sjcz") {
             sums[index] += " 万元";
           }
         } else {
@@ -623,7 +622,14 @@ export default {
         }
       });
       return sums;
-    }
+    },
+	handleSuccess(res, file){
+		console.log(res)
+		this.imgurl_qytp=res
+	},
+	handleProgess(){
+		// console.log(arguments)
+	}
   },
   components: {
     "v-tabelAddBtn": tabelAddBtn,
@@ -633,15 +639,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.gqjgfz {
-  background-color: #fff;
-}
-
 .img-preview {
   height: 200px;
   margin: 20px;
   border: #ebebeb;
   background-color: #eef9ff;
+}
+.upload-button{
+	display: inline-block;
 }
 </style>
 
