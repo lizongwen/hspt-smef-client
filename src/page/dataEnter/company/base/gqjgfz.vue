@@ -1,27 +1,28 @@
 <template>
-	<div>
-		<el-tabs v-model="activeName">
+	<div class="gqjgfz">
+		<el-tabs v-model="activeName" @tab-click="handleClick">
 			<el-tab-pane label="股权结构" name="first">
 				<div>
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="saveFssgsGqjg">保存</el-button>
 							</div>
 							<div class="card-title">股权结构（非上市公司）</div>
 						</div>
 						<div>
 							<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
-								<el-table-column min-width="200px" :label="tableData_columns.name">
+								<el-table-column label="序号" type="index" width="50"></el-table-column>
+								<el-table-column min-width="200px" :label="tableData_columns.gdxm">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.name" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
-										<span v-else>{{ scope.row.name}}</span>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.gdxm" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.gdxm}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="200px" :label="tableData_columns.ratio" prop="ratio">
+								<el-table-column min-width="200px" :label="tableData_columns.czbl" prop="czbl">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.ratio" :class="Object.keys(tableData_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
-										<span v-else>{{ scope.row.ratio}}</span>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.czbl" :class="Object.keys(tableData_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.czbl}}</span>
 									</template>
 								</el-table-column>
 								<!-- <el-table-column min-width="200px" :label="tableData_columns.isEff">
@@ -33,21 +34,33 @@
 										<span v-else>{{ scope.row.isEff==null?"":(scope.row.isEff?"有效":"无效")}}</span>
 									</template>
 								</el-table-column> -->
-								<el-table-column min-width="200px" :label="tableData_columns.subscribe" prop="subscribe">
+								<el-table-column min-width="200px" :label="tableData_columns.rjcz" prop="rjcz">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.subscribe" :class="Object.keys(tableData_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
-										<span v-else>{{ scope.row.subscribe}}</span>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.rjcz" :class="Object.keys(tableData_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.rjcz}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="200px" :label="tableData_columns.paidIn" prop="paidIn">
+								<el-table-column min-width="200px" :label="tableData_columns.rjczrq" prop="rjczrq">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.paidIn" :class="Object.keys(tableData_columns)[5]" v-if="scope.row.edit" size="small"></el-input>
-										<span v-else>{{ scope.row.paidIn}}</span>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.rjczrq" :class="Object.keys(tableData_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.rjczrq}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="200px" :label="tableData_columns.sjcz" prop="sjcz">
+									<template slot-scope="scope">
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.sjcz" :class="Object.keys(tableData_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.sjcz}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="200px" :label="tableData_columns.sjczrq" prop="sjczrq">
+									<template slot-scope="scope">
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.sjczrq" :class="Object.keys(tableData_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.sjczrq}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData" v-on:verify="verify"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData" v-on:verify="verify" v-on:acceptDelRow='acceptDelRow'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
@@ -59,63 +72,40 @@
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="saveSsgsGqjg">保存</el-button>
 							</div>
 							<div class="card-title">股权结构（上市公司）</div>
 						</div>
 						<div>
 							<el-table :data="tableData_1" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
-								<el-table-column min-width="300px" label="股东姓名" prop="name">
+								<el-table-column label="序号" type="index" width="50"></el-table-column>
+								<el-table-column min-width="200px" :label="tableData_1_columns.gdxm">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'name'+scope.$index" :ref="'form_name_'+scope.$index" :show-message="false">
-												<el-form-item prop="name" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.name"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{scope.row.name}}</span>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.gdxm" :class="Object.keys(tableData_1_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.gdxm}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="出资比例" prop="ratio">
+								<el-table-column min-width="200px" :label="tableData_1_columns.czbl" prop="czbl">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'ratio'+scope.$index" :ref="'form_ratio_'+scope.$index" :show-message="false">
-												<el-form-item prop="ratio" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.ratio"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.ratio}}</span>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.czbl" :class="Object.keys(tableData_1_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.czbl}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="认缴出资（万元）" prop="subscribe">
+								<el-table-column min-width="200px" :label="tableData_1_columns.cgs" prop="cgs">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'subscribe'+scope.$index" :ref="'form_subscribe_'+scope.$index" :show-message="false">
-												<el-form-item prop="subscribe" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.subscribe"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.subscribe}}</span>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.cgs" :class="Object.keys(tableData_1_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.cgs}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="实缴出资（万元）" prop="paidIn">
+								<el-table-column min-width="200px" :label="tableData_1_columns.cgbh" prop="cgbh">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'paidIn'+scope.$index" :ref="'form_paidIn_'+scope.$index" :show-message="false">
-												<el-form-item prop="paidIn" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.paidIn"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.paidIn}}</span>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.cgbh" :class="Object.keys(tableData_1_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.cgbh}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_1" v-on:verify="verify1"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_1" v-on:verify="verify1" v-on:acceptDelRow='acceptDelRow1'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
@@ -144,79 +134,53 @@
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="saveFzjxsqyqk">保存</el-button>
 							</div>
 							<div class="card-title">分支及下属企业情况</div>
 						</div>
 						<!-- 表格容器 -->
 						<div>
 							<el-table :data="tableData_2" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
-								<el-table-column min-width="300px" label="下属公司/分公司名称" prop="name">
+								<el-table-column label="序号" type="index" width="50"></el-table-column>
+								<el-table-column min-width="110px" :label="tableData_2_columns.xsjgmc">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'name'+scope.$index" :ref="'form_name_'+scope.$index" :show-message="false">
-												<el-form-item prop="name" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.name"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{scope.row.name}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[1]" v-if="scope.row.edit" size="small" v-model.number="scope.row.xsjgmc"></el-input>
+										<span v-else>{{ scope.row.xsjgmc}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="所在地" prop="addr">
+								<el-table-column min-width="200px" :label="tableData_2_columns.szd">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'addr'+scope.$index" :ref="'form_addr_'+scope.$index" :show-message="false">
-												<el-form-item prop="addr" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.addr"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.addr}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[2]" v-if="scope.row.edit" size="small" v-model.number="scope.row.szd"></el-input>
+										<span v-else>{{ scope.row.szd}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="注册资本（万元）" prop="regMoney">
+								<el-table-column min-width="200px" :label="tableData_2_columns.ywnr">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'regMoney'+scope.$index" :ref="'form_regMoney_'+scope.$index" :show-message="false">
-												<el-form-item prop="regMoney" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.regMoney"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.regMoney}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[3]" v-if="scope.row.edit" size="small" v-model="scope.row.ywnr"></el-input>
+										<span v-else>{{ scope.row.ywnr}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="业务内容" prop="businessScope">
+								<el-table-column min-width="200px" :label="tableData_2_columns.tyshxydm">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'businessScope'+scope.$index" :ref="'form_businessScope_'+scope.$index" :show-message="false">
-												<el-form-item prop="businessScope" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.businessScope"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.businessScope}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[4]" v-if="scope.row.edit" size="small" v-model="scope.row.tyshxydm"></el-input>
+										<span v-else>{{ scope.row.tyshxydm}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="100px" label="是否合并报表" prop="isMerge">
+								<el-table-column min-width="200px" :label="tableData_2_columns.xsgxbl">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'isMerge'+scope.$index" :ref="'form_isMerge_'+scope.$index" :show-message="false">
-												<el-form-item prop="isMerge" class="td-form-item">
-													<el-select v-model="isMerge" placeholder="请选择">
-														<el-option value="1" label="是"></el-option>
-														<el-option value="0" label="否"></el-option>
-													</el-select>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.isMerge==null?"":(scope.row.isMerge?"是":"否")}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[5]" v-if="scope.row.edit" size="small" v-model="scope.row.xsgxbl"></el-input>
+										<span v-else>{{ scope.row.xsgxbl}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="200px" :label="tableData_2_columns.lrgxbl">
+									<template slot-scope="scope">
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[6]" v-if="scope.row.edit" size="small" v-model="scope.row.lrgxbl"></el-input>
+										<span v-else>{{ scope.row.lrgxbl}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify2"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify2" v-on:acceptDelRow='acceptDelRow2'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
@@ -224,68 +188,71 @@
 						</div>
 					</el-card>
 				</div>
+				
+				
 				<div>
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="saveGlqy">保存</el-button>
 							</div>
 							<div class="card-title">关联企业</div>
 						</div>
 						<!-- 表格容器 -->
 						<div>
-							<el-table :data="tableData_3" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
-								<el-table-column min-width="300px" label="股东姓名" prop="name">
+							<el-table :data="tableData_3" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
+								<el-table-column label="序号" type="index" width="50"></el-table-column>
+								<el-table-column min-width="110px" :label="tableData_3_columns.gsmc">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'name'+scope.$index" :ref="'form_name_'+scope.$index" :show-message="false">
-												<el-form-item prop="name" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.name"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{scope.row.name}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[1]" v-if="scope.row.edit" size="small" v-model.number="scope.row.gsmc"></el-input>
+										<span v-else>{{ scope.row.gsmc}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="出资比例" prop="ratio">
+								<el-table-column min-width="200px" :label="tableData_3_columns.ywnr">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'ratio'+scope.$index" :ref="'form_ratio_'+scope.$index" :show-message="false">
-												<el-form-item prop="ratio" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.ratio"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.ratio}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[2]" v-if="scope.row.edit" size="small" v-model.number="scope.row.ywnr"></el-input>
+										<span v-else>{{ scope.row.ywnr}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="认缴出资（万元）" prop="subscribe">
+								<el-table-column min-width="200px" :label="tableData_3_columns.hbgssfyywwl">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'subscribe'+scope.$index" :ref="'form_subscribe_'+scope.$index" :show-message="false">
-												<el-form-item prop="subscribe" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.subscribe"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.subscribe}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[3]" v-if="scope.row.edit" size="small" v-model="scope.row.hbgssfyywwl"></el-input>
+										<span v-else>{{ scope.row.hbgssfyywwl}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="实缴出资（万元）" prop="paidIn">
+								<el-table-column min-width="200px" :label="tableData_3_columns.sfygljy">
 									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'paidIn'+scope.$index" :ref="'form_paidIn_'+scope.$index" :show-message="false">
-												<el-form-item prop="paidIn" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.paidIn"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.paidIn}}</span>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[4]" v-if="scope.row.edit" size="small" v-model="scope.row.sfygljy"></el-input>
+										<span v-else>{{ scope.row.sfygljy}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="200px" :label="tableData_3_columns.sfxsqy">
+									<template slot-scope="scope">
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[5]" v-if="scope.row.edit" size="small" v-model="scope.row.sfxsqy"></el-input>
+										<span v-else>{{ scope.row.sfxsqy}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="200px" :label="tableData_3_columns.zczb">
+									<template slot-scope="scope">
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[6]" v-if="scope.row.edit" size="small" v-model="scope.row.zczb"></el-input>
+										<span v-else>{{ scope.row.zczb}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="200px" :label="tableData_3_columns.cgbl">
+									<template slot-scope="scope">
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[7]" v-if="scope.row.edit" size="small" v-model="scope.row.cgbl"></el-input>
+										<span v-else>{{ scope.row.cgbl}}</span>
+									</template>
+								</el-table-column>
+								<el-table-column min-width="200px" :label="tableData_3_columns.zw">
+									<template slot-scope="scope">
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[8]" v-if="scope.row.edit" size="small" v-model="scope.row.zw"></el-input>
+										<span v-else>{{ scope.row.zw}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify3"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify3" v-on:acceptDelRow='acceptDelRow3'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
@@ -293,6 +260,7 @@
 						</div>
 					</el-card>
 				</div>
+				
 			</el-tab-pane>
 			<el-tab-pane label="组织架构" name="third">
 				<div>
@@ -326,122 +294,303 @@ export default {
       listLoading: false,
       //验证规则
       rules: {},
-      tableData: [
-        {
-          name: "name1",
-          ratio: 1,
-          isEff: 1,
-          subscribe: 5,
-          paidIn: 9,
-          edit: false
-        },
-        {
-          name: "name2",
-          ratio: 2,
-          isEff: 0,
-          subscribe: 5,
-          paidIn: 10,
-          edit: false
-        }
-      ],
+	  
+	  ////////////////股权结构（非上市公司）
+      tableData: [],
+	  delRowData: [],
+      addData: [],
+      updateData: [],
       tableData_columns: {
-        name: "股东姓名",
-        ratio: "出资比例（%）",
-        isEff: "是否有效",
-        subscribe: "认缴出资（万元）",
-        paidIn: "实缴出资（万元）",
+	    id:null,
+        gdxm: "股东姓名",
+        czbl: "出资比例（%）",
+        rjcz: "认缴出资（万元）",
+        rjczrq: "认缴出资日期",
+        sjcz: "实缴出资（万元）",
+		sjczrq: "实缴出资日期",
         edit: false
       },
-      tableData_1: [
-        {
-          name: "name1",
-          ratio: 1,
-          subscribe: 5,
-          paidIn: 9,
-          edit: false
-        },
-        {
-          name: "name2",
-          ratio: 2,
-          subscribe: 5,
-          paidIn: 10,
-          edit: false
-        }
-      ],
+	  ///////////////////////////股权结构（上市公司）
+      tableData_1: [],
+	  delRowData_1: [],
+      addData_1: [],
+      updateData_1: [],
       tableData_1_columns: {
-        name: "",
-        ratio: null,
-        subscribe: null,
-        paidIn: null,
+        gdxm: "股东姓名",
+        czbl: "出资比例（%）",
+        cgs: "持股数（股）",
+        cgbh: "持股变化（股）",
         edit: false
       },
-      tableData_2: [
-        {
-          name: "马冬梅串串",
-          addr: "安徽省芜湖市",
-          regMoney: 200,
-          businessScope: "经营麻辣烫",
-          isMerge: 0,
-          edit: false
-        }
-      ],
+	  
+	  //////////////////////////分支及下属企业情况
+      tableData_2: [],
+	  delRowData_2: [],
+      addData_2: [],
+      updateData_2: [],
       tableData_2_columns: {
-        name: "",
-        addr: "",
-        regMoney: null,
-        businessScope: "",
-        isMerge: null,
+	    id:null,
+		xsjgmc:"下属公司/分公司名称",
+        szd: "所在地",
+        ywnr: "业务内容",
+        tyshxydm: "统一社会信用代码",
+        xsgxbl: "销售贡献比例%",
+		lrgxbl:"利润贡献比例%",
         edit: false
       },
-      tableData_3: [
-        {
-          name: "name1",
-          ratio: 1,
-          subscribe: 5,
-          paidIn: 9,
-          edit: false
-        }
-      ],
+	  
+	  //////////////////////////关联企业
+	  
+      tableData_3: [],
+	  delRowData_3: [],
+      addData_3: [],
+      updateData_3: [],
       tableData_3_columns: {
-        name: "",
-        ratio: null,
-        subscribe: null,
-        paidIn: null,
+	    id:null,
+        gsmc: "公司名称",
+        ywnr: "业务内容",
+        hbgssfyywwl: "和目标公司之间是否有业务往来",
+        sfygljy: "是否有关联交易",
+		sfxsqy:"是否下属企业",
+		zczb:"注册资本 (万元)",
+		cgbl:"持股比例",
+		zw:"职位",
         edit: false
       }
     };
   },
   computed: {
     isMerge() {
-      return this.tableData_2.isMerge ? "是" : "否";
+      return this.tableData_3.isMerge ? "是" : "否";
     }
   },
   mounted() {
-	  
+	  this.getFssgsGqjg();//股权结构（非上市公司）
+	  this.getSsgsGqjg();//股权结构（上市公司）
+	  this.getFzjxsqyqk();//分支及下属企业情况
+	  this.getGlqy();//关联企业
   },
   methods: {
     //点击标签页触发事件
-	//获取股权结构（非上市公司）
-
-	//获取股权结构（上市公司）
-
-	//获取分支及下属企业情况
+    handleClick(tab, event) {
+      //   console.log(tab, event);
+    },
 	
-	//获取关联企业
-
-    //验证单元格数据
-    verify(rowObj, rowIndex) {
+	////////////////////////////////获取股权结构（非上市公司）
+	
+	//接受删除的数据
+    acceptDelRow(val) {
+      this.delRowData.push(val);
+    },
+     verify(rowObj, rowIndex) {
       tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
+	  if (rowObj.id) {
+        this.updateData.push(rowObj);
+      }
+     },
+	 
+	 getFssgsGqjg: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gqjg/fssgs/list",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.tableData = res.data.resultData;
+      }
     },
-    verify1(row, index) {
-      row.edit = false;
+	
+	saveFssgsGqjg: async function(){
+	this.tableData.forEach((item, index) => {
+        if (item.id == null) {
+          this.addData.push(item);
+        }
+      });
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+		companyName:sessionStorage.getItem("companyName"),
+		isSub:"0",
+        addData: JSON.stringify(this.addData),
+        updateData: JSON.stringify(this.updateData),
+        delData: JSON.stringify(this.delRowData)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gqjg/fssgs/save",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.delRowData = [];
+        this.updateData = [];
+        this.addData = [];
+      }else{
+	   this.$message({ message: res.data.resultMsg, type: "warning" });
+	  }
+	},
+	 
+	/////////////////////////////////////////////////////获取股权结构（上市公司）
+	
+	//接受删除的数据
+    acceptDelRow1(val) {
+      this.delRowData_1.push(val);
     },
-    verify2(row, index) {
-      row.edit = false;
+     verify1(rowObj, rowIndex) {
+      tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
+	  if (rowObj.id) {
+        this.updateData_1.push(rowObj);
+      }
+     },
+	 
+	 getSsgsGqjg: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gqjg/ssgs/list",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.tableData_1 = res.data.resultData;
+      }
     },
-    verify3(row, index) {
-      row.edit = false;
+	
+	saveSsgsGqjg: async function(){
+	this.tableData_1.forEach((item, index) => {
+        if (item.id == null) {
+          this.addData_1.push(item);
+        }
+      });
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+		companyName:sessionStorage.getItem("companyName"),
+		isSub:"0",
+        addData: JSON.stringify(this.addData_1),
+        updateData: JSON.stringify(this.updateData_1),
+        delData: JSON.stringify(this.delRowData_1)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gqjg/ssgs/save",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.delRowData = [];
+        this.updateData = [];
+        this.addData = [];
+      }else{
+	   this.$message({ message: res.data.resultMsg, type: "warning" });
+	  }
+	},
+	
+
+	/////////////////////////////////////////////////////获取分支及下属企业情况
+	acceptDelRow2(val) {
+      this.delRowData_2.push(val);
     },
+	verify2(rowObj, rowIndex) {
+      tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
+	  if (rowObj.id) {
+        this.updateData_2.push(rowObj);
+      }
+    },
+	getFzjxsqyqk: async function(){
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gqjg/fzjxsqyqk/list",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.tableData_2 = res.data.resultData.data;
+      }
+    },
+	saveFzjxsqyqk: async function(){
+	this.tableData_2.forEach((item, index) => {
+        if (item.id == null) {
+          this.addData_2.push(item);
+        }
+      });
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        addData: JSON.stringify(this.addData_2),
+        updateData: JSON.stringify(this.updateData_2),
+        delData: JSON.stringify(this.delRowData_2)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gqjg/fzjxsqyqk/save",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.delRowData_2 = [];
+        this.updateData_2 = [];
+        this.addData_2 = [];
+      }else{
+	   this.$message({ message: res.data.resultMsg, type: "warning" });
+	  }
+	},
+	
+	//////////////////////////////////////////////////获取关联企业	
+		
+	acceptDelRow3(val) {
+      this.delRowData_3.push(val);
+    },
+	verify3(rowObj, rowIndex) {
+      tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
+	  if (rowObj.id) {
+        this.updateData_3.push(rowObj);
+      }
+    },
+	getGlqy: async function(){
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gqjg/glqy/list",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.tableData_3 = res.data.resultData.data;
+      }
+    },
+	saveGlqy: async function(){
+	   this.tableData_3.forEach((item, index) => {
+        if (item.id == null) {
+          this.addData_3.push(item);
+        }
+      });
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        addData: JSON.stringify(this.addData_3),
+        updateData: JSON.stringify(this.updateData_3),
+        delData: JSON.stringify(this.delRowData_3)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gqjg/glqy/save",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.delRowData_3 = [];
+        this.updateData_3 = [];
+        this.addData_3 = [];
+      }else{
+	   this.$message({ message: res.data.resultMsg, type: "warning" });
+	  }
+	},
+
+    /////////////////////////////////////////////////////////////
     getSummaries(param) {
       const { columns, data } = param;
       const sums = [];
@@ -461,11 +610,11 @@ export default {
             }
           }, 0);
           //根据列名不同，确定不同的合计单位
-          if (column.property == "ratio") {
+          if (column.property == "czbl") {
             sums[index] += "%";
           } else if (
-            column.property == "subscribe" ||
-            column.property == "paidIn"
+            column.property == "rjcz" ||
+            column.property == "sjcz"
           ) {
             sums[index] += " 万元";
           }
@@ -484,6 +633,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.gqjgfz {
+  background-color: #fff;
+}
+
 .img-preview {
   height: 200px;
   margin: 20px;

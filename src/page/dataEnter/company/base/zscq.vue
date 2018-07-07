@@ -1,13 +1,13 @@
 <template>
 	<div>
-		<el-tabs v-model="activeName">
+		<el-tabs v-model="activeName" @tab-click="handleClick">
 			<el-tab-pane label="商标" name="first">
 				<div>
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="default" size="medium" @click="fetchSbData">获取数据</el-button>
-								<el-button type="primary" size="medium" @click="setSb">保存</el-button>
+								<el-button class="save" type="default" size="medium" @click="getSbxxIntergaceData">获取数据</el-button>
+								<el-button class="save" type="primary" size="medium" @click="setSb">保存</el-button>
 							</div>
 							<div class="card-title">商标</div>
 						</div>
@@ -65,7 +65,7 @@
 					<el-card class="box-card">
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="default" size="medium">获取数据</el-button>
+								<el-button class="save" type="default" size="medium" @click="getZlIterfaceData">获取数据</el-button>
 								<el-button class="save" type="primary" size="medium" @click="setZL">保存</el-button>
 							</div>
 							<div class="card-title">专利</div>
@@ -102,7 +102,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.fmzl.sl" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1_fmzl_sl" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 										<td>
@@ -110,7 +110,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.syxx.sl" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1_syxx_sl" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 										<td>
@@ -118,7 +118,7 @@
 										</td>
 										<td>
 											<div class="cell">
-												<el-input v-model="tableData_1.wgsj.sl" placeholder="请输入内容"></el-input>
+												<el-input v-model="tableData_1_wgsj_sl" placeholder="请输入内容"></el-input>
 											</div>
 										</td>
 									</tr>
@@ -461,16 +461,17 @@
 </template>
 
 <script>
-import tableValidates from "@/utils/validateTable/tableValidates.js";
-import tabelAddBtn from "@/components/table/table-add-btn.vue";
-import tableOperation from "@/components/table/table-operation.vue";
+  import tableValidates from "@/utils/validateTable/tableValidates.js";
+  import tabelAddBtn from "@/components/table/table-add-btn.vue";
+  import tableOperation from "@/components/table/table-operation.vue";
 export default {
   data() {
     return {
       activeName: "first",
       listLoading: false,
       rules: {},
-      tableData: [], //商标
+	  
+      tableData: [],        //商标
       deleteData: [],
       addData: [],
       updateData: [],
@@ -480,16 +481,18 @@ export default {
         zt: "状态",
         sqsj: "申请时间",
         zch: "注册号",
-        lb: "类别"
+        lb: "类别",
+        edit: false
       },
-      //---------------------------------------------------
-      //专利
       tableData_1: {
-        fmzl: {},
-        syxx: {},
-        wgsj: {}
-      },
-      tableData_2: [], //授权有权专利明细
+		  fmzl:{},
+		  syxx:{},
+		  wgsj:{}
+	  },
+	 tableData_1_fmzl_sl:"",
+	  tableData_1_syxx_sl:"",
+	  tableData_1_wgsj_sl:"",
+      tableData_2: [],      //授权有权专利明细
       deleteData_2: [],
       addData_2: [],
       updateData_2: [],
@@ -502,9 +505,12 @@ export default {
         sqgj: "申请国家",
         gkh: "公开（公告）号",
         flzt: "法律状态",
-        yxx: "有效性"
+        yxx: "有效性",
+        edit: false
       }, //表格列字段
-      tableData_3: [], //著作权
+	  
+	  
+      tableData_3: [],      //著作权
       deleteData_3: [],
       addData_3: [],
       updateData_3: [],
@@ -518,7 +524,9 @@ export default {
         djpzrq: "登记批准日期",
         edit: false
       }, //表格列字段
-      tableData_4: [], //网站备案
+	  
+	  
+      tableData_4: [],      //网站备案
       deleteData_4: [],
       addData_4: [],
       updateData_4: [],
@@ -531,10 +539,102 @@ export default {
         zt: "状态",
         dwxz: "单位性质",
         edit: false
+      },
+      //规则
+      rules_sb: {
+        sbm: [
+          { required: true, message: "商标名称是必填项" }
+        ],
+        zt: [
+          { required: true, message: "状态是必填项" }
+        ],
+        sqsj: [
+          { required: true, message: "申请日期是必填项" }
+        ],
+        zch: [
+          { required: true, message: "注册号是必填项" }
+        ],
+        lb: [
+          { required: true, message: "类别是必填项" }
+        ],
+
+      },
+      rules_sqyq: {
+        sqr: [
+          { required: true, message: "申请日是必填项" }
+        ],
+        mc: [
+          { required: true, message: "名称是必填项" }
+        ],
+        sqlx: [
+          { required: true, message: "申请类型是必填项" }
+        ],
+        sqgj: [
+          { required: true, message: "申请国家是必填项" }
+        ],
+        gkh: [
+          { required: true, message: "公开（公告）号是必填项" }
+        ],
+        flzt: [
+          { required: true, message: "法律状态是必填项" }
+        ],
+        yxx: [
+          { required: true, message: "有效性是必填项" }
+        ],
+      },
+      rules_zzq: {
+        zzqmc: [
+          { required: true, message: "著作权名称是必填项" }
+        ],
+        lb: [
+          { required: true, message: "类别是必填项" }
+        ],
+        zzqr: [
+          { required: true, message: "著作权人是必填项" }
+        ],
+        djh: [
+          { required: true, message: "登记号是必填项" }
+        ],
+        bbh: [
+          { required: true, message: "版本号是必填项" }
+        ],
+        djpzrq: [
+          { required: true, message: "登记批准日期是必填项" }
+        ]
+      },
+      rules_wzba: {
+        basj: [
+          { required: true, message: "备案时间是必填项" }
+        ],
+        wzmc: [
+          { required: true, message: "网站名称是必填项" }
+        ],
+        wzsy: [
+          { required: true, message: "网站首页是必填项" }
+        ],
+        bah: [
+          { required: true, message: "备案号是必填项" }
+        ],
+        zt: [
+          { required: true, message: "状态是必填项" }
+        ],
+        dwxz: [
+          { required: true, message: "单位性质是必填项" }
+        ]
       }
     };
   },
-  computed: {},
+  computed: {
+	/*tableData_1_fmzl_sl(){
+		return (this.tableData_1.fmzl.sqyq+this.tableData_1.fmzl.wqzz+this.tableData_1.fmzl.bhch+this.tableData_1.fmzl.szss+this.tableData_1.fmzl.gksz);
+	}*/	
+	/*tableData_1.syxx.sl(){
+		return this.tableData_1.syxx.sqyq+this.tableData_1.syxx.wqzz+this.tableData_1.syxx.bhch+this.tableData_1.syxx.szss+this.tableData_1.syxx.gksz;
+	}
+	tableData_1.wgsj.sl(){
+		this.tableData_1.wgsj.sqyq+this.tableData_1.wgsj.wqzz+this.tableData_1.wgsj.bhch+this.tableData_1.wgsj.szss+this.tableData_1.wgsj.gksz;
+	}*/
+  },
   mounted() {
     this.getSb();
     this.getZl();
@@ -543,10 +643,7 @@ export default {
     this.getWzba();
   },
   methods: {
-    /*
-	** 商标
-	*/
-    //初始化商标数据
+   /////////////////////////////////////////////////////////////// //获取商标数据
     getSb: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
@@ -558,6 +655,27 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.tableData = res.data.resultData.rows;
+      }
+    },
+    //获取商标接口数据
+    getSbxxIntergaceData: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        companyName: sessionStorage.getItem("companyName"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsjbxx/zscq/sbxx/retrieve",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({message: res.data.resultMsg, type: "success"});
+        this.tableData = res.data.resultData.data;
+        this.deleteData = [];
+        this.updateData = [];
+        this.addData = [];
+      } else {
+        this.$message({message: res.data.resultMsg, type: "warning"});
       }
     },
     //保存商标数据
@@ -584,13 +702,9 @@ export default {
         this.deleteData = [];
         this.updateData = [];
         this.addData = [];
-      } else {
+      }else{
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
-    },
-    //获取商标数据
-    fetchSbData: async function() {
-      console.log("获取商标业务逻辑");
     },
     //接受商标删除的数据
     acceptDelRow(val) {
@@ -601,19 +715,18 @@ export default {
       var isValid = tableValidates.validateByRow(
         rowObj,
         rowIndex,
-        this.rules,
+        this.rules_sb,
         this
       );
+      console.log(isValid);
       if (rowObj.id) {
         this.updateData.push(rowObj);
       }
     },
 
-    //--------------------------------------------------------------------------
-    /*
-	** 专利
-	*/
-    //初始化专利信息
+
+    /////////////////////////////////////////////////////获取专利信息
+	
     getZl: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
@@ -625,7 +738,12 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.tableData_1 = res.data.resultData;
-      }
+		this.tableData_1_fmzl_sl=parseInt(this.tableData_1.fmzl.sqyq)+parseInt(this.tableData_1.fmzl.wqzz)+parseInt(this.tableData_1.fmzl.bhch)+parseInt(this.tableData_1.fmzl.szss)+parseInt(this.tableData_1.fmzl.gksz);
+		this.tableData_1_syxx_sl=parseInt(this.tableData_1.syxx.sqyq)+parseInt(this.tableData_1.syxx.wqzz)+parseInt(this.tableData_1.syxx.bhch)+parseInt(this.tableData_1.syxx.szss)+parseInt(this.tableData_1.syxx.gksz);
+		this.tableData_1_wgsj_sl=parseInt(this.tableData_1.wgsj.sqyq)+parseInt(this.tableData_1.wgsj.wqzz)+parseInt(this.tableData_1.wgsj.bhch)+parseInt(this.tableData_1.wgsj.szss)+parseInt(this.tableData_1.wgsj.gksz);
+		
+	  
+	  }
     },
 
     //保存专利信息
@@ -643,11 +761,33 @@ export default {
         this.$message({ message: res.data.resultMsg, type: "success" });
       }
     },
-    //-------------------------------------------------------------------------------------
-    /*
-	** 授权有权
-	*/
-    //初始化授权有权专利明细
+
+
+    //获取专利接口数据
+    getZlIterfaceData: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        companyName: sessionStorage.getItem("companyName"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsjbxx/zscq/zl/retrieve",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({message: res.data.resultMsg, type: "success"});
+        this.tableData_1 = res.data.resultData.data;
+      } else {
+        this.$message({message: res.data.resultMsg, type: "warning"});
+      }
+    },
+
+
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////获取授权有权专利明细
     getSqyqzlmx: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
@@ -685,7 +825,7 @@ export default {
         this.deleteData_2 = [];
         this.updateData_2 = [];
         this.addData_2 = [];
-      } else {
+      }else{
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
@@ -698,18 +838,19 @@ export default {
       var isValid = tableValidates.validateByRow(
         rowObj,
         rowIndex,
-        this.rules,
+        this.rules_sqyq,
         this
       );
+      console.log(isValid);
       if (rowObj.id) {
         this.updateData_2.push(rowObj);
       }
     },
-    //---------------------------------------------------------------------------------
-    /*
-	** 授权著作权
-	*/
-    //初始化著作权
+
+
+
+
+    //////////////////////////////////////////////////////////////////////////////获取著作权
     getZzq: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
@@ -747,7 +888,7 @@ export default {
         this.deleteData_3 = [];
         this.updateData_3 = [];
         this.addData_3 = [];
-      } else {
+      }else{
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
@@ -760,15 +901,19 @@ export default {
       var isValid = tableValidates.validateByRow(
         rowObj,
         rowIndex,
-        this.rules,
+        this.rules_zzq,
         this
       );
+      console.log(isValid);
       if (rowObj.id) {
         this.updateData_3.push(rowObj);
       }
     },
 
-    //获取网站备案
+
+
+
+    ////////////////////////////////////////////////////////////////获取网站备案
     getWzba: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
@@ -805,7 +950,7 @@ export default {
         this.deleteData_4 = [];
         this.updateData_4 = [];
         this.addData_4 = [];
-      } else {
+      }else{
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
@@ -818,14 +963,22 @@ export default {
       var isValid = tableValidates.validateByRow(
         rowObj,
         rowIndex,
-        this.rules,
+        this.rules_wzba,
         this
       );
       console.log(isValid);
       if (rowObj.id) {
         this.updateData_4.push(rowObj);
       }
-    }
+    },
+
+    handleClick(tab, event) {
+    },
+    //单元格编辑回调
+    /*cellEditDone(newValue, oldValue, rowIndex, rowData, field) {
+      this.tableData[rowIndex][field] = newValue;
+      // 接下来处理你的业务逻辑，数据持久化等...
+    }*/
   },
   components: {
     "v-tabelAddBtn": tabelAddBtn,
