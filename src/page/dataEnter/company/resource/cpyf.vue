@@ -3,7 +3,7 @@
 		<el-card class="box-card" shadow='nevner'>
 			<div slot="header" class="clearfix">
 				<div class="card-right-wrap">
-					<el-button class="save" type="primary" size="medium">保存</el-button>
+					<el-button class="save" type="primary" size="medium" @click="saveCpyf">保存</el-button>
 				</div>
 				<div class="card-title">产品技术研发情况</div>
 			</div>
@@ -67,7 +67,7 @@
 		<el-card class="box-card" shadow='nevner'>
 			<div slot="header" class="clearfix">
 				<div class="card-right-wrap">
-					<el-button type="primary" size="medium" @click="saveBdcXj">保存</el-button>
+					<el-button type="primary" size="medium" @click="saveCpyfXj">保存</el-button>
 				</div>
 				<div class="card-title">小结</div>
 
@@ -91,7 +91,7 @@ import quillEditor from "@/components/form/quillEditor.vue";
 export default {
   data() {
     return {
-      cpxj: "产品小结富文本",
+      cpxj: "",
       form: {
         id: "",
         yfjghbm: "", //研发机构或部门
@@ -107,6 +107,7 @@ export default {
   },
   mounted() {
     this.getCpyf();
+	this.getCpyfxj();
   },
   methods: {
     //获取产品研发信息
@@ -119,6 +120,7 @@ export default {
         "/hspt-web-api/data_entry/gsyyxx/cpyfjsqk/list",
         params
       );
+	  this.form.id = res.data.resultData.data.id;
       this.form.yfjghbm = res.data.resultData.data.yfjghbm;
       this.form.yfjjsrysl = res.data.resultData.data.yfjjsrysl;
       this.form.sndyftrje = res.data.resultData.data.sndyftrje;
@@ -128,14 +130,59 @@ export default {
       this.form.zyyfhzjg = res.data.resultData.data.zyyfhzjg;
       this.form.zyyfcg = res.data.resultData.data.zyyfcg;
     },
-
+	
+	saveCpyf: async function() {
+		let params = {
+			creditCode: sessionStorage.getItem("creditCode"),
+			token: sessionStorage.getItem("token"),
+			data: JSON.stringify(this.form)
+		  };
+		  const res = await this.$http.post(
+			"/hspt-web-api/data_entry/gsyyxx/cpyfjsqk/save",
+			params
+		  );
+		  if(res.data.resultCode=="0"){
+			this.$message({ message: res.data.resultMsg, type: "success" });
+		  }else{
+			this.$message({ message: res.data.resultMsg, type: "warning" });
+		  }
+	},
+	///////////////////////////////////////////////////////////////////小结
+	
+	getCpyfxj: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsyyxx/cpyfjsqkxj/list",
+        params
+      );
+     if (res.data.resultCode == "0") {
+        this.cpxj = res.data.resultData.data.xj;
+      }
+    },
+	
     //保存小结
-    saveBdcXj() {
-      alert(this.bdcxj);
+    saveCpyfXj : async function() {
+       let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+		cpyfjsqkxj:this.cpxj
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsyyxx/cpyfjsqkxj/save",
+        params
+      );
+	  if(res.data.resultCode=="0"){
+	    this.$message({ message: res.data.resultMsg, type: "success" });
+	  }else{
+	    this.$message({ message: res.data.resultMsg, type: "warning" });
+	  }
     },
     //改变小结内容
     changCpxj(val) {
-      this.bdcxj = val;
+      this.cpxj = val;
     },
     onSubmit() {
       //   console.log("submit!");

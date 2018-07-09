@@ -261,9 +261,10 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
+							    <el-button class="save" type="default" size="medium" @click="getZlMxIterfaceData">获取数据</el-button>
 								<el-button class="save" type="primary" size="medium" @click="setSqyqzlmx">保存</el-button>
 							</div>
-							<div class="card-title">授权有权专利明细</div>
+							<div class="card-title">专利明细</div>
 						</div>
 						<!-- 表格容器 -->
 						<div>
@@ -402,7 +403,7 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="default" size="medium">获取数据</el-button>
+								<el-button class="save" type="default" size="medium" @click="getWzbaIntergaceData">获取数据</el-button>
 								<el-button class="save" type="primary" size="medium" @click="setWzba">保存</el-button>
 							</div>
 							<div class="card-title">网站备案</div>
@@ -665,7 +666,7 @@ export default {
         token: sessionStorage.getItem("token")
       };
       const res = await this.$http.post(
-        "/hspt-web-api/data_entry/gsjbxx/zscq/sbxx/retrieve",
+        "/hspt-web-api/data_entry/gsjbxx/zscq/sbxx/remote",
         params
       );
       if (res.data.resultCode == "0") {
@@ -673,7 +674,7 @@ export default {
         this.tableData = res.data.resultData.data;
         this.deleteData = [];
         this.updateData = [];
-        this.addData = [];
+        this.addData = res.data.resultData.data;
       } else {
         this.$message({message: res.data.resultMsg, type: "warning"});
       }
@@ -688,7 +689,6 @@ export default {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token"),
-        loginName: sessionStorage.getItem("loginName"),
         addData: JSON.stringify(this.addData),
         updateData: JSON.stringify(this.updateData),
         deleteData: JSON.stringify(this.deleteData)
@@ -741,8 +741,6 @@ export default {
 		this.tableData_1_fmzl_sl=parseInt(this.tableData_1.fmzl.sqyq)+parseInt(this.tableData_1.fmzl.wqzz)+parseInt(this.tableData_1.fmzl.bhch)+parseInt(this.tableData_1.fmzl.szss)+parseInt(this.tableData_1.fmzl.gksz);
 		this.tableData_1_syxx_sl=parseInt(this.tableData_1.syxx.sqyq)+parseInt(this.tableData_1.syxx.wqzz)+parseInt(this.tableData_1.syxx.bhch)+parseInt(this.tableData_1.syxx.szss)+parseInt(this.tableData_1.syxx.gksz);
 		this.tableData_1_wgsj_sl=parseInt(this.tableData_1.wgsj.sqyq)+parseInt(this.tableData_1.wgsj.wqzz)+parseInt(this.tableData_1.wgsj.bhch)+parseInt(this.tableData_1.wgsj.szss)+parseInt(this.tableData_1.wgsj.gksz);
-		
-	  
 	  }
     },
 
@@ -771,20 +769,19 @@ export default {
         token: sessionStorage.getItem("token")
       };
       const res = await this.$http.post(
-        "/hspt-web-api/data_entry/gsjbxx/zscq/zl/retrieve",
+        "/hspt-web-api/data_entry/gsjbxx/zscq/zl/remote",
         params
       );
       if (res.data.resultCode == "0") {
-        this.$message({message: res.data.resultMsg, type: "success"});
+		this.$message({message: res.data.resultMsg, type: "success"});
         this.tableData_1 = res.data.resultData.data;
+        this.deleteData_1 = [];
+        this.updateData_1 = [];
+        this.addData_1 = res.data.resultData.data;
       } else {
         this.$message({message: res.data.resultMsg, type: "warning"});
       }
     },
-
-
-
-
 
 
     /////////////////////////////////////////////////////////////////////////获取授权有权专利明细
@@ -841,12 +838,32 @@ export default {
         this.rules_sqyq,
         this
       );
-      console.log(isValid);
       if (rowObj.id) {
         this.updateData_2.push(rowObj);
       }
     },
-
+	
+    //获取专利明细接口数据
+    getZlMxIterfaceData: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        companyName: sessionStorage.getItem("companyName"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsjbxx/zscq/zlmx/remote",
+        params
+      );
+      if (res.data.resultCode == "0") {
+		this.$message({message: res.data.resultMsg, type: "success"});
+        this.tableData_2 = res.data.resultData.data;
+        this.deleteData_2 = [];
+        this.updateData_2 = [];
+        this.addData_2 = res.data.resultData.data;
+      } else {
+        this.$message({message: res.data.resultMsg, type: "warning"});
+      }
+    },
 
 
 
@@ -861,12 +878,7 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
-		this.$message({ message: res.data.resultMsg, type: "success" });
-        this.tableData_3 = res.data.resultData;
-		this.delRowData_3 = [];
-        this.updateData_3 = [];
-        this.addData_3 = [];
-        this.addData_3 = res.data.resultData.data;
+		this.tableData_3 = res.data.resultData;
       }else{
 	   this.$message({ message: res.data.resultMsg, type: "warning" });
 	  }
@@ -932,6 +944,7 @@ export default {
         this.deleteData_3 = [];
         this.updateData_3 = [];
         this.addData_3 = [];
+        this.addData_3 = res.data.resultData.data;
       } else {
         this.$message({message: res.data.resultMsg, type: "warning"});
       }
@@ -949,7 +962,7 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
-        this.tableData_4 = res.data.resultData.rows;
+        this.tableData_4 = res.data.resultData;
       }
     },
     //保存网站备案
@@ -991,9 +1004,31 @@ export default {
         this.rules_wzba,
         this
       );
-      console.log(isValid);
       if (rowObj.id) {
         this.updateData_4.push(rowObj);
+      }
+    },
+	
+	//获取网站备案接口数据
+    getWzbaIntergaceData: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        companyName: sessionStorage.getItem("companyName"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsjbxx/zscq/wzba/remote",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({message: res.data.resultMsg, type: "success"});
+        this.tableData_4= res.data.resultData.data;
+        this.deleteData_4 = [];
+        this.updateData_4 = [];
+        this.addData_4 = [];
+        this.addData_4 = res.data.resultData.data;
+      } else {
+        this.$message({message: res.data.resultMsg, type: "warning"});
       }
     },
 

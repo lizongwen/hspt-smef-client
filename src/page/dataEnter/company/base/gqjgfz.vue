@@ -119,12 +119,12 @@
 					<el-card class="box-card"  shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-upload class="upload-button" action="https://jsonplaceholder.typicode.com/posts/" accept='image/*' :show-file-list='false' :on-success="handleSuccess" :on-progress='handleProgess'>
+								<el-upload class="upload-button" :data="picUploadParam" action="/hspt-web-api/data_entry/gqjg/qytp/upload" accept='image/*' :show-file-list='false' :on-success="handleSuccess" :on-progress='handleProgess'>
 									<el-button size="medium" type="primary">上传图片</el-button>
 								</el-upload>
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<!-- <el-button class="save" type="primary" size="medium">保存</el-button> -->
 							</div>
-							<div class="card-title">股权结构（非上市公司）</div>
+							<div class="card-title">股权结构</div>
 						</div>
 						<!-- 图片容器 -->
 						<div class="img-preview">
@@ -268,14 +268,16 @@
 					<el-card class="box-card"  shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">上传图片</el-button>
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-upload class="upload-button" :data="picUploadParam" action="/hspt-web-api/data_entry/gqjg/zzjg/upload" accept='image/*' :show-file-list='false' :on-success="handleSuccess" :on-progress='handleProgess'>
+									<el-button size="medium" type="primary">上传图片</el-button>
+								</el-upload>
+								<!-- <el-button class="save" type="primary" size="medium">保存</el-button> -->
 							</div>
-							<div class="card-title">股权结构（非上市公司）</div>
+							<div class="card-title">组织架构</div>
 						</div>
 						<!-- 图片容器 -->
 						<div class="img-preview">
-
+							<img :src="imgurl_zzjg" alt="" srcset="">
 						</div>
 					</el-card>
 				</div>
@@ -291,9 +293,16 @@ import tableOperation from "@/components/table/table-operation.vue";
 export default {
   data() {
     return {
+	picUploadParam:{
+	    creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+		qytpId:"",
+		zzjgId:""
+	},
       activeName: "first",
 	  listLoading: false,
 	  imgurl_qytp:'',
+	  imgurl_zzjg:'',
 	//   fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}, {name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}],
       //验证规则
       rules: {},
@@ -372,6 +381,8 @@ export default {
     this.getSsgsGqjg(); //股权结构（上市公司）
     this.getFzjxsqyqk(); //分支及下属企业情况
     this.getGlqy(); //关联企业
+	this.retrieveQytpPic();//企业图谱
+	this.retrieveZzjgPic();//组织架构
   },
   methods: {
     //点击标签页触发事件
@@ -623,9 +634,53 @@ export default {
       });
       return sums;
     },
+	///////////////////////////////////////////////////企业图谱
+	retrieveQytpPic: async function() {
+	
+		let params = {
+			creditCode: sessionStorage.getItem("creditCode"),
+			token: sessionStorage.getItem("token"),
+		  };
+		  const res = await this.$http.post(
+			"/hspt-web-api/data_entry/gqjg/qytp/list",
+			params
+		  );
+		  if (res.data.resultCode == "0") {
+	          this.imgurl_qytp=res.data.resultData.data.url;
+			  this.picUploadParam.qytpId=res.data.resultData.data.qytpId;
+		  } else {
+			this.$message({ message: res.data.resultMsg, type: "warning" });
+		  }
+	},
+	///////////////////////////////////////////////////组织架构图谱
+	retrieveZzjgPic: async function() {
+		let params = {
+			creditCode: sessionStorage.getItem("creditCode"),
+			token: sessionStorage.getItem("token"),
+		  };
+		  const res = await this.$http.post(
+			"/hspt-web-api/data_entry/gqjg/zzjg/list",
+			params
+		  );
+		  if (res.data.resultCode == "0") {
+	          this.imgurl_zzjg=res.data.resultData.data.url;
+			  this.picUploadParam.zzjgId=res.data.resultData.data.zzjgId;
+		  } else {
+			this.$message({ message: res.data.resultMsg, type: "warning" });
+		  }
+	},
+	//////////////////////////////////////////////////////////////
 	handleSuccess(res, file){
-		console.log(res)
-		this.imgurl_qytp=res
+	console.log(res)
+		if (res.resultCode == "0") {
+		      this.$message({ message: res.resultMsg, type: "success" });
+			  if(res.resultMapData.qytpPicUrl!=null)
+	            this.imgurl_qytp=res.resultMapData.qytpPicUrl;
+			   else if(res.resultMapData.zzjgPicUrl!=null)
+			       this.imgurl_zzjg=res.resultMapData.zzjgPicUrl;
+		  } else {
+			   this.$message({ message: res.resultMsg, type: "error" });
+		  }
 	},
 	handleProgess(){
 		// console.log(arguments)

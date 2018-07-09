@@ -101,7 +101,7 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="saveTdXj">保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 						</div>
@@ -116,7 +116,7 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="saveYgfx">保存</el-button>
 							</div>
 							<div class="card-title">公司员工分析</div>
 						</div>
@@ -211,7 +211,7 @@
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="formatterTableData" v-on:verify="verify"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="formatterTableData" v-on:verify="verify" v-on:acceptDelRow='acceptDelRow'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
@@ -223,7 +223,7 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="saveYgXj">保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 						</div>
@@ -238,6 +238,7 @@
 </template>
 
 <script>
+import tableValidates from "@/utils/validateTable/tableValidates.js";
 import quillEditor from "@/components/form/quillEditor.vue";
 import formAddBtn from "@/components/form/form-add-btn.vue";
 import tabelAddBtn from "@/components/table/table-add-btn.vue";
@@ -247,8 +248,8 @@ export default {
     return {
       activeName: "first",
       listLoading: false,
-      tdxj: "团队小结富文本",
-      ygxj: "员工小结富文本",
+      tdxj: "",
+      ygxj: "",
       labelPosition: "right",
       formArry: [
         {
@@ -265,7 +266,13 @@ export default {
           gzll: "" //工作经历
         }
       ],
-      tableData: [],
+	  
+	  ///////////////////////////////////////////////////////
+	  
+      formatterTableData: [],
+	  addData:[],
+	  updateData:[],
+	  delRowData:[],
       formatterTableData_columns: {
         id: "",
         bm: "", //部门
@@ -282,10 +289,12 @@ export default {
     };
   },
   mounted() {
-    this.getJygltd();
-    this.getYgfx();
+    this.getJygltd();//经营团队分析
+	this.getGltdxj();//经营团队分析小结
+    this.getYgfx();//员工分析
+	this.getYgfxxj();//员工分析小结
   },
-
+  /*
   computed: {
     formatterTableData() {
       this.tableData.map((item, index) => {
@@ -296,9 +305,10 @@ export default {
       });
       return this.tableData;
     }
-  },
+  },*/
   methods: {
     //--------------------------经营管理团队分析----------------------------------//
+	
     //获取经营管理团队分析
     getJygltd: async function() {
       let params = {
@@ -311,9 +321,37 @@ export default {
       );
       this.formArry = res.data.resultData.data.rows;
     },
+	
+	//经营管理团队分析小结
+	getGltdxj:async function() {
+	   let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsyyxx/rlzyfx/jytdfxxj/list",
+        params
+      );
+	  this.tdxj=res.data.resultData.data.jytdfxxj;
+	},
+	
+	
     //保存小结
-    saveTdXj() {
-      alert(this.tdxj);
+    saveTdXj:async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+		jytdfxxj:this.tdxj
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsyyxx/rlzyfx/jytdfxxj/save",
+        params
+      );
+	  if(res.data.resultCode=="0"){
+	    this.$message({ message: res.data.resultMsg, type: "success" });
+	  }else{
+	    this.$message({ message: res.data.resultMsg, type: "warning" });
+	  }
     },
     //改变小结内容
     changTdxj(val) {
@@ -321,6 +359,26 @@ export default {
     },
 
     //--------------------------员工分析----------------------------------//
+	
+	//接受删除的数据
+    acceptDelRow(val) {
+      this.delRowData.push(val);
+    },
+    //验证数据
+    verify(rowObj, rowIndex) {
+	  console.log(rowObj);
+	  console.log(rowIndex);
+      var isValid = tableValidates.validateByRow(
+        rowObj,
+        rowIndex,
+        this.rules,
+        this
+      );
+      if (rowObj.id) {
+        this.updateData.push(rowObj);
+      }
+    },
+	
     //获取员工分析
     getYgfx: async function() {
       let params = {
@@ -332,12 +390,69 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
-        this.tableData = res.data.resultData.data.rows;
+        this.formatterTableData = res.data.resultData.data;
       }
     },
+	//保员工分析数据
+    saveYgfx: async function() {
+      this.formatterTableData.forEach((item, index) => {
+	 
+        if (item.id == null) {
+          this.addData.push(item);
+        }
+      });
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        addData: JSON.stringify(this.addData),
+        updateData: JSON.stringify(this.updateData),
+        delData: JSON.stringify(this.delRowData)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsyyxx/rlzyfx/gsygfx/save",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.delRowData = [];
+        this.updateData = [];
+        this.addData = [];
+      }else{
+	   this.$message({ message: res.data.resultMsg, type: "warning" });
+	  }
+    },
+	
+	//获取员工分析小结
+	getYgfxxj:async function() {
+	    let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsyyxx/rlzyfx/gsygfxxj/list",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.ygxj = res.data.resultData.data.gsygfxxj;
+      }
+	},
+	
     //保存小结
-    saveYgXj() {
-      alert(this.ygxj);
+    saveYgXj: async function(){
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+		gsygfxxj:this.ygxj
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsyyxx/rlzyfx/gsygfxxj/save",
+        params
+      );
+	  if(res.data.resultCode=="0"){
+	    this.$message({ message: res.data.resultMsg, type: "success" });
+	  }else{
+	    this.$message({ message: res.data.resultMsg, type: "warning" });
+	  }
     },
     //改变小结内容
     changYgxj(val) {
@@ -377,9 +492,7 @@ export default {
       });
       return sums;
     },
-    verify(row, index) {
-      row.edit = false;
-    },
+    
     addForm() {
       let obj = Object.keys(this.formArry[0]).map(item => {
         return {
