@@ -136,7 +136,7 @@
 									</template>
 								</el-table-column>
 								<el-table-column min-width="100px" label="学历结构">
-									<el-table-column min-width="100px" label="初中及以下" prop="junior">
+									<el-table-column min-width="100px" label="初中及以下" prop="czjyx">
 										<template slot-scope="scope">
 											<template v-if="scope.row.edit">
 												<el-form :model="scope.row" :rules="rules" :id="'junior'+scope.$index" :ref="'form_junior_'+scope.$index" :show-message="false">
@@ -148,7 +148,7 @@
 											<span v-else>{{ scope.row.czjyx}}</span>
 										</template>
 									</el-table-column>
-									<el-table-column min-width="100px" label="高中" prop="middle">
+									<el-table-column min-width="100px" label="高中" prop="gz">
 										<template slot-scope="scope">
 											<template v-if="scope.row.edit">
 												<el-form :model="scope.row" :rules="rules" :id="'middle'+scope.$index" :ref="'form_middle_'+scope.$index" :show-message="false">
@@ -160,7 +160,7 @@
 											<span v-else>{{ scope.row.gz}}</span>
 										</template>
 									</el-table-column>
-									<el-table-column min-width="100px" label="大学及以上" prop="senior">
+									<el-table-column min-width="100px" label="大学及以上" prop="dxjys">
 										<template slot-scope="scope">
 											<template v-if="scope.row.edit">
 												<el-form :model="scope.row" :rules="rules" :id="'senior'+scope.$index" :ref="'form_senior_'+scope.$index" :show-message="false">
@@ -173,7 +173,7 @@
 										</template>
 									</el-table-column>
 								</el-table-column>
-								<el-table-column min-width="100px" label="小计" prop="subtotal">
+								<el-table-column min-width="100px" label="小计" prop="hj">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
 											<el-form :model="scope.row" :rules="rules" :id="'subtotal'+scope.$index" :ref="'form_subtotal_'+scope.$index" :show-message="false">
@@ -266,9 +266,9 @@ export default {
           gzll: "" //工作经历
         }
       ],
-	  
+
 	  ///////////////////////////////////////////////////////
-	  
+
       formatterTableData: [],
 	  addData:[],
 	  updateData:[],
@@ -308,7 +308,7 @@ export default {
   },*/
   methods: {
     //--------------------------经营管理团队分析----------------------------------//
-	
+
     //获取经营管理团队分析
     getJygltd: async function() {
       let params = {
@@ -321,7 +321,7 @@ export default {
       );
       this.formArry = res.data.resultData.data.rows;
     },
-	
+
 	//经营管理团队分析小结
 	getGltdxj:async function() {
 	   let params = {
@@ -334,8 +334,8 @@ export default {
       );
 	  this.tdxj=res.data.resultData.data.jytdfxxj;
 	},
-	
-	
+
+
     //保存小结
     saveTdXj:async function() {
       let params = {
@@ -359,7 +359,7 @@ export default {
     },
 
     //--------------------------员工分析----------------------------------//
-	
+
 	//接受删除的数据
     acceptDelRow(val) {
       this.delRowData.push(val);
@@ -378,7 +378,7 @@ export default {
         this.updateData.push(rowObj);
       }
     },
-	
+
     //获取员工分析
     getYgfx: async function() {
       let params = {
@@ -396,7 +396,7 @@ export default {
 	//保员工分析数据
     saveYgfx: async function() {
       this.formatterTableData.forEach((item, index) => {
-	 
+
         if (item.id == null) {
           this.addData.push(item);
         }
@@ -421,7 +421,7 @@ export default {
 	   this.$message({ message: res.data.resultMsg, type: "warning" });
 	  }
     },
-	
+
 	//获取员工分析小结
 	getYgfxxj:async function() {
 	    let params = {
@@ -436,7 +436,7 @@ export default {
         this.ygxj = res.data.resultData.data.gsygfxxj;
       }
 	},
-	
+
     //保存小结
     saveYgXj: async function(){
       let params = {
@@ -492,7 +492,7 @@ export default {
       });
       return sums;
     },
-    
+
     addForm() {
       let obj = Object.keys(this.formArry[0]).map(item => {
         return {

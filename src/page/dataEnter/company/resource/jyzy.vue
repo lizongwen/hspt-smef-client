@@ -505,20 +505,6 @@ export default {
           { required: true, message: "净值（万元）是必填项" }
         ]
       },
-      rules_scsb: {
-        sbmc: [
-          { required: true, message: "设备名称是必填项" }
-        ],
-        sbxh: [
-          { required: true, message: "设备型号是必填项" }
-        ],
-        yz: [
-          { required: true, message: "原值（万元）是必填项" }
-        ],
-        jz: [
-          { required: true, message: "净值（万元）是必填项" }
-        ]
-      },
       rules_clmx: {
         hpzl: [
           { required: true, message: "号牌种类是必填项" }
@@ -820,6 +806,19 @@ export default {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
+
+    //企业主要生产设备模板下载
+    // downloadScsb: async function() {
+    //   let params = {
+    //     token: sessionStorage.getItem("token"),
+    //     fileName:"企业主要生产设备",
+    //     filePath:"http://testdfs.creditstate.cn/group1/M00/02/17/rBj-DlpEC0WADGeQAABaABUpVk8581.xls"
+    //   };
+    //   const res = await this.$http.post(
+    //     "/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/download",
+    //     params
+    //   );
+    // },
 
     //---------------------------------------企业车辆信息--------------------------------------------------------------//
     //获取车辆记录
