@@ -39,7 +39,7 @@
               <ul class="member-list">
                 <li class="member-list-item" v-for="(item,index) in rightMember" :key="index">
                   <img src="" alt="" srcset="">
-                  <span class="member-name">{{item.position}} - {{item.loginName}}</span>
+                  <span class="member-name">{{item.position | formatPosition}} - {{item.loginName}}</span>
                 </li>
               </ul>
               <div class="member-foot text-center">
@@ -94,6 +94,14 @@
         this.$router.push({path: "./project"});
       }
     },
+	filters: {
+		  formatPosition: function (value) {
+			if("projectMgr"==value){return "项目经理";}
+			else if("director"==value){return "项目总监";}
+			else if("employee"==value){return "普通员工";}
+			else{return "未知员工"}
+		  }
+		},
     components: {
       mainHeader
     }
