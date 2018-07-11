@@ -3,14 +3,14 @@ import AsyncValidator from 'async-validator';
 import popMsg from '@/utils/notice/notice';
 let table_validates = {
   validateByRow(row, index, rules, vm)
+
   {
     let validateState = '';
     const validator = new AsyncValidator(rules);
     validateState = 'validating';
     let count = 1;
-    let cellList = document.querySelectorAll('.cellItem');
-    let columnsList = Object.keys(vm.tableData_columns);
-
+	let cellList = document.querySelectorAll('.cellItem');
+    // let columnsList = Object.keys(vm.tableData_columns);
     // 清理 is_error和is_success状态
     for (let i = 0; i < cellList.length; i++) {
       let index = 0;
@@ -21,7 +21,6 @@ let table_validates = {
       newClassName = (index == 0) ? newClassName.replace('is-success ', '') : newClassName.m_Replace(' is-success', '');
       cellList[i].className = newClassName;
     }
-    
     // 验证
     validator.validate(row, (errors, invalidFields) => {
       validateState = !errors ? 'success' : 'error';

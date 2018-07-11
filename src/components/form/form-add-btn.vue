@@ -5,7 +5,7 @@
 export default {
   methods: {
     addhandler() {
-      this.$emit("addFrom");
+      this.$emit("addForm");
     }
   }
 };

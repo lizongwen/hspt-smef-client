@@ -193,85 +193,50 @@
 							<div class="card-title">企业被执行公告信息</div>
 						</div>
 						<div>
-							<el-table :data="tableData_2" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
+						<el-table :data="tableData_2" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
-								<el-table-column min-width="150px" label="被执行人姓名/名称">
-									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'Name '+scope.$index" :ref="'form_Name_'+scope.$index" :show-message="false">
-												<el-form-item prop="Name" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.Name"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{scope.row.Name}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column min-width="70px" label="案号">
-									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'Num'+scope.$index" :ref="'form_Num_'+scope.$index" :show-message="false">
-												<el-form-item prop="Num" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.Num"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.Num}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column min-width="80px" label="立案时间">
-									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'time'+scope.$index" :ref="'form_time_'+scope.$index" :show-message="false">
-												<el-form-item prop="time" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.time"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.time}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column min-width="100px" label="执行法院">
-									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'court'+scope.$index" :ref="'form_court_'+scope.$index" :show-message="false">
-												<el-form-item prop="court" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.court"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.court}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column min-width="100px" label="执行标的">
-									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'zxbd'+scope.$index" :ref="'form_zxbd_'+scope.$index" :show-message="false">
-												<el-form-item prop="zxbd" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.zxbd"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.zxbd}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column min-width="200px" label="案件状态">
-									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'kyState'+scope.$index" :ref="'form_kyState_'+scope.$index" :show-message="false">
-												<el-form-item prop="kyState" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.kyState"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.kyState}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column align="center" label="操作" width="240">
-									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify2"></v-tableOperation>
-									</template>
-								</el-table-column>
+								<el-table-column min-width="200px" :label="tableData_2_columns.xmmc">
+						<template slot-scope="scope">
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[1]" v-if="scope.row.edit" size="small" v-model.number="scope.row.xmmc"></el-input>
+							<span v-else>{{ scope.row.xmmc}}</span>
+						</template>
+					</el-table-column>
+					<el-table-column min-width="200px" :label="tableData_2_columns.cy">
+						<template slot-scope="scope">
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[2]" v-if="scope.row.edit" size="small" v-model="scope.row.cy"></el-input>
+							<span v-else>{{ scope.row.cy}}</span>
+						</template>
+					</el-table-column>
+					<el-table-column min-width="200px" :label="tableData_2_columns.qy">
+						<template slot-scope="scope">
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[3]" v-if="scope.row.edit" size="small" v-model="scope.row.qy"></el-input>
+							<span v-else>{{ scope.row.qy}}</span>
+						</template>
+					</el-table-column>
+					<el-table-column min-width="200px" :label="tableData_2_columns.lx">
+						<template slot-scope="scope">
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[4]" v-if="scope.row.edit" size="small" v-model.number="scope.row.lx"></el-input>
+							<span v-else>{{ scope.row.lx}}</span>
+						</template>
+					</el-table-column>
+					<el-table-column min-width="200px" :label="tableData_2_columns.fbsj">
+						<template slot-scope="scope">
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[5]" v-if="scope.row.edit" size="small" v-model="scope.row.fbsj"></el-input>
+							<span v-else>{{ scope.row.fbsj}}</span>
+						</template>
+					</el-table-column>
+					<el-table-column min-width="200px" :label="tableData_2_columns.xxxx">
+						<template slot-scope="scope">
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[6]" v-if="scope.row.edit" size="small" v-model="scope.row.xxxx"></el-input>
+							<span v-else>{{ scope.row.xxxx}}</span>
+						</template>
+					</el-table-column>
+					
+					<el-table-column align="center" label="操作" width="240">
+						<template slot-scope="scope">
+							<v-tableOperation :scope="scope" :tableData="tableData_2"></v-tableOperation>
+						</template>
+					</el-table-column>
 							</el-table>
 							<v-tabelAddBtn :tableData="tableData_2" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>
 						</div>
@@ -289,74 +254,44 @@
 							<div class="card-title">失信联合惩戒信息</div>
 						</div>
 						<div>
-							<el-table :data="tableData_3" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
-								<el-table-column label="序号" type="index" width="50"></el-table-column>
-								<el-table-column min-width="150px" label="失信主体名称">
-									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'Name'+scope.$index" :ref="'form_Name_'+scope.$index" :show-message="false">
-												<el-form-item prop="Name" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.Name"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{scope.row.Name}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column min-width="150px" label="惩戒类别">
-									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'lable'+scope.$index" :ref="'form_lable_'+scope.$index" :show-message="false">
-												<el-form-item prop="lable" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.lable"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.lable}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column min-width="300px" label="查询次数">
-									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'cxtime'+scope.$index" :ref="'form_cxtime_'+scope.$index" :show-message="false">
-												<el-form-item prop="cxtime" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.cxtime"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.cxtime}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column min-width="100px" label="惩戒次数">
-									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'cjtime'+scope.$index" :ref="'form_cjtime_'+scope.$index" :show-message="false">
-												<el-form-item prop="cjtime" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.cjtime"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.cjtime}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column min-width="100px" label="收录时间">
-									<template slot-scope="scope">
-										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'sltime'+scope.$index" :ref="'form_sltime_'+scope.$index" :show-message="false">
-												<el-form-item prop="sltime" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.sltime"></el-input>
-												</el-form-item>
-											</el-form>
-										</template>
-										<span v-else>{{ scope.row.sltime}}</span>
-									</template>
-								</el-table-column>
-								<el-table-column align="center" label="操作" width="240">
-									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify3"></v-tableOperation>
-									</template>
-								</el-table-column>
-							</el-table>
+					<el-table :data="tableData_3" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
+					<el-table-column label="序号" type="index" width="50"></el-table-column>
+					<el-table-column min-width="200px" :label="tableData_3_columns.sxztmc">
+						<template slot-scope="scope">
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[1]" v-if="scope.row.edit" size="small" v-model.number="scope.row.sxztmc"></el-input>
+							<span v-else>{{ scope.row.sxztmc}}</span>
+						</template>
+					</el-table-column>
+					<el-table-column min-width="200px" :label="tableData_3_columns.cjlb">
+						<template slot-scope="scope">
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[2]" v-if="scope.row.edit" size="small" v-model="scope.row.cjlb"></el-input>
+							<span v-else>{{ scope.row.cjlb}}</span>
+						</template>
+					</el-table-column>
+					<el-table-column min-width="200px" :label="tableData_3_columns.cxcs">
+						<template slot-scope="scope">
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[3]" v-if="scope.row.edit" size="small" v-model="scope.row.cxcs"></el-input>
+							<span v-else>{{ scope.row.cxcs}}</span>
+						</template>
+					</el-table-column>
+					<el-table-column min-width="200px" :label="tableData_3_columns.cxcs">
+						<template slot-scope="scope">
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[4]" v-if="scope.row.edit" size="small" v-model.number="scope.row.cxcs"></el-input>
+							<span v-else>{{ scope.row.cxcs}}</span>
+						</template>
+					</el-table-column>
+					<el-table-column min-width="200px" :label="tableData_3_columns.sjsj">
+						<template slot-scope="scope">
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[5]" v-if="scope.row.edit" size="small" v-model="scope.row.sjsj"></el-input>
+							<span v-else>{{ scope.row.sjsj}}</span>
+						</template>
+					</el-table-column>
+					<el-table-column align="center" label="操作" width="240">
+						<template slot-scope="scope">
+							<v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify3"></v-tableOperation>
+						</template>
+					</el-table-column>
+				</el-table>
 							<v-tabelAddBtn :tableData="tableData_3" :tableData_columns="tableData_3_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
@@ -525,22 +460,14 @@ export default {
           kyState: "",
           edit: false
       }, //表格列字段
-      tableData_3: [
-        {
-          Name: "芜湖新闻网",
-          lable: "http://www.wuhunews.com",
-          cxtime: "皖备58741258",
-          cjtime: 0,
-          sltime: "企业",
-          edit: false
-        }
-      ], //表格数据
+      tableData_3: [], //表格数据
       tableData_3_columns: {
-          Name: "",
-          lable: "",
-          cxtime: "",
-          cjtime: "",
-          sltime: "",
+	      id:null,
+          sxztmc: "失信主体名称",
+          cjlb: "惩戒类别",
+          cxcs: "查询次数",
+          cjcs: "惩戒次数",
+          sjsj: "收录时间",
         edit: false
       },//表格列字段
       tableData_4: [

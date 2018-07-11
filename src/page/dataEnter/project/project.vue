@@ -13,7 +13,7 @@
 								</el-input>
 							</el-form-item>
 							<el-form-item>
-								<el-button type="primary" @click="addCompany">新增企业</el-button>
+								<el-button type="primary" @click="addCompanyForm">新增企业</el-button>
 							</el-form-item>
 						</el-form>
 					</div>
@@ -50,7 +50,7 @@
 			</el-form>
 			<div slot="footer" class="dialog-footer">
 				<el-button @click="dialogFormVisible = false">取 消</el-button>
-				<el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+				<el-button type="primary" @click="addCompanyProject">确 定</el-button>
 			</div>
 		</el-dialog>
 	</div>
@@ -96,9 +96,27 @@ export default {
     onSubmit() {
       this.getProject(this.searchForm.searchInput);
     },
-    addCompany() {
+	//显示新增企业项目弹框
+    addCompanyForm: async function() {
       this.dialogFormVisible = true;
     },
+	//新增企业项目内容
+	addCompanyProject:async function() {
+	   let params = {
+        token: sessionStorage.getItem("token"),
+        companyName: this.addForm.companyName,
+		creditCode:this.addForm.creditCode
+      };
+	   const res = await this.$http.post("/hspt-web-api/company/addNewProject", params);
+	  if (res.data.resultCode == "0") {
+	    this.dialogFormVisible = false;
+        this.$message({ message: res.data.resultMsg, type: "success" });
+	  }else{
+	    this.$message({ message: res.data.resultMsg, type: "warning" });
+	  }
+	},
+	
+	//获取项目列表
     getProject: async function() {
       let params = {
         token: sessionStorage.getItem("token"),

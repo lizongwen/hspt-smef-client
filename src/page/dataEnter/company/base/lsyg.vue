@@ -64,7 +64,7 @@ export default {
       addData: [],
       updateData: [],
       tableData_columns: {
-        id: "id",
+        id: null,
         bgrq: "变更日期",
         bgsx: "变更事项",
         bgqnr: "变更前",

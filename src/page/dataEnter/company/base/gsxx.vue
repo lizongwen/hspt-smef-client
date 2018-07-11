@@ -205,7 +205,9 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
-      }
+      }else{
+	    this.$message({ message: res.data.resultMsg, type: "warning" });
+	  }
     },
     fetchBaseInfo: async function() {
       let params = {
@@ -213,12 +215,33 @@ export default {
         token: sessionStorage.getItem("token"),
         companyName: sessionStorage.getItem("companyName")
 	  };
-	  console.log(params)
-    //   const res = await this.$http.post(
-    //     "/hspt-web-api/data_entry/qyjbxx/gsjbxx/modify",
-    //     params
-	//   );
-
+       const res = await this.$http.post(
+         "/hspt-web-api/data_entry/qyjbxx/gsjbxx/remote",
+         params
+	   );
+       if (res.data.resultCode == "0") {
+		  this.$message({ message: res.data.resultMsg, type: "success" });
+		  this.form.zcrq = res.data.resultData.data.zcrq;
+		  this.form.zcjg = res.data.resultData.data.zcjg;
+		  this.form.creditCode = res.data.resultData.data.creditCode;
+		  this.form.zzjgdm = res.data.resultData.data.zzjgdm;
+		  this.form.zch = res.data.resultData.data.zch;
+		  this.form.zczb = res.data.resultData.data.zczb;
+		  this.form.qylx = res.data.resultData.data.qylx;
+		  this.form.clnf = res.data.resultData.data.clnf;
+		  this.form.yyqx = res.data.resultData.data.yyqx;
+		  this.form.zcdz = res.data.resultData.data.zcdz;
+		  this.form.frdb = res.data.resultData.data.frdb;
+		  this.form.dh = res.data.resultData.data.dh;
+		  this.form.cz = res.data.resultData.data.cz;
+		  this.form.wz = res.data.resultData.data.wz;
+		  this.form.gsrs = res.data.resultData.data.gsrs;
+		  this.form.xssr = res.data.resultData.data.xssr;
+		  this.form.jzc = res.data.resultData.data.jzc;
+		  this.form.jyfw = res.data.resultData.data.jyfw;
+      }else{
+	    this.$message({ message: res.data.resultMsg, type: "warning" });
+	  }
     }
   },
   components: {}
