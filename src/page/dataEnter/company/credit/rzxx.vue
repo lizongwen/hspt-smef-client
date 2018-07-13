@@ -52,7 +52,7 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button @click = "saveYhwjqxded" class="save" type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">银行未结清信贷额度</div>
 						</div>
@@ -118,7 +118,7 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button @click="saveDcdyxx" class="save" type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">动产融资信息</div>
 						</div>
@@ -176,7 +176,7 @@
                 </el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_dcdy" v-on:verify="verify1" v-on:acceptDelRow='acceptDelRow'></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_dcdy" v-on:verify="verify" v-on:acceptDelRow='acceptDelRow'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
@@ -190,7 +190,7 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button @click="saveYxfz" class="save" type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">其他融资信息</div>
 						</div>
@@ -235,7 +235,7 @@
                 </el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_yxfz" v-on:verify="verify2" v-on:acceptDelRow='acceptDelRow'></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_yxfz" v-on:verify="verify" v-on:acceptDelRow='acceptDelRow'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
@@ -247,7 +247,7 @@
           <el-card class="box-card">
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <el-button class="save" type="primary" size="medium">保存</el-button>
+                <el-button @click ="saveXj" class="save" type="primary" size="medium">保存</el-button>
               </div>
               <div class="card-title">小结</div>
             </div>
@@ -274,11 +274,7 @@
 				activeName: "first",
 				listLoading: false,
 				textarea: "",
-				rules: {
-          zhsypl: [
-            { required: true, message: "银行名称是必填项" }
-          ]
-        },
+				rules: {},
         delRowData: [],
         addData: [],
         updateData: [],
@@ -385,6 +381,25 @@
           this.tableData_xd = res.data.resultData.data;
         }
       },
+      saveYhwjqxded: async function(){
+        this.tableData_bank.forEach((item, index) => {
+          if (item.id == null) {
+            this.addData.push(item);
+          }
+        });
+        let params = {
+          creditCode: sessionStorage.getItem("creditCode"),
+          token: sessionStorage.getItem("token"),
+          addData: JSON.stringify(this.addData),
+          updateData: JSON.stringify(this.updateData),
+          delData: JSON.stringify(this.delRowData),
+          dataType:"Yhwjqxded"
+        };
+        const res = await this.$http.post(
+          "/hspt-web-api/data_entry/qyfxgk/qyfxgkRzxx/update",
+          params
+        );
+      },
       getDcdyxx: async function() {
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),
@@ -398,6 +413,24 @@
           this.tableData_dcdy = res.data.resultData.data;
         }
       },
+      saveDcdyxx: async function(){
+        this.tableData_bank.forEach((item, index) => {
+          if (item.id == null) {
+            this.addData.push(item);
+          }
+        });
+        let params = {
+          creditCode: sessionStorage.getItem("creditCode"),
+          token: sessionStorage.getItem("token"),
+          addData: JSON.stringify(this.addData),
+          updateData: JSON.stringify(this.updateData),
+          delData: JSON.stringify(this.delRowData),
+        };
+        const res = await this.$http.post(
+          "/hspt-web-api/data_entry/qyfxgk/qyfxgkDcdyxx/update",
+          params
+        );
+      },
       getYxfz: async function() {
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),
@@ -410,6 +443,25 @@
         if (res.data.resultCode == "0") {
           this.tableData_yxfz = res.data.resultData.data.rows;
         }
+      },
+      saveYxfz: async function(){
+        this.tableData_bank.forEach((item, index) => {
+          if (item.id == null) {
+            this.addData.push(item);
+          }
+        });
+        let params = {
+          creditCode: sessionStorage.getItem("creditCode"),
+          token: sessionStorage.getItem("token"),
+          addData: JSON.stringify(this.addData),
+          updateData: JSON.stringify(this.updateData),
+          delData: JSON.stringify(this.delRowData),
+          dataType:"Yxfz"
+        };
+        const res = await this.$http.post(
+          "/hspt-web-api/data_entry/qyfxgk/qyfxgkRzxx/update",
+          params
+        );
       },
       //获取富文本框内容
       getTextEditorCon: async function() {
@@ -433,6 +485,23 @@
       acceptDelRow(val) {
         this.delRowData.push(val);
       },
+      //保存小结
+      saveXj:async function() {
+        let params = {
+          creditCode: sessionStorage.getItem("creditCode"),
+          token: sessionStorage.getItem("token"),
+          qyrzxxxj: this.textEditorContent
+        };
+        const res = await this.$http.post(
+          "/hspt-web-api/data_entry/qyfxgk/qyfxgkRzxx/updateQyrzxxxj",
+          params
+        );
+        if (res.data.resultCode == "0") {
+          this.$message({ message: res.data.resultMsg, type: "success" });
+        }else{
+          this.$message({ message: res.data.resultMsg, type: "warning" });
+        }
+      },
 			handleClick(tab, event) {
 				console.log(tab, event);
 			},
@@ -453,7 +522,6 @@
           this.rules,
           this
         );
-        console.log(444)
         if (rowObj.id) {
           this.updateData.push(rowObj);
         }

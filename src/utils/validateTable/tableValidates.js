@@ -5,6 +5,7 @@ let table_validates = {
   validateByRow(row, index, rules, vm)
 
   {
+	console.log(row)
     let validateState = '';
     const validator = new AsyncValidator(rules);
     validateState = 'validating';

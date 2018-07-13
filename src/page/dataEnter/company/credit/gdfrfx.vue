@@ -268,7 +268,7 @@
 									</template>
 								</el-table-column>
 							</el-table>
-							<v-tabelAddBtn :tableData="tableData_1" :tableData_columns="tableData_1_columns"></v-tabelAddBtn>
+							<!--<v-tabelAddBtn :tableData="tableData_1" :tableData_columns="tableData_1_columns"></v-tabelAddBtn>-->
 						</div>
 					</el-card>
 				</div>
@@ -279,98 +279,428 @@
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium">获取数据</el-button>
-								<el-button class="save" type="primary" size="medium">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="setGrshxyjl">保存</el-button>
 							</div>
-							<div class="card-title">著作权</div>
+							<div class="card-title">个人社会信用记录</div>
 						</div>
 						<div>
 							<el-table :data="tableData_2" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
-								<el-table-column min-width="300px" label="著作权名称">
+								<el-table-column min-width="100px" label="姓名">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'copyrightName'+scope.$index" :ref="'form_copyrightName_'+scope.$index" :show-message="false">
+											<el-form :model="scope.row" :rules="rules_grxy" :id="'copyrightName'+scope.$index" :ref="'form_copyrightName_'+scope.$index" :show-message="false">
 												<el-form-item prop="copyrightName" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.copyrightName"></el-input>
+													<el-input class="edit-input" size="small" v-model="scope.row.name"></el-input>
 												</el-form-item>
 											</el-form>
 										</template>
-										<span v-else>{{scope.row.copyrightName}}</span>
+										<span v-else>{{scope.row.name}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="类别">
+								<el-table-column min-width="200px" label="是否严重不良行为青少年">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'worksType'+scope.$index" :ref="'form_worksType_'+scope.$index" :show-message="false">
+											<el-form :model="scope.row" :rules="rules_grxy" :id="'worksType'+scope.$index" :ref="'form_worksType_'+scope.$index" :show-message="false">
 												<el-form-item prop="worksType" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.worksType"></el-input>
+													<el-input class="edit-input" size="small" v-model="scope.row.sfblxwqsn"></el-input>
 												</el-form-item>
 											</el-form>
 										</template>
-										<span v-else>{{ scope.row.worksType}}</span>
+										<span v-else>{{ scope.row.sfblxwqsn}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="300px" label="著作权人">
+								<el-table-column min-width="200px" label="是否校园周边重点人员">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'worksName'+scope.$index" :ref="'form_worksName_'+scope.$index" :show-message="false">
+											<el-form :model="scope.row" :rules="rules_grxy" :id="'worksName'+scope.$index" :ref="'form_worksName_'+scope.$index" :show-message="false">
 												<el-form-item prop="worksName" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.worksName"></el-input>
+													<el-input class="edit-input" size="small" v-model="scope.row.sfxyzdry"></el-input>
 												</el-form-item>
 											</el-form>
 										</template>
-										<span v-else>{{ scope.row.worksName}}</span>
+										<span v-else>{{ scope.row.sfxyzdry}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="100px" label="登记号">
+								<el-table-column min-width="200px" label="是否重点人员信息">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'regNo'+scope.$index" :ref="'form_regNo_'+scope.$index" :show-message="false">
+											<el-form :model="scope.row" :rules="rules_grxy" :id="'regNo'+scope.$index" :ref="'form_regNo_'+scope.$index" :show-message="false">
 												<el-form-item prop="regNo" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.regNo"></el-input>
+													<el-input class="edit-input" size="small" v-model="scope.row.sfzdryxx"></el-input>
 												</el-form-item>
 											</el-form>
 										</template>
-										<span v-else>{{ scope.row.regNo}}</span>
+										<span v-else>{{ scope.row.sfzdryxx}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="100px" label="版本">
+								<el-table-column min-width="100px" label="是否超生">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'version'+scope.$index" :ref="'form_version_'+scope.$index" :show-message="false">
+											<el-form :model="scope.row" :rules="rules_grxy" :id="'version'+scope.$index" :ref="'form_version_'+scope.$index" :show-message="false">
 												<el-form-item prop="version" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.version"></el-input>
+													<el-input class="edit-input" size="small" v-model="scope.row.sfcs"></el-input>
 												</el-form-item>
 											</el-form>
 										</template>
-										<span v-else>{{ scope.row.version}}</span>
+										<span v-else>{{ scope.row.sfcs}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column min-width="100px" label="登记批准日期">
+								<el-table-column min-width="150px" label="是否为流动人口">
 									<template slot-scope="scope">
 										<template v-if="scope.row.edit">
-											<el-form :model="scope.row" :rules="rules" :id="'regDate'+scope.$index" :ref="'form_regDate_'+scope.$index" :show-message="false">
+											<el-form :model="scope.row" :rules="rules_grxy" :id="'regDate'+scope.$index" :ref="'form_regDate_'+scope.$index" :show-message="false">
 												<el-form-item prop="regDate" class="td-form-item">
-													<el-input class="edit-input" size="small" v-model="scope.row.regDate"></el-input>
+													<el-input class="edit-input" size="small" v-model="scope.row.sfldrk"></el-input>
 												</el-form-item>
 											</el-form>
 										</template>
-										<span v-else>{{ scope.row.regDate}}</span>
+										<span v-else>{{ scope.row.sfldrk}}</span>
 									</template>
 								</el-table-column>
+                <el-table-column min-width="150px" label="是否有交通处罚">
+                  <template slot-scope="scope">
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules_grxy" :id="'regDate'+scope.$index" :ref="'form_regDate_'+scope.$index" :show-message="false">
+                        <el-form-item prop="regDate" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.sfyjtcf"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.sfyjtcf}}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column min-width="150px" label="是否有治安处罚">
+                  <template slot-scope="scope">
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules_grxy" :id="'regDate'+scope.$index" :ref="'form_regDate_'+scope.$index" :show-message="false">
+                        <el-form-item prop="regDate" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.sfyzacf"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.sfyzacf}}</span>
+                  </template>
+                </el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify2"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify_2" v-on:acceptDelRow='acceptDelRow_2'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
-							<v-tabelAddBtn :tableData="tableData_2" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>
+							<!--<v-tabelAddBtn :tableData="tableData_2" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>-->
 						</div>
 					</el-card>
 				</div>
+        <div>
+          <el-card class="box-card" shadow='nevner'>
+            <div slot="header" class="clearfix">
+              <div class="card-right-wrap">
+                <el-button class="save" type="default" size="medium">获取数据</el-button>
+                <el-button class="save" type="primary" size="medium" @click="setGrgjj">保存</el-button>
+              </div>
+              <div class="card-title">公积金个人信息</div>
+            </div>
+            <div>
+              <el-table :data="tableData_3" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
+                <el-table-column label="序号" type="index" width="50"></el-table-column>
+                <el-table-column min-width="100px" label="姓名">
+                  <template slot-scope="scope">
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules_grgjj" :id="'name'+scope.$index" :ref="'form_name_'+scope.$index" :show-message="false">
+                        <el-form-item prop="copyrightName" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.name"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{scope.row.name}}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column min-width="200px" label="参缴时间">
+                  <template slot-scope="scope">
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules_grgjj" :id="'cjsj'+scope.$index" :ref="'form_cjsj_'+scope.$index" :show-message="false">
+                        <el-form-item prop="worksType" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.cjsj"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.cjsj}}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column min-width="200px" label="缴纳月数">
+                  <template slot-scope="scope">
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules_grgjj" :id="'jnys'+scope.$index" :ref="'form_jnys_'+scope.$index" :show-message="false">
+                        <el-form-item prop="worksName" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.jnys"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.jnys}}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column min-width="200px" label="申报工资基数（元）">
+                  <template slot-scope="scope">
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules_grgjj" :id="'sbgzjs'+scope.$index" :ref="'form_sbgzjs_'+scope.$index" :show-message="false">
+                        <el-form-item prop="regNo" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.sbgzjs"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.sbgzjs}}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column min-width="200px" label="个人月缴额（元）">
+                  <template slot-scope="scope">
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules_grgjj" :id="'gryjse'+scope.$index" :ref="'form_gryjse_'+scope.$index" :show-message="false">
+                        <el-form-item prop="version" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.gryjse"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.gryjse}}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column min-width="200px" label="账户状态">
+                  <template slot-scope="scope">
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules_grgjj" :id="'zhzt'+scope.$index" :ref="'form_zhzt_'+scope.$index" :show-message="false">
+                        <el-form-item prop="regDate" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.zhzt"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.zhzt}}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column align="center" label="操作" width="240">
+                  <template slot-scope="scope">
+                    <v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify_3" v-on:acceptDelRow='acceptDelRow_3' ></v-tableOperation>
+                  </template>
+                </el-table-column>
+              </el-table>
+              <!--<v-tabelAddBtn :tableData="tableData_3" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>-->
+            </div>
+          </el-card>
+        </div>
+        <div>
+        <el-card class="box-card" shadow='nevner'>
+          <div slot="header" class="clearfix">
+            <div class="card-right-wrap">
+              <el-button class="save" type="default" size="medium">获取数据</el-button>
+              <el-button class="save" type="primary" size="medium" @click="setGrsb">保存</el-button>
+            </div>
+            <div class="card-title">社保个人信息</div>
+          </div>
+          <div>
+            <el-table :data="tableData_4" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
+              <el-table-column label="序号" type="index" width="50"></el-table-column>
+              <el-table-column min-width="100px" label="姓名">
+                <template slot-scope="scope">
+                  <template v-if="scope.row.edit">
+                    <el-form :model="scope.row" :rules="rules_grsb" :id="'copyrightName'+scope.$index" :ref="'form_copyrightName_'+scope.$index" :show-message="false">
+                      <el-form-item prop="copyrightName" class="td-form-item">
+                        <el-input class="edit-input" size="small" v-model="scope.row.name"></el-input>
+                      </el-form-item>
+                    </el-form>
+                  </template>
+                  <span v-else>{{scope.row.name}}</span>
+                </template>
+              </el-table-column>
+              <el-table-column min-width="200px" label="是否参保">
+                <template slot-scope="scope">
+                  <template v-if="scope.row.edit">
+                    <el-form :model="scope.row" :rules="rules_grsb" :id="'worksType'+scope.$index" :ref="'form_worksType_'+scope.$index" :show-message="false">
+                      <el-form-item prop="worksType" class="td-form-item">
+                        <el-input class="edit-input" size="small" v-model="scope.row.sfcb"></el-input>
+                      </el-form-item>
+                    </el-form>
+                  </template>
+                  <span v-else>{{ scope.row.sfcb}}</span>
+                </template>
+              </el-table-column>
+              <el-table-column min-width="200px" label="参保时间">
+                <template slot-scope="scope">
+                  <template v-if="scope.row.edit">
+                    <el-form :model="scope.row" :rules="rules_grsb" :id="'worksName'+scope.$index" :ref="'form_worksName_'+scope.$index" :show-message="false">
+                      <el-form-item prop="worksName" class="td-form-item">
+                        <el-input class="edit-input" size="small" v-model="scope.row.cbsj"></el-input>
+                      </el-form-item>
+                    </el-form>
+                  </template>
+                  <span v-else>{{ scope.row.cbsj}}</span>
+                </template>
+              </el-table-column>
+              <el-table-column min-width="200px" label="参保状态">
+                <template slot-scope="scope">
+                  <template v-if="scope.row.edit">
+                    <el-form :model="scope.row" :rules="rules_grsb" :id="'regNo'+scope.$index" :ref="'form_regNo_'+scope.$index" :show-message="false">
+                      <el-form-item prop="regNo" class="td-form-item">
+                        <el-input class="edit-input" size="small" v-model="scope.row.cbzt"></el-input>
+                      </el-form-item>
+                    </el-form>
+                  </template>
+                  <span v-else>{{ scope.row.cbzt}}</span>
+                </template>
+              </el-table-column>
+              <el-table-column min-width="100px" label="缴费基数">
+                <template slot-scope="scope">
+                  <template v-if="scope.row.edit">
+                    <el-form :model="scope.row" :rules="rules_grsb" :id="'version'+scope.$index" :ref="'form_version_'+scope.$index" :show-message="false">
+                      <el-form-item prop="version" class="td-form-item">
+                        <el-input class="edit-input" size="small" v-model="scope.row.jfjs"></el-input>
+                      </el-form-item>
+                    </el-form>
+                  </template>
+                  <span v-else>{{ scope.row.jfjs}}</span>
+                </template>
+              </el-table-column>
+              <el-table-column min-width="150px" label="本期应缴(当前)">
+                <template slot-scope="scope">
+                  <template v-if="scope.row.edit">
+                    <el-form :model="scope.row" :rules="rules_grsb" :id="'regDate'+scope.$index" :ref="'form_regDate_'+scope.$index" :show-message="false">
+                      <el-form-item prop="regDate" class="td-form-item">
+                        <el-input class="edit-input" size="small" v-model="scope.row.byyj"></el-input>
+                      </el-form-item>
+                    </el-form>
+                  </template>
+                  <span v-else>{{ scope.row.byyj}}</span>
+                </template>
+              </el-table-column>
+              <el-table-column min-width="150px" label="参保险种">
+                <template slot-scope="scope">
+                  <template v-if="scope.row.edit">
+                    <el-form :model="scope.row" :rules="rules_grsb" :id="'regDate'+scope.$index" :ref="'form_regDate_'+scope.$index" :show-message="false">
+                      <el-form-item prop="regDate" class="td-form-item">
+                        <el-input class="edit-input" size="small" v-model="scope.row.cbxz"></el-input>
+                      </el-form-item>
+                    </el-form>
+                  </template>
+                  <span v-else>{{ scope.row.cbxz}}</span>
+                </template>
+              </el-table-column>
+              <el-table-column align="center" label="操作" width="240">
+                <template slot-scope="scope">
+                  <v-tableOperation :scope="scope" :tableData="tableData_4" v-on:verify="verify_4" v-on:acceptDelRow='acceptDelRow_4'></v-tableOperation>
+                </template>
+              </el-table-column>
+            </el-table>
+            <!--<v-tabelAddBtn :tableData="tableData_2" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>-->
+          </div>
+        </el-card>
+        </div>
+        <div>
+          <el-card class="box-card" shadow='nevner'>
+            <div slot="header" class="clearfix">
+              <div class="card-right-wrap">
+                <el-button class="save" type="default" size="medium">获取数据</el-button>
+                <el-button class="save" type="primary" size="medium" @click="setGrcl">保存</el-button>
+              </div>
+              <div class="card-title">个人车辆信息</div>
+            </div>
+            <div>
+              <el-table :data="tableData_5" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
+                <el-table-column label="序号" type="index" width="50"></el-table-column>
+                <el-table-column min-width="100px" label="姓名">
+                  <template slot-scope="scope">
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules_grcl" :id="'copyrightName'+scope.$index" :ref="'form_copyrightName_'+scope.$index" :show-message="false">
+                        <el-form-item prop="copyrightName" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.name"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{scope.row.name}}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column min-width="200px" label="号牌号码">
+                  <template slot-scope="scope">
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules_grcl" :id="'worksType'+scope.$index" :ref="'form_worksType_'+scope.$index" :show-message="false">
+                        <el-form-item prop="worksType" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.hphm"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.hphm}}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column min-width="200px" label="中文品牌">
+                  <template slot-scope="scope">
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules_grcl" :id="'worksName'+scope.$index" :ref="'form_worksName_'+scope.$index" :show-message="false">
+                        <el-form-item prop="worksName" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.zwpm"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.zwpm}}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column min-width="200px" label="车辆类型">
+                  <template slot-scope="scope">
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules_grcl" :id="'regNo'+scope.$index" :ref="'form_regNo_'+scope.$index" :show-message="false">
+                        <el-form-item prop="regNo" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.cllx"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.cllx}}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column min-width="100px" label="制造国">
+                  <template slot-scope="scope">
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules_grcl" :id="'version'+scope.$index" :ref="'form_version_'+scope.$index" :show-message="false">
+                        <el-form-item prop="version" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.zzg"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.zzg}}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column min-width="150px" label="机动车状态">
+                  <template slot-scope="scope">
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules_grcl" :id="'regDate'+scope.$index" :ref="'form_regDate_'+scope.$index" :show-message="false">
+                        <el-form-item prop="regDate" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.jdczt"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.jdczt}}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column min-width="150px" label="抵押标记">
+                  <template slot-scope="scope">
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules_grcl" :id="'regDate'+scope.$index" :ref="'form_regDate_'+scope.$index" :show-message="false">
+                        <el-form-item prop="regDate" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.dybz"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.dybz}}</span>
+                  </template>
+                </el-table-column>
+                <el-table-column align="center" label="操作" width="240">
+                  <template slot-scope="scope">
+                    <v-tableOperation :scope="scope" :tableData="tableData_5" v-on:verify="verify_5" v-on:acceptDelRow='acceptDelRow_5'></v-tableOperation>
+                  </template>
+                </el-table-column>
+              </el-table>
+              <!--<v-tabelAddBtn :tableData="tableData_2" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>-->
+            </div>
+          </el-card>
+        </div>
 			</el-tab-pane>
 			<el-tab-pane label="反欺诈信息" name="four">
-				<div>
+				<!--<div>
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
@@ -380,7 +710,7 @@
 							<div class="card-title">网站备案</div>
 						</div>
 						<div>
-							<el-table :data="tableData_3" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
+							<el-table :data="tableData_6" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="300px" label="网站名称">
 									<template slot-scope="scope">
@@ -447,17 +777,17 @@
 								</el-table-column>
 								<el-table-column align="center" label="操作" width="240">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify3"></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_4" v-on:verify="verify3"></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
-							<v-tabelAddBtn :tableData="tableData_3" :tableData_columns="tableData_3_columns"></v-tabelAddBtn>
+							<v-tabelAddBtn :tableData="tableData_6" :tableData_columns="tableData_4_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
-				</div>
+				</div>-->
 			</el-tab-pane>
 			<el-tab-pane label="互联网监控信息" name="five">
-				<div>
+				<!--<div>
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
@@ -467,7 +797,7 @@
 							<div class="card-title">网站备案</div>
 						</div>
 						<div>
-							<el-table :data="tableData_3" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
+							<el-table :data="tableData_4" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="300px" label="网站名称">
 									<template slot-scope="scope">
@@ -541,7 +871,7 @@
 							<v-tabelAddBtn :tableData="tableData_4" :tableData_columns="tableData_4_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
-				</div>
+				</div>-->
 			</el-tab-pane>
 		</el-tabs>
 	</div>
@@ -579,7 +909,6 @@ export default {
         ]
       },
 
-      rules: {},
       tableData: [],
       updateData: [],
       deleteData: [],
@@ -597,6 +926,7 @@ export default {
         edit: false
       },
       rules_yhbg:{},
+
       tableData_1: [],
       updateData_1: [],
       deleteData_1: [],
@@ -613,62 +943,73 @@ export default {
       },
       rules_flfx:{},
 
-      tableData_2: [
-        {
-          copyrightName: "爱瑞特电动车充电控制软件",
-          worksType: "开关寿命试验机",
-          worksName: "王大锤",
-          regNo: "55225587",
-          version: "V1.0",
-          regDate: "2018/05/01",
-          edit: false
-        }
-      ], //表格数据
+      tableData_2: [],
+      updateData_2: [],
+      deleteData_2: [],
+      addData_2: [],
       tableData_2_columns: {
-        copyrightName: "",
-        worksType: "",
-        worksName: "",
-        regNo: "",
-        version: "",
-        regDate: "",
+        id:null,
+        name: "姓名",
+        sfblxwqsn: "是否严重不良行为青少年",
+        sfxyzdry: "是否校园周边重点人员",
+        sfzdryxx: "是否重点人员信息",
+        sfcs: "是否超生",
+        sfldrk: "是否为流动人口",
+        sfyjtcf: "是否有交通处罚",
+        sfyzacf: "是否有治安处罚",
         edit: false
-      }, //表格列字段
-      tableData_3: [
-        {
-          siteName: "芜湖新闻网",
-          siteHome: "http://www.wuhunews.com",
-          siteNo: "皖备58741258",
-          siteStatus: 0,
-          nature: "企业",
-          edit: false
-        }
-      ], //表格数据
+      },
+      rules_grxy:{},
+
+      tableData_3: [],
+      updateData_3: [],
+      deleteData_3: [],
+      addData_3: [],
       tableData_3_columns: {
-        siteName: "",
-        siteHome: "",
-        siteNo: "",
-        siteStatus: null,
-        nature: "",
+        id:null,
+        name: "姓名",
+        cjsj: "参缴时间",
+        jnys: "缴纳月数",
+        sbgzjs: "申报工资基数(元)",
+        gryjse: "个人月缴额(元)",
+        zhzt: "账户状态",
         edit: false
-      } , //表格列字段
-      tableData_4: [
-        {
-          siteName: "芜湖新闻网",
-          siteHome: "http://www.wuhunews.com",
-          siteNo: "皖备58741258",
-          siteStatus: 0,
-          nature: "企业",
-          edit: false
-        }
-      ], //表格数据
+      } ,
+      rules_grgjj:{},
+
+      tableData_4: [],
+      updateData_4: [],
+      deleteData_4: [],
+      addData_4: [],
       tableData_4_columns: {
-        siteName: "",
-        siteHome: "",
-        siteNo: "",
-        siteStatus: null,
-        nature: "",
+        id:null,
+        name: "姓名",
+        sfcb: "是否参保",
+        cbsj: "参保时间",
+        cbzt: "参保状态",
+        jfjs: "缴费基数",
+        byyj: "本期应缴(当前)",
+        cbxz: "参保险种",
         edit: false
-      }
+      },
+      rules_grsb:{},
+
+      tableData_5: [],
+      updateData_5: [],
+      deleteData_5: [],
+      addData_5: [],
+      tableData_5_columns: {
+        id:null,
+        name: "姓名",
+        hphm: "号牌号码",
+        zwpm: "中文品牌",
+        cllx: "车辆类型",
+        zzg: "制造国",
+        jdczt: "机动车状态",
+        dybz: "抵押标记",
+        edit: false
+      },
+      rules_grcl:{},
     };
   },
   computed: {
@@ -678,6 +1019,10 @@ export default {
     this.getZrrdgd();
     this.getYhbg();
     this.getFlfx();
+    this.getGrshxyjl();
+    this.getGrgjj();
+    this.getGrsb();
+    this.getGrcl();
   },
   methods: {
 
@@ -799,7 +1144,7 @@ export default {
       this.deleteData.push(val);
     },
 
-    //-------------------------------------------------法律风险-----------------------------------------------
+    //----------------------------------------------------法律风险--------------------------------------------------
     //获取法律风险信息
     getFlfx: async function() {
       let params = {
@@ -860,21 +1205,248 @@ export default {
       this.deleteData_1.push(val);
     },
 
+    //----------------------------------------------------公共信息-------------------------------------------------------
+    //获取个人社会行用记录信息
+    getGrshxyjl: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/qyfxgk/ggxxGrpz/loadData",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.tableData_2 = res.data.resultData.data.rows;
+      }
+    },
+
+    //保存个人社会行用记录信息
+    setGrshxyjl: async function() {
+      this.tableData_2.forEach((item, index) => {
+        if (item.id == null) {
+          this.addData_2.push(item);
+        }
+      });
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        updateData: JSON.stringify(this.updateData_2)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/qyfxgk/ggxxGrpz/update",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.deleteData_2 = [];
+        this.updateData_2 = [];
+        this.addData_2 = [];
+      }else{
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+    },
+    //验证个人社会行用记录信息数据
+    verify_2(rowObj, rowIndex) {
+      var isValid = tableValidates.validateByRow(
+        rowObj,
+        rowIndex,
+        this.rules_grxy,
+        this
+      );
+      if (rowObj.id) {
+        this.updateData_2.push(rowObj);
+      }
+    },
+
+    //接受个人社会行用记录信息删除的数据
+    acceptDelRow_2(val) {
+      this.deleteData_2.push(val);
+    },
+
+    //获取个人公积金信息
+    getGrgjj: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/qyfxgk/ggxxGrgjj/loadData",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.tableData_3 = res.data.resultData.data.rows;
+      }
+    },
+
+    //保存个人公积金信息
+    setGrgjj: async function() {
+      this.tableData_3.forEach((item, index) => {
+        if (item.id == null) {
+          this.addData_3.push(item);
+        }
+      });
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        addData: JSON.stringify(this.addData_3),
+        updateData: JSON.stringify(this.updateData_3)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/qyfxgk/ggxxGrgjj/update",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.deleteData_3 = [];
+        this.updateData_3 = [];
+        this.addData_3 = [];
+      }else{
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+    },
+    //验证个人公积金信息数据
+    verify_3(rowObj, rowIndex) {
+      var isValid = tableValidates.validateByRow(
+        rowObj,
+        rowIndex,
+        this.rules_grgjj,
+        this
+      );
+      if (rowObj.id) {
+        this.updateData_3.push(rowObj);
+      }
+    },
+
+    //接受个人公积金信息删除的数据
+    acceptDelRow_3(val) {
+      this.deleteData_3.push(val);
+    },
+
+
+    //获取个人社保信息
+    getGrsb: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/qyfxgk/ggxxGrsb/loadData",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.tableData_4 = res.data.resultData.data.rows;
+      }
+    },
+    //保存个人社保信息
+    setGrsb: async function() {
+      this.tableData_4.forEach((item, index) => {
+        if (item.id == null) {
+          this.addData_4.push(item);
+        }
+      });
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        updateData: JSON.stringify(this.updateData_4),
+        addData: JSON.stringify(this.addData_4)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/qyfxgk/ggxxGrsb/update",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.deleteData_4 = [];
+        this.updateData_4 = [];
+        this.addData_4 = [];
+      }else{
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+    },
+    //验证个人社保信息数据
+    verify_4(rowObj, rowIndex) {
+      var isValid = tableValidates.validateByRow(
+        rowObj,
+        rowIndex,
+        this.rules_grsb,
+        this
+      );
+      if (rowObj.id) {
+        this.updateData_4.push(rowObj);
+      }
+    },
+    //接受个人社保信息删除的数据
+    acceptDelRow_4(val) {
+      this.deleteData_4.push(val);
+    },
+
+    //获取个人车辆信息
+    getGrcl: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/qyfxgk/ggxxGrcl/loadData",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.tableData_5 = res.data.resultData.data.rows;
+      }
+    },
+
+    //保存个人车辆信息
+    setGrcl: async function() {
+      this.tableData_5.forEach((item, index) => {
+        if (item.id == null) {
+          this.addData_5.push(item);
+        }
+      });
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        updateData: JSON.stringify(this.updateData_5),
+        addData: JSON.stringify(this.addData_5),
+        deleteData: JSON.stringify(this.deleteData_5)
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/qyfxgk/ggxxGrcl/update",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.deleteData_5 = [];
+        this.updateData_5 = [];
+        this.addData_5 = [];
+      }else{
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+    },
+
+
+    //验证个人车辆信息数据
+    verify_5(rowObj, rowIndex) {
+      var isValid = tableValidates.validateByRow(
+        rowObj,
+        rowIndex,
+        this.rules_grcl,
+        this
+      );
+      if (rowObj.id) {
+        this.updateData_5.push(rowObj);
+      }
+    },
+    //接受个人车辆信息删除的数据
+    acceptDelRow_5(val) {
+      this.deleteData_5.push(val);
+    },
 
 
 
     handleClick(tab, event) {
       console.log(tab, event);
     },
-    verify2(row, index) {
-      row.edit = false;
-    },
-    verify3(row, index) {
-      row.edit = false;
-    },
-    verify4(row, index) {
-      row.edit = false;
-    }
   },
   components: {
     "v-tabelAddBtn": tabelAddBtn,
