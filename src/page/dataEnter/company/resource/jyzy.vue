@@ -173,8 +173,10 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="default" size="medium">模板下载</el-button>
-								<el-button type="default" size="medium">数据导入</el-button>
+								<el-button type="default" size="medium" @click="downloadFile">模板下载</el-button> 
+								<el-upload class="upload-button" :data="param" action="/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/upload" :show-file-list='false' :on-success="handleSuccess" :on-progress='handleProgess'>
+									<el-button size="medium" type="primary">数据导入</el-button>
+								</el-upload>
 								<el-button type="primary" size="medium" @click="setScsb">保存</el-button>
 							</div>
 							<div class="card-title">企业主要生产设备</div>
@@ -355,16 +357,21 @@
 </template>
 
 <script>
-  import tableValidates from "@/utils/validateTable/tableValidates.js";
+import tableValidates from "@/utils/validateTable/tableValidates.js";
 import quillEditor from "@/components/form/quillEditor.vue";
 import tabelAddBtn from "@/components/table/table-add-btn.vue";
 import tableOperation from "@/components/table/table-operation.vue";
+import axios from "axios";
 
 export default {
   data() {
     return {
+      param:{
+	    creditCode: sessionStorage.getItem("creditCode"),
+      token: sessionStorage.getItem("token"),
+	    },
       bdcxj: "",
-	    zysbxj:"",
+      zysbxj: "",
       activeName: "first",
       listLoading: false,
       textarea: "",
@@ -373,7 +380,7 @@ export default {
       addData: [],
       updateData: [],
       tableData_columns: {
-	      id:null,
+        id: null,
         syzh: "土地证号",
         zl: "坐落",
         yt: "用途",
@@ -390,7 +397,7 @@ export default {
       addData_1: [],
       updateData_1: [],
       tableData_1_columns: {
-	      id: null,
+        id: null,
         fqzh: "房产证号",
         fwzl: "坐落",
         dh: "地号",
@@ -413,8 +420,8 @@ export default {
         yz: "原值（万元）",
         jz: "净值（万元）",
         edit: false
-	  },
-	  //-----------------------------车辆记录----------------------------------//
+      },
+      //-----------------------------车辆记录----------------------------------//
       tableData_3: [],
 
       tableData_4: [],
@@ -422,7 +429,7 @@ export default {
       addData_4: [],
       updateData_4: [],
       tableData_4_columns: {
-        id:null,
+        id: null,
         hpzl: "号牌种类",
         hphm: "车牌号码",
         zwpp: "中文品牌",
@@ -434,101 +441,42 @@ export default {
       },
       //-----------------------------规则-------------------------------------//
       rules_tdxx: {
-        syzh: [
-          { required: true, message: "土地证号是必填项" }
-        ],
-        zl: [
-          { required: true, message: "坐落是必填项" }
-        ],
-        yt: [
-          { required: true, message: "用途是必填项" }
-        ],
-        qdjg: [
-          { required: true, message: "取得价格是必填项" }
-        ],
-        syqlx: [
-          { required: true, message: "使用权类型是必填项" }
-        ],
-        zzrq: [
-          { required: true, message: "终止日期是必填项" }
-        ],
-        mj: [
-          { required: true, message: "面积是必填项" }
-        ],
-        ywtxql: [
-          { required: true, message: "有无他项权利是必填项" }
-        ],
-        rzed: [
-          { required: true, message: "融资额度是必填项" }
-        ],
+        syzh: [{ required: true, message: "土地证号是必填项" }],
+        zl: [{ required: true, message: "坐落是必填项" }],
+        yt: [{ required: true, message: "用途是必填项" }],
+        qdjg: [{ required: true, message: "取得价格是必填项" }],
+        syqlx: [{ required: true, message: "使用权类型是必填项" }],
+        zzrq: [{ required: true, message: "终止日期是必填项" }],
+        mj: [{ required: true, message: "面积是必填项" }],
+        ywtxql: [{ required: true, message: "有无他项权利是必填项" }],
+        rzed: [{ required: true, message: "融资额度是必填项" }]
       },
       rules_fcxx: {
-        fqzh: [
-          { required: true, message: "房产证号是必填项" }
-        ],
-        fwzl: [
-          { required: true, message: "坐落是必填项" }
-        ],
-        dh: [
-          { required: true, message: "地号是必填项" }
-        ],
-        gmjg: [
-          { required: true, message: "购买价格是必填项" }
-        ],
-        symj: [
-          { required: true, message: "使用面积是必填项" }
-        ],
-        qsxz: [
-          { required: true, message: "权属性质是必填项" }
-        ],
-        synx: [
-          { required: true, message: "使用年限是必填项" }
-        ],
-        ywtxql: [
-          { required: true, message: "有无他项权利是必填项" }
-        ],
-        rzed: [
-          { required: true, message: "融资额度是必填项" }
-        ],
+        fqzh: [{ required: true, message: "房产证号是必填项" }],
+        fwzl: [{ required: true, message: "坐落是必填项" }],
+        dh: [{ required: true, message: "地号是必填项" }],
+        gmjg: [{ required: true, message: "购买价格是必填项" }],
+        symj: [{ required: true, message: "使用面积是必填项" }],
+        qsxz: [{ required: true, message: "权属性质是必填项" }],
+        synx: [{ required: true, message: "使用年限是必填项" }],
+        ywtxql: [{ required: true, message: "有无他项权利是必填项" }],
+        rzed: [{ required: true, message: "融资额度是必填项" }]
       },
       rules_scsb: {
-        sbmc: [
-          { required: true, message: "设备名称是必填项" }
-        ],
-        sbxh: [
-          { required: true, message: "设备型号是必填项" }
-        ],
-        yz: [
-          { required: true, message: "原值（万元）是必填项" }
-        ],
-        jz: [
-          { required: true, message: "净值（万元）是必填项" }
-        ]
+        sbmc: [{ required: true, message: "设备名称是必填项" }],
+        sbxh: [{ required: true, message: "设备型号是必填项" }],
+        yz: [{ required: true, message: "原值（万元）是必填项" }],
+        jz: [{ required: true, message: "净值（万元）是必填项" }]
       },
       rules_clmx: {
-        hpzl: [
-          { required: true, message: "号牌种类是必填项" }
-        ],
-        hphm: [
-          { required: true, message: "车牌号码是必填项" }
-        ],
-        zwpp: [
-          { required: true, message: "中文品牌是必填项" }
-        ],
-        cllx: [
-          { required: true, message: "车辆类型是必填项" }
-        ],
-        zzg: [
-          { required: true, message: "制造国是必填项" }
-        ],
-        jdczt: [
-          { required: true, message: "机动车状态是必填项" }
-        ],
-        dybj: [
-          { required: true, message: "抵押标记是必填项" }
-        ]
+        hpzl: [{ required: true, message: "号牌种类是必填项" }],
+        hphm: [{ required: true, message: "车牌号码是必填项" }],
+        zwpp: [{ required: true, message: "中文品牌是必填项" }],
+        cllx: [{ required: true, message: "车辆类型是必填项" }],
+        zzg: [{ required: true, message: "制造国是必填项" }],
+        jdczt: [{ required: true, message: "机动车状态是必填项" }],
+        dybj: [{ required: true, message: "抵押标记是必填项" }]
       }
-
     };
   },
   computed: {
@@ -591,7 +539,7 @@ export default {
         this.deleteData = [];
         this.updateData = [];
         this.addData = [];
-      }else{
+      } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
@@ -607,7 +555,7 @@ export default {
         this.rules_tdxx,
         this
       );
-      console.log(isValid)
+      console.log(isValid);
       if (rowObj.id) {
         this.updateData.push(rowObj);
       }
@@ -627,7 +575,7 @@ export default {
         this.tableData_1 = res.data.resultData.data.rows;
       } else {
       }
-	},
+    },
     //保存企业房产信息数据
     setFcxx: async function() {
       this.tableData_1.forEach((item, index) => {
@@ -651,7 +599,7 @@ export default {
         this.deleteData_1 = [];
         this.updateData_1 = [];
         this.addData_1 = [];
-      }else{
+      } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
@@ -667,7 +615,7 @@ export default {
         this.rules_fcxx,
         this
       );
-      console.log(isValid)
+      console.log(isValid);
       if (rowObj.id) {
         this.updateData_1.push(rowObj);
       }
@@ -689,10 +637,10 @@ export default {
     },
     //修改不动产信息小结
     changBdcxj(val) {
-      this.bdcxj=val;
+      this.bdcxj = val;
     },
     //保存不动产信息小结
-    saveBdcXj:async function() {
+    saveBdcXj: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token"),
@@ -704,7 +652,7 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
-      }else{
+      } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
@@ -724,7 +672,7 @@ export default {
         this.tableData_2 = res.data.resultData.data.rows;
       } else {
       }
-	},
+    },
     //保存主要生产设备数据
     setScsb: async function() {
       this.tableData_2.forEach((item, index) => {
@@ -748,7 +696,7 @@ export default {
         this.deleteData_2 = [];
         this.updateData_2 = [];
         this.addData_2 = [];
-      }else{
+      } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
@@ -764,12 +712,11 @@ export default {
         this.rules_scsb,
         this
       );
-      console.log(isValid)
+      console.log(isValid);
       if (rowObj.id) {
         this.updateData_2.push(rowObj);
       }
     },
-
 
     //获取主要生产设备小结
     getZysbxj: async function() {
@@ -787,10 +734,10 @@ export default {
     },
     //修改主要生产设备小结
     changZysbxj(val) {
-      this.zysbxj=val;
+      this.zysbxj = val;
     },
     //保存主要生产设备小结
-    setZysbXj:async function() {
+    setZysbXj: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token"),
@@ -802,7 +749,7 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
-      }else{
+      } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
@@ -850,8 +797,8 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
-      }else{
-        this.$message({message: res.data.resultMsg, type: "warning"});
+      } else {
+        this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
 
@@ -866,13 +813,12 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
-        this.$message({message: res.data.resultMsg, type: "success"});
+        this.$message({ message: res.data.resultMsg, type: "success" });
         this.tableData_3 = res.data.resultData.data;
       } else {
-        this.$message({message: res.data.resultMsg, type: "warning"});
+        this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
-
 
     //获取车辆明细信息
     getCarList: async function() {
@@ -889,7 +835,6 @@ export default {
       } else {
       }
     },
-
     //接口获取车辆明细
     getClmxIterfaceData: async function() {
       let params = {
@@ -901,14 +846,14 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
-        this.$message({message: res.data.resultMsg, type: "success"});
+        this.$message({ message: res.data.resultMsg, type: "success" });
         this.tableData_4 = res.data.resultData.data.rows;
         this.deleteData_4 = [];
         this.updateData_4 = [];
         this.addData_4 = [];
         this.addData_4 = res.data.resultData.data.rows;
       } else {
-        this.$message({message: res.data.resultMsg, type: "warning"});
+        this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
 
@@ -935,9 +880,34 @@ export default {
         this.deleteData_4 = [];
         this.updateData_4 = [];
         this.addData_4 = [];
-      }else{
+      } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
+    },
+
+ //downloadUrl downloadFile
+    downloadFile: async function() {
+    //   let params = {
+    //     token: sessionStorage.getItem("token"),
+    //     fileName: "我操",
+    //     filePath:
+    //       "http://testdfs.creditstate.cn/group1/M00/02/17/rBj-DlpEC0WADGeQAABaABUpVk8581.xls"
+    //   };
+    //   const res = await this.$http.post(
+    //    "/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/downloadTest",
+    //    params,
+    //    {responseType:'arrayBuffer'}
+    //  );
+
+      // let url = window.URL.createObjectURL(
+      //   new Blob([res.data], { type: "application/vnd.ms-excel" })
+      // );
+      let link = document.createElement("a");
+      link.style.display = "none";
+      link.href = "http://testdfs.creditstate.cn/group1/M00/02/17/rBj-DlpEC0WADGeQAABaABUpVk8581.xls";
+      link.setAttribute("download", "测试.xls");
+      document.body.appendChild(link);
+      link.click();
     },
 
     //接受车辆明细删除的数据
@@ -952,12 +922,11 @@ export default {
         this.rules_clmx,
         this
       );
-      console.log(isValid)
+      console.log(isValid);
       if (rowObj.id) {
         this.updateData_4.push(rowObj);
       }
     },
-
 
     //主要生产设备合计
     getSummaries(param) {
@@ -979,7 +948,7 @@ export default {
             }
           }, 0);
           //根据列名不同，确定不同的合计单位
-          if (column.property == "sbmc" || column.property =="sbxh") {
+          if (column.property == "sbmc" || column.property == "sbxh") {
             sums[index] += "";
           } else if (column.property == "yz" || column.property == "jz") {
             sums[index] += " 万元";
@@ -991,6 +960,21 @@ export default {
       return sums;
     },
 
+    //////////////////////////////////////////////////////////////
+      handleSuccess(res, file){
+        if (res.resultCode == "0") {
+              this.$message({ message: res.resultMsg, type: "success" });
+            if(res.resultMapData.qytpPicUrl!=null)
+                  this.imgurl_qytp=res.resultMapData.qytpPicUrl;
+            else if(res.resultMapData.zzjgPicUrl!=null)
+                this.imgurl_zzjg=res.resultMapData.zzjgPicUrl;
+          } else {
+            this.$message({ message: res.resultMsg, type: "error" });
+          }
+      },
+      handleProgess(){
+        // console.log(arguments)
+      }
   },
   components: {
     "v-tabelAddBtn": tabelAddBtn,

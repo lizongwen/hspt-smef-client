@@ -90,19 +90,19 @@ export default {
   computed: {
     totalNum() {
       let all = 0;
-      this.tableData.forEach((items, index, array) => {
-        for (let item in items) {
-          if (
-            item === "bs" ||
-            item === "dbje" ||
-            item === "bdbywBl" ||
-            item === "bdbywGz" ||
-            item === "bdbywZc"
-          ) {
-            all += parseInt(items[item]);
-          }
+
+      for (var i = 0, size = this.tableData.length; i < size; i++) {
+        if (
+          "bs" === this.tableData[i].bs ||
+          "dbje" === this.tableData[i].dbje ||
+          "bdbywBl" === this.tableData[i].bdbywBl ||
+          "bdbywGz" === this.tableData[i].bdbywGz ||
+          "bdbywZc" === this.tableData[i].bdbywZc
+        ) {
+          const num = null == items[item] ? 0 : parseInt(items[item]);
+          all += num;
         }
-      });
+      }
       return all;
     }
   },

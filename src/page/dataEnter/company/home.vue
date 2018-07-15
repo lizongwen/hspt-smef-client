@@ -439,10 +439,11 @@ export default {
     getProjDetail: async function() {
       let params = {
         token: sessionStorage.getItem("token"),
-        creditCode: 123
+        creditCode: sessionStorage.getItem("creditCode"),
       };
-      const res = await this.$http.post("/hspt-web-api/project/detail", params);
-      this.projDetail = res.data.resultData;
+			const res = await this.$http.post("/hspt-web-api/project/detail", params);
+			this.projDetail = res.data.resultData;
+			
     }
   },
   components: {}

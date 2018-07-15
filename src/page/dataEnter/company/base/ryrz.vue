@@ -14,10 +14,10 @@
 						<div>
 							<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
-								<el-table-column min-width="200px" :label="tableData_columns.nf">
+								<el-table-column min-width="80px" :label="tableData_columns.nf">
 									<template slot-scope="scope">
-										<el-input v-model.number="scope.row.nf" class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
-										<span v-else>{{ scope.row.nf}}</span>
+										<el-date-picker v-model="scope.row.nf" class="cellItem el-form-item" value-format="yyyy" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" type="date" placeholder="选择日期" style="width: 100%;" :clearable='false'></el-date-picker>
+						      	<span v-else>{{scope.row.nf}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_columns.ry">
@@ -90,6 +90,7 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
+                <el-button type="default" size="medium" @click="getDataFromRemote">获取数据</el-button>
 								<el-button class="save" type="primary" size="medium" @click="saveZyzzyrz">保存</el-button>
 							</div>
 							<div class="card-title">主要认证与资质</div>
@@ -171,11 +172,11 @@ export default {
       },
 	  
       tableData_zyzzyrz: [],//主要认证与资质
-	  tableData_zyzzyrz_delRowData: [],
+	    tableData_zyzzyrz_delRowData: [],
       tableData_zyzzyrz_addData: [],
       tableData_zyzzyrz_updateData: [],
       tableData_zyzzyrz_columns: {
-	    id: null,
+	      id: null,
         ztmc: "主体名称",
         zsbh: "证书编号",
         rzxm: "认证项目/产品类别",
@@ -292,6 +293,7 @@ export default {
         this.tableData_delRowData = [];
         this.tableData_updateData = [];
         this.tableData_addData = [];
+        this.getRyrz();
       }else{
 	   this.$message({ message: res.data.resultMsg, type: "warning" });
 	  }
@@ -352,12 +354,13 @@ export default {
         this.tableData_xzxk_delRowData = [];
         this.tableData_xzxk_updateData = [];
         this.tableData_xzxk_addData = [];
+        this.getXzxk();
       }else{
 	   this.$message({ message: res.data.resultMsg, type: "warning" });
 	  }
 	},
 	
-	/////////////////////////////////////////////////////////////////////////主要资质与认证
+	///////////////////////////////////////////////////////////////////////// 主要资质与认证
 	
 	//接受删除的数据
     acceptDelRow_zyzzyrz(val) {
@@ -413,10 +416,33 @@ export default {
         this.tableData_zyzzyrz_delRowData = [];
         this.tableData_zyzzyrz_updateData = [];
         this.tableData_zyzzyrz_addData = [];
+        this.getZyzzrz();
       }else{
 	   this.$message({ message: res.data.resultMsg, type: "warning" });
 	  }
-	},
+  },
+  
+  /////////////////////////////////////////////// 获取主要资质与认证远程接口数据
+  getDataFromRemote: async function(){
+    let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        companyName:sessionStorage.getItem("companyName")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsjbxx/ryrz/zyzzyrz/remote",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+        this.tableData_zyzzyrz = res.data.resultData;
+        this.tableData_zyzzyrz_delRowData = [];
+        this.tableData_zyzzyrz_updateData = res.data.resultDat;
+        this.tableData_zyzzyrz_addData = [];
+      }else{
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+  }
   },
   components: {
     "v-tabelAddBtn": tabelAddBtn,
