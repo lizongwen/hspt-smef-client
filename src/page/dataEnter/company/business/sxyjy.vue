@@ -13,7 +13,7 @@
             <div>
               <el-table :data="tableData_xsgk" v-loading.body="listLoading" border fit highlight-current-row
                         style="width: 100%">
-                <el-table-column min-width="300px" :label="tableData_xsgk_columns.xsdq">
+                <el-table-column min-width="150px" :label="tableData_xsgk_columns.xsdq">
                   <template slot-scope="scope">
                     <template v-if="scope.row.edit">
                       <el-form :model="scope.row" :rules="rules" :id="'salesArea'+scope.$index"
@@ -26,7 +26,7 @@
                     <span v-else>{{scope.row.xsdq}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="300px" :label="tableData_xsgk_columns.bfb">
+                <el-table-column min-width="80px" :label="tableData_xsgk_columns.bfb">
                   <template slot-scope="scope">
                     <template v-if="scope.row.edit">
                       <el-form :model="scope.row" :rules="rules" :id="'ratio'+scope.$index"
@@ -422,6 +422,11 @@
           "/hspt-web-api/data_entry/gsyyxx/sxyjyxx/qy/save",
           params
         );
+        if (res.data.resultCode == "0") {
+          this.$message({ message: res.data.resultMsg, type: "success" });
+        } else {
+          this.$message({ message: res.data.resultMsg, type: "warning" });
+        }
       },
       getZykhjssm: async function () {
         let params = {
@@ -453,6 +458,11 @@
           "/hspt-web-api/data_entry/gsyyxx/sxyjyxx/zykhwlZykhjs/save",
           params
         );
+        if (res.data.resultCode == "0") {
+          this.$message({ message: res.data.resultMsg, type: "success" });
+        } else {
+          this.$message({ message: res.data.resultMsg, type: "warning" });
+        }
       },
       handleClick(tab, event) {
         //   console.log(tab, event);

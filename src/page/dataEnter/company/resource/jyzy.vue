@@ -174,9 +174,11 @@
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium" @click="downloadFile">模板下载</el-button> 
-								<el-upload class="upload-button" :data="param" action="/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/upload" :show-file-list='false' :on-success="handleSuccess" :on-progress='handleProgess'>
-									<el-button size="medium" type="primary">数据导入</el-button>
-								</el-upload>
+								<div style="display:inline-block">
+									<el-upload class="upload-button" :data="param" action="/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/upload" :show-file-list='false' :on-success="handleSuccess" :on-progress='handleProgess'>
+										<el-button size="medium" type="primary">数据导入</el-button>
+									</el-upload>
+								</div>
 								<el-button type="primary" size="medium" @click="setScsb">保存</el-button>
 							</div>
 							<div class="card-title">企业主要生产设备</div>
@@ -670,8 +672,7 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.tableData_2 = res.data.resultData.data.rows;
-      } else {
-      }
+      } 
     },
     //保存主要生产设备数据
     setScsb: async function() {
