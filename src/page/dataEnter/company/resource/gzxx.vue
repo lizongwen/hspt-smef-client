@@ -153,6 +153,7 @@ export default {
         this.deleteData = [];
         this.updateData = [];
         this.addData = [];
+        this.getList();
       } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }

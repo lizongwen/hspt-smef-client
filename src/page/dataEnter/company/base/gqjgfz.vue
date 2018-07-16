@@ -441,6 +441,7 @@ export default {
         this.delRowData = [];
         this.updateData = [];
         this.addData = [];
+				this.getFssgsGqjg();
       } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
@@ -496,7 +497,8 @@ export default {
         this.$message({ message: res.data.resultMsg, type: "success" });
         this.delRowData = [];
         this.updateData = [];
-        this.addData = [];
+				this.addData = [];
+				this.getSsgsGqjg();
       } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
@@ -536,7 +538,7 @@ export default {
         token: sessionStorage.getItem("token"),
         addData: JSON.stringify(this.addData_2),
         updateData: JSON.stringify(this.updateData_2),
-        delData: JSON.stringify(this.delRowData_2)
+				delData: JSON.stringify(this.delRowData_2)
       };
       const res = await this.$http.post(
         "/hspt-web-api/data_entry/gqjg/fzjxsqyqk/save",
@@ -546,7 +548,8 @@ export default {
         this.$message({ message: res.data.resultMsg, type: "success" });
         this.delRowData_2 = [];
         this.updateData_2 = [];
-        this.addData_2 = [];
+				this.addData_2 = [];
+				this.getFzjxsqyqk();
       } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
@@ -597,7 +600,8 @@ export default {
         this.$message({ message: res.data.resultMsg, type: "success" });
         this.delRowData_3 = [];
         this.updateData_3 = [];
-        this.addData_3 = [];
+				this.addData_3 = [];
+				this.getGlqy();
       } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }

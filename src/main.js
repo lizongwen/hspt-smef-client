@@ -31,7 +31,7 @@ Vue.use(ElementUI);
 Vue.config.productionTip = false;
 Vue.prototype.$http = http;
 Vue.prototype.$api = api;
-   require('./mock.js');
+// require('./mock.js');
 
 
 /* eslint-disable no-new */
