@@ -132,7 +132,6 @@ export default {
         this.delRowData = [];
         this.updateData = [];
         this.addData = [];
-        this.getZtbxx();
       }else{
 	   this.$message({ message: res.data.resultMsg, type: "warning" });
 	  }

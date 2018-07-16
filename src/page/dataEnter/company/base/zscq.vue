@@ -702,7 +702,6 @@ export default {
         this.deleteData = [];
         this.updateData = [];
         this.addData = [];
-        this.getSb();
       }else{
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
@@ -719,6 +718,7 @@ export default {
         this.rules_sb,
         this
       );
+      console.log(isValid);
       if (rowObj.id) {
         this.updateData.push(rowObj);
       }
@@ -736,41 +736,16 @@ export default {
         "/hspt-web-api/data_entry/gsjbxx/zscq/zl/list",
         params
       );
-      console.log(res.data.resultData)
-  
       if (res.data.resultCode == "0") {
         this.tableData_1 = res.data.resultData;
-        var fmzlSl = parseInt(res.data.resultData.fmzl.sl);
-        var syxxSl = parseInt(res.data.resultData.syxx.sl);
-        var wgsj = parseInt(res.data.resultData.wgsj.sl);
-        var fmzlSlPageCount = parseInt(this.tableData_1.fmzl.sqyq)+parseInt(this.tableData_1.fmzl.wqzz)+parseInt(this.tableData_1.fmzl.bhch)+parseInt(this.tableData_1.fmzl.szss)+parseInt(this.tableData_1.fmzl.gksz);
-        var syxxSlPageCount = parseInt(this.tableData_1.syxx.sqyq)+parseInt(this.tableData_1.syxx.wqzz)+parseInt(this.tableData_1.syxx.bhch)+parseInt(this.tableData_1.syxx.szss)+parseInt(this.tableData_1.syxx.gksz);
-        var wgsjPageCount = parseInt(this.tableData_1.wgsj.sqyq)+parseInt(this.tableData_1.wgsj.wqzz)+parseInt(this.tableData_1.wgsj.bhch)+parseInt(this.tableData_1.wgsj.szss)+parseInt(this.tableData_1.wgsj.gksz);
-         if(fmzlSl!=0){
-            this.tableData_1_fmzl_sl=fmzlSl;
-         }else{
-           this.tableData_1_fmzl_sl=fmzlSlPageCount;
-         }
-         if(syxxSl!=0){
-          this.tableData_1_syxx_sl=syxxSl;
-         }else{
-           this.tableData_1_syxx_sl=syxxSlPageCount;
-         }
-         if(wgsj!=0){
-          this.tableData_1_wgsj_sl=wgsj;
-         }else{
-           this.tableData_1_wgsj_sl=wgsjPageCount;
-         }
-        
-        }
+		this.tableData_1_fmzl_sl=parseInt(this.tableData_1.fmzl.sqyq)+parseInt(this.tableData_1.fmzl.wqzz)+parseInt(this.tableData_1.fmzl.bhch)+parseInt(this.tableData_1.fmzl.szss)+parseInt(this.tableData_1.fmzl.gksz);
+		this.tableData_1_syxx_sl=parseInt(this.tableData_1.syxx.sqyq)+parseInt(this.tableData_1.syxx.wqzz)+parseInt(this.tableData_1.syxx.bhch)+parseInt(this.tableData_1.syxx.szss)+parseInt(this.tableData_1.syxx.gksz);
+		this.tableData_1_wgsj_sl=parseInt(this.tableData_1.wgsj.sqyq)+parseInt(this.tableData_1.wgsj.wqzz)+parseInt(this.tableData_1.wgsj.bhch)+parseInt(this.tableData_1.wgsj.szss)+parseInt(this.tableData_1.wgsj.gksz);
+	  }
     },
 
     //保存专利信息
     setZL: async function() {
-
-      this.tableData_1.fmzl.sl=this.tableData_1_fmzl_sl;
-      this.tableData_1.syxx.sl=this.tableData_1_syxx_sl;
-      this.tableData_1.wgsj.sl=this.tableData_1_wgsj_sl;
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token"),
@@ -782,9 +757,6 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
-        this.getZl();
-      }else {
-        this.$message({message: res.data.resultMsg, type: "warning"});
       }
     },
 
@@ -850,7 +822,6 @@ export default {
         this.deleteData_2 = [];
         this.updateData_2 = [];
         this.addData_2 = [];
-        this.getSqyqzlmx();
       }else{
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
@@ -935,7 +906,6 @@ export default {
         this.deleteData_3 = [];
         this.updateData_3 = [];
         this.addData_3 = [];
-        this.getZzq();
       }else{
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
@@ -1018,7 +988,6 @@ export default {
         this.deleteData_4 = [];
         this.updateData_4 = [];
         this.addData_4 = [];
-        this.getWzba();
       }else{
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }

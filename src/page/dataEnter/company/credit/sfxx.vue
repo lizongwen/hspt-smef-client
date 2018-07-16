@@ -6,51 +6,75 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <!--<el-button class="save" type="default" size="medium">获取数据</el-button>-->
-                <el-button class="save" type="primary" size="medium" @click="saveSfKtgg">保存</el-button>
+                <el-button class="save" type="default" size="medium">获取数据</el-button>
+                <el-button class="save" type="primary" size="medium">保存</el-button>
               </div>
               <div class="card-title">法院公告信息</div>
             </div>
+            <!-- 表格容器 -->
             <div>
-              <el-table :data="tableData_1" v-loading.body="listLoading" border fit highlight-current-row
+              <el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row
                         style="width: 100%">
                 <el-table-column label="序号" type="index" width="50"></el-table-column>
-                <el-table-column min-width="200px" :label="tableData_1_columns.zxfy">
+                <el-table-column min-width="100px" label="执行法院">
                   <template slot-scope="scope">
-                    <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_1_columns)[1]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.zxfy"></el-input>
-                    <span v-else>{{ scope.row.zxfy}}</span>
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules" :id="'executive'+scope.$index"
+                               :ref="'form_executive_'+scope.$index" :show-message="false">
+                        <el-form-item prop="executive" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.executive"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{scope.row.executive}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" :label="tableData_1_columns.ktsj">
+                <el-table-column min-width="100px" label="发布时间">
                   <template slot-scope="scope">
-                    <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_1_columns)[2]"
-                              v-if="scope.row.edit" size="small" v-model="scope.row.ktsj"></el-input>
-                    <span v-else>{{ scope.row.ktsj}}</span>
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules" :id="'time'+scope.$index"
+                               :ref="'form_time_'+scope.$index" :show-message="false">
+                        <el-form-item prop="time" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.time"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.time}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" :label="tableData_1_columns.ah">
+                <el-table-column min-width="100px" label="公告类型">
                   <template slot-scope="scope">
-                    <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_1_columns)[3]"
-                              v-if="scope.row.edit" size="small" v-model="scope.row.ah"></el-input>
-                    <span v-else>{{ scope.row.ah}}</span>
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules" :id="'lable'+scope.$index"
+                               :ref="'form_lable_'+scope.$index" :show-message="false">
+                        <el-form-item prop="lable" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.lable"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.lable}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" :label="tableData_1_columns.ay">
+                <el-table-column min-width="100px" label="公告内容">
                   <template slot-scope="scope">
-                    <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_1_columns)[4]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.ay"></el-input>
-                    <span v-else>{{ scope.row.ay}}</span>
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules" :id="'content'+scope.$index"
+                               :ref="'form_content_'+scope.$index" :show-message="false">
+                        <el-form-item prop="content" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.content"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.content}}</span>
                   </template>
                 </el-table-column>
                 <el-table-column align="center" label="操作" width="240">
                   <template slot-scope="scope">
-                    <v-tableOperation :scope="scope" :tableData="tableData_1" v-on:verify="verify1"
-                                      v-on:acceptDelRow='acceptDelTable1Row'></v-tableOperation>
+                    <v-tableOperation :scope="scope" :tableData="tableData" v-on:verify="verify"></v-tableOperation>
                   </template>
                 </el-table-column>
               </el-table>
-              <v-tabelAddBtn :tableData="tableData_1" :tableData_columns="tableData_1_columns"></v-tabelAddBtn>
+              <v-tabelAddBtn :tableData="tableData" :tableData_columns="tableData_columns"></v-tabelAddBtn>
             </div>
           </el-card>
         </div>
@@ -60,83 +84,113 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <!--<el-button class="save" type="default" size="medium">获取数据</el-button>-->
-                <el-button class="save" type="primary" size="medium" @click="saveSfFypb">保存</el-button>
+                <el-button class="save" type="primary" size="medium">保存</el-button>
               </div>
-              <div class="card-title">法院判别信息</div>
+              <div class="card-title">法院判决信息</div>
             </div>
+            <!-- 表格容器 -->
             <div>
-              <el-table :data="tableData_2" v-loading.body="listLoading" border fit highlight-current-row
+              <el-table :data="tableData_1" v-loading.body="listLoading" border fit highlight-current-row
                         style="width: 100%">
                 <el-table-column label="序号" type="index" width="50"></el-table-column>
-                <el-table-column min-width="200px" :label="tableData_2_columns.pjxx">
+                <el-table-column min-width="300px" label="判决时间">
                   <template slot-scope="scope">
-                    <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[1]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.pjxx"></el-input>
-                    <span v-else>{{ scope.row.pjxx}}</span>
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules" :id="'time'+scope.$index"
+                               :ref="'form_time_'+scope.$index" :show-message="false">
+                        <el-form-item prop="time" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.time"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{scope.row.time}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" :label="tableData_2_columns.sf">
+                <el-table-column min-width="100px" label="身份">
                   <template slot-scope="scope">
-                    <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[2]"
-                              v-if="scope.row.edit" size="small" v-model="scope.row.sf"></el-input>
-                    <span v-else>{{ scope.row.sf}}</span>
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules" :id="'identity'+scope.$index"
+                               :ref="'form_identity_'+scope.$index" :show-message="false">
+                        <el-form-item prop="identity" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.identity"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.identity }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" :label="tableData_2_columns.zxfy">
+                <el-table-column min-width="100px" label="执行法院">
                   <template slot-scope="scope">
-                    <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[3]"
-                              v-if="scope.row.edit" size="small" v-model="scope.row.zxfy"></el-input>
-                    <span v-else>{{ scope.row.zxfy}}</span>
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules" :id="'court'+scope.$index"
+                               :ref="'form_court_'+scope.$index" :show-message="false">
+                        <el-form-item prop="court" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.court"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.court}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" :label="tableData_2_columns.wszh">
+                <el-table-column min-width="100px" label="文书字号">
                   <template slot-scope="scope">
-                    <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[4]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.wszh"></el-input>
-                    <span v-else>{{ scope.row.wszh}}</span>
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules" :id="'fontSize'+scope.$index"
+                               :ref="'form_fontSize_'+scope.$index" :show-message="false">
+                        <el-form-item prop="fontSize" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.fontSize"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.fontSize}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" :label="tableData_2_columns.pjjg">
+                <el-table-column min-width="100px" label="判决结果">
                   <template slot-scope="scope">
-                    <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[5]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.pjjg"></el-input>
-                    <span v-else>{{ scope.row.pjjg}}</span>
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules" :id="'result'+scope.$index"
+                               :ref="'form_result_'+scope.$index" :show-message="false">
+                        <el-form-item prop="result" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.result"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.result}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" :label="tableData_2_columns.ssfcd">
+                <el-table-column min-width="100px" label="诉讼费用">
                   <template slot-scope="scope">
-                    <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[6]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.ssfcd"></el-input>
-                    <span v-else>{{ scope.row.ssfcd}}</span>
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules" :id="'cost'+scope.$index"
+                               :ref="'form_cost_'+scope.$index" :show-message="false">
+                        <el-form-item prop="cost" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.cost"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.cost}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" :label="tableData_2_columns.ay">
+                <el-table-column min-width="100px" label="案由">
                   <template slot-scope="scope">
-                    <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[7]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.ay"></el-input>
-                    <span v-else>{{ scope.row.ay}}</span>
-                  </template>
-                </el-table-column>
-                <el-table-column min-width="200px" :label="tableData_2_columns.isDeleted">
-                  <template slot-scope="scope">
-                    <el-select v-model="scope.row.isDeleted" class="edit-input cellItem el-form-item"
-                               :class="Object.keys(tableData_2_columns)[8]" placeholder="请选择" size="small"
-                               v-if="scope.row.edit">
-                      <el-option :value="1" label="是"></el-option>
-                      <el-option :value="0" label="否"></el-option>
-                    </el-select>
-                    <span v-else>{{ scope.row.isDeleted == null ? "" : (scope.row.isDeleted ? "否" : "是")}}</span>
+                    <template v-if="scope.row.edit">
+                      <el-form :model="scope.row" :rules="rules" :id="'causeAction'+scope.$index"
+                               :ref="'form_causeAction_'+scope.$index" :show-message="false">
+                        <el-form-item prop="causeAction" class="td-form-item">
+                          <el-input class="edit-input" size="small" v-model="scope.row.causeAction"></el-input>
+                        </el-form-item>
+                      </el-form>
+                    </template>
+                    <span v-else>{{ scope.row.causeAction}}</span>
                   </template>
                 </el-table-column>
                 <el-table-column align="center" label="操作" width="240">
                   <template slot-scope="scope">
-                    <v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify2"
-                                      v-on:acceptDelRow='acceptDelTable2Row'></v-tableOperation>
+                    <v-tableOperation :scope="scope" :tableData="tableData_1" v-on:verify="verify1"></v-tableOperation>
                   </template>
                 </el-table-column>
               </el-table>
-              <v-tabelAddBtn :tableData="tableData_2" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>
+              <v-tabelAddBtn :tableData="tableData_1" :tableData_columns="tableData_1_columns"></v-tabelAddBtn>
             </div>
           </el-card>
         </div>
@@ -146,7 +200,7 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <!--<el-button class="save" type="default" size="medium">获取数据</el-button>-->
+                <el-button class="save" type="default" size="medium">获取数据</el-button>
                 <el-button class="save" type="primary" size="medium" @click="saveSfqybzxgg">保存</el-button>
               </div>
               <div class="card-title">企业被执行公告信息</div>
@@ -185,19 +239,16 @@
                 </el-table-column>
                 <el-table-column min-width="200px" :label="tableData_3_columns.isDeleted">
                   <template slot-scope="scope">
-                    <el-select v-model="scope.row.isDeleted" class="edit-input cellItem el-form-item"
-                               :class="Object.keys(tableData_3_columns)[5]" placeholder="请选择" size="small"
-                               v-if="scope.row.edit">
+                    <el-select v-model="scope.row.isDeleted" class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[5]" placeholder="请选择" size="small" v-if="scope.row.edit">
                       <el-option :value="1" label="是"></el-option>
                       <el-option :value="0" label="否"></el-option>
                     </el-select>
-                    <span v-else>{{ scope.row.isDeleted == null ? "" : (scope.row.isDeleted ? "否" : "是")}}</span>
+                    <span v-else>{{ scope.row.isDeleted==null?"":(scope.row.isDeleted?"否":"是")}}</span>
                   </template>
                 </el-table-column>
                 <el-table-column align="center" label="操作" width="240">
                   <template slot-scope="scope">
-                    <v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify3"
-                                      v-on:acceptDelRow='acceptDelTable3Row'></v-tableOperation>
+                    <v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify3" v-on:acceptDelRow='acceptDelTable3Row'></v-tableOperation>
                   </template>
                 </el-table-column>
               </el-table>
@@ -211,7 +262,7 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <!--<el-button class="save" type="default" size="medium">获取数据</el-button>-->
+                <el-button class="save" type="default" size="medium">获取数据</el-button>
                 <el-button class="save" type="primary" size="medium" @click="saveSfSxlhcj">保存</el-button>
               </div>
               <div class="card-title">失信联合惩戒信息</div>
@@ -272,7 +323,7 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <!--<el-button class="save" type="default" size="medium">获取数据</el-button>-->
+                <el-button class="save" type="default" size="medium">获取数据</el-button>
                 <el-button class="save" type="primary" size="medium">保存</el-button>
               </div>
               <div class="card-title">网站备案</div>
@@ -357,6 +408,7 @@
           </el-card>
         </div>
       </el-tab-pane>
+
     </el-tabs>
   </div>
 </template>
@@ -372,32 +424,48 @@
         listLoading: false,
         rules: {},
 
-        tableData_1: [], //表格数据
-        addData1: [],
-        updateData1: [],
-        delRowData1: [],
-        tableData_1_columns: {
-          zxfy: "执行法院",
-          ktsj: "开庭时间",
-          ah: "案号",
-          ay: "案由",
+        tableData: [
+          {
+            executive: "爱福特环保",
+            time: 0,
+            lable: "2018/02/01",
+            content: "05415785",
+            edit: false
+          }, {
+            executive: "爱福特环保1",
+            time: 1,
+            lable: "2018/02/02",
+            content: "05415788",
+            edit: false
+          }
+        ], //表格数据
+        tableData_columns: {
+          executive: "",
+          time: "",
+          lable: "",
+          content: "",
           edit: false
         }, //表格列字段
-
-        tableData_2: [], //表格数据
-        addData2: [],
-        updateData2: [],
-        delRowData2: [],
-        tableData_2_columns: {
-          id: null,
-          pjxx: "判决时间",
-          sf: "身份",
-          zxfy: "执行法院",
-          wszh: "文书字号",
-          pjjg: "判决结果",
-          ssfcd: "诉讼费承担",
-          ay: "案由",
-          isDeleted: "是否删除",
+        tableData_1: [
+          {
+            time: "054457",
+            identity: "2018/04/01",
+            court: "开关寿命试验机",
+            fontSize: "25358745",
+            result: "中国（CN）",
+            cost: "CN205455744",
+            causeAction: "授权",
+            edit: false
+          }
+        ], //表格数据
+        tableData_1_columns: {
+          time: "",
+          identity: "",
+          court: "",
+          fontSize: "",
+          result: "",
+          cost: "",
+          causeAction: "",
           edit: false
         }, //表格列字段
 
@@ -416,9 +484,9 @@
         }, //表格列字段
 
         tableData_4: [], //表格数据
-        addData4: [],
-        updateData4: [],
-        delRowData4: [],
+        addData: [],
+        updateData: [],
+        delRowData: [],
         tableData_4_columns: {
           id: null,
           sxztmc: "失信主体名称",
@@ -459,135 +527,7 @@
       init() {
         this.getSfSxlhcj();
         this.getSfQybzxgg();
-        this.getSfFypj();
-        this.getSfKtgg();
       },
-      //初始化开庭公告信息页面
-      getSfKtgg: async function () {
-        let params = {
-          creditCode: sessionStorage.getItem("creditCode"),
-          token: sessionStorage.getItem("token")
-        };
-        const res = await this.$http.post(
-          "/hspt-web-api/data_entry/qyfxgk/qyfxgkKtgg/init",
-          params
-        );
-        if (res.data.resultCode == "0") {
-          this.tableData_1 = res.data.resultData;
-        }
-      },
-      //保存开庭公告信息
-      saveSfKtgg() {
-        this.setSfKtgg();
-      },
-      //保存司法信息中开庭公告数据
-      setSfKtgg: async function () {
-        this.tableData_1.forEach((item, index) => {
-          if (item.id == null) {
-            this.addData1.push(item);
-          }
-        });
-        let params = {
-          creditCode: sessionStorage.getItem("creditCode"),
-          token: sessionStorage.getItem("token"),
-          addData: JSON.stringify(this.addData1),
-          updateData: JSON.stringify(this.updateData1),
-          deleteData: JSON.stringify(this.delRowData1)
-        };
-        const res = await this.$http.post(
-          "/hspt-web-api/data_entry/qyfxgk/qyfxgkKtgg/update",
-          params
-        );
-        if (res.data.resultCode == "1111") {
-          this.$message({message: res.data.resultMsg, type: "success"});
-          this.delRowData1 = [];
-          this.updateData1 = [];
-          this.addData1 = [];
-          this.getSfKtgg();
-        } else {
-          this.$message({message: res.data.resultMsg, type: "warning"});
-        }
-      },
-      //接受开庭公告的数据
-      acceptDelTable1Row(val) {
-        this.delRowData1.push(val);
-      },
-      verify1(rowObj, index) {
-        var isValid = tableValidates.validateByRow(
-          rowObj,
-          index,
-          this.rules,
-          this
-        );
-        if (rowObj.id) {
-          this.updateData1.push(rowObj);
-        }
-      },
-
-      ////////////////////////////////////////////////////法院判决信息
-      //初始化法院判别信息页面
-      getSfFypj: async function () {
-        let params = {
-          creditCode: sessionStorage.getItem("creditCode"),
-          token: sessionStorage.getItem("token")
-        };
-        const res = await this.$http.post(
-          "/hspt-web-api/data_entry/qyfxgk/qyfxgkFypjxx/init",
-          params
-        );
-        if (res.data.resultCode == "0") {
-          this.tableData_2 = res.data.resultData;
-        }
-      },
-      //保存法院判别信息
-      saveSfFypb() {
-        this.setSfFypb();
-      },
-      //保存司法信息中法院判别数据
-      setSfFypb: async function () {
-        this.tableData_2.forEach((item, index) => {
-          if (item.id == null) {
-            this.addData2.push(item);
-          }
-        });
-        let params = {
-          creditCode: sessionStorage.getItem("creditCode"),
-          token: sessionStorage.getItem("token"),
-          addData: JSON.stringify(this.addData2),
-          updateData: JSON.stringify(this.updateData2),
-          deleteData: JSON.stringify(this.delRowData2)
-        };
-        const res = await this.$http.post(
-          "/hspt-web-api/data_entry/qyfxgk/qyfxgkFypjxx/update",
-          params
-        );
-        if (res.data.resultCode == "1111") {
-          this.$message({message: res.data.resultMsg, type: "success"});
-          this.addData2 = [];
-          this.updateData2 = [];
-          this.delRowData2 = [];
-          this.getSfFypj();
-        } else {
-          this.$message({message: res.data.resultMsg, type: "warning"});
-        }
-      },
-      //接受法院判别删除数据
-      acceptDelTable2Row(val) {
-        this.delRowData2.push(val);
-      },
-      verify2(rowObj, index) {
-        var isValid = tableValidates.validateByRow(
-          rowObj,
-          index,
-          this.rules,
-          this
-        );
-        if (rowObj.id) {
-          this.updateData2.push(rowObj);
-        }
-      },
-
-      //////////////////////////////////////////////////////////////失信被执行公告
       //初始化司法信息中企业被执行公告页面
       getSfQybzxgg: async function () {
         let params = {
@@ -602,7 +542,7 @@
           this.tableData_3 = res.data.resultData;
         }
       },
-      //保存企业被执行公告信息
+      //保存信息
       saveSfqybzxgg() {
         this.setSfqybzxgg();
       },
@@ -618,7 +558,7 @@
           token: sessionStorage.getItem("token"),
           addData: JSON.stringify(this.addData3),
           updateData: JSON.stringify(this.updateData3),
-          deleteData: JSON.stringify(this.delRowData3)
+          delData: JSON.stringify(this.delRowData3)
         };
         const res = await this.$http.post(
           "/hspt-web-api/data_entry/qyfxgk/qyfxgkQyzxggxx/update",
@@ -628,7 +568,7 @@
           this.$message({message: res.data.resultMsg, type: "success"});
           this.addData3 = [];
           this.updateData3 = [];
-          this.delRowData3 = [];
+          this.delRowData = [];
           this.getSfQybzxgg();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
@@ -650,7 +590,11 @@
         }
       },
 
-      ///////////////////////////////////////////////////////失信联合惩戒
+
+      //保存信息
+      saveSfSxlhcj() {
+        this.setSfSxlhcj();
+      },
       //初始化司法信息中失信联合惩戒页面
       getSfSxlhcj: async function () {
         let params = {
@@ -665,23 +609,19 @@
           this.tableData_4 = res.data.resultData;
         }
       },
-      //保存失信联合惩戒信息
-      saveSfSxlhcj() {
-        this.setSfSxlhcj();
-      },
       //保存司法信息中失信联合惩戒数据
       setSfSxlhcj: async function () {
         this.tableData_4.forEach((item, index) => {
           if (item.id == null) {
-            this.addData4.push(item);
+            this.addData.push(item);
           }
         });
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),
           token: sessionStorage.getItem("token"),
-          addData: JSON.stringify(this.addData4),
-          updateData: JSON.stringify(this.updateData4),
-          deleteData: JSON.stringify(this.delRowData4)
+          addData: JSON.stringify(this.addData),
+          updateData: JSON.stringify(this.updateData),
+          delData: JSON.stringify(this.delRowData)
         };
         const res = await this.$http.post(
           "/hspt-web-api/data_entry/qyfxgk/qyfxgkSxlhcjxx/update",
@@ -689,9 +629,9 @@
         );
         if (res.data.resultCode == "1111") {
           this.$message({message: res.data.resultMsg, type: "success"});
-          this.delRowData4 = [];
-          this.updateData4 = [];
-          this.addData4 = [];
+          this.delRowData = [];
+          this.updateData = [];
+          this.addData = [];
           this.getSfSxlhcj();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
@@ -699,7 +639,7 @@
       },
       //接受失信联合惩戒删除的数据
       acceptDelTable4Row(val) {
-        this.delRowData4.push(val);
+        this.delRowData.push(val);
       },
       verify4(rowObj, index) {
         var isValid = tableValidates.validateByRow(
@@ -709,13 +649,22 @@
           this
         );
         if (rowObj.id) {
-          this.updateData4.push(rowObj);
+          this.updateData.push(rowObj);
         }
       },
 
       handleClick(tab, event) {
         console.log(tab, event);
       },
+      verify(row, index) {
+        row.edit = false;
+      },
+      verify1(row, index) {
+        row.edit = false;
+      },
+      verify2(row, index) {
+        row.edit = false;
+      }
     },
     components: {
       "v-tabelAddBtn": tabelAddBtn,

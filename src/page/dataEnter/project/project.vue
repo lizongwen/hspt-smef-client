@@ -110,8 +110,7 @@ export default {
 	   const res = await this.$http.post("/hspt-web-api/company/addNewProject", params);
 	  if (res.data.resultCode == "0") {
 	    this.dialogFormVisible = false;
-      this.$message({ message: res.data.resultMsg, type: "success" });
-      this.getProject();
+        this.$message({ message: res.data.resultMsg, type: "success" });
 	  }else{
 	    this.$message({ message: res.data.resultMsg, type: "warning" });
 	  }
