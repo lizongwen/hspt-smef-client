@@ -13,7 +13,7 @@
 			<div>
 				<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
 					<el-table-column label="序号" type="index" width="50"></el-table-column>
-					<el-table-column min-width="110px" :label="tableData_columns.bgrq">
+					<el-table-column min-width="200px" :label="tableData_columns.bgrq">
 						<template slot-scope="scope">
 							<el-date-picker v-model="scope.row.bgrq" class="cellItem el-form-item" value-format="yyyy-MM-dd" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" type="date" placeholder="选择日期" style="width: 100%;" :clearable='false'></el-date-picker>
 							<span v-else>{{scope.row.bgrq}}</span>

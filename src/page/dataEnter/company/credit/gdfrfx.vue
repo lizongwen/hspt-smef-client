@@ -399,6 +399,134 @@
 								<el-button class="save" type="default" size="medium" @click="getGrgjjData">获取数据</el-button>
 								<el-button class="save" type="primary" size="medium" @click="setGrgjj">保存</el-button>
 							</div>
+							<div class="card-title">信用记录行政处罚</div>
+						</div>
+						<div class="el-table el-table--border el-table--enable-row-hover el-table--enable-row-transition">
+							<table class="el-table__body text-center" style="width:100%" cellspacing="0" cellpadding="0" border="0">
+								<thead>
+									<tr>
+										<th class=" text-center">
+											<div class="cell" strong>姓名</div>
+										</th>
+										<th class=" text-center">
+											<div class="cell" strong>处罚性质</div>
+										</th>
+										<th class=" text-center" colspan="5">
+											<div class="cell" strong>公安处罚信息</div>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="el-table__row">
+										<td rowspan="5">
+											<div class="cell">张半仙</div>
+										</td>
+										<td rowspan="2">
+											<div class="cell">交通处罚</div>
+										</td>
+										<td>
+											<div class="cell">处罚次数</div>
+										</td>
+										<td>
+											<div class="cell">处罚单位</div>
+										</td>
+										<td>
+											<div class="cell">处罚类型</div>
+										</td>
+										<td>
+											<div class="cell">罚款金额</div>
+										</td>
+										<td>
+											<div class="cell">扣分数</div>
+										</td>
+									</tr>
+									<tr class="el-table__row">
+										<td>
+											<div class="cell">
+												<el-input placeholder="请输入处罚次数"></el-input>
+											</div>
+										</td>
+										<td>
+											<div class="cell">
+												<el-input placeholder="请输入处罚单位"></el-input>
+											</div>
+										</td>
+										<td>
+											<div class="cell">
+												<el-input placeholder="请输入处罚类型"></el-input>
+											</div>
+										</td>
+										<td>
+											<div class="cell">
+												<el-input placeholder="请输入罚款金额"></el-input>
+											</div>
+										</td>
+										<td>
+											<div class="cell">
+												<el-input placeholder="请输入扣分数"></el-input>
+											</div>
+										</td>
+									</tr>
+									<tr class="el-table__row">
+										<tr class="el-table__row">
+											<td rowspan="2">
+												<div class="cell">治安处罚</div>
+											</td>
+											<td>
+												<div class="cell">处罚次数</div>
+											</td>
+											<td>
+												<div class="cell">处罚单位</div>
+											</td>
+											<td>
+												<div class="cell">处罚类型</div>
+											</td>
+											<td>
+												<div class="cell">罚款金额</div>
+											</td>
+											<td>
+												<div class="cell">扣分数</div>
+											</td>
+										</tr>
+										<tr class="el-table__row">
+											<td>
+												<div class="cell">
+													<el-input placeholder="请输入处罚次数"></el-input>
+												</div>
+											</td>
+											<td>
+												<div class="cell">
+													<el-input placeholder="请输入处罚单位"></el-input>
+												</div>
+											</td>
+											<td>
+												<div class="cell">
+													<el-input placeholder="请输入处罚类型"></el-input>
+												</div>
+											</td>
+											<td>
+												<div class="cell">
+													<el-input placeholder="请输入罚款金额"></el-input>
+												</div>
+											</td>
+											<td>
+												<div class="cell">
+													<el-input placeholder="请输入扣分数"></el-input>
+												</div>
+											</td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+					</el-card>
+				</div>
+				<div>
+					<el-card class="box-card" shadow='nevner'>
+						<div slot="header" class="clearfix">
+							<div class="card-right-wrap">
+								<el-button class="save" type="default" size="medium" @click="getGrgjjData">获取数据</el-button>
+								<el-button class="save" type="primary" size="medium" @click="setGrgjj">保存</el-button>
+							</div>
 							<div class="card-title">公积金个人信息</div>
 						</div>
 						<div>
