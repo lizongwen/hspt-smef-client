@@ -14,7 +14,7 @@
 						<el-table-column min-width="200px" label="姓名">
 							<template slot-scope="scope">
 								<template v-if="scope.row.edit">
-									<el-form :disabled="true" :model="scope.row" :rules="rules_zrrdgd" :id="'Name'+scope.$index" :ref="'form_Name_'+scope.$index" :show-message="false">
+									<el-form :model="scope.row" :rules="rules_zrrdgd" :id="'Name'+scope.$index" :ref="'form_Name_'+scope.$index" :show-message="false">
 										<el-form-item prop="Name" class="td-form-item">
 											<el-input class="edit-input" size="small" v-model="scope.row.name"></el-input>
 										</el-form-item>
@@ -26,7 +26,7 @@
 						<el-table-column min-width="300px" label="身份证号">
 							<template slot-scope="scope">
 								<template v-if="scope.row.edit">
-									<el-form :disabled="true" :model="scope.row" :rules="rules_zrrdgd" :id="'identityNum'+scope.$index" :ref="'form_identityNum_'+scope.$index" :show-message="false">
+									<el-form :model="scope.row" :rules="rules_zrrdgd" :id="'identityNum'+scope.$index" :ref="'form_identityNum_'+scope.$index" :show-message="false">
 										<el-form-item prop="identityNum" class="td-form-item">
 											<el-input class="edit-input" size="small" v-model="scope.row.idNumber"></el-input>
 										</el-form-item>
