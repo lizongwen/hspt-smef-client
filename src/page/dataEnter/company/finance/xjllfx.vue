@@ -1,5 +1,5 @@
 <template>
-	<div>主要经营数据</div>
+	<div>现金流量分析</div>
 </template>
 
 <script>

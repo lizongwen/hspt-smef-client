@@ -1,5 +1,5 @@
 <template>
-	<div>财务结构分化</div>
+	<div>资产负债分析</div>
 </template>
 
 <script>
