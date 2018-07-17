@@ -713,7 +713,6 @@ export default {
         this.rules_scsb,
         this
       );
-      console.log(isValid);
       if (rowObj.id) {
         this.updateData_2.push(rowObj);
       }
@@ -963,12 +962,10 @@ export default {
 
     //////////////////////////////////////////////////////////////
       handleSuccess(res, file){
+        console.log(res);
         if (res.resultCode == "0") {
-              this.$message({ message: res.resultMsg, type: "success" });
-            if(res.resultMapData.qytpPicUrl!=null)
-                  this.imgurl_qytp=res.resultMapData.qytpPicUrl;
-            else if(res.resultMapData.zzjgPicUrl!=null)
-                this.imgurl_zzjg=res.resultMapData.zzjgPicUrl;
+             this.$message({ message: res.resultMsg, type: "success" });
+             this.tableData_2 = res.resultMapData.data.newExcelData;
           } else {
             this.$message({ message: res.resultMsg, type: "error" });
           }

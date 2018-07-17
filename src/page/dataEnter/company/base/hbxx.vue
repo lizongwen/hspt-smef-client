@@ -23,12 +23,12 @@
 							<span v-else>{{ scope.row.pw}}</span>
 						</template>
 					</el-table-column>
-					<el-table-column min-width="200px" :label="tableData_columns.pgjg">
-						<template slot-scope="scope">
-							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[3]" v-if="scope.row.edit" size="small" v-model="scope.row.pfjg"></el-input>
-							<span v-else>{{ scope.row.pfjg}}</span>
-						</template>
-					</el-table-column>
+            <el-table-column min-width="200px" :label="tableData_columns.pfjg">
+              <template slot-scope="scope">
+                <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[3]" v-if="scope.row.edit" size="small" v-model.number="scope.row.pfjg"></el-input>
+                <span v-else>{{ scope.row.pfjg}}</span>
+              </template>
+            </el-table-column>
 					<el-table-column align="center" label="操作" width="240">
 						<template slot-scope="scope">
 							<v-tableOperation :scope="scope" :tableData="tableData" v-on:verify="verify" v-on:acceptDelRow='acceptDelRow'></v-tableOperation>
@@ -152,9 +152,9 @@ export default {
 	   this.$message({ message: res.data.resultMsg, type: "warning" });
 	  }
     },
-	
+
 	////////////////////////////////////////////////////////////小结
-	
+
     //获取富文本框内容
     getTextEditorCon: async function() {
       let params = {

@@ -16,7 +16,7 @@
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="80px" :label="tableData_columns.nf">
 									<template slot-scope="scope">
-										<el-date-picker v-model="scope.row.nf" class="cellItem el-form-item" value-format="yyyy" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" type="date" placeholder="选择日期" style="width: 100%;" :clearable='false'></el-date-picker>
+										<el-date-picker v-model="scope.row.nf" class="cellItem el-form-item" value-format="yyyy" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" type="year" placeholder="选择日期" style="width: 100%;" :clearable='false'></el-date-picker>
 						      	<span v-else>{{scope.row.nf}}</span>
 									</template>
 								</el-table-column>
@@ -130,7 +130,7 @@
 								</el-table-column>
 							</el-table>
 							<v-tabelAddBtn :tableData="tableData_zyzzyrz" :tableData_columns="tableData_zyzzyrz_columns"></v-tabelAddBtn>
-						</div>	
+						</div>
 					</el-card>
 				</div>
 			</el-tab-pane>
@@ -157,7 +157,7 @@ export default {
         ry: "荣誉",
         edit: false
       },
-	  
+
       tableData_xzxk: [], //行政许可信息
       tableData_xzxk_delRowData: [],
       tableData_xzxk_addData: [],
@@ -170,7 +170,7 @@ export default {
         gxsj: "更新时间",
         edit: false
       },
-	  
+
       tableData_zyzzyrz: [],//主要认证与资质
 	    tableData_zyzzyrz_delRowData: [],
       tableData_zyzzyrz_addData: [],
@@ -228,7 +228,7 @@ export default {
   mounted() {
     this.init();
   },
-  
+
   methods: {
     //初始化
     init() {
@@ -236,9 +236,9 @@ export default {
       this.getXzxk(); //获取行政许可信息
       this.getZyzzrz(); //获取主要资质与认证信息
     },
-	
+
 	//////////////////////////////////////////////////////////////荣誉信息
-	
+
     //接受删除的数据
     acceptDelRow(val) {
       this.tableData_delRowData.push(val);
@@ -255,7 +255,7 @@ export default {
         this.tableData_updateData.push(rowObj);
       }
     },
-	
+
     //获取荣誉信息表格数据
     getRyrz: async function() {
       let params = {
@@ -298,9 +298,9 @@ export default {
 	   this.$message({ message: res.data.resultMsg, type: "warning" });
 	  }
 	},
-	
+
     //////////////////////////////////////////////////////////////////////////////行政许可
-	
+
     //获取行政许可信息表格数据
     getXzxk: async function() {
       let params = {
@@ -359,9 +359,9 @@ export default {
 	   this.$message({ message: res.data.resultMsg, type: "warning" });
 	  }
 	},
-	
+
 	///////////////////////////////////////////////////////////////////////// 主要资质与认证
-	
+
 	//接受删除的数据
     acceptDelRow_zyzzyrz(val) {
       this.tableData_zyzzyrz_delRowData.push(val);
@@ -378,7 +378,7 @@ export default {
         this.tableData_zyzzyrz_updateData.push(rowObj);
       }
     },
-	
+
     //获取主要资质与认证信息表格数据
     getZyzzrz: async function() {
       let params = {
@@ -421,7 +421,7 @@ export default {
 	   this.$message({ message: res.data.resultMsg, type: "warning" });
 	  }
   },
-  
+
   /////////////////////////////////////////////// 获取主要资质与认证远程接口数据
   getDataFromRemote: async function(){
     let params = {

@@ -471,7 +471,7 @@ export default {
       activeName: "first",
       listLoading: false,
       rules: {},
-	  
+
       tableData: [],        //商标
       deleteData: [],
       addData: [],
@@ -509,8 +509,8 @@ export default {
         yxx: "有效性",
         edit: false
       }, //表格列字段
-	  
-	  
+
+
       tableData_3: [],      //著作权
       deleteData_3: [],
       addData_3: [],
@@ -525,8 +525,8 @@ export default {
         djpzrq: "登记批准日期",
         edit: false
       }, //表格列字段
-	  
-	  
+
+
       tableData_4: [],      //网站备案
       deleteData_4: [],
       addData_4: [],
@@ -628,7 +628,7 @@ export default {
   computed: {
 	/*tableData_1_fmzl_sl(){
 		return (this.tableData_1.fmzl.sqyq+this.tableData_1.fmzl.wqzz+this.tableData_1.fmzl.bhch+this.tableData_1.fmzl.szss+this.tableData_1.fmzl.gksz);
-	}*/	
+	}*/
 	/*tableData_1.syxx.sl(){
 		return this.tableData_1.syxx.sqyq+this.tableData_1.syxx.wqzz+this.tableData_1.syxx.bhch+this.tableData_1.syxx.szss+this.tableData_1.syxx.gksz;
 	}
@@ -726,7 +726,7 @@ export default {
 
 
     /////////////////////////////////////////////////////获取专利信息
-	
+
     getZl: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
@@ -737,7 +737,7 @@ export default {
         params
       );
       console.log(res.data.resultData)
-  
+
       if (res.data.resultCode == "0") {
         this.tableData_1 = res.data.resultData;
         var fmzlSl = parseInt(res.data.resultData.fmzl.sl);
@@ -761,7 +761,7 @@ export default {
          }else{
            this.tableData_1_wgsj_sl=wgsjPageCount;
          }
-        
+
         }
     },
 
@@ -871,7 +871,7 @@ export default {
         this.updateData_2.push(rowObj);
       }
     },
-	
+
     //获取专利明细接口数据
     getZlMxIterfaceData: async function() {
       let params = {
@@ -1039,7 +1039,7 @@ export default {
         this.updateData_4.push(rowObj);
       }
     },
-	
+
 	//获取网站备案接口数据
     getWzbaIntergaceData: async function() {
       let params = {

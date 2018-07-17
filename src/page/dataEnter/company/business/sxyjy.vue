@@ -337,6 +337,11 @@
         listLoading: false,
         rules: {},
 
+        zykhjssmxjxj: "",
+        xsjg: "",
+        zygysjssm:"",
+        gysjgfx:"",
+
         tableData_xsgk: [],
         addData: [],
         updateData: [],
@@ -646,7 +651,7 @@
         }
       },
 
-      //获取主要供应商介绍说明小结
+      //////////////////////////////////////////////////////////////主要供应商介绍说明富文本
       getZygysjssm: async function () {
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),
@@ -683,7 +688,7 @@
         }
       },
 
-      //获取供应商结构分析小结
+      //////////////////////////////////////////////////////////////////供应商结构分析富文本
       getGysjgfx: async function () {
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),

@@ -295,9 +295,9 @@ export default {
     return {
 	picUploadParam:{
 	    creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token"),
-		qytpId:"",
-		zzjgId:""
+      token: sessionStorage.getItem("token"),
+		  qytpId:"",
+		  zzjgId:""
 	},
       activeName: "first",
 	  listLoading: false,
@@ -675,7 +675,6 @@ export default {
 	},
 	//////////////////////////////////////////////////////////////
 	handleSuccess(res, file){
-	console.log(res)
 		if (res.resultCode == "0") {
 		      this.$message({ message: res.resultMsg, type: "success" });
 			  if(res.resultMapData.qytpPicUrl!=null)
