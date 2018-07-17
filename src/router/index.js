@@ -250,6 +250,30 @@ let router = new Router({
 						},
 						component: () => import('@/page/dataEnter/company/finance/zycwsj.vue')
 					},
+						{
+						path: 'finance/zcfzfx',//资产负债分析
+						name: 'zcfzfx',
+						meta: {
+							index: '5-4'
+						},
+						component: () => import('@/page/dataEnter/company/finance/zcfzfx.vue')
+					},
+						{
+						path: 'finance/lrfx',//利润分析
+						name: 'lrfx',
+						meta: {
+							index: '5-7'
+						},
+						component: () => import('@/page/dataEnter/company/finance/lrfx.vue')
+					},
+						{
+						path: 'finance/xjllfx',//现金流量分析
+						name: 'xjllfx',
+						meta: {
+							index: '5-8'
+						},
+						component: () => import('@/page/dataEnter/company/finance/xjllfx.vue')
+					},
 					{
 						path: 'finance/cwnlqs',//财务能力趋势与分析
 						name: 'cwnlqs',
@@ -265,14 +289,7 @@ let router = new Router({
 						},
 						component: () => import('@/page/dataEnter/company/finance/nsqkfx.vue')
 					},
-					{
-						path: 'finance/zyjysj',//主要经营数据
-						name: 'zyjysj',
-						meta: {
-							index: '5-4'
-						},
-						component: () => import('@/page/dataEnter/company/finance/zyjysj.vue')
-					},
+				
 					{
 						path: 'finance/jysjjy',//经营与相关数据校验分析
 						name: 'jysjjy',
@@ -289,14 +306,7 @@ let router = new Router({
 						},
 						component: () => import('@/page/dataEnter/company/finance/cwzkzs.vue')
 					},
-					{
-						path: 'finance/cwjgh',//财务结构分化
-						name: 'cwjgh',
-						meta: {
-							index: '5-7'
-						},
-						component: () => import('@/page/dataEnter/company/finance/cwjgh.vue')
-					},
+				
 					{
 						path: 'finance/tqsjdb',//同期数据对比
 						name: 'tqsjdb',
@@ -305,13 +315,14 @@ let router = new Router({
 						},
 						component: () => import('@/page/dataEnter/company/finance/tqsjdb.vue')
 					},
+				
 					{
-						path: 'finance/zdysjjy',//自定义数据校验
-						name: 'zdysjjy',
+						path: 'finance/glgscwsj',//关联公司财务数据
+						name: 'glgscwsj',
 						meta: {
 							index: '5-9'
 						},
-						component: () => import('@/page/dataEnter/company/finance/zdysjjy.vue')
+						component: () => import('@/page/dataEnter/company/finance/glgscwsj.vue')
 					},
 					{
 						path: 'risk/fxxfx',//风险性分析

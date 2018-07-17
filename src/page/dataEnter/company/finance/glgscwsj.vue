@@ -1,27 +1,25 @@
 <template>
 	<div>
-			<el-tabs v-model="activeName" @tab-click="handleClick">
-				
-				<el-tab-pane label="资产负债表同期数据对比" name="first">
+		
+		<el-tabs v-model="activeName" @tab-click="handleClick">
+			<el-tab-pane label="资产负债表" name="first">
 					
 					<div>
 					<el-card class="box-card" shadow='nevner'>
-						<div slot="header" class="clearfix">
+						<!--<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">上传数据</el-button>
 							</div>
 							<div class="card-title">资产负债表</div>
-						</div>
-						<!--<div slot="header" class="clearfix">
+						</div>-->
+						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">模板下载</el-button>
 								<el-button type="default" size="medium">数据导入</el-button>
 								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
 							</div>
-							<div class="card-title">选择时间：
-							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
-							</div>
-						</div>-->
+							<div class="card-title">资产负债表</div>
+						</div>
 						
 				<div>
 					<table lay-skin="line">
@@ -102,27 +100,25 @@
 				</div>
 					
 				</el-tab-pane>
-				
-				<el-tab-pane label="利润表同期数据对比" name="second">
+		
+		    <el-tab-pane label="利润表" name="second">
 				
 				<div>
 					<el-card class="box-card" shadow='nevner'>
-						<div slot="header" class="clearfix">
+						<!--<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">数据导入</el-button>
 							</div>
 							<div class="card-title">利润表</div>
-						</div>
-						<!--<div slot="header" class="clearfix">
+						</div>-->
+						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">模板下载</el-button>
 								<el-button type="default" size="medium">数据导入</el-button>
 								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
 							</div>
-							<div class="card-title">选择时间：
-							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
-							</div>
-						</div>-->
+							<div class="card-title">利润表</div>
+						</div>
 						
 				<div>
 					<table lay-skin="line">
@@ -173,13 +169,14 @@
 				</div>
 				
 			</el-tab-pane>
-				
-			</el-tabs>
+		
+		</el-tabs>
+		
 	</div>
 </template>
 
 <script>
-	import quillEditor from "@/components/form/quillEditor.vue";
+import quillEditor from "@/components/form/quillEditor.vue";
 export default {
 components: {
     "quill-editor": quillEditor

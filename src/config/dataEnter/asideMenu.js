@@ -147,46 +147,54 @@ let menuAsideData = [
         "name": "主要财务数据",
         "path": "/company/finance/zycwsj"
       },
-      {
+           {
         "index": "5-2",
+        "name": "资产负债分析",
+        "path": "/company/finance/zcfzfx"
+      },
+        {
+        "index": "5-3",
+        "name": "利润分析",
+        "path": "/company/finance/lrfx"
+      },
+          {
+        "index": "5-4",
+        "name": "现金流量分析",
+        "path": "/company/finance/xjllfx"
+      },
+      {
+        "index": "5-5",
         "name": "财务能力趋势分析",
         "path": "/company/finance/cwnlqs"
       },
       {
-        "index": "5-3",
+        "index": "5-6",
         "name": "纳税情况与分析",
         "path": "/company/finance/nsqkfx"
       },
+ 
       {
-        "index": "5-4",
-        "name": "主要经营数据",
-        "path": "/company/finance/zyjysj"
-      },
-      {
-        "index": "5-5",
+        "index": "5-7",
         "name": "经营相关数据分析",
         "path": "/company/finance/jysjjy"
       },
       {
-        "index": "5-6",
+        "index": "5-8",
         "name": "财务状况综述",
         "path": "/company/finance/cwzkzs"
       },
+    
       {
-        "index": "5-7",
-        "name": "财务结构分化",
-        "path": "/company/finance/cwjgh"
-      },
-      {
-        "index": "5-8",
+        "index": "5-9",
         "name": "同期数据对比",
         "path": "/company/finance/tqsjdb"
       },
       {
-        "index": "5-9",
-        "name": "自定义数据校验",
-        "path": "/company/finance/zdysjjy"
+        "index": "5-10",
+        "name": "关联公司财务数据",
+        "path": "/company/finance/glgscwsj"
       }
+    
     ]
   },
   {
