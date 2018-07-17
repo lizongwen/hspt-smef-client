@@ -325,14 +325,13 @@ export default {
 	},
 	  // 保存按钮 保存企业基本信息
   saveJbxxData: async function(){
-	  alert("保存得数据：" + JSON.stringify(this.form));
 	  let params = {
         creditCode: sessionStorage.getItem("creditCode"),
 		token: sessionStorage.getItem("token"),
 		data: JSON.stringify(this.form)
 	  };
-      const res = await this.$http.post("/hspt-web-api/data_entry/jbxxjzy/jbxx/modify",params);
-	  if (res.data.resultCode == "0") {
+	  const res = await this.$http.post("/hspt-web-api/data_entry/jbxxjzy/jbxx/modify",params);
+	  if (res.data.resultCode == "0000") {
         this.$message({ message: res.data.resultMsg, type: "success" });
       }else{
 	    this.$message({ message: res.data.resultMsg, type: "warning" });
