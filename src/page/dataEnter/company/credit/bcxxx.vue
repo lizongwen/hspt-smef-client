@@ -10,6 +10,7 @@
 				</div>
 				<div>
 					<el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
+            <el-table-column label="序号" type="index" width="50"></el-table-column>
 						<el-table-column min-width="100px" :label="tableData_columns.jglx">
 							<template slot-scope="scope">
 								<template v-if="scope.row.edit">
@@ -110,6 +111,7 @@ export default {
 			addData: [],
 			updateData: [],
       tableData_columns: {
+			  id:null,
         jglx: "机构类型",
         zj1nbcxcs: "最近一年被查询次数",
         zj6gybcxcs: "最近6个月被查询次数",
@@ -121,10 +123,50 @@ export default {
 			//规则
       rules: {
         jglx: [ { required: true, message: "机构类型是必填项" }],
-        zj1nbcxcs: [{ required: true, message: "最近一年被查询次数是必填项" }],
-				zj6gybcxcs: [{ required: true, message: "最近6个月被查询次数是必填项" }],
-				zj3gybcxcs: [{ required: true, message: "最近3个月被查询次数是必填项" }],
-				zj1gybcxcs: [{ required: true, message: "最近1个月被查询次数是必填项" }]
+        zj1nbcxcs: [{ required: true, message: "最近一年被查询次数是必填项" },
+          {validator(rule, value, callback) {
+              var errors = [];
+              if (!/^(0|\+?[1-9][0-9]*)$/.test(value)) {
+
+                callback('此项必须是整数值....');
+              }
+              callback(errors);
+
+            }}
+        ],
+				zj6gybcxcs: [{ required: true, message: "最近6个月被查询次数是必填项" },
+          {validator(rule, value, callback) {
+              var errors = [];
+              if (!/^(0|\+?[1-9][0-9]*)$/.test(value)) {
+
+                callback('此项必须是整数值....');
+              }
+              callback(errors);
+
+            }}
+        ],
+				zj3gybcxcs: [{ required: true, message: "最近3个月被查询次数是必填项" },
+          {validator(rule, value, callback) {
+              var errors = [];
+              if (!/^(0|\+?[1-9][0-9]*)$/.test(value)) {
+
+                callback('此项必须为整数值....');
+              }
+              callback(errors);
+
+            }}
+        ],
+				zj1gybcxcs: [{ required: true, message: "最近1个月被查询次数是必填项" },
+          {validator(rule, value, callback) {
+              var errors = [];
+              if (!/^(0|\+?[1-9][0-9]*)$/.test(value)) {
+
+                callback('此项必须为整数值....');
+              }
+              callback(errors);
+
+            }}
+				]
       }
     };
   },
@@ -180,6 +222,7 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
+        this.getBcxx();
         this.delRowData = [];
         this.updateData = [];
         this.addData = [];

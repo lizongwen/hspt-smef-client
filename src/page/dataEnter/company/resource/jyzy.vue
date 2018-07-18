@@ -472,7 +472,7 @@ export default {
               var errors = [];
               if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
 
-                callback('原值必须为数字值....');
+                callback('此项必须是数值....');
               }
               callback(errors);
 
@@ -483,7 +483,7 @@ export default {
               var errors = [];
               if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
 
-                callback('净值必须为数字值....');
+                callback('此项必须是数值....');
               }
               callback(errors);
 

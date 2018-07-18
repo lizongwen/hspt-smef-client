@@ -439,11 +439,11 @@
                   callback(errors);
                 }}
           ],
-          czbl: [
+          cgbl: [
               {validator(rule, value, callback) {
                   var errors = [];
                   if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
-                    callback('出资比例必须为数字值....');
+                    callback('持股比例必须为数字值....');
                   }
                   callback(errors);
                 }}

@@ -122,9 +122,9 @@ export default {
           { required: true, message: "发放人数是必填项" },
           {validator(rule, value, callback) {
               var errors = [];
-              if (!/^([0-9]{1,})$/.test(value)) {
+              if (!/^(0|\+?[1-9][0-9]*)$/.test(value)) {
 
-                callback('发放人数必须为正整数值....');
+                callback('此项必须是整数值....');
               }
               callback(errors);
 
@@ -136,7 +136,7 @@ export default {
               var errors = [];
               if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
 
-                callback('发放金额必须为数值....');
+                callback('此项必须是数值....');
               }
               callback(errors);
 

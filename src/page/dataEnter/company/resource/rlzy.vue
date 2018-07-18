@@ -305,9 +305,9 @@
           czjyx: [{ required: true, message: "初中及以下是必填项" },
             {validator(rule, value, callback) {
                 var errors = [];
-                if (!/^([0-9]{1,})$/.test(value)) {
+                if (!/^(0|\+?[1-9][0-9]*)$/.test(value)) {
 
-                  callback('初中及以下必须为正整数值....');
+                  callback('此项必须是整数值....');
                 }
                 callback(errors);
 
@@ -316,9 +316,9 @@
           gz: [{ required: true, message: "高中是必填项" },
             {validator(rule, value, callback) {
                 var errors = [];
-                if (!/^([0-9]{1,})$/.test(value)) {
+                if (!/^(0|\+?[1-9][0-9]*)$/.test(value)) {
 
-                  callback('高中必须为正整数值....');
+                  callback('此项必须是整数值....');
                 }
                 callback(errors);
 
@@ -327,9 +327,9 @@
           dxjys: [{ required: true, message: "大学及以上是必填项" },
             {validator(rule, value, callback) {
                 var errors = [];
-                if (!/^([0-9]{1,})$/.test(value)) {
+                if (!/^(0|\+?[1-9][0-9]*)$/.test(value)) {
 
-                  callback('大学及以上必须为正整数值....');
+                  callback('此项必须是整数值....');
                 }
                 callback(errors);
 
@@ -339,9 +339,9 @@
           hj: [{ required: true, message: "小计是必填项" },
             {validator(rule, value, callback) {
                 var errors = [];
-                if (!/^([0-9]{1,})$/.test(value)) {
+                if (!/^(0|\+?[1-9][0-9]*)$/.test(value)) {
 
-                  callback('小计必须为正整数值....');
+                  callback('此项必须是整数值....');
                 }
                 callback(errors);
 
@@ -352,7 +352,7 @@
                 var errors = [];
                 if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
 
-                  callback('在职年限为数字值....');
+                  callback('此项必须是数值....');
                 }
                 callback(errors);
 
@@ -363,7 +363,7 @@
                 var errors = [];
                 if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
 
-                  callback('平均年龄必须为数字值....');
+                  callback('此项必须是数值....');
                 }
                 callback(errors);
 
