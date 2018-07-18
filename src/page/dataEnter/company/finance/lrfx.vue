@@ -161,10 +161,7 @@ export default {
     this.getDeviceList();
   },
   methods: {
-   //点击标签页触发事件
-      handleClick(tab, event) {
-        //   console.log(tab, event);
-      },
+  
     //---------------------------------------企业主要生产设备--------------------------------------------------------------//
     // 获取企业主要生产设备
     getDeviceList: async function() {
@@ -299,7 +296,7 @@ export default {
   //点击标签页触发事件
       handleClick(tab, event) {
         //   console.log(tab, event);
-      },
+      }
 },
 
   components: {
@@ -346,7 +343,7 @@ export default {
 	padding: 8px;
 	margin-left: 5px;
 }
-.el-table .cell, .el-table th div, .el-table--border td:first-child .cell, .el-table--border th:first-child .cell{
+/*.el-table .cell, .el-table th div, .el-table--border td:first-child .cell, .el-table--border th:first-child .cell{
 	padding-left: 0px;
-}
+}*/
 </style>
