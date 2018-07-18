@@ -1,0 +1,22 @@
+{
+	"resultCode": "0",
+	"resultData": {
+		"data": {
+			"cwfy": 10000.0,
+			"gjfy": 10000.0,
+			"jly": 400000.0,
+			"sdsfy": 1000.0,
+			"tzsy": 500000.0,
+			"xsfy": 20000.0,
+			"yycb": 100000.0,
+			"yysjjfj": 50000.0,
+			"yywsr": 60000.0,
+			"yywzc": 10000.0,
+			"zcjzss": 4000.0
+		},
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzY1MTY3MjAsImlhdCI6MTUzMDUxNjcyMH0.O-qww3k41rgLhQ0PQjsEAFcJp-2BL6ckPCk7SWtssso"
+	},
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "查询成功"
+}

@@ -118,7 +118,7 @@
                     <span v-else>{{ scope.row.ay}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" :label="tableData_2_columns.isDeleted">
+                <!--<el-table-column min-width="200px" :label="tableData_2_columns.isDeleted">
                   <template slot-scope="scope">
                     <el-select v-model="scope.row.isDeleted" class="edit-input cellItem el-form-item"
                                :class="Object.keys(tableData_2_columns)[8]" placeholder="请选择" size="small"
@@ -128,7 +128,7 @@
                     </el-select>
                     <span v-else>{{ scope.row.isDeleted == null ? "" : (scope.row.isDeleted ? "否" : "是")}}</span>
                   </template>
-                </el-table-column>
+                </el-table-column>-->
                 <el-table-column align="center" label="操作" width="240">
                   <template slot-scope="scope">
                     <v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify2"
@@ -183,7 +183,7 @@
                     <span v-else>{{ scope.row.ajzt}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" :label="tableData_3_columns.isDeleted">
+                <!--<el-table-column min-width="200px" :label="tableData_3_columns.isDeleted">
                   <template slot-scope="scope">
                     <el-select v-model="scope.row.isDeleted" class="edit-input cellItem el-form-item"
                                :class="Object.keys(tableData_3_columns)[5]" placeholder="请选择" size="small"
@@ -193,7 +193,7 @@
                     </el-select>
                     <span v-else>{{ scope.row.isDeleted == null ? "" : (scope.row.isDeleted ? "否" : "是")}}</span>
                   </template>
-                </el-table-column>
+                </el-table-column>-->
                 <el-table-column align="center" label="操作" width="240">
                   <template slot-scope="scope">
                     <v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify3"
@@ -411,7 +411,6 @@
           pjjg: "判决结果",
           ssfcd: "诉讼费承担",
           ay: "案由",
-          isDeleted: "是否删除",
           edit: false
         }, //表格列字段
         rules_fypj:{
@@ -439,7 +438,6 @@
           zxfy: "执行法院",
           zxbd: "执行标的",
           ajzt: "案件状态",
-          isDeleted: "是否删除",
           edit: false
         }, //表格列字段
 
