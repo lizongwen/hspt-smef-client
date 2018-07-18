@@ -31,7 +31,8 @@
                   <el-form :model="scope.row" :rules="rules_zrrdgd" :id="'identityNum'+scope.$index"
                            :ref="'form_identityNum_'+scope.$index" :show-message="false">
                     <el-form-item prop="identityNum" class="td-form-item">
-                      <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_0_columns)[2]" size="small" v-model="scope.row.idNumber"></el-input>
+                      <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_0_columns)[2]"
+                                size="small" v-model="scope.row.idNumber"></el-input>
                     </el-form-item>
                   </el-form>
                 </template>
@@ -44,7 +45,8 @@
                   <el-form :model="scope.row" :rules="rules_zrrdgd" :id="'phoneNum'+scope.$index"
                            :ref="'form_phoneNum_'+scope.$index" :show-message="false">
                     <el-form-item prop="phoneNum" class="td-form-item">
-                      <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_0_columns)[3]" size="small" v-model="scope.row.mobile"></el-input>
+                      <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_0_columns)[3]"
+                                size="small" v-model="scope.row.mobile"></el-input>
                     </el-form-item>
                   </el-form>
                 </template>
@@ -1026,18 +1028,21 @@
         rules_zrrdgd: {
           name: [{required: true, message: "姓名是必填项"}],
           idNumber: [{required: true, message: "身份证号是必填项"},
-            {validator(rule, value, callback) {
+            {
+              validator(rule, value, callback) {
                 var errors = [];
-                if (!/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/ .test(value)) {
+                if (!/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(value)) {
 
                   callback('请输入正确身份证号....');
                 }
                 callback(errors);
 
-              }}
+              }
+            }
           ],
           mobile: [{required: true, message: "手机号是必填项"},
-            {validator(rule, value, callback) {
+            {
+              validator(rule, value, callback) {
                 var errors = [];
                 if (!/^1[34578]\d{9}$/.test(value)) {
 
@@ -1045,7 +1050,8 @@
                 }
                 callback(errors);
 
-              }}
+              }
+            }
           ]
         },
 
@@ -1081,7 +1087,18 @@
           ajzgt: "案件状态",
           edit: false
         },
-        rules_flfx: {},
+        rules_flfx: {
+          lasj: [{validator(rule, value, callback) {
+              var errors = [];
+              if (!/^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/.test(value)) {
+
+                callback('此项必须为日期格式....');
+              }
+              callback(errors);
+
+            }}
+          ],
+        },
 
         tableData_2: [],
         updateData_2: [],
@@ -1114,7 +1131,18 @@
           zhzt: "账户状态",
           edit: false
         },
-        rules_grgjj: {},
+        rules_grgjj: {
+          cjsj: [{validator(rule, value, callback) {
+              var errors = [];
+              if (!/^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/.test(value)) {
+
+                callback('此项必须为日期格式....');
+              }
+              callback(errors);
+
+            }}
+          ],
+        },
 
         tableData_4: [],
         updateData_4: [],
@@ -1131,7 +1159,18 @@
           cbxz: "参保险种",
           edit: false
         },
-        rules_grsb: {},
+        rules_grsb: {
+          cbsj: [{validator(rule, value, callback) {
+              var errors = [];
+              if (!/^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/.test(value)) {
+
+                callback('此项必须为日期格式....');
+              }
+              callback(errors);
+
+            }}
+          ],
+        },
 
         tableData_5: [],
         updateData_5: [],
@@ -1201,12 +1240,12 @@
       this.getYhbg();
       this.getFlfx();
       this.getGrshxyjl();
+      this.getXzcf();
       this.getGrgjj();
       this.getGrsb();
       this.getGrcl();
       this.getFqz();
       this.getHlwjk();
-      this.getXzcf();
     },
     methods: {
       //-------------------------------------------------自然人大股东-------------------------------------------------
@@ -1249,7 +1288,16 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
-          this.getZrrdgd()
+          this.getZrrdgd();
+          this.getYhbg();
+          this.getFlfx();
+          this.getGrshxyjl();
+          this.getXzcf();
+          this.getGrgjj();
+          this.getGrsb();
+          this.getGrcl();
+          this.getFqz();
+          this.getHlwjk();
           this.deleteData_0 = [];
           this.updateData_0 = [];
           this.addData_0 = [];
@@ -1539,7 +1587,6 @@
           "/hspt-web-api/data_entry/qyfxgk/ggxxGrgjj/remoteInterfaceData",
           params
         );
-
         if (res.data.resultCode == "0000") {
           this.$message({message: res.data.resultMsg, type: "success"});
           this.tableData_3 = res.data.resultData;

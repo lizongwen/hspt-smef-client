@@ -18,7 +18,7 @@
                 <el-table-column min-width="200px" :label="tableData_1_columns.zxfy">
                   <template slot-scope="scope">
                     <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_1_columns)[1]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.zxfy"></el-input>
+                              v-if="scope.row.edit" size="small" v-model="scope.row.zxfy"></el-input>
                     <span v-else>{{ scope.row.zxfy}}</span>
                   </template>
                 </el-table-column>
@@ -39,7 +39,7 @@
                 <el-table-column min-width="200px" :label="tableData_1_columns.ay">
                   <template slot-scope="scope">
                     <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_1_columns)[4]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.ay"></el-input>
+                              v-if="scope.row.edit" size="small" v-model="scope.row.ay"></el-input>
                     <span v-else>{{ scope.row.ay}}</span>
                   </template>
                 </el-table-column>
@@ -55,7 +55,7 @@
           </el-card>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="法院判别信息" name="second">
+      <el-tab-pane label="法院判决信息" name="second">
         <div>
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
@@ -63,7 +63,7 @@
                 <!--<el-button class="save" type="default" size="medium">获取数据</el-button>-->
                 <el-button class="save" type="primary" size="medium" @click="saveSfFypb">保存</el-button>
               </div>
-              <div class="card-title">法院判别信息</div>
+              <div class="card-title">法院判决信息</div>
             </div>
             <div>
               <el-table :data="tableData_2" v-loading.body="listLoading" border fit highlight-current-row
@@ -72,7 +72,7 @@
                 <el-table-column min-width="200px" :label="tableData_2_columns.pjxx">
                   <template slot-scope="scope">
                     <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[1]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.pjxx"></el-input>
+                              v-if="scope.row.edit" size="small" v-model="scope.row.pjxx"></el-input>
                     <span v-else>{{ scope.row.pjxx}}</span>
                   </template>
                 </el-table-column>
@@ -93,28 +93,28 @@
                 <el-table-column min-width="200px" :label="tableData_2_columns.wszh">
                   <template slot-scope="scope">
                     <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[4]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.wszh"></el-input>
+                              v-if="scope.row.edit" size="small" v-model="scope.row.wszh"></el-input>
                     <span v-else>{{ scope.row.wszh}}</span>
                   </template>
                 </el-table-column>
                 <el-table-column min-width="200px" :label="tableData_2_columns.pjjg">
                   <template slot-scope="scope">
                     <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[5]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.pjjg"></el-input>
+                              v-if="scope.row.edit" size="small" v-model="scope.row.pjjg"></el-input>
                     <span v-else>{{ scope.row.pjjg}}</span>
                   </template>
                 </el-table-column>
                 <el-table-column min-width="200px" :label="tableData_2_columns.ssfcd">
                   <template slot-scope="scope">
                     <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[6]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.ssfcd"></el-input>
+                              v-if="scope.row.edit" size="small" v-model="scope.row.ssfcd"></el-input>
                     <span v-else>{{ scope.row.ssfcd}}</span>
                   </template>
                 </el-table-column>
                 <el-table-column min-width="200px" :label="tableData_2_columns.ay">
                   <template slot-scope="scope">
                     <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[7]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.ay"></el-input>
+                              v-if="scope.row.edit" size="small" v-model="scope.row.ay"></el-input>
                     <span v-else>{{ scope.row.ay}}</span>
                   </template>
                 </el-table-column>
@@ -158,7 +158,7 @@
                 <el-table-column min-width="200px" :label="tableData_3_columns.lasj">
                   <template slot-scope="scope">
                     <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[1]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.lasj"></el-input>
+                              v-if="scope.row.edit" size="small" v-model="scope.row.lasj"></el-input>
                     <span v-else>{{ scope.row.lasj}}</span>
                   </template>
                 </el-table-column>
@@ -179,7 +179,7 @@
                 <el-table-column min-width="200px" :label="tableData_3_columns.ajzt">
                   <template slot-scope="scope">
                     <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[4]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.ajzt"></el-input>
+                              v-if="scope.row.edit" size="small" v-model="scope.row.ajzt"></el-input>
                     <span v-else>{{ scope.row.ajzt}}</span>
                   </template>
                 </el-table-column>
@@ -223,7 +223,7 @@
                 <el-table-column min-width="200px" :label="tableData_4_columns.sxztmc">
                   <template slot-scope="scope">
                     <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_4_columns)[1]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.sxztmc"></el-input>
+                              v-if="scope.row.edit" size="small" v-model="scope.row.sxztmc"></el-input>
                     <span v-else>{{ scope.row.sxztmc}}</span>
                   </template>
                 </el-table-column>
@@ -241,11 +241,11 @@
                     <span v-else>{{ scope.row.cxcs}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" :label="tableData_4_columns.cxcs">
+                <el-table-column min-width="200px" :label="tableData_4_columns.cjcs">
                   <template slot-scope="scope">
                     <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_4_columns)[4]"
-                              v-if="scope.row.edit" size="small" v-model.number="scope.row.cxcs"></el-input>
-                    <span v-else>{{ scope.row.cxcs}}</span>
+                              v-if="scope.row.edit" size="small" v-model="scope.row.cjcs"></el-input>
+                    <span v-else>{{ scope.row.cjcs}}</span>
                   </template>
                 </el-table-column>
                 <el-table-column min-width="200px" :label="tableData_4_columns.sjsj">
@@ -275,7 +275,7 @@
                 <!--<el-button class="save" type="default" size="medium">获取数据</el-button>-->
                 <el-button class="save" type="primary" size="medium">保存</el-button>
               </div>
-              <div class="card-title">网站备案</div>
+              <div class="card-title">行政处罚信息</div>
             </div>
             <div>
               <el-table :data="tableData_4" v-loading.body="listLoading" border fit highlight-current-row
@@ -377,12 +377,26 @@
         updateData1: [],
         delRowData1: [],
         tableData_1_columns: {
+          id:null,
           zxfy: "执行法院",
           ktsj: "开庭时间",
           ah: "案号",
           ay: "案由",
           edit: false
         }, //表格列字段
+        rules_fygg:{
+          ktsj: [{validator(rule, value, callback) {
+              var errors = [];
+              if (!/^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/.test(value)) {
+
+                callback('此项必须为日期格式....');
+              }
+              callback(errors);
+
+            }}
+          ],
+
+        },
 
         tableData_2: [], //表格数据
         addData2: [],
@@ -400,6 +414,20 @@
           isDeleted: "是否删除",
           edit: false
         }, //表格列字段
+        rules_fypj:{
+          pjxx: [{validator(rule, value, callback) {
+              var errors = [];
+              if (!/^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/.test(value)) {
+
+                callback('此项必须为日期格式....');
+              }
+              callback(errors);
+
+            }}
+          ],
+
+        },
+
 
         tableData_3: [], //表格数据
         addData3: [],
@@ -415,6 +443,20 @@
           edit: false
         }, //表格列字段
 
+        rules_bzxgg:{
+          lasj: [{validator(rule, value, callback) {
+              var errors = [];
+              if (!/^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/.test(value)) {
+
+                callback('此项必须为日期格式....');
+              }
+              callback(errors);
+
+            }}
+          ],
+
+        },
+
         tableData_4: [], //表格数据
         addData4: [],
         updateData4: [],
@@ -428,6 +470,19 @@
           sjsj: "收录时间",
           edit: false
         },//表格列字段
+
+        rules_sxlhcj: {
+          sjsj: [{validator(rule, value, callback) {
+                var errors = [];
+                if (!/^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/.test(value)) {
+
+                  callback('此项必须为日期格式....');
+                }
+                callback(errors);
+
+              }}
+          ],
+        },
 
         tableData_5: [
           {
@@ -498,8 +553,8 @@
           "/hspt-web-api/data_entry/qyfxgk/qyfxgkKtgg/update",
           params
         );
-        if (res.data.resultCode == "1111") {
-          this.$message({message: res.data.resultMsg, type: "success"});
+        if (res.data.resultCode == "0") {
+          this.$message({ message: res.data.resultMsg, type: "success" });
           this.delRowData1 = [];
           this.updateData1 = [];
           this.addData1 = [];
@@ -516,7 +571,7 @@
         var isValid = tableValidates.validateByRow(
           rowObj,
           index,
-          this.rules,
+          this.rules_fygg,
           this
         );
         if (rowObj.id) {
@@ -561,7 +616,7 @@
           "/hspt-web-api/data_entry/qyfxgk/qyfxgkFypjxx/update",
           params
         );
-        if (res.data.resultCode == "1111") {
+        if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
           this.addData2 = [];
           this.updateData2 = [];
@@ -579,7 +634,7 @@
         var isValid = tableValidates.validateByRow(
           rowObj,
           index,
-          this.rules,
+          this.rules_fypj,
           this
         );
         if (rowObj.id) {
@@ -624,7 +679,7 @@
           "/hspt-web-api/data_entry/qyfxgk/qyfxgkQyzxggxx/update",
           params
         );
-        if (res.data.resultCode == "1111") {
+        if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
           this.addData3 = [];
           this.updateData3 = [];
@@ -642,7 +697,7 @@
         var isValid = tableValidates.validateByRow(
           rowObj,
           index,
-          this.rules,
+          this.rules_bzxgg,
           this
         );
         if (rowObj.id) {
@@ -687,7 +742,7 @@
           "/hspt-web-api/data_entry/qyfxgk/qyfxgkSxlhcjxx/update",
           params
         );
-        if (res.data.resultCode == "1111") {
+        if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
           this.delRowData4 = [];
           this.updateData4 = [];
@@ -705,7 +760,7 @@
         var isValid = tableValidates.validateByRow(
           rowObj,
           index,
-          this.rules,
+          this.rules_sxlhcj,
           this
         );
         if (rowObj.id) {

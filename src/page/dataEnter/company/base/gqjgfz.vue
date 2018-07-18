@@ -348,43 +348,106 @@
         //验证规则
         rules: {},
         rules_fssgx: {
-          czbl: [
-            {type: "number", message: "出资比例需要录入数字",transform(value) {return Number(value);}}
+          // czbl: [
+          //   {type: "number", message: "出资比例需要录入数字",transform(value) {return Number(value);}}
+          // ],
+          czbl: [//{ required: true, message: "占比是必填项" },
+              {validator(rule, value, callback) {
+                  var errors = [];
+                  if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+                    callback('出资比例必须为数字值....');
+                  }
+                  callback(errors);
+                }}
           ],
           rjcz: [
-            {type: "number", message: "认缴出资需要录入数字",transform(value) {return Number(value);}}
+              {validator(rule, value, callback) {
+                  var errors = [];
+                  if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+                    callback('认缴出资必须为数字值....');
+                  }
+                  callback(errors);
+                }}
           ],
           sjcz: [
-            {type: "number", message: "实缴出资需要录入数字",transform(value) {return Number(value);}}
+              {validator(rule, value, callback) {
+                  var errors = [];
+                  if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+                    callback('实缴出资必须为数字值....');
+                  }
+                  callback(errors);
+                }}
           ]
         },
 
         rules_ssgx: {
           czbl: [
-            {type: "number", message: "出资比例需要录入数字",transform(value) {return Number(value);}}
+              {validator(rule, value, callback) {
+                  var errors = [];
+                  if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+                    callback('出资比例必须为数字值....');
+                  }
+                  callback(errors);
+                }}
           ],
           cgs: [
-            {type: "number", message: "持股数需要录入数字",transform(value) {return Number(value);}}
+              {validator(rule, value, callback) {
+                  var errors = [];
+                  if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+                    callback('持股数必须为数字值....');
+                  }
+                  callback(errors);
+                }}
           ],
           cgbh: [
-            {type: "number", message: "持股变化需要录入数字",transform(value) {return Number(value);}}
+              {validator(rule, value, callback) {
+                  var errors = [];
+                  if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+                    callback('持股变化必须为数字值....');
+                  }
+                  callback(errors);
+                }}
           ]
         },
         rules_fzjxsqyqk: {
           xsgxbl: [
-            {type: "number", message: "销售贡献比例需要录入数字",transform(value) {return Number(value);}}
+              {validator(rule, value, callback) {
+                  var errors = [];
+                  if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+                    callback('销售贡献比例必须为数字值....');
+                  }
+                  callback(errors);
+                }}
           ],
           lrgxbl: [
-            {type: "number", message: "利润贡献比例需要录入数字",transform(value) {return Number(value);}}
-          ]
+              {validator(rule, value, callback) {
+                  var errors = [];
+                  if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+                    callback('利润贡献比例必须为数字值....');
+                  }
+                  callback(errors);
+                }}
+          ],
         },
         rules_glqy: {
           zczb: [
-            {type: "number", message: "注册资本需要录入数字",transform(value) {return Number(value);}}
+              {validator(rule, value, callback) {
+                  var errors = [];
+                  if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+                    callback('注册资本必须为数字值....');
+                  }
+                  callback(errors);
+                }}
           ],
-          cgbl: [
-            {type: "number", message: "持股比例需要录入数字",transform(value) {return Number(value);}}
-          ]
+          czbl: [
+              {validator(rule, value, callback) {
+                  var errors = [];
+                  if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+                    callback('出资比例必须为数字值....');
+                  }
+                  callback(errors);
+                }}
+          ],
         },
 
 
