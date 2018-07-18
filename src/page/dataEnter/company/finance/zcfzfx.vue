@@ -114,7 +114,7 @@
 							
 						</div>
 						<div class="text-editor">
-					<!--<quill-editor :value="textEditorContent" :maxSize="10240" v-on:changeInput="changeInput"></quill-editor>-->
+					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
 				</div>
 					</el-card>
 				</div>
