@@ -5,11 +5,11 @@
 				<div slot="header" class="clearfix">
 					<div class="card-title">财务状况综述</div>
 					<div class="card-right-wrap">
-						<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+						<el-button  type="primary" size="medium">保存</el-button>
 					</div>
 				</div>
 				<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240" v-on:changeInput="changeInput"></quill-editor>
+					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
 				</div>
 			</el-card>
 		</div>
@@ -19,6 +19,11 @@
 <script>
 import quillEditor from "@/components/form/quillEditor.vue";
 export default {
+	 data(){
+ 	return {
+textEditorContent: "",
+ 	}
+ },
   components: {
     "quill-editor": quillEditor
   }

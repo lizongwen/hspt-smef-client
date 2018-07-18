@@ -8,7 +8,7 @@
 								<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">生成图表</el-button>
-								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+								<el-button  type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">资产负债结构分析</div>
 						</div>
@@ -21,13 +21,13 @@
 						<div class="clear">
 					<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setTdxx">保存</el-button>
+								<el-button type="primary" size="medium" >保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 							
 						</div>
 						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240" v-on:changeInput="changeInput"></quill-editor>
+					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
 				</div>
 						</div>						
 					</el-card>
@@ -108,13 +108,13 @@
 					<el-card class="box-card" shadow='nevner'>		
 					<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setTdxx">保存</el-button>
+								<el-button type="primary" size="medium" >保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 							
 						</div>
 						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240" v-on:changeInput="changeInput"></quill-editor>
+					<!--<quill-editor :value="textEditorContent" :maxSize="10240" v-on:changeInput="changeInput"></quill-editor>-->
 				</div>
 					</el-card>
 				</div>
@@ -175,13 +175,13 @@
 					<el-card class="box-card" shadow='nevner'>		
 					<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setTdxx">保存</el-button>
+								<el-button type="primary" size="medium" >保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 							
 						</div>
 						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240" v-on:changeInput="changeInput"></quill-editor>
+					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
 				</div>
 					</el-card>
 				</div>
@@ -200,7 +200,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-    	
+    	listLoading: false,
     	 tableData_4: [],
       deleteData_4: [],
       addData_4: [],
@@ -229,12 +229,18 @@ export default {
         bz:"备注",
         edit: false
       },
+      activeName: "first",
+      textEditorContent: "",
 }
   },
   mounted() {
     this.getDeviceList();
   },
   methods: {
+  	 //点击标签页触发事件
+      handleClick(tab, event) {
+        //   console.log(tab, event);
+      },
     //---------------------------------------企业主要生产设备--------------------------------------------------------------//
     // 获取企业主要生产设备
     getDeviceList: async function() {

@@ -9,7 +9,7 @@
 								<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">生成图表</el-button>
-								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+								<el-button  type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">利润结构分析</div>
 						</div>
@@ -22,13 +22,13 @@
 						<div class="clear">
 					<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setTdxx">保存</el-button>
+								<el-button type="primary" size="medium" >保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 							
 						</div>
 						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240" v-on:changeInput="changeInput"></quill-editor>
+					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
 				</div>
 						</div>						
 					</el-card>
@@ -106,7 +106,7 @@
 								<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">生成图表</el-button>
-								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+								<el-button  type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">利润结构分析</div>
 						</div>
@@ -119,13 +119,13 @@
 						<div class="clear">
 					<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setTdxx">保存</el-button>
+								<el-button type="primary" size="medium" >保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 							
 						</div>
 						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240" v-on:changeInput="changeInput"></quill-editor>
+					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
 				</div>
 						</div>	
 					</el-card>
@@ -146,6 +146,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+    	listLoading: false,
       tableData_2: [],
       deleteData_2: [],
       addData_2: [],
@@ -160,12 +161,18 @@ export default {
         zb3:"占比",
         edit: false
       },
+      activeName: "first",
+      textEditorContent: "",
 }
   },
   mounted() {
     this.getDeviceList();
   },
   methods: {
+   //点击标签页触发事件
+      handleClick(tab, event) {
+        //   console.log(tab, event);
+      },
     //---------------------------------------企业主要生产设备--------------------------------------------------------------//
     // 获取企业主要生产设备
     getDeviceList: async function() {
@@ -297,6 +304,10 @@ export default {
       return sums;
     },
 
+  //点击标签页触发事件
+      handleClick(tab, event) {
+        //   console.log(tab, event);
+      },
 },
 
   components: {
@@ -309,7 +320,7 @@ export default {
  	
 </script>
 
-<style>
+<style lang="scss" scoped>
 .card-title{
 	font-size: 15px;
 }
@@ -337,9 +348,11 @@ export default {
 .el-table .el-button{
 	float: left;
 	padding: 8px;
+	margin-left: 5px;
 }
 .el-table .el-button+.el-button{
 	padding: 8px;
+	margin-left: 5px;
 }
 .el-table .cell, .el-table th div, .el-table--border td:first-child .cell, .el-table--border th:first-child .cell{
 	padding-left: 0px;

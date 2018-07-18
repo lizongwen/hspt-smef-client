@@ -87,7 +87,7 @@
 								<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">生成图表</el-button>
-								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+								<el-button  type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">利润结构分析</div>
 						</div>
@@ -100,13 +100,13 @@
 						<div class="clear">
 					<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setTdxx">保存</el-button>
+								<el-button type="primary" size="medium" >保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 							
 						</div>
 						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240" v-on:changeInput="changeInput"></quill-editor>
+					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
 				</div>
 						</div>	
 					</el-card>
@@ -125,6 +125,8 @@ import axios from "axios";
 export default {
   data() {
     return {
+    	textEditorContent: "",
+    	listLoading: false,
       tableData_2: [],
       deleteData_2: [],
       addData_2: [],

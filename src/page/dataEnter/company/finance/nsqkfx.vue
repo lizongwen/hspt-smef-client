@@ -6,17 +6,17 @@
         <el-card class="box-card" shadow='nevner'>
 		          <div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+								<el-button  type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">
 								<div class="text">
-									目标公司2017年全年缴纳各项税款&nbsp;&nbsp;<el-input v-model="input" placeholder="2000"></el-input>&nbsp;&nbsp;万元
+									目标公司2017年全年缴纳各项税款&nbsp;&nbsp;<el-input  placeholder="2000"></el-input>&nbsp;&nbsp;万元
 								</div>
 								<div class="text2">
-									2016年全年为&nbsp;&nbsp;<el-input v-model="input" placeholder="2000"></el-input>&nbsp;&nbsp;万元
+									2016年全年为&nbsp;&nbsp;<el-input  placeholder="2000"></el-input>&nbsp;&nbsp;万元
 								</div>
 								<div class="text2">
-									2015年全年为&nbsp;&nbsp;<el-input v-model="input" placeholder="2000"></el-input>&nbsp;&nbsp;万元
+									2015年全年为&nbsp;&nbsp;<el-input  placeholder="2000"></el-input>&nbsp;&nbsp;万元
 								</div>		
 							</div>
 						</div>
@@ -45,13 +45,13 @@
 							<div>
 					<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setTdxx">保存</el-button>
+								<el-button type="primary" size="medium" >保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 							
 						</div>
 						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240" v-on:changeInput="changeInput"></quill-editor>
+					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
 				</div>
 						</div>
 						
@@ -66,6 +66,7 @@
 export default {
 data() {
       return {
+      	textEditorContent: "",
         tableData: [{ 
           project: '实缴额',
       },

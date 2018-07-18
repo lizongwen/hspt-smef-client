@@ -8,7 +8,7 @@
 					<el-card class="box-card" shadow='nevner'>
 							<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+								<el-button  type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">数据列表</div>
 						</div>
@@ -63,7 +63,7 @@
 								<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">生成图表</el-button>
-								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+								<el-button  type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">图表视图</div>
 						</div>
@@ -77,13 +77,13 @@
 						<div class="clear">
 					<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setTdxx">保存</el-button>
+								<el-button type="primary" size="medium" >保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 							
 						</div>
 						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240" v-on:changeInput="changeInput"></quill-editor>
+					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
 				</div>
 						</div>
 				
@@ -100,7 +100,7 @@
 							<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">获取数据</el-button>
-								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+								<el-button  type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">数据列表</div>
 						</div>
@@ -155,7 +155,7 @@
 								<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">生成图表</el-button>
-								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+								<el-button  type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">图表视图</div>
 						</div>
@@ -169,13 +169,13 @@
 						<div class="clear">
 					<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setTdxx">保存</el-button>
+								<el-button type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 							
 						</div>
 						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240" v-on:changeInput="changeInput"></quill-editor>
+					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
 				</div>
 						</div>
 				
@@ -192,7 +192,7 @@
 							<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">获取数据</el-button>
-								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+								<el-button  type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">数据列表</div>
 						</div>
@@ -247,7 +247,7 @@
 								<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">生成图表</el-button>
-								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+								<el-button  type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">图表视图</div>
 						</div>
@@ -261,13 +261,13 @@
 						<div class="clear">
 					<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setTdxx">保存</el-button>
+								<el-button type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 							
 						</div>
 						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240" v-on:changeInput="changeInput"></quill-editor>
+					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
 				</div>
 						</div>
 				
@@ -284,7 +284,7 @@
 							<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">获取数据</el-button>
-								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+								<el-button  type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">数据列表</div>
 						</div>
@@ -339,7 +339,7 @@
 								<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium">生成图表</el-button>
-								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+								<el-button type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">图表视图</div>
 						</div>
@@ -353,13 +353,13 @@
 						<div class="clear">
 					<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setTdxx">保存</el-button>
+								<el-button type="primary" size="medium" >保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 							
 						</div>
 						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240" v-on:changeInput="changeInput"></quill-editor>
+					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
 				</div>
 						</div>
 				
@@ -376,6 +376,18 @@
 <script>
 	import quillEditor from "@/components/form/quillEditor.vue";
 export default {
+	 data(){
+ 	return {
+activeName: "first",
+textEditorContent: "",
+ 	}
+ },
+	 methods: {
+      //点击标签页触发事件
+      handleClick(tab, event) {
+        //   console.log(tab, event);
+      }
+    },
  		components: {
     "quill-editor": quillEditor
 }
