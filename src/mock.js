@@ -30,6 +30,7 @@ import hbxxData from '@/json/hbxx.json'
 import summaryData from '@/json/summary.json'
 import zcfz from '@/json/zcfz.json'
 import lz from '@/json/lr.json'
+import xjllData from '@/json/xjll.json'
 
 
 // 获取 mock.Random 对象
@@ -181,4 +182,9 @@ Mock.mock("/hspt-web-api/data_entry/gsjbxx/hbxx/hbxx/list", 'post', function (re
 //获取利润
 Mock.mock("/hspt-web-api/data_entry/gsjbxx/hbxx/hbxx/list", 'post', function (req) {
 	return lr;
+});
+
+//获取现金流量
+Mock.mock("/hspt-web-api/data_entry/cwzk/zycwsj/xjll/list", 'post', function (req) {
+	return xjllData;
 });
