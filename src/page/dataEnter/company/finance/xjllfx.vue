@@ -23,49 +23,49 @@
 										<span v-else>{{ scope.row.xm}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column  :label="tableData_2_columns.year1">
+								<el-table-column  :label="tableData_2_columns.year1" width="100">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.year1" :class="Object.keys(tableData_2_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.year1}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column  :label="tableData_2_columns.zb1" prop="zb">
+								<el-table-column  :label="tableData_2_columns.zb1" prop="zb1" width="100">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zb1" :class="Object.keys(tableData_2_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zb1}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column  :label="tableData_2_columns.year2" prop="year2">
+								<el-table-column  :label="tableData_2_columns.year2" prop="year2" width="100">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.year2" :class="Object.keys(tableData_2_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.year2}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column  :label="tableData_2_columns.zb2" prop="zb2">
+								<el-table-column  :label="tableData_2_columns.zb2" prop="zb2" width="100">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zb2" :class="Object.keys(tableData_2_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zb2}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column  :label="tableData_2_columns.year3" prop="year3">
+								<el-table-column  :label="tableData_2_columns.year3" prop="year3" width="100">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.year3" :class="Object.keys(tableData_2_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.year3}}</span>
 									</template>
 								</el-table-column>
-									<el-table-column  :label="tableData_2_columns.zb3" prop="zb3">
+									<el-table-column  :label="tableData_2_columns.zb3" prop="zb3" width="100">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zb3" :class="Object.keys(tableData_2_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zb3}}</span>
 									</template>
 								</el-table-column>
-									<el-table-column  :label="tableData_2_columns.year4" prop="year4">
+									<el-table-column  :label="tableData_2_columns.year4" prop="year4" width="100">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.year4" :class="Object.keys(tableData_2_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.year4}}</span>
 									</template>
 								</el-table-column>
-									<el-table-column  :label="tableData_2_columns.zb4" prop="zb4">
+									<el-table-column  :label="tableData_2_columns.zb4" prop="zb4" width="100">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zb4" :class="Object.keys(tableData_2_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zb4}}</span>

@@ -44,26 +44,26 @@
 						<!-- 表格容器 -->
 						<div>
 							<el-table :data="tableData_4" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
-								<el-table-column  :label="tableData_4_columns.zl">
+								<el-table-column  :label="tableData_4_columns.zl" width="103">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zl" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zl}}</span>
 									</template>
 								</el-table-column>
-                             <el-table-column label="期末余额">
-                             	<el-table-column :label="tableData_4_columns.je">
+                             <el-table-column label="期末余额" width="430">
+                             	<el-table-column :label="tableData_4_columns.je" width='108'>
                              		<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.je" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.je}}</span>
 									</template>
                              	</el-table-column>
-                             	<el-table-column  :label="tableData_4_columns.zzebl">
+                             	<el-table-column  :label="tableData_4_columns.zzebl" width='108'>
                              			<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zzebl" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zzebl}}</span>
 									</template>
                              	</el-table-column>
-                             	<el-table-column  :label="tableData_4_columns.hzzb">
+                             	<el-table-column  :label="tableData_4_columns.hzzb" width='165'>
                              		<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.hzzb" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.hzzb}}</span>
@@ -71,19 +71,19 @@
                              	</el-table-column>
                              </el-table-column>
                              <el-table-column  label="期初余额">
-                             	<el-table-column :label="tableData_4_columns.je2">
+                             	<el-table-column :label="tableData_4_columns.je2" width='108'>
                              		<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.je2" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.je2}}</span>
 									</template>
                              	</el-table-column>
-                             	<el-table-column  :label="tableData_4_columns.zzebl2">
+                             	<el-table-column  :label="tableData_4_columns.zzebl2" width='108'>
                              			<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zzebl2" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zzebl2}}</span>
 									</template>
                              	</el-table-column>
-                             	<el-table-column  :label="tableData_4_columns.hzzb2">
+                             	<el-table-column  :label="tableData_4_columns.hzzb2" width='165'>
                              		<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.hzzb2" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.hzzb2}}</span>
