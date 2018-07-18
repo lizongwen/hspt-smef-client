@@ -36,63 +36,63 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setScsb">保存</el-button>
+								<el-button type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">数据列表</div>
 						</div>
 						<!-- 表格容器 -->
 						<div>
-							<el-table :data="tableData_2" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
+							<el-table :data="tableData_1" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
 								
-								<el-table-column  :label="tableData_2_columns.sbmc" width="127">
+								<el-table-column  :label="tableData_1_columns.sbmc" width="127">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.sbmc" :class="Object.keys(tableData_2_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.sbmc" :class="Object.keys(tableData_1_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.sbmc}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column  :label="tableData_2_columns.year1" width="127">
+								<el-table-column  :label="tableData_1_columns.year1" prop="year1" width="127">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.year1" :class="Object.keys(tableData_2_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.year1" :class="Object.keys(tableData_1_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.year1}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column  :label="tableData_2_columns.zb1" prop="zb" width="127">
+								<el-table-column  :label="tableData_1_columns.zb1" prop="zb1" width="127">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zb1" :class="Object.keys(tableData_2_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zb1" :class="Object.keys(tableData_1_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zb1}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column  :label="tableData_2_columns.year2" prop="year2" width="127">
+								<el-table-column  :label="tableData_1_columns.year2" prop="year2" width="127">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.year2" :class="Object.keys(tableData_2_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.year2" :class="Object.keys(tableData_1_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.year2}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column  :label="tableData_2_columns.zb2" prop="zb2" width="127">
+								<el-table-column  :label="tableData_1_columns.zb2" prop="zb2" width="127">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zb2" :class="Object.keys(tableData_2_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zb2" :class="Object.keys(tableData_1_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zb2}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column  :label="tableData_2_columns.year3" prop="year3" width="127">
+								<el-table-column  :label="tableData_1_columns.year3" prop="year3" width="127">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.year3" :class="Object.keys(tableData_2_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.year3" :class="Object.keys(tableData_1_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.year3}}</span>
 									</template>
 								</el-table-column>
-									<el-table-column  :label="tableData_2_columns.zb3" prop="zb3" width="127">
+									<el-table-column  :label="tableData_1_columns.zb3" prop="zb3" width="127">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zb3" :class="Object.keys(tableData_2_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zb3" :class="Object.keys(tableData_1_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zb3}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column align="center" label="操作">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify_2" v-on:acceptDelRow='acceptDelRow_2'></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_1" v-on:verify="verify1" v-on:acceptDelRow='acceptDelRow1'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
-							<v-tabelAddBtn :tableData="tableData_2" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>
+							<v-tabelAddBtn :tableData="tableData_1" :tableData_columns="tableData_1_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
 				</div>
@@ -139,11 +139,11 @@ export default {
   data() {
     return {
     	listLoading: false,
-      tableData_2: [],
-      deleteData_2: [],
-      addData_2: [],
-      updateData_2: [],
-      tableData_2_columns: {
+      tableData_1: [],
+      deleteData_1: [],
+      addData_1: [],
+      updateData_1: [],
+      tableData_1_columns: {
         sbmc: "收入类别",
         year1:"2014",
         zb1:"占比",
@@ -155,108 +155,49 @@ export default {
       },
       activeName: "first",
       textEditorContent: "",
+      
+             //验证规则
+      rules:{
+      	sbmc:[
+      	{ required: true, message: "不能为空" }
+      	],
+      	year1:[
+      	{ required: true, message: "不能为空" }
+      	],
+      	zb1:[
+      	{ required: true, message: "不能为空" }
+      	],
+      	year2:[
+      	{ required: true, message: "不能为空" }
+      	],
+      	zb2:[
+      	{ required: true, message: "不能为空" }
+      	],
+      	year3:[
+      	{ required: true, message: "不能为空" }
+      	],
+      	zb3:[
+      	{ required: true, message: "不能为空" }
+      	],
+      },
 }
   },
   mounted() {
-    this.getDeviceList();
+//  this.getDeviceList();
   },
   methods: {
   
-    //---------------------------------------企业主要生产设备--------------------------------------------------------------//
-    // 获取企业主要生产设备
-    getDeviceList: async function() {
-      let params = {
-        creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token")
-      };
-      const res = await this.$http.post(
-        "/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/list",
-        params
-      );
-      if (res.data.resultCode == "0") {
-        this.tableData_2 = res.data.resultData.data.rows;
-      } 
-    },
-    //保存主要生产设备数据
-    setScsb: async function() {
-      this.tableData_2.forEach((item, index) => {
-        if (item.id == null) {
-          this.addData_2.push(item);
+   acceptDelRow1(val) {
+        this.deleteData_1.push(val);
+      },
+      verify1(rowObj, rowIndex) {
+        tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
+        if (rowObj.id) {
+          this.updateData_1.push(rowObj);
         }
-      });
-      let params = {
-        creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token"),
-        addedDataStr: JSON.stringify(this.addData_2),
-        updatedDataStr: JSON.stringify(this.updateData_2),
-        deletedDataStr: JSON.stringify(this.deleteData_2)
-      };
-      const res = await this.$http.post(
-        "/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/save",
-        params
-      );
-      if (res.data.resultCode == "0") {
-        this.$message({ message: res.data.resultMsg, type: "success" });
-        this.deleteData_2 = [];
-        this.updateData_2 = [];
-        this.addData_2 = [];
-      } else {
-        this.$message({ message: res.data.resultMsg, type: "warning" });
-      }
-    },
-    //接受主要生产设备删除的数据
-    acceptDelRow_2(val) {
-      this.deleteData_2.push(val);
-    },
-    //验证主要生产设备数据
-    verify_2(rowObj, rowIndex) {
-      var isValid = tableValidates.validateByRow(
-        rowObj,
-        rowIndex,
-        this.rules_scsb,
-        this
-      );
-      console.log(isValid);
-      if (rowObj.id) {
-        this.updateData_2.push(rowObj);
-      }
-    },
+      },
 
-    //获取主要生产设备小结
-    getZysbxj: async function() {
-      let params = {
-        creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token")
-      };
-      const res = await this.$http.post(
-        "/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/initQyzyscsbxj",
-        params
-      );
-      if (res.data.resultCode == "0") {
-        this.zysbxj = res.data.resultData.data.xj;
-      }
-    },
-    //修改主要生产设备小结
-    changZysbxj(val) {
-      this.zysbxj = val;
-    },
-    //保存主要生产设备小结
-    setZysbXj: async function() {
-      let params = {
-        creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token"),
-        xj: this.zysbxj
-      };
-      const res = await this.$http.post(
-        "/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/saveQyzyscsbxj",
-        params
-      );
-      if (res.data.resultCode == "0") {
-        this.$message({ message: res.data.resultMsg, type: "success" });
-      } else {
-        this.$message({ message: res.data.resultMsg, type: "warning" });
-      }
-    },
+   
 
     
 
@@ -281,10 +222,10 @@ export default {
             }
           }, 0);
           //根据列名不同，确定不同的合计单位
-          if (column.property == "sbmc" || column.property == "sbxh") {
+          if (column.property == "year1" || column.property == "year2"|| column.property == "year3") {
             sums[index] += "";
-          } else if (column.property == "yz" || column.property == "jz") {
-            sums[index] += " 万元";
+          } else if (column.property == "zb1" || column.property == "zb2"|| column.property == "zb3") {
+            sums[index] += "%";
           }
         } else {
           sums[index] = "";

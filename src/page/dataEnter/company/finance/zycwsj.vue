@@ -261,11 +261,28 @@ activeName: "first",
 textEditorContent: "",
  	}
  },
+  mounted() {
+     this.getZcfz();
+  },
  methods: {
       //点击标签页触发事件
       handleClick(tab, event) {
         //   console.log(tab, event);
-      }
+      },
+      
+  getZcfz:async function() {
+  	console.log(11)
+  	 let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsjbxx/hbxx/hbxx/list",
+        params
+      );
+      console.log(res.data.resultData) 
+  }
+      
    },
    	 		components: {
     "quill-editor": quillEditor

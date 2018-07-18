@@ -133,14 +133,17 @@ data() {
 	font-size: 15px;
 	font-weight: bolder;
 }
-
+$width:70px;
 .el-input{
-	width: 70px;
+	width: $width;
 }
+$width:70px;
+$height: 30px;
 .el-input__inner {
-	width: 70px;
-	height: 30px;
+	width: $width;
+	height: $height;
 }
+
 .text{
 	float: left;
 }

@@ -37,66 +37,67 @@
         	    	<el-card class="box-card" shadow='nevner'>
         	    			<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setScsb">保存</el-button>
+								<el-button type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">账龄分析</div>
 						</div>
 						<!-- 表格容器 -->
 						<div>
-							<el-table :data="tableData_4" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
-								<el-table-column  :label="tableData_4_columns.zl" width="103">
+							<el-table :data="tableData_1" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
+								<el-table-column  :label="tableData_1_columns.zl" width="103">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zl" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zl" :class="Object.keys(tableData_1_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zl}}</span>
 									</template>
 								</el-table-column>
                              <el-table-column label="期末余额" width="430">
-                             	<el-table-column :label="tableData_4_columns.je" width='108'>
+                             	<el-table-column :label="tableData_1_columns.je" width='108'>
                              		<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.je" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.je" :class="Object.keys(tableData_1_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.je}}</span>
 									</template>
                              	</el-table-column>
-                             	<el-table-column  :label="tableData_4_columns.zzebl" width='108'>
+                             	<el-table-column  :label="tableData_1_columns.zzebl" width='108'>
                              			<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zzebl" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zzebl" :class="Object.keys(tableData_1_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zzebl}}</span>
 									</template>
                              	</el-table-column>
-                             	<el-table-column  :label="tableData_4_columns.hzzb" width='165'>
+                             	<el-table-column  :label="tableData_1_columns.hzzb" width='165'>
                              		<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.hzzb" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.hzzb" :class="Object.keys(tableData_1_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.hzzb}}</span>
 									</template>
                              	</el-table-column>
                              </el-table-column>
                              <el-table-column  label="期初余额">
-                             	<el-table-column :label="tableData_4_columns.je2" width='108'>
+                             	<el-table-column :label="tableData_1_columns.je2" width='108'>
                              		<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.je2" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.je2" :class="Object.keys(tableData_1_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.je2}}</span>
 									</template>
                              	</el-table-column>
-                             	<el-table-column  :label="tableData_4_columns.zzebl2" width='108'>
+                             	<el-table-column  :label="tableData_1_columns.zzebl2" width='108'>
                              			<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zzebl2" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zzebl2" :class="Object.keys(tableData_1_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zzebl2}}</span>
 									</template>
                              	</el-table-column>
-                             	<el-table-column  :label="tableData_4_columns.hzzb2" width='165'>
+                             	<el-table-column  :label="tableData_1_columns.hzzb2" width='165'>
                              		<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.hzzb2" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.hzzb2" :class="Object.keys(tableData_1_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.hzzb2}}</span>
 									</template>
                              	</el-table-column>
                              </el-table-column>
                              <el-table-column align="center" label="操作">
                              	<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_4" v-on:verify="verify_4" v-on:acceptDelRow='acceptDelRow_4'></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_1" v-on:verify="verify1"
+                                      v-on:acceptDelRow='acceptDelRow1' ></v-tableOperation>
 									</template>
                              </el-table-column>
                             </el-table>
-						<v-tabelAddBtn :tableData="tableData_4" :tableData_columns="tableData_4_columns"></v-tabelAddBtn>
+						<v-tabelAddBtn :tableData="tableData_1" :tableData_columns="tableData_1_columns"></v-tabelAddBtn>
 						</div>
         	    	</el-card>
         	    </div>
@@ -119,7 +120,7 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setScsb">保存</el-button>
+								<el-button type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">年末应收账款明细</div>
 						</div>
@@ -159,7 +160,8 @@
 								</el-table-column>
 								<el-table-column align="center" label="操作">
 									<template slot-scope="scope">
-										<v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify_2" v-on:acceptDelRow='acceptDelRow_2'></v-tableOperation>
+										<v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify2"
+                                      v-on:acceptDelRow='acceptDelRow2'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
@@ -192,16 +194,16 @@ import tableValidates from "@/utils/validateTable/tableValidates.js";
 import quillEditor from "@/components/form/quillEditor.vue";
 import tabelAddBtn from "@/components/table/table-add-btn.vue";
 import tableOperation from "@/components/table/table-operation.vue";
-import axios from "axios";
+
 export default {
   data() {
     return {
     	listLoading: false,
-    	 tableData_4: [],
-      deleteData_4: [],
-      addData_4: [],
-      updateData_4: [],
-      tableData_4_columns: {
+    	 tableData_1: [],
+      deleteData_1: [],
+      addData_1: [],
+      updateData_1: [],
+      tableData_1_columns: {
         zl: "账龄",
         je: "金额（万元）",
         zzebl: "占总额比例",
@@ -216,7 +218,7 @@ export default {
       tableData_2: [],
       deleteData_2: [],
       addData_2: [],
-      updateData_2: [],
+//    updateData_2: [],
       tableData_2_columns: {
         dwmc: "单位名称",
         ye:"余额",
@@ -227,116 +229,82 @@ export default {
       },
       activeName: "first",
       textEditorContent: "",
+      
+          //验证规则
+      rules:{
+      	zl:[
+      	{ required: true, message: "不能为空" }
+      	],
+      	je:[
+      	{ required: true, message: "不能为空" }
+      	],
+      	zzebl:[
+      	{ required: true, message: "不能为空" }
+      	],
+      	hzzb:[
+      	{ required: true, message: "不能为空" }
+      	],
+      	je2:[
+      	{ required: true, message: "不能为空" }
+      	],
+      	zzebl2:[
+      	{ required: true, message: "不能为空" }
+      	],
+      	hzzb2:[
+      	{ required: true, message: "不能为空" }
+      	],
+      },
+      rules2:{
+      	dwmc:[
+      	{ required: true, message: "不能为空" }
+      	],
+      	ye:[
+      	{ required: true, message: "不能为空" }
+      	],
+      	zyszkbl:[
+      	{ required: true, message: "不能为空" }
+      	],
+      	hzzb:[
+      	{ required: true, message: "不能为空" }
+      	],
+      	bz:[
+      	{ required: true, message: "不能为空" }
+      	]
+      }
 }
   },
   mounted() {
-    this.getDeviceList();
+//  this.getDeviceList();
   },
   methods: {
   	 //点击标签页触发事件
       handleClick(tab, event) {
         //   console.log(tab, event);
       },
-    //---------------------------------------企业主要生产设备--------------------------------------------------------------//
-    // 获取企业主要生产设备
-    getDeviceList: async function() {
-      let params = {
-        creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token")
-      };
-      const res = await this.$http.post(
-        "/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/list",
-        params
-      );
-      if (res.data.resultCode == "0") {
-        this.tableData_2 = res.data.resultData.data.rows;
-      } 
-    },
-    //保存主要生产设备数据
-    setScsb: async function() {
-      this.tableData_2.forEach((item, index) => {
-        if (item.id == null) {
-          this.addData_2.push(item);
+      
+  
+      
+//////////////////////////////////////////////////获取账龄分析
+
+      acceptDelRow1(val) {
+        this.deleteData_1.push(val);
+      },
+      verify1(rowObj, rowIndex) {
+        tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
+        if (rowObj.id) {
+          this.updateData_1.push(rowObj);
         }
-      });
-      let params = {
-        creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token"),
-        addedDataStr: JSON.stringify(this.addData_2),
-        updatedDataStr: JSON.stringify(this.updateData_2),
-        deletedDataStr: JSON.stringify(this.deleteData_2)
-      };
-      const res = await this.$http.post(
-        "/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/save",
-        params
-      );
-      if (res.data.resultCode == "0") {
-        this.$message({ message: res.data.resultMsg, type: "success" });
-        this.deleteData_2 = [];
-        this.updateData_2 = [];
-        this.addData_2 = [];
-      } else {
-        this.$message({ message: res.data.resultMsg, type: "warning" });
-      }
-    },
-    //接受主要生产设备删除的数据
-    acceptDelRow_2(val) {
-      this.deleteData_2.push(val);
-    },
-    //验证主要生产设备数据
-    verify_2(rowObj, rowIndex) {
-      var isValid = tableValidates.validateByRow(
-        rowObj,
-        rowIndex,
-        this.rules_scsb,
-        this
-      );
-      console.log(isValid);
-      if (rowObj.id) {
-        this.updateData_2.push(rowObj);
-      }
-    },
-
-    //获取主要生产设备小结
-    getZysbxj: async function() {
-      let params = {
-        creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token")
-      };
-      const res = await this.$http.post(
-        "/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/initQyzyscsbxj",
-        params
-      );
-      if (res.data.resultCode == "0") {
-        this.zysbxj = res.data.resultData.data.xj;
-      }
-    },
-    //修改主要生产设备小结
-    changZysbxj(val) {
-      this.zysbxj = val;
-    },
-    //保存主要生产设备小结
-    setZysbXj: async function() {
-      let params = {
-        creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token"),
-        xj: this.zysbxj
-      };
-      const res = await this.$http.post(
-        "/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/saveQyzyscsbxj",
-        params
-      );
-      if (res.data.resultCode == "0") {
-        this.$message({ message: res.data.resultMsg, type: "success" });
-      } else {
-        this.$message({ message: res.data.resultMsg, type: "warning" });
-      }
-    },
-
-    
-
-
-    //主要生产设备合计
+      },
+      acceptDelRow2(val) {
+        this.deleteData_1.push(val);
+      },
+      verify2(rowObj, rowIndex) {
+        tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
+        if (rowObj.id) {
+          this.updateData_1.push(rowObj);
+        }
+      },
+    //应收账款合计
     getSummaries(param) {
       const { columns, data } = param;
       const sums = [];
@@ -356,9 +324,9 @@ export default {
             }
           }, 0);
           //根据列名不同，确定不同的合计单位
-          if (column.property == "sbmc" || column.property == "sbxh") {
-            sums[index] += "";
-          } else if (column.property == "yz" || column.property == "jz") {
+          if (column.property == "zyszkbl") {
+            sums[index] += "%";
+          } else if (column.property == "ye" || column.property == "hzzb") {
             sums[index] += " 万元";
           }
         } else {
@@ -367,73 +335,6 @@ export default {
       });
       return sums;
     },
-    
-    
-     //获取车辆明细信息
-    getCarList: async function() {
-      let params = {
-        creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token")
-      };
-      const res = await this.$http.post(
-        "/hspt-web-api/data_entry/gsyyxx/qyjyzy/clqkmx/list",
-        params
-      );
-      if (res.data.resultCode == "0") {
-        this.tableData_4 = res.data.resultData.data.rows;
-      } else {
-      }
-    },
-    //接口获取车辆明细
-    getClmxIterfaceData: async function() {
-      let params = {
-        creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token")
-      };
-      const res = await this.$http.post(
-        "/hspt-web-api/data_entry/gsyyxx/qyjyzy/qyhgrclqkmx/getData",
-        params
-      );
-      if (res.data.resultCode == "0") {
-        this.$message({ message: res.data.resultMsg, type: "success" });
-        this.tableData_4 = res.data.resultData.data.rows;
-        this.deleteData_4 = [];
-        this.updateData_4 = [];
-        this.addData_4 = [];
-        this.addData_4 = res.data.resultData.data.rows;
-      } else {
-        this.$message({ message: res.data.resultMsg, type: "warning" });
-      }
-    },
-
-    //保存车辆明细数据
-    setClmx: async function() {
-      this.tableData_4.forEach((item, index) => {
-        if (item.id == null) {
-          this.addData_4.push(item);
-        }
-      });
-      let params = {
-        creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token"),
-        addedDataStr: JSON.stringify(this.addData_4),
-        updatedDataStr: JSON.stringify(this.updateData_4),
-        deletedDataStr: JSON.stringify(this.deleteData_4)
-      };
-      const res = await this.$http.post(
-        "/hspt-web-api/data_entry/gsyyxx/qyjyzy/clqkmx/save",
-        params
-      );
-      if (res.data.resultCode == "0") {
-        this.$message({ message: res.data.resultMsg, type: "success" });
-        this.deleteData_4 = [];
-        this.updateData_4 = [];
-        this.addData_4 = [];
-      } else {
-        this.$message({ message: res.data.resultMsg, type: "warning" });
-      }
-    },
-
 },
 
   components: {
