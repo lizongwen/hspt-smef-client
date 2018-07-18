@@ -341,4 +341,7 @@ export default {
 .el-table .el-button+.el-button{
 	padding: 8px;
 }
+.el-table .cell, .el-table th div, .el-table--border td:first-child .cell, .el-table--border th:first-child .cell{
+	padding-left: 0px;
+}
 </style>
