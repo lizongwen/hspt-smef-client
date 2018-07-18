@@ -7,7 +7,8 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="default" size="medium">上传数据</el-button>
+								选择时间：
+							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
 							</div>
 							<div class="card-title">资产负债表</div>
 						</div>
@@ -16,9 +17,6 @@
 								<el-button type="default" size="medium">模板下载</el-button>
 								<el-button type="default" size="medium">数据导入</el-button>
 								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
-							</div>
-							<div class="card-title">选择时间：
-							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
 							</div>
 						</div>-->
 						
@@ -108,7 +106,8 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="default" size="medium">数据导入</el-button>
+								选择时间：
+							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
 							</div>
 							<div class="card-title">利润表</div>
 						</div>
@@ -117,9 +116,6 @@
 								<el-button type="default" size="medium">模板下载</el-button>
 								<el-button type="default" size="medium">数据导入</el-button>
 								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
-							</div>
-							<div class="card-title">选择时间：
-							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
 							</div>
 						</div>-->
 						
@@ -178,7 +174,8 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="default" size="medium">数据导入</el-button>
+								选择时间：
+							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
 							</div>
 							<div class="card-title">现金流量表</div>
 						</div>
@@ -187,9 +184,6 @@
 								<el-button type="default" size="medium">模板下载</el-button>
 								<el-button type="default" size="medium">数据导入</el-button>
 								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
-							</div>
-							<div class="card-title">选择时间：
-							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
 							</div>
 						</div>-->
 						
@@ -262,6 +256,7 @@ import quillEditor from "@/components/form/quillEditor.vue";
 export default {
  data(){
  	return {
+ 		value4: '',
 activeName: "first",
 textEditorContent: "",
  	}
@@ -310,5 +305,8 @@ table tr td{
 }
 .card-title{
 	font-size: 15px;
+}
+.el-input__inner{
+	width: 50%;
 }
 </style>

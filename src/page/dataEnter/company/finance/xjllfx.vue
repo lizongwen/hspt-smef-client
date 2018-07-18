@@ -85,11 +85,7 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div class="clear">
 								<div slot="header" class="clearfix">
-							<div class="card-right-wrap">
-								<el-button type="default" size="medium">生成图表</el-button>
-								<el-button  type="primary" size="medium">保存</el-button>
-							</div>
-							<div class="card-title">利润结构分析</div>
+							<div class="card-title">图表视图</div>
 						</div>
 						<div>
 							<div class="img">
