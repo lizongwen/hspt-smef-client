@@ -395,7 +395,7 @@ textEditorContent: "",
 }
 </script>
 
-<style>
+<style lang="scss">
 table{
 	width: 100%;
 	background:#F4F3F3;

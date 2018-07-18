@@ -16,7 +16,7 @@ import http from './utils/http';
 import api from './utils/api';
 import stingApi from './utils/string';
 // 引入mock.js
-// require('./mock.js');
+   require('./mock.js');
 
 // import './style/commonStyle.scss'
 // 使用vue-easytable组件
@@ -33,7 +33,7 @@ Vue.use(ElementUI);
 Vue.config.productionTip = false;
 Vue.prototype.$http = http;
 Vue.prototype.$api = api;
-//   require('./mock.js');
+     require('./mock.js');
 
 
 /* eslint-disable no-new */

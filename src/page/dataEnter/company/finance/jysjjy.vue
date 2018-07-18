@@ -400,7 +400,7 @@ import quillEditor from "@/components/form/quillEditor.vue";
   };
 </script>
 
-<style>
+<style lang="scss">
 		.clear{
 		width: 100%;
 		background: white;

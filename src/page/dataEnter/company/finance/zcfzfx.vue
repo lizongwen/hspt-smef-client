@@ -448,7 +448,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .card-title{
 	font-size: 15px;
 }
