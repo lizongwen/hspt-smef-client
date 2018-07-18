@@ -3,7 +3,7 @@
 import Vue from 'vue';
 import store from './store'
 import ElementUI from 'element-ui';
-import VCharts from 'v-charts';
+//import VCharts from 'v-charts';
 import 'element-ui/lib/theme-chalk/index.css';
 import './style/icon/iconfont.css';
 import './style/base.css';
@@ -29,7 +29,7 @@ Vue.component(VTable.name, VTable)
 // Vue.use(tableOperation);
 
 Vue.use(ElementUI);
-Vue.use(VCharts);
+//Vue.use(VCharts);
 Vue.config.productionTip = false;
 Vue.prototype.$http = http;
 Vue.prototype.$api = api;

@@ -32,6 +32,7 @@
 						</div>						
 					</el-card>
 				</div>	
+			
 			</el-tab-pane>
 
         <el-tab-pane label="应收账款分析" name="second">
