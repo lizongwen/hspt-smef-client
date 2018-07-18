@@ -80,7 +80,7 @@
 				</div>
 			</el-card>
 		</div>
-		<div>
+		<!--<div>
 			<el-card class="box-card" shadow='nevner'>
 				<div slot="header" class="clearfix">
 					<div class="card-title">小结</div>
@@ -92,7 +92,7 @@
 
 				</div>
 			</el-card>
-		</div>
+		</div>-->
 	</div>
 </template>
 

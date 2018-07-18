@@ -129,10 +129,10 @@
                 <el-table-column min-width="100px" label="部门" prop="department">
                   <template slot-scope="scope">
                     <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules" :id="'department'+scope.$index"
+                      <el-form :model="scope.row" :rules="rules_ygfx" :id="'department'+scope.$index"
                                :ref="'form_department_'+scope.$index" :show-message="false">
                         <el-form-item prop="department" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.bm"></el-input>
+                          <el-input class="edit-input cellItem el-form-item" :class="Object.keys(formatterTableData_columns)[1]" size="small" v-model="scope.row.bm"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -143,10 +143,10 @@
                   <el-table-column min-width="100px" label="初中及以下" prop="czjyx">
                     <template slot-scope="scope">
                       <template v-if="scope.row.edit">
-                        <el-form :model="scope.row" :rules="rules" :id="'junior'+scope.$index"
+                        <el-form :model="scope.row" :rules="rules_ygfx" :id="'junior'+scope.$index"
                                  :ref="'form_junior_'+scope.$index" :show-message="false">
                           <el-form-item prop="junior" class="td-form-item">
-                            <el-input class="edit-input" size="small" v-model="scope.row.czjyx"></el-input>
+                            <el-input class="edit-input cellItem el-form-item" :class="Object.keys(formatterTableData_columns)[2]" size="small" v-model="scope.row.czjyx"></el-input>
                           </el-form-item>
                         </el-form>
                       </template>
@@ -156,10 +156,10 @@
                   <el-table-column min-width="100px" label="高中" prop="gz">
                     <template slot-scope="scope">
                       <template v-if="scope.row.edit">
-                        <el-form :model="scope.row" :rules="rules" :id="'middle'+scope.$index"
+                        <el-form :model="scope.row" :rules="rules_ygfx" :id="'middle'+scope.$index"
                                  :ref="'form_middle_'+scope.$index" :show-message="false">
                           <el-form-item prop="middle" class="td-form-item">
-                            <el-input class="edit-input" size="small" v-model="scope.row.gz"></el-input>
+                            <el-input class="edit-input cellItem el-form-item" :class="Object.keys(formatterTableData_columns)[3]" size="small" v-model="scope.row.gz"></el-input>
                           </el-form-item>
                         </el-form>
                       </template>
@@ -169,10 +169,10 @@
                   <el-table-column min-width="100px" label="大学及以上" prop="dxjys">
                     <template slot-scope="scope">
                       <template v-if="scope.row.edit">
-                        <el-form :model="scope.row" :rules="rules" :id="'senior'+scope.$index"
+                        <el-form :model="scope.row" :rules="rules_ygfx" :id="'senior'+scope.$index"
                                  :ref="'form_senior_'+scope.$index" :show-message="false">
                           <el-form-item prop="senior" class="td-form-item">
-                            <el-input class="edit-input" size="small" v-model="scope.row.dxjys"></el-input>
+                            <el-input class="edit-input cellItem el-form-item" :class="Object.keys(formatterTableData_columns)[4]" size="small" v-model="scope.row.dxjys"></el-input>
                           </el-form-item>
                         </el-form>
                       </template>
@@ -183,10 +183,10 @@
                 <el-table-column min-width="100px" label="小计" prop="hj">
                   <template slot-scope="scope">
                     <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules" :id="'subtotal'+scope.$index"
+                      <el-form :model="scope.row" :rules="rules_ygfx" :id="'subtotal'+scope.$index"
                                :ref="'form_subtotal_'+scope.$index" :show-message="false">
                         <el-form-item prop="subtotal" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.hj"></el-input>
+                          <el-input class="edit-input cellItem el-form-item" :class="Object.keys(formatterTableData_columns)[5]" size="small" v-model="scope.row.hj"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -196,10 +196,10 @@
                 <el-table-column min-width="100px" label="在职年限" prop="workYear">
                   <template slot-scope="scope">
                     <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules" :id="'workYear'+scope.$index"
+                      <el-form :model="scope.row" :rules="rules_ygfx" :id="'workYear'+scope.$index"
                                :ref="'form_workYear_'+scope.$index" :show-message="false">
                         <el-form-item prop="workYear" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.pjzznx"></el-input>
+                          <el-input class="edit-input cellItem el-form-item" :class="Object.keys(formatterTableData_columns)[6]" size="small" v-model="scope.row.pjzznx"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -209,10 +209,10 @@
                 <el-table-column min-width="100px" label="平均年龄" prop="averagAge">
                   <template slot-scope="scope">
                     <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules" :id="'averagAge'+scope.$index"
+                      <el-form :model="scope.row" :rules="rules_ygfx" :id="'averagAge'+scope.$index"
                                :ref="'form_averagAge_'+scope.$index" :show-message="false">
                         <el-form-item prop="averagAge" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.pjnl"></el-input>
+                          <el-input class="edit-input cellItem el-form-item" :class="Object.keys(formatterTableData_columns)[7]" size="small" v-model="scope.row.pjnl"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -265,6 +265,19 @@
         ygxj: "",
         labelPosition: "right",
         formArry: [],
+        formArryObj: {
+          id: null,
+          zw: "职务",
+          sfcyrcyy: "是否参与日常运营",
+          xm: "姓名",
+          xb: "性别",
+          whcd: "文化程度",
+          csny: "出生年月",
+          xggznl: "相关工作年龄",
+          hyzt: "婚姻状态",
+          rzxz: "任职性质",
+          gzll: "工作履历",
+        },
         formArry_bf: [],
         formArry_add: [],
         formArry_update: [],
@@ -281,13 +294,83 @@
           czjyx: null, //初中及以下
           gz: null, //高中
           dxjys: null, //大学及以上
-          subtotal: null, //小计
+          hj: null, //小计
           pjzznx: null, //在职年限
           pjnl: null, //平均年龄
           edit: false
         },
         //规则
-        rules: {}
+        rules_ygfx: {
+          bm: [{ required: true, message: "部门是必填项" }],
+          czjyx: [{ required: true, message: "初中及以下是必填项" },
+            {validator(rule, value, callback) {
+                var errors = [];
+                if (!/^([0-9]{1,})$/.test(value)) {
+
+                  callback('初中及以下必须为正整数值....');
+                }
+                callback(errors);
+
+              }}
+          ],
+          gz: [{ required: true, message: "高中是必填项" },
+            {validator(rule, value, callback) {
+                var errors = [];
+                if (!/^([0-9]{1,})$/.test(value)) {
+
+                  callback('高中必须为正整数值....');
+                }
+                callback(errors);
+
+              }}
+          ],
+          dxjys: [{ required: true, message: "大学及以上是必填项" },
+            {validator(rule, value, callback) {
+                var errors = [];
+                if (!/^([0-9]{1,})$/.test(value)) {
+
+                  callback('大学及以上必须为正整数值....');
+                }
+                callback(errors);
+
+              }}
+
+          ],
+          hj: [{ required: true, message: "小计是必填项" },
+            {validator(rule, value, callback) {
+                var errors = [];
+                if (!/^([0-9]{1,})$/.test(value)) {
+
+                  callback('小计必须为正整数值....');
+                }
+                callback(errors);
+
+              }}
+          ],
+          pjzznx: [{ required: true, message: "在职年限是必填项" },
+            {validator(rule, value, callback) {
+                var errors = [];
+                if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+
+                  callback('在职年限为数字值....');
+                }
+                callback(errors);
+
+              }}
+          ],
+          pjnl: [{ required: true, message: "平均年龄是必填项" },
+            {validator(rule, value, callback) {
+                var errors = [];
+                if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+
+                  callback('平均年龄必须为数字值....');
+                }
+                callback(errors);
+
+              }}
+          ]
+
+        },
       };
     },
     mounted() {
@@ -314,7 +397,7 @@
       },
       //增加表单
       addForm() {
-        let newData = JSON.parse(JSON.stringify(this.formArry[0]));
+        let newData = JSON.parse(JSON.stringify(this.formArryObj));
         for (let key in newData) {
           newData[key] = null;
         }
@@ -380,6 +463,7 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
+          this.getGltdxj();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
@@ -400,7 +484,7 @@
         var isValid = tableValidates.validateByRow(
           rowObj,
           rowIndex,
-          this.rules,
+          this.rules_ygfx,
           this
         );
         if (rowObj.id) {
@@ -479,6 +563,7 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
+          this.getYgfxxj();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }

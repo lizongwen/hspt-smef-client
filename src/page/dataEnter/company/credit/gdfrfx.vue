@@ -31,7 +31,7 @@
                   <el-form :model="scope.row" :rules="rules_zrrdgd" :id="'identityNum'+scope.$index"
                            :ref="'form_identityNum_'+scope.$index" :show-message="false">
                     <el-form-item prop="identityNum" class="td-form-item">
-                      <el-input class="edit-input" size="small" v-model="scope.row.idNumber"></el-input>
+                      <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_0_columns)[2]" size="small" v-model="scope.row.idNumber"></el-input>
                     </el-form-item>
                   </el-form>
                 </template>
@@ -44,7 +44,7 @@
                   <el-form :model="scope.row" :rules="rules_zrrdgd" :id="'phoneNum'+scope.$index"
                            :ref="'form_phoneNum_'+scope.$index" :show-message="false">
                     <el-form-item prop="phoneNum" class="td-form-item">
-                      <el-input class="edit-input" size="small" v-model="scope.row.mobile"></el-input>
+                      <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_0_columns)[3]" size="small" v-model="scope.row.mobile"></el-input>
                     </el-form-item>
                   </el-form>
                 </template>
@@ -518,93 +518,60 @@
             <div>
               <el-table :data="tableData_3" v-loading.body="listLoading" border fit highlight-current-row
                         style="width: 100%">
-                <el-table-column label="序号" type="index" width="50"></el-table-column>
-                <el-table-column min-width="100px" label="姓名">
+                <el-table-column min-width="100px" :label="tableData_3_columns.name">
                   <template slot-scope="scope">
-                    <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules_grgjj" :id="'name'+scope.$index"
-                               :ref="'form_name_'+scope.$index" :show-message="false">
-                        <el-form-item prop="name" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.name"></el-input>
-                        </el-form-item>
-                      </el-form>
-                    </template>
-                    <span v-else>{{scope.row.name}}</span>
+                    <el-input v-model="scope.row.name" class="edit-input cellItem el-form-item"
+                              :class="Object.keys(tableData_3_columns)[1]" v-if="scope.row.edit"
+                              size="small"></el-input>
+                    <span v-else>{{ scope.row.name}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" label="参缴时间">
+                <el-table-column min-width="100px" :label="tableData_3_columns.cjsj">
                   <template slot-scope="scope">
-                    <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules_grgjj" :id="'cjsj'+scope.$index"
-                               :ref="'form_cjsj_'+scope.$index" :show-message="false">
-                        <el-form-item prop="cjsj" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.cjsj"></el-input>
-                        </el-form-item>
-                      </el-form>
-                    </template>
+                    <el-input v-model="scope.row.cjsj" class="edit-input cellItem el-form-item"
+                              :class="Object.keys(tableData_3_columns)[2]" v-if="scope.row.edit"
+                              size="small"></el-input>
                     <span v-else>{{ scope.row.cjsj}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" label="缴纳月数">
+                <el-table-column min-width="100px" :label="tableData_3_columns.jnys">
                   <template slot-scope="scope">
-                    <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules_grgjj" :id="'jnys'+scope.$index"
-                               :ref="'form_jnys_'+scope.$index" :show-message="false">
-                        <el-form-item prop="jnys" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.jnys"></el-input>
-                        </el-form-item>
-                      </el-form>
-                    </template>
+                    <el-input v-model="scope.row.jnys" class="edit-input cellItem el-form-item"
+                              :class="Object.keys(tableData_3_columns)[3]" v-if="scope.row.edit"
+                              size="small"></el-input>
                     <span v-else>{{ scope.row.jnys}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" label="申报工资基数（元）">
+                <el-table-column min-width="100px" :label="tableData_3_columns.sbgzjs">
                   <template slot-scope="scope">
-                    <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules_grgjj" :id="'sbgzjs'+scope.$index"
-                               :ref="'form_sbgzjs_'+scope.$index" :show-message="false">
-                        <el-form-item prop="sbgzjs" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.sbgzjs"></el-input>
-                        </el-form-item>
-                      </el-form>
-                    </template>
+                    <el-input v-model="scope.row.sbgzjs" class="edit-input cellItem el-form-item"
+                              :class="Object.keys(tableData_3_columns)[4]" v-if="scope.row.edit"
+                              size="small"></el-input>
                     <span v-else>{{ scope.row.sbgzjs}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" label="个人月缴额（元）">
+                <el-table-column min-width="100px" :label="tableData_3_columns.gryjse">
                   <template slot-scope="scope">
-                    <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules_grgjj" :id="'gryjse'+scope.$index"
-                               :ref="'form_gryjse_'+scope.$index" :show-message="false">
-                        <el-form-item prop="gryjse" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.gryjse"></el-input>
-                        </el-form-item>
-                      </el-form>
-                    </template>
+                    <el-input v-model="scope.row.gryjse" class="edit-input cellItem el-form-item"
+                              :class="Object.keys(tableData_3_columns)[5]" v-if="scope.row.edit"
+                              size="small"></el-input>
                     <span v-else>{{ scope.row.gryjse}}</span>
                   </template>
                 </el-table-column>
-                <el-table-column min-width="200px" label="账户状态">
+                <el-table-column min-width="100px" :label="tableData_3_columns.zhzt">
                   <template slot-scope="scope">
-                    <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules_grgjj" :id="'zhzt'+scope.$index"
-                               :ref="'form_zhzt_'+scope.$index" :show-message="false">
-                        <el-form-item prop="zhzt" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.zhzt"></el-input>
-                        </el-form-item>
-                      </el-form>
-                    </template>
+                    <el-input v-model="scope.row.zhzt" class="edit-input cellItem el-form-item"
+                              :class="Object.keys(tableData_3_columns)[6]" v-if="scope.row.edit"
+                              size="small"></el-input>
                     <span v-else>{{ scope.row.zhzt}}</span>
                   </template>
                 </el-table-column>
                 <el-table-column align="center" label="操作" width="240">
                   <template slot-scope="scope">
-                    <v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify_3"
-                                      v-on:acceptDelRow='acceptDelRow_3'></v-tableOperation>
+                    <v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify_3"></v-tableOperation>
                   </template>
                 </el-table-column>
               </el-table>
-              <!--<v-tabelAddBtn :tableData="tableData_3" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>-->
             </div>
           </el-card>
         </div>
@@ -719,7 +686,6 @@
                   </template>
                 </el-table-column>
               </el-table>
-              <!--<v-tabelAddBtn :tableData="tableData_2" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>-->
             </div>
           </el-card>
         </div>
@@ -834,7 +800,6 @@
                   </template>
                 </el-table-column>
               </el-table>
-              <!--<v-tabelAddBtn :tableData="tableData_2" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>-->
             </div>
           </el-card>
         </div>
@@ -1060,8 +1025,28 @@
         },
         rules_zrrdgd: {
           name: [{required: true, message: "姓名是必填项"}],
-          idNumber: [{required: true, message: "身份证号是必填项"}],
-          mobile: [{required: true, message: "手机号是必填项"}]
+          idNumber: [{required: true, message: "身份证号是必填项"},
+            {validator(rule, value, callback) {
+                var errors = [];
+                if (!/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/ .test(value)) {
+
+                  callback('请输入正确身份证号....');
+                }
+                callback(errors);
+
+              }}
+          ],
+          mobile: [{required: true, message: "手机号是必填项"},
+            {validator(rule, value, callback) {
+                var errors = [];
+                if (!/^1[34578]\d{9}$/.test(value)) {
+
+                  callback('请输入正确手机号....');
+                }
+                callback(errors);
+
+              }}
+          ]
         },
 
         tableData: [],
@@ -1118,7 +1103,6 @@
 
         tableData_3: [],
         updateData_3: [],
-        deleteData_3: [],
         addData_3: [],
         tableData_3_columns: {
           id: null,
@@ -1245,7 +1229,6 @@
           }
         }
       },
-
       //保存自然人大股东信息
       setZrrdgd: async function () {
         this.tableData_0.forEach((item, index) => {
@@ -1266,6 +1249,7 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
+          this.getZrrdgd()
           this.deleteData_0 = [];
           this.updateData_0 = [];
           this.addData_0 = [];
@@ -1289,7 +1273,6 @@
           this.updateData_0.push(rowObj);
         }
       },
-
       //-------------------------------------------------央行报告信息-----------------------------------------------
       //获取自然人大股东央行报告信息
       getYhbg: async function () {
@@ -1323,6 +1306,7 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
+          this.getYhbg();
           this.deleteData = [];
           this.updateData = [];
           this.addData = [];
@@ -1342,12 +1326,10 @@
           this.updateData.push(rowObj);
         }
       },
-
       //接受自然人大股东央行报告信息删除的数据
       acceptDelRow(val) {
         this.deleteData.push(val);
       },
-
       //----------------------------------------------------法律风险--------------------------------------------------
       //获取法律风险信息
       getFlfx: async function () {
@@ -1363,7 +1345,6 @@
           this.tableData_1 = res.data.resultData.data;
         }
       },
-
       //保存法律风险信息
       setFlfx: async function () {
         this.tableData_1.forEach((item, index) => {
@@ -1384,6 +1365,7 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
+          this.getFlfx();
           this.deleteData_1 = [];
           this.updateData_1 = [];
           this.addData_1 = [];
@@ -1403,12 +1385,10 @@
           this.updateData_1.push(rowObj);
         }
       },
-
       //接受法律风险信息删除的数据
       acceptDelRow_1(val) {
         this.deleteData_1.push(val);
       },
-
       //----------------------------------------------------公共信息-------------------------------------------------------
       //获取个人社会行用记录信息
       getGrshxyjl: async function () {
@@ -1424,7 +1404,6 @@
           this.tableData_2 = res.data.resultData.data.rows;
         }
       },
-
       //保存个人社会行用记录信息
       setGrshxyjl: async function () {
         this.tableData_2.forEach((item, index) => {
@@ -1443,12 +1422,29 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
+          this.getGrshxyjl();
           this.deleteData_2 = [];
           this.updateData_2 = [];
           this.addData_2 = [];
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+      },
+      //验证个人社会行用记录信息数据
+      verify_2(rowObj, rowIndex) {
+        var isValid = tableValidates.validateByRow(
+          rowObj,
+          rowIndex,
+          this.rules_grxy,
+          this
+        );
+        if (rowObj.id) {
+          this.updateData_2.push(rowObj);
+        }
+      },
+      //接受个人社会行用记录信息删除的数据
+      acceptDelRow_2(val) {
+        this.deleteData_2.push(val);
       },
       //----------------------------------------------------反欺诈信息-------------------------------------------------------
       //获取反欺诈信息
@@ -1461,8 +1457,6 @@
           "/hspt-web-api/data_entry/qyfxgk/qyfxgkFqz/loadData",
           params
         );
-        console.log(res.data.resultData)
-
         if (res.data.resultCode == "0") {
           this.tableData_6 = res.data.resultData.data;
         }
@@ -1520,25 +1514,8 @@
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
       },
-      //验证个人社会行用记录信息数据
-      verify_2(rowObj, rowIndex) {
-        var isValid = tableValidates.validateByRow(
-          rowObj,
-          rowIndex,
-          this.rules_grxy,
-          this
-        );
-        if (rowObj.id) {
-          this.updateData_2.push(rowObj);
-        }
-      },
 
-      //接受个人社会行用记录信息删除的数据
-      acceptDelRow_2(val) {
-        this.deleteData_2.push(val);
-      },
-
-      //获取个人公积金信息
+      ////////////////////////////////////////////////////////////////////////////获取个人公积金信息
       getGrgjj: async function () {
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),
@@ -1552,7 +1529,6 @@
           this.tableData_3 = res.data.resultData.data.rows;
         }
       },
-
       //接口获取个人公积金信息
       getGrgjjData: async function () {
         let params = {
@@ -1563,16 +1539,16 @@
           "/hspt-web-api/data_entry/qyfxgk/ggxxGrgjj/remoteInterfaceData",
           params
         );
-        if (res.data.resultCode == "0") {
+
+        if (res.data.resultCode == "0000") {
           this.$message({message: res.data.resultMsg, type: "success"});
-          this.tableData_3 = res.data.resultData.data;
+          this.tableData_3 = res.data.resultData;
           this.updateData_3 = [];
           this.addData_3 = [];
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
       },
-
       //保存个人公积金信息
       setGrgjj: async function () {
         this.tableData_3.forEach((item, index) => {
@@ -1592,6 +1568,7 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
+          this.getGrgjj();
           this.updateData_3 = [];
           this.addData_3 = [];
         } else {
@@ -1611,12 +1588,7 @@
         }
       },
 
-      //接受个人公积金信息删除的数据
-      acceptDelRow_3(val) {
-        this.deleteData_3.push(val);
-      },
-
-      //获取个人社保信息
+      //////////////////////////////////////////////////////////////////////////////获取个人社保信息
       getGrsb: async function () {
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),
@@ -1630,7 +1602,6 @@
           this.tableData_4 = res.data.resultData.data.rows;
         }
       },
-
       //接口获取个人社保信息
       getGrsbData: async function () {
         let params = {
@@ -1670,6 +1641,7 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
+          this.getGrsb();
           this.deleteData_4 = [];
           this.updateData_4 = [];
           this.addData_4 = [];
@@ -1694,7 +1666,7 @@
         this.deleteData_4.push(val);
       },
 
-      //获取个人车辆信息
+      //////////////////////////////////////////////////////////////////////////////获取个人车辆信息
       getGrcl: async function () {
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),
@@ -1729,7 +1701,6 @@
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
       },
-
       //保存个人车辆信息
       setGrcl: async function () {
         this.tableData_5.forEach((item, index) => {
@@ -1750,6 +1721,7 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
+          this.getGrcl();
           this.deleteData_5 = [];
           this.updateData_5 = [];
           this.addData_5 = [];
@@ -1757,7 +1729,6 @@
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
       },
-
       //验证个人车辆信息数据
       verify_5(rowObj, rowIndex) {
         var isValid = tableValidates.validateByRow(
@@ -1769,6 +1740,10 @@
         if (rowObj.id) {
           this.updateData_5.push(rowObj);
         }
+      },
+      //接受个人车辆信息删除的数据
+      acceptDelRow_5(val) {
+        this.deleteData_5.push(val);
       },
 
       //验证反欺诈信息数据
@@ -1783,13 +1758,7 @@
           this.updateData_5.push(rowObj);
         }
       },
-
-      //接受个人车辆信息删除的数据
-      acceptDelRow_5(val) {
-        this.deleteData_5.push(val);
-      },
-
-      ////////////////////////////////////////////////////////////////行政处罚
+      ////////////////////////////////////////////////////////////////////////////////////////行政处罚
       //初始化获取行政处罚信息
       getXzcf: async function () {
         let params = {
@@ -1832,10 +1801,11 @@
           "/hspt-web-api/data_entry/qyfxgk/ggxxXxcf/remote",
           params
         );
-        console.log(res);
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
+          this.tableData_xzcf = [];
           this.tableData_xzcf = res.data.resultData.data;
+
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }

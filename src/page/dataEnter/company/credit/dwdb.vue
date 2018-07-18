@@ -26,7 +26,7 @@
             ></v-table>
           </el-card>
         </div>
-        
+
         <div>
 					<el-card class="box-card"  shadow='nevner'>
 						<div slot="header" class="clearfix">
@@ -124,6 +124,7 @@ export default {
       addData_1: [],
       updateData_1: [],
       tableData_1_columns: {
+        id:null,
         bdbdw: "被担保单位",
         dbnr: "担保内容",
         lx: "类型",
@@ -181,8 +182,19 @@ export default {
       },
       rules_1: {
         bdbdw: [
-          { required: true, message: "商标名称是必填项" }
+          { required: true, message: "被担保单位是必填项" }
         ],
+        dbje:[
+          {validator(rule, value, callback) {
+              var errors = [];
+              if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+
+                callback('此项必须为数字值');
+              }
+              callback(errors);
+
+            }}
+        ]
       }
     };
   },

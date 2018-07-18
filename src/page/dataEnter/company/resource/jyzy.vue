@@ -173,7 +173,7 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="default" size="medium" @click="downloadFile">模板下载</el-button> 
+								<el-button type="default" size="medium" @click="downloadFile">模板下载</el-button>
 								<div style="display:inline-block">
 									<el-upload class="upload-button" :data="param" action="/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/upload" :show-file-list='false' :on-success="handleSuccess" :on-progress='handleProgess'>
 										<el-button size="medium" type="primary">数据导入</el-button>
@@ -467,8 +467,29 @@ export default {
       rules_scsb: {
         sbmc: [{ required: true, message: "设备名称是必填项" }],
         sbxh: [{ required: true, message: "设备型号是必填项" }],
-        yz: [{ required: true, message: "原值（万元）是必填项" }],
-        jz: [{ required: true, message: "净值（万元）是必填项" }]
+        yz: [{ required: true, message: "原值（万元）是必填项" },
+          {validator(rule, value, callback) {
+              var errors = [];
+              if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+
+                callback('原值必须为数字值....');
+              }
+              callback(errors);
+
+            }}
+        ],
+        jz: [{ required: true, message: "净值（万元）是必填项" },
+          {validator(rule, value, callback) {
+              var errors = [];
+              if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+
+                callback('净值必须为数字值....');
+              }
+              callback(errors);
+
+            }}
+
+        ]
       },
       rules_clmx: {
         hpzl: [{ required: true, message: "号牌种类是必填项" }],
@@ -538,6 +559,7 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
+        this.getLandList();
         this.deleteData = [];
         this.updateData = [];
         this.addData = [];
@@ -598,6 +620,7 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
+        this.getHouseList();
         this.deleteData_1 = [];
         this.updateData_1 = [];
         this.addData_1 = [];
@@ -654,6 +677,7 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
+        this.getBdcxj();
       } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
@@ -672,7 +696,7 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.tableData_2 = res.data.resultData.data.rows;
-      } 
+      }
     },
     //保存主要生产设备数据
     setScsb: async function() {
@@ -694,6 +718,7 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
+        this.getDeviceList();
         this.deleteData_2 = [];
         this.updateData_2 = [];
         this.addData_2 = [];
@@ -749,23 +774,11 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
+        this.getZysbxj();
       } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
-
-    //企业主要生产设备模板下载
-    // downloadScsb: async function() {
-    //   let params = {
-    //     token: sessionStorage.getItem("token"),
-    //     fileName:"企业主要生产设备",
-    //     filePath:"http://testdfs.creditstate.cn/group1/M00/02/17/rBj-DlpEC0WADGeQAABaABUpVk8581.xls"
-    //   };
-    //   const res = await this.$http.post(
-    //     "/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/download",
-    //     params
-    //   );
-    // },
 
     //---------------------------------------企业车辆信息--------------------------------------------------------------//
     //获取车辆记录
@@ -797,6 +810,7 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
+        this.getCljl();
       } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
@@ -877,6 +891,7 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
+        this.getCarList();
         this.deleteData_4 = [];
         this.updateData_4 = [];
         this.addData_4 = [];

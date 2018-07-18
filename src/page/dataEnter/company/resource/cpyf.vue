@@ -130,7 +130,7 @@ export default {
       this.form.zyyfhzjg = res.data.resultData.data.zyyfhzjg;
       this.form.zyyfcg = res.data.resultData.data.zyyfcg;
     },
-	
+	  //保存产品研发信息
 	saveCpyf: async function() {
 		let params = {
 			creditCode: sessionStorage.getItem("creditCode"),
@@ -143,12 +143,13 @@ export default {
 		  );
 		  if(res.data.resultCode=="0"){
 			this.$message({ message: res.data.resultMsg, type: "success" });
+			this.getCpyf();
 		  }else{
 			this.$message({ message: res.data.resultMsg, type: "warning" });
 		  }
 	},
 	///////////////////////////////////////////////////////////////////小结
-	
+
 	getCpyfxj: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
@@ -162,7 +163,7 @@ export default {
         this.cpxj = res.data.resultData.data.xj;
       }
     },
-	
+
     //保存小结
     saveCpyfXj : async function() {
        let params = {

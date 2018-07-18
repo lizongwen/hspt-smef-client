@@ -16,10 +16,10 @@
                 <el-table-column min-width="150px" :label="tableData_xsgk_columns.xsdq">
                   <template slot-scope="scope">
                     <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules" :id="'salesArea'+scope.$index"
+                      <el-form :model="scope.row" :rules="rules_sxgk" :id="'salesArea'+scope.$index"
                                :ref="'form_salesArea_'+scope.$index" :show-message="false">
                         <el-form-item prop="salesArea" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.xsdq"></el-input>
+                          <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_xsgk_columns)[1]" size="small" v-model="scope.row.xsdq"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -29,10 +29,10 @@
                 <el-table-column min-width="80px" :label="tableData_xsgk_columns.bfb">
                   <template slot-scope="scope">
                     <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules" :id="'ratio'+scope.$index"
+                      <el-form :model="scope.row" :rules="rules_sxgk" :id="'ratio'+scope.$index"
                                :ref="'form_ratio_'+scope.$index" :show-message="false">
                         <el-form-item prop="ratio" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.bfb"></el-input>
+                          <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_xsgk_columns)[2]" size="small" v-model="scope.row.bfb"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -42,10 +42,10 @@
                 <el-table-column min-width="100px" :label="tableData_xsgk_columns.dqgj">
                   <template slot-scope="scope">
                     <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules" :id="'country'+scope.$index"
+                      <el-form :model="scope.row" :rules="rules_sxgk" :id="'country'+scope.$index"
                                :ref="'form_country_'+scope.$index" :show-message="false">
                         <el-form-item prop="country" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.dqgj"></el-input>
+                          <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_xsgk_columns)[3]" size="small" v-model="scope.row.dqgj"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -55,10 +55,10 @@
                 <el-table-column min-width="100px" :label="tableData_xsgk_columns.fkzl">
                   <template slot-scope="scope">
                     <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules" :id="'payKind'+scope.$index"
+                      <el-form :model="scope.row" :rules="rules_sxgk" :id="'payKind'+scope.$index"
                                :ref="'form_payKind_'+scope.$index" :show-message="false">
                         <el-form-item prop="payKind" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.fkzl"></el-input>
+                          <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_xsgk_columns)[4]" size="small" v-model="scope.row.fkzl"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -68,10 +68,10 @@
                 <el-table-column min-width="100px" :label="tableData_xsgk_columns.fkzb">
                   <template slot-scope="scope">
                     <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules" :id="'payRatio'+scope.$index"
+                      <el-form :model="scope.row" :rules="rules_sxgk" :id="'payRatio'+scope.$index"
                                :ref="'form_payRatio_'+scope.$index" :show-message="false">
                         <el-form-item prop="payRatio" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.fkzb"></el-input>
+                          <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_xsgk_columns)[5]" size="small" v-model="scope.row.fkzb"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -107,10 +107,10 @@
                 <el-table-column min-width="100px" :label="tableData_zykh_columns.dwmc">
                   <template slot-scope="scope">
                     <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules" :id="'companyName'+scope.$index"
+                      <el-form :model="scope.row" :rules="rules_zykhjs" :id="'companyName'+scope.$index"
                                :ref="'form_companyName_'+scope.$index" :show-message="false">
                         <el-form-item prop="companyName" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.dwmc"></el-input>
+                          <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_zykh_columns)[1]" size="small" v-model="scope.row.dwmc"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -120,10 +120,10 @@
                 <el-table-column min-width="100px" :label="tableData_zykh_columns.jtcphfw">
                   <template slot-scope="scope">
                     <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules" :id="'detail'+scope.$index"
+                      <el-form :model="scope.row" :rules="rules_zykhjs" :id="'detail'+scope.$index"
                                :ref="'form_detail_'+scope.$index" :show-message="false">
                         <el-form-item prop="detail" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.jtcphfw"></el-input>
+                          <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_zykh_columns)[2]" size="small" v-model="scope.row.jtcphfw"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -133,10 +133,10 @@
                 <el-table-column min-width="100px" :label="tableData_zykh_columns.zq">
                   <template slot-scope="scope">
                     <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules" :id="'accountPeriod'+scope.$index"
+                      <el-form :model="scope.row" :rules="rules_zykhjs" :id="'accountPeriod'+scope.$index"
                                :ref="'form_accountPeriod_'+scope.$index" :show-message="false">
                         <el-form-item prop="accountPeriod" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.zq"></el-input>
+                          <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_zykh_columns)[3]" size="small" v-model="scope.row.zq"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -146,10 +146,10 @@
                 <el-table-column min-width="100px" :label="tableData_zykh_columns.jsfs">
                   <template slot-scope="scope">
                     <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules" :id="'payWay'+scope.$index"
+                      <el-form :model="scope.row" :rules="rules_zykhjs" :id="'payWay'+scope.$index"
                                :ref="'form_payWay_'+scope.$index" :show-message="false">
                         <el-form-item prop="payWay" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.jsfs"></el-input>
+                          <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_zykh_columns)[4]" size="small" v-model="scope.row.jsfs"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -159,10 +159,10 @@
                 <el-table-column min-width="100px" :label="tableData_zykh_columns.bl">
                   <template slot-scope="scope">
                     <template v-if="scope.row.edit">
-                      <el-form :model="scope.row" :rules="rules" :id="'ratio'+scope.$index"
+                      <el-form :model="scope.row" :rules="rules_zykhjs" :id="'ratio'+scope.$index"
                                :ref="'form_ratio_'+scope.$index" :show-message="false">
                         <el-form-item prop="ratio" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.bl"></el-input>
+                          <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_zykh_columns)[5]" size="small" v-model="scope.row.bl"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -335,7 +335,60 @@
       return {
         activeName: "first",
         listLoading: false,
-        rules: {},
+        rules_sxgk: {
+          xsdq: [{ required: true, message: "销售地区是必填项" }],
+          bfb: [{ required: true, message: "百分比是必填项" },
+          {validator(rule, value, callback) {
+              var errors = [];
+              if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+
+                callback('百分比必须为数字值....');
+              }
+              callback(errors);
+            }}
+         ],
+         dqgj: [{ required: true, message: "地区国家是必填项" }],
+         fkzl: [{ required: true, message: "付款种类是必填项" }],
+         fkzb: [{ required: true, message: "付款占比是必填项" },
+          {validator(rule, value, callback) {
+              var errors = [];
+              if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+                callback('付款占比必须为数字值....');
+              }
+              callback(errors);
+            }}
+         ],
+        },
+        rules_zykhjs: {
+          dwmc: [{ required: true, message: "单位名称是必填项" }],
+          jtcphfw: [{ required: true, message: "具体产品和服务是必填项" }],
+          zq: [{ required: true, message: "账期是必填项" }],
+          jsfs: [{ required: true, message: "结算方式是必填项" }],
+          bl: [{ required: true, message: "占比是必填项" },
+              {validator(rule, value, callback) {
+                  var errors = [];
+                  if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+                    callback('占比必须为数字值....');
+                  }
+                  callback(errors);
+                }}
+          ],
+        },
+        rules: {
+          gysmc: [{ required: true, message: "供应商名称是必填项" }],
+          jtcphfw: [{ required: true, message: "具体产品和服务是必填项" }],
+          zq: [{ required: true, message: "账期是必填项" }],
+          jsfs: [{ required: true, message: "结算方式是必填项" }],
+          bl: [{ required: true, message: "占比是必填项" },
+            {validator(rule, value, callback) {
+                var errors = [];
+                if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
+                  callback('付款占比必须为数字值....');
+                }
+                callback(errors);
+              }}
+          ],
+        },
 
         zykhjssmxjxj: "",
         xsjg: "",
@@ -347,6 +400,7 @@
         updateData: [],
         delRowData: [],
         tableData_xsgk_columns: {
+          id: null,
           xsdq: "销售地区",
           bfb: "百分比",
           dqgj: "地区国家",
@@ -360,6 +414,7 @@
         updateData3: [],
         delRowData3: [],
         tableData_zykh_columns: {
+          id: null,
           dwmc: "单位名称",
           jtcphfw: "具体产品和服务",
           zq: "账期",
@@ -373,6 +428,7 @@
         updateData2: [],
         delRowData2: [],
         tableData_2_columns: {
+          id: null,
           gysmc: "供应商名称",
           jtcphfw: "具体产品和服务",
           zq: "账期",
@@ -447,7 +503,7 @@
         var isValid = tableValidates.validateByRow(
           rowObj,
           rowIndex,
-          this.rules,
+          this.rules_sxgk,
           this
         );
         if (rowObj.id) {
@@ -505,7 +561,7 @@
         var isValid = tableValidates.validateByRow(
           rowObj,
           rowIndex,
-          this.rules,
+          this.rules_zykhjs,
           this
         );
         if (rowObj.id) {
@@ -551,7 +607,7 @@
           "/hspt-web-api/data_entry/gsyyxx/sxyjyxx/zygysZykhjs/save",
           params
         );
-        if (res.data.resultCode == "1111") {
+        if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
           this.addData2 = [];
           this.updateData2 = [];

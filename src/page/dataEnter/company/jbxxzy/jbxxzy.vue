@@ -6,8 +6,8 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-                                 <el-button class="default" type="primary" size="medium" @click="getJbxxData">获取数据</el-button>
-								 <el-button class="save" type="primary" size="medium" @click="saveJbxxData">保存</el-button>
+                                 <el-button type="default" size="medium" @click="getJbxxData">获取数据</el-button>
+								 <el-button type="primary" size="medium" @click="saveJbxxData">保存</el-button>
                              </div>
 							<div class="card-title">基本信息</div>
 						</div>
@@ -171,8 +171,8 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-                                 <el-button class="default" type="primary" size="medium">获取数据</el-button>
-								 <el-button class="save" type="primary" size="medium">保存</el-button>
+                                 <el-button type="default" size="medium">获取数据</el-button>
+								 <el-button type="primary" size="medium">保存</el-button>
                              </div>
 							<div class="card-title">风险摘要</div>
 						</div>
@@ -191,8 +191,8 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-                                 <el-button class="default" type="primary" size="medium">编辑</el-button>
-								 <el-button class="save" type="primary" size="medium">保存</el-button>
+                                 <el-button type="default" size="medium">编辑</el-button>
+								 <el-button type="primary" size="medium">保存</el-button>
                              </div>
 							<div class="card-title">风险评估</div>
 						</div>
@@ -331,7 +331,7 @@ export default {
 		data: JSON.stringify(this.form)
 	  };
 	  const res = await this.$http.post("/hspt-web-api/data_entry/jbxxjzy/jbxx/modify",params);
-	  if (res.data.resultCode == "0000") {
+	  if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
       }else{
 	    this.$message({ message: res.data.resultMsg, type: "warning" });

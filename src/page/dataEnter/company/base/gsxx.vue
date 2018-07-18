@@ -135,24 +135,24 @@ export default {
       labelPosition: "right",
       // timeDefaultShow:new Date("October 13, 1975 11:13:00"),
       form: {
-        regDate: "",
-        user: "",
+        zcrq: "",
+        zcjg: "",
         creditCode: "",
-        orgCode: "",
-        regNum: "",
-        regAsset: "",
-        companyType: "",
-        foundedYear: "",
-        operationTerm: "",
-        address: "",
-        legalRepresentative: "",
-        phoneNum: "",
-        faxNum: "",
-        website: "",
-        staffNum: "",
-        saleRevenue: "",
-        netAsset: "",
-        businessScope: ""
+        zzjgdm: "",
+        zch: "",
+        zczb: "",
+        qylx: "",
+        clnf: "",
+        yyqx: "",
+        zcdz: "",
+        frdb: "",
+        dh: "",
+        cz: "",
+        wz: "",
+        gsrs: "",
+        xssr: "",
+        jzc: "",
+        jyfw: ""
       }
     };
   },
@@ -204,6 +204,7 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
+        this.getGsjbxx();
         this.$message({ message: res.data.resultMsg, type: "success" });
       }else{
 	    this.$message({ message: res.data.resultMsg, type: "warning" });
