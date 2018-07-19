@@ -29,8 +29,13 @@ import wzData from '@/json/wz.json'
 import hbxxData from '@/json/hbxx.json'
 import summaryData from '@/json/summary.json'
 import zcfz from '@/json/zcfz.json'
-import lz from '@/json/lr.json'
+import lr from '@/json/lr.json'
 import xjllData from '@/json/xjll.json'
+import zlfx from '@/json/yszk.json'
+import nmzk from '@/json/nmyszk.json'
+import srgc from '@/json/lrfx.json'
+import xjllbh from '@/json/xjllfx.json'
+import gshnjl from '@/json/gshnjl.json'
 
 
 // 获取 mock.Random 对象
@@ -179,12 +184,33 @@ Mock.mock("/hspt-web-api/data_entry/gsjbxx/hbxx/hbxx/list", 'post', function (re
 	return zcfz;
 });
 
-//获取利润
-Mock.mock("/hspt-web-api/data_entry/gsjbxx/hbxx/hbxx/list", 'post', function (req) {
+////获取利润
+Mock.mock("/hspt-web-api/data_entry/cwzk/zycwsj/lr/list", 'post', function (req) {
 	return lr;
 });
 
 //获取现金流量
 Mock.mock("/hspt-web-api/data_entry/cwzk/zycwsj/xjll/list", 'post', function (req) {
 	return xjllData;
+});
+
+//获取账龄分析
+Mock.mock("/hspt-web-api/data_entry/cwzk/zcfzfx/zlfx/list", 'post', function (req) {
+	return zlfx;
+});
+//获取年末应收账款
+Mock.mock("/hspt-web-api/data_entry/cwzk/zcfzfx/nmzk/list", 'post', function (req) {
+	return nmzk;
+});
+//获取收入构成分析
+Mock.mock("/hspt-web-api/data_entry/cwzk/lrfx/srgc/list", 'post', function (req) {
+	return srgc;
+});
+//获取现金流量变化
+Mock.mock("/hspt-web-api/data_entry/cwzk/xjllfx/xjllbh/list", 'post', function (req) {
+	return xjllbh;
+});
+//获取耗能记录
+Mock.mock("/hspt-web-api/data_entry/cwzk/jysjjy/gshnjl/list", 'post', function (req) {
+	return gshnjl;
 });

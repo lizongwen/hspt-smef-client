@@ -1,0 +1,36 @@
+{
+	"resultCode": "0",
+	"resultData": {
+		
+		"data": {
+			"rows": [
+				{
+			"xm":2001,
+			"year1":4111,
+			"zb1":2,
+			"year2":2000,
+			"zb2":5555,
+			"year3":6,
+			"zb3":20000,
+			"year4":2001,
+			"zb4":20000
+			},
+				{
+			"xm":2001,
+			"year1":4111,
+			"zb1":2,
+			"year2":2000,
+			"zb2":5555,
+			"year3":6,
+			"zb3":20000,
+			"year4":2001,
+			"zb4":20000
+			}
+		  ]
+		},
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzY1MTY3MjAsImlhdCI6MTUzMDUxNjcyMH0.O-qww3k41rgLhQ0PQjsEAFcJp-2BL6ckPCk7SWtssso"
+	},
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "查询成功"
+}

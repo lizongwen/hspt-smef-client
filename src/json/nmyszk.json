@@ -1,21 +1,24 @@
 {
 	"resultCode": "0",
 	"resultData": {
+		
 		"data": {
-			"ldzczj": 10000.0,
-			"yycb": 400000.0,
-			"yysjjfj": 1000.0,
-			"xsfy": 500000.0,
-			"glfy1": 20000.0,
-			"glfy2": 100000.0,
-			"zcjzss": 50000.0,
-			"tzsy": 60000.0,
-			"yylr": 10000.0,
-			"yywzc": 4000.0,
-			"yywsr":200000,
-			"lrze":300000,
-			"sdsfy":50000,
-			"jlr":90000000
+			"rows": [
+				{
+			"dwmc":2001,
+			"ye":4111,
+			"zyszkbl":2,
+			"hzzb":2000,
+			"bz":5555
+			},
+				{
+			"dwmc":2001,
+			"ye":4111,
+			"zyszkbl":2,
+			"hzzb":2000,
+			"bz":5555
+			}
+		  ]
 		},
 		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzY1MTY3MjAsImlhdCI6MTUzMDUxNjcyMH0.O-qww3k41rgLhQ0PQjsEAFcJp-2BL6ckPCk7SWtssso"
 	},

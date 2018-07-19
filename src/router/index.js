@@ -250,11 +250,19 @@ let router = new Router({
 						},
 						component: () => import('@/page/dataEnter/company/finance/zycwsj.vue')
 					},
+					{
+						path: 'finance/sjdr',//主要财务数据导入
+						name: 'sjdr',
+						meta: {
+							index: '5-2'
+						},
+						component: () => import('@/page/dataEnter/company/finance/sjdr.vue')
+					},
 						{
 						path: 'finance/zcfzfx',//资产负债分析
 						name: 'zcfzfx',
 						meta: {
-							index: '5-4'
+							index: '5-3'
 						},
 						component: () => import('@/page/dataEnter/company/finance/zcfzfx.vue')
 					},
@@ -262,7 +270,7 @@ let router = new Router({
 						path: 'finance/lrfx',//利润分析
 						name: 'lrfx',
 						meta: {
-							index: '5-7'
+							index: '5-4'
 						},
 						component: () => import('@/page/dataEnter/company/finance/lrfx.vue')
 					},
@@ -270,7 +278,7 @@ let router = new Router({
 						path: 'finance/xjllfx',//现金流量分析
 						name: 'xjllfx',
 						meta: {
-							index: '5-8'
+							index: '5-5'
 						},
 						component: () => import('@/page/dataEnter/company/finance/xjllfx.vue')
 					},
@@ -278,14 +286,14 @@ let router = new Router({
 						path: 'finance/cwnlqs',//财务能力趋势与分析
 						name: 'cwnlqs',
 						meta: {
-							index: '5-2'
+							index: '5-6'
 						},
 						component: () => import('@/page/dataEnter/company/finance/cwnlqs.vue')
 					},
 					{
 						path: 'finance/nsqkfx',//纳税情况与分析
 						name: 'nsqkfx', meta: {
-							index: '5-3'
+							index: '5-7'
 						},
 						component: () => import('@/page/dataEnter/company/finance/nsqkfx.vue')
 					},
@@ -294,7 +302,7 @@ let router = new Router({
 						path: 'finance/jysjjy',//经营与相关数据校验分析
 						name: 'jysjjy',
 						meta: {
-							index: '5-5'
+							index: '5-8'
 						},
 						component: () => import('@/page/dataEnter/company/finance/jysjjy.vue')
 					},
@@ -302,7 +310,7 @@ let router = new Router({
 						path: 'finance/cwzkzs',//财务状况综述
 						name: 'cwzkzs',
 						meta: {
-							index: '5-6'
+							index: '5-9'
 						},
 						component: () => import('@/page/dataEnter/company/finance/cwzkzs.vue')
 					},
@@ -311,7 +319,7 @@ let router = new Router({
 						path: 'finance/tqsjdb',//同期数据对比
 						name: 'tqsjdb',
 						meta: {
-							index: '5-8'
+							index: '5-10'
 						},
 						component: () => import('@/page/dataEnter/company/finance/tqsjdb.vue')
 					},
@@ -320,7 +328,7 @@ let router = new Router({
 						path: 'finance/glgscwsj',//关联公司财务数据
 						name: 'glgscwsj',
 						meta: {
-							index: '5-9'
+							index: '5-11'
 						},
 						component: () => import('@/page/dataEnter/company/finance/glgscwsj.vue')
 					},

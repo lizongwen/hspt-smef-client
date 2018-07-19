@@ -199,6 +199,7 @@ export default {
   data() {
     return {
     	listLoading: false,
+    	
     	 tableData_1: [],
       deleteData_1: [],
       addData_1: [],
@@ -206,10 +207,10 @@ export default {
       tableData_1_columns: {
         zl: "账龄",
         je: "金额（万元）",
-        zzebl: "占总额比例",
+        zzebl: "占总额比例(%)",
         hzzb: "坏账准备（万元）",
         je2: "金额（万元）",
-        zzebl2: "占总额比例",
+        zzebl2: "占总额比例(%)",
         hzzb2: "坏账准备（万元）",
         edit: false
       },
@@ -218,11 +219,11 @@ export default {
       tableData_2: [],
       deleteData_2: [],
       addData_2: [],
-//    updateData_2: [],
+      updateData_2: [],
       tableData_2_columns: {
         dwmc: "单位名称",
         ye:"余额",
-        zyszkbl:"占应收账款比例",
+        zyszkbl:"占应收账款比例(%)",
          hzzb:"坏账准备",
         bz:"备注",
         edit: false
@@ -274,18 +275,48 @@ export default {
 }
   },
   mounted() {
-//  this.getDeviceList();
+    this.getZlfx();
+    this.getNmzk();
   },
   methods: {
   	 //点击标签页触发事件
       handleClick(tab, event) {
-        //   console.log(tab, event);
+//           console.log(tab, event);
       },
       
   
       
 //////////////////////////////////////////////////获取账龄分析
+         getZlfx:async function(){
+         	let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/cwzk/zcfzfx/zlfx/list",
+        params
+      );
+    console.log(res.data.resultData)
+      if (res.data.resultCode == "0") {
+         this.tableData_1=res.data.resultData.data.rows
+      }
+   },
 
+     getNmzk:async function(){
+     	let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/cwzk/zcfzfx/nmzk/list",
+        params
+      );
+      console.log(res.data.resultData)
+      if (res.data.resultCode == "0") {
+         this.tableData_2=res.data.resultData.data.rows
+      }
+     },
+     
       acceptDelRow1(val) {
         this.deleteData_1.push(val);
       },
@@ -296,12 +327,12 @@ export default {
         }
       },
       acceptDelRow2(val) {
-        this.deleteData_1.push(val);
+        this.deleteData_2.push(val);
       },
       verify2(rowObj, rowIndex) {
         tableValidates.validateByRow(rowObj, rowIndex, this.rules, this);
         if (rowObj.id) {
-          this.updateData_1.push(rowObj);
+          this.updateData_2.push(rowObj);
         }
       },
     //应收账款合计

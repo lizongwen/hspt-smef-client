@@ -1,21 +1,28 @@
 {
 	"resultCode": "0",
 	"resultData": {
+		
 		"data": {
-			"ldzczj": 10000.0,
-			"yycb": 400000.0,
-			"yysjjfj": 1000.0,
-			"xsfy": 500000.0,
-			"glfy1": 20000.0,
-			"glfy2": 100000.0,
-			"zcjzss": 50000.0,
-			"tzsy": 60000.0,
-			"yylr": 10000.0,
-			"yywzc": 4000.0,
-			"yywsr":200000,
-			"lrze":300000,
-			"sdsfy":50000,
-			"jlr":90000000
+			"rows": [
+				{
+			"sbmc":2001,
+			"year1":4111,
+			"zb1":2,
+			"year2":2000,
+			"zb2":5555,
+			"year3":6,
+			"zb3":20000
+			},
+				{
+			"sbmc":2001,
+			"year1":4111,
+			"zb1":2,
+			"year2":2000,
+			"zb2":5555,
+			"year3":6,
+			"zb3":20000
+			}
+		  ]
 		},
 		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzY1MTY3MjAsImlhdCI6MTUzMDUxNjcyMH0.O-qww3k41rgLhQ0PQjsEAFcJp-2BL6ckPCk7SWtssso"
 	},

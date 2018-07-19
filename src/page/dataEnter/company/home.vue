@@ -263,6 +263,15 @@
 							</div>
 						</li>
 						<li class="mod-list-item">
+							<div class="sub-name">数据导入：</div>
+							<div class="sub-progress">{{projDetail.cwzk.cwzk.cwzk_sjdr}}</div>
+							<div class="mod-list-item_op">
+								<router-link tag="div" to="/company/finance/sjdr">
+									<i class="icon iconfont icon-edit1"></i>
+								</router-link>
+							</div>
+						</li>
+						<li class="mod-list-item">
 							<div class="sub-name">财务能力趋势分析：</div>
 							<div class="sub-progress">{{projDetail.cwzk.cwzk.cwzk_cwnl}}</div>
 							<div class="mod-list-item_op">

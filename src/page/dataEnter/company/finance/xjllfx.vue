@@ -9,7 +9,7 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setScsb">保存</el-button>
+								<el-button type="primary" size="medium">保存</el-button>
 							</div>
 							<div class="card-title">数据列表（单位：万元）</div>
 						</div>
@@ -142,51 +142,26 @@ export default {
 }
   },
   mounted() {
-    this.getDeviceList();
+    this.getXjllbh();
   },
   methods: {
-    //---------------------------------------企业主要生产设备--------------------------------------------------------------//
-    // 获取企业主要生产设备
-    getDeviceList: async function() {
-      let params = {
+  	
+  	//获取现金流量变化
+  	getXjllbh:async function(){
+  		let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token")
       };
       const res = await this.$http.post(
-        "/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/list",
+        "/hspt-web-api/data_entry/cwzk/xjllfx/xjllbh/list",
         params
       );
+    console.log(res.data.resultData)
       if (res.data.resultCode == "0") {
-        this.tableData_2 = res.data.resultData.data.rows;
-      } 
-    },
-    //保存主要生产设备数据
-    setScsb: async function() {
-      this.tableData_2.forEach((item, index) => {
-        if (item.id == null) {
-          this.addData_2.push(item);
-        }
-      });
-      let params = {
-        creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token"),
-        addedDataStr: JSON.stringify(this.addData_2),
-        updatedDataStr: JSON.stringify(this.updateData_2),
-        deletedDataStr: JSON.stringify(this.deleteData_2)
-      };
-      const res = await this.$http.post(
-        "/hspt-web-api/data_entry/gsyyxx/qyjyzy/scsb/save",
-        params
-      );
-      if (res.data.resultCode == "0") {
-        this.$message({ message: res.data.resultMsg, type: "success" });
-        this.deleteData_2 = [];
-        this.updateData_2 = [];
-        this.addData_2 = [];
-      } else {
-        this.$message({ message: res.data.resultMsg, type: "warning" });
+         this.tableData_2=res.data.resultData.data.rows
       }
-    },
+  	},
+ 
     //接受主要生产设备删除的数据
     acceptDelRow_2(val) {
       this.deleteData_2.push(val);

@@ -147,50 +147,55 @@ let menuAsideData = [
         "name": "主要财务数据",
         "path": "/company/finance/zycwsj"
       },
-           {
+      {
         "index": "5-2",
+        "name": "数据导入",
+        "path": "/company/finance/sjdr"
+      },
+           {
+        "index": "5-3",
         "name": "资产负债分析",
         "path": "/company/finance/zcfzfx"
       },
         {
-        "index": "5-3",
+        "index": "5-4",
         "name": "利润分析",
         "path": "/company/finance/lrfx"
       },
           {
-        "index": "5-4",
+        "index": "5-5",
         "name": "现金流量分析",
         "path": "/company/finance/xjllfx"
       },
       {
-        "index": "5-5",
+        "index": "5-6",
         "name": "财务能力趋势分析",
         "path": "/company/finance/cwnlqs"
       },
       {
-        "index": "5-6",
+        "index": "5-7",
         "name": "纳税情况与分析",
         "path": "/company/finance/nsqkfx"
       },
  
       {
-        "index": "5-7",
+        "index": "5-8",
         "name": "经营相关数据分析",
         "path": "/company/finance/jysjjy"
       },
       {
-        "index": "5-8",
+        "index": "5-9",
         "name": "财务状况综述",
         "path": "/company/finance/cwzkzs"
       },
     
       {
-        "index": "5-9",
+        "index": "5-10",
         "name": "同期数据对比",
         "path": "/company/finance/tqsjdb"
       },
       {
-        "index": "5-10",
+        "index": "5-11",
         "name": "关联公司财务数据",
         "path": "/company/finance/glgscwsj"
       }

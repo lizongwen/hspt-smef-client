@@ -7,18 +7,11 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								选择时间：
-							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
-							</div>
-							<div class="card-title">资产负债表</div>
-						</div>
-						<!--<div slot="header" class="clearfix">
-							<div class="card-right-wrap">
 								<el-button type="default" size="medium">模板下载</el-button>
 								<el-button type="default" size="medium">数据导入</el-button>
-								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+								<el-button  type="primary" size="medium">保存</el-button>
 							</div>
-						</div>-->
+						</div>
 						
 				<div>
 					<table lay-skin="line">
@@ -106,18 +99,11 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								选择时间：
-							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
-							</div>
-							<div class="card-title">利润表</div>
-						</div>
-						<!--<div slot="header" class="clearfix">
-							<div class="card-right-wrap">
 								<el-button type="default" size="medium">模板下载</el-button>
 								<el-button type="default" size="medium">数据导入</el-button>
-								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+								<el-button  type="primary" size="medium">保存</el-button>
 							</div>
-						</div>-->
+						</div>
 						
 				<div>
 					<table lay-skin="line">
@@ -175,18 +161,11 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								选择时间：
-							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
-							</div>
-							<div class="card-title">现金流量表</div>
-						</div>
-						<!--<div slot="header" class="clearfix">
-							<div class="card-right-wrap">
 								<el-button type="default" size="medium">模板下载</el-button>
 								<el-button type="default" size="medium">数据导入</el-button>
-								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+								<el-button  type="primary" size="medium">保存</el-button>
 							</div>
-						</div>-->
+						</div>
 						
 				<div>
 					<table lay-skin="line">

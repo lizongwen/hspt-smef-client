@@ -146,11 +146,11 @@ export default {
       tableData_1_columns: {
         sbmc: "收入类别",
         year1:"2014",
-        zb1:"占比",
+        zb1:"占比(%)",
          year2:"2015",
-        zb2:"占比",
+        zb2:"占比(%)",
          year3:"2015",
-        zb3:"占比",
+        zb3:"占比(%)",
         edit: false
       },
       activeName: "first",
@@ -183,10 +183,24 @@ export default {
 }
   },
   mounted() {
-//  this.getDeviceList();
+    this.getSrgc();
   },
   methods: {
-  
+//收入构成
+   getSrgc:async function(){
+   	let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/cwzk/lrfx/srgc/list",
+        params
+      );
+    console.log(res.data.resultData)
+      if (res.data.resultCode == "0") {
+         this.tableData_1=res.data.resultData.data.rows
+      }
+   },
    acceptDelRow1(val) {
         this.deleteData_1.push(val);
       },
@@ -275,16 +289,21 @@ export default {
     background: #F4F3F3;
     color: black;
 }
+/*$float: left;
+$padding: 8px;
+$margin-left: 5px;
 .el-table .el-button{
-	float: left;
-	padding: 8px;
-	margin-left: 5px;
+	float: $float;
+	padding: $padding;
+	margin-left: $margin-left;
 }
+$padding: 8px;
+$margin-left: 5px;
 .el-table .el-button+.el-button{
-	padding: 8px;
-	margin-left: 5px;
+	padding: $padding;
+	margin-left: $margin-left;
 }
-/*.el-table .cell, .el-table th div, .el-table--border td:first-child .cell, .el-table--border th:first-child .cell{
+.el-table .cell, .el-table th div, .el-table--border td:first-child .cell, .el-table--border th:first-child .cell{
 	padding-left: 0px;
 }*/
 </style>
