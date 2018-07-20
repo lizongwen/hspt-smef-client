@@ -186,14 +186,14 @@ export default {
       //规则
       rules_ryxx: {
         // bgrq: [{ type: "date", required: true, message: "请选择变更日期" }],
-        nf: [
-          { required: true, message: "年份是必填项" }
-          // { type: "number", message: "变更事项需要录入数字" }
-        ],
-        ry: [
-          { required: true, message: "荣誉是必填项" }
-          //   { min: 3, max: 5, message: "变更前字符长度需要 3 到 5 个字符" }
-        ]
+        // nf: [
+        //   { required: true, message: "年份是必填项" }
+        //   // { type: "number", message: "变更事项需要录入数字" }
+        // ],
+        // ry: [
+        //   { required: true, message: "荣誉是必填项" }
+        //   //   { min: 3, max: 5, message: "变更前字符长度需要 3 到 5 个字符" }
+        // ]
       },
 	  rules_xzxk: {
         ztmc: [
@@ -210,18 +210,18 @@ export default {
         ]
       },
 	  rules_zyzzyrz: {
-        ztmc: [
-          { required: true, message: "主体名称是必填项" }
-        ],
-        zsbh: [
-          { required: true, message: "证书编号是必填项" }
-        ],
-        rzxm: [
-          { required: true, message: "认证项目/产品类别是必填项" }
-        ],
-        zsdqrq: [
-          { required: true, message: "证书到期日期是必填项" }
-        ]
+        // ztmc: [
+        //   { required: true, message: "主体名称是必填项" }
+        // ],
+        // zsbh: [
+        //   { required: true, message: "证书编号是必填项" }
+        // ],
+        // rzxm: [
+        //   { required: true, message: "认证项目/产品类别是必填项" }
+        // ],
+        // zsdqrq: [
+        //   { required: true, message: "证书到期日期是必填项" }
+        // ]
       }
     };
   },

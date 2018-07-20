@@ -18,7 +18,7 @@
                   <el-form :model="scope.row" :rules="rules_zrrdgd" :id="'Name'+scope.$index"
                            :ref="'form_Name_'+scope.$index" :show-message="false">
                     <el-form-item prop="Name" class="td-form-item">
-                      <el-input class="edit-input" size="small" v-model="scope.row.name"></el-input>
+                      <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_0_columns)[1]" size="small" v-model="scope.row.name"></el-input>
                     </el-form-item>
                   </el-form>
                 </template>
@@ -1040,16 +1040,19 @@
               }
             }
           ],
-          mobile: [{required: true, message: "手机号是必填项"},
+          mobile: [
             {
               validator(rule, value, callback) {
-                var errors = [];
-                if (!/^1[34578]\d{9}$/.test(value)) {
+                if(value != "" && value != null){
+                  var errors = [];
+                  if (!/^1[34578]\d{9}$/.test(value)) {
 
-                  callback('请输入正确手机号....');
+                    callback('请输入正确手机号....');
+                  }
+                  callback(errors);
+                }else{
+                   callback();
                 }
-                callback(errors);
-
               }
             }
           ]

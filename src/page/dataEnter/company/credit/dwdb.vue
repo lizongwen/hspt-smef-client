@@ -408,12 +408,15 @@ export default {
         const bdbywGz = this.updateData[i].bdbywGz;
         const bdbywZc = this.updateData[i].bdbywZc;
         const count =
-          parseInt(bs) +
-          parseInt(dbje) +
+          // parseInt(bs) +
+          // parseInt(dbje) +
           parseInt(bdbywBl) +
           parseInt(bdbywGz) +
           parseInt(bdbywZc);
-        this.updateData[i].hj = count;
+          if(!isNaN(count)){
+          this.updateData[i].hj = count;
+          }
+        
       }
 
       let params = {

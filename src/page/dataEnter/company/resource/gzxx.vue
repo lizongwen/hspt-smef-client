@@ -62,6 +62,20 @@
 				<v-tabelAddBtn :tableData="tableData" :tableData_columns="tableData_columns"></v-tabelAddBtn>
 			</div>
 		</el-card>
+        <!-- echarts图展示  start -->
+    <div>
+      <el-card class="box-card" shadow='nevner'>
+        <div slot="header" class="clearfix">
+          <div class="card-title">企业工资发放趋势图</div>
+        </div>
+        <!-- echarts图div容器 -->
+        <div>
+          <ve-line :data="chartData" :settings="chartSettings"></ve-line>
+        </div>
+      </el-card>
+    </div>
+
+<!-- echarts图展示  end -->
     <div>
       <el-card class="box-card" shadow='nevner'>
         <div slot="header" class="clearfix">
@@ -87,19 +101,29 @@ import quillEditor from "@/components/form/quillEditor.vue";
 export default {
   name: "inlineEditTable",
   data() {
+      this.chartSettings = {
+        labelMap:{
+          'gzffZe': '工资发放金额',
+          'gzffRs': '工资发放人数'
+        }
+      }
     return {
-      param:{
+      chartData:{// 定义Echarts图标的属性数据容器
+          rows:[],
+          columns:[]
+        },
+      param: {
         creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token"),
+        token: sessionStorage.getItem("token")
       },
       listLoading: false,
-      gzffqk:"",
+      gzffqk: "",
       tableData: [],
       deleteData: [],
       addData: [],
       updateData: [],
       tableData_columns: {
-        id:null,
+        id: null,
         rq: "日期",
         rs: "发放人数",
         ze: "发放金额",
@@ -107,7 +131,7 @@ export default {
       },
       rules_gzff: {
         rq: [
-          { required: true, message: "日期是必填项" },
+          { required: true, message: "日期是必填项" }
           /*{validator(rule, value, callback) {
               var errors = [];
               if (!/^[1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/.test(value)) {
@@ -120,29 +144,29 @@ export default {
         ],
         rs: [
           { required: true, message: "发放人数是必填项" },
-          {validator(rule, value, callback) {
+          {
+            validator(rule, value, callback) {
               var errors = [];
               if (!/^(0|\+?[1-9][0-9]*)$/.test(value)) {
-
-                callback('此项必须是整数值....');
+                callback("此项必须是整数值....");
               }
               callback(errors);
-
-            }}
+            }
+          }
         ],
         ze: [
           { required: true, message: "发放金额是必填项" },
-          {validator(rule, value, callback) {
+          {
+            validator(rule, value, callback) {
               var errors = [];
               if (!/^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/.test(value)) {
-
-                callback('此项必须是数值....');
+                callback("此项必须是数值....");
               }
               callback(errors);
-
-            }}
+            }
+          }
         ]
-      },
+      }
     };
   },
   mounted() {
@@ -161,7 +185,9 @@ export default {
         params
       );
       if (res.data.resultCode == "0") {
-        this.tableData = res.data.resultData.data;
+        this.tableData = res.data.resultData.data.gzffqkMxTableData;
+        // echarts图表数据
+        this.chartData = res.data.resultData.data.gzffqkGraphData;
       } else {
       }
     },
@@ -194,20 +220,22 @@ export default {
       }
     },
     //企业工资发放删除的数据
-    acceptDelRow(val) {this.deleteData.push(val);},
+    acceptDelRow(val) {
+      this.deleteData.push(val);
+    },
     //验证企业工资发放数据
     verify(rowObj, rowIndex) {
       var isValid = tableValidates.validateByRow(
-      rowObj,
-      rowIndex,
-      this.rules_gzff,
-      this
-    );
-      console.log(isValid)
+        rowObj,
+        rowIndex,
+        this.rules_gzff,
+        this
+      );
+      console.log(isValid);
       if (rowObj.id) {
-      this.updateData.push(rowObj);
-  }
-},
+        this.updateData.push(rowObj);
+      }
+    },
 
     //获取企业工资发放小结
     getGzffqk: async function() {
@@ -225,10 +253,10 @@ export default {
     },
     //修改企业工资发放小结
     changGzffqk(val) {
-      this.gzffqk=val;
+      this.gzffqk = val;
     },
     //保存企业工资发放小结
-    setGzffqk:async function() {
+    setGzffqk: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token"),
@@ -241,7 +269,7 @@ export default {
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
         this.getGzffqk();
-      }else{
+      } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     },
@@ -249,14 +277,15 @@ export default {
     downloadFile: async function() {
       let link = document.createElement("a");
       link.style.display = "none";
-      link.href = "http://testdfs.creditstate.cn/group1/M00/02/1B/rBj-DlqgzsCAftPgAAAjTcM29i413.xlsx";
+      link.href =
+        "http://testdfs.creditstate.cn/group1/M00/02/1B/rBj-DlqgzsCAftPgAAAjTcM29i413.xlsx";
       link.setAttribute("download", "测试.xls");
       document.body.appendChild(link);
       link.click();
     },
 
     //////////////////////////////////////////////////////////////
-    handleSuccess(res, file){
+    handleSuccess(res, file) {
       if (res.resultCode == "0") {
         this.$message({ message: res.resultMsg, type: "success" });
         this.tableData = res.resultMapData.data.newExcelData;
@@ -264,7 +293,7 @@ export default {
         this.$message({ message: res.resultMsg, type: "error" });
       }
     },
-    handleProgess(){
+    handleProgess() {
       // console.log(arguments)
     }
   },
@@ -275,13 +304,11 @@ export default {
     "quill-editor": quillEditor
   }
 };
-
-
 </script>
 <style lang="scss">
-  .text-editor .ql-editor {
-    height: 300px;
-  }
+.text-editor .ql-editor {
+  height: 300px;
+}
 </style>
 
 <style>

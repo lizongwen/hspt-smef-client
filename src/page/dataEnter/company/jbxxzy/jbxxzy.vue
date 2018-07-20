@@ -296,6 +296,7 @@ export default {
         params
 	  );
 	  if (res.data.resultCode == "0000") {
+		this.$message({ message: res.data.resultMsg, type: "success" });
         this.form.qymc = res.data.resultMapData.jbxx.qymc;
         this.form.zcrq = res.data.resultMapData.jbxx.zcrq;
         this.form.zcjg = res.data.resultMapData.jbxx.zcjg;
