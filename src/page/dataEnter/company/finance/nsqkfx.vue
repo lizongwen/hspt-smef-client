@@ -26,18 +26,26 @@
 								<div slot="header" class="clearf">
 							<div class="card-title">目标公司缴纳各项税款详细如下（单位：万元）</div>
 						</div>
-							  <el-table :data="tableData" border style="width: 100%;text-align: center;">
-                                <el-table-column prop="project" label="项目">
-
+							  <el-table :data="tableData" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%;text-align: center;">
+                                <el-table-column prop="project" :label="tableData_columns.project">
+                                      <template slot-scope="scope">
+										<span>{{ scope.row.project}}</span>
+									</template>
                                 </el-table-column>
-                                <el-table-column prop="year" label="2015年">
-                                	
+                                <el-table-column prop="year1" :label="tableData_columns.year1">
+                                    <template slot-scope="scope">
+										<span>{{ scope.row.year1}}</span>
+									</template>
                                 </el-table-column>
-                                <el-table-column prop="year" label="2016年">
-                                	
+                                <el-table-column prop="year2" :label="tableData_columns.year2">
+                                	<template slot-scope="scope">
+										<span>{{ scope.row.year2}}</span>
+									</template>
                                 </el-table-column>
-                                <el-table-column prop="year" label="2017年">
-                                
+                                <el-table-column prop="year3" :label="tableData_columns.year3">
+                                <template slot-scope="scope">
+										<span>{{ scope.row.year3}}</span>
+									</template>
                                 </el-table-column>
                               </el-table>
 						</div>
@@ -67,51 +75,77 @@ export default {
 data() {
       return {
       	textEditorContent: "",
-        tableData: [{ 
-          project: '实缴额',
+//    	tableData2:[
+//    	{
+//    		proj:'实缴额'
+//    	},
+//    	],
+//    	
+      	tableData: [],
+        tableData_columns: {
+        project: "项目",
+        year1:"2015",  
+        year2:"2016",
+        year3:"2017"    
       },
-         {
-          project: '退税额'
-       },
-        {
-          project: '企业所得税',
-        },
-        {
-          project: '城建税',
-        },
-        {
-          project: '土地使用税',
-        },
-        {
-          project: '房产税',
-        },
-        {
-          project: '印花税',
-        },
-        {
-          project: '营业税',
-        },
-        {
-          project: '教育费附加税',
-        },
-        {
-          project: '地方教育附加',
-        },
-        {
-          project: '个人所得税',
-        },
-        {
-          project: '水利基金',
-        },
-        {
-          project: '其他税费',
-        },
-         {
-          project: '合计',
-        }],
      
    }
     },
+     mounted() {
+    this.getNsqk();
+  },
+   methods: {
+   	
+   	//获取纳税情况与分析
+   	getNsqk:async function(){
+   		let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/cwzk/nsqkyfx/nsqk/list",
+        params
+      );
+    console.log(res.data.resultData)
+    if (res.data.resultCode == "0") {
+         this.tableData=res.data.resultData.data.rows
+      }
+   	},
+   	
+   	
+   	  getSummaries(param) {
+      const { columns, data } = param;
+      const sums = [];
+      columns.forEach((column, index) => {
+        if (index === 0) {
+          sums[index] = "合计";
+          return;
+        }
+        const values = data.map(item => Number(item[column.property]));
+        if (!values.every(value => isNaN(value))) {
+          sums[index] = values.reduce((prev, curr) => {
+            const value = Number(curr);
+            if (!isNaN(value)) {
+              return prev + curr;
+            } else {
+              return prev;
+            }
+          }, 0);
+          //根据列名不同，确定不同的合计单位
+          if (column.property == "sbmc" || column.property == "sbxh") {
+            sums[index] += "";
+          } else if (column.property == "yz" || column.property == "jz") {
+            sums[index] += " 万元";
+          }
+        } else {
+          sums[index] = "";
+        }
+      });
+      return sums;
+    },
+
+   	
+   },
     
        	     components: {
     "quill-editor": quillEditor
