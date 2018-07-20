@@ -4,7 +4,7 @@
 			<el-card class="box-card"  shadow='nevner'>
 				<div slot="header" class="clearfix">
 					<div class="card-right-wrap">
-						<el-button class="save" type="primary" size="medium" @click="saveHbxx">保存</el-button>
+						<el-button class="save" type="primary" size="medium" @click="saveHbxx" :loading="loadingStatus">保存</el-button>
 					</div>
 					<div class="card-title">环保信息</div>
 				</div>
@@ -64,6 +64,7 @@ export default {
   data: function() {
     return {
       listLoading: false,
+      loadingStatus:false,
       tableData: [],
 	  delRowData: [],
       addData: [],
@@ -126,9 +127,12 @@ export default {
     },
 	//保存数据
     saveHbxx: async function() {
+      this.loadingStatus=true;
       this.tableData.forEach((item, index) => {
         if (item.id == null) {
-          this.addData.push(item);
+          if((item.zt != null && item.zt != "") || (item.pw != null && item.pw != "") || (item.pfjg != null && item.pfjg != "")){
+            this.addData.push(item);
+          }
         }
       });
       let params = {
@@ -149,8 +153,9 @@ export default {
         this.addData = [];
         this.getHbxx();
       }else{
-	   this.$message({ message: res.data.resultMsg, type: "warning" });
-	  }
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+        this.loadingStatus=false;
     },
 
 	////////////////////////////////////////////////////////////小结
