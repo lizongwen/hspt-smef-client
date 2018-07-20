@@ -6,7 +6,7 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <el-button class="save" type="primary" size="medium" @click="saveFssgsGqjg">保存</el-button>
+                <el-button class="save" type="primary" size="medium" @click="saveFssgsGqjg" :loading="loadingStatus">保存</el-button>
               </div>
               <div class="card-title">股权结构（非上市公司）</div>
             </div>
@@ -80,7 +80,7 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <el-button class="save" type="primary" size="medium" @click="saveSsgsGqjg">保存</el-button>
+                <el-button class="save" type="primary" size="medium" @click="saveSsgsGqjg" :loading="loadingStatus">保存</el-button>
               </div>
               <div class="card-title">股权结构（上市公司）</div>
             </div>
@@ -156,7 +156,7 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <el-button class="save" type="primary" size="medium" @click="saveFzjxsqyqk">保存</el-button>
+                <el-button class="save" type="primary" size="medium" @click="saveFzjxsqyqk" :loading="loadingStatus">保存</el-button>
               </div>
               <div class="card-title">分支及下属企业情况</div>
             </div>
@@ -223,7 +223,7 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <el-button class="save" type="primary" size="medium" @click="saveGlqy">保存</el-button>
+                <el-button class="save" type="primary" size="medium" @click="saveGlqy" :loading="loadingStatus">保存</el-button>
               </div>
               <div class="card-title">关联企业</div>
             </div>
@@ -342,6 +342,7 @@
         },
         activeName: "first",
         listLoading: false,
+        loadingStatus:false,
         imgurl_qytp: '',
         imgurl_zzjg: '',
         //   fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}, {name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}],
@@ -573,9 +574,17 @@
       },
 
       saveFssgsGqjg: async function () {
+        this.loadingStatus=true;
         this.tableData.forEach((item, index) => {
           if (item.id == null) {
-            this.addData.push(item);
+            if((item.gdxm != null && item.gdxm != "") 
+            || (item.czbl != null && item.czbl != "") 
+            || (item.rjcz != null && item.rjcz != "")
+            || (item.rjczrq != null && item.rjczrq != "")
+            || (item.sjcz != null && item.sjcz != "")
+            || (item.sjczrq != null && item.sjczrq != "")){
+              this.addData.push(item);
+            }
           }
         });
         let params = {
@@ -600,6 +609,7 @@
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+          this.loadingStatus=false;
       },
 
       /////////////////////////////////////////////////////获取股权结构（上市公司）
@@ -630,9 +640,15 @@
       },
 
       saveSsgsGqjg: async function () {
+        this.loadingStatus=true;
         this.tableData_1.forEach((item, index) => {
           if (item.id == null) {
-            this.addData_1.push(item);
+            if((item.gdxm != null && item.gdxm != "") 
+            || (item.czbl != null && item.czbl != "") 
+            || (item.cgs != null && item.cgs != "")
+            || (item.cgbh != null && item.cgbh != "")){
+              this.addData_1.push(item);
+            }
           }
         });
         let params = {
@@ -657,6 +673,7 @@
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+          this.loadingStatus=false;
       },
 
       /////////////////////////////////////////////////////获取分支及下属企业情况
@@ -683,9 +700,17 @@
         }
       },
       saveFzjxsqyqk: async function () {
+        this.loadingStatus = true;
         this.tableData_2.forEach((item, index) => {
           if (item.id == null) {
-            this.addData_2.push(item);
+            if((item.xsjgmc != null && item.xsjgmc != "") 
+            || (item.szd != null && item.szd != "") 
+            || (item.ywnr != null && item.ywnr != "")
+            || (item.tyshxydm != null && item.tyshxydm != "")
+            || (item.xsgxbl != null && item.xsgxbl != "")
+            || (item.lrgxbl != null && item.lrgxbl != "")){
+              this.addData_2.push(item);
+            }
           }
         });
         let params = {
@@ -708,6 +733,7 @@
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadingStatus = false;
       },
 
       //////////////////////////////////////////////////获取关联企业
@@ -735,9 +761,19 @@
         }
       },
       saveGlqy: async function () {
+        this.loadingStatus = true;
         this.tableData_3.forEach((item, index) => {
           if (item.id == null) {
-            this.addData_3.push(item);
+            if((item.gsmc != null && item.gsmc != "") 
+            || (item.ywnr != null && item.ywnr != "") 
+            || (item.hbgssfyywwl != null && item.hbgssfyywwl != "")
+            || (item.sfygljy != null && item.sfygljy != "")
+            || (item.sfxsqy != null && item.sfxsqy != "")
+            || (item.zczb != null && item.zczb != "")
+            || (item.cgbl != null && item.cgbl != "")
+            || (item.zw != null && item.zw != "")){
+              this.addData_3.push(item);
+            }
           }
         });
         let params = {
@@ -760,6 +796,7 @@
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+          this.loadingStatus = false;
       },
 
       /////////////////////////////////////////////////////////////

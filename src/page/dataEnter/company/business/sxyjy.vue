@@ -6,7 +6,7 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <el-button @click="saveXsgk" type="primary" size="medium">保存</el-button>
+                <el-button @click="saveXsgk" type="primary" size="medium" :loading="loadingStatus">保存</el-button>
               </div>
               <div class="card-title">销售概况</div>
             </div>
@@ -96,7 +96,7 @@
                 <el-button type="default" size="medium">模板下载</el-button>
                 <el-button type="default" size="medium">数据导入</el-button>
                 <el-button type="default" size="medium">生成图表</el-button>
-                <el-button @click="saveZykhjssm" type="primary" size="medium">保存</el-button>
+                <el-button @click="saveZykhjssm" type="primary" size="medium" :loading="loadingStatus">保存</el-button>
               </div>
               <div class="card-title">主要客户介绍</div>
             </div>
@@ -227,7 +227,7 @@
                 <el-button type="default" size="medium">模板下载</el-button>
                 <el-button type="default" size="medium">数据导入</el-button>
                 <el-button type="default" size="medium">生成图表</el-button>
-                <el-button type="primary" size="medium" @click="saveZygyslw">保存</el-button>
+                <el-button type="primary" size="medium" @click="saveZygyslw" :loading="loadingStatus">保存</el-button>
               </div>
               <div class="card-title">主要供应商介绍</div>
             </div>
@@ -335,6 +335,7 @@
       return {
         activeName: "first",
         listLoading: false,
+        loadingStatus:false,
         rules_sxgk: {
           xsdq: [{ required: true, message: "销售地区是必填项" }],
           bfb: [{ required: true, message: "百分比是必填项" },
@@ -468,9 +469,16 @@
       },
       //保存销售概况表格数据
       saveXsgk: async function () {
+        this.loadingStatus=true;
         this.tableData_xsgk.forEach((item, index) => {
           if (item.id == null) {
-            this.addData.push(item);
+            if((item.xsdq != null && item.xsdq != "") 
+            || (item.bfb != null && item.bfb != "") 
+            || (item.dqgj != null && item.dqgj != "")
+            || (item.fkzl != null && item.fkzl != "")
+            || (item.fkzb != null && item.fkzb != "")){
+              this.addData.push(item);
+            }
           }
         });
         let params = {
@@ -493,6 +501,7 @@
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+          this.loadingStatus=false;
       },
       //删除销售概况的数据
       acceptDelTableRow(val) {
@@ -526,9 +535,16 @@
         }
       },
       saveZykhjssm: async function () {
+        this.loadingStatus=true;
         this.tableData_zykh.forEach((item, index) => {
           if (item.id == null) {
-            this.addData3.push(item);
+            if((item.dwmc != null && item.dwmc != "") 
+            || (item.jtcphfw != null && item.jtcphfw != "") 
+            || (item.zq != null && item.zq != "")
+            || (item.jsfs != null && item.jsfs != "")
+            || (item.bl != null && item.bl != "")){
+              this.addData3.push(item);
+            }
           }
         });
         let params = {
@@ -551,6 +567,7 @@
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+          this.loadingStatus=false;
       },
       //删除主要客户的数据
       acceptDelTable3Row(val) {
@@ -590,9 +607,16 @@
       },
       //保存主要供应商来往信息数据
       setZygyslw: async function () {
+        this.loadingStatus=true;
         this.tableData_2.forEach((item, index) => {
           if (item.id == null) {
-            this.addData2.push(item);
+            if((item.gysmc != null && item.gysmc != "") 
+            || (item.jtcphfw != null && item.jtcphfw != "") 
+            || (item.zq != null && item.zq != "")
+            || (item.jsfs != null && item.jsfs != "")
+            || (item.bl != null && item.bl != "")){
+              this.addData2.push(item);
+            }
           }
         });
         let params = {
@@ -616,6 +640,7 @@
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadingStatus=false;
       },
       //接受主要供应商来往信息删除数据
       acceptDelTable2Row(val) {

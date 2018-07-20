@@ -6,7 +6,7 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <el-button @click="saveForm" type="primary" size="medium">保存</el-button>
+                <el-button @click="saveForm" type="primary" size="medium" :loading="loadingStatus">保存</el-button>
               </div>
               <div class="card-title">团队成员</div>
             </div>
@@ -118,7 +118,7 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <el-button class="save" type="primary" size="medium" @click="saveYgfx">保存</el-button>
+                <el-button class="save" type="primary" size="medium" @click="saveYgfx" :loading="loadingStatus">保存</el-button>
               </div>
               <div class="card-title">公司员工分析</div>
             </div>
@@ -261,6 +261,7 @@
       return {
         activeName: "first",
         listLoading: false,
+        loadingStatus: false,
         tdxj: "",
         ygxj: "",
         labelPosition: "right",
@@ -405,9 +406,21 @@
       },
       //保存表单
       saveForm: async function () {
+        this.loadingStatus = true;
         this.formArry.forEach((item, index) => {
           if (item.id == null) {
-            this.formArry_add.push(item);
+            if(item.zw != null &&
+              item.sfcyrcyy != null &&
+              item.xm != null &&
+              item.xb != null &&
+              item.whcd != null &&
+              item.csny != null &&
+              item.xggznl != null &&
+              item.hyzt != null &&
+              item.rzxz != null &&
+              item.gzll != null ){
+              this.formArry_add.push(item);
+            }
           } else if (item.id != null) {
             this.formArry_bf.forEach((value, key) => {
               if (value.id == item.id && JSON.stringify(item) != JSON.stringify(value)) {
@@ -429,13 +442,14 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
-          this.formArry_add = [];
-          this.formArry_update = [];
-          this.formArry_del = [];
           this.getJygltd();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadingStatus = false;
+        this.formArry_add = [];
+        this.formArry_update = [];
+        this.formArry_del = [];
       },
       //经营管理团队分析小结
       getGltdxj: async function () {
@@ -508,9 +522,18 @@
       },
       //保员工分析数据
       saveYgfx: async function () {
+        this.loadingStatus = true;
         this.formatterTableData.forEach((item, index) => {
           if (item.id == null) {
-            this.addData.push(item);
+            if(item.bm != null &&
+              item.czjyx != null &&
+              item.gz != null &&
+              item.dxjys != null &&
+              item.hj != null &&
+              item.pjzznx != null &&
+              item.pjnl != null ){
+              this.addData.push(item);
+            }
           }
         });
         let params = {
@@ -526,13 +549,14 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
-          this.delRowData = [];
-          this.updateData = [];
-          this.addData = [];
           this.getYgfx();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadingStatus = false;
+        this.delRowData = [];
+        this.updateData = [];
+        this.addData = [];
       },
 
       //获取员工分析小结

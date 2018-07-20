@@ -6,7 +6,7 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium" @click="saveRyxx">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="saveRyxx" :loading="loadingStatus">保存</el-button>
 							</div>
 							<div class="card-title">荣誉信息</div>
 						</div>
@@ -42,7 +42,7 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium" @click="saveXzxk">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="saveXzxk" :loading="loadingStatus">保存</el-button>
 							</div>
 							<div class="card-title">行政许可</div>
 						</div>
@@ -91,7 +91,7 @@
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
                 <el-button type="default" size="medium" @click="getDataFromRemote">获取数据</el-button>
-								<el-button class="save" type="primary" size="medium" @click="saveZyzzyrz">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="saveZyzzyrz" :loading="loadingStatus">保存</el-button>
 							</div>
 							<div class="card-title">主要认证与资质</div>
 						</div>
@@ -147,6 +147,7 @@ export default {
     return {
       activeName: "first",
       listLoading: false,
+      loadingStatus:false,
       tableData: [], //荣誉信息
       tableData_delRowData: [],
       tableData_addData: [],
@@ -272,9 +273,12 @@ export default {
     },
 	//保存荣誉信息
 	saveRyxx: async function() {
+    this.loadingStatus=true;
 	   this.tableData.forEach((item, index) => {
         if (item.id == null) {
-          this.tableData_addData.push(item);
+          if((item.nf != null && item.nf != "") || (item.ry != null && item.ry != "")){
+            this.tableData_addData.push(item);
+          }
         }
       });
       let params = {
@@ -295,8 +299,9 @@ export default {
         this.tableData_addData = [];
         this.getRyrz();
       }else{
-	   this.$message({ message: res.data.resultMsg, type: "warning" });
-	  }
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+      this.loadingStatus=false;
 	},
 
     //////////////////////////////////////////////////////////////////////////////行政许可
@@ -333,9 +338,12 @@ export default {
     },
 	//保存行政许可信息表格数据
 	saveXzxk: async function() {
+     this.loadingStatus=true;
 	   this.tableData_xzxk.forEach((item, index) => {
         if (item.id == null) {
-          this.tableData_xzxk_addData.push(item);
+          if((item.ztmc != null && item.ztmc != "") || (item.gslx != null && item.gslx != "") || (item.xzlb != null && item.xzlb != "") || (item.gxsj != null && item.gxsj != "")){
+            this.tableData_xzxk_addData.push(item);
+          }   
         }
       });
       let params = {
@@ -356,8 +364,9 @@ export default {
         this.tableData_xzxk_addData = [];
         this.getXzxk();
       }else{
-	   this.$message({ message: res.data.resultMsg, type: "warning" });
-	  }
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+      this.loadingStatus=false;
 	},
 
 	///////////////////////////////////////////////////////////////////////// 主要资质与认证
@@ -396,8 +405,11 @@ export default {
 	//保存主要资质与认证信息表格数据
 	saveZyzzyrz: async function() {
 	   this.tableData_zyzzyrz.forEach((item, index) => {
+        this.loadingStatus=true;
         if (item.id == null) {
-          this.tableData_zyzzyrz_addData.push(item);
+          if((item.ztmc != null && item.ztmc != "") || (item.zsbh != null && item.zsbh != "") || (item.rzxm != null && item.rzxm != "") || (item.zsdqrq != null && item.zsdqrq != "")){
+            this.tableData_zyzzyrz_addData.push(item);
+          }
         }
       });
       let params = {
@@ -418,8 +430,9 @@ export default {
         this.tableData_zyzzyrz_addData = [];
         this.getZyzzrz();
       }else{
-	   this.$message({ message: res.data.resultMsg, type: "warning" });
-	  }
+      this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+      this.loadingStatus=false;
   },
 
   /////////////////////////////////////////////// 获取主要资质与认证远程接口数据

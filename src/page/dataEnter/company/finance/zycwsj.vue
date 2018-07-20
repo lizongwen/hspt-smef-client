@@ -6,10 +6,10 @@
         <div>
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
-              <div class="card-right-wrap">
-                选择时间：
-                <el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
-              </div>
+              <!--<div class="card-right-wrap">-->
+              <!--选择时间：-->
+              <!--<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>-->
+              <!--</div>-->
               <div class="card-title">资产负债表</div>
             </div>
             <!--<div slot="header" class="clearfix">
@@ -27,11 +27,11 @@
                 </colgroup>
                 <tr>
                   <th>项目</th>
-                  <th>2015年</th>
+                  <th>{{tableData.start.rq}}</th>
                   <th>变化</th>
-                  <th>2016年</th>
+                  <th>{{tableData.mid.rq}}</th>
                   <th>变化</th>
-                  <th>2017年</th>
+                  <th>{{tableData.end.rq}}</th>
                 </tr>
               </table>
               <table lay-skin="line">
@@ -39,148 +39,130 @@
                   <th>资产总计</th>
                 </tr>
                 <tr>
-                  <td style="color:#3DA3FF ;">1、流动资产总计</td>
-                  <td>{{form.ldzczj}}</td>
-                  <td>{{form.ldzczj}}</td>
-                  <td>{{form.ldzczj}}</td>
-                  <td>{{form.ldzczj}}</td>
-                  <td>{{form.ldzczj}}</td>
+                  <td colspan='6' style="color:#3DA3FF ;">1、流动资产总计</td>
                 </tr>
                 <tr>
                   <td>货币资金</td>
-                  <td>{{form.hbzj}}</td>
-                  <td>{{form.hbzj}}</td>
-                  <td>{{form.hbzj}}</td>
-                  <td>{{form.hbzj}}</td>
-                  <td>{{form.hbzj}}</td>
+                  <td>{{tableData.start.hbzj}}</td>
+                  <td>{{tableData.firstBh.hbzj}}</td>
+                  <td>{{tableData.mid.hbzj}}</td>
+                  <td>{{tableData.secondBh.hbzj}}</td>
+                  <td>{{tableData.end.hbzj}}</td>
                 </tr>
                 <tr>
                   <td>应收票据</td>
-                  <td>{{form.yspj1}}</td>
-                  <td>{{form.yspj1}}</td>
-                  <td>{{form.yspj1}}</td>
-                  <td>{{form.yspj1}}</td>
-                  <td>{{form.yspj1}}</td>
-                </tr>
-                <tr>
-                  <td>应收票据</td>
-                  <td>{{form.yspj2}}</td>
-                  <td>{{form.yspj2}}</td>
-                  <td>{{form.yspj2}}</td>
-                  <td>{{form.yspj2}}</td>
-                  <td>{{form.yspj2}}</td>
+                  <td>{{tableData.start.yspj}}</td>
+                  <td>{{tableData.firstBh.yspj}}</td>
+                  <td>{{tableData.mid.yspj}}</td>
+                  <td>{{tableData.secondBh.yspj}}</td>
+                  <td>{{tableData.end.yspj}}</td>
                 </tr>
                 <tr>
                   <td>应收账款</td>
-                  <td>{{form.yszk1}}</td>
-                  <td>{{form.yszk1}}</td>
-                  <td>{{form.yszk1}}</td>
-                  <td>{{form.yszk1}}</td>
-                  <td>{{form.yszk1}}</td>
+                  <td>{{tableData.start.yszk}}</td>
+                  <td>{{tableData.firstBh.yszk}}</td>
+                  <td>{{tableData.mid.yszk}}</td>
+                  <td>{{tableData.secondBh.yszk}}</td>
+                  <td>{{tableData.end.yszk}}</td>
                 </tr>
                 <tr>
                   <td>预付账款</td>
-                  <td>{{form.yfzk1}}</td>
-                  <td>{{form.yfzk1}}</td>
-                  <td>{{form.yfzk1}}</td>
-                  <td>{{form.yfzk1}}</td>
-                  <td>{{form.yfzk1}}</td>
+                  <td>{{tableData.start.yszk}}</td>
+                  <td>{{tableData.firstBh.yszk}}</td>
+                  <td>{{tableData.mid.yszk}}</td>
+                  <td>{{tableData.secondBh.yszk}}</td>
+                  <td>{{tableData.end.yszk}}</td>
                 </tr>
                 <tr>
                   <td>其他应收账款</td>
-                  <td>{{form.qtyszk}}</td>
-                  <td>{{form.qtyszk}}</td>
-                  <td>{{form.qtyszk}}</td>
-                  <td>{{form.qtyszk}}</td>
-                  <td>{{form.qtyszk}}</td>
+                  <td>{{tableData.start.qtysk}}</td>
+                  <td>{{tableData.firstBh.qtyszk}}</td>
+                  <td>{{tableData.mid.qtysk}}</td>
+                  <td>{{tableData.secondBh.qtyszk}}</td>
+                  <td>{{tableData.end.qtysk}}</td>
                 </tr>
                 <tr>
                   <td>存货</td>
-                  <td>{{form.ch}}</td>
-                  <td>{{form.ch}}</td>
-                  <td>{{form.ch}}</td>
-                  <td>{{form.ch}}</td>
-                  <td>{{form.ch}}</td>
+                  <td>{{tableData.start.stock}}</td>
+                  <td>{{tableData.firstBh.ch}}</td>
+                  <td>{{tableData.mid.stock}}</td>
+                  <td>{{tableData.secondBh.ch}}</td>
+                  <td>{{tableData.end.stock}}</td>
                 </tr>
                 <tr>
                   <td>其他流动资产</td>
-                  <td>{{form.qtldzc}}</td>
-                  <td>{{form.qtldzc}}</td>
-                  <td>{{form.qtldzc}}</td>
-                  <td>{{form.qtldzc}}</td>
-                  <td>{{form.qtldzc}}</td>
+                  <td>{{tableData.start.qtldzc}}</td>
+                  <td>{{tableData.firstBh.qtldzc}}</td>
+                  <td>{{tableData.mid.qtldzc}}</td>
+                  <td>{{tableData.secondBh.qtldzc}}</td>
+                  <td>{{tableData.end.qtldzc}}</td>
                 </tr>
                 <tr>
-                  <td style="color:#3DA3FF ;">2、非流动资产合计</td>
-                  <td>{{form.fldzchj}}</td>
-                  <td>{{form.fldzchj}}</td>
-                  <td>{{form.fldzchj}}</td>
-                  <td>{{form.fldzchj}}</td>
-                  <td>{{form.fldzchj}}</td>
+                  <td colspan='6' style="color:#3DA3FF ;">2、非流动资产合计</td>
                 </tr>
                 <tr>
                   <td>长期应收款</td>
-                  <td>{{form.cqysk}}</td>
-                  <td>{{form.cqysk}}</td>
-                  <td>{{form.cqysk}}</td>
-                  <td>{{form.cqysk}}</td>
-                  <td>{{form.cqysk}}</td>
+                  <td>{{tableData.start.cqysk}}</td>
+                  <td>{{tableData.firstBh.cqysk}}</td>
+                  <td>{{tableData.mid.cqysk}}</td>
+                  <td>{{tableData.secondBh.cqysk}}</td>
+                  <td>{{tableData.end.cqysk}}</td>
                 </tr>
                 <tr>
                   <td>长期股权投资</td>
-                  <td>{{form.cqgqtz}}</td>
-                  <td>{{form.cqgqtz}}</td>
-                  <td>{{form.cqgqtz}}</td>
-                  <td>{{form.cqgqtz}}</td>
-                  <td>{{form.cqgqtz}}</td>
+                  <td>{{tableData.start.cqgqtz}}</td>
+                  <td>{{tableData.firstBh.cqgqtz}}</td>
+                  <td>{{tableData.mid.cqgqtz}}</td>
+                  <td>{{tableData.secondBh.cqgqtz}}</td>
+                  <td>{{tableData.end.cqgqtz}}</td>
                 </tr>
                 <tr>
                   <td>固定资产</td>
-                  <td>{{form.gdzc}}</td>
-                  <td>{{form.gdzc}}</td>
-                  <td>{{form.gdzc}}</td>
-                  <td>{{form.gdzc}}</td>
-                  <td>{{form.gdzc}}</td>
+                  <td>{{tableData.start.gdzc}}</td>
+                  <td>{{tableData.firstBh.gdzc}}</td>
+                  <td>{{tableData.mid.gdzc}}</td>
+                  <td>{{tableData.secondBh.gdzc}}</td>
+                  <td>{{tableData.end.gdzc}}</td>
                 </tr>
                 <tr>
                   <td>在建工程</td>
-                  <td>{{form.zjgc}}</td>
-                  <td>{{form.zjgc}}</td>
-                  <td>{{form.zjgc}}</td>
-                  <td>{{form.zjgc}}</td>
-                  <td>{{form.zjgc}}</td>
+                  <td>{{tableData.start.zjgc}}</td>
+                  <td>{{tableData.firstBh.zjgc}}</td>
+                  <td>{{tableData.mid.zjgc}}</td>
+                  <td>{{tableData.secondBh.zjgc}}</td>
+                  <td>{{tableData.end.zjgc}}</td>
                 </tr>
                 <tr>
                   <td>固定资产清理</td>
-                  <td>{{form.gdzcql}}</td>
-                  <td>{{form.gdzcql}}</td>
-                  <td>{{form.gdzcql}}</td>
-                  <td>{{form.gdzcql}}</td>
-                  <td>{{form.gdzcql}}</td>
+                  <td>{{tableData.start.gdzcql}}</td>
+                  <td>{{tableData.firstBh.gdzcql}}</td>
+                  <td>{{tableData.mid.gdzcql}}</td>
+                  <td>{{tableData.secondBh.gdzcql}}</td>
+                  <td>{{tableData.end.gdzcql}}</td>
                 </tr>
                 <tr>
                   <td>无形资产</td>
-                  <td>{{form.wxzc}}</td>
-                  <td>{{form.wxzc}}</td>
-                  <td>{{form.wxzc}}</td>
-                  <td>{{form.wxzc}}</td>
-                  <td>{{form.wxzc}}</td>
+                  <td>{{tableData.start.wxzc}}</td>
+                  <td>{{tableData.firstBh.wxzc}}</td>
+                  <td>{{tableData.mid.wxzc}}</td>
+                  <td>{{tableData.secondBh.wxzc}}</td>
+                  <td>{{tableData.end.wxzc}}</td>
                 </tr>
                 <tr>
                   <td>递延所得税资产</td>
-                  <td>{{form.dysdszc}}</td>
-                  <td>{{form.dysdszc}}</td>
-                  <td>{{form.dysdszc}}</td>
-                  <td>{{form.dysdszc}}</td>
-                  <td>{{form.dysdszc}}</td>
+                  <td>{{tableData.start.dysdszc}}</td>
+                  <td>{{tableData.firstBh.dysdszc}}</td>
+                  <td>{{tableData.mid.dysdszc}}</td>
+                  <td>{{tableData.secondBh.dysdszc}}</td>
+                  <td>{{tableData.end.dysdszc}}</td>
                 </tr>
                 <tr>
                   <td>其他非流动资产</td>
-                  <td>{{form.qtfldzc}}</td>
-                  <td>{{form.qtfldzc}}</td>
-                  <td>{{form.qtfldzc}}</td>
-                  <td>{{form.qtfldzc}}</td>
-                  <td>{{form.qtfldzc}}</td>
+                  <td>{{tableData.start.qtfldzc}}</td>
+                  <td>{{tableData.firstBh.qtfldzc}}</td>
+                  <td>{{tableData.mid.qtfldzc}}</td>
+                  <td>{{tableData.secondBh.qtfldzc}}</td>
+                  <td>{{tableData.end.qtfldzc}}</td>
                 </tr>
               </table>
               <table lay-skin="line" style="margin-top: 20px;">
@@ -188,175 +170,165 @@
                   <th>负债合计</th>
                 </tr>
                 <tr>
-                  <td style="color:#3DA3FF ;">1、流动负债合计</td>
-                  <td>{{form.ldfzhj}}</td>
-                  <td>{{form.ldfzhj}}</td>
-                  <td>{{form.ldfzhj}}</td>
-                  <td>{{form.ldfzhj}}</td>
-                  <td>{{form.ldfzhj}}</td>
+                  <td colspan='6' style="color:#3DA3FF ;">1、流动负债合计</td>
                 </tr>
                 <tr>
                   <td>短期借款</td>
-                  <td>{{form.dqjk}}</td>
-                  <td>{{form.dqjk}}</td>
-                  <td>{{form.dqjk}}</td>
-                  <td>{{form.dqjk}}</td>
-                  <td>{{form.dqjk}}</td>
+                  <td>{{tableData.start.dqjk}}</td>
+                  <td>{{tableData.firstBh.dqjk}}</td>
+                  <td>{{tableData.mid.dqjk}}</td>
+                  <td>{{tableData.secondBh.dqjk}}</td>
+                  <td>{{tableData.end.dqjk}}</td>
                 </tr>
                 <tr>
                   <td>应付票据</td>
-                  <td>{{form.yfpj3}}</td>
-                  <td>{{form.yfpj3}}</td>
-                  <td>{{form.yfpj3}}</td>
-                  <td>{{form.yfpj3}}</td>
-                  <td>{{form.yfpj3}}</td>
+                  <td>{{tableData.start.yfpj}}</td>
+                  <td>{{tableData.firstBh.yfpj}}</td>
+                  <td>{{tableData.mid.yfpj}}</td>
+                  <td>{{tableData.secondBh.yfpj}}</td>
+                  <td>{{tableData.end.yfpj}}</td>
                 </tr>
                 <tr>
                   <td>应收账款</td>
-                  <td>{{form.yszk2}}</td>
-                  <td>{{form.yszk2}}</td>
-                  <td>{{form.yszk2}}</td>
-                  <td>{{form.yszk2}}</td>
-                  <td>{{form.yszk2}}</td>
+                  <td>{{tableData.start.yfzk}}</td>
+                  <td>{{tableData.firstBh.yfzk}}</td>
+                  <td>{{tableData.mid.yfzk}}</td>
+                  <td>{{tableData.secondBh.yfzk}}</td>
+                  <td>{{tableData.end.yfzk}}</td>
                 </tr>
                 <tr>
-                  <td>预售款项</td>
-                  <td>{{form.yskx}}</td>
-                  <td>{{form.yskx}}</td>
-                  <td>{{form.yskx}}</td>
-                  <td>{{form.yskx}}</td>
-                  <td>{{form.yskx}}</td>
+                  <td>预收款项</td>
+                  <td>{{tableData.start.yskx}}</td>
+                  <td>{{tableData.firstBh.yskx}}</td>
+                  <td>{{tableData.mid.yskx}}</td>
+                  <td>{{tableData.secondBh.yskx}}</td>
+                  <td>{{tableData.end.yskx}}</td>
                 </tr>
                 <tr>
                   <td>应付职工薪酬</td>
-                  <td>{{form.yfzgxc}}</td>
-                  <td>{{form.yfzgxc}}</td>
-                  <td>{{form.yfzgxc}}</td>
-                  <td>{{form.yfzgxc}}</td>
-                  <td>{{form.yfzgxc}}</td>
+                  <td>{{tableData.start.yfzgxc}}</td>
+                  <td>{{tableData.firstBh.yfzgxc}}</td>
+                  <td>{{tableData.mid.yfzgxc}}</td>
+                  <td>{{tableData.secondBh.yfzgxc}}</td>
+                  <td>{{tableData.end.yfzgxc}}</td>
                 </tr>
                 <tr>
                   <td>应付利息</td>
-                  <td>{{form.yflx}}</td>
-                  <td>{{form.yflx}}</td>
-                  <td>{{form.yflx}}</td>
-                  <td>{{form.yflx}}</td>
-                  <td>{{form.yflx}}</td>
+                  <td>{{tableData.start.yflx}}</td>
+                  <td>{{tableData.firstBh.yflx}}</td>
+                  <td>{{tableData.mid.yflx}}</td>
+                  <td>{{tableData.secondBh.yflx}}</td>
+                  <td>{{tableData.end.yflx}}</td>
                 </tr>
                 <tr>
                   <td>其他应付款</td>
-                  <td>{{form.qtyfk}}</td>
-                  <td>{{form.qtyfk}}</td>
-                  <td>{{form.qtyfk}}</td>
-                  <td>{{form.qtyfk}}</td>
-                  <td>{{form.qtyfk}}</td>
+                  <td>{{tableData.start.qtyfk}}</td>
+                  <td>{{tableData.firstBh.qtyfk}}</td>
+                  <td>{{tableData.mid.qtyfk}}</td>
+                  <td>{{tableData.secondBh.qtyfk}}</td>
+                  <td>{{tableData.end.qtyfk}}</td>
                 </tr>
                 <tr>
                   <td>其他流动负债</td>
-                  <td>{{form.qtldfz}}</td>
-                  <td>{{form.qtldfz}}</td>
-                  <td>{{form.qtldfz}}</td>
-                  <td>{{form.qtldfz}}</td>
-                  <td>{{form.qtldfz}}</td>
+                  <td>{{tableData.start.qtldfz}}</td>
+                  <td>{{tableData.firstBh.qtldfz}}</td>
+                  <td>{{tableData.mid.qtldfz}}</td>
+                  <td>{{tableData.secondBh.qtldfz}}</td>
+                  <td>{{tableData.end.qtldfz}}</td>
                 </tr>
                 <tr>
-                  <td style="color:#3DA3FF ;">2、非流动负债合计</td>
-                  <td>{{form.fldfzhj}}</td>
-                  <td>{{form.fldfzhj}}</td>
-                  <td>{{form.fldfzhj}}</td>
-                  <td>{{form.fldfzhj}}</td>
-                  <td>{{form.fldfzhj}}</td>
+                  <td colspan='6' style="color:#3DA3FF ;">2、非流动负债合计</td>
                 </tr>
                 <tr>
                   <td>长期应付款</td>
-                  <td>{{form.cqyfk}}</td>
-                  <td>{{form.cqyfk}}</td>
-                  <td>{{form.cqyfk}}</td>
-                  <td>{{form.cqyfk}}</td>
-                  <td>{{form.cqyfk}}</td>
+                  <td>{{tableData.start.cqyfk}}</td>
+                  <td>{{tableData.firstBh.cqyfk}}</td>
+                  <td>{{tableData.mid.cqyfk}}</td>
+                  <td>{{tableData.secondBh.cqyfk}}</td>
+                  <td>{{tableData.end.cqyfk}}</td>
                 </tr>
                 <tr>
                   <td>专项应收款</td>
-                  <td>{{form.zxysk}}</td>
-                  <td>{{form.zxysk}}</td>
-                  <td>{{form.zxysk}}</td>
-                  <td>{{form.zxysk}}</td>
-                  <td>{{form.zxysk}}</td>
+                  <td>{{tableData.start.zxyfk}}</td>
+                  <td>{{tableData.firstBh.zxyfk}}</td>
+                  <td>{{tableData.mid.zxyfk}}</td>
+                  <td>{{tableData.secondBh.zxyfk}}</td>
+                  <td>{{tableData.end.zxyfk}}</td>
                 </tr>
                 <tr>
                   <td>预计负债</td>
-                  <td>{{form.yjfz}}</td>
-                  <td>{{form.yjfz}}</td>
-                  <td>{{form.yjfz}}</td>
-                  <td>{{form.yjfz}}</td>
-                  <td>{{form.yjfz}}</td>
+                  <td>{{tableData.start.yjfz}}</td>
+                  <td>{{tableData.firstBh.yjfz}}</td>
+                  <td>{{tableData.mid.yjfz}}</td>
+                  <td>{{tableData.secondBh.yjfz}}</td>
+                  <td>{{tableData.end.yjfz}}</td>
                 </tr>
                 <tr>
                   <td>其他非流动负债</td>
-                  <td>{{form.qtfldfz}}</td>
-                  <td>{{form.qtfldfz}}</td>
-                  <td>{{form.qtfldfz}}</td>
-                  <td>{{form.qtfldfz}}</td>
-                  <td>{{form.qtfldfz}}</td>
+                  <td>{{tableData.start.qtfldfz}}</td>
+                  <td>{{tableData.firstBh.qtfldfz}}</td>
+                  <td>{{tableData.mid.qtfldfz}}</td>
+                  <td>{{tableData.secondBh.qtfldfz}}</td>
+                  <td>{{tableData.end.qtfldfz}}</td>
                 </tr>
               </table>
-              <table lay-skin="line" style="margin-top: 20px;">
+              <table colspan='6' lay-skin="line" style="margin-top: 20px;">
                 <tr>
                   <th>所有者权益（或股东权益）合计</th>
                 </tr>
                 <tr>
                   <td style="color:#3DA3FF ;">1、实缴资本（或股东）</td>
-                  <td>{{form.sjzb}}</td>
-                  <td>{{form.sjzb}}</td>
-                  <td>{{form.sjzb}}</td>
-                  <td>{{form.sjzb}}</td>
-                  <td>{{form.sjzb}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td style="color:#3DA3FF ;">2、资本公积</td>
-                  <td>{{form.zbgj}}</td>
-                  <td>{{form.zbgj}}</td>
-                  <td>{{form.zbgj}}</td>
-                  <td>{{form.zbgj}}</td>
-                  <td>{{form.zbgj}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td style="color:#3DA3FF ;">3、专项储备</td>
-                  <td>{{form.zxcb}}</td>
-                  <td>{{form.zxcb}}</td>
-                  <td>{{form.zxcb}}</td>
-                  <td>{{form.zxcb}}</td>
-                  <td>{{form.zxcb}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td style="color:#3DA3FF ;">4、盈余公积</td>
-                  <td>{{form.yygj}}</td>
-                  <td>{{form.yygj}}</td>
-                  <td>{{form.yygj}}</td>
-                  <td>{{form.yygj}}</td>
-                  <td>{{form.yygj}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td style="color:#3DA3FF ;">5、未分配利益</td>
-                  <td>{{form.wfply}}</td>
-                  <td>{{form.wfply}}</td>
-                  <td>{{form.wfply}}</td>
-                  <td>{{form.wfply}}</td>
-                  <td>{{form.wfply}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
               </table>
 
-              <div slot="header" class="clearfix">
-                <div class="card-right-wrap">
-                  <!--<el-button type="default" size="medium">上传数据</el-button>-->
-                  <el-button type="primary" size="medium">保存</el-button>
-                </div>
-                <div class="card-title">备注</div>
+              <!--<div slot="header" class="clearfix">-->
+              <!--<div class="card-right-wrap">-->
+              <!--&lt;!&ndash;<el-button type="default" size="medium">上传数据</el-button>&ndash;&gt;-->
+              <!--<el-button type="primary" size="medium">保存</el-button>-->
+              <!--</div>-->
+              <!--<div class="card-title">备注</div>-->
 
-              </div>
-              <div class="text-editor">
-                <quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
-              </div>
+              <!--</div>-->
+              <!--<div class="text-editor">-->
+              <!--<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>-->
+              <!--</div>-->
 
             </div>
 
@@ -466,10 +438,10 @@
         <div>
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
-              <div class="card-right-wrap">
-                选择时间：
-                <el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
-              </div>
+              <!--<div class="card-right-wrap">-->
+              <!--选择时间：-->
+              <!--<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>-->
+              <!--</div>-->
               <div class="card-title">现金流量表</div>
             </div>
             <!--<div slot="header" class="clearfix">
@@ -496,135 +468,251 @@
                 <tr>
                   <td style="color:#3DA3FF ;">1、经营活动产生的现金流量</td>
                   <td>{{form_xj.hdxjll}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>销售商品、提供劳务收到的现金</td>
                   <td>{{form_xj.xssp}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>收到的税费返还</td>
                   <td>{{form_xj.sdsf}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>收到其他与经营活动相关的现金</td>
                   <td>{{form_xj.jyhdxj}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>经营活动现金入小计</td>
                   <td>{{form_xj.hdxjxj1}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>购买商品、接受劳务支付的现金</td>
                   <td>{{form_xj.gmzf}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>支付给职工以及职工支付的现金</td>
                   <td>{{form_xj.zfzg}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>支付的各项税费</td>
                   <td>{{form_xj.zfsf}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>支付其他与经营活动相关的现金</td>
                   <td>{{form_xj.zfjy}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>经营活动现金流出小计</td>
                   <td>{{form_xj.hdxjxj2}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>经营活动产生的现金流净额</td>
                   <td>{{form_xj.hdxjje}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
 
                 <tr>
                   <td style="color:#3DA3FF ;">2、投资活动产生的现金流量</td>
                   <td>{{form_xj.tzhdxj}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>收回投资收到的现金</td>
                   <td>{{form_xj.shtzxj}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>取得投资收益收到的现金</td>
                   <td>{{form_xj.qdtzxj}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>处置固定资产、无形资产和其他长期资产回收的现金净额</td>
                   <td>{{form_xj.czxjje}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>处置子公司及其他营业单位收到的现金净额</td>
                   <td>{{form_xj.czyeje}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>收到其他与投资活动相关的现金</td>
                   <td>{{form_xj.sdhdxj}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>投资活动现金流出小计</td>
                   <td>{{form_xj.tzhdlcxj}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>投资活动生产的现金流量净额</td>
                   <td>{{form_xj.tzhdxjje}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
 
                 <tr>
                   <td style="color:#3DA3FF ;">3、筹资活动产生的现金流量</td>
                   <td>{{form_xj.czhdxjll}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>吸收投资收到的现金</td>
                   <td>{{form_xj.xstzxj}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>取得借款收到的现金</td>
                   <td>{{form_xj.qdjkxj}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>收到其他与筹资活动相关的现金</td>
                   <td>{{form_xj.sdqtxj}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>筹资活动现金流入小计</td>
                   <td>{{form_xj.czhdxj}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>偿还债务支付的现金</td>
                   <td>{{form_xj.chzwxj}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>分配股利、利润或偿付利息支付的现金</td>
                   <td>{{form_xj.fpzfxj}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>支付其他与筹资活动有关的现金</td>
                   <td>{{form_xj.zfczxj}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>筹资活动现金流出小计</td>
                   <td>{{form_xj.czxjxj}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>筹资活动产生的现金流量净额</td>
                   <td>{{form_xj.czhdje}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
               </table>
 
 
-              <div slot="header" class="clearfix">
-                <div class="card-right-wrap">
-                  <!--<el-button type="default" size="medium">上传数据</el-button>-->
-                  <el-button type="primary" size="medium">保存</el-button>
-                </div>
-                <div class="card-title">备注</div>
+              <!--<div slot="header" class="clearfix">-->
+              <!--<div class="card-right-wrap">-->
+              <!--&lt;!&ndash;<el-button type="default" size="medium">上传数据</el-button>&ndash;&gt;-->
+              <!--<el-button type="primary" size="medium">保存</el-button>-->
+              <!--</div>-->
+              <!--<div class="card-title">备注</div>-->
 
-              </div>
-              <div class="text-editor">
-                <quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
-              </div>
+              <!--</div>-->
+              <!--<div class="text-editor">-->
+              <!--<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>-->
+              <!--</div>-->
 
             </div>
 
@@ -638,56 +726,20 @@
 
 <script>
   import quillEditor from "@/components/form/quillEditor.vue";
+
   export default {
-    data(){
+    data() {
       return {
         value4: '',
         activeName: "first",
         textEditorContent: "",
-        form: {
+        tableData: {
           //资产负债
-          ldzczj: '',
-          hbzj: '',
-          yspj1: '',
-          yspj2: '',
-          yszk1: '',
-          yfzk1: '',
-          qtyszk: '',
-          ch: '',
-          qtldzc: '',
-
-          fldzchj: '',
-          cqysk: '',
-          cqgqtz: '',
-          gdzc: '',
-          zjgc: '',
-          gdzcql: '',
-          wxzc: '',
-          dysdszc: '',
-          qtfldzc: '',
-
-          ldfzhj: '',
-          dqjk: '',
-          yfpj3: '',
-          yszk2: '',
-          yskx: '',
-          yfzgxc: '',
-          yflx: '',
-          qtyfk: '',
-          qtldfz: '',
-
-          fldfzhj: '',
-          cqyfk: '',
-          zxysk: '',
-          yjfz: '',
-          qtfldfz: '',
-
-          sjzb: '',
-          zbgj: '',
-          zxcb: '',
-          yygj: '',
-          wfply: '',
-
+          start: {},
+          firstBh: {},
+          mid: {},
+          secondBh: {},
+          end: {}
         },
         form_lr: {
           //利润
@@ -759,49 +811,12 @@
           token: sessionStorage.getItem("token")
         };
         const res = await this.$http.post(
-          "/hspt-web-api/data_entry/gsjbxx/hbxx/hbxx/list",
+          "/hspt-web-api/data_entry/cwzk/cwzkZcfz/getZcfz",
           params
         );
-        this.form.ldzczj = res.data.resultData.data.ldzczj;
-        this.form.hbzj = res.data.resultData.data.hbzj
-        this.form.yspj1 = res.data.resultData.data.yspj1
-        this.form.yspj2 = res.data.resultData.data.yspj2
-        this.form.yszk1 = res.data.resultData.data.yszk1
-        this.form.yfzk1 = res.data.resultData.data.yfzk1
-        this.form.qtyszk = res.data.resultData.data.qtyszk
-        this.form.ch = res.data.resultData.data.ch
-        this.form.qtldzc = res.data.resultData.data.qtldzc
-        this.form.fldzchj = res.data.resultData.data.fldzchj
-        this.form.cqysk = res.data.resultData.data.cqysk
-        this.form.cqgqtz = res.data.resultData.data.cqgqtz
-        this.form.gdzc = res.data.resultData.data.gdzc
-        this.form.zjgc = res.data.resultData.data.zjgc
-        this.form.gdzcql = res.data.resultData.data.gdzcql
-        this.form.wxzc = res.data.resultData.data.wxzc
-        this.form.dysdszc = res.data.resultData.data.dysdszc
-        this.form.qtfldzc = res.data.resultData.data.qtfldzc
-        this.form.ldfzhj = res.data.resultData.data.ldfzhj
-        this.form.dqjk = res.data.resultData.data.dqjk
-        this.form.yfpj3 = res.data.resultData.data.yfpj3
-        this.form.yszk2 = res.data.resultData.data.yszk2
-        this.form.yskx = res.data.resultData.data.yskx
-        this.form.yfzgxc = res.data.resultData.data.yfzgxc
-        this.form.yflx = res.data.resultData.data.yflx
-        this.form.qtyfk = res.data.resultData.data.qtyfk
-        this.form.qtldfz = res.data.resultData.data.qtldfz
-
-        this.form.fldfzhj = res.data.resultData.data.fldfzhj
-        this.form.cqyfk = res.data.resultData.data.cqyfk
-        this.form.zxysk = res.data.resultData.data.zxysk
-        this.form.yjfz = res.data.resultData.data.yjfz
-        this.form.qtfldfz = res.data.resultData.data.qtfldfz
-
-        this.form.sjzb = res.data.resultData.data.sjzb
-        this.form.zbgj = res.data.resultData.data.zbgj
-        this.form.zxcb = res.data.resultData.data.zxcb
-        this.form.yygj = res.data.resultData.data.yygj
-        this.form.wfply = res.data.resultData.data.wfply
-
+        if (res.data.resultCode == "0") {
+          this.tableData = res.data.resultData;
+        }
       },
 
       getLr: async function () {
@@ -810,7 +825,7 @@
           token: sessionStorage.getItem("token")
         };
         const res = await this.$http.post(
-          "/hspt-web-api/data_entry/cwzk/zycwsj/lr/list",
+          "/hspt-web-api/data_entry/gsjbxx/hbxx/hbxx/list",
           params
         );
 

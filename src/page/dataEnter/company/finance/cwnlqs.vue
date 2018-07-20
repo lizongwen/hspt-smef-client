@@ -391,18 +391,8 @@ export default {
     this.getCznl();
     this.getChzhnl();
     this.init();
-
-    //  activeName: "first",
-    //	ylnlTxt: "",// 盈利能力小结
-    //	yynlTxt: "",// 营运能力小结
-    //	cznlTxt: "",// 偿债能力小结
-    //	zcnlTxt: "",// 成长能力小结
-    // 	}
   },
-  ////  mounted() {
-  ////    this.init();
-  ////
-  ////  },
+
   methods: {
     //点击标签页触发事件
     handleClick(tab, event) {
@@ -459,7 +449,7 @@ export default {
       this.loadYynlxjData();
       this.loadCznlxjData();
       this.loadZcnlxjData();
-    },
+	},
     /*************************************对小结数据的处理 start*****************************************/
     changYlnlxjTxt(val) {
       this.ylnlTxt = val;
@@ -472,7 +462,7 @@ export default {
     },
     changZcnlfxxjTxt(val) {
       this.zcnlTxt = val;
-    },
+	},
     //加载盈利能力状况分析小结
     loadYlnlxjData: async function() {
       let params = {
@@ -503,8 +493,7 @@ export default {
       this.form_cz.sd = res.data.resultData.data.sd;
       this.form_cz.xjld = res.data.resultData.data.xjld;
       this.form_cz.ld = res.data.resultData.data.ld;
-    },
-
+	},
     //获取成长能力状况分析
     getChzhnl: async function() {
       let params = {
@@ -523,53 +512,8 @@ export default {
       this.form_chzh.jlr = res.data.resultData.data.jlr;
     },
 
-    init() {
-      this.loadYlnlxjData();
-      this.loadYynlxjData();
-      this.loadCznlxjData();
-      this.loadZcnlxjData();
-    },
-    changYlnlxjTxt(val) {
-      this.ylnlTxt = val;
-    },
-    changYynlxjTxt(val) {
-      this.yynlTxt = val;
-    },
-    changCznlfxxjTxt(val) {
-      this.cznlTxt = val;
-    },
-    changZcnlfxxjTxt(val) {
-      this.zcnlTxt = val;
-    },
-
-    //加载盈利能力状况分析小结
-    loadYlnlxjData: async function() {
-      let params = {
-        creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token")
-      };
-      const res = await this.$http.post(
-        "/hspt-web-api/data_entry/cwzk/cwzkYlnlfxxj/initXj",
-        params
-      );
-      if (res.data.resultCode == "0") {
-        this.ylnlTxt = res.data.resultData.data;
-      }
-    },
-    //加载运营能力状况分析小结
-    loadYynlxjData: async function() {
-      let params = {
-        creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token")
-      };
-      const res = await this.$http.post(
-        "/hspt-web-api/data_entry/cwzk/cwzkYynlfxxj/initXj",
-        params
-      );
-      if (res.data.resultCode == "0") {
-        this.yynlTxt = res.data.resultData.data;
-      }
-    },
+    
+   
     //加载偿债能力状况分析小结
     loadCznlxjData: async function() {
       let params = {
@@ -669,28 +613,9 @@ export default {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
     }
-  },
-
-  components: {
-    // 保存成长能力小结
-    saveZcnlfxxjData: async function() {
-      let params = {
-        creditCode: sessionStorage.getItem("creditCode"),
-        token: sessionStorage.getItem("token"),
-        xj: this.zcnlTxt
-      };
-      const res = await this.$http.post(
-        "/hspt-web-api/data_entry/cwzk/cwzkCznlzkfxxj/saveXj",
-        params
-      );
-      if (res.data.resultCode == "0") {
-        this.$message({ message: res.data.resultMsg, type: "success" });
-      } else {
-        this.$message({ message: res.data.resultMsg, type: "warning" });
-      }
-    }
+  }, 
     /*************************************对小结数据的处理 end*****************************************/
-  },
+
   components: {
     "quill-editor": quillEditor
   }
