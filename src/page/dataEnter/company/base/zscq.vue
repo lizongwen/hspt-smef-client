@@ -17,7 +17,7 @@
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="200px" :label="tableData_columns.sbm">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.sbm" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.sbm" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.sbm}}</span>
 									</template>
 								</el-table-column>
@@ -38,13 +38,13 @@
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_columns.zch">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zch" :class="Object.keys(tableData_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.zch" :class="Object.keys(tableData_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zch}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_columns.lb">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.lb" :class="Object.keys(tableData_columns)[5]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.lb" :class="Object.keys(tableData_columns)[5]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.lb}}</span>
 									</template>
 								</el-table-column>
@@ -272,7 +272,7 @@
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="200px" :label="tableData_2_columns.sqh">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.sqh" :class="Object.keys(tableData_2_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.sqh" :class="Object.keys(tableData_2_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.sqh}}</span>
 									</template>
 								</el-table-column>
@@ -284,37 +284,37 @@
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_2_columns.mc">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.mc" :class="Object.keys(tableData_2_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.mc" :class="Object.keys(tableData_2_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.mc}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_2_columns.sqlx">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.sqlx" :class="Object.keys(tableData_2_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.sqlx" :class="Object.keys(tableData_2_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.sqlx}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_2_columns.sqgj">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.sqgj" :class="Object.keys(tableData_2_columns)[5]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.sqgj" :class="Object.keys(tableData_2_columns)[5]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.sqgj}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_2_columns.gkh">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.gkh" :class="Object.keys(tableData_2_columns)[6]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.gkh" :class="Object.keys(tableData_2_columns)[6]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.gkh}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="100px" :label="tableData_2_columns.flzt">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.flzt" :class="Object.keys(tableData_2_columns)[7]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.flzt" :class="Object.keys(tableData_2_columns)[7]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.flzt}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="100px" :label="tableData_2_columns.yxx">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.yxx" :class="Object.keys(tableData_2_columns)[8]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.yxx" :class="Object.keys(tableData_2_columns)[8]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.yxx}}</span>
 									</template>
 								</el-table-column>
@@ -353,31 +353,31 @@
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="200px" :label="tableData_3_columns.zzqmc">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zzqmc" :class="Object.keys(tableData_3_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.zzqmc" :class="Object.keys(tableData_3_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zzqmc}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_3_columns.lb">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.lb" :class="Object.keys(tableData_3_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.lb" :class="Object.keys(tableData_3_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.lb}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_3_columns.zzqr">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zzqr" :class="Object.keys(tableData_3_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.zzqr" :class="Object.keys(tableData_3_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zzqr}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_3_columns.djh">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.djh" :class="Object.keys(tableData_3_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.djh" :class="Object.keys(tableData_3_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.djh}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_3_columns.bbh">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.bbh" :class="Object.keys(tableData_3_columns)[5]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.bbh" :class="Object.keys(tableData_3_columns)[5]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.bbh}}</span>
 									</template>
 								</el-table-column>
@@ -418,31 +418,31 @@
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_4_columns.wzmc">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.wzmc" :class="Object.keys(tableData_4_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.wzmc" :class="Object.keys(tableData_4_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.wzmc}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_4_columns.wzsy">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.wzsy" :class="Object.keys(tableData_4_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.wzsy" :class="Object.keys(tableData_4_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.wzsy}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_4_columns.bah">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.bah" :class="Object.keys(tableData_4_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.bah" :class="Object.keys(tableData_4_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.bah}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_4_columns.zt">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zt" :class="Object.keys(tableData_4_columns)[5]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.zt" :class="Object.keys(tableData_4_columns)[5]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zt}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_4_columns.dwxz">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.dwxz" :class="Object.keys(tableData_4_columns)[6]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.dwxz" :class="Object.keys(tableData_4_columns)[6]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.dwxz}}</span>
 									</template>
 								</el-table-column>
@@ -746,21 +746,22 @@ export default {
         var fmzlSlPageCount = parseInt(this.tableData_1.fmzl.sqyq)+parseInt(this.tableData_1.fmzl.wqzz)+parseInt(this.tableData_1.fmzl.bhch)+parseInt(this.tableData_1.fmzl.szss)+parseInt(this.tableData_1.fmzl.gksz);
         var syxxSlPageCount = parseInt(this.tableData_1.syxx.sqyq)+parseInt(this.tableData_1.syxx.wqzz)+parseInt(this.tableData_1.syxx.bhch)+parseInt(this.tableData_1.syxx.szss)+parseInt(this.tableData_1.syxx.gksz);
         var wgsjPageCount = parseInt(this.tableData_1.wgsj.sqyq)+parseInt(this.tableData_1.wgsj.wqzz)+parseInt(this.tableData_1.wgsj.bhch)+parseInt(this.tableData_1.wgsj.szss)+parseInt(this.tableData_1.wgsj.gksz);
-         if(fmzlSl!=0){
+
+          if(fmzlSl !=0 && !isNaN(fmzlSl)){
             this.tableData_1_fmzl_sl=fmzlSl;
-         }else{
-           this.tableData_1_fmzl_sl=fmzlSlPageCount;
-         }
-         if(syxxSl!=0){
-          this.tableData_1_syxx_sl=syxxSl;
-         }else{
-           this.tableData_1_syxx_sl=syxxSlPageCount;
-         }
-         if(wgsj!=0){
-          this.tableData_1_wgsj_sl=wgsj;
-         }else{
-           this.tableData_1_wgsj_sl=wgsjPageCount;
-         }
+          }else if(!isNaN(fmzlSlPageCount)){
+            this.tableData_1_fmzl_sl=fmzlSlPageCount;
+          }
+          if(syxxSl!=0 && !isNaN(syxxSl)){
+            this.tableData_1_syxx_sl=syxxSl;
+          }else if(!isNaN(syxxSlPageCount)){
+            this.tableData_1_syxx_sl=syxxSlPageCount;
+          }
+          if(wgsj!=0&& !isNaN(wgsj)){
+            this.tableData_1_wgsj_sl=wgsj;
+          }else if(!isNaN(wgsjPageCount)){
+            this.tableData_1_wgsj_sl=wgsjPageCount;
+          }
 
         }
     },

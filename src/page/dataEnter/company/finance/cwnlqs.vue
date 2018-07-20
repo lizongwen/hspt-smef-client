@@ -70,13 +70,13 @@
 						<div class="clear">
 					<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" >保存</el-button>
+								<el-button type="primary" size="medium" @click="saveYlnlxjData">保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 							
 						</div>
 						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
+					<quill-editor :value="ylnlTxt" :maxSize="10240" v-on:changeInput="changYlnlxjTxt"></quill-editor>
 				</div>
 						</div>
 				
@@ -154,13 +154,13 @@
 						<div class="clear">
 					<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium">保存</el-button>
+								<el-button type="primary" size="medium" @click="saveYynlxjData">保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 							
 						</div>
 						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
+					<quill-editor :value="yynlTxt" :maxSize="10240" v-on:changeInput="changYynlxjTxt"></quill-editor>
 				</div>
 						</div>
 				
@@ -238,13 +238,13 @@
 						<div class="clear">
 					<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium">保存</el-button>
+								<el-button type="primary" size="medium"  @click="saveCznlfxxjData">保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 							
 						</div>
 						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
+					<quill-editor :value="cznlTxt" :maxSize="10240" v-on:changeInput="changCznlfxxjTxt"></quill-editor>
 				</div>
 						</div>
 				
@@ -330,13 +330,13 @@
 						<div class="clear">
 					<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" >保存</el-button>
+								<el-button type="primary" size="medium" @click="saveZcnlfxxjData">保存</el-button>
 							</div>
 							<div class="card-title">小结</div>
 							
 						</div>
 						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
+					<quill-editor :value="zcnlTxt" :maxSize="10240" v-on:changeInput="changZcnlfxxjTxt"></quill-editor>
 				</div>
 						</div>
 				
@@ -355,17 +355,170 @@
 export default {
 	 data(){
  	return {
-activeName: "first",
-textEditorContent: "",
+    activeName: "first",
+	ylnlTxt: "",// 盈利能力小结
+	yynlTxt: "",// 营运能力小结
+	cznlTxt: "",// 偿债能力小结
+	zcnlTxt: "",// 成长能力小结
  	}
  },
+    mounted() {
+      this.init();
+    },
 	 methods: {
       //点击标签页触发事件
       handleClick(tab, event) {
         //   console.log(tab, event);
-      }
+	  },
+	  init(){
+		this.loadYlnlxjData();
+		this.loadYynlxjData();
+		this.loadCznlxjData();
+		this.loadZcnlxjData();
+      },
+/*************************************对小结数据的处理 start*****************************************/
+      changYlnlxjTxt(val) {
+        this.ylnlTxt = val;
+	  },
+	  changYynlxjTxt(val) {
+        this.yynlTxt = val;
+	  },
+	  changCznlfxxjTxt(val) {
+        this.cznlTxt = val;
+	  },
+	  changZcnlfxxjTxt(val) {
+        this.zcnlTxt = val;
+	  },
+	  //加载盈利能力状况分析小结
+	  loadYlnlxjData:async function(){
+          let params = {
+          creditCode: sessionStorage.getItem("creditCode"),
+          token: sessionStorage.getItem("token")
+		};
+		const res = await this.$http.post(
+          "/hspt-web-api/data_entry/cwzk/cwzkYlnlfxxj/initXj",
+          params
+        );
+        if (res.data.resultCode == "0") {
+          this.ylnlTxt = res.data.resultData.data;
+        }
+	  },
+	    //加载运营能力状况分析小结
+	  loadYynlxjData:async function(){
+          let params = {
+          creditCode: sessionStorage.getItem("creditCode"),
+          token: sessionStorage.getItem("token")
+		};
+		const res = await this.$http.post(
+          "/hspt-web-api/data_entry/cwzk/cwzkYynlfxxj/initXj",
+          params
+        );
+        if (res.data.resultCode == "0") {
+          this.yynlTxt = res.data.resultData.data;
+        }
+	  },
+	    //加载偿债能力状况分析小结
+	  loadCznlxjData:async function(){
+          let params = {
+          creditCode: sessionStorage.getItem("creditCode"),
+          token: sessionStorage.getItem("token")
+		};
+		const res = await this.$http.post(
+           "/hspt-web-api/data_entry/cwzk/cwzkCznlfxxj/initXj",
+          params
+        );
+        if (res.data.resultCode == "0") {
+          this.cznlTxt = res.data.resultData.data;
+        }
+	  },
+	    //加载成长利能力状况分析小结
+	  loadZcnlxjData:async function(){
+          let params = {
+          creditCode: sessionStorage.getItem("creditCode"),
+          token: sessionStorage.getItem("token")
+		};
+		const res = await this.$http.post(
+          "/hspt-web-api/data_entry/cwzk/cwzkCznlzkfxxj/initXj",
+          params
+        );
+        if (res.data.resultCode == "0") {
+          this.zcnlTxt = res.data.resultData.data;
+        }
+	  },
+	      //保存盈利能力状况分析小结
+      saveYlnlxjData: async function () {
+        let params = {
+          creditCode: sessionStorage.getItem("creditCode"),
+          token: sessionStorage.getItem("token"),
+          xj: this.ylnlTxt,
+        };
+        const res = await this.$http.post(
+          "/hspt-web-api/data_entry/cwzk/cwzkYlnlfxxj/saveXj",
+          params
+        );
+        if (res.data.resultCode == "0") {
+          this.$message({message: res.data.resultMsg, type: "success"});
+        } else {
+          this.$message({message: res.data.resultMsg, type: "warning"});
+        }
+	  },
+	  
+	  // 保存运营能力小结
+	  saveYynlxjData: async function () {
+        let params = {
+          creditCode: sessionStorage.getItem("creditCode"),
+          token: sessionStorage.getItem("token"),
+          xj: this.yynlTxt,
+        };
+        const res = await this.$http.post(
+           "/hspt-web-api/data_entry/cwzk/cwzkYynlfxxj/saveXj",
+          params
+        );
+        if (res.data.resultCode == "0") {
+          this.$message({message: res.data.resultMsg, type: "success"});
+        } else {
+          this.$message({message: res.data.resultMsg, type: "warning"});
+        }
+	  },
+
+      // 保存偿债能力小结
+	  saveCznlfxxjData: async function () {
+        let params = {
+          creditCode: sessionStorage.getItem("creditCode"),
+          token: sessionStorage.getItem("token"),
+          xj: this.cznlTxt,
+        };
+        const res = await this.$http.post(
+          "/hspt-web-api/data_entry/cwzk/cwzkCznlfxxj/saveXj",
+          params
+        );
+        if (res.data.resultCode == "0") {
+          this.$message({message: res.data.resultMsg, type: "success"});
+        } else {
+          this.$message({message: res.data.resultMsg, type: "warning"});
+        }
+	  },
+
+      // 保存成长能力小结
+	  saveZcnlfxxjData: async function () {
+        let params = {
+          creditCode: sessionStorage.getItem("creditCode"),
+          token: sessionStorage.getItem("token"),
+          xj: this.zcnlTxt,
+        };
+        const res = await this.$http.post(
+           "/hspt-web-api/data_entry/cwzk/cwzkCznlzkfxxj/saveXj",
+          params
+        );
+        if (res.data.resultCode == "0") {
+          this.$message({message: res.data.resultMsg, type: "success"});
+        } else {
+          this.$message({message: res.data.resultMsg, type: "warning"});
+        }
+	  },
+/*************************************对小结数据的处理 end*****************************************/
     },
- 		components: {
+ 	components: {
     "quill-editor": quillEditor
 }
 

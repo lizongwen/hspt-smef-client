@@ -59,6 +59,21 @@
         </div>
       </el-card>
     </div>
+
+     <!-- 企业公积金echarts图展示  start -->
+    <div>
+      <el-card class="box-card" shadow='nevner'>
+        <div slot="header" class="clearfix">
+          <div class="card-title">公司公积金缴纳趋势图</div>
+        </div>
+        <!-- echarts图div容器 -->
+        <div id="echartsApp" class="page-line-chart">
+          <ve-line :data="gjjEchartData" :settings="gjjEchartSettings"></ve-line>
+        </div>
+      </el-card>
+    </div>
+<!-- 企业公积金echarts图展示  end -->
+
     <div>
       <el-card class="box-card" shadow='nevner'>
         <div slot="header" class="clearfix">
@@ -91,13 +106,13 @@
             </div>
             <el-button type="primary" size="medium" @click="saveSbgjj">保存</el-button>
           </div>
-          <div class="card-title">社保缴纳趋势图</div>
+          <div class="card-title">社保缴纳趋明细</div>
         </div>
         <!-- 表格容器 -->
         <div>
           <el-table :data="tableData" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
             <el-table-column label="序号" type="index" width="50"></el-table-column>
-            <el-table-column min-width="300px" :label="tableData_columns.sbjnYf">
+            <el-table-column min-width="200px" :label="tableData_columns.sbjnYf">
               <template slot-scope="scope">
                 <template v-if="scope.row.edit">
                   <el-form :model="scope.row" :rules="rules" :id="'date'+scope.$index" :ref="'form_date_'+scope.$index"
@@ -110,7 +125,7 @@
                 <span v-else>{{scope.row.sbjnYf}}</span>
               </template>
             </el-table-column>
-            <el-table-column min-width="300px" :label="tableData_columns.sbjnRs">
+            <el-table-column min-width="200px" :label="tableData_columns.sbjnRs">
               <template slot-scope="scope">
                 <template v-if="scope.row.edit">
                   <el-form :model="scope.row" :rules="rules" :id="'num'+scope.$index" :ref="'form_num_'+scope.$index"
@@ -123,7 +138,7 @@
                 <span v-else>{{ scope.row.sbjnRs}}</span>
               </template>
             </el-table-column>
-            <el-table-column min-width="300px" :label="tableData_columns.sbjnZe">
+            <el-table-column min-width="200px" :label="tableData_columns.sbjnZe">
               <template slot-scope="scope">
                 <template v-if="scope.row.edit">
                   <el-form :model="scope.row" :rules="rules" :id="'totalMoney'+scope.$index"
@@ -146,6 +161,91 @@
         </div>
       </el-card>
     </div>
+ <div>
+      <el-card class="box-card" shadow='nevner'>
+        <div slot="header" class="clearfix">
+          <div class="card-right-wrap">
+            <el-button type="default" size="medium">获取数据</el-button>
+            <el-button type="default" size="medium">模板下载</el-button>
+            <div style="display:inline-block">
+              <el-upload class="upload-button" :data="param" action=""
+                         :show-file-list='false' :on-success="handleSuccess" :on-progress='handleProgess'>
+                <el-button size="medium" type="default">数据导入</el-button>
+              </el-upload>
+            </div>
+            <el-button type="primary" size="medium" @click="saveGjjMx">保存</el-button>
+          </div>
+          <div class="card-title">公积金缴纳明细</div>
+        </div>
+        <!-- 表格容器 -->
+        <div>
+          <el-table :data="tableData_2" v-loading.body="listLoading" border fit highlight-current-row style="width: 100%">
+            <el-table-column label="序号" type="index" width="50"></el-table-column>
+            <el-table-column min-width="200px" :label="tableData_2_columns.rq">
+              <template slot-scope="scope">
+                <template v-if="scope.row.edit">
+                  <el-form :model="scope.row" :rules="rules" :id="'date'+scope.$index" :ref="'form_date_'+scope.$index"
+                           :show-message="false">
+                    <el-form-item prop="date" class="td-form-item">
+                      <el-input class="edit-input" size="small" v-model="scope.row.rq"></el-input>
+                    </el-form-item>
+                  </el-form>
+                </template>
+                <span v-else>{{scope.row.rq}}</span>
+              </template>
+            </el-table-column>
+            <el-table-column min-width="200px" :label="tableData_2_columns.rs">
+              <template slot-scope="scope">
+                <template v-if="scope.row.edit">
+                  <el-form :model="scope.row" :rules="rules" :id="'num'+scope.$index" :ref="'form_num_'+scope.$index"
+                           :show-message="false">
+                    <el-form-item prop="num" class="td-form-item">
+                      <el-input class="edit-input" size="small" v-model="scope.row.rs"></el-input>
+                    </el-form-item>
+                  </el-form>
+                </template>
+                <span v-else>{{ scope.row.rs}}</span>
+              </template>
+            </el-table-column>
+            <el-table-column min-width="200px" :label="tableData_2_columns.ze">
+              <template slot-scope="scope">
+                <template v-if="scope.row.edit">
+                  <el-form :model="scope.row" :rules="rules" :id="'totalMoney'+scope.$index"
+                           :ref="'form_totalMoney_'+scope.$index" :show-message="false">
+                    <el-form-item prop="totalMoney" class="td-form-item">
+                      <el-input class="edit-input" size="small" v-model="scope.row.ze"></el-input>
+                    </el-form-item>
+                  </el-form>
+                </template>
+                <span v-else>{{ scope.row.ze}}</span>
+              </template>
+            </el-table-column>
+            <el-table-column align="center" label="操作" width="240">
+              <template slot-scope="scope">
+                <v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify"></v-tableOperation>
+              </template>
+            </el-table-column>
+          </el-table>
+          <v-tabelAddBtn :tableData="tableData_2" :tableData_columns="tableData_2_columns"></v-tabelAddBtn>
+        </div>
+      </el-card>
+    </div>
+
+   <!-- 企业社保echarts图展示  start -->
+    <div>
+      <el-card class="box-card" shadow='nevner'>
+        <div slot="header" class="clearfix">
+          <div class="card-title">公司社保缴纳趋势图</div>
+        </div>
+        <!-- echarts图div容器 -->
+        <div id="echartsApp" class="page-line-chart">
+          <ve-line :data="sbEchartData" :settings="sbEchartSettings"></ve-line>
+        </div>
+      </el-card>
+    </div>
+
+<!-- 企业社保echarts图展示  end -->
+
     <div>
       <el-card class="box-card" shadow='nevner'>
         <div slot="header" class="clearfix">
@@ -174,8 +274,29 @@
   import tableOperation from "@/components/table/table-operation.vue";
 
   export default {
-    data() {
-      return {
+     data() {
+      this.sbEchartSettings = {
+        labelMap:{
+          'sbjnZe': '社保缴纳金额',
+          'sbjnRs': '社保缴纳人数'
+        }
+      }
+      this.gjjEchartSettings = {
+        labelMap:{
+          'gjjjnZe': '公积金缴纳金额',
+          'gjjjnRs': '公积金缴纳人数'
+        }
+      }
+
+    return {
+      sbEchartData:{// 定义社保Echarts图标的属性数据容器
+        columns:[],
+        rows:[]
+        },
+      gjjEchartData:{// 定义公积金Echarts图标的属性数据容器
+        columns:[],
+        rows:[]
+        },
         param: {
           creditCode: sessionStorage.getItem("creditCode"),
           token: sessionStorage.getItem("token"),
@@ -209,6 +330,21 @@
           sbjnRsbl: "社保缴纳人数的比例",
           edit: false
         },
+
+        //-------------------------------公积金缴纳明细--------------------------------------//
+
+        tableData_2: [],
+        deleteData_2: [],
+        addData_2: [],
+        updateData_2: [],
+        tableData_2_columns: {
+          id: null,
+          rq: "日期",
+          rs: "人数",
+          ze: "总额",
+          edit: false
+        },
+
         //规则
         rules: {
           date: [
@@ -237,9 +373,11 @@
     },
     computed: {},
     mounted() {
+      this.loadsbjnhGjjEchartsData();// 加载社保和公积金echarts视图数据
       this.getSbgjjjnRs();
       this.getSbgjjjnRsQksm();
       this.getSbgjj();
+      this.getGjjMx();
     },
     methods: {
       verify(row, index) {
@@ -277,6 +415,24 @@
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
       },
+
+//---------------------------- 公司社保和公积金echarts图表数据------------------------//
+    loadsbjnhGjjEchartsData: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/gsyyxx/sbGjj/list",
+        params
+      );
+      if (res.data.resultCode == "0" && res.data.resultData.data != null) {
+        // 为社保echarts图表填充数据
+        this.sbEchartData = res.data.resultData.data.sbGjjMxGraphData;
+        // 为公积金echarts图表填充数据
+        this.gjjEchartData = res.data.resultData.data.gjjMxGraphData;
+      }
+    },
 
       //---------------------------- 社保及公积金缴纳人数--情况说明------------------------//
       getSbgjjjnRsQksm: async function () {
@@ -345,7 +501,6 @@
         );
         if (res.data.resultCode == "0" && res.data.resultData.data != null) {
           this.tableData = res.data.resultData.data.sbGjjMxTableData;
-          this.tableData = res.data.resultData.data.sbGjjMxTableData;
         }
       },
 
@@ -374,6 +529,39 @@
         link.setAttribute("download", "测试.xls");
         document.body.appendChild(link);
         link.click();
+      },
+
+      //-----------------------------------------公积金---------------------------------------------//
+       getGjjMx: async function () {
+        let params = {
+          creditCode: sessionStorage.getItem("creditCode"),
+          token: sessionStorage.getItem("token")
+        };
+        const res = await this.$http.post(
+          "/hspt-web-api/data_entry/gsyyxx/sbGjj/listGjjMx",
+          params
+        );
+        if (res.data.resultCode == "0" && res.data.resultData.data != null) {
+          this.tableData_2 = res.data.resultData.data;
+        }
+      },
+
+     saveGjjMx: async function () {
+        let params = {
+          creditCode: sessionStorage.getItem("creditCode"),
+          token: sessionStorage.getItem("token"),
+          data: JSON.stringify(this.tableData_2),
+        };
+        const res = await this.$http.post(
+          "/hspt-web-api/data_entry/gsyyxx/sbGjj/saveGjjMx",
+          params
+        );
+        if (res.data.resultCode == "0") {
+          this.$message({message: res.data.resultMsg, type: "success"});
+          this.getGjjMx();
+        } else {
+          this.$message({message: res.data.resultMsg, type: "warning"});
+        }
       },
 
       //////////////////////////////////////////////////////////////

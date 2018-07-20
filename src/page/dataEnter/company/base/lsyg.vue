@@ -72,7 +72,7 @@ export default {
       },
       //规则
       rules: {
-        // bgrq: [{ type: "date", required: true, message: "请选择变更日期" }],
+        bgrq: [{required: true, message: "请选择变更日期" }],
         bgsx: [
           { required: true, message: "变更事项是必填项" }
           //   { type: "number", message: "变更事项需要录入数字" }

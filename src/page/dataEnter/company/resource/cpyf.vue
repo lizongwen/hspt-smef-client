@@ -23,12 +23,12 @@
 					</el-row>
 					<el-row>
 						<el-col :offset="1" :span="10">
-							<el-form-item label="上年度研发投入金额：">
+							<el-form-item label="上年度研发投入金额(万元)：">
 								<el-input v-model="form.sndyftrje" placeholder="上年度研发投入金额"></el-input>
 							</el-form-item>
 						</el-col>
 						<el-col :offset="1" :span="10">
-							<el-form-item label="上年度研发投入占营业收入比例：">
+							<el-form-item label="上年度研发投入占营业收入比例(%)：">
 								<el-input v-model="form.sndyftrzyysrbl" placeholder="上年度研发投入占营业收入比例"></el-input>
 							</el-form-item>
 						</el-col>
@@ -36,12 +36,12 @@
 					<el-row>
 
 						<el-col :offset="1" :span="10">
-							<el-form-item label="本年度研发投入金额：">
+							<el-form-item label="本年度研发投入金额(万元)：">
 								<el-input v-model="form.bndyftrje" placeholder="本年度研发投入金额"></el-input>
 							</el-form-item>
 						</el-col>
 						<el-col :offset="1" :span="10">
-							<el-form-item label="本年度研发投入占营业收入比例：">
+							<el-form-item label="本年度研发投入占营业收入比例(%)：">
 								<el-input v-model="form.bndyftrzyysrbl" placeholder="本年度研发投入占营业收入比例"></el-input>
 							</el-form-item>
 						</el-col>
@@ -91,7 +91,7 @@ import quillEditor from "@/components/form/quillEditor.vue";
 export default {
   data() {
     return {
-      cpxj: "",
+			cpxj: "",
       form: {
         id: "",
         yfjghbm: "", //研发机构或部门
@@ -130,8 +130,19 @@ export default {
       this.form.zyyfhzjg = res.data.resultData.data.zyyfhzjg;
       this.form.zyyfcg = res.data.resultData.data.zyyfcg;
     },
-	  //保存产品研发信息
+		//保存产品研发信息
+		
 	saveCpyf: async function() {
+		var rulsCpyf = /^[+]{0,1}(\d+)$|^[+]{0,1}(\d+\.\d+)$/;
+		if(!rulsCpyf.test(this.form.bndyftrzyysrbl)){
+			 this.$message({ message: "本年度研发投入占营业收入比例需录入数字", type: "warning"});
+		}else if(!rulsCpyf.test(this.form.sndyftrje)){
+			this.$message({ message: "上年度研发投入金额需录入数字", type: "warning"});
+		}else if(!rulsCpyf.test(this.form.sndyftrzyysrbl)){
+			this.$message({ message: "上年度研发投入占营业收入比例需录入数字", type: "warning"});
+		}else if(!rulsCpyf.test(this.form.bndyftrje)){
+			this.$message({ message: "本年度研发投入金额需录入数字", type: "warning"});			
+		}else{
 		let params = {
 			creditCode: sessionStorage.getItem("creditCode"),
 			token: sessionStorage.getItem("token"),
@@ -147,6 +158,9 @@ export default {
 		  }else{
 			this.$message({ message: res.data.resultMsg, type: "warning" });
 		  }
+		 }
+
+		
 	},
 	///////////////////////////////////////////////////////////////////小结
 
