@@ -4,7 +4,7 @@
 			<div slot="header" class="clearfix">
 				<div class="card-right-wrap">
 					<el-button type="default" size="medium" @click="retrieveRemoteData">获取数据</el-button>
-					<el-button type="primary" size="medium" @click="saveZtbxx">保存</el-button>
+					<el-button type="primary" size="medium" @click="saveZtbxx" :loading="loadingStatus">保存</el-button>
 				</div>
 				<div class="card-title">招投标信息</div>
 			</div>
@@ -14,7 +14,7 @@
 					<el-table-column label="序号" type="index" width="50"></el-table-column>
 					<el-table-column min-width="200px" :label="tableData_columns.xmmc">
 						<template slot-scope="scope">
-							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" size="small" v-model.number="scope.row.xmmc"></el-input>
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" size="small" v-model="scope.row.xmmc"></el-input>
 							<span v-else>{{ scope.row.xmmc}}</span>
 						</template>
 					</el-table-column>
@@ -32,7 +32,7 @@
 					</el-table-column>
 					<el-table-column min-width="200px" :label="tableData_columns.lx">
 						<template slot-scope="scope">
-							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[4]" v-if="scope.row.edit" size="small" v-model.number="scope.row.lx"></el-input>
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[4]" v-if="scope.row.edit" size="small" v-model="scope.row.lx"></el-input>
 							<span v-else>{{ scope.row.lx}}</span>
 						</template>
 					</el-table-column>
@@ -48,7 +48,7 @@
 							<span v-else>{{ scope.row.xxxx}}</span>
 						</template>
 					</el-table-column>
-					
+
 					<el-table-column align="center" label="操作" width="240">
 						<template slot-scope="scope">
 							<v-tableOperation :scope="scope" :tableData="tableData" v-on:verify="verify" v-on:acceptDelRow='acceptDelRow'></v-tableOperation>
@@ -69,18 +69,19 @@ export default {
   data() {
     return {
       listLoading: false,
+      loadingStatus:false,
       tableData: [],
-	  addData:[],
-	  updateData:[],
-	  delRowData:[],
+	    addData:[],
+	    updateData:[],
+	    delRowData:[],
       tableData_columns: {
 	    id:null,
         xmmc: "项目名称",
         cy: "产业",
         qy: "区域",
         lx: "类型",
-		fbsj:"发布时间",
-		xxxx:"详细信息",
+		    fbsj:"发布时间",
+		    xxxx:"详细信息",
         edit: false
       },
       //规则
@@ -92,7 +93,7 @@ export default {
     this.getZtbxx();
   },
   methods: {
-  
+
   getZtbxx: async function() {
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
@@ -111,9 +112,17 @@ export default {
   },
      //保存数据
     saveZtbxx: async function() {
+    this.loadingStatus = true;
       this.tableData.forEach((item, index) => {
         if (item.id == null) {
-          this.addData.push(item);
+          if(item.xmmc != null &&
+            item.cy != null &&
+            item.qy != null &&
+            item.lx != null &&
+            item.fbsj != null &&
+            item.xxxx != null ){
+            this.addData.push(item);
+          }
         }
       });
       let params = {
@@ -129,13 +138,14 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
-        this.delRowData = [];
-        this.updateData = [];
-        this.addData = [];
         this.getZtbxx();
       }else{
 	   this.$message({ message: res.data.resultMsg, type: "warning" });
 	  }
+	    this.loadingStatus = false;
+      this.delRowData = [];
+      this.updateData = [];
+      this.addData = [];
     },
     //接受删除的数据
     acceptDelRow(val) {
@@ -153,7 +163,7 @@ export default {
         this.updateData.push(rowObj);
       }
     },
-	
+
 	//获取远程接口数据
 	retrieveRemoteData:async function() {
 	  let params = {

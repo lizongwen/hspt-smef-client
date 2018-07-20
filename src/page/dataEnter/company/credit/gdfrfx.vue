@@ -84,7 +84,7 @@
                       <el-form :model="scope.row" :rules="rules_yhbg" :id="'Name'+scope.$index"
                                :ref="'form_Name_'+scope.$index" :show-message="false">
                         <el-form-item prop="Name" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.name"></el-input>
+                          <el-input class="edit-input" :disabled="true" size="small" v-model="scope.row.name"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -97,7 +97,7 @@
                       <el-form :model="scope.row" :rules="rules_yhbg" :id="'account'+scope.$index"
                                :ref="'form_status_'+scope.$index" :show-message="false">
                         <el-form-item prop=" account" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.account"></el-input>
+                          <el-input class="edit-input" :disabled="true" size="small" v-model="scope.row.account"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -184,8 +184,8 @@
                 </el-table-column>
                 <el-table-column align="center" label="操作" width="240">
                   <template slot-scope="scope">
-                    <v-tableOperation :scope="scope" :tableData="tableData_1" v-on:verify="verify"
-                                      v-on:acceptDelRow='acceptDelRow'></v-tableOperation>
+                    <v-tableOperationNoDelete :scope="scope" :tableData="tableData_1" v-on:verify="verify"
+                                      v-on:acceptDelRow='acceptDelRow'></v-tableOperationNoDelete>
                   </template>
                 </el-table-column>
               </el-table>
@@ -214,7 +214,7 @@
                       <el-form :model="scope.row" :rules="rules_flfx" :id="'Name'+scope.$index"
                                :ref="'form_Name_'+scope.$index" :show-message="false">
                         <el-form-item prop="Name" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.bzxrxm"></el-input>
+                          <el-input class="edit-input" :disabled="true" size="small" v-model="scope.row.bzxrxm"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -288,8 +288,8 @@
                 </el-table-column>
                 <el-table-column align="center" label="操作" width="240">
                   <template slot-scope="scope">
-                    <v-tableOperation :scope="scope" :tableData="tableData_1" v-on:verify="verify_1"
-                                      v-on:acceptDelRow='acceptDelRow_1'></v-tableOperation>
+                    <v-tableOperationNoDelete :scope="scope" :tableData="tableData_1" v-on:verify="verify_1"
+                                      v-on:acceptDelRow='acceptDelRow_1'></v-tableOperationNoDelete>
                   </template>
                 </el-table-column>
               </el-table>
@@ -318,7 +318,7 @@
                       <el-form :model="scope.row" :rules="rules_grxy" :id="'copyrightName'+scope.$index"
                                :ref="'form_copyrightName_'+scope.$index" :show-message="false">
                         <el-form-item prop="copyrightName" class="td-form-item">
-                          <el-input class="edit-input" size="small" v-model="scope.row.name"></el-input>
+                          <el-input class="edit-input" :disabled="true" size="small" v-model="scope.row.name"></el-input>
                         </el-form-item>
                       </el-form>
                     </template>
@@ -418,8 +418,8 @@
                 </el-table-column>
                 <el-table-column align="center" label="操作" width="240">
                   <template slot-scope="scope">
-                    <v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify_2"
-                                      v-on:acceptDelRow='acceptDelRow_2'></v-tableOperation>
+                    <v-tableOperationNoDelete :scope="scope" :tableData="tableData_2" v-on:verify="verify_2"
+                                      v-on:acceptDelRow='acceptDelRow_2'></v-tableOperationNoDelete>
                   </template>
                 </el-table-column>
               </el-table>
@@ -570,7 +570,7 @@
                 </el-table-column>
                 <el-table-column align="center" label="操作" width="240">
                   <template slot-scope="scope">
-                    <v-tableOperation :scope="scope" :tableData="tableData_3" v-on:verify="verify_3"></v-tableOperation>
+                    <v-tableOperationNoDelete :scope="scope" :tableData="tableData_3" v-on:verify="verify_3"></v-tableOperationNoDelete>
                   </template>
                 </el-table-column>
               </el-table>
@@ -683,8 +683,8 @@
                 </el-table-column>
                 <el-table-column align="center" label="操作" width="240">
                   <template slot-scope="scope">
-                    <v-tableOperation :scope="scope" :tableData="tableData_4" v-on:verify="verify_4"
-                                      v-on:acceptDelRow='acceptDelRow_4'></v-tableOperation>
+                    <v-tableOperationNoDelete :scope="scope" :tableData="tableData_4" v-on:verify="verify_4"
+                                      v-on:acceptDelRow='acceptDelRow_4'></v-tableOperationNoDelete>
                   </template>
                 </el-table-column>
               </el-table>
@@ -797,8 +797,8 @@
                 </el-table-column>
                 <el-table-column align="center" label="操作" width="240">
                   <template slot-scope="scope">
-                    <v-tableOperation :scope="scope" :tableData="tableData_5" v-on:verify="verify_5"
-                                      v-on:acceptDelRow='acceptDelRow_5'></v-tableOperation>
+                    <v-tableOperationNoDelete :scope="scope" :tableData="tableData_5" v-on:verify="verify_5"
+                                      v-on:acceptDelRow='acceptDelRow_5'></v-tableOperationNoDelete>
                   </template>
                 </el-table-column>
               </el-table>
@@ -1007,6 +1007,7 @@
   import tabelAddBtn from "@/components/table/table-add-btn.vue";
   import tableOperation from "@/components/table/table-operation.vue";
   import tableValidates from "@/utils/validateTable/tableValidates.js";
+  import tableOperation_no_delete from "@/components/table/table-operation.no_delete_button.vue";
 
   export default {
     data() {
@@ -1867,7 +1868,10 @@
     },
     components: {
       "v-tabelAddBtn": tabelAddBtn,
-      "v-tableOperation": tableOperation
+      "v-tableOperation": tableOperation,
+      "v-tableOperationNoDelete": tableOperation_no_delete,
+
+
     }
   };
 </script>

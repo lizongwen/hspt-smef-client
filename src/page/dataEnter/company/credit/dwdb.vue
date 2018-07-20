@@ -31,7 +31,7 @@
 					<el-card class="box-card"  shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button class="save" type="primary" size="medium" @click="saveDwdbxxmx">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="saveDwdbxxmx" :loading="loadingStatus">保存</el-button>
 							</div>
 							<div class="card-title">对外担保信息明细</div>
 						</div>
@@ -119,6 +119,7 @@ export default {
       validateState: "",
       activeName: "first",
       listLoading: false,
+      loadingStatus:false,
       tableData_1: [],
       delRowData_1: [],
       addData_1: [],
@@ -318,9 +319,18 @@ export default {
     },
 
     saveDwdbxxmx: async function() {
+      this.loadingStatus=true;
       this.tableData_1.forEach((item, index) => {
         if (item.id == null) {
-          this.addData_1.push(item);
+          if((item.bdbdw != null && item.bdbdw != "") 
+          || (item.dbnr != null && item.dbnr != "") 
+          || (item.lx != null && item.lx != "")
+          || (item.dbje != null && item.dbje != "")
+          || (item.dbxs != null && item.dbxs != "")
+          || (item.kssj != null && item.kssj != "")
+          || (item.jssj != null && item.jssj != "")){
+            this.addData_1.push(item);
+          }
         }
       });
       let params = {
@@ -337,13 +347,14 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
-        this.delRowData = [];
-        this.updateData = [];
-        this.addData = [];
+        this.delRowData_1 = [];
+        this.updateData_1 = [];
+        this.addData_1 = [];
         this.getDwdbxxmx();
       } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
+        this.loadingStatus=false;
     },
 
     /////////////////////////////////////////////////////////////明细合计计算
@@ -400,8 +411,18 @@ export default {
       for (var i = 0, size = this.tableData.length; i < size; i++) {
         this.updateData.push(this.tableData[i]);
       }
-
+      var reg = /^([1-9]\d*|[0]{1,1})$/;
+      var regje = /^\d{1,11}$|^\d{1,11}[.]\d{1,2}$/;
       for (var i = 0, size = this.updateData.length; i < size; i++) {
+        //验证对外担保输入格式
+        if(!reg.test(this.updateData[i].bs)){
+          this.$message({ message: "笔数请输入正整数", type: "warning"});
+          return false;
+        }
+        if(!regje.test(this.updateData[i].dbje)){
+          this.$message({ message: "金额最多录入11位数字，且只能保留两位小数", type: "warning"});
+          return false;
+        }
         const bs = this.updateData[i].bs;
         const dbje = this.updateData[i].dbje;
         const bdbywBl = this.updateData[i].bdbywBl;
@@ -416,9 +437,8 @@ export default {
           if(!isNaN(count)){
           this.updateData[i].hj = count;
           }
-        
       }
-
+      
       let params = {
         creditCode: sessionStorage.getItem("creditCode"), // 通过缓存获取creditCode
         token: sessionStorage.getItem("token"), // 通过缓存获取token

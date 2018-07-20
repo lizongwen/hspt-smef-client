@@ -4,7 +4,7 @@
       <el-card class="box-card" shadow='nevner'>
         <div slot="header" class="clearfix">
           <div class="card-right-wrap">
-            <el-button type="primary" size="medium" @click="saveSbgjjjnRs">保存</el-button>
+            <el-button type="primary" size="medium" @click="saveSbgjjjnRs" :loading="loadStatus1">保存</el-button>
           </div>
           <div class="card-title"> 社保及公积金缴纳人数</div>
         </div>
@@ -66,7 +66,7 @@
       <el-card class="box-card" shadow='nevner'>
         <div slot="header" class="clearfix">
           <div class="card-right-wrap">
-            <el-button type="primary" size="medium" @click="saveSbgjjjnRsQksm">保存</el-button>
+            <el-button type="primary" size="medium" @click="saveSbgjjjnRsQksm" :loading="loadStatus2">保存</el-button>
           </div>
           <div class="card-title">公司社保及公积金缴纳人数——情况说明</div>
         </div>
@@ -84,7 +84,7 @@
       <el-card class="box-card" shadow='nevner'>
         <div slot="header" class="clearfix">
           <div class="card-right-wrap">
-            <el-button type="default" size="medium" @click="getSbDataFromRemote">获取数据</el-button>
+            <el-button type="default" size="medium" @click="getSbDataFromRemote" :loading="loadStatus6">获取数据</el-button>
             <el-button type="default" size="medium" @click="downloadFile">模板下载</el-button>
             <div style="display:inline-block">
               <el-upload class="upload-button" :data="param" action="/hspt-web-api/data_entry/gsyyxx/sbGjj/import"
@@ -92,7 +92,7 @@
                 <el-button size="medium" type="default">数据导入</el-button>
               </el-upload>
             </div>
-            <el-button type="primary" size="medium" @click="saveSbgjj">保存</el-button>
+            <el-button type="primary" size="medium" @click="saveSbgjj" :loading="loadStatus3">保存</el-button>
           </div>
           <div class="card-title">社保缴纳趋明细</div>
         </div>
@@ -141,7 +141,7 @@
             </el-table-column>
             <el-table-column align="center" label="操作" width="240">
               <template slot-scope="scope">
-                <v-tableOperation :scope="scope" :tableData="tableData" v-on:verify="verify"></v-tableOperation>
+                <v-tableOperationNoDel :scope="scope" :tableData="tableData" v-on:verify="verify"></v-tableOperationNoDel>
               </template>
             </el-table-column>
           </el-table>
@@ -169,7 +169,7 @@
       <el-card class="box-card" shadow='nevner'>
         <div slot="header" class="clearfix">
           <div class="card-right-wrap">
-            <el-button type="default" size="medium" @click="getGjjDataFromRemote">获取数据</el-button>
+            <el-button type="default" size="medium" @click="getGjjDataFromRemote" :loading="loadStatus7">获取数据</el-button>
             <el-button type="default" size="medium" @click="downloadGjjTemplet">模板下载</el-button>
             <div style="display:inline-block">
               <el-upload class="upload-button" :data="param" action="/hspt-web-api/data_entry/gsyyxx/RpGsyyxxGjjMx/import"
@@ -177,7 +177,7 @@
                 <el-button size="medium" type="default">数据导入</el-button>
               </el-upload>
             </div>
-            <el-button type="primary" size="medium" @click="saveGjjMx">保存</el-button>
+            <el-button type="primary" size="medium" @click="saveGjjMx" :loading="loadStatus4">保存</el-button>
           </div>
           <div class="card-title">公积金缴纳明细</div>
         </div>
@@ -226,7 +226,7 @@
             </el-table-column>
             <el-table-column align="center" label="操作" width="240">
               <template slot-scope="scope">
-                <v-tableOperation :scope="scope" :tableData="tableData_2" v-on:verify="verify"></v-tableOperation>
+                <v-tableOperationNoDel :scope="scope" :tableData="tableData_2" v-on:verify="verify"></v-tableOperationNoDel>
               </template>
             </el-table-column>
           </el-table>
@@ -252,7 +252,7 @@
       <el-card class="box-card" shadow='nevner'>
         <div slot="header" class="clearfix">
           <div class="card-right-wrap">
-            <el-button type="primary" size="medium" @click="saveSbgjjjnRsQssm">保存</el-button>
+            <el-button type="primary" size="medium" @click="saveSbgjjjnRsQssm" :loading="loadStatus5">保存</el-button>
           </div>
           <div class="card-title">公司社保及公积金缴纳人数——情况分析</div>
         </div>
@@ -273,7 +273,8 @@
   import tableValidates from "@/utils/validateTable/tableValidates.js";
   import quillEditor from "@/components/form/quillEditor.vue";
   import tabelAddBtn from "@/components/table/table-add-btn.vue";
-  import tableOperation from "@/components/table/table-operation.no_delete_button.vue";
+  import tableOperation from "@/components/table/table-operation.vue";
+  import tableOperation_no_del  from "@/components/table/table-operation.no_delete_button.vue";
 
   export default {
      data() {
@@ -291,6 +292,13 @@
       }
 
     return {
+      loadStatus1:false,
+      loadStatus2:false,
+      loadStatus3:false,
+      loadStatus4:false,
+      loadStatus5:false,
+      loadStatus6:false,
+      loadStatus7:false,
       sbEchartData:{// 定义社保Echarts图标的属性数据容器
         columns:[],
         rows:[]
@@ -401,6 +409,7 @@
         }
       },
       saveSbgjjjnRs: async function () {
+        this.loadStatus1 = true;
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),
           token: sessionStorage.getItem("token"),
@@ -416,6 +425,7 @@
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadStatus1=false;
       },
 
 //---------------------------- 公司社保和公积金echarts图表数据------------------------//
@@ -454,6 +464,7 @@
 
 //保存情况说明
       saveSbgjjjnRsQksm: async function () {
+        this.loadStatus2=true;
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),
           token: sessionStorage.getItem("token"),
@@ -470,10 +481,12 @@
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadStatus2=false;
       },
 
       //保存趋势说明
       saveSbgjjjnRsQssm: async function () {
+        this.loadStatus5=true;
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),
           token: sessionStorage.getItem("token"),
@@ -490,6 +503,7 @@
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadStatus5=false;
       },
       //---------------------------- 社保缴纳------------------------//
       getSbgjj: async function () {
@@ -508,6 +522,7 @@
 
       //保存社保缴纳明细
       saveSbgjj: async function () {
+        this.loadStatus3=true;
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),
           token: sessionStorage.getItem("token"),
@@ -524,6 +539,7 @@
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadStatus3=false;
       },
       downloadFile: async function () {
         let link = document.createElement("a");
@@ -535,7 +551,8 @@
       },
 
       getSbDataFromRemote:async function () {
-        let params = {
+        this.loadStatus6=true;
+        let params = {  
           creditCode: sessionStorage.getItem("creditCode"),
           token: sessionStorage.getItem("token"),
           companyName:sessionStorage.getItem("companyName")
@@ -550,6 +567,7 @@
         }else{
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadStatus6=false;
       },
       //-----------------------------------------公积金---------------------------------------------//
        getGjjMx: async function () {
@@ -567,6 +585,7 @@
       },
 
      saveGjjMx: async function () {
+       this.loadStatus4=true;
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),
           token: sessionStorage.getItem("token"),
@@ -583,6 +602,7 @@
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadStatus4=false;
       },
       downloadGjjTemplet: async function(){
         let link = document.createElement("a");
@@ -594,6 +614,7 @@
       },
 
       getGjjDataFromRemote: async function () {
+        this.loadStatus7=true;
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),
           token: sessionStorage.getItem("token"),
@@ -609,6 +630,7 @@
         }else{
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadStatus7=false;
       },
       //////////////////////////////////////////////////////////////
       handleSuccess(res, file) {
@@ -641,7 +663,8 @@
 
     components: {
       "v-tabelAddBtn": tabelAddBtn,
-      "v-tableOperation": tableOperation
+      "v-tableOperation": tableOperation,
+      "v-tableOperationNoDel":tableOperation_no_del
     }
   };
 </script>

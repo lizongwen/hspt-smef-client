@@ -135,7 +135,7 @@ export default {
     setGslsyg: async function() {
       this.tableData.forEach((item, index) => {
         if (item.id == null) {
-          this.addData.push(item);
+            this.addData.push(item);
         }
       });
       let params = {
