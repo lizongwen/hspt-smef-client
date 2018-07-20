@@ -142,8 +142,8 @@
                 </tr>
                 <tr>
                   <td>无形资产</td>
-                  <td>{{tableData.start.wxzc}}</td>
-                  <td>{{tableData.firstBh.wxzc}}</td>
+                  <td v-if="tableData.start.wxzc=='0'">-</td><td v-else>{{tableData.start.wxzc}}</td>
+                  <td v-if="tableData.firstBh.wxzc == null">-</td><td v-else>{{tableData.firstBh.wxzc}}</td>
                   <td>{{tableData.mid.wxzc}}</td>
                   <td>{{tableData.secondBh.wxzc}}</td>
                   <td>{{tableData.end.wxzc}}</td>
@@ -317,28 +317,13 @@
                   <td></td>
                 </tr>
               </table>
-
-              <!--<div slot="header" class="clearfix">-->
-              <!--<div class="card-right-wrap">-->
-              <!--&lt;!&ndash;<el-button type="default" size="medium">上传数据</el-button>&ndash;&gt;-->
-              <!--<el-button type="primary" size="medium">保存</el-button>-->
-              <!--</div>-->
-              <!--<div class="card-title">备注</div>-->
-
-              <!--</div>-->
-              <!--<div class="text-editor">-->
-              <!--<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>-->
-              <!--</div>-->
-
             </div>
-
           </el-card>
         </div>
 
       </el-tab-pane>
 
       <el-tab-pane label="利润表" name="second">
-
         <div>
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
@@ -357,76 +342,161 @@
                 <colgroup>
                   <col width="250">
                 </colgroup>
+                <table lay-skin="line">
+                  <colgroup>
+                    <col width="250">
+                  </colgroup>
+                  <tr>
+                    <th>项目</th>
+                    <th>{{table_lr_data.third.rq}}</th>
+                    <th>变化</th>
+                    <th>{{table_lr_data.second.rq}}</th>
+                    <th>变化</th>
+                    <th>{{table_lr_data.first.rq}}</th>
+                  </tr>
+                </table>
+              </table>
+              <table lay-skin="line">
+                <colgroup>
+                  <col width="250">
+                </colgroup>
                 <tr>
-                  <th>项目</th>
-                  <th>2015年12月</th>
-                  <th>变化</th>
-                  <th>2016年12月</th>
-                  <th>变化</th>
-                  <th>2017年12月</th>
+                  <th>资产总计</th>
                 </tr>
                 <tr>
-                  <td colspan='6'>资产总计</td>
+                  <td colspan='6' style="color:#3DA3FF ;">1、营业收入</td>
                 </tr>
                 <tr>
-                  <td style="color:#3DA3FF ;" colspan='6'>1、营业收入</td>
+                  <td>减：营业成本</td>
+                  <td>{{table_lr_data.third.cost}}</td>
+                  <td>{{table_lr_data.secondChange.cost}}</td>
+                  <td>{{table_lr_data.second.cost}}</td>
+                  <td>{{table_lr_data.firstChange.cost}}</td>
+                  <td>{{table_lr_data.first.cost}}</td>
                 </tr>
                 <tr>
-                  <td colspan='6'><h4>减：营业成本</h4></td>
+                  <td>营业税收及附加</td>
+                  <td>{{table_lr_data.third.sjjfj}}</td>
+                  <td>{{table_lr_data.secondChange.sjjfj}}</td>
+                  <td>{{table_lr_data.second.sjjfj}}</td>
+                  <td>{{table_lr_data.firstChange.sjjfj}}</td>
+                  <td>{{table_lr_data.first.sjjfj}}</td>
                 </tr>
                 <tr>
-                  <td colspan='6'>营业税收及附加</td>
+                  <td>销售费用</td>
+                  <td>{{table_lr_data.third.xsfy}}</td>
+                  <td>{{table_lr_data.secondChange.xsfy}}</td>
+                  <td>{{table_lr_data.second.sjjfj}}</td>
+                  <td>{{table_lr_data.firstChange.xsfy}}</td>
+                  <td>{{table_lr_data.first.xsfy}}</td>
                 </tr>
                 <tr>
-                  <td colspan='6'>销售费用</td>
+                  <td>管理费用</td>
+                  <td>{{table_lr_data.third.glfy}}</td>
+                  <td>{{table_lr_data.secondChange.glfy}}</td>
+                  <td>{{table_lr_data.second.glfy}}</td>
+                  <td>{{table_lr_data.firstChange.glfy}}</td>
+                  <td>{{table_lr_data.first.glfy}}</td>
                 </tr>
                 <tr>
-                  <td colspan='6'>管理费用</td>
+                  <td>财务费用</td>
+                  <td>{{table_lr_data.third.cwfy}}</td>
+                  <td>{{table_lr_data.secondChange.cwfy}}</td>
+                  <td>{{table_lr_data.second.cwfy}}</td>
+                  <td>{{table_lr_data.firstChange.cwfy}}</td>
+                  <td>{{table_lr_data.first.cwfy}}</td>
                 </tr>
                 <tr>
-                  <td colspan='6'>财务费用</td>
+                  <td>资产减值损失</td>
+                  <td>{{table_lr_data.third.zcjzss}}</td>
+                  <td>{{table_lr_data.secondChange.zcjzss}}</td>
+                  <td>{{table_lr_data.second.zcjzss}}</td>
+                  <td>{{table_lr_data.firstChange.zcjzss}}</td>
+                  <td>{{table_lr_data.first.zcjzss}}</td>
                 </tr>
                 <tr>
-                  <td colspan='6'><h4>资产减值损失</h4></td>
+                  <td>加:公允价值变动收益(损失以“-”号填列)</td>
+                  <td>{{table_lr_data.third.gyjzbdsy}}</td>
+                  <td>{{table_lr_data.secondChange.gyjzbdsy}}</td>
+                  <td>{{table_lr_data.second.gyjzbdsy}}</td>
+                  <td>{{table_lr_data.firstChange.gyjzbdsy}}</td>
+                  <td>{{table_lr_data.first.gyjzbdsy}}</td>
                 </tr>
                 <tr>
-                  <td colspan='6'><h4>加:公允价值变动收益(损失以“-”号填列)</h4></td>
+                  <td>投资收益(损失以"-"号填列)</td>
+                  <td>{{table_lr_data.third.tzsy}}</td>
+                  <td>{{table_lr_data.secondChange.tzsy}}</td>
+                  <td>{{table_lr_data.second.tzsy}}</td>
+                  <td>{{table_lr_data.firstChange.tzsy}}</td>
+                  <td>{{table_lr_data.first.tzsy}}</td>
                 </tr>
                 <tr>
-                  <td colspan='6'><h4>投资收益(损失以"-"号填列)</h4></td>
+                  <td>其中:对联营企业和合营企业的投资收益</td>
+                  <td>{{table_lr_data.third.dlyqyhhyqydtz}}</td>
+                  <td>{{table_lr_data.secondChange.dlyqyhhyqydtz}}</td>
+                  <td>{{table_lr_data.second.dlyqyhhyqydtz}}</td>
+                  <td>{{table_lr_data.firstChange.dlyqyhhyqydtz}}</td>
+                  <td>{{table_lr_data.first.dlyqyhhyqydtz}}</td>
                 </tr>
                 <tr>
-                  <td colspan='6'><h4>其中:对联营企业和合营企业的投资收益</h4></td>
+                  <td colspan='6' style="color:#3DA3FF ;">二、营业利润（亏损以“-”号填列）</td>
                 </tr>
                 <tr>
-                  <td style="color:#3DA3FF ;" colspan='6'>二、营业利润（亏损以“-”号填列）</td>
+                  <td>加:营业外收入</td>
+                  <td>{{table_lr_data.third.yywsr}}</td>
+                  <td>{{table_lr_data.secondChange.yywsr}}</td>
+                  <td>{{table_lr_data.second.yywsr}}</td>
+                  <td>{{table_lr_data.firstChange.yywsr}}</td>
+                  <td>{{table_lr_data.first.yywsr}}</td>
                 </tr>
                 <tr>
-                  <td colspan='6'><h4>加:营业外收入</h4></td>
+                  <td>减:营业外支出</td>
+                  <td>{{table_lr_data.third.yywzc}}</td>
+                  <td>{{table_lr_data.secondChange.yywzc}}</td>
+                  <td>{{table_lr_data.second.yywzc}}</td>
+                  <td>{{table_lr_data.firstChange.yywzc}}</td>
+                  <td>{{table_lr_data.first.yywzc}}</td>
                 </tr>
                 <tr>
-                  <td colspan='6'><h4>减:营业外支出</h4></td>
+                  <td>其中:非流动资产处置损失</td>
+                  <td>{{table_lr_data.third.fldzcczss}}</td>
+                  <td>{{table_lr_data.secondChange.fldzcczss}}</td>
+                  <td>{{table_lr_data.second.fldzcczss}}</td>
+                  <td>{{table_lr_data.firstChange.fldzcczss}}</td>
+                  <td>{{table_lr_data.first.fldzcczss}}</td>
                 </tr>
                 <tr>
-                  <td colspan='6'><h4>其中:非流动资产处置损失</h4></td>
+                  <td colspan='6' style="color:#3DA3FF ;">三、利润总额（亏损总额以“-”号填列）</td>
                 </tr>
                 <tr>
-                  <td style="color:#3DA3FF ;" colspan='6'>三、利润总额（亏损总额以“-”号填列）</td>
+                  <td>减：所得税费用</td>
+                  <td>{{table_lr_data.third.sdsfy}}</td>
+                  <td>{{table_lr_data.secondChange.sdsfy}}</td>
+                  <td>{{table_lr_data.second.sdsfy}}</td>
+                  <td>{{table_lr_data.firstChange.sdsfy}}</td>
+                  <td>{{table_lr_data.first.sdsfy}}</td>
                 </tr>
                 <tr>
-                  <td colspan='6'><h4>减：所得税费用</h4></td>
+                  <td colspan='6' style="color:#3DA3FF ;">四、净利润（净亏损以“-”号填列）</td>
                 </tr>
                 <tr>
-                  <td style="color:#3DA3FF ;" colspan='6'>四、净利润（净亏损以“-”号填列）</td>
+                  <td colspan='6' style="color:#3DA3FF ;">五、每股收益</td>
                 </tr>
                 <tr>
-                  <td colspan='6'><h4>五、每股收益</h4></td>
+                  <td>（一）基本每股收益</td>
+                  <td>{{table_lr_data.third.jbmgsy}}</td>
+                  <td>{{table_lr_data.secondChange.jbmgsy}}</td>
+                  <td>{{table_lr_data.second.jbmgsy}}</td>
+                  <td>{{table_lr_data.firstChange.jbmgsy}}</td>
+                  <td>{{table_lr_data.first.jbmgsy}}</td>
                 </tr>
                 <tr>
-                  <td colspan='6'><h4>（一）基本每股收益</h4></td>
-                </tr>
-                <tr>
-                  <td colspan='6'><h4>（二）稀释每股收益</h4></td>
+                  <td>（二）稀释每股收益</td>
+                  <td>{{table_lr_data.third.xsmgsy}}</td>
+                  <td>{{table_lr_data.secondChange.xsmgsy}}</td>
+                  <td>{{table_lr_data.second.xsmgsy}}</td>
+                  <td>{{table_lr_data.firstChange.xsmgsy}}</td>
+                  <td>{{table_lr_data.first.xsmgsy</td>
                 </tr>
               </table>
             </div>
@@ -741,22 +811,12 @@
           secondBh: {},
           end: {}
         },
-        form_lr: {
-          //利润
-          ldzczj: '',
-          yycb: '',
-          yysjjfj: '',
-          xsfy: '',
-          glfy1: '',
-          glfy2: '',
-          zcjzss: '',
-          tzsy: '',
-          yylr: '',
-          yywzc: '',
-          yywsr: '',
-          lrze: '',
-          sdsfy: '',
-          jlr: '',
+        table_lr_data: {
+          first: {},
+          firstChange: {},
+          second: {},
+          secondChange: {},
+          third: {}
         },
         form_xj: {
           //现金流量
@@ -804,7 +864,7 @@
       handleClick(tab, event) {
         //   console.log(tab, event);
       },
-
+      //主要财务数据中资产负债表的初始化
       getZcfz: async function () {
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),
@@ -818,33 +878,21 @@
           this.tableData = res.data.resultData;
         }
       },
-
+      //主要财务数据中的利润表的初始化
       getLr: async function () {
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),
           token: sessionStorage.getItem("token")
         };
         const res = await this.$http.post(
-          "/hspt-web-api/data_entry/gsjbxx/hbxx/hbxx/list",
+          "/hspt-web-api/data_entry/cwzk/cwzkLrb/initLrb",
           params
         );
-
-        this.form_lr.ldzczj = res.data.resultData.data.ldzczj
-        this.form_lr.yycb = res.data.resultData.data.yycb
-        this.form_lr.yysjjfj = res.data.resultData.data.yysjjfj
-        this.form_lr.xsfy = res.data.resultData.data.xsfy
-        this.form_lr.glfy1 = res.data.resultData.data.glfy1
-        this.form_lr.glfy2 = res.data.resultData.data.glfy2
-        this.form_lr.zcjzss = res.data.resultData.data.zcjzss
-        this.form_lr.tzsy = res.data.resultData.data.tzsy
-        this.form_lr.yylr = res.data.resultData.data.yylr
-        this.form_lr.yywzc = res.data.resultData.data.yywzc
-        this.form_lr.yywsr = res.data.resultData.data.yywsr
-        this.form_lr.lrze = res.data.resultData.data.lrze
-        this.form_lr.sdsfy = res.data.resultData.data.sdsfy
-        this.form_lr.jlr = res.data.resultData.data.jlr
+        if (res.data.resultCode == "0") {
+          this.table_lr_data = res.data.resultData.data;
+        }
       },
-
+      //主要财务数据中现金流量表的初始化
       getXjll: async function () {
         let params = {
           creditCode: sessionStorage.getItem("creditCode"),
@@ -854,42 +902,8 @@
           "/hspt-web-api/data_entry/cwzk/zycwsj/xjll/list",
           params
         );
-        //console.log(res.data.resultData)
-        this.form_xj.hdxjll = res.data.resultData.data.hdxjll
-        this.form_xj.xssp = res.data.resultData.data.xssp
-        this.form_xj.sdsf = res.data.resultData.data.sdsf
-        this.form_xj.jyhdxj = res.data.resultData.data.jyhdxj
-        this.form_xj.hdxjxj1 = res.data.resultData.data.hdxjxj1
-        this.form_xj.gmzf = res.data.resultData.data.gmzf
-        this.form_xj.zfzg = res.data.resultData.data.zfzg
-        this.form_xj.zfsf = res.data.resultData.data.zfsf
-        this.form_xj.zfjy = res.data.resultData.data.zfjy
-        this.form_xj.hdxjxj2 = res.data.resultData.data.hdxjxj2
-        this.form_xj.hdxjje = res.data.resultData.data.hdxjje
-
-        this.form_xj.tzhdxj = res.data.resultData.data.tzhdxj
-        this.form_xj.shtzxj = res.data.resultData.data.shtzxj
-        this.form_xj.qdtzxj = res.data.resultData.data.qdtzxj
-        this.form_xj.czxjje = res.data.resultData.data.czxjje
-        this.form_xj.czyeje = res.data.resultData.data.czyeje
-        this.form_xj.sdhdxj = res.data.resultData.data.sdhdxj
-        this.form_xj.tzhdlcxj = res.data.resultData.data.tzhdlcxj
-        this.form_xj.tzhdxjje = res.data.resultData.data.tzhdxjje
-
-        this.form_xj.czhdxjll = res.data.resultData.data.czhdxjll
-        this.form_xj.xstzxj = res.data.resultData.data.xstzxj
-        this.form_xj.qdjkxj = res.data.resultData.data.qdjkxj
-        this.form_xj.sdqtxj = res.data.resultData.data.sdqtxj
-        this.form_xj.czhdxj = res.data.resultData.data.czhdxj
-        this.form_xj.chzwxj = res.data.resultData.data.chzwxj
-        this.form_xj.fpzfxj = res.data.resultData.data.fpzfxj
-        this.form_xj.zfczxj = res.data.resultData.data.zfczxj
-        this.form_xj.czxjxj = res.data.resultData.data.czxjxj
-        this.form_xj.czhdje = res.data.resultData.data.czhdje
       },
-
     },
-
     components: {
       "quill-editor": quillEditor
     },
