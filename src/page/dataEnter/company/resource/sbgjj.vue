@@ -273,7 +273,7 @@
   import tableValidates from "@/utils/validateTable/tableValidates.js";
   import quillEditor from "@/components/form/quillEditor.vue";
   import tabelAddBtn from "@/components/table/table-add-btn.vue";
-  import tableOperation from "@/components/table/table-operation.no_delete_button.vue";
+//import tableOperation from "@/components/table/table-operation.no_delete_button.vue";
 
   export default {
      data() {
