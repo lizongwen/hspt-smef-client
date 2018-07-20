@@ -399,6 +399,7 @@ form_chzh:{
       this.getYlnl();
       this.getYynl();
       this.getCznl();
+      this.getChzhnl();
       this.init();
 
 //  activeName: "first",
@@ -449,7 +450,7 @@ form_chzh:{
         "/hspt-web-api/data_entry/cwzk/cwnlqsfx/yynlzkfx/list",
         params
       );
-      console.log(res.data.resultData)
+      //console.log(res.data.resultData)
       this.form_yy.zzc=res.data.resultData.data.zzc
       this.form_yy.yszk=res.data.resultData.data.yszk
       this.form_yy.ldzc=res.data.resultData.data.ldzc
@@ -485,6 +486,7 @@ form_chzh:{
         "/hspt-web-api/data_entry/cwzk/cwnlqsfx/chzhnlzkfx/list",
         params
       );
+      console.log(res.data.resultData)
       this.form_chzh.xs=res.data.resultData.data.xs
        this.form_chzh.zbbz=res.data.resultData.data.zbbz
         this.form_chzh.xslr=res.data.resultData.data.xslr
