@@ -38,6 +38,8 @@ import xjllbh from '@/json/xjllfx.json'
 import gshnjl from '@/json/gshnjl.json'
 import ylnl from '@/json/ylnlzkfx.json'
 import yynl from '@/json/yynlzkfx.json'
+import cznl from '@/json/cznlzkfx.json'
+import chzhnl from '@/json/cengzang.json'
 
 
 // 获取 mock.Random 对象
@@ -225,6 +227,10 @@ Mock.mock("/hspt-web-api/data_entry/cwzk/cwnlqsfx/yynlzkfx/list", 'post', functi
 	return yynl;
 });
 //获取偿债能力状况分析
-Mock.mock("/hspt-web-api/data_entry/cwzk/cwnlqsfx/yynlzkfx/list", 'post', function (req) {
+Mock.mock("/hspt-web-api/data_entry/cwzk/cwnlqsfx/cznlzkfx/list", 'post', function (req) {
 	return cznl;
+});
+//获取成长能力状况分析
+Mock.mock("/hspt-web-api/data_entry/cwzk/cwnlqsfx/chzhnlzkfx/list", 'post', function (req) {
+	return chzhnl;
 });

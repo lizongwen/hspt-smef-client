@@ -181,38 +181,38 @@
 								</tr>
 								<tr>
 									<td>资产周转率（%）</td>
-									<td>-</td>
-									<td></td>
-									<td></td>
-									<td>[-2.3 12.3]</td>
+									<td>{{form_cz.zc}}</td>
+									<td>{{form_cz.zc}}</td>
+									<td>{{form_cz.zc}}</td>
+									<td>[{{form_cz.zc}} {{form_cz.zc}}]</td>
 								</tr>
 								<tr>
 									<td>已获利息倍数（%）</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td>{{form_cz.yhlx}}</td>
+									<td>{{form_cz.yhlx}}</td>
+									<td>{{form_cz.yhlx}}</td>
+									<td>[{{form_cz.yhlx}} {{form_cz.yhlx}}]</td>
 								</tr>
 								<tr>
 									<td>速度比率（%）</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td>{{form_cz.sd}}</td>
+									<td>{{form_cz.sd}}</td>
+									<td>{{form_cz.sd}}</td>
+									<td>[{{form_cz.sd}} {{form_cz.sd}}]</td>
 								</tr>
 								<tr>
 									<td>现金流动负债比率（%）</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td>{{form_cz.xjld}}</td>
+									<td>{{form_cz.xjld}}</td>
+									<td>{{form_cz.xjld}}</td>
+									<td>[{{form_cz.xjld}} {{form_cz.xjld}}]</td>
 								</tr>
 								<tr>
 									<td>流动比率（%）</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td>{{form_cz.ld}}</td>
+									<td>{{form_cz.ld}}</td>
+									<td>{{form_cz.ld}}</td>
+									<td>[{{form_cz.ld}} {{form_cz.ld}}]</td>
 								</tr>
 							</table>
 						</div>
@@ -268,38 +268,38 @@
 								</tr>
 								<tr>
 									<td>销售（营业）增长率（%）</td>
-									<td>-</td>
-									<td></td>
-									<td></td>
-									<td>[-2.3 12.3]</td>
+									<td>{{form_chzh.xs}}</td>
+									<td>{{form_chzh.xs}}</td>
+									<td>{{form_chzh.xs}}</td>
+									<td>[{{form_chzh.xs}} {{form_chzh.xs}}]</td>
 								</tr>
 								<tr>
 									<td>资本保值增值率（%）</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td>{{form_chzh.zbbz}}</td>
+									<td>{{form_chzh.zbbz}}</td>
+									<td>{{form_chzh.zbbz}}</td>
+									<td>[{{form_chzh.zbbz}} {{form_chzh.zbbz}}]</td>
 								</tr>
 								<tr>
 									<td>销售（营业）利润增长率（%）</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td>{{form_chzh.xslr}}</td>
+									<td>{{form_chzh.xslr}}</td>
+									<td>{{form_chzh.xslr}}</td>
+									<td>[{{form_chzh.xslr}} {{form_chzh.xslr}}]</td>
 								</tr>
 								<tr>
 									<td>总资产增长率（%）</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td>{{form_chzh.zzc}}</td>
+									<td>{{form_chzh.zzc}}</td>
+									<td>{{form_chzh.zzc}}</td>
+									<td>[{{form_chzh.zzc}} {{form_chzh.zzc}}]</td>
 								</tr>
 								<tr>
 									<td>净利润增长率（%）</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td>{{form_chzh.jlr}}</td>
+									<td>{{form_chzh.jlr}}</td>
+									<td>{{form_chzh.jlr}}</td>
+									<td>[{{form_chzh.jlr}} {{form_chzh.jlr}}]</td>
 								</tr>
 							</table>
 						</div>
@@ -347,11 +347,12 @@ export default {
   data() {
     return {
       activeName: "first",
+      textEditorContent: "",
       ylnlTxt: "", // 盈利能力小结
       yynlTxt: "", // 营运能力小结
       cznlTxt: "", // 偿债能力小结
       zcnlTxt: "", // 成长能力小结
-      textEditorContent: "",
+
       form: {
         //盈利能力状况
         jccsyl: "",
@@ -373,21 +374,40 @@ export default {
         sd: "",
         xjld: "",
         ld: ""
+      },
+      form_chzh: {
+        xs: "",
+        zbbz: "",
+        xslr: "",
+        zzc: "",
+        jlr: ""
       }
     };
   },
+
   mounted() {
     this.getYlnl();
     this.getYynl();
+    this.getCznl();
+    this.getChzhnl();
     this.init();
-  },
 
+    //  activeName: "first",
+    //	ylnlTxt: "",// 盈利能力小结
+    //	yynlTxt: "",// 营运能力小结
+    //	cznlTxt: "",// 偿债能力小结
+    //	zcnlTxt: "",// 成长能力小结
+    // 	}
+  },
+  ////  mounted() {
+  ////    this.init();
+  ////
+  ////  },
   methods: {
     //点击标签页触发事件
     handleClick(tab, event) {
       //   console.log(tab, event);
     },
-
     //获取盈利能力状况
     getYlnl: async function() {
       let params = {
@@ -453,6 +473,75 @@ export default {
     changZcnlfxxjTxt(val) {
       this.zcnlTxt = val;
     },
+    //加载盈利能力状况分析小结
+    loadYlnlxjData: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/cwzk/cwzkYlnlfxxj/initXj",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.ylnlTxt = res.data.resultData.data;
+      }
+    },
+    //加载运营能力状况分析小结
+    loadYynlxjData: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/cwzk/cwnlqsfx/cznlzkfx/list",
+        params
+      );
+      //console.log(res.data.resultData)
+      this.form_cz.zc = res.data.resultData.data.zc;
+      this.form_cz.yhlx = res.data.resultData.data.yhlx;
+      this.form_cz.sd = res.data.resultData.data.sd;
+      this.form_cz.xjld = res.data.resultData.data.xjld;
+      this.form_cz.ld = res.data.resultData.data.ld;
+    },
+
+    //获取成长能力状况分析
+    getChzhnl: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/cwzk/cwnlqsfx/chzhnlzkfx/list",
+        params
+      );
+      console.log(res.data.resultData);
+      this.form_chzh.xs = res.data.resultData.data.xs;
+      this.form_chzh.zbbz = res.data.resultData.data.zbbz;
+      this.form_chzh.xslr = res.data.resultData.data.xslr;
+      this.form_chzh.zzc = res.data.resultData.data.zzc;
+      this.form_chzh.jlr = res.data.resultData.data.jlr;
+    },
+
+    init() {
+      this.loadYlnlxjData();
+      this.loadYynlxjData();
+      this.loadCznlxjData();
+      this.loadZcnlxjData();
+    },
+    changYlnlxjTxt(val) {
+      this.ylnlTxt = val;
+    },
+    changYynlxjTxt(val) {
+      this.yynlTxt = val;
+    },
+    changCznlfxxjTxt(val) {
+      this.cznlTxt = val;
+    },
+    changZcnlfxxjTxt(val) {
+      this.zcnlTxt = val;
+    },
+
     //加载盈利能力状况分析小结
     loadYlnlxjData: async function() {
       let params = {
@@ -563,6 +652,26 @@ export default {
       }
     },
 
+    // 保存成长能力小结
+    saveZcnlfxxjData: async function() {
+      let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token"),
+        xj: this.zcnlTxt
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/cwzk/cwzkCznlzkfxxj/saveXj",
+        params
+      );
+      if (res.data.resultCode == "0") {
+        this.$message({ message: res.data.resultMsg, type: "success" });
+      } else {
+        this.$message({ message: res.data.resultMsg, type: "warning" });
+      }
+    }
+  },
+
+  components: {
     // 保存成长能力小结
     saveZcnlfxxjData: async function() {
       let params = {
