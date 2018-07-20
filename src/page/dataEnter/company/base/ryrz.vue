@@ -196,18 +196,18 @@ export default {
         // ]
       },
 	  rules_xzxk: {
-        ztmc: [
-          { required: true, message: "主体名称是必填项" }
-        ],
-        gslx: [
-          { required: true, message: "公示类型（行政许可）是必填项" }
-        ],
-        xzlb: [
-          { required: true, message: "行政类别/区域是必填项" }
-        ],
-        gxsj: [
-          { required: true, message: "更新时间是必填项" }
-        ]
+        // ztmc: [
+        //   { required: true, message: "主体名称是必填项" }
+        // ],
+        // gslx: [
+        //   { required: true, message: "公示类型（行政许可）是必填项" }
+        // ],
+        // xzlb: [
+        //   { required: true, message: "行政类别/区域是必填项" }
+        // ],
+        // gxsj: [
+        //   { required: true, message: "更新时间是必填项" }
+        // ]
       },
 	  rules_zyzzyrz: {
         // ztmc: [
