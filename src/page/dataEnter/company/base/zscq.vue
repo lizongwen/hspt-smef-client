@@ -7,7 +7,7 @@
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium" @click="getSbxxIntergaceData">获取数据</el-button>
-								<el-button class="save" type="primary" size="medium" @click="setSb">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="setSb" :loading="loadingStatus">保存</el-button>
 							</div>
 							<div class="card-title">商标</div>
 						</div>
@@ -262,7 +262,7 @@
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 							    <el-button class="save" type="default" size="medium" @click="getZlMxIterfaceData">获取数据</el-button>
-								<el-button class="save" type="primary" size="medium" @click="setSqyqzlmx">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="setSqyqzlmx" :loading="loadingStatus">保存</el-button>
 							</div>
 							<div class="card-title">专利明细</div>
 						</div>
@@ -344,7 +344,7 @@
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium" @click="getZzqIntergaceData">获取数据</el-button>
-								<el-button class="save" type="primary" size="medium" @click="setZzq">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="setZzq" :loading="loadingStatus">保存</el-button>
 							</div>
 							<div class="card-title">著作权</div>
 						</div>
@@ -404,7 +404,7 @@
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button class="save" type="default" size="medium" @click="getWzbaIntergaceData">获取数据</el-button>
-								<el-button class="save" type="primary" size="medium" @click="setWzba">保存</el-button>
+								<el-button class="save" type="primary" size="medium" @click="setWzba" :loading="loadingStatus">保存</el-button>
 							</div>
 							<div class="card-title">网站备案</div>
 						</div>
@@ -470,6 +470,7 @@ export default {
     return {
       activeName: "first",
       listLoading: false,
+      loadingStatus:false,
       rules: {},
 
       tableData: [],        //商标
@@ -681,9 +682,12 @@ export default {
     },
     //保存商标数据
     setSb: async function() {
+      this.loadingStatus=true;
       this.tableData.forEach((item, index) => {
         if (item.id == null) {
-          this.addData.push(item);
+          if((item.sbm != null && item.sbm != "") || (item.zt != null && item.zt != "") || (item.sqsj != null && item.sqsj != "") || (item.zch != null && item.zch != "") || (item.lb != null && item.lb != "")){
+            this.addData.push(item);
+          }
         }
       });
       let params = {
@@ -706,6 +710,7 @@ export default {
       }else{
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
+      this.loadingStatus=false;
     },
     //接受商标删除的数据
     acceptDelRow(val) {
@@ -829,9 +834,19 @@ export default {
     },
     //保存授权有权专利明细
     setSqyqzlmx: async function() {
+      this.loadingStatus=true;
       this.tableData_2.forEach((item, index) => {
         if (item.id == null) {
-          this.addData_2.push(item);
+          if((item.sqh != null && item.sqh != "") 
+            || (item.sqr != null && item.sqr != "") 
+            || (item.mc != null && item.mc != "") 
+            || (item.sqlx != null && item.sqlx != "")
+            || (item.sqgj != null && item.sqgj != "")
+            || (item.gkh != null && item.gkh != "")
+            || (item.flzt != null && item.flzt != "")
+            || (item.yxx != null && item.yxx != "")){
+            this.addData_2.push(item);
+          }
         }
       });
       let params = {
@@ -855,6 +870,7 @@ export default {
       }else{
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
+      this.loadingStatus=false;
     },
     //接受授权有权专利明细删除的数据
     acceptDelRow_2(val) {
@@ -915,9 +931,17 @@ export default {
     },
     //保存著作权信息
     setZzq: async function() {
+      this.loadingStatus=true;
       this.tableData_3.forEach((item, index) => {
         if (item.id == null) {
-          this.addData_3.push(item);
+          if((item.zzqmc != null && item.zzqmc != "") 
+            || (item.lb != null && item.lb != "") 
+            || (item.zzqr != null && item.zzqr != "") 
+            || (item.djh != null && item.djh != "")
+            || (item.bbh != null && item.bbh != "")
+            || (item.djpzrq != null && item.djpzrq != "")){
+            this.addData_3.push(item);
+          }
         }
       });
       let params = {
@@ -940,6 +964,7 @@ export default {
       }else{
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
+      this.loadingStatus=false;
     },
     //接受著作权删除的数据
     acceptDelRow_3(val) {
@@ -998,9 +1023,18 @@ export default {
     },
     //保存网站备案
     setWzba: async function() {
+      this.loadingStatus=true;
       this.tableData_4.forEach((item, index) => {
         if (item.id == null) {
-          this.addData_4.push(item);
+          if((item.basj != null && item.basj != "") 
+            || (item.wzmc != null && item.wzmc != "") 
+            || (item.wzsy != null && item.wzsy != "") 
+            || (item.bah != null && item.bah != "")
+            || (item.zt != null && item.zt != "")
+            || (item.dwxz != null && item.dwxz != "")){
+            this.addData_4.push(item);
+          }
+
         }
       });
       let params = {
@@ -1023,6 +1057,7 @@ export default {
       }else{
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
+      this.loadingStatus=false;
     },
     //接受网站备案删除的数据
     acceptDelRow_4(val) {

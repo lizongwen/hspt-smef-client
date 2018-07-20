@@ -6,7 +6,7 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setTdxx">保存</el-button>
+								<el-button type="primary" size="medium" @click="setTdxx" :loading="loadingStatus">保存</el-button>
 							</div>
 							<div class="card-title">企业土地信息</div>
 						</div>
@@ -16,31 +16,31 @@
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="200px" :label="tableData_columns.syzh">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" size="small" v-model.number="scope.row.syzh"></el-input>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" size="small" v-model="scope.row.syzh"></el-input>
 										<span v-else>{{ scope.row.syzh}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_columns.zl">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[2]" v-if="scope.row.edit" size="small" v-model.number="scope.row.zl"></el-input>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[2]" v-if="scope.row.edit" size="small" v-model="scope.row.zl"></el-input>
 										<span v-else>{{ scope.row.zl}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="150px" :label="tableData_columns.yt">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[3]" v-if="scope.row.edit" size="small" v-model.number="scope.row.yt"></el-input>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[3]" v-if="scope.row.edit" size="small" v-model="scope.row.yt"></el-input>
 										<span v-else>{{ scope.row.yt}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="150px" :label="tableData_columns.qdjg">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[4]" v-if="scope.row.edit" size="small" v-model.number="scope.row.qdjg"></el-input>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[4]" v-if="scope.row.edit" size="small" v-model="scope.row.qdjg"></el-input>
 										<span v-else>{{ scope.row.qdjg}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="100px" :label="tableData_columns.syqlx">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[5]" v-if="scope.row.edit" size="small" v-model.number="scope.row.syqlx"></el-input>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[5]" v-if="scope.row.edit" size="small" v-model="scope.row.syqlx"></el-input>
 										<span v-else>{{ scope.row.syqlx}}</span>
 									</template>
 								</el-table-column>
@@ -52,19 +52,19 @@
 								</el-table-column>
 								<el-table-column min-width="120px" :label="tableData_columns.mj">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[7]" v-if="scope.row.edit" size="small" v-model.number="scope.row.mj"></el-input>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[7]" v-if="scope.row.edit" size="small" v-model="scope.row.mj"></el-input>
 										<span v-else>{{ scope.row.mj}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="120px" :label="tableData_columns.ywtxql">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[8]" v-if="scope.row.edit" size="small" v-model.number="scope.row.ywtxql"></el-input>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[8]" v-if="scope.row.edit" size="small" v-model="scope.row.ywtxql"></el-input>
 										<span v-else>{{ scope.row.ywtxql}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="100px" :label="tableData_columns.rzed">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[9]" v-if="scope.row.edit" size="small" v-model.number="scope.row.rzed"></el-input>
+										<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[9]" v-if="scope.row.edit" size="small" v-model="scope.row.rzed"></el-input>
 										<span v-else>{{ scope.row.rzed}}</span>
 									</template>
 								</el-table-column>
@@ -82,7 +82,7 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="primary" size="medium" @click="setFcxx">保存</el-button>
+								<el-button type="primary" size="medium" @click="setFcxx" :loading="loadingStatus">保存</el-button>
 							</div>
 							<div class="card-title">企业房产信息</div>
 						</div>
@@ -92,55 +92,55 @@
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="120px" :label="tableData_1_columns.fqzh">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.fqzh" :class="Object.keys(tableData_1_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.fqzh" :class="Object.keys(tableData_1_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.fqzh}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_1_columns.fwzl">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.fwzl" :class="Object.keys(tableData_1_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.fwzl" :class="Object.keys(tableData_1_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.fwzl}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="100px" :label="tableData_1_columns.dh">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.dh" :class="Object.keys(tableData_1_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.dh" :class="Object.keys(tableData_1_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.dh}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="150px" :label="tableData_1_columns.gmjg">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.gmjg" :class="Object.keys(tableData_1_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.gmjg" :class="Object.keys(tableData_1_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.gmjg}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_1_columns.qsxz">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.qsxz" :class="Object.keys(tableData_1_columns)[5]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.qsxz" :class="Object.keys(tableData_1_columns)[5]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.qsxz}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="130px" :label="tableData_1_columns.synx">
 									<template slot-scope="scope">
-                    <el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.synx" :class="Object.keys(tableData_1_columns)[6]" v-if="scope.row.edit" size="small"></el-input>
+                    <el-input class="edit-input cellItem el-form-item" v-model="scope.row.synx" :class="Object.keys(tableData_1_columns)[6]" v-if="scope.row.edit" size="small"></el-input>
                     <span v-else>{{ scope.row.synx}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="120px" :label="tableData_1_columns.symj">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.symj" :class="Object.keys(tableData_1_columns)[7]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.symj" :class="Object.keys(tableData_1_columns)[7]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.symj}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="120px" :label="tableData_1_columns.ywtxql">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.ywtxql" :class="Object.keys(tableData_1_columns)[8]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.ywtxql" :class="Object.keys(tableData_1_columns)[8]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.ywtxql}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="100px" :label="tableData_1_columns.rzed">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.rzed" :class="Object.keys(tableData_1_columns)[9]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.rzed" :class="Object.keys(tableData_1_columns)[9]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.rzed}}</span>
 									</template>
 								</el-table-column>
@@ -179,7 +179,7 @@
 										<el-button size="medium" type="primary">数据导入</el-button>
 									</el-upload>
 								</div>
-								<el-button type="primary" size="medium" @click="setScsb">保存</el-button>
+								<el-button type="primary" size="medium" @click="setScsb" :loading="loadingStatus">保存</el-button>
 							</div>
 							<div class="card-title">企业主要生产设备</div>
 						</div>
@@ -189,25 +189,25 @@
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="200px" :label="tableData_2_columns.sbmc">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.sbmc" :class="Object.keys(tableData_2_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.sbmc" :class="Object.keys(tableData_2_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.sbmc}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_2_columns.sbxh">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.sbxh" :class="Object.keys(tableData_2_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.sbxh" :class="Object.keys(tableData_2_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.sbxh}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_2_columns.yz" prop="yz">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.yz" :class="Object.keys(tableData_2_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.yz" :class="Object.keys(tableData_2_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.yz}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_2_columns.jz" prop="jz">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.jz" :class="Object.keys(tableData_2_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.jz" :class="Object.keys(tableData_2_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.jz}}</span>
 									</template>
 								</el-table-column>
@@ -242,7 +242,7 @@
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium" @click="getCljlIterfaceData">获取数据</el-button>
-								<el-button type="primary" size="medium" @click="setCljl">保存</el-button>
+								<el-button type="primary" size="medium" @click="setCljl" :loading="loadingStatus">保存</el-button>
 							</div>
 							<div class="card-title">所有车辆记录</div>
 						</div>
@@ -293,7 +293,7 @@
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								<el-button type="default" size="medium" @click="getClmxIterfaceData">获取数据</el-button>
-								<el-button type="primary" size="medium" @click="setClmx">保存</el-button>
+								<el-button type="primary" size="medium" @click="setClmx" :loading="loadingStatus">保存</el-button>
 							</div>
 							<div class="card-title">所有车辆明细</div>
 						</div>
@@ -303,43 +303,43 @@
 								<el-table-column label="序号" type="index" width="50"></el-table-column>
 								<el-table-column min-width="100px" :label="tableData_4_columns.hpzl">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.hpzl" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.hpzl" :class="Object.keys(tableData_4_columns)[1]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.hpzl}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_4_columns.hphm">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.hphm" :class="Object.keys(tableData_4_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.hphm" :class="Object.keys(tableData_4_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.hphm}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_4_columns.zwpp">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zwpp" :class="Object.keys(tableData_4_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.zwpp" :class="Object.keys(tableData_4_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zwpp}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_4_columns.cllx">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.cllx" :class="Object.keys(tableData_4_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.cllx" :class="Object.keys(tableData_4_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.cllx}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_4_columns.zzg">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zzg" :class="Object.keys(tableData_4_columns)[5]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.zzg" :class="Object.keys(tableData_4_columns)[5]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zzg}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_4_columns.jdczt">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.jdczt" :class="Object.keys(tableData_4_columns)[6]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.jdczt" :class="Object.keys(tableData_4_columns)[6]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.jdczt}}</span>
 									</template>
 								</el-table-column>
 								<el-table-column min-width="200px" :label="tableData_4_columns.dybj">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.dybj" :class="Object.keys(tableData_4_columns)[7]" v-if="scope.row.edit" size="small"></el-input>
+										<el-input class="edit-input cellItem el-form-item" v-model="scope.row.dybj" :class="Object.keys(tableData_4_columns)[7]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.dybj}}</span>
 									</template>
 								</el-table-column>
@@ -374,9 +374,10 @@ export default {
 	    },
       bdcxj: "",
       zysbxj: "",
+      textarea: "",
       activeName: "first",
       listLoading: false,
-      textarea: "",
+      loadingStatus:false,
       tableData: [],
       deleteData: [],
       addData: [],
@@ -541,9 +542,20 @@ export default {
     },
     //保存企业土地信息数据
     setTdxx: async function() {
+      this.loadingStatus=true;
       this.tableData.forEach((item, index) => {
         if (item.id == null) {
-          this.addData.push(item);
+          if(item.syzh != null &&
+            item.zl != null &&
+            item.yt != null &&
+            item.qdjg != null &&
+            item.syqlx != null &&
+            item.zzrq != null &&
+            item.mj != null &&
+            item.ywtxql != null &&
+            item.rzed != null){
+            this.addData.push(item);
+          }
         }
       });
       let params = {
@@ -560,12 +572,13 @@ export default {
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
         this.getLandList();
-        this.deleteData = [];
-        this.updateData = [];
-        this.addData = [];
       } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
+      this.loadingStatus=false;
+      this.deleteData = [];
+      this.updateData = [];
+      this.addData = [];
     },
     //接受企业土地信息删除的数据
     acceptDelRow(val) {
@@ -602,9 +615,20 @@ export default {
     },
     //保存企业房产信息数据
     setFcxx: async function() {
+      this.loadingStatus=true;
       this.tableData_1.forEach((item, index) => {
         if (item.id == null) {
-          this.addData_1.push(item);
+          if(item.fqzh != null &&
+            item.fwzl != null &&
+            item.dh != null &&
+            item.gmjg != null &&
+            item.symj != null &&
+            item.qsxz != null &&
+            item.synx != null &&
+            item.ywtxql != null &&
+            item.rzed != null){
+            this.addData_1.push(item);
+          }
         }
       });
       let params = {
@@ -621,12 +645,13 @@ export default {
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
         this.getHouseList();
-        this.deleteData_1 = [];
-        this.updateData_1 = [];
-        this.addData_1 = [];
       } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
+      this.loadingStatus=false;
+      this.deleteData_1 = [];
+      this.updateData_1 = [];
+      this.addData_1 = [];
     },
     //接受企业房产信息删除的数据
     acceptDelRow_1(val) {
@@ -700,9 +725,15 @@ export default {
     },
     //保存主要生产设备数据
     setScsb: async function() {
+      this.loadingStatus=true;
       this.tableData_2.forEach((item, index) => {
         if (item.id == null) {
-          this.addData_2.push(item);
+          if(item.sbmc != null &&
+            item.sbxh != null &&
+            item.yz != null &&
+            item.jz != null){
+            this.addData_2.push(item);
+          }
         }
       });
       let params = {
@@ -719,12 +750,13 @@ export default {
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
         this.getDeviceList();
-        this.deleteData_2 = [];
-        this.updateData_2 = [];
-        this.addData_2 = [];
       } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
+      this.loadingStatus=false;
+      this.deleteData_2 = [];
+      this.updateData_2 = [];
+      this.addData_2 = [];
     },
     //接受主要生产设备删除的数据
     acceptDelRow_2(val) {
@@ -799,6 +831,7 @@ export default {
 
     //保存车辆记录
     setCljl: async function() {
+      this.loadingStatus=true;
       let params = {
         creditCode: sessionStorage.getItem("creditCode"),
         token: sessionStorage.getItem("token"),
@@ -814,6 +847,7 @@ export default {
       } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
+      this.loadingStatus=false;
     },
 
     //接口获取车辆记录
@@ -873,9 +907,18 @@ export default {
 
     //保存车辆明细数据
     setClmx: async function() {
+      this.loadingStatus=true;
       this.tableData_4.forEach((item, index) => {
         if (item.id == null) {
-          this.addData_4.push(item);
+          if(item.hpzl != null &&
+            item.hphm != null &&
+            item.zwpp != null &&
+            item.cllx != null &&
+            item.zzg != null &&
+            item.jdczt != null &&
+            item.dybj != null ){
+            this.addData_4.push(item);
+          }
         }
       });
       let params = {
@@ -892,12 +935,13 @@ export default {
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
         this.getCarList();
-        this.deleteData_4 = [];
-        this.updateData_4 = [];
-        this.addData_4 = [];
       } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
+      this.loadingStatus=false;
+      this.deleteData_4 = [];
+      this.updateData_4 = [];
+      this.addData_4 = [];
     },
 
  //downloadUrl downloadFile
