@@ -6,10 +6,10 @@
 				<div>
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
-							<div class="card-right-wrap">
+							<!--<div class="card-right-wrap">
 								选择时间：
 							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
-							</div>
+							</div>-->
 							<div class="card-title">资产负债表</div>
 						</div>
 						<!--<div slot="header" class="clearfix">
@@ -105,10 +105,10 @@
 				<div>
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
-							<div class="card-right-wrap">
+							<!--<div class="card-right-wrap">
 								选择时间：
 							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
-							</div>
+							</div>-->
 							<div class="card-title">利润表</div>
 						</div>
 						<!--<div slot="header" class="clearfix">
@@ -174,10 +174,10 @@
 					<div>
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
-							<div class="card-right-wrap">
+							<!--<div class="card-right-wrap">
 								选择时间：
 							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
-							</div>
+							</div>-->
 							<div class="card-title">现金流量表</div>
 						</div>
 						<!--<div slot="header" class="clearfix">
@@ -201,37 +201,37 @@
 							<th>变化</th>
 							<th>2017年12月</th>
 						</tr>
-						<tr><td style="color:#3DA3FF ;">1、经营活动产生的现金流量</td><td>{{form_xj.hdxjll}}</td></tr>
-						<tr><td>销售商品、提供劳务收到的现金</td><td>{{form_xj.xssp}}</td></tr>
-					    <tr><td>收到的税费返还</td><td>{{form_xj.sdsf}}</td></tr>
-					    <tr><td>收到其他与经营活动相关的现金</td><td>{{form_xj.jyhdxj}}</td></tr>
-					    <tr><td>经营活动现金入小计</td><td>{{form_xj.hdxjxj1}}</td></tr>
-					    <tr><td>购买商品、接受劳务支付的现金</td><td>{{form_xj.gmzf}}</td></tr>
-					    <tr><td>支付给职工以及职工支付的现金</td><td>{{form_xj.zfzg}}</td></tr>
-					    <tr><td>支付的各项税费</td><td>{{form_xj.zfsf}}</td></tr>
-					    <tr><td>支付其他与经营活动相关的现金</td><td>{{form_xj.zfjy}}</td></tr> 
-					    <tr><td>经营活动现金流出小计</td><td>{{form_xj.hdxjxj2}}</td></tr>
-					    <tr><td>经营活动产生的现金流净额</td><td>{{form_xj.hdxjje}}</td></tr>
+						<tr><td style="color:#3DA3FF ;">1、经营活动产生的现金流量</td><td>{{form_xj.hdxjll}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>销售商品、提供劳务收到的现金</td><td>{{form_xj.xssp}}</td><td></td><td></td><td></td><td></td></tr>
+					    <tr><td>收到的税费返还</td><td>{{form_xj.sdsf}}</td><td></td><td></td><td></td><td></td></tr>
+					    <tr><td>收到其他与经营活动相关的现金</td><td>{{form_xj.jyhdxj}}</td><td></td><td></td><td></td><td></td></tr>
+					    <tr><td>经营活动现金入小计</td><td>{{form_xj.hdxjxj1}}</td><td></td><td></td><td></td><td></td></tr>
+					    <tr><td>购买商品、接受劳务支付的现金</td><td>{{form_xj.gmzf}}</td><td></td><td></td><td></td><td></td></tr>
+					    <tr><td>支付给职工以及职工支付的现金</td><td>{{form_xj.zfzg}}</td><td></td><td></td><td></td><td></td></tr>
+					    <tr><td>支付的各项税费</td><td>{{form_xj.zfsf}}</td><td></td><td></td><td></td><td></td></tr>
+					    <tr><td>支付其他与经营活动相关的现金</td><td>{{form_xj.zfjy}}</td><td></td><td></td><td></td><td></td></tr> 
+					    <tr><td>经营活动现金流出小计</td><td>{{form_xj.hdxjxj2}}</td><td></td><td></td><td></td><td></td></tr>
+					    <tr><td>经营活动产生的现金流净额</td><td>{{form_xj.hdxjje}}</td><td></td><td></td><td></td><td></td></tr>
 					    
-						<tr><td style="color:#3DA3FF ;">2、投资活动产生的现金流量</td><td>{{form_xj.tzhdxj}}</td></tr>
-						<tr><td>收回投资收到的现金</td><td>{{form_xj.shtzxj}}</td></tr>
-						<tr><td>取得投资收益收到的现金</td><td>{{form_xj.qdtzxj}}</td></tr>
-						<tr><td>处置固定资产、无形资产和其他长期资产回收的现金净额</td><td>{{form_xj.czxjje}}</td></tr>
-						<tr><td>处置子公司及其他营业单位收到的现金净额</td><td>{{form_xj.czyeje}}</td></tr>
-						<tr><td>收到其他与投资活动相关的现金</td><td>{{form_xj.sdhdxj}}</td></tr>
-						<tr><td>投资活动现金流出小计</td><td>{{form_xj.tzhdlcxj}}</td></tr>
-						<tr><td>投资活动生产的现金流量净额</td><td>{{form_xj.tzhdxjje}}</td></tr>
+						<tr><td style="color:#3DA3FF ;">2、投资活动产生的现金流量</td><td>{{form_xj.tzhdxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>收回投资收到的现金</td><td>{{form_xj.shtzxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>取得投资收益收到的现金</td><td>{{form_xj.qdtzxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>处置固定资产、无形资产和其他长期资产回收的现金净额</td><td>{{form_xj.czxjje}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>处置子公司及其他营业单位收到的现金净额</td><td>{{form_xj.czyeje}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>收到其他与投资活动相关的现金</td><td>{{form_xj.sdhdxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>投资活动现金流出小计</td><td>{{form_xj.tzhdlcxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>投资活动生产的现金流量净额</td><td>{{form_xj.tzhdxjje}}</td><td></td><td></td><td></td><td></td></tr>
 						
-						<tr><td style="color:#3DA3FF ;">3、筹资活动产生的现金流量</td><td>{{form_xj.czhdxjll}}</td></tr>
-						<tr><td>吸收投资收到的现金</td><td>{{form_xj.xstzxj}}</td></tr>
-						<tr><td>取得借款收到的现金</td><td>{{form_xj.qdjkxj}}</td></tr>
-						<tr><td>收到其他与筹资活动相关的现金</td><td>{{form_xj.sdqtxj}}</td></tr>
-						<tr><td>筹资活动现金流入小计</td><td>{{form_xj.czhdxj}}</td></tr>
-						<tr><td>偿还债务支付的现金</td><td>{{form_xj.chzwxj}}</td></tr>
-						<tr><td>分配股利、利润或偿付利息支付的现金</td><td>{{form_xj.fpzfxj}}</td></tr>
-						<tr><td>支付其他与筹资活动有关的现金</td><td>{{form_xj.zfczxj}}</td></tr>
-						<tr><td>筹资活动现金流出小计</td><td>{{form_xj.czxjxj}}</td></tr>
-						<tr><td>筹资活动产生的现金流量净额</td><td>{{form_xj.czhdje}}</td></tr>
+						<tr><td style="color:#3DA3FF ;">3、筹资活动产生的现金流量</td><td>{{form_xj.czhdxjll}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>吸收投资收到的现金</td><td>{{form_xj.xstzxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>取得借款收到的现金</td><td>{{form_xj.qdjkxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>收到其他与筹资活动相关的现金</td><td>{{form_xj.sdqtxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>筹资活动现金流入小计</td><td>{{form_xj.czhdxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>偿还债务支付的现金</td><td>{{form_xj.chzwxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>分配股利、利润或偿付利息支付的现金</td><td>{{form_xj.fpzfxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>支付其他与筹资活动有关的现金</td><td>{{form_xj.zfczxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>筹资活动现金流出小计</td><td>{{form_xj.czxjxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>筹资活动产生的现金流量净额</td><td>{{form_xj.czhdje}}</td><td></td><td></td><td></td><td></td></tr>
 						</table>
 				
 					

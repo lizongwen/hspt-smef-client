@@ -51,7 +51,7 @@
                     </el-form-item>
                   </el-form>
                 </template>
-                <span v-else>{{ scope.row.mobile}}</span>
+                <span v-else>{{ scope.row.phone}}</span>
               </template>
             </el-table-column>
             <el-table-column align="center" label="操作" width="240">
