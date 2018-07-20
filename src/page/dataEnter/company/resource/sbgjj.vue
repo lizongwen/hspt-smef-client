@@ -4,7 +4,6 @@
       <el-card class="box-card" shadow='nevner'>
         <div slot="header" class="clearfix">
           <div class="card-right-wrap">
-            <el-button type="default" size="medium">获取数据</el-button>
             <el-button type="primary" size="medium" @click="saveSbgjjjnRs">保存</el-button>
           </div>
           <div class="card-title"> 社保及公积金缴纳人数</div>
@@ -60,18 +59,7 @@
       </el-card>
     </div>
 
-     <!-- 企业公积金echarts图展示  start -->
-    <div>
-      <el-card class="box-card" shadow='nevner'>
-        <div slot="header" class="clearfix">
-          <div class="card-title">公司公积金缴纳趋势图</div>
-        </div>
-        <!-- echarts图div容器 -->
-        <div id="echartsApp" class="page-line-chart">
-          <ve-line :data="gjjEchartData" :settings="gjjEchartSettings"></ve-line>
-        </div>
-      </el-card>
-    </div>
+    
 <!-- 企业公积金echarts图展示  end -->
 
     <div>
@@ -96,7 +84,7 @@
       <el-card class="box-card" shadow='nevner'>
         <div slot="header" class="clearfix">
           <div class="card-right-wrap">
-            <el-button type="default" size="medium">获取数据</el-button>
+            <el-button type="default" size="medium" @click="getSbDataFromRemote">获取数据</el-button>
             <el-button type="default" size="medium" @click="downloadFile">模板下载</el-button>
             <div style="display:inline-block">
               <el-upload class="upload-button" :data="param" action="/hspt-web-api/data_entry/gsyyxx/sbGjj/import"
@@ -161,15 +149,31 @@
         </div>
       </el-card>
     </div>
+
+     <!-- 企业社保echarts图展示  start -->
+    <div>
+      <el-card class="box-card" shadow='nevner'>
+        <div slot="header" class="clearfix">
+          <div class="card-title">公司社保缴纳趋势图</div>
+        </div>
+        <!-- echarts图div容器 -->
+        <div id="echartsApp" class="page-line-chart">
+          <ve-line :data="sbEchartData" :settings="sbEchartSettings"></ve-line>
+        </div>
+      </el-card>
+    </div>
+
+<!-- 企业社保echarts图展示  end -->
+
  <div>
       <el-card class="box-card" shadow='nevner'>
         <div slot="header" class="clearfix">
           <div class="card-right-wrap">
-            <el-button type="default" size="medium">获取数据</el-button>
-            <el-button type="default" size="medium">模板下载</el-button>
+            <el-button type="default" size="medium" @click="getGjjDataFromRemote">获取数据</el-button>
+            <el-button type="default" size="medium" @click="downloadGjjTemplet">模板下载</el-button>
             <div style="display:inline-block">
-              <el-upload class="upload-button" :data="param" action=""
-                         :show-file-list='false' :on-success="handleSuccess" :on-progress='handleProgess'>
+              <el-upload class="upload-button" :data="param" action="/hspt-web-api/data_entry/gsyyxx/RpGsyyxxGjjMx/import"
+                         :show-file-list='false' :on-success="gjjHandleSuccess" :on-progress='gjjHandleProgess'>
                 <el-button size="medium" type="default">数据导入</el-button>
               </el-upload>
             </div>
@@ -230,21 +234,19 @@
         </div>
       </el-card>
     </div>
-
-   <!-- 企业社保echarts图展示  start -->
+   <!-- 企业公积金echarts图展示  start -->
     <div>
       <el-card class="box-card" shadow='nevner'>
         <div slot="header" class="clearfix">
-          <div class="card-title">公司社保缴纳趋势图</div>
+          <div class="card-title">公司公积金缴纳趋势图</div>
         </div>
         <!-- echarts图div容器 -->
         <div id="echartsApp" class="page-line-chart">
-          <ve-line :data="sbEchartData" :settings="sbEchartSettings"></ve-line>
+          <ve-line :data="gjjEchartData" :settings="gjjEchartSettings"></ve-line>
         </div>
       </el-card>
     </div>
-
-<!-- 企业社保echarts图展示  end -->
+   
 
     <div>
       <el-card class="box-card" shadow='nevner'>
@@ -271,7 +273,7 @@
   import tableValidates from "@/utils/validateTable/tableValidates.js";
   import quillEditor from "@/components/form/quillEditor.vue";
   import tabelAddBtn from "@/components/table/table-add-btn.vue";
-  import tableOperation from "@/components/table/table-operation.vue";
+  import tableOperation from "@/components/table/table-operation.no_delete_button.vue";
 
   export default {
      data() {
@@ -518,6 +520,7 @@
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
           this.getSbgjjjnRsQksm();
+          this.loadsbjnhGjjEchartsData();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
@@ -531,6 +534,23 @@
         link.click();
       },
 
+      getSbDataFromRemote:async function () {
+        let params = {
+          creditCode: sessionStorage.getItem("creditCode"),
+          token: sessionStorage.getItem("token"),
+          companyName:sessionStorage.getItem("companyName")
+        };
+        const res = await this.$http.post(
+          "/hspt-web-api/data_entry/gsyyxx/sbGjj/sb/remote",
+          params
+        );
+        if (res.data.resultCode == "0" && res.data.resultData.data != null) {
+          this.$message({message: res.data.resultMsg, type: "success"});
+          this.tableData = res.data.resultData.data;
+        }else{
+          this.$message({message: res.data.resultMsg, type: "warning"});
+        }
+      },
       //-----------------------------------------公积金---------------------------------------------//
        getGjjMx: async function () {
         let params = {
@@ -559,11 +579,37 @@
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
           this.getGjjMx();
+          this.loadsbjnhGjjEchartsData();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
       },
+      downloadGjjTemplet: async function(){
+        let link = document.createElement("a");
+        link.style.display = "none";
+        link.href = "http://testdfs.creditstate.cn/group1/M00/02/1B/rBj-DlqgobmAZCnOAAAj6-fLS0804.xlsx";
+        link.setAttribute("download", "测试.xls");
+        document.body.appendChild(link);
+        link.click();
+      },
 
+      getGjjDataFromRemote: async function () {
+        let params = {
+          creditCode: sessionStorage.getItem("creditCode"),
+          token: sessionStorage.getItem("token"),
+          companyName:sessionStorage.getItem("companyName")
+        };
+        const res = await this.$http.post(
+          "/hspt-web-api/data_entry/gsyyxx/sbGjj/gjj/remote",
+          params
+        );
+        if (res.data.resultCode == "0" && res.data.resultData.data != null) {
+          this.$message({message: res.data.resultMsg, type: "success"});
+          this.tableData_2 = res.data.resultData.data;
+        }else{
+          this.$message({message: res.data.resultMsg, type: "warning"});
+        }
+      },
       //////////////////////////////////////////////////////////////
       handleSuccess(res, file) {
         if (res.resultCode == "0") {
@@ -575,7 +621,21 @@
       },
       handleProgess() {
         // console.log(arguments)
+      },
+
+      gjjHandleSuccess(res, file) {
+
+        if (res.resultCode == "0") {
+          this.$message({message: res.resultMsg, type: "success"});
+          this.tableData_2 = res.resultData.newExcelData;
+        } else {
+          this.$message({message: res.resultMsg, type: "error"});
+        }
+      },
+      gjjHandleProgess() {
+        // console.log(arguments)
       }
+
 
     },
 

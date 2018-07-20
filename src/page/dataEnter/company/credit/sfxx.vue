@@ -7,7 +7,7 @@
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
                 <!--<el-button class="save" type="default" size="medium">获取数据</el-button>-->
-                <el-button class="save" type="primary" size="medium" @click="saveSfKtgg">保存</el-button>
+                <el-button class="save" type="primary" size="medium" @click="saveSfKtgg" :loading="loadingStatus">保存</el-button>
               </div>
               <div class="card-title">法院公告信息</div>
             </div>
@@ -24,8 +24,8 @@
                 </el-table-column>
                 <el-table-column min-width="200px" :label="tableData_1_columns.ktsj">
                   <template slot-scope="scope">
-                    <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_1_columns)[2]"
-                              v-if="scope.row.edit" size="small" v-model="scope.row.ktsj"></el-input>
+                    <el-date-picker class="edit-input cellItem el-form-item" :class="Object.keys(tableData_1_columns)[2]"
+                              v-if="scope.row.edit" size="small" v-model="scope.row.ktsj" type=data value-format="yyyy-MM-dd" placeholder="选择日期"></el-date-picker>
                     <span v-else>{{ scope.row.ktsj}}</span>
                   </template>
                 </el-table-column>
@@ -61,7 +61,7 @@
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
                 <!--<el-button class="save" type="default" size="medium">获取数据</el-button>-->
-                <el-button class="save" type="primary" size="medium" @click="saveSfFypb">保存</el-button>
+                <el-button class="save" type="primary" size="medium" @click="saveSfFypb" :loading="loadingStatus">保存</el-button>
               </div>
               <div class="card-title">法院判决信息</div>
             </div>
@@ -147,7 +147,7 @@
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
                 <!--<el-button class="save" type="default" size="medium">获取数据</el-button>-->
-                <el-button class="save" type="primary" size="medium" @click="saveSfqybzxgg">保存</el-button>
+                <el-button class="save" type="primary" size="medium" @click="saveSfqybzxgg" :loading="loadingStatus">保存</el-button>
               </div>
               <div class="card-title">企业被执行公告信息</div>
             </div>
@@ -212,7 +212,7 @@
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
                 <!--<el-button class="save" type="default" size="medium">获取数据</el-button>-->
-                <el-button class="save" type="primary" size="medium" @click="saveSfSxlhcj">保存</el-button>
+                <el-button class="save" type="primary" size="medium" @click="saveSfSxlhcj" :loading="loadingStatus">保存</el-button>
               </div>
               <div class="card-title">失信联合惩戒信息</div>
             </div>
@@ -273,7 +273,7 @@
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
                 <!--<el-button class="save" type="default" size="medium">获取数据</el-button>-->
-                <el-button class="save" type="primary" size="medium">保存</el-button>
+                <el-button class="save" type="primary" size="medium" :loading="loadingStatus">保存</el-button>
               </div>
               <div class="card-title">行政处罚信息</div>
             </div>
@@ -370,6 +370,7 @@
       return {
         activeName: "first",
         listLoading: false,
+        loadingStatus:false,
         rules: {},
 
         tableData_1: [], //表格数据
@@ -535,9 +536,12 @@
       },
       //保存司法信息中开庭公告数据
       setSfKtgg: async function () {
+        this.loadingStatus=true;
         this.tableData_1.forEach((item, index) => {
           if (item.id == null) {
-            this.addData1.push(item);
+            // if(item.id!=null&&item.id!=""){
+              this.addData1.push(item);
+            // }
           }
         });
         let params = {
@@ -553,13 +557,14 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({ message: res.data.resultMsg, type: "success" });
-          this.delRowData1 = [];
-          this.updateData1 = [];
-          this.addData1 = [];
           this.getSfKtgg();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+          this.loadingStatus=false;
+          this.delRowData1 = [];
+          this.updateData1 = [];
+          this.addData1 = [];
       },
       //删除开庭公告的数据
       acceptDelTable1Row(val) {
@@ -598,6 +603,7 @@
       },
       //保存司法信息中法院判别数据
       setSfFypb: async function () {
+         this.loadingStatus=true;
         this.tableData_2.forEach((item, index) => {
           if (item.id == null) {
             this.addData2.push(item);
@@ -616,13 +622,14 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
-          this.addData2 = [];
-          this.updateData2 = [];
-          this.delRowData2 = [];
           this.getSfFypj();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+          this.addData2 = [];
+          this.updateData2 = [];
+          this.delRowData2 = [];
+          this.loadingStatus=false;
       },
       //接受法院判别删除数据
       acceptDelTable2Row(val) {
@@ -661,6 +668,7 @@
       },
       //保存司法信息中企业被执行公告数据
       setSfqybzxgg: async function () {
+         this.loadingStatus=true;
         this.tableData_3.forEach((item, index) => {
           if (item.id == null) {
             this.addData3.push(item);
@@ -679,13 +687,15 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
-          this.addData3 = [];
-          this.updateData3 = [];
-          this.delRowData3 = [];
           this.getSfQybzxgg();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+         
+         this.addData3 = [];
+         this.updateData3 = [];
+         this.delRowData3 = [];
+         this.loadingStatus=false;
       },
       //接受失信联合惩戒删除的数据
       acceptDelTable3Row(val) {
@@ -724,6 +734,7 @@
       },
       //保存司法信息中失信联合惩戒数据
       setSfSxlhcj: async function () {
+        this.loadingStatus=true;
         this.tableData_4.forEach((item, index) => {
           if (item.id == null) {
             this.addData4.push(item);
@@ -742,13 +753,15 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
-          this.delRowData4 = [];
-          this.updateData4 = [];
-          this.addData4 = [];
+          
           this.getSfSxlhcj();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.delRowData4 = [];
+        this.updateData4 = [];
+        this.addData4 = [];
+        this.loadingStatus=false;
       },
       //接受失信联合惩戒删除的数据
       acceptDelTable4Row(val) {
