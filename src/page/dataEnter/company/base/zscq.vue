@@ -543,85 +543,85 @@ export default {
       },
       //规则
       rules_sb: {
-        sbm: [
-          { required: true, message: "商标名称是必填项" }
-        ],
-        zt: [
-          { required: true, message: "状态是必填项" }
-        ],
-        sqsj: [
-          { required: true, message: "申请日期是必填项" }
-        ],
-        zch: [
-          { required: true, message: "注册号是必填项" }
-        ],
-        lb: [
-          { required: true, message: "类别是必填项" }
-        ],
+        // sbm: [
+        //   { required: true, message: "商标名称是必填项" }
+        // ],
+        // zt: [
+        //   { required: true, message: "状态是必填项" }
+        // ],
+        // sqsj: [
+        //   { required: true, message: "申请日期是必填项" }
+        // ],
+        // zch: [
+        //   { required: true, message: "注册号是必填项" }
+        // ],
+        // lb: [
+        //   { required: true, message: "类别是必填项" }
+        // ],
 
       },
       rules_sqyq: {
-        sqr: [
-          { required: true, message: "申请日是必填项" }
-        ],
-        mc: [
-          { required: true, message: "名称是必填项" }
-        ],
-        sqlx: [
-          { required: true, message: "申请类型是必填项" }
-        ],
-        sqgj: [
-          { required: true, message: "申请国家是必填项" }
-        ],
-        gkh: [
-          { required: true, message: "公开（公告）号是必填项" }
-        ],
-        flzt: [
-          { required: true, message: "法律状态是必填项" }
-        ],
-        yxx: [
-          { required: true, message: "有效性是必填项" }
-        ],
+        // sqr: [
+        //   { required: true, message: "申请日是必填项" }
+        // ],
+        // mc: [
+        //   { required: true, message: "名称是必填项" }
+        // ],
+        // sqlx: [
+        //   { required: true, message: "申请类型是必填项" }
+        // ],
+        // sqgj: [
+        //   { required: true, message: "申请国家是必填项" }
+        // ],
+        // gkh: [
+        //   { required: true, message: "公开（公告）号是必填项" }
+        // ],
+        // flzt: [
+        //   { required: true, message: "法律状态是必填项" }
+        // ],
+        // yxx: [
+        //   { required: true, message: "有效性是必填项" }
+        // ],
       },
       rules_zzq: {
-        zzqmc: [
-          { required: true, message: "著作权名称是必填项" }
-        ],
-        lb: [
-          { required: true, message: "类别是必填项" }
-        ],
-        zzqr: [
-          { required: true, message: "著作权人是必填项" }
-        ],
-        djh: [
-          { required: true, message: "登记号是必填项" }
-        ],
-        bbh: [
-          { required: true, message: "版本号是必填项" }
-        ],
-        djpzrq: [
-          { required: true, message: "登记批准日期是必填项" }
-        ]
+        // zzqmc: [
+        //   { required: true, message: "著作权名称是必填项" }
+        // ],
+        // lb: [
+        //   { required: true, message: "类别是必填项" }
+        // ],
+        // zzqr: [
+        //   { required: true, message: "著作权人是必填项" }
+        // ],
+        // djh: [
+        //   { required: true, message: "登记号是必填项" }
+        // ],
+        // bbh: [
+        //   { required: true, message: "版本号是必填项" }
+        // ],
+        // djpzrq: [
+        //   { required: true, message: "登记批准日期是必填项" }
+        // ]
       },
       rules_wzba: {
-        basj: [
-          { required: true, message: "备案时间是必填项" }
-        ],
-        wzmc: [
-          { required: true, message: "网站名称是必填项" }
-        ],
-        wzsy: [
-          { required: true, message: "网站首页是必填项" }
-        ],
-        bah: [
-          { required: true, message: "备案号是必填项" }
-        ],
-        zt: [
-          { required: true, message: "状态是必填项" }
-        ],
-        dwxz: [
-          { required: true, message: "单位性质是必填项" }
-        ]
+        // basj: [
+        //   { required: true, message: "备案时间是必填项" }
+        // ],
+        // wzmc: [
+        //   { required: true, message: "网站名称是必填项" }
+        // ],
+        // wzsy: [
+        //   { required: true, message: "网站首页是必填项" }
+        // ],
+        // bah: [
+        //   { required: true, message: "备案号是必填项" }
+        // ],
+        // zt: [
+        //   { required: true, message: "状态是必填项" }
+        // ],
+        // dwxz: [
+        //   { required: true, message: "单位性质是必填项" }
+        // ]
       }
     };
   },
