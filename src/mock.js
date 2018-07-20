@@ -36,6 +36,8 @@ import nmzk from '@/json/nmyszk.json'
 import srgc from '@/json/lrfx.json'
 import xjllbh from '@/json/xjllfx.json'
 import gshnjl from '@/json/gshnjl.json'
+import ylnl from '@/json/ylnlzkfx.json'
+import yynl from '@/json/yynlzkfx.json'
 
 
 // 获取 mock.Random 对象
@@ -213,4 +215,16 @@ Mock.mock("/hspt-web-api/data_entry/cwzk/xjllfx/xjllbh/list", 'post', function (
 //获取耗能记录
 Mock.mock("/hspt-web-api/data_entry/cwzk/jysjjy/gshnjl/list", 'post', function (req) {
 	return gshnjl;
+});
+//获取盈利能力状况
+Mock.mock("/hspt-web-api/data_entry/cwzk/cwnlqsfx/ylnlzkfx/list", 'post', function (req) {
+	return ylnl;
+});
+//获取运营能力状况分析
+Mock.mock("/hspt-web-api/data_entry/cwzk/cwnlqsfx/yynlzkfx/list", 'post', function (req) {
+	return yynl;
+});
+//获取偿债能力状况分析
+Mock.mock("/hspt-web-api/data_entry/cwzk/cwnlqsfx/yynlzkfx/list", 'post', function (req) {
+	return cznl;
 });

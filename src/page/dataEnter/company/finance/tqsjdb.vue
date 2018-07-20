@@ -5,10 +5,13 @@
 			<el-tab-pane label="资产负债表同期数据对比" name="first">
 				<div>
 					<el-card class="box-card" shadow='nevner'>
+						
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="default" size="medium">上传数据</el-button>
+								选择时间：
+							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
 							</div>
+							<div class="card-title">资产负债表</div>
 						</div>
 						
 				<div>
@@ -97,8 +100,10 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="default" size="medium">数据导入</el-button>
+								选择时间：
+							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
 							</div>
+							<div class="card-title">利润表</div>
 						</div>
 						
 				<div>
@@ -150,6 +155,90 @@
 					</el-card>
 				</div>
 				
+			</el-tab-pane>
+			
+			<el-tab-pane label="现金流量表同期数据对比" name="third">
+					<div>
+					<el-card class="box-card" shadow='nevner'>
+						<div slot="header" class="clearfix">
+							<div class="card-right-wrap">
+								选择时间：
+							<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>
+							</div>
+							<div class="card-title">现金流量表</div>
+						</div>
+						<!--<div slot="header" class="clearfix">
+							<div class="card-right-wrap">
+								<el-button type="default" size="medium">模板下载</el-button>
+								<el-button type="default" size="medium">数据导入</el-button>
+								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
+							</div>
+						</div>-->
+						
+				<div>
+					<table lay-skin="line">
+						<colgroup>
+                            <col width="250">
+                        </colgroup>
+						<tr>
+							<th>项目</th>
+							<th>2015年12月</th>
+							<th>变化</th>
+							<th>2016年12月</th>
+							<th>变化</th>
+							<th>2017年12月</th>
+						</tr>
+						<tr><td style="color:#3DA3FF ;">1、经营活动产生的现金流量</td><td>{{form_xj.hdxjll}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>销售商品、提供劳务收到的现金</td><td>{{form_xj.xssp}}</td><td></td><td></td><td></td><td></td></tr>
+					    <tr><td>收到的税费返还</td><td>{{form_xj.sdsf}}</td><td></td><td></td><td></td><td></td></tr>
+					    <tr><td>收到其他与经营活动相关的现金</td><td>{{form_xj.jyhdxj}}</td><td></td><td></td><td></td><td></td></tr>
+					    <tr><td>经营活动现金入小计</td><td>{{form_xj.hdxjxj1}}</td><td></td><td></td><td></td><td></td></tr>
+					    <tr><td>购买商品、接受劳务支付的现金</td><td>{{form_xj.gmzf}}</td><td></td><td></td><td></td><td></td></tr>
+					    <tr><td>支付给职工以及职工支付的现金</td><td>{{form_xj.zfzg}}</td><td></td><td></td><td></td><td></td></tr>
+					    <tr><td>支付的各项税费</td><td>{{form_xj.zfsf}}</td><td></td><td></td><td></td><td></td></tr>
+					    <tr><td>支付其他与经营活动相关的现金</td><td>{{form_xj.zfjy}}</td><td></td><td></td><td></td><td></td></tr> 
+					    <tr><td>经营活动现金流出小计</td><td>{{form_xj.hdxjxj2}}</td><td></td><td></td><td></td><td></td></tr>
+					    <tr><td>经营活动产生的现金流净额</td><td>{{form_xj.hdxjje}}</td><td></td><td></td><td></td><td></td></tr>
+					    
+						<tr><td style="color:#3DA3FF ;">2、投资活动产生的现金流量</td><td>{{form_xj.tzhdxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>收回投资收到的现金</td><td>{{form_xj.shtzxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>取得投资收益收到的现金</td><td>{{form_xj.qdtzxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>处置固定资产、无形资产和其他长期资产回收的现金净额</td><td>{{form_xj.czxjje}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>处置子公司及其他营业单位收到的现金净额</td><td>{{form_xj.czyeje}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>收到其他与投资活动相关的现金</td><td>{{form_xj.sdhdxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>投资活动现金流出小计</td><td>{{form_xj.tzhdlcxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>投资活动生产的现金流量净额</td><td>{{form_xj.tzhdxjje}}</td><td></td><td></td><td></td><td></td></tr>
+						
+						<tr><td style="color:#3DA3FF ;">3、筹资活动产生的现金流量</td><td>{{form_xj.czhdxjll}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>吸收投资收到的现金</td><td>{{form_xj.xstzxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>取得借款收到的现金</td><td>{{form_xj.qdjkxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>收到其他与筹资活动相关的现金</td><td>{{form_xj.sdqtxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>筹资活动现金流入小计</td><td>{{form_xj.czhdxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>偿还债务支付的现金</td><td>{{form_xj.chzwxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>分配股利、利润或偿付利息支付的现金</td><td>{{form_xj.fpzfxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>支付其他与筹资活动有关的现金</td><td>{{form_xj.zfczxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>筹资活动现金流出小计</td><td>{{form_xj.czxjxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td>筹资活动产生的现金流量净额</td><td>{{form_xj.czhdje}}</td><td></td><td></td><td></td><td></td></tr>
+						</table>
+				
+					
+					
+					<div slot="header" class="clearfix">
+							<div class="card-right-wrap">
+								<!--<el-button type="default" size="medium">上传数据</el-button>-->
+								<el-button type="primary" size="medium">保存</el-button>
+							</div>
+							<div class="card-title">备注</div>
+							
+						</div>
+						<div class="text-editor">
+					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
+				</div>
+					
+				</div>
+						
+					</el-card>
+				</div>
 			</el-tab-pane>
 			
 		</el-tabs>
@@ -226,13 +315,47 @@ textEditorContent: "",
 	sdsfy:'',
 	jlr:'',
  },
+ form_xj:{
+ 	//现金流量
+ 	hdxjll:'',
+	xssp:'',
+	sdsf:'',
+	jyhdxj:'',
+	hdxjxj1:'',
+	gmzf:'',
+	zfzg:'',
+	zfsf:'',
+	zfjy:'',
+	hdxjxj2:'',
+	hdxjje:'',
+				
+	tzhdxj:'',
+	shtzxj:'',
+	qdtzxj:'',
+	czxjje:'',
+	czyeje:'',
+	sdhdxj:'',
+	tzhdlcxj:'',
+	tzhdxjje:'',
+				
+	czhdxjll:'',
+	xstzxj:'',
+	qdjkxj:'',
+	sdqtxj:'',
+	czhdxj:'',
+	chzwxj:'',
+	fpzfxj:'',
+	zfczxj:'',
+	czxjxj:'',
+	czhdje:''
+ },
 
  	}
  },
   mounted() {
      this.getZcfz();
      this.getLr();
-
+this.getXjll();
   },
  methods: {
       //点击标签页触发事件
@@ -316,7 +439,48 @@ textEditorContent: "",
 	this.form_lr.sdsfy=res.data.resultData.data.sdsfy
 	this.form_lr.jlr=res.data.resultData.data.jlr
    },
-      
+            getXjll:async function(){
+      	 	let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/cwzk/zycwsj/xjll/list",
+        params
+      );
+       //console.log(res.data.resultData)
+    this.form_xj.hdxjll =res.data.resultData.data.hdxjll
+	this.form_xj.xssp =res.data.resultData.data.xssp
+	this.form_xj.sdsf =res.data.resultData.data.sdsf
+	this.form_xj.jyhdxj =res.data.resultData.data.jyhdxj
+	this.form_xj.hdxjxj1 =res.data.resultData.data.hdxjxj1
+	this.form_xj.gmzf =res.data.resultData.data.gmzf
+	this.form_xj.zfzg =res.data.resultData.data.zfzg
+	this.form_xj.zfsf =res.data.resultData.data.zfsf
+	this.form_xj.zfjy =res.data.resultData.data.zfjy
+	this.form_xj.hdxjxj2 =res.data.resultData.data.hdxjxj2
+	this.form_xj.hdxjje =res.data.resultData.data.hdxjje
+			
+	this.form_xj.tzhdxj =res.data.resultData.data.tzhdxj
+	this.form_xj.shtzxj =res.data.resultData.data.shtzxj
+	this.form_xj.qdtzxj =res.data.resultData.data.qdtzxj
+	this.form_xj.czxjje =res.data.resultData.data.czxjje
+	this.form_xj.czyeje =res.data.resultData.data.czyeje
+	this.form_xj.sdhdxj =res.data.resultData.data.sdhdxj
+	this.form_xj.tzhdlcxj =res.data.resultData.data.tzhdlcxj
+	this.form_xj.tzhdxjje =res.data.resultData.data.tzhdxjje
+				
+	this.form_xj.czhdxjll =res.data.resultData.data.czhdxjll
+	this.form_xj.xstzxj =res.data.resultData.data.xstzxj
+	this.form_xj.qdjkxj =res.data.resultData.data.qdjkxj
+	this.form_xj.sdqtxj =res.data.resultData.data.sdqtxj
+	this.form_xj.czhdxj =res.data.resultData.data.czhdxj
+	this.form_xj.chzwxj =res.data.resultData.data.chzwxj
+	this.form_xj.fpzfxj =res.data.resultData.data.fpzfxj
+	this.form_xj.zfczxj =res.data.resultData.data.zfczxj
+	this.form_xj.czxjxj =res.data.resultData.data.czxjxj
+	this.form_xj.czhdje =res.data.resultData.data.czhdje
+      },
       
    },
 

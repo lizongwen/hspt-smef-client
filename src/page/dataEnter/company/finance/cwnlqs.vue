@@ -20,38 +20,38 @@
 						</tr>
 						<tr>
 							<td>净资产收益率（%）</td>
-							<td>-</td>
-							<td></td>
-							<td></td>
-							<td>[-2.3  12.3]</td>
+							<td>{{form.jccsyl}}</td>
+							<td>{{form.jccsyl}}</td>
+							<td>{{form.jccsyl}}</td>
+							<td>[{{form.jccsyl}}  {{form.jccsyl}}]</td>
 						</tr>
 						<tr>
 							<td>总资产报酬率（%）</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>{{form.zzcbcl}}</td>
+							<td>{{form.zzcbcl}}</td>
+							<td>{{form.zzcbcl}}</td>
+							<td>[{{form.zzcbcl}}  {{form.zzcbcl}}]</td>
 						</tr>
 							<tr>
 							<td>销售（营业）利润率（%）</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>{{form.xslrl}}</td>
+							<td>{{form.xslrl}}</td>
+							<td>{{form.xslrl}}</td>
+							<td>[{{form.xslrl}}  {{form.xslrl}}]</td>
 						</tr>
 							<tr>
 							<td>成本费用利润率（%）</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>{{form.cbfylrl}}</td>
+							<td>{{form.cbfylrl}}</td>
+							<td>{{form.cbfylrl}}</td>
+							<td>[{{form.cbfylrl}}  {{form.cbfylrl}}]</td>
 						</tr>
 							<tr>
 							<td>毛利率（%）</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>{{form.mll}}</td>
+							<td>{{form.mll}}</td>
+							<td>{{form.mll}}</td>
+							<td>[{{form.mll}}  {{form.mll}}]</td>
 						</tr>
 						</table>
 						</div>
@@ -104,38 +104,38 @@
 						</tr>
 						<tr>
 							<td>总资产周转率（次）</td>
-							<td>-</td>
-							<td></td>
-							<td></td>
-							<td>[-2.3  12.3]</td>
+							<td>{{form_yy.zzc}}</td>
+							<td>{{form_yy.zzc}}</td>
+							<td>{{form_yy.zzc}}</td>
+							<td>[{{form_yy.zzc}}  {{form_yy.zzc}}]</td>
 						</tr>
 						<tr>
 							<td>应收账款周转率（次）</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>{{form_yy.yszk}}</td>
+							<td>{{form_yy.yszk}}</td>
+							<td>{{form_yy.yszk}}</td>
+							<td>[{{form_yy.yszk}}  {{form_yy.yszk}}]</td>
 						</tr>
 							<tr>
 							<td>流动资产周转率（次）</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>{{form_yy.ldzc}}</td>
+							<td>{{form_yy.ldzc}}</td>
+							<td>{{form_yy.ldzc}}</td>
+							<td>[{{form_yy.ldzc}}  {{form_yy.ldzc}}]</td>
 						</tr>
 							<tr>
 							<td>资产现金回收率（%）</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>{{form_yy.zcxj}}</td>
+							<td>{{form_yy.zcxj}}</td>
+							<td>{{form_yy.zcxj}}</td>
+							<td>[{{form_yy.zcxj}}  {{form_yy.zcxj}}]</td>
 						</tr>
 							<tr>
 							<td>存货周转率（次）</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>{{form_yy.ch}}</td>
+							<td>{{form_yy.ch}}</td>
+							<td>{{form_yy.ch}}</td>
+							<td>[{{form_yy.ch}}  {{form_yy.ch}}]</td>
 						</tr>
 						</table>
 						</div>
@@ -355,6 +355,37 @@
 export default {
 	 data(){
  	return {
+activeName: "first",
+textEditorContent: "",
+form:{
+	//盈利能力状况
+	jccsyl:'',
+	zzcbcl:'',
+	xslrl:'',
+	cbfylrl:'',
+	mll:''
+
+},
+form_yy:{
+	zzc:'',
+	yszk:'',
+	ldzc:'',
+	zcxj:'',
+	ch:''
+},
+form_cz:{
+	zc:'',
+	yhlx:'',
+	sd:'',
+	xjld:'',
+	ld:''
+},
+ 	}
+ },
+     mounted() {
+      this.getYlnl();
+      this.getYynl();
+
     activeName: "first",
 	ylnlTxt: "",// 盈利能力小结
 	yynlTxt: "",// 营运能力小结
@@ -364,11 +395,72 @@ export default {
  },
     mounted() {
       this.init();
+
     },
 	 methods: {
       //点击标签页触发事件
       handleClick(tab, event) {
         //   console.log(tab, event);
+
+      },
+      
+      
+       //获取盈利能力状况
+    getYlnl:async function(){
+    		let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/cwzk/cwnlqsfx/ylnlzkfx/list",
+        params
+      );
+//    console.log(res.data.resultData)
+      this.form.jccsyl=res.data.resultData.data.jccsyl
+      this.form.zzcbcl=res.data.resultData.data.zzcbcl
+      this.form.xslrl=res.data.resultData.data.xslrl
+      this.form.cbfylrl=res.data.resultData.data.cbfylrl
+      this.form.mll=res.data.resultData.data.mll
+    },
+    
+    
+    //获取运营能力状况分析
+    getYynl:async function(){
+    		let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/cwzk/cwnlqsfx/yynlzkfx/list",
+        params
+      );
+      console.log(res.data.resultData)
+      this.form_yy.zzc=res.data.resultData.data.zzc
+      this.form_yy.yszk=res.data.resultData.data.yszk
+      this.form_yy.ldzc=res.data.resultData.data.ldzc
+      this.form_yy.zcxj=res.data.resultData.data.zcxj
+      this.form_yy.ch=res.data.resultData.data.ch
+    },
+     
+     //获取偿债能力状况分析
+     getCznl:async function(){
+     	let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "",
+        params
+      );
+      console.log(res.data.resultData)
+     },
+     
+     
+    },
+    
+
+ 		components: {
+
 	  },
 	  init(){
 		this.loadYlnlxjData();
@@ -519,6 +611,7 @@ export default {
 /*************************************对小结数据的处理 end*****************************************/
     },
  	components: {
+
     "quill-editor": quillEditor
 }
 

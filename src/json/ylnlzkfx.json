@@ -1,0 +1,19 @@
+
+{
+	"resultCode": "0",
+	"resultData": {
+		"data": 
+			{
+				"jccsyl": 12,
+				"zzcbcl": 10,
+				"xslrl": 12,
+				"cbfylrl": 12,
+				"mll": 33
+				
+			},
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzY1MTY3MjAsImlhdCI6MTUzMDUxNjcyMH0.O-qww3k41rgLhQ0PQjsEAFcJp-2BL6ckPCk7SWtssso"
+	},
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "成功"
+}

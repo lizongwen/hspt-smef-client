@@ -1,0 +1,19 @@
+
+{
+	"resultCode": "0",
+	"resultData": {
+		"data": 
+			{
+				"zzc": 12,
+				"yszk": 10,
+				"ldzc": 12,
+				"zcxj": 12,
+				"ch": 33
+				
+			},
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzY1MTY3MjAsImlhdCI6MTUzMDUxNjcyMH0.O-qww3k41rgLhQ0PQjsEAFcJp-2BL6ckPCk7SWtssso"
+	},
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "成功"
+}
