@@ -30,7 +30,7 @@
 						</table>
 						<table lay-skin="line">
 						<tr><th>资产总计</th></tr>
-						<tr><td style="color:#3DA3FF ;">1、流动资产总计</td><td>{{form.ldzczj}}</td><td>{{form.ldzczj}}</td><td>{{form.ldzczj}}</td><td>{{form.ldzczj}}</td><td>{{form.ldzczj}}</td></tr>
+						<tr><td style="color:#3DA3FF ;" colspan='6'>1、流动资产总计</td></tr>
 						<tr><td>货币资金</td><td>{{form.hbzj}}</td><td>{{form.hbzj}}</td><td>{{form.hbzj}}</td><td>{{form.hbzj}}</td><td>{{form.hbzj}}</td></tr>
 						<tr><td>应收票据</td><td>{{form.yspj1}}</td><td>{{form.yspj1}}</td><td>{{form.yspj1}}</td><td>{{form.yspj1}}</td><td>{{form.yspj1}}</td></tr>
 						<tr><td>应收票据</td><td>{{form.yspj2}}</td><td>{{form.yspj2}}</td><td>{{form.yspj2}}</td><td>{{form.yspj2}}</td><td>{{form.yspj2}}</td></tr>
@@ -39,7 +39,7 @@
 						<tr><td>其他应收账款</td><td>{{form.qtyszk}}</td><td>{{form.qtyszk}}</td><td>{{form.qtyszk}}</td><td>{{form.qtyszk}}</td><td>{{form.qtyszk}}</td></tr>
 						<tr><td>存货</td><td>{{form.ch}}</td><td>{{form.ch}}</td><td>{{form.ch}}</td><td>{{form.ch}}</td><td>{{form.ch}}</td></tr>
 						<tr><td>其他流动资产</td><td>{{form.qtldzc}}</td><td>{{form.qtldzc}}</td><td>{{form.qtldzc}}</td><td>{{form.qtldzc}}</td><td>{{form.qtldzc}}</td></tr>
-						<tr><td style="color:#3DA3FF ;">2、非流动资产合计</td><td>{{form.fldzchj}}</td><td>{{form.fldzchj}}</td><td>{{form.fldzchj}}</td><td>{{form.fldzchj}}</td><td>{{form.fldzchj}}</td></tr>
+						<tr><td style="color:#3DA3FF ;" colspan='6'>2、非流动资产合计</td></tr>
 						<tr><td>长期应收款</td><td>{{form.cqysk}}</td><td>{{form.cqysk}}</td><td>{{form.cqysk}}</td><td>{{form.cqysk}}</td><td>{{form.cqysk}}</td></tr>
 						<tr><td>长期股权投资</td><td>{{form.cqgqtz}}</td><td>{{form.cqgqtz}}</td><td>{{form.cqgqtz}}</td><td>{{form.cqgqtz}}</td><td>{{form.cqgqtz}}</td></tr>
 						<tr><td>固定资产</td><td>{{form.gdzc}}</td><td>{{form.gdzc}}</td><td>{{form.gdzc}}</td><td>{{form.gdzc}}</td><td>{{form.gdzc}}</td></tr>
@@ -51,7 +51,7 @@
 						</table>
 				<table lay-skin="line" style="margin-top: 20px;">
 						<tr><th>负债合计</th></tr>
-						<tr><td style="color:#3DA3FF ;">1、流动负债合计</td><td>{{form.ldfzhj}}</td><td>{{form.ldfzhj}}</td><td>{{form.ldfzhj}}</td><td>{{form.ldfzhj}}</td><td>{{form.ldfzhj}}</td></tr>
+						<tr><td style="color:#3DA3FF ;" colspan='6'>1、流动负债合计</td></tr>
 						<tr><td>短期借款</td><td>{{form.dqjk}}</td><td>{{form.dqjk}}</td><td>{{form.dqjk}}</td><td>{{form.dqjk}}</td><td>{{form.dqjk}}</td></tr>
 						<tr><td>应付票据</td><td>{{form.yfpj3}}</td><td>{{form.yfpj3}}</td><td>{{form.yfpj3}}</td><td>{{form.yfpj3}}</td><td>{{form.yfpj3}}</td></tr>
 						<tr><td>应收账款</td><td>{{form.yszk2}}</td><td>{{form.yszk2}}</td><td>{{form.yszk2}}</td><td>{{form.yszk2}}</td><td>{{form.yszk2}}</td></tr>

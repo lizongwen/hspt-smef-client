@@ -29,7 +29,7 @@
 						</table>
 						<table lay-skin="line">
 						<tr><th>资产总计</th></tr>
-						<tr><td style="color:#3DA3FF ;">1、流动资产总计</td><td>{{form.ldzczj}}</td><td>{{form.ldzczj}}</td><td>{{form.ldzczj}}</td><td>{{form.ldzczj}}</td><td>{{form.ldzczj}}</td></tr>
+						<tr><td style="color:#3DA3FF ;" colspan='6'>1、流动资产总计</td></tr>
 						<tr><td>货币资金</td><td>{{form.hbzj}}</td><td>{{form.hbzj}}</td><td>{{form.hbzj}}</td><td>{{form.hbzj}}</td><td>{{form.hbzj}}</td></tr>
 						<tr><td>应收票据</td><td>{{form.yspj1}}</td><td>{{form.yspj1}}</td><td>{{form.yspj1}}</td><td>{{form.yspj1}}</td><td>{{form.yspj1}}</td></tr>
 						<tr><td>应收票据</td><td>{{form.yspj2}}</td><td>{{form.yspj2}}</td><td>{{form.yspj2}}</td><td>{{form.yspj2}}</td><td>{{form.yspj2}}</td></tr>
@@ -38,7 +38,7 @@
 						<tr><td>其他应收账款</td><td>{{form.qtyszk}}</td><td>{{form.qtyszk}}</td><td>{{form.qtyszk}}</td><td>{{form.qtyszk}}</td><td>{{form.qtyszk}}</td></tr>
 						<tr><td>存货</td><td>{{form.ch}}</td><td>{{form.ch}}</td><td>{{form.ch}}</td><td>{{form.ch}}</td><td>{{form.ch}}</td></tr>
 						<tr><td>其他流动资产</td><td>{{form.qtldzc}}</td><td>{{form.qtldzc}}</td><td>{{form.qtldzc}}</td><td>{{form.qtldzc}}</td><td>{{form.qtldzc}}</td></tr>
-						<tr><td style="color:#3DA3FF ;">2、非流动资产合计</td><td>{{form.fldzchj}}</td><td>{{form.fldzchj}}</td><td>{{form.fldzchj}}</td><td>{{form.fldzchj}}</td><td>{{form.fldzchj}}</td></tr>
+						<tr><td style="color:#3DA3FF ;" colspan='6'>2、非流动资产合计</td></tr>
 						<tr><td>长期应收款</td><td>{{form.cqysk}}</td><td>{{form.cqysk}}</td><td>{{form.cqysk}}</td><td>{{form.cqysk}}</td><td>{{form.cqysk}}</td></tr>
 						<tr><td>长期股权投资</td><td>{{form.cqgqtz}}</td><td>{{form.cqgqtz}}</td><td>{{form.cqgqtz}}</td><td>{{form.cqgqtz}}</td><td>{{form.cqgqtz}}</td></tr>
 						<tr><td>固定资产</td><td>{{form.gdzc}}</td><td>{{form.gdzc}}</td><td>{{form.gdzc}}</td><td>{{form.gdzc}}</td><td>{{form.gdzc}}</td></tr>
@@ -50,7 +50,7 @@
 						</table>
 				<table lay-skin="line" style="margin-top: 20px;">
 						<tr><th>负债合计</th></tr>
-						<tr><td style="color:#3DA3FF ;">1、流动负债合计</td><td>{{form.ldfzhj}}</td><td>{{form.ldfzhj}}</td><td>{{form.ldfzhj}}</td><td>{{form.ldfzhj}}</td><td>{{form.ldfzhj}}</td></tr>
+						<tr><td style="color:#3DA3FF ;" colspan='6'>1、流动负债合计</td></tr>
 						<tr><td>短期借款</td><td>{{form.dqjk}}</td><td>{{form.dqjk}}</td><td>{{form.dqjk}}</td><td>{{form.dqjk}}</td><td>{{form.dqjk}}</td></tr>
 						<tr><td>应付票据</td><td>{{form.yfpj3}}</td><td>{{form.yfpj3}}</td><td>{{form.yfpj3}}</td><td>{{form.yfpj3}}</td><td>{{form.yfpj3}}</td></tr>
 						<tr><td>应收账款</td><td>{{form.yszk2}}</td><td>{{form.yszk2}}</td><td>{{form.yszk2}}</td><td>{{form.yszk2}}</td><td>{{form.yszk2}}</td></tr>
@@ -119,7 +119,7 @@
 							<th>2017年12月</th>
 						</tr>
 						<tr><td colspan='6'>资产总计</td></tr>
-						<tr><td style="color:#3DA3FF ;">1、流动资产总计</td><td>{{form_lr.ldzczj}}</td><td>{{form_lr.ldzczj}}</td><td>{{form_lr.ldzczj}}</td><td>{{form_lr.ldzczj}}</td><td>{{form_lr.ldzczj}}</td></tr>
+						<tr><td style="color:#3DA3FF ;" colspan='6'>1、流动资产总计</td></tr>
 						<tr><td><h4>减：营业成本</h4></td><td>{{form_lr.yycb}}</td><td>{{form_lr.yycb}}</td><td>{{form_lr.yycb}}</td><td>{{form_lr.yycb}}</td><td>{{form_lr.yycb}}</td></tr>
 					    <tr><td>营业税金及附加</td><td>{{form_lr.yysjjfj}}</td><td>{{form_lr.yysjjfj}}</td><td>{{form_lr.yysjjfj}}</td><td>{{form_lr.yysjjfj}}</td><td>{{form_lr.yysjjfj}}</td></tr>
 					    <tr><td>销售费用</td><td>{{form_lr.xsfy}}</td><td>{{form_lr.xsfy}}</td><td>{{form_lr.xsfy}}</td><td>{{form_lr.xsfy}}</td><td>{{form_lr.xsfy}}</td></tr>
@@ -127,12 +127,12 @@
 					    <tr><td>管理费用</td><td>{{form_lr.glfy2}}</td><td>{{form_lr.glfy2}}</td><td>{{form_lr.glfy2}}</td><td>{{form_lr.glfy2}}</td><td>{{form_lr.glfy2}}</td></tr>
 					    <tr><td>资产减值损失</td><td>{{form_lr.zcjzss}}</td><td>{{form_lr.zcjzss}}</td><td>{{form_lr.zcjzss}}</td><td>{{form_lr.zcjzss}}</td><td>{{form_lr.zcjzss}}</td></tr>
 					    <tr><td><h4>加：投资收益</h4></td><td>{{form_lr.tzsy}}</td><td>{{form_lr.tzsy}}</td><td>{{form_lr.tzsy}}</td><td>{{form_lr.tzsy}}</td><td>{{form_lr.tzsy}}</td></tr>
-						<tr><td style="color:#3DA3FF ;">2、营业利润</td><td>{{form_lr.yylr}}</td><td>{{form_lr.yylr}}</td><td>{{form_lr.yylr}}</td><td>{{form_lr.yylr}}</td><td>{{form_lr.yylr}}</td></tr>
+						<tr><td style="color:#3DA3FF ;" colspan='6'>2、营业利润</td></tr>
 						<tr><td><h4>减：营业外支出</h4></td><td>{{form_lr.yywzc}}</td><td>{{form_lr.yywzc}}</td><td>{{form_lr.yywzc}}</td><td>{{form_lr.yywzc}}</td><td>{{form_lr.yywzc}}</td></tr>
 						<tr><td><h4>加：营业外收入</h4></td><td>{{form_lr.yywsr}}</td><td>{{form_lr.yywsr}}</td><td>{{form_lr.yywsr}}</td><td>{{form_lr.yywsr}}</td><td>{{form_lr.yywsr}}</td></tr>
-						<tr><td style="color:#3DA3FF ;">3、利润总额</td><td>{{form_lr.lrze}}</td><td>{{form_lr.lrze}}</td><td>{{form_lr.lrze}}</td><td>{{form_lr.lrze}}</td><td>{{form_lr.lrze}}</td></tr>
+						<tr><td style="color:#3DA3FF ;" colspan='6'>3、利润总额</td></tr>
 						<tr><td><h4>减：所得税费用</h4></td><td>{{form_lr.sdsfy}}</td><td>{{form_lr.sdsfy}}</td><td>{{form_lr.sdsfy}}</td><td>{{form_lr.sdsfy}}</td><td>{{form_lr.sdsfy}}</td></tr>
-						<tr><td style="color:#3DA3FF ;">4、净利润</td><td>{{form_lr.jlr}}</td><td>{{form_lr.jlr}}</td><td>{{form_lr.jlr}}</td><td>{{form_lr.jlr}}</td><td>{{form_lr.jlr}}</td></tr>
+						<tr><td style="color:#3DA3FF ;" colspan='6'>4、净利润</td></tr>
 						</table>
 
 
@@ -180,7 +180,7 @@
 							<th>变化</th>
 							<th>2017年12月</th>
 						</tr>
-						<tr><td style="color:#3DA3FF ;">1、经营活动产生的现金流量</td><td>{{form_xj.hdxjll}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td style="color:#3DA3FF ;" colspan='6'>1、经营活动产生的现金流量</td></tr>
 						<tr><td>销售商品、提供劳务收到的现金</td><td>{{form_xj.xssp}}</td><td></td><td></td><td></td><td></td></tr>
 					    <tr><td>收到的税费返还</td><td>{{form_xj.sdsf}}</td><td></td><td></td><td></td><td></td></tr>
 					    <tr><td>收到其他与经营活动相关的现金</td><td>{{form_xj.jyhdxj}}</td><td></td><td></td><td></td><td></td></tr>
@@ -192,7 +192,7 @@
 					    <tr><td>经营活动现金流出小计</td><td>{{form_xj.hdxjxj2}}</td><td></td><td></td><td></td><td></td></tr>
 					    <tr><td>经营活动产生的现金流净额</td><td>{{form_xj.hdxjje}}</td><td></td><td></td><td></td><td></td></tr>
 
-						<tr><td style="color:#3DA3FF ;">2、投资活动产生的现金流量</td><td>{{form_xj.tzhdxj}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td style="color:#3DA3FF ;" colspan='6'>2、投资活动产生的现金流量</td></tr>
 						<tr><td>收回投资收到的现金</td><td>{{form_xj.shtzxj}}</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td>取得投资收益收到的现金</td><td>{{form_xj.qdtzxj}}</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td>处置固定资产、无形资产和其他长期资产回收的现金净额</td><td>{{form_xj.czxjje}}</td><td></td><td></td><td></td><td></td></tr>
@@ -201,7 +201,7 @@
 						<tr><td>投资活动现金流出小计</td><td>{{form_xj.tzhdlcxj}}</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td>投资活动生产的现金流量净额</td><td>{{form_xj.tzhdxjje}}</td><td></td><td></td><td></td><td></td></tr>
 
-						<tr><td style="color:#3DA3FF ;">3、筹资活动产生的现金流量</td><td>{{form_xj.czhdxjll}}</td><td></td><td></td><td></td><td></td></tr>
+						<tr><td style="color:#3DA3FF ;" colspan='6'>3、筹资活动产生的现金流量</td></tr>
 						<tr><td>吸收投资收到的现金</td><td>{{form_xj.xstzxj}}</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td>取得借款收到的现金</td><td>{{form_xj.qdjkxj}}</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td>收到其他与筹资活动相关的现金</td><td>{{form_xj.sdqtxj}}</td><td></td><td></td><td></td><td></td></tr>
