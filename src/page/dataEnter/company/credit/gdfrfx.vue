@@ -4,7 +4,7 @@
       <el-card class="box-card" shadow='nevner'>
         <div slot="header" class="clearfix">
           <div class="card-right-wrap">
-            <el-button class="save" type="primary" size="medium" @click="setZrrdgd">保存</el-button>
+            <el-button class="save" type="primary" size="medium" @click="setZrrdgd" :loading="loadingStatus_0">保存</el-button>
           </div>
           <div class="card-title">自然人大股东</div>
         </div>
@@ -1014,6 +1014,7 @@
       return {
         activeName: "first",
         listLoading: false,
+        loadingStatus_0: false,
         idNumber: [],
         tableData_0: [], //表格数据
         deleteData_0: [],
@@ -1240,18 +1241,21 @@
     },
     computed: {},
     mounted() {
-      this.getZrrdgd();
-      this.getYhbg();
-      this.getFlfx();
-      this.getGrshxyjl();
-      this.getXzcf();
-      this.getGrgjj();
-      this.getGrsb();
-      this.getGrcl();
-      this.getFqz();
-      this.getHlwjk();
+      this.init();
     },
     methods: {
+      init() {
+        this.getZrrdgd();
+        this.getYhbg();
+        this.getFlfx();
+        this.getGrshxyjl();
+        this.getXzcf();
+        this.getGrgjj();
+        this.getGrsb();
+        this.getGrcl();
+        this.getFqz();
+        this.getHlwjk();
+      },
       //-------------------------------------------------自然人大股东-------------------------------------------------
       //获取自然人大股东信息
       getZrrdgd: async function () {
@@ -1274,6 +1278,7 @@
       },
       //保存自然人大股东信息
       setZrrdgd: async function () {
+        this.loadingStatus_0 = true;
         this.tableData_0.forEach((item, index) => {
           if (item.id == null) {
             this.addData_0.push(item);
@@ -1292,22 +1297,14 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
-          this.getZrrdgd();
-          this.getYhbg();
-          this.getFlfx();
-          this.getGrshxyjl();
-          this.getXzcf();
-          this.getGrgjj();
-          this.getGrsb();
-          this.getGrcl();
-          this.getFqz();
-          this.getHlwjk();
-          this.deleteData_0 = [];
-          this.updateData_0 = [];
-          this.addData_0 = [];
+          this.init();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadingStatus_0 = false;
+        this.deleteData_0 = [];
+        this.updateData_0 = [];
+        this.addData_0 = [];
       },
       //接受自然人大股东信息删除的数据
       acceptDelRow_0(val) {

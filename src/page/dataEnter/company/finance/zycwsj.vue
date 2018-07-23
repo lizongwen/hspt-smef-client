@@ -43,126 +43,201 @@
                 </tr>
                 <tr>
                   <td>货币资金</td>
-                  <td>{{tableData.start.hbzj}}</td>
-                  <td>{{tableData.firstBh.hbzj}}</td>
-                  <td>{{tableData.mid.hbzj}}</td>
-                  <td>{{tableData.secondBh.hbzj}}</td>
-                  <td>{{tableData.end.hbzj}}</td>
+                  <td v-if="tableData.start.hbzj=='0'">-</td>
+                  <td v-else>{{tableData.start.hbzj}}</td>
+                  <td v-if="tableData.firstBh.hbzj == null">-</td>
+                  <td v-else>{{tableData.firstBh.hbzj}}</td>
+                  <td v-if="tableData.mid.hbzj=='0'">-</td>
+                  <td v-else>{{tableData.mid.hbzj}}</td>
+                  <td v-if="tableData.secondBh.hbzj == null">-</td>
+                  <td v-else>{{tableData.secondBh.hbzj}}</td>
+                  <td v-if="tableData.end.hbzj=='0'">-</td>
+                  <td v-else>{{tableData.end.hbzj}}</td>
                 </tr>
                 <tr>
                   <td>应收票据</td>
-                  <td>{{tableData.start.yspj}}</td>
-                  <td>{{tableData.firstBh.yspj}}</td>
-                  <td>{{tableData.mid.yspj}}</td>
-                  <td>{{tableData.secondBh.yspj}}</td>
-                  <td>{{tableData.end.yspj}}</td>
+                  <td v-if="tableData.start.yspj=='0'">-</td>
+                  <td v-else>{{tableData.start.yspj}}</td>
+                  <td v-if="tableData.firstBh.yspj == null">-</td>
+                  <td v-else>{{tableData.firstBh.yspj}}</td>
+                  <td v-if="tableData.mid.yspj=='0'">-</td>
+                  <td v-else>{{tableData.mid.yspj}}</td>
+                  <td v-if="tableData.secondBh.yspj == null">-</td>
+                  <td v-else>{{tableData.secondBh.yspj}}</td>
+                  <td v-if="tableData.end.yspj=='0'">-</td>
+                  <td v-else>{{tableData.end.yspj}}</td>
                 </tr>
                 <tr>
                   <td>应收账款</td>
-                  <td>{{tableData.start.yszk}}</td>
-                  <td>{{tableData.firstBh.yszk}}</td>
-                  <td>{{tableData.mid.yszk}}</td>
-                  <td>{{tableData.secondBh.yszk}}</td>
-                  <td>{{tableData.end.yszk}}</td>
+                  <td v-if="tableData.start.yszk=='0'">-</td>
+                  <td v-else>{{tableData.start.yszk}}</td>
+                  <td v-if="tableData.firstBh.yszk == null">-</td>
+                  <td v-else>{{tableData.firstBh.yszk}}</td>
+                  <td v-if="tableData.mid.yszk=='0'">-</td>
+                  <td v-else>{{tableData.mid.yszk}}</td>
+                  <td v-if="tableData.secondBh.yszk == null">-</td>
+                  <td v-else>{{tableData.secondBh.yszk}}</td>
+                  <td v-if="tableData.end.yszk=='0'">-</td>
+                  <td v-else>{{tableData.end.yszk}}</td>
                 </tr>
                 <tr>
                   <td>预付账款</td>
-                  <td>{{tableData.start.yszk}}</td>
-                  <td>{{tableData.firstBh.yszk}}</td>
-                  <td>{{tableData.mid.yszk}}</td>
-                  <td>{{tableData.secondBh.yszk}}</td>
-                  <td>{{tableData.end.yszk}}</td>
+                  <td v-if="tableData.start.yfkx=='0'">-</td>
+                  <td v-else>{{tableData.start.yfkx}}</td>
+                  <td v-if="tableData.firstBh.yszk == null">-</td>
+                  <td v-else>{{tableData.firstBh.yfkx}}</td>
+                  <td v-if="tableData.mid.yfkx=='0'">-</td>
+                  <td v-else>{{tableData.mid.yfkx}}</td>
+                  <td v-if="tableData.secondBh.yszk == null">-</td>
+                  <td v-else>{{tableData.secondBh.yfkx}}</td>
+                  <td v-if="tableData.mid.yfkx=='0'">-</td>
+                  <td v-else>{{tableData.end.yfkx}}</td>
                 </tr>
                 <tr>
                   <td>其他应收账款</td>
-                  <td>{{tableData.start.qtysk}}</td>
-                  <td>{{tableData.firstBh.qtyszk}}</td>
-                  <td>{{tableData.mid.qtysk}}</td>
-                  <td>{{tableData.secondBh.qtyszk}}</td>
-                  <td>{{tableData.end.qtysk}}</td>
+                  <td v-if="tableData.start.qtysk=='0'">-</td>
+                  <td v-else>{{tableData.start.qtysk}}</td>
+                  <td v-if="tableData.firstBh.qtyszk == null">-</td>
+                  <td v-else>{{tableData.firstBh.qtyszk}}</td>
+                  <td v-if="tableData.mid.qtysk=='0'">-</td>
+                  <td v-else>{{tableData.mid.qtysk}}</td>
+                  <td v-if="tableData.secondBh.qtyszk == null">-</td>
+                  <td v-else>{{tableData.secondBh.qtyszk}}</td>
+                  <td v-if="tableData.end.qtysk=='0'">-</td>
+                  <td v-else>{{tableData.end.qtysk}}</td>
                 </tr>
                 <tr>
                   <td>存货</td>
-                  <td>{{tableData.start.stock}}</td>
-                  <td>{{tableData.firstBh.ch}}</td>
-                  <td>{{tableData.mid.stock}}</td>
-                  <td>{{tableData.secondBh.ch}}</td>
-                  <td>{{tableData.end.stock}}</td>
+                  <td v-if="tableData.start.stock=='0'">-</td>
+                  <td v-else>{{tableData.start.stock}}</td>
+                  <td v-if="tableData.firstBh.ch == null">-</td>
+                  <td v-else>{{tableData.firstBh.ch}}</td>
+                  <td v-if="tableData.mid.stock=='0'">-</td>
+                  <td v-else>{{tableData.mid.stock}}</td>
+                  <td v-if="tableData.secondBh.ch == null">-</td>
+                  <td v-else>{{tableData.secondBh.ch}}</td>
+                  <td v-if="tableData.end.stock=='0'">-</td>
+                  <td v-else>{{tableData.end.stock}}</td>
                 </tr>
                 <tr>
                   <td>其他流动资产</td>
-                  <td>{{tableData.start.qtldzc}}</td>
-                  <td>{{tableData.firstBh.qtldzc}}</td>
-                  <td>{{tableData.mid.qtldzc}}</td>
-                  <td>{{tableData.secondBh.qtldzc}}</td>
-                  <td>{{tableData.end.qtldzc}}</td>
+                  <td v-if="tableData.start.qtldzc=='0'">-</td>
+                  <td v-else>{{tableData.start.qtldzc}}</td>
+                  <td v-if="tableData.firstBh.qtldzc == null">-</td>
+                  <td v-else>{{tableData.firstBh.qtldzc}}</td>
+                  <td v-if="tableData.mid.qtldzc=='0'">-</td>
+                  <td v-else>{{tableData.mid.qtldzc}}</td>
+                  <td v-if="tableData.secondBh.qtldzc == null">-</td>
+                  <td v-else>{{tableData.secondBh.qtldzc}}</td>
+                  <td v-if="tableData.end.qtldzc=='0'">-</td>
+                  <td v-else>{{tableData.end.qtldzc}}</td>
                 </tr>
                 <tr>
                   <td colspan='6' style="color:#3DA3FF ;">2、非流动资产合计</td>
                 </tr>
                 <tr>
                   <td>长期应收款</td>
-                  <td>{{tableData.start.cqysk}}</td>
-                  <td>{{tableData.firstBh.cqysk}}</td>
-                  <td>{{tableData.mid.cqysk}}</td>
-                  <td>{{tableData.secondBh.cqysk}}</td>
-                  <td>{{tableData.end.cqysk}}</td>
+                  <td v-if="tableData.start.cqysk=='0'">-</td>
+                  <td v-else>{{tableData.start.cqysk}}</td>
+                  <td v-if="tableData.firstBh.cqysk == null">-</td>
+                  <td v-else>{{tableData.firstBh.cqysk}}</td>
+                  <td v-if="tableData.mid.cqysk=='0'">-</td>
+                  <td v-else>{{tableData.mid.cqysk}}</td>
+                  <td v-if="tableData.secondBh.cqysk == null">-</td>
+                  <td v-else>{{tableData.secondBh.cqysk}}</td>
+                  <td v-if="tableData.end.cqysk=='0'">-</td>
+                  <td v-else>{{tableData.end.cqysk}}</td>
                 </tr>
                 <tr>
                   <td>长期股权投资</td>
-                  <td>{{tableData.start.cqgqtz}}</td>
-                  <td>{{tableData.firstBh.cqgqtz}}</td>
-                  <td>{{tableData.mid.cqgqtz}}</td>
-                  <td>{{tableData.secondBh.cqgqtz}}</td>
-                  <td>{{tableData.end.cqgqtz}}</td>
+                  <td v-if="tableData.start.cqgqtz=='0'">-</td>
+                  <td v-else>{{tableData.start.cqgqtz}}</td>
+                  <td v-if="tableData.firstBh.cqgqtz == null">-</td>
+                  <td v-else>{{tableData.firstBh.cqgqtz}}</td>
+                  <td v-if="tableData.mid.cqgqtz=='0'">-</td>
+                  <td v-else>{{tableData.mid.cqgqtz}}</td>
+                  <td v-if="tableData.secondBh.cqgqtz == null">-</td>
+                  <td v-else>{{tableData.secondBh.cqgqtz}}</td>
+                  <td v-if="tableData.end.cqgqtz=='0'">-</td>
+                  <td v-else>{{tableData.end.cqgqtz}}</td>
                 </tr>
                 <tr>
                   <td>固定资产</td>
-                  <td>{{tableData.start.gdzc}}</td>
-                  <td>{{tableData.firstBh.gdzc}}</td>
-                  <td>{{tableData.mid.gdzc}}</td>
-                  <td>{{tableData.secondBh.gdzc}}</td>
-                  <td>{{tableData.end.gdzc}}</td>
+                  <td v-if="tableData.start.gdzc=='0'">-</td>
+                  <td v-else>{{tableData.start.gdzc}}</td>
+                  <td v-if="tableData.firstBh.gdzc == null">-</td>
+                  <td v-else>{{tableData.firstBh.gdzc}}</td>
+                  <td v-if="tableData.mid.gdzc=='0'">-</td>
+                  <td v-else>{{tableData.mid.gdzc}}</td>
+                  <td v-if="tableData.secondBh.gdzc == null">-</td>
+                  <td v-else>{{tableData.secondBh.gdzc}}</td>
+                  <td v-if="tableData.end.gdzc=='0'">-</td>
+                  <td v-else>{{tableData.end.gdzc}}</td>
                 </tr>
                 <tr>
                   <td>在建工程</td>
-                  <td>{{tableData.start.zjgc}}</td>
-                  <td>{{tableData.firstBh.zjgc}}</td>
-                  <td>{{tableData.mid.zjgc}}</td>
-                  <td>{{tableData.secondBh.zjgc}}</td>
-                  <td>{{tableData.end.zjgc}}</td>
+                  <td v-if="tableData.start.zjgc=='0'">-</td>
+                  <td v-else>{{tableData.start.zjgc}}</td>
+                  <td v-if="tableData.firstBh.zjgc == null">-</td>
+                  <td v-else>{{tableData.firstBh.zjgc}}</td>
+                  <td v-if="tableData.mid.zjgc=='0'">-</td>
+                  <td v-else>{{tableData.mid.zjgc}}</td>
+                  <td v-if="tableData.secondBh.zjgc == null">-</td>
+                  <td v-else>{{tableData.secondBh.zjgc}}</td>
+                  <td v-if="tableData.end.zjgc=='0'">-</td>
+                  <td v-else>{{tableData.end.zjgc}}</td>
                 </tr>
                 <tr>
                   <td>固定资产清理</td>
-                  <td>{{tableData.start.gdzcql}}</td>
-                  <td>{{tableData.firstBh.gdzcql}}</td>
-                  <td>{{tableData.mid.gdzcql}}</td>
-                  <td>{{tableData.secondBh.gdzcql}}</td>
-                  <td>{{tableData.end.gdzcql}}</td>
+                  <td v-if="tableData.start.gdzcql=='0'">-</td>
+                  <td v-else>{{tableData.start.gdzcql}}</td>
+                  <td v-if="tableData.firstBh.gdzcql == null">-</td>
+                  <td v-else>{{tableData.firstBh.gdzcql}}</td>
+                  <td v-if="tableData.mid.gdzcql=='0'">-</td>
+                  <td v-else>{{tableData.mid.gdzcql}}</td>
+                  <td v-if="tableData.secondBh.gdzcql == null">-</td>
+                  <td v-else>{{tableData.secondBh.gdzcql}}</td>
+                  <td v-if="tableData.end.gdzcql=='0'">-</td>
+                  <td v-else>{{tableData.end.gdzcql}}</td>
                 </tr>
                 <tr>
                   <td>无形资产</td>
-                  <td v-if="tableData.start.wxzc=='0'">-</td><td v-else>{{tableData.start.wxzc}}</td>
-                  <td v-if="tableData.firstBh.wxzc == null">-</td><td v-else>{{tableData.firstBh.wxzc}}</td>
-                  <td>{{tableData.mid.wxzc}}</td>
-                  <td>{{tableData.secondBh.wxzc}}</td>
-                  <td>{{tableData.end.wxzc}}</td>
+                  <td v-if="tableData.start.wxzc=='0'">-</td>
+                  <td v-else>{{tableData.start.wxzc}}</td>
+                  <td v-if="tableData.firstBh.wxzc == null">-</td>
+                  <td v-else>{{tableData.firstBh.wxzc}}</td>
+                  <td v-if="tableData.mid.wxzc=='0'">-</td>
+                  <td v-else>{{tableData.mid.wxzc}}</td>
+                  <td v-if="tableData.secondBh.wxzc == null">-</td>
+                  <td v-else>{{tableData.secondBh.wxzc}}</td>
+                  <td v-if="tableData.end.wxzc=='0'">-</td>
+                  <td v-else>{{tableData.end.wxzc}}</td>
                 </tr>
                 <tr>
                   <td>递延所得税资产</td>
-                  <td>{{tableData.start.dysdszc}}</td>
-                  <td>{{tableData.firstBh.dysdszc}}</td>
-                  <td>{{tableData.mid.dysdszc}}</td>
-                  <td>{{tableData.secondBh.dysdszc}}</td>
-                  <td>{{tableData.end.dysdszc}}</td>
+                  <td v-if="tableData.start.dysdszc=='0'">-</td>
+                  <td v-else>{{tableData.start.dysdszc}}</td>
+                  <td v-if="tableData.firstBh.dysdszc == null">-</td>
+                  <td v-else>{{tableData.firstBh.dysdszc}}</td>
+                  <td v-if="tableData.mid.dysdszc=='0'">-</td>
+                  <td v-else>{{tableData.mid.dysdszc}}</td>
+                  <td v-if="tableData.secondBh.dysdszc == null">-</td>
+                  <td v-else>{{tableData.secondBh.dysdszc}}</td>
+                  <td v-if="tableData.end.dysdszc=='0'">-</td>
+                  <td v-else>{{tableData.end.dysdszc}}</td>
                 </tr>
                 <tr>
                   <td>其他非流动资产</td>
-                  <td>{{tableData.start.qtfldzc}}</td>
-                  <td>{{tableData.firstBh.qtfldzc}}</td>
-                  <td>{{tableData.mid.qtfldzc}}</td>
-                  <td>{{tableData.secondBh.qtfldzc}}</td>
-                  <td>{{tableData.end.qtfldzc}}</td>
+                  <td v-if="tableData.start.qtfldzc=='0'">-</td>
+                  <td v-else>{{tableData.start.qtfldzc}}</td>
+                  <td v-if="tableData.firstBh.qtfldzc == null">-</td>
+                  <td v-else>{{tableData.firstBh.qtfldzc}}</td>
+                  <td v-if="tableData.mid.qtfldzc=='0'">-</td>
+                  <td v-else>{{tableData.mid.qtfldzc}}</td>
+                  <td v-if="tableData.secondBh.qtfldzc == null">-</td>
+                  <td v-else>{{tableData.secondBh.qtfldzc}}</td>
+                  <td v-if="tableData.end.qtfldzc=='0'">-</td>
+                  <td v-else>{{tableData.end.qtfldzc}}</td>
                 </tr>
               </table>
               <table lay-skin="line" style="margin-top: 20px;">
@@ -174,102 +249,162 @@
                 </tr>
                 <tr>
                   <td>短期借款</td>
-                  <td>{{tableData.start.dqjk}}</td>
-                  <td>{{tableData.firstBh.dqjk}}</td>
-                  <td>{{tableData.mid.dqjk}}</td>
-                  <td>{{tableData.secondBh.dqjk}}</td>
-                  <td>{{tableData.end.dqjk}}</td>
+                  <td v-if="tableData.start.dqjk=='0'">-</td>
+                  <td v-else>{{tableData.start.dqjk}}</td>
+                  <td v-if="tableData.firstBh.dqjk == null">-</td>
+                  <td v-else>{{tableData.firstBh.dqjk}}</td>
+                  <td v-if="tableData.mid.dqjk=='0'">-</td>
+                  <td v-else>{{tableData.mid.dqjk}}</td>
+                  <td v-if="tableData.secondBh.dqjk == null">-</td>
+                  <td v-else>{{tableData.secondBh.dqjk}}</td>
+                  <td v-if="tableData.end.dqjk=='0'">-</td>
+                  <td v-else>{{tableData.end.dqjk}}</td>
                 </tr>
                 <tr>
                   <td>应付票据</td>
-                  <td>{{tableData.start.yfpj}}</td>
-                  <td>{{tableData.firstBh.yfpj}}</td>
-                  <td>{{tableData.mid.yfpj}}</td>
-                  <td>{{tableData.secondBh.yfpj}}</td>
-                  <td>{{tableData.end.yfpj}}</td>
+                  <td v-if="tableData.start.yfpj=='0'">-</td>
+                  <td v-else>{{tableData.start.yfpj}}</td>
+                  <td v-if="tableData.firstBh.yfpj == null">-</td>
+                  <td v-else>{{tableData.firstBh.yfpj}}</td>
+                  <td v-if="tableData.mid.yfpj=='0'">-</td>
+                  <td v-else>{{tableData.mid.yfpj}}</td>
+                  <td v-if="tableData.secondBh.yfpj == null">-</td>
+                  <td v-else>{{tableData.secondBh.yfpj}}</td>
+                  <td v-if="tableData.end.yfpj=='0'">-</td>
+                  <td v-else>{{tableData.end.yfpj}}</td>
                 </tr>
                 <tr>
-                  <td>应收账款</td>
-                  <td>{{tableData.start.yfzk}}</td>
-                  <td>{{tableData.firstBh.yfzk}}</td>
-                  <td>{{tableData.mid.yfzk}}</td>
-                  <td>{{tableData.secondBh.yfzk}}</td>
-                  <td>{{tableData.end.yfzk}}</td>
+                  <td>应付账款</td>
+                  <td v-if="tableData.start.yfzk=='0'">-</td>
+                  <td v-else>{{tableData.start.yfzk}}</td>
+                  <td v-if="tableData.firstBh.yfzk == null">-</td>
+                  <td v-else>{{tableData.firstBh.yfzk}}</td>
+                  <td v-if="tableData.mid.yfzk=='0'">-</td>
+                  <td v-else>{{tableData.mid.yfzk}}</td>
+                  <td v-if="tableData.secondBh.yfzk == null">-</td>
+                  <td v-else>{{tableData.secondBh.yfzk}}</td>
+                  <td v-if="tableData.end.yfzk=='0'">-</td>
+                  <td v-else>{{tableData.end.yfzk}}</td>
                 </tr>
                 <tr>
                   <td>预收款项</td>
-                  <td>{{tableData.start.yskx}}</td>
-                  <td>{{tableData.firstBh.yskx}}</td>
-                  <td>{{tableData.mid.yskx}}</td>
-                  <td>{{tableData.secondBh.yskx}}</td>
-                  <td>{{tableData.end.yskx}}</td>
+                  <td v-if="tableData.start.yskx=='0'">-</td>
+                  <td v-else>{{tableData.start.yskx}}</td>
+                  <td v-if="tableData.firstBh.yskx == null">-</td>
+                  <td v-else>{{tableData.firstBh.yskx}}</td>
+                  <td v-if="tableData.mid.yskx=='0'">-</td>
+                  <td v-else>{{tableData.mid.yskx}}</td>
+                  <td v-if="tableData.secondBh.yskx == null">-</td>
+                  <td v-else>{{tableData.secondBh.yskx}}</td>
+                  <td v-if="tableData.end.yskx=='0'">-</td>
+                  <td v-else>{{tableData.end.yskx}}</td>
                 </tr>
                 <tr>
                   <td>应付职工薪酬</td>
-                  <td>{{tableData.start.yfzgxc}}</td>
-                  <td>{{tableData.firstBh.yfzgxc}}</td>
-                  <td>{{tableData.mid.yfzgxc}}</td>
-                  <td>{{tableData.secondBh.yfzgxc}}</td>
-                  <td>{{tableData.end.yfzgxc}}</td>
+                  <td v-if="tableData.start.yfzgxc=='0'">-</td>
+                  <td v-else>{{tableData.start.yfzgxc}}</td>
+                  <td v-if="tableData.firstBh.yfzgxc == null">-</td>
+                  <td v-else>{{tableData.firstBh.yfzgxc}}</td>
+                  <td v-if="tableData.mid.yfzgxc=='0'">-</td>
+                  <td v-else>{{tableData.mid.yfzgxc}}</td>
+                  <td v-if="tableData.secondBh.yfzgxc == null">-</td>
+                  <td v-else>{{tableData.secondBh.yfzgxc}}</td>
+                  <td v-if="tableData.end.yfzgxc=='0'">-</td>
+                  <td v-else>{{tableData.end.yfzgxc}}</td>
                 </tr>
                 <tr>
                   <td>应付利息</td>
-                  <td>{{tableData.start.yflx}}</td>
-                  <td>{{tableData.firstBh.yflx}}</td>
-                  <td>{{tableData.mid.yflx}}</td>
-                  <td>{{tableData.secondBh.yflx}}</td>
-                  <td>{{tableData.end.yflx}}</td>
+                  <td v-if="tableData.start.yflx=='0'">-</td>
+                  <td v-else>{{tableData.start.yflx}}</td>
+                  <td v-if="tableData.firstBh.yflx == null">-</td>
+                  <td v-else>{{tableData.firstBh.yflx}}</td>
+                  <td v-if="tableData.mid.yflx=='0'">-</td>
+                  <td v-else>{{tableData.mid.yflx}}</td>
+                  <td v-if="tableData.secondBh.yflx == null">-</td>
+                  <td v-else>{{tableData.secondBh.yflx}}</td>
+                  <td v-if="tableData.end.yflx=='0'">-</td>
+                  <td v-else>{{tableData.end.yflx}}</td>
                 </tr>
                 <tr>
                   <td>其他应付款</td>
-                  <td>{{tableData.start.qtyfk}}</td>
-                  <td>{{tableData.firstBh.qtyfk}}</td>
-                  <td>{{tableData.mid.qtyfk}}</td>
-                  <td>{{tableData.secondBh.qtyfk}}</td>
-                  <td>{{tableData.end.qtyfk}}</td>
+                  <td v-if="tableData.start.qtyfk=='0'">-</td>
+                  <td v-else>{{tableData.start.qtyfk}}</td>
+                  <td v-if="tableData.firstBh.qtyfk == null">-</td>
+                  <td v-else>{{tableData.firstBh.qtyfk}}</td>
+                  <td v-if="tableData.mid.qtyfk=='0'">-</td>
+                  <td v-else>{{tableData.mid.qtyfk}}</td>
+                  <td v-if="tableData.secondBh.qtyfk == null">-</td>
+                  <td v-else>{{tableData.secondBh.qtyfk}}</td>
+                  <td v-if="tableData.end.qtyfk=='0'">-</td>
+                  <td v-else>{{tableData.end.qtyfk}}</td>
                 </tr>
                 <tr>
                   <td>其他流动负债</td>
-                  <td>{{tableData.start.qtldfz}}</td>
-                  <td>{{tableData.firstBh.qtldfz}}</td>
-                  <td>{{tableData.mid.qtldfz}}</td>
-                  <td>{{tableData.secondBh.qtldfz}}</td>
-                  <td>{{tableData.end.qtldfz}}</td>
+                  <td v-if="tableData.start.qtldfz=='0'">-</td>
+                  <td v-else>{{tableData.start.qtldfz}}</td>
+                  <td v-if="tableData.firstBh.qtldfz == null">-</td>
+                  <td v-else>{{tableData.firstBh.qtldfz}}</td>
+                  <td v-if="tableData.mid.qtldfz=='0'">-</td>
+                  <td v-else>{{tableData.mid.qtldfz}}</td>
+                  <td v-if="tableData.secondBh.qtldfz == null">-</td>
+                  <td v-else>{{tableData.secondBh.qtldfz}}</td>
+                  <td v-if="tableData.end.qtldfz=='0'">-</td>
+                  <td v-else>{{tableData.end.qtldfz}}</td>
                 </tr>
                 <tr>
                   <td colspan='6' style="color:#3DA3FF ;">2、非流动负债合计</td>
                 </tr>
                 <tr>
                   <td>长期应付款</td>
-                  <td>{{tableData.start.cqyfk}}</td>
-                  <td>{{tableData.firstBh.cqyfk}}</td>
-                  <td>{{tableData.mid.cqyfk}}</td>
-                  <td>{{tableData.secondBh.cqyfk}}</td>
-                  <td>{{tableData.end.cqyfk}}</td>
+                  <td v-if="tableData.start.cqyfk=='0'">-</td>
+                  <td v-else>{{tableData.start.cqyfk}}</td>
+                  <td v-if="tableData.firstBh.cqyfk == null">-</td>
+                  <td v-else>{{tableData.firstBh.cqyfk}}</td>
+                  <td v-if="tableData.mid.cqyfk=='0'">-</td>
+                  <td v-else>{{tableData.mid.cqyfk}}</td>
+                  <td v-if="tableData.secondBh.cqyfk == null">-</td>
+                  <td v-else>{{tableData.secondBh.cqyfk}}</td>
+                  <td v-if="tableData.end.cqyfk=='0'">-</td>
+                  <td v-else>{{tableData.end.cqyfk}}</td>
                 </tr>
                 <tr>
                   <td>专项应收款</td>
-                  <td>{{tableData.start.zxyfk}}</td>
-                  <td>{{tableData.firstBh.zxyfk}}</td>
-                  <td>{{tableData.mid.zxyfk}}</td>
-                  <td>{{tableData.secondBh.zxyfk}}</td>
-                  <td>{{tableData.end.zxyfk}}</td>
+                  <td v-if="tableData.start.zxyfk=='0'">-</td>
+                  <td v-else>{{tableData.start.zxyfk}}</td>
+                  <td v-if="tableData.firstBh.zxyfk == null">-</td>
+                  <td v-else>{{tableData.firstBh.zxyfk}}</td>
+                  <td v-if="tableData.mid.zxyfk=='0'">-</td>
+                  <td v-else>{{tableData.mid.zxyfk}}</td>
+                  <td v-if="tableData.secondBh.zxyfk == null">-</td>
+                  <td v-else>{{tableData.secondBh.zxyfk}}</td>
+                  <td v-if="tableData.end.zxyfk=='0'">-</td>
+                  <td v-else>{{tableData.end.zxyfk}}</td>
                 </tr>
                 <tr>
                   <td>预计负债</td>
-                  <td>{{tableData.start.yjfz}}</td>
-                  <td>{{tableData.firstBh.yjfz}}</td>
-                  <td>{{tableData.mid.yjfz}}</td>
-                  <td>{{tableData.secondBh.yjfz}}</td>
-                  <td>{{tableData.end.yjfz}}</td>
+                  <td v-if="tableData.start.yjfz=='0'">-</td>
+                  <td v-else>{{tableData.start.yjfz}}</td>
+                  <td v-if="tableData.firstBh.yjfz == null">-</td>
+                  <td v-else>{{tableData.firstBh.yjfz}}</td>
+                  <td v-if="tableData.mid.yjfz=='0'">-</td>
+                  <td v-else>{{tableData.mid.yjfz}}</td>
+                  <td v-if="tableData.secondBh.yjfz == null">-</td>
+                  <td v-else>{{tableData.secondBh.yjfz}}</td>
+                  <td v-if="tableData.mid.end=='0'">-</td>
+                  <td v-else>{{tableData.end.yjfz}}</td>
                 </tr>
                 <tr>
                   <td>其他非流动负债</td>
-                  <td>{{tableData.start.qtfldfz}}</td>
-                  <td>{{tableData.firstBh.qtfldfz}}</td>
-                  <td>{{tableData.mid.qtfldfz}}</td>
-                  <td>{{tableData.secondBh.qtfldfz}}</td>
-                  <td>{{tableData.end.qtfldfz}}</td>
+                  <td v-if="tableData.start.qtfldfz=='0'">-</td>
+                  <td v-else>{{tableData.start.qtfldfz}}</td>
+                  <td v-if="tableData.firstBh.qtfldfz == null">-</td>
+                  <td v-else>{{tableData.firstBh.qtfldfz}}</td>
+                  <td v-if="tableData.mid.qtfldfz=='0'">-</td>
+                  <td v-else>{{tableData.mid.qtfldfz}}</td>
+                  <td v-if="tableData.secondBh.qtfldfz == null">-</td>
+                  <td v-else>{{tableData.secondBh.qtfldfz}}</td>
+                  <td v-if="tableData.end.qtfldfz=='0'">-</td>
+                  <td v-else>{{tableData.end.qtfldfz}}</td>
                 </tr>
               </table>
               <table colspan='6' lay-skin="line" style="margin-top: 20px;">
@@ -368,75 +503,156 @@
                 </tr>
                 <tr>
                   <td>减：营业成本</td>
-                  <td>{{table_lr_data.third.cost}}</td>
-                  <td>{{table_lr_data.secondChange.cost}}</td>
-                  <td>{{table_lr_data.second.cost}}</td>
-                  <td>{{table_lr_data.firstChange.cost}}</td>
-                  <td>{{table_lr_data.first.cost}}</td>
+                  <td v-if="table_lr_data.third.cost==null">-</td>
+                  <td v-else>{{table_lr_data.third.cost}}</td>
+
+                  <td v-if="table_lr_data.secondChange.cost==null">-</td>
+                  <td v-else>{{table_lr_data.secondChange.cost}}</td>
+
+                  <td v-if="table_lr_data.second.cost==null">-</td>
+                  <td v-else>{{table_lr_data.second.cost}}</td>
+
+                  <td v-if="table_lr_data.firstChange.cost==null">-</td>
+                  <td v-else>{{table_lr_data.firstChange.cost}}</td>
+
+                  <td v-if="table_lr_data.first.cost==null">-</td>
+                  <td v-else>{{table_lr_data.first.cost}}</td>
                 </tr>
                 <tr>
                   <td>营业税收及附加</td>
-                  <td>{{table_lr_data.third.sjjfj}}</td>
-                  <td>{{table_lr_data.secondChange.sjjfj}}</td>
-                  <td>{{table_lr_data.second.sjjfj}}</td>
-                  <td>{{table_lr_data.firstChange.sjjfj}}</td>
-                  <td>{{table_lr_data.first.sjjfj}}</td>
+                  <td v-if="table_lr_data.third.sjjfj==null">-</td>
+                  <td v-else>{{table_lr_data.third.sjjfj}}</td>
+
+                  <td v-if="table_lr_data.secondChange.sjjfj==null">-</td>
+                  <td v-else>{{table_lr_data.secondChange.sjjfj}}</td>
+
+                  <td v-if="table_lr_data.second.sjjfj==null">-</td>
+                  <td v-else>{{table_lr_data.second.sjjfj}}</td>
+
+                  <td v-if="table_lr_data.firstChange.sjjfj==null">-</td>
+                  <td v-else>{{table_lr_data.firstChange.sjjfj}}</td>
+
+                  <td v-if="table_lr_data.first.sjjfj==null">-</td>
+                  <td v-else>{{table_lr_data.first.sjjfj}}</td>
                 </tr>
                 <tr>
                   <td>销售费用</td>
-                  <td>{{table_lr_data.third.xsfy}}</td>
-                  <td>{{table_lr_data.secondChange.xsfy}}</td>
-                  <td>{{table_lr_data.second.sjjfj}}</td>
-                  <td>{{table_lr_data.firstChange.xsfy}}</td>
-                  <td>{{table_lr_data.first.xsfy}}</td>
+                  <td v-if="table_lr_data.third.xsfy==null">-</td>
+                  <td v-else>{{table_lr_data.third.xsfy}}</td>
+
+                  <td v-if="table_lr_data.secondChange.xsfy==null">-</td>
+                  <td v-else>{{table_lr_data.secondChange.xsfy}}</td>
+
+                  <td v-if="table_lr_data.second.xsfy==null">-</td>
+                  <td v-else>{{table_lr_data.second.xsfy}}</td>
+
+                  <td v-if="table_lr_data.firstChange.xsfy==null">-</td>
+                  <td v-else>{{table_lr_data.firstChange.xsfy}}</td>
+
+                  <td v-if="table_lr_data.first.xsfy==null">-</td>
+                  <td v-else>{{table_lr_data.first.xsfy}}</td>
                 </tr>
                 <tr>
                   <td>管理费用</td>
-                  <td>{{table_lr_data.third.glfy}}</td>
-                  <td>{{table_lr_data.secondChange.glfy}}</td>
-                  <td>{{table_lr_data.second.glfy}}</td>
-                  <td>{{table_lr_data.firstChange.glfy}}</td>
-                  <td>{{table_lr_data.first.glfy}}</td>
+                  <td v-if="table_lr_data.third.glfy==null">-</td>
+                  <td v-else>{{table_lr_data.third.glfy}}</td>
+
+                  <td v-if="table_lr_data.secondChange.glfy==null">-</td>
+                  <td v-else>{{table_lr_data.secondChange.glfy}}</td>
+
+                  <td v-if="table_lr_data.second.glfy==null">-</td>
+                  <td v-else>{{table_lr_data.second.glfy}}</td>
+
+                  <td v-if="table_lr_data.firstChange.glfy==null">-</td>
+                  <td v-else>{{table_lr_data.firstChange.glfy}}</td>
+
+                  <td v-if="table_lr_data.first.glfy==null">-</td>
+                  <td v-else>{{table_lr_data.first.glfy}}</td>
                 </tr>
                 <tr>
                   <td>财务费用</td>
-                  <td>{{table_lr_data.third.cwfy}}</td>
-                  <td>{{table_lr_data.secondChange.cwfy}}</td>
-                  <td>{{table_lr_data.second.cwfy}}</td>
-                  <td>{{table_lr_data.firstChange.cwfy}}</td>
-                  <td>{{table_lr_data.first.cwfy}}</td>
+                  <td v-if="table_lr_data.third.cwfy==null">-</td>
+                  <td v-else>{{table_lr_data.third.cwfy}}</td>
+
+                  <td v-if="table_lr_data.secondChange.cwfy==null">-</td>
+                  <td v-else>{{table_lr_data.secondChange.cwfy}}</td>
+
+                  <td v-if="table_lr_data.second.cwfy==null">-</td>
+                  <td v-else>{{table_lr_data.second.cwfy}}</td>
+
+                  <td v-if="table_lr_data.firstChange.cwfy==null">-</td>
+                  <td v-else>{{table_lr_data.firstChange.cwfy}}</td>
+
+                  <td v-if="table_lr_data.first.cwfy==null">-</td>
+                  <td v-else>{{table_lr_data.first.cwfy}}</td>
                 </tr>
                 <tr>
                   <td>资产减值损失</td>
-                  <td>{{table_lr_data.third.zcjzss}}</td>
-                  <td>{{table_lr_data.secondChange.zcjzss}}</td>
-                  <td>{{table_lr_data.second.zcjzss}}</td>
-                  <td>{{table_lr_data.firstChange.zcjzss}}</td>
-                  <td>{{table_lr_data.first.zcjzss}}</td>
+                  <td v-if="table_lr_data.third.zcjzss==null">-</td>
+                  <td v-else>{{table_lr_data.third.zcjzss}}</td>
+
+                  <td v-if="table_lr_data.secondChange.zcjzss==null">-</td>
+                  <td v-else>{{table_lr_data.secondChange.zcjzss}}</td>
+
+                  <td v-if="table_lr_data.second.zcjzss==null">-</td>
+                  <td v-else>{{table_lr_data.second.zcjzss}}</td>
+
+                  <td v-if="table_lr_data.firstChange.zcjzss==null">-</td>
+                  <td v-else>{{table_lr_data.firstChange.zcjzss}}</td>
+
+                  <td v-if="table_lr_data.first.zcjzss==null">-</td>
+                  <td v-else>{{table_lr_data.first.zcjzss}}</td>
                 </tr>
                 <tr>
                   <td>加:公允价值变动收益(损失以“-”号填列)</td>
-                  <td>{{table_lr_data.third.gyjzbdsy}}</td>
-                  <td>{{table_lr_data.secondChange.gyjzbdsy}}</td>
-                  <td>{{table_lr_data.second.gyjzbdsy}}</td>
-                  <td>{{table_lr_data.firstChange.gyjzbdsy}}</td>
-                  <td>{{table_lr_data.first.gyjzbdsy}}</td>
+                  <td v-if="table_lr_data.third.gyjzbdsy==null">-</td>
+                  <td v-else>{{table_lr_data.third.gyjzbdsy}}</td>
+
+                  <td v-if="table_lr_data.secondChange.gyjzbdsy==null">-</td>
+                  <td v-else>{{table_lr_data.secondChange.gyjzbdsy}}</td>
+
+                  <td v-if="table_lr_data.second.gyjzbdsy==null">-</td>
+                  <td v-else>{{table_lr_data.second.gyjzbdsy}}</td>
+
+                  <td v-if="table_lr_data.firstChange.gyjzbdsy==null">-</td>
+                  <td v-else>{{table_lr_data.firstChange.gyjzbdsy}}</td>
+
+                  <td v-if="table_lr_data.first.gyjzbdsy==null">-</td>
+                  <td v-else>{{table_lr_data.first.gyjzbdsy}}</td>
                 </tr>
                 <tr>
                   <td>投资收益(损失以"-"号填列)</td>
-                  <td>{{table_lr_data.third.tzsy}}</td>
-                  <td>{{table_lr_data.secondChange.tzsy}}</td>
-                  <td>{{table_lr_data.second.tzsy}}</td>
-                  <td>{{table_lr_data.firstChange.tzsy}}</td>
-                  <td>{{table_lr_data.first.tzsy}}</td>
+                  <td v-if="table_lr_data.third.tzsy==null">-</td>
+                  <td v-else>{{table_lr_data.third.tzsy}}</td>
+
+                  <td v-if="table_lr_data.secondChange.tzsy==null">-</td>
+                  <td v-else>{{table_lr_data.secondChange.tzsy}}</td>
+
+                  <td v-if="table_lr_data.second.tzsy==null">-</td>
+                  <td v-else>{{table_lr_data.second.tzsy}}</td>
+
+                  <td v-if="table_lr_data.firstChange.tzsy==null">-</td>
+                  <td v-else>{{table_lr_data.firstChange.tzsy}}</td>
+
+                  <td v-if="table_lr_data.first.tzsy==null">-</td>
+                  <td v-else>{{table_lr_data.first.tzsy}}</td>
                 </tr>
                 <tr>
                   <td>其中:对联营企业和合营企业的投资收益</td>
-                  <td>{{table_lr_data.third.dlyqyhhyqydtz}}</td>
-                  <td>{{table_lr_data.secondChange.dlyqyhhyqydtz}}</td>
-                  <td>{{table_lr_data.second.dlyqyhhyqydtz}}</td>
-                  <td>{{table_lr_data.firstChange.dlyqyhhyqydtz}}</td>
-                  <td>{{table_lr_data.first.dlyqyhhyqydtz}}</td>
+                  <td v-if="table_lr_data.third.dlyqyhhyqydtz==null">-</td>
+                  <td v-else>{{table_lr_data.third.dlyqyhhyqydtz}}</td>
+
+                  <td v-if="table_lr_data.secondChange.dlyqyhhyqydtz==null">-</td>
+                  <td v-else>{{table_lr_data.secondChange.dlyqyhhyqydtz}}</td>
+
+                  <td v-if="table_lr_data.second.dlyqyhhyqydtz==null">-</td>
+                  <td v-else>{{table_lr_data.second.dlyqyhhyqydtz}}</td>
+
+                  <td v-if="table_lr_data.firstChange.dlyqyhhyqydtz==null">-</td>
+                  <td v-else>{{table_lr_data.firstChange.dlyqyhhyqydtz}}</td>
+
+                  <td v-if="table_lr_data.first.dlyqyhhyqydtz==null">-</td>
+                  <td v-else>{{table_lr_data.first.dlyqyhhyqydtz}}</td>
                 </tr>
                 <tr>
                   <td colspan='6' style="color:#3DA3FF ;">二、营业利润（亏损以“-”号填列）</td>
@@ -451,30 +667,57 @@
                 </tr>
                 <tr>
                   <td>减:营业外支出</td>
-                  <td>{{table_lr_data.third.yywzc}}</td>
-                  <td>{{table_lr_data.secondChange.yywzc}}</td>
-                  <td>{{table_lr_data.second.yywzc}}</td>
-                  <td>{{table_lr_data.firstChange.yywzc}}</td>
-                  <td>{{table_lr_data.first.yywzc}}</td>
+                  <td v-if="table_lr_data.third.yywzc==null">-</td>
+                  <td v-else>{{table_lr_data.third.yywzc}}</td>
+
+                  <td v-if="table_lr_data.secondChange.yywzc==null">-</td>
+                  <td v-else>{{table_lr_data.secondChange.yywzc}}</td>
+
+                  <td v-if="table_lr_data.second.yywzc==null">-</td>
+                  <td v-else>{{table_lr_data.second.yywzc}}</td>
+
+                  <td v-if="table_lr_data.firstChange.yywzc==null">-</td>
+                  <td v-else>{{table_lr_data.firstChange.yywzc}}</td>
+
+                  <td v-if="table_lr_data.first.yywzc==null">-</td>
+                  <td v-else>{{table_lr_data.first.yywzc}}</td>
                 </tr>
                 <tr>
                   <td>其中:非流动资产处置损失</td>
-                  <td>{{table_lr_data.third.fldzcczss}}</td>
-                  <td>{{table_lr_data.secondChange.fldzcczss}}</td>
-                  <td>{{table_lr_data.second.fldzcczss}}</td>
-                  <td>{{table_lr_data.firstChange.fldzcczss}}</td>
-                  <td>{{table_lr_data.first.fldzcczss}}</td>
+                  <td v-if="table_lr_data.third.fldzcczss==null">-</td>
+                  <td v-else>{{table_lr_data.third.fldzcczss}}</td>
+
+                  <td v-if="table_lr_data.secondChange.fldzcczss==null">-</td>
+                  <td v-else>{{table_lr_data.secondChange.fldzcczss}}</td>
+
+                  <td v-if="table_lr_data.second.fldzcczss==null">-</td>
+                  <td v-else>{{table_lr_data.second.fldzcczss}}</td>
+
+                  <td v-if="table_lr_data.firstChange.fldzcczss==null">-</td>
+                  <td v-else>{{table_lr_data.firstChange.fldzcczss}}</td>
+
+                  <td v-if="table_lr_data.first.fldzcczss==null">-</td>
+                  <td v-else>{{table_lr_data.first.fldzcczss}}</td>
                 </tr>
                 <tr>
                   <td colspan='6' style="color:#3DA3FF ;">三、利润总额（亏损总额以“-”号填列）</td>
                 </tr>
                 <tr>
                   <td>减：所得税费用</td>
-                  <td>{{table_lr_data.third.sdsfy}}</td>
-                  <td>{{table_lr_data.secondChange.sdsfy}}</td>
-                  <td>{{table_lr_data.second.sdsfy}}</td>
-                  <td>{{table_lr_data.firstChange.sdsfy}}</td>
-                  <td>{{table_lr_data.first.sdsfy}}</td>
+                  <td v-if="table_lr_data.third.sdsfy==null">-</td>
+                  <td v-else>{{table_lr_data.third.sdsfy}}</td>
+
+                  <td v-if="table_lr_data.secondChange.sdsfy==null">-</td>
+                  <td v-else>{{table_lr_data.secondChange.sdsfy}}</td>
+
+                  <td v-if="table_lr_data.second.sdsfy==null">-</td>
+                  <td v-else>{{table_lr_data.second.sdsfy}}</td>
+
+                  <td v-if="table_lr_data.firstChange.sdsfy==null">-</td>
+                  <td v-else>{{table_lr_data.firstChange.sdsfy}}</td>
+
+                  <td v-if="table_lr_data.first.sdsfy==null">-</td>
+                  <td v-else>{{table_lr_data.first.sdsfy}}</td>
                 </tr>
                 <tr>
                   <td colspan='6' style="color:#3DA3FF ;">四、净利润（净亏损以“-”号填列）</td>
@@ -484,19 +727,37 @@
                 </tr>
                 <tr>
                   <td>（一）基本每股收益</td>
-                  <td>{{table_lr_data.third.jbmgsy}}</td>
-                  <td>{{table_lr_data.secondChange.jbmgsy}}</td>
-                  <td>{{table_lr_data.second.jbmgsy}}</td>
-                  <td>{{table_lr_data.firstChange.jbmgsy}}</td>
-                  <td>{{table_lr_data.first.jbmgsy}}</td>
+                  <td v-if="table_lr_data.third.jbmgsy==null">-</td>
+                  <td v-else>{{table_lr_data.third.jbmgsy}}</td>
+
+                  <td v-if="table_lr_data.secondChange.jbmgsy==null">-</td>
+                  <td v-else>{{table_lr_data.secondChange.jbmgsy}}</td>
+
+                  <td v-if="table_lr_data.second.jbmgsy==null">-</td>
+                  <td v-else>{{table_lr_data.second.jbmgsy}}</td>
+
+                  <td v-if="table_lr_data.firstChange.jbmgsy==null">-</td>
+                  <td v-else>{{table_lr_data.firstChange.jbmgsy}}</td>
+
+                  <td v-if="table_lr_data.first.jbmgsy==null">-</td>
+                  <td v-else>{{table_lr_data.first.jbmgsy}}</td>
                 </tr>
                 <tr>
                   <td>（二）稀释每股收益</td>
-                  <td>{{table_lr_data.third.xsmgsy}}</td>
-                  <td>{{table_lr_data.secondChange.xsmgsy}}</td>
-                  <td>{{table_lr_data.second.xsmgsy}}</td>
-                  <td>{{table_lr_data.firstChange.xsmgsy}}</td>
-                  <td>{{table_lr_data.first.xsmgsy</td>
+                  <td v-if="table_lr_data.third.xsmgsy==null">-</td>
+                  <td v-else>{{table_lr_data.third.xsmgsy}}</td>
+
+                  <td v-if="table_lr_data.secondChange.xsmgsy==null">-</td>
+                  <td v-else>{{table_lr_data.secondChange.xsmgsy}}</td>
+
+                  <td v-if="table_lr_data.second.xsmgsy==null">-</td>
+                  <td v-else>{{table_lr_data.second.xsmgsy}}</td>
+
+                  <td v-if="table_lr_data.firstChange.xsmgsy==null">-</td>
+                  <td v-else>{{table_lr_data.firstChange.xsmgsy}}</td>
+
+                  <td v-if="table_lr_data.first.xsmgsy==null">-</td>
+                  <td v-else>{{table_lr_data.first.xsmgsy}}</td>
                 </tr>
               </table>
             </div>
@@ -812,6 +1073,7 @@
           end: {}
         },
         table_lr_data: {
+          //利润表
           first: {},
           firstChange: {},
           second: {},
@@ -888,6 +1150,7 @@
           "/hspt-web-api/data_entry/cwzk/cwzkLrb/initLrb",
           params
         );
+        console.log(res.data);
         if (res.data.resultCode == "0") {
           this.table_lr_data = res.data.resultData.data;
         }

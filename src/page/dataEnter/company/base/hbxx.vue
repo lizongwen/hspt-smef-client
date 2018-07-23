@@ -13,19 +13,19 @@
 						<el-table-column label="序号" type="index" width="50"></el-table-column>
 					<el-table-column min-width="200px" :label="tableData_columns.zt">
 						<template slot-scope="scope">
-							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" size="small" v-model.number="scope.row.zt"></el-input>
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[1]" v-if="scope.row.edit" size="small" v-model="scope.row.zt"></el-input>
 							<span v-else>{{ scope.row.zt}}</span>
 						</template>
 					</el-table-column>
 					<el-table-column min-width="200px" :label="tableData_columns.pw">
 						<template slot-scope="scope">
-							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[2]" v-if="scope.row.edit" size="small" v-model.number="scope.row.pw"></el-input>
+							<el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[2]" v-if="scope.row.edit" size="small" v-model="scope.row.pw"></el-input>
 							<span v-else>{{ scope.row.pw}}</span>
 						</template>
 					</el-table-column>
             <el-table-column min-width="200px" :label="tableData_columns.pfjg">
               <template slot-scope="scope">
-                <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[3]" v-if="scope.row.edit" size="small" v-model.number="scope.row.pfjg"></el-input>
+                <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_columns)[3]" v-if="scope.row.edit" size="small" v-model="scope.row.pfjg"></el-input>
                 <span v-else>{{ scope.row.pfjg}}</span>
               </template>
             </el-table-column>
@@ -78,15 +78,7 @@ export default {
       },
       textEditorContent: "",
 	  //规则
-      rules: {
-        zt: [
-          { required: true, message: "状态是必填项" }
-        ],
-        pw: [
-          { required: true, message: "批文是必填项" }
-        ],
-        pfjg: [{ required: true, message: "批复机关是必填项" }]
-      }
+      rules: {}
     };
   },
   mounted() {

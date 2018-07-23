@@ -322,13 +322,13 @@ export default {
       this.loadingStatus=true;
       this.tableData_1.forEach((item, index) => {
         if (item.id == null) {
-          if((item.bdbdw != null && item.bdbdw != "") 
-          || (item.dbnr != null && item.dbnr != "") 
-          || (item.lx != null && item.lx != "")
-          || (item.dbje != null && item.dbje != "")
-          || (item.dbxs != null && item.dbxs != "")
-          || (item.kssj != null && item.kssj != "")
-          || (item.jssj != null && item.jssj != "")){
+          if(item.bdbdw != null &&
+            item.dbnr != null &&
+            item.lx != null &&
+            item.dbje != null &&
+            item.dbxs != null &&
+            item.kssj != null &&
+            item.jssj != null){
             this.addData_1.push(item);
           }
         }
@@ -347,14 +347,14 @@ export default {
       );
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
-        this.delRowData_1 = [];
-        this.updateData_1 = [];
-        this.addData_1 = [];
         this.getDwdbxxmx();
       } else {
         this.$message({ message: res.data.resultMsg, type: "warning" });
       }
         this.loadingStatus=false;
+        this.delRowData_1 = [];
+        this.updateData_1 = [];
+        this.addData_1 = [];
     },
 
     /////////////////////////////////////////////////////////////明细合计计算
@@ -438,7 +438,7 @@ export default {
           this.updateData[i].hj = count;
           }
       }
-      
+
       let params = {
         creditCode: sessionStorage.getItem("creditCode"), // 通过缓存获取creditCode
         token: sessionStorage.getItem("token"), // 通过缓存获取token
