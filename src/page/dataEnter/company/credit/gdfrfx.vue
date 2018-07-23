@@ -1281,7 +1281,11 @@
         this.loadingStatus_0 = true;
         this.tableData_0.forEach((item, index) => {
           if (item.id == null) {
-            this.addData_0.push(item);
+            if(item.name != null &&
+              item.idNumber != null &&
+              item.mobile != null){
+              this.addData_0.push(item);
+            }
           }
         });
         let params = {

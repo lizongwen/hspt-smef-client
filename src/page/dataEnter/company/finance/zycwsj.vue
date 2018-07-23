@@ -769,10 +769,6 @@
         <div>
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
-              <!--<div class="card-right-wrap">-->
-              <!--选择时间：-->
-              <!--<el-date-picker v-model="value4" type="month" placeholder="选择月"></el-date-picker>-->
-              <!--</div>-->
               <div class="card-title">现金流量表</div>
             </div>
             <!--<div slot="header" class="clearfix">
@@ -790,261 +786,325 @@
                 </colgroup>
                 <tr>
                   <th>项目</th>
-                  <th>2015年12月</th>
+                  <th>{{table_xjll_data.third.rq}}</th>
                   <th>变化</th>
-                  <th>2016年12月</th>
+                  <th>{{table_xjll_data.second.rq}}</th>
                   <th>变化</th>
-                  <th>2017年12月</th>
+                  <th>{{table_xjll_data.first.rq}}</th>
                 </tr>
                 <tr>
                   <td style="color:#3DA3FF ;">1、经营活动产生的现金流量</td>
-                  <td>{{form_xj.hdxjll}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.jyhdcsdxjll}}</td>
+                  <td>{{table_xjll_data.secondChange.jyhdcsdxjll}}</td>
+                  <td>{{table_xjll_data.second.jyhdcsdxjll}}</td>
+                  <td>{{table_xjll_data.firstChange.jyhdcsdxjll}}</td>
+                  <td>{{table_xjll_data.first.jyhdcsdxjll}}</td>
                 </tr>
                 <tr>
                   <td>销售商品、提供劳务收到的现金</td>
-                  <td>{{form_xj.xssp}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.xssptglwsddxj}}</td>
+                  <td>{{table_xjll_data.secondChange.xssptglwsddxj}}</td>
+                  <td>{{table_xjll_data.second.xssptglwsddxj}}</td>
+                  <td>{{table_xjll_data.firstChange.xssptglwsddxj}}</td>
+                  <td>{{table_xjll_data.first.xssptglwsddxj}}</td>
                 </tr>
                 <tr>
                   <td>收到的税费返还</td>
-                  <td>{{form_xj.sdsf}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.sddsffh}}</td>
+                  <td>{{table_xjll_data.secondChange.sddsffh}}</td>
+                  <td>{{table_xjll_data.second.sddsffh}}</td>
+                  <td>{{table_xjll_data.firstChange.sddsffh}}</td>
+                  <td>{{table_xjll_data.first.sddsffh}}</td>
                 </tr>
                 <tr>
                   <td>收到其他与经营活动相关的现金</td>
-                  <td>{{form_xj.jyhdxj}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.sdqtyjyhdygdxj}}</td>
+                  <td>{{table_xjll_data.secondChange.sdqtyjyhdygdxj}}</td>
+                  <td>{{table_xjll_data.second.sdqtyjyhdygdxj}}</td>
+                  <td>{{table_xjll_data.firstChange.sdqtyjyhdygdxj}}</td>
+                  <td>{{table_xjll_data.first.sdqtyjyhdygdxj}}</td>
                 </tr>
                 <tr>
-                  <td>经营活动现金入小计</td>
-                  <td>{{form_xj.hdxjxj1}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>经营活动现金流入小计</td>
+                  <td>{{table_xjll_data.third.jyhdxjlrxj}}</td>
+                  <td>{{table_xjll_data.secondChange.jyhdxjlrxj}}</td>
+                  <td>{{table_xjll_data.second.jyhdxjlrxj}}</td>
+                  <td>{{table_xjll_data.firstChange.jyhdxjlrxj}}</td>
+                  <td>{{table_xjll_data.first.jyhdxjlrxj}}</td>
                 </tr>
                 <tr>
                   <td>购买商品、接受劳务支付的现金</td>
-                  <td>{{form_xj.gmzf}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.gmspjslwzfdxj}}</td>
+                  <td>{{table_xjll_data.secondChange.gmspjslwzfdxj}}</td>
+                  <td>{{table_xjll_data.second.gmspjslwzfdxj}}</td>
+                  <td>{{table_xjll_data.firstChange.gmspjslwzfdxj}}</td>
+                  <td>{{table_xjll_data.first.gmspjslwzfdxj}}</td>
                 </tr>
                 <tr>
                   <td>支付给职工以及职工支付的现金</td>
-                  <td>{{form_xj.zfzg}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.zfgzgyjwzgzfdxj}}</td>
+                  <td>{{table_xjll_data.secondChange.zfgzgyjwzgzfdxj}}</td>
+                  <td>{{table_xjll_data.second.zfgzgyjwzgzfdxj}}</td>
+                  <td>{{table_xjll_data.firstChange.zfgzgyjwzgzfdxj}}</td>
+                  <td>{{table_xjll_data.first.zfgzgyjwzgzfdxj}}</td>
                 </tr>
                 <tr>
                   <td>支付的各项税费</td>
-                  <td>{{form_xj.zfsf}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.zfdgxfy}}</td>
+                  <td>{{table_xjll_data.secondChange.zfdgxfy}}</td>
+                  <td>{{table_xjll_data.second.zfdgxfy}}</td>
+                  <td>{{table_xjll_data.firstChange.zfdgxfy}}</td>
+                  <td>{{table_xjll_data.first.zfdgxfy}}</td>
                 </tr>
                 <tr>
                   <td>支付其他与经营活动相关的现金</td>
-                  <td>{{form_xj.zfjy}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.zfqtyjyhdygdxj}}</td>
+                  <td>{{table_xjll_data.secondChange.zfqtyjyhdygdxj}}</td>
+                  <td>{{table_xjll_data.second.zfqtyjyhdygdxj}}</td>
+                  <td>{{table_xjll_data.firstChange.zfqtyjyhdygdxj}}</td>
+                  <td>{{table_xjll_data.first.zfqtyjyhdygdxj}}</td>
                 </tr>
                 <tr>
                   <td>经营活动现金流出小计</td>
-                  <td>{{form_xj.hdxjxj2}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.jyhdxjlcxj}}</td>
+                  <td>{{table_xjll_data.secondChange.jyhdxjlcxj}}</td>
+                  <td>{{table_xjll_data.second.jyhdxjlcxj}}</td>
+                  <td>{{table_xjll_data.firstChange.jyhdxjlcxj}}</td>
+                  <td>{{table_xjll_data.first.jyhdxjlcxj}}</td>
                 </tr>
                 <tr>
                   <td>经营活动产生的现金流净额</td>
-                  <td>{{form_xj.hdxjje}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.jyhdcsdxjllje}}</td>
+                  <td>{{table_xjll_data.secondChange.jyhdcsdxjllje}}</td>
+                  <td>{{table_xjll_data.second.jyhdcsdxjllje}}</td>
+                  <td>{{table_xjll_data.firstChange.jyhdcsdxjllje}}</td>
+                  <td>{{table_xjll_data.first.jyhdcsdxjllje}}</td>
                 </tr>
-
                 <tr>
                   <td style="color:#3DA3FF ;">2、投资活动产生的现金流量</td>
-                  <td>{{form_xj.tzhdxj}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.tzhdcsdxjll}}</td>
+                  <td>{{table_xjll_data.secondChange.tzhdcsdxjll}}</td>
+                  <td>{{table_xjll_data.second.tzhdcsdxjll}}</td>
+                  <td>{{table_xjll_data.firstChange.tzhdcsdxjll}}</td>
+                  <td>{{table_xjll_data.first.tzhdcsdxjll}}</td>
                 </tr>
                 <tr>
                   <td>收回投资收到的现金</td>
-                  <td>{{form_xj.shtzxj}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.shtzsddxj}}</td>
+                  <td>{{table_xjll_data.secondChange.shtzsddxj}}</td>
+                  <td>{{table_xjll_data.second.shtzsddxj}}</td>
+                  <td>{{table_xjll_data.firstChange.shtzsddxj}}</td>
+                  <td>{{table_xjll_data.first.shtzsddxj}}</td>
                 </tr>
                 <tr>
                   <td>取得投资收益收到的现金</td>
-                  <td>{{form_xj.qdtzxj}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.qdtzsyddxj}}</td>
+                  <td>{{table_xjll_data.secondChange.qdtzsyddxj}}</td>
+                  <td>{{table_xjll_data.second.qdtzsyddxj}}</td>
+                  <td>{{table_xjll_data.firstChange.qdtzsyddxj}}</td>
+                  <td>{{table_xjll_data.first.qdtzsyddxj}}</td>
                 </tr>
                 <tr>
                   <td>处置固定资产、无形资产和其他长期资产回收的现金净额</td>
-                  <td>{{form_xj.czxjje}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.czgdzcwxzchqtcqzcshdxjje}}</td>
+                  <td>{{table_xjll_data.secondChange.czgdzcwxzchqtcqzcshdxjje}}</td>
+                  <td>{{table_xjll_data.second.czgdzcwxzchqtcqzcshdxjje}}</td>
+                  <td>{{table_xjll_data.firstChange.czgdzcwxzchqtcqzcshdxjje}}</td>
+                  <td>{{table_xjll_data.first.czgdzcwxzchqtcqzcshdxjje}}</td>
                 </tr>
                 <tr>
                   <td>处置子公司及其他营业单位收到的现金净额</td>
-                  <td>{{form_xj.czyeje}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.czzgsjqtyydwsddxjje}}</td>
+                  <td>{{table_xjll_data.secondChange.czzgsjqtyydwsddxjje}}</td>
+                  <td>{{table_xjll_data.second.czzgsjqtyydwsddxjje}}</td>
+                  <td>{{table_xjll_data.firstChange.czzgsjqtyydwsddxjje}}</td>
+                  <td>{{table_xjll_data.first.czzgsjqtyydwsddxjje}}</td>
                 </tr>
                 <tr>
                   <td>收到其他与投资活动相关的现金</td>
-                  <td>{{form_xj.sdhdxj}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.sdqtytzhdygdxj}}</td>
+                  <td>{{table_xjll_data.secondChange.sdqtytzhdygdxj}}</td>
+                  <td>{{table_xjll_data.second.sdqtytzhdygdxj}}</td>
+                  <td>{{table_xjll_data.firstChange.sdqtytzhdygdxj}}</td>
+                  <td>{{table_xjll_data.first.sdqtytzhdygdxj}}</td>
                 </tr>
                 <tr>
                   <td>投资活动现金流出小计</td>
-                  <td>{{form_xj.tzhdlcxj}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.tzhdxjlrxj}}</td>
+                  <td>{{table_xjll_data.secondChange.tzhdxjlrxj}}</td>
+                  <td>{{table_xjll_data.second.tzhdxjlrxj}}</td>
+                  <td>{{table_xjll_data.firstChange.tzhdxjlrxj}}</td>
+                  <td>{{table_xjll_data.first.tzhdxjlrxj}}</td>
+                </tr>
+                <tr>
+                  <td>购建固定资产、无形资产和其他长期资产支付的现金</td>
+                  <td>{{table_xjll_data.third.gjgdzcwxzchqtcqzczfdxj}}</td>
+                  <td>{{table_xjll_data.secondChange.gjgdzcwxzchqtcqzczfdxj}}</td>
+                  <td>{{table_xjll_data.second.gjgdzcwxzchqtcqzczfdxj}}</td>
+                  <td>{{table_xjll_data.firstChange.gjgdzcwxzchqtcqzczfdxj}}</td>
+                  <td>{{table_xjll_data.first.gjgdzcwxzchqtcqzczfdxj}}</td>
+                </tr>
+                <tr>
+                  <td>投资支付的现金</td>
+                  <td>{{table_xjll_data.third.tzzfdxj}}</td>
+                  <td>{{table_xjll_data.secondChange.tzzfdxj}}</td>
+                  <td>{{table_xjll_data.second.tzzfdxj}}</td>
+                  <td>{{table_xjll_data.firstChange.tzzfdxj}}</td>
+                  <td>{{table_xjll_data.first.tzzfdxj}}</td>
+                </tr>
+                <tr>
+                  <td>取得子公司及其他营业单位支付的现金净额</td>
+                  <td>{{table_xjll_data.third.qdzgsjqtyydwzfdxjje}}</td>
+                  <td>{{table_xjll_data.secondChange.qdzgsjqtyydwzfdxjje}}</td>
+                  <td>{{table_xjll_data.second.qdzgsjqtyydwzfdxjje}}</td>
+                  <td>{{table_xjll_data.firstChange.qdzgsjqtyydwzfdxjje}}</td>
+                  <td>{{table_xjll_data.first.qdzgsjqtyydwzfdxjje}}</td>
+                </tr>
+                <tr>
+                  <td>支付其他与投资活动有关的现金</td>
+                  <td>{{table_xjll_data.third.zfqtytzhdygdxj}}</td>
+                  <td>{{table_xjll_data.secondChange.zfqtytzhdygdxj}}</td>
+                  <td>{{table_xjll_data.second.zfqtytzhdygdxj}}</td>
+                  <td>{{table_xjll_data.firstChange.zfqtytzhdygdxj}}</td>
+                  <td>{{table_xjll_data.first.zfqtytzhdygdxj}}</td>
+                </tr>
+                <tr>
+                  <td>投资活动现金流出小计</td>
+                  <td>{{table_xjll_data.third.tzhdxjlcxj}}</td>
+                  <td>{{table_xjll_data.secondChange.tzhdxjlcxj}}</td>
+                  <td>{{table_xjll_data.second.tzhdxjlcxj}}</td>
+                  <td>{{table_xjll_data.firstChange.tzhdxjlcxj}}</td>
+                  <td>{{table_xjll_data.first.tzhdxjlcxj}}</td>
                 </tr>
                 <tr>
                   <td>投资活动生产的现金流量净额</td>
-                  <td>{{form_xj.tzhdxjje}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.tzhdcsdxjllje}}</td>
+                  <td>{{table_xjll_data.secondChange.tzhdcsdxjllje}}</td>
+                  <td>{{table_xjll_data.second.tzhdcsdxjllje}}</td>
+                  <td>{{table_xjll_data.firstChange.tzhdcsdxjllje}}</td>
+                  <td>{{table_xjll_data.first.tzhdcsdxjllje}}</td>
                 </tr>
-
                 <tr>
                   <td style="color:#3DA3FF ;">3、筹资活动产生的现金流量</td>
-                  <td>{{form_xj.czhdxjll}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.czhdcsdxjll}}</td>
+                  <td>{{table_xjll_data.secondChange.czhdcsdxjll}}</td>
+                  <td>{{table_xjll_data.second.czhdcsdxjll}}</td>
+                  <td>{{table_xjll_data.firstChange.czhdcsdxjll}}</td>
+                  <td>{{table_xjll_data.first.czhdcsdxjll}}</td>
                 </tr>
                 <tr>
                   <td>吸收投资收到的现金</td>
-                  <td>{{form_xj.xstzxj}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.xstzsddxj}}</td>
+                  <td>{{table_xjll_data.secondChange.xstzsddxj}}</td>
+                  <td>{{table_xjll_data.second.xstzsddxj}}</td>
+                  <td>{{table_xjll_data.firstChange.xstzsddxj}}</td>
+                  <td>{{table_xjll_data.first.xstzsddxj}}</td>
                 </tr>
                 <tr>
                   <td>取得借款收到的现金</td>
-                  <td>{{form_xj.qdjkxj}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.qdjksddxj}}</td>
+                  <td>{{table_xjll_data.secondChange.qdjksddxj}}</td>
+                  <td>{{table_xjll_data.second.qdjksddxj}}</td>
+                  <td>{{table_xjll_data.firstChange.qdjksddxj}}</td>
+                  <td>{{table_xjll_data.first.qdjksddxj}}</td>
                 </tr>
                 <tr>
                   <td>收到其他与筹资活动相关的现金</td>
-                  <td>{{form_xj.sdqtxj}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.sdqtyczhdygdxj}}</td>
+                  <td>{{table_xjll_data.secondChange.sdqtyczhdygdxj}}</td>
+                  <td>{{table_xjll_data.second.sdqtyczhdygdxj}}</td>
+                  <td>{{table_xjll_data.firstChange.sdqtyczhdygdxj}}</td>
+                  <td>{{table_xjll_data.first.sdqtyczhdygdxj}}</td>
                 </tr>
                 <tr>
                   <td>筹资活动现金流入小计</td>
-                  <td>{{form_xj.czhdxj}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.czhdxjlrxj}}</td>
+                  <td>{{table_xjll_data.secondChange.czhdxjlrxj}}</td>
+                  <td>{{table_xjll_data.second.czhdxjlrxj}}</td>
+                  <td>{{table_xjll_data.firstChange.czhdxjlrxj}}</td>
+                  <td>{{table_xjll_data.first.czhdxjlrxj}}</td>
                 </tr>
                 <tr>
                   <td>偿还债务支付的现金</td>
-                  <td>{{form_xj.chzwxj}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.chzwzfdxj}}</td>
+                  <td>{{table_xjll_data.secondChange.chzwzfdxj}}</td>
+                  <td>{{table_xjll_data.second.chzwzfdxj}}</td>
+                  <td>{{table_xjll_data.firstChange.chzwzfdxj}}</td>
+                  <td>{{table_xjll_data.first.chzwzfdxj}}</td>
                 </tr>
                 <tr>
                   <td>分配股利、利润或偿付利息支付的现金</td>
-                  <td>{{form_xj.fpzfxj}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.fpgllrhcflxzfdxj}}</td>
+                  <td>{{table_xjll_data.secondChange.fpgllrhcflxzfdxj}}</td>
+                  <td>{{table_xjll_data.second.fpgllrhcflxzfdxj}}</td>
+                  <td>{{table_xjll_data.firstChange.fpgllrhcflxzfdxj}}</td>
+                  <td>{{table_xjll_data.first.fpgllrhcflxzfdxj}}</td>
+                </tr>
+                <tr>
+                  <td>子公司支付给少数股东的股利、利润</td>
+                  <td>{{table_xjll_data.third.zgszfgssgddgllr}}</td>
+                  <td>{{table_xjll_data.secondChange.zgszfgssgddgllr}}</td>
+                  <td>{{table_xjll_data.second.zgszfgssgddgllr}}</td>
+                  <td>{{table_xjll_data.firstChange.zgszfgssgddgllr}}</td>
+                  <td>{{table_xjll_data.first.zgszfgssgddgllr}}</td>
                 </tr>
                 <tr>
                   <td>支付其他与筹资活动有关的现金</td>
-                  <td>{{form_xj.zfczxj}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.zfqtyczhdygdxj}}</td>
+                  <td>{{table_xjll_data.secondChange.zfqtyczhdygdxj}}</td>
+                  <td>{{table_xjll_data.second.zfqtyczhdygdxj}}</td>
+                  <td>{{table_xjll_data.firstChange.zfqtyczhdygdxj}}</td>
+                  <td>{{table_xjll_data.first.zfqtyczhdygdxj}}</td>
                 </tr>
                 <tr>
                   <td>筹资活动现金流出小计</td>
-                  <td>{{form_xj.czxjxj}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.czhdxjlcxj}}</td>
+                  <td>{{table_xjll_data.secondChange.czhdxjlcxj}}</td>
+                  <td>{{table_xjll_data.second.czhdxjlcxj}}</td>
+                  <td>{{table_xjll_data.firstChange.czhdxjlcxj}}</td>
+                  <td>{{table_xjll_data.first.czhdxjlcxj}}</td>
                 </tr>
                 <tr>
                   <td>筹资活动产生的现金流量净额</td>
-                  <td>{{form_xj.czhdje}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{table_xjll_data.third.czhdcsdxjllje}}</td>
+                  <td>{{table_xjll_data.secondChange.czhdcsdxjllje}}</td>
+                  <td>{{table_xjll_data.second.czhdcsdxjllje}}</td>
+                  <td>{{table_xjll_data.firstChange.czhdcsdxjllje}}</td>
+                  <td>{{table_xjll_data.first.czhdcsdxjllje}}</td>
+                </tr>
+                <tr>
+                  <td style="color:#3DA3FF ;">4、汇率变动对现金及现金等价物的影响</td>
+                  <td>{{table_xjll_data.third.hlbddxjjxjdjwdyx}}</td>
+                  <td>{{table_xjll_data.secondChange.hlbddxjjxjdjwdyx}}</td>
+                  <td>{{table_xjll_data.second.hlbddxjjxjdjwdyx}}</td>
+                  <td>{{table_xjll_data.firstChange.hlbddxjjxjdjwdyx}}</td>
+                  <td>{{table_xjll_data.first.hlbddxjjxjdjwdyx}}</td>
+                </tr>
+                <tr>
+                  <td style="color:#3DA3FF ;">5、现金及现金等价物净增加额</td>
+                  <td>{{table_xjll_data.third.xjjxjdjwjzje}}</td>
+                  <td>{{table_xjll_data.secondChange.xjjxjdjwjzje}}</td>
+                  <td>{{table_xjll_data.second.xjjxjdjwjzje}}</td>
+                  <td>{{table_xjll_data.firstChange.xjjxjdjwjzje}}</td>
+                  <td>{{table_xjll_data.first.xjjxjdjwjzje}}</td>
+                </tr>
+                <tr>
+                  <td>加：期初现金及现金等价物余额</td>
+                  <td>{{table_xjll_data.third.qcxjjxjdjwye}}</td>
+                  <td>{{table_xjll_data.secondChange.qcxjjxjdjwye}}</td>
+                  <td>{{table_xjll_data.second.qcxjjxjdjwye}}</td>
+                  <td>{{table_xjll_data.firstChange.qcxjjxjdjwye}}</td>
+                  <td>{{table_xjll_data.first.qcxjjxjdjwye}}</td>
+                </tr>
+                <tr>
+                  <td style="color:#3DA3FF ;">6、期末现金及现金等价物余额</td>
+                  <td>{{table_xjll_data.third.qmxjjxjdjwye}}</td>
+                  <td>{{table_xjll_data.secondChange.qmxjjxjdjwye}}</td>
+                  <td>{{table_xjll_data.second.qmxjjxjdjwye}}</td>
+                  <td>{{table_xjll_data.firstChange.qmxjjxjdjwye}}</td>
+                  <td>{{table_xjll_data.first.qmxjjxjdjwye}}</td>
                 </tr>
               </table>
-
-
-              <!--<div slot="header" class="clearfix">-->
-              <!--<div class="card-right-wrap">-->
-              <!--&lt;!&ndash;<el-button type="default" size="medium">上传数据</el-button>&ndash;&gt;-->
-              <!--<el-button type="primary" size="medium">保存</el-button>-->
-              <!--</div>-->
-              <!--<div class="card-title">备注</div>-->
-
-              <!--</div>-->
-              <!--<div class="text-editor">-->
-              <!--<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>-->
-              <!--</div>-->
-
             </div>
 
           </el-card>
@@ -1072,53 +1132,32 @@
           secondBh: {},
           end: {}
         },
+
+        //利润表
         table_lr_data: {
-          //利润表
           first: {},
           firstChange: {},
           second: {},
           secondChange: {},
           third: {}
         },
-        form_xj: {
-          //现金流量
-          hdxjll: '',
-          xssp: '',
-          sdsf: '',
-          jyhdxj: '',
-          hdxjxj1: '',
-          gmzf: '',
-          zfzg: '',
-          zfsf: '',
-          zfjy: '',
-          hdxjxj2: '',
-          hdxjje: '',
 
-          tzhdxj: '',
-          shtzxj: '',
-          qdtzxj: '',
-          czxjje: '',
-          czyeje: '',
-          sdhdxj: '',
-          tzhdlcxj: '',
-          tzhdxjje: '',
-
-          czhdxjll: '',
-          xstzxj: '',
-          qdjkxj: '',
-          sdqtxj: '',
-          czhdxj: '',
-          chzwxj: '',
-          fpzfxj: '',
-          zfczxj: '',
-          czxjxj: '',
-          czhdje: ''
+        //现金流量
+        table_xjll_data: {
+          first: {},
+          firstChange: {},
+          second: {},
+          secondChange: {},
+          third: {}
         },
       }
     },
     mounted() {
+      //初始化资产负债表
       this.getZcfz();
+      //初始化利润表
       this.getLr();
+      //初始化现金流量表
       this.getXjll();
     },
     methods: {
@@ -1150,7 +1189,6 @@
           "/hspt-web-api/data_entry/cwzk/cwzkLrb/initLrb",
           params
         );
-        console.log(res.data);
         if (res.data.resultCode == "0") {
           this.table_lr_data = res.data.resultData.data;
         }
@@ -1162,9 +1200,12 @@
           token: sessionStorage.getItem("token")
         };
         const res = await this.$http.post(
-          "/hspt-web-api/data_entry/cwzk/zycwsj/xjll/list",
+          "/hspt-web-api/data_entry/cwzk/cwzkXjll/initXjll",
           params
         );
+        if (res.data.resultCode == "0") {
+          this.table_xjll_data = res.data.resultData.data;
+        }
       },
     },
     components: {

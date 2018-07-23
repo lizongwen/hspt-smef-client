@@ -4,7 +4,7 @@
 			<el-card class="box-card" shadow='nevner'>
 				<div slot="header" class="clearfix">
 					<div class="card-right-wrap">
-						<el-button type="primary" size="medium" @click="saveBcxx">保存</el-button>
+						<el-button type="primary" size="medium" @click="saveBcxx" :loading="loadingStatus">保存</el-button>
 					</div>
 					<div class="card-title">被非银行信贷机构查询信息</div>
 				</div>
@@ -106,6 +106,7 @@ export default {
     return {
 			validateState: "",
       listLoading: false,
+      loadingStatus: false,
       tableData: [],
 			delRowData: [],
 			addData: [],
@@ -203,9 +204,16 @@ export default {
 
 	//保存数据
     setBcxx: async function() {
+		  this.loadingStatus = true;
       this.tableData.forEach((item, index) => {
         if (item.id == null) {
-          this.addData.push(item);
+          if(item.jglx != null &&
+            item.zj1nbcxcs != null &&
+            item.zj6gybcxcs != null &&
+            item.zj3gybcxcs != null &&
+            item.zj1gybcxcs != null ){
+            this.addData.push(item);
+          }
         }
       });
 
@@ -223,12 +231,13 @@ export default {
       if (res.data.resultCode == "0") {
         this.$message({ message: res.data.resultMsg, type: "success" });
         this.getBcxx();
+      }else{
+	      this.$message({ message: res.data.resultMsg, type: "warning" });
+	    }
+	      this.loadingStatus = false;
         this.delRowData = [];
         this.updateData = [];
         this.addData = [];
-      }else{
-	   this.$message({ message: res.data.resultMsg, type: "warning" });
-	  }
     },
 
 		//接受删除的数据

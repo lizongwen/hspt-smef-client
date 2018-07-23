@@ -1,11 +1,11 @@
 <template>
 	<div>
 		<el-tabs v-model="activeName" @tab-click="handleClick">
-			
+
 			<el-tab-pane label="资产负债表同期数据对比" name="first">
 				<div>
 					<el-card class="box-card" shadow='nevner'>
-						
+
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
 								选择时间：
@@ -13,7 +13,7 @@
 							</div>
 							<div class="card-title">资产负债表</div>
 						</div>
-						
+
 				<div>
 					<table lay-skin="line">
 						<colgroup>
@@ -74,28 +74,28 @@
 							<tr><td style="color:#3DA3FF ;">4、盈余公积</td><td>{{form.yygj}}</td><td>{{form.yygj}}</td><td>{{form.yygj}}</td><td>{{form.yygj}}</td><td>{{form.yygj}}</td></tr>
 							<tr><td style="color:#3DA3FF ;">5、未分配利益</td><td>{{form.wfply}}</td><td>{{form.wfply}}</td><td>{{form.wfply}}</td><td>{{form.wfply}}</td><td>{{form.wfply}}</td></tr>
 					</table>
-					
-					<div slot="header" class="clearfix">
-							<div class="card-right-wrap">
-								<!--<el-button type="default" size="medium">上传数据</el-button>-->
-								<el-button type="primary" size="medium">保存</el-button>
-							</div>
-							<div class="card-title">备注</div>
-							
-						</div>
-						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
+
+					<!--<div slot="header" class="clearfix">-->
+							<!--<div class="card-right-wrap">-->
+								<!--&lt;!&ndash;<el-button type="default" size="medium">上传数据</el-button>&ndash;&gt;-->
+								<!--<el-button type="primary" size="medium">保存</el-button>-->
+							<!--</div>-->
+							<!--<div class="card-title">备注</div>-->
+							<!---->
+						<!--</div>-->
+						<!--<div class="text-editor">-->
+					<!--<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>-->
+				<!--</div>-->
+
 				</div>
-					
-				</div>
-						
+
 					</el-card>
 				</div>
 
 			</el-tab-pane>
-			
+
 			<el-tab-pane label="利润表同期数据对比" name="second">
-				
+
 				<div>
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
@@ -105,7 +105,7 @@
 							</div>
 							<div class="card-title">利润表</div>
 						</div>
-						
+
 				<div>
 					<table lay-skin="line">
 						<colgroup>
@@ -135,28 +135,28 @@
 						<tr><td><h4>减：所得税费用</h4></td><td>{{form_lr.sdsfy}}</td><td>{{form_lr.sdsfy}}</td><td>{{form_lr.sdsfy}}</td><td>{{form_lr.sdsfy}}</td><td>{{form_lr.sdsfy}}</td></tr>
 						<tr><td style="color:#3DA3FF ;">4、净利润</td><td>{{form_lr.jlr}}</td><td>{{form_lr.jlr}}</td><td>{{form_lr.jlr}}</td><td>{{form_lr.jlr}}</td><td>{{form_lr.jlr}}</td></tr>
 						</table>
-				
-					
-					
-					<div slot="header" class="clearfix">
-							<div class="card-right-wrap">
-								<!--<el-button type="default" size="medium">上传数据</el-button>-->
-								<el-button type="primary" size="medium" >保存</el-button>
-							</div>
-							<div class="card-title">备注</div>
-							
-						</div>
-						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
+
+
+
+					<!--<div slot="header" class="clearfix">-->
+							<!--<div class="card-right-wrap">-->
+								<!--&lt;!&ndash;<el-button type="default" size="medium">上传数据</el-button>&ndash;&gt;-->
+								<!--<el-button type="primary" size="medium" >保存</el-button>-->
+							<!--</div>-->
+							<!--<div class="card-title">备注</div>-->
+							<!---->
+						<!--</div>-->
+						<!--<div class="text-editor">-->
+					<!--<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>-->
+				<!--</div>-->
+
 				</div>
-					
-				</div>
-						
+
 					</el-card>
 				</div>
-				
+
 			</el-tab-pane>
-			
+
 			<el-tab-pane label="现金流量表同期数据对比" name="third">
 					<div>
 					<el-card class="box-card" shadow='nevner'>
@@ -174,7 +174,7 @@
 								<el-button @click="saveXj" type="primary" size="medium">保存</el-button>
 							</div>
 						</div>-->
-						
+
 				<div>
 					<table lay-skin="line">
 						<colgroup>
@@ -196,10 +196,10 @@
 					    <tr><td>购买商品、接受劳务支付的现金</td><td>{{form_xj.gmzf}}</td><td></td><td></td><td></td><td></td></tr>
 					    <tr><td>支付给职工以及职工支付的现金</td><td>{{form_xj.zfzg}}</td><td></td><td></td><td></td><td></td></tr>
 					    <tr><td>支付的各项税费</td><td>{{form_xj.zfsf}}</td><td></td><td></td><td></td><td></td></tr>
-					    <tr><td>支付其他与经营活动相关的现金</td><td>{{form_xj.zfjy}}</td><td></td><td></td><td></td><td></td></tr> 
+					    <tr><td>支付其他与经营活动相关的现金</td><td>{{form_xj.zfjy}}</td><td></td><td></td><td></td><td></td></tr>
 					    <tr><td>经营活动现金流出小计</td><td>{{form_xj.hdxjxj2}}</td><td></td><td></td><td></td><td></td></tr>
 					    <tr><td>经营活动产生的现金流净额</td><td>{{form_xj.hdxjje}}</td><td></td><td></td><td></td><td></td></tr>
-					    
+
 						<tr><td style="color:#3DA3FF ;">2、投资活动产生的现金流量</td><td>{{form_xj.tzhdxj}}</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td>收回投资收到的现金</td><td>{{form_xj.shtzxj}}</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td>取得投资收益收到的现金</td><td>{{form_xj.qdtzxj}}</td><td></td><td></td><td></td><td></td></tr>
@@ -208,7 +208,7 @@
 						<tr><td>收到其他与投资活动相关的现金</td><td>{{form_xj.sdhdxj}}</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td>投资活动现金流出小计</td><td>{{form_xj.tzhdlcxj}}</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td>投资活动生产的现金流量净额</td><td>{{form_xj.tzhdxjje}}</td><td></td><td></td><td></td><td></td></tr>
-						
+
 						<tr><td style="color:#3DA3FF ;">3、筹资活动产生的现金流量</td><td>{{form_xj.czhdxjll}}</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td>吸收投资收到的现金</td><td>{{form_xj.xstzxj}}</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td>取得借款收到的现金</td><td>{{form_xj.qdjkxj}}</td><td></td><td></td><td></td><td></td></tr>
@@ -220,27 +220,27 @@
 						<tr><td>筹资活动现金流出小计</td><td>{{form_xj.czxjxj}}</td><td></td><td></td><td></td><td></td></tr>
 						<tr><td>筹资活动产生的现金流量净额</td><td>{{form_xj.czhdje}}</td><td></td><td></td><td></td><td></td></tr>
 						</table>
-				
-					
-					
-					<div slot="header" class="clearfix">
-							<div class="card-right-wrap">
-								<!--<el-button type="default" size="medium">上传数据</el-button>-->
-								<el-button type="primary" size="medium">保存</el-button>
-							</div>
-							<div class="card-title">备注</div>
-							
-						</div>
-						<div class="text-editor">
-					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
+
+
+
+					<!--<div slot="header" class="clearfix">-->
+							<!--<div class="card-right-wrap">-->
+								<!--&lt;!&ndash;<el-button type="default" size="medium">上传数据</el-button>&ndash;&gt;-->
+								<!--<el-button type="primary" size="medium">保存</el-button>-->
+							<!--</div>-->
+							<!--<div class="card-title">备注</div>-->
+
+						<!--</div>-->
+						<!--<div class="text-editor">-->
+					<!--<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>-->
+				<!--</div>-->
+
 				</div>
-					
-				</div>
-						
+
 					</el-card>
 				</div>
 			</el-tab-pane>
-			
+
 		</el-tabs>
 	</div>
 </template>
@@ -264,7 +264,7 @@ textEditorContent: "",
 	qtyszk:'',
 	ch:'',
 	qtldzc:'',
-			
+
 	fldzchj:'',
 	cqysk:'',
 	cqgqtz:'',
@@ -274,7 +274,7 @@ textEditorContent: "",
 	wxzc:'',
 	dysdszc:'',
 	qtfldzc:'',
-			
+
 	ldfzhj:'',
 	dqjk:'',
 	yfpj3:'',
@@ -284,13 +284,13 @@ textEditorContent: "",
 	yflx:'',
 	qtyfk:'',
 	qtldfz:'',
-			
+
 	fldfzhj:'',
 	cqyfk:'',
 	zxysk:'',
 	yjfz:'',
 	qtfldfz:'',
-			
+
 	sjzb:'',
 	zbgj:'',
 	zxcb:'',
@@ -328,7 +328,7 @@ textEditorContent: "",
 	zfjy:'',
 	hdxjxj2:'',
 	hdxjje:'',
-				
+
 	tzhdxj:'',
 	shtzxj:'',
 	qdtzxj:'',
@@ -337,7 +337,7 @@ textEditorContent: "",
 	sdhdxj:'',
 	tzhdlcxj:'',
 	tzhdxjje:'',
-				
+
 	czhdxjll:'',
 	xstzxj:'',
 	qdjkxj:'',
@@ -362,7 +362,7 @@ this.getXjll();
       handleClick(tab, event) {
         //   console.log(tab, event);
       },
-      
+
   getZcfz:async function() {
   	 let params = {
         creditCode: sessionStorage.getItem("creditCode"),
@@ -399,21 +399,21 @@ this.getXjll();
 	this.form.yflx=res.data.resultData.data.yflx
 	this.form.qtyfk=res.data.resultData.data.qtyfk
 	this.form.qtldfz=res.data.resultData.data.qtldfz
-			
+
 	this.form.fldfzhj=res.data.resultData.data.fldfzhj
 	this.form.cqyfk=res.data.resultData.data.cqyfk
 	this.form.zxysk=res.data.resultData.data.zxysk
 	this.form.yjfz=res.data.resultData.data.yjfz
 	this.form.qtfldfz=res.data.resultData.data.qtfldfz
-			
+
 	this.form.sjzb=res.data.resultData.data.sjzb
 	this.form.zbgj=res.data.resultData.data.zbgj
 	this.form.zxcb=res.data.resultData.data.zxcb
 	this.form.yygj=res.data.resultData.data.yygj
 	this.form.wfply=res.data.resultData.data.wfply
-      
+
   },
-  
+
      getLr:async function(){
    	let params = {
         creditCode: sessionStorage.getItem("creditCode"),
@@ -423,7 +423,7 @@ this.getXjll();
         "/hspt-web-api/data_entry/cwzk/zycwsj/lr/list",
         params
       );
-       
+
 	this.form_lr.ldzczj=res.data.resultData.data.ldzczj
 	this.form_lr.yycb=res.data.resultData.data.yycb
 	this.form_lr.yysjjfj=res.data.resultData.data.yysjjfj
@@ -460,7 +460,7 @@ this.getXjll();
 	this.form_xj.zfjy =res.data.resultData.data.zfjy
 	this.form_xj.hdxjxj2 =res.data.resultData.data.hdxjxj2
 	this.form_xj.hdxjje =res.data.resultData.data.hdxjje
-			
+
 	this.form_xj.tzhdxj =res.data.resultData.data.tzhdxj
 	this.form_xj.shtzxj =res.data.resultData.data.shtzxj
 	this.form_xj.qdtzxj =res.data.resultData.data.qdtzxj
@@ -469,7 +469,7 @@ this.getXjll();
 	this.form_xj.sdhdxj =res.data.resultData.data.sdhdxj
 	this.form_xj.tzhdlcxj =res.data.resultData.data.tzhdlcxj
 	this.form_xj.tzhdxjje =res.data.resultData.data.tzhdxjje
-				
+
 	this.form_xj.czhdxjll =res.data.resultData.data.czhdxjll
 	this.form_xj.xstzxj =res.data.resultData.data.xstzxj
 	this.form_xj.qdjkxj =res.data.resultData.data.qdjkxj
@@ -481,12 +481,12 @@ this.getXjll();
 	this.form_xj.czxjxj =res.data.resultData.data.czxjxj
 	this.form_xj.czhdje =res.data.resultData.data.czhdje
       },
-      
+
    },
 
    	 		components: {
     "quill-editor": quillEditor
-},	
+},
 };
 </script>
 
@@ -509,7 +509,7 @@ table tr td{
 	text-align:left;
 	padding-left: 20px;
 	background: white;
-	
+
 }
 .clearfix{
 	margin-top: 30px;;
