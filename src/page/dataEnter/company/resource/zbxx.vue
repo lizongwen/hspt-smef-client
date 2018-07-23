@@ -115,11 +115,11 @@ export default {
     this.loadingStatus = true;
       this.tableData.forEach((item, index) => {
         if (item.id == null) {
-          if(item.xmmc != null &&
-            item.cy != null &&
-            item.qy != null &&
-            item.lx != null &&
-            item.fbsj != null &&
+          if(item.xmmc != null ||
+            item.cy != null ||
+            item.qy != null ||
+            item.lx != null ||
+            item.fbsj != null ||
             item.xxxx != null ){
             this.addData.push(item);
           }

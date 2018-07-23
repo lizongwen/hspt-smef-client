@@ -7,7 +7,7 @@
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
                 <!--<el-button class="save" type="default" size="medium">获取数据</el-button>-->
-                <el-button class="save" type="primary" size="medium" @click="saveSfKtgg" :loading="loadingStatus">保存</el-button>
+                <el-button class="save" type="primary" size="medium" @click="saveSfKtgg" :loading="loadingStatus_1">保存</el-button>
               </div>
               <div class="card-title">法院公告信息</div>
             </div>
@@ -24,8 +24,7 @@
                 </el-table-column>
                 <el-table-column min-width="200px" :label="tableData_1_columns.ktsj">
                   <template slot-scope="scope">
-                    <el-date-picker class="edit-input cellItem el-form-item" :class="Object.keys(tableData_1_columns)[2]"
-                              v-if="scope.row.edit" size="small" v-model="scope.row.ktsj" type=data value-format="yyyy-MM-dd" placeholder="选择日期"></el-date-picker>
+                    <el-date-picker v-model="scope.row.ktsj" class="cellItem el-form-item" value-format="yyyy-MM-dd" :class="Object.keys(tableData_1_columns)[2]" v-if="scope.row.edit" type="date" placeholder="选择日期" style="width: 100%;" :clearable='false'></el-date-picker>
                     <span v-else>{{ scope.row.ktsj}}</span>
                   </template>
                 </el-table-column>
@@ -61,7 +60,7 @@
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
                 <!--<el-button class="save" type="default" size="medium">获取数据</el-button>-->
-                <el-button class="save" type="primary" size="medium" @click="saveSfFypb" :loading="loadingStatus">保存</el-button>
+                <el-button class="save" type="primary" size="medium" @click="saveSfFypb" :loading="loadingStatus_2">保存</el-button>
               </div>
               <div class="card-title">法院判决信息</div>
             </div>
@@ -71,8 +70,7 @@
                 <el-table-column label="序号" type="index" width="50"></el-table-column>
                 <el-table-column min-width="200px" :label="tableData_2_columns.pjxx">
                   <template slot-scope="scope">
-                    <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_2_columns)[1]"
-                              v-if="scope.row.edit" size="small" v-model="scope.row.pjxx"></el-input>
+                    <el-date-picker v-model="scope.row.pjxx" class="cellItem el-form-item" value-format="yyyy-MM-dd" :class="Object.keys(tableData_2_columns)[1]" v-if="scope.row.edit" type="date" placeholder="选择日期" style="width: 100%;" :clearable='false'></el-date-picker>
                     <span v-else>{{ scope.row.pjxx}}</span>
                   </template>
                 </el-table-column>
@@ -147,7 +145,7 @@
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
                 <!--<el-button class="save" type="default" size="medium">获取数据</el-button>-->
-                <el-button class="save" type="primary" size="medium" @click="saveSfqybzxgg" :loading="loadingStatus">保存</el-button>
+                <el-button class="save" type="primary" size="medium" @click="saveSfqybzxgg" :loading="loadingStatus_3">保存</el-button>
               </div>
               <div class="card-title">企业被执行公告信息</div>
             </div>
@@ -157,8 +155,7 @@
                 <el-table-column label="序号" type="index" width="50"></el-table-column>
                 <el-table-column min-width="200px" :label="tableData_3_columns.lasj">
                   <template slot-scope="scope">
-                    <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_3_columns)[1]"
-                              v-if="scope.row.edit" size="small" v-model="scope.row.lasj"></el-input>
+                    <el-date-picker v-model="scope.row.lasj" class="cellItem el-form-item" value-format="yyyy-MM-dd" :class="Object.keys(tableData_3_columns)[1]" v-if="scope.row.edit" type="date" placeholder="选择日期" style="width: 100%;" :clearable='false'></el-date-picker>          
                     <span v-else>{{ scope.row.lasj}}</span>
                   </template>
                 </el-table-column>
@@ -212,7 +209,7 @@
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
                 <!--<el-button class="save" type="default" size="medium">获取数据</el-button>-->
-                <el-button class="save" type="primary" size="medium" @click="saveSfSxlhcj" :loading="loadingStatus">保存</el-button>
+                <el-button class="save" type="primary" size="medium" @click="saveSfSxlhcj" :loading="loadingStatus_4">保存</el-button>
               </div>
               <div class="card-title">失信联合惩戒信息</div>
             </div>
@@ -250,8 +247,7 @@
                 </el-table-column>
                 <el-table-column min-width="200px" :label="tableData_4_columns.sjsj">
                   <template slot-scope="scope">
-                    <el-input class="edit-input cellItem el-form-item" :class="Object.keys(tableData_4_columns)[5]"
-                              v-if="scope.row.edit" size="small" v-model="scope.row.sjsj"></el-input>
+                    <el-date-picker v-model="scope.row.sjsj" class="cellItem el-form-item" value-format="yyyy-MM-dd" :class="Object.keys(tableData_3_columns)[5]" v-if="scope.row.edit" type="date" placeholder="选择日期" style="width: 100%;" :clearable='false'></el-date-picker>
                     <span v-else>{{ scope.row.sjsj}}</span>
                   </template>
                 </el-table-column>
@@ -352,7 +348,7 @@
                   </template>
                 </el-table-column>
               </el-table>
-              <v-tabelAddBtn :tableData="tableData_4" :tableData_columns="tableData_4_columns"></v-tabelAddBtn>
+              <!--<v-tabelAddBtn :tableData="tableData_4" :tableData_columns="tableData_4_columns"></v-tabelAddBtn>-->
             </div>
           </el-card>
         </div>
@@ -370,9 +366,7 @@
       return {
         activeName: "first",
         listLoading: false,
-        loadingStatus:false,
-        rules: {},
-
+        loadingStatus_1: false,
         tableData_1: [], //表格数据
         addData1: [],
         updateData1: [],
@@ -399,6 +393,8 @@
 
         },
 
+
+        loadingStatus_2: false,
         tableData_2: [], //表格数据
         addData2: [],
         updateData2: [],
@@ -428,7 +424,7 @@
 
         },
 
-
+        loadingStatus_3:false,
         tableData_3: [], //表格数据
         addData3: [],
         updateData3: [],
@@ -441,7 +437,6 @@
           ajzt: "案件状态",
           edit: false
         }, //表格列字段
-
         rules_bzxgg:{
           lasj: [{validator(rule, value, callback) {
               var errors = [];
@@ -456,6 +451,7 @@
 
         },
 
+        loadingStatus_4:false,
         tableData_4: [], //表格数据
         addData4: [],
         updateData4: [],
@@ -500,7 +496,9 @@
           Date: "0",
           result: "",
           edit: false
-        } //表格列字段
+        }, //表格列字段
+
+        rules: {},
       };
     },
     computed: {},
@@ -536,12 +534,15 @@
       },
       //保存司法信息中开庭公告数据
       setSfKtgg: async function () {
-        this.loadingStatus=true;
+        this.loadingStatus_1 = true;
         this.tableData_1.forEach((item, index) => {
           if (item.id == null) {
-            // if(item.id!=null&&item.id!=""){
+            if(item.zxfy != null &&
+              item.ktsj != null &&
+              item.ah != null &&
+              item.ay != null ){
               this.addData1.push(item);
-            // }
+            }
           }
         });
         let params = {
@@ -561,7 +562,7 @@
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
-          this.loadingStatus=false;
+          this.loadingStatus_1 = false;
           this.delRowData1 = [];
           this.updateData1 = [];
           this.addData1 = [];
@@ -603,10 +604,15 @@
       },
       //保存司法信息中法院判别数据
       setSfFypb: async function () {
-         this.loadingStatus=true;
+         this.loadingStatus_2=true;
         this.tableData_2.forEach((item, index) => {
           if (item.id == null) {
-            this.addData2.push(item);
+            if(item.pjxx != null &&
+              item.sf != null &&
+              item.zxfy != null &&
+              item.wszh != null && item.pjjg != null && item.ssfcd != null && item.ay != null ){
+              this.addData2.push(item);
+            }
           }
         });
         let params = {
@@ -629,7 +635,7 @@
           this.addData2 = [];
           this.updateData2 = [];
           this.delRowData2 = [];
-          this.loadingStatus=false;
+          this.loadingStatus_2=false;
       },
       //接受法院判别删除数据
       acceptDelTable2Row(val) {
@@ -668,10 +674,15 @@
       },
       //保存司法信息中企业被执行公告数据
       setSfqybzxgg: async function () {
-         this.loadingStatus=true;
+         this.loadingStatus_3=true;
         this.tableData_3.forEach((item, index) => {
           if (item.id == null) {
-            this.addData3.push(item);
+            if(item.lasj != null &&
+              item.zxfy != null &&
+              item.zxbd != null &&
+              item.ajzt != null){
+              this.addData3.push(item);
+            }
           }
         });
         let params = {
@@ -691,11 +702,11 @@
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
-         
+
          this.addData3 = [];
          this.updateData3 = [];
          this.delRowData3 = [];
-         this.loadingStatus=false;
+         this.loadingStatus_3=false;
       },
       //接受失信联合惩戒删除的数据
       acceptDelTable3Row(val) {
@@ -734,10 +745,16 @@
       },
       //保存司法信息中失信联合惩戒数据
       setSfSxlhcj: async function () {
-        this.loadingStatus=true;
+        this.loadingStatus_4=true;
         this.tableData_4.forEach((item, index) => {
           if (item.id == null) {
-            this.addData4.push(item);
+            if(item.sxztmc != null &&
+              item.cjlb != null &&
+              item.cxcs != null &&
+              item.cjcs != null &&
+              item.sjsj != null ){
+              this.addData4.push(item);
+            }
           }
         });
         let params = {
@@ -753,7 +770,7 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
-          
+
           this.getSfSxlhcj();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
@@ -761,7 +778,7 @@
         this.delRowData4 = [];
         this.updateData4 = [];
         this.addData4 = [];
-        this.loadingStatus=false;
+        this.loadingStatus_4=false;
       },
       //接受失信联合惩戒删除的数据
       acceptDelTable4Row(val) {

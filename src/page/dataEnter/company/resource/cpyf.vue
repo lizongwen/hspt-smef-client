@@ -142,6 +142,8 @@ export default {
 			this.$message({ message: "上年度研发投入占营业收入比例需录入数字", type: "warning"});
 		}else if(!rulsCpyf.test(this.form.bndyftrje)){
 			this.$message({ message: "本年度研发投入金额需录入数字", type: "warning"});			
+		}else if(!rulsCpyf.test(this.form.yfjjsrysl)){
+			this.$message({ message: "研发及技术人员数量需录入数字", type: "warning"});			
 		}else{
 		let params = {
 			creditCode: sessionStorage.getItem("creditCode"),
