@@ -12,7 +12,7 @@
           <div class="card-title">公司能耗记录</div>
         </div>
         <div>
-          <el-table :data="tableData_1" v-loading.body="listLoading" border fit highlight-current-row
+          <!--<el-table :data="tableData_1" v-loading.body="listLoading" border fit highlight-current-row
                     style="width: 100%">
             
             <el-table-column min-width="200px"  :label="tableData_1_columns.name">
@@ -39,7 +39,40 @@
                                   v-on:acceptDelRow='acceptDelRow_1'></v-tableOperation>
               </template>
             </el-table-column>
-          </el-table>
+          </el-table>-->
+          
+          <table lay-skin="line">
+								<tr>
+									<th>类别</th>
+									<th>时间</th>
+									<th>是否正常</th>
+									<th>操作</th>
+								</tr>
+								<tr>
+									<td>用水记录</td>
+									<td>-</td>
+									<td>-</td>
+								  <td>
+								  	<span class="button">编辑</span>
+								  </td>
+								</tr>
+								<tr>
+									<td>用天然气记录</td>
+									<td>-</td>
+									<td>-</td>
+							 <td>
+							 	<span class="button">确定</span>
+							 	<span class="button">取消</span>
+							 </td>
+								</tr>
+								<tr>
+									<td>用电记录</td>
+									<td>-</td>
+									<td>-</td>
+								 <td></td>
+								</tr>
+								
+							</table>
 
  
         </div>
@@ -370,5 +403,9 @@ table tr td {
   text-align: $text-align;
   padding-left: $padding-left;
   background: $background;
+}
+$color:#1790FF;
+.button{
+	color: $color;
 }
 </style>
