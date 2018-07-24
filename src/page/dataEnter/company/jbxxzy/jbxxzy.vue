@@ -168,20 +168,207 @@
 						</div>
 					</el-card>
 
-					<el-card class="box-card" shadow='nevner'>
+                    <el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-                                 <el-button type="default" size="medium">获取数据</el-button>
-								 <el-button type="primary" size="medium">保存</el-button>
+								 <el-button type="primary" size="medium" @click="saveJbxxData">保存</el-button>
                              </div>
-							<div class="card-title">风险摘要</div>
+							<div class="card-title">基本信息</div>
 						</div>
-						
-                        <div>
-							风险摘要
+						<div>
+							<el-form class="form clearfix" size="small" :label-position="labelPosition" label-width="100px" :model="form">
+								<el-row>
+									 <div class="check">
+									 	<span>资信评估</span>
+									 </div>
+									 <div class="check">
+									 	<el-col>
+										<el-form-item label="资信评分:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="惠国评分:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="惠国先前评级:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									 </div>
+								</el-row>	
+								
+								<el-row>
+									 <div class="check">
+									 	<span>法院记录</span>
+									 </div>
+									 <div class="check">
+									 	<el-col>
+										<el-form-item label="原告诉讼记录:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="被告诉讼记录:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="被执行记录:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									 </div>
+								</el-row>	
+								
+								<el-row>
+									 <div class="check">
+									 	<span>经营风险</span>
+									 </div>
+									 <div class="check">
+									 	<el-col>
+										<el-form-item label="经营异常:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="行政处罚:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="严重违反:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="欠税公告:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="股权出质:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="动产抵押:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									 </div>
+								</el-row>	
+							
+							    <el-row>
+									 <div class="check">
+									 	<span>主要负责人</span>
+									 </div>
+									 <div class="check">
+									 	<el-col>
+										<el-form-item label="失信被执行人:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="原告诉讼:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="被告诉讼:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="开庭公告:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="治安处罚:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="交通处罚:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="欺诈风险数据库:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									 </div>
+								</el-row>	
+							
+							    <el-row>
+									 <div class="check">
+									 	<span>公司重要事项</span>
+									 </div>
+									 <div class="check">
+									 	<el-col>
+										<el-form-item label="历史变更:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="新闻动态:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									 </div>
+								</el-row>	
+							
+							    <el-row>
+									 <div class="check">
+									 	<span>财务概要（万元）</span>
+									 </div>
+									 <div class="check">
+									 	<el-col>
+										<el-form-item label="资产总额:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="负债总额:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="净资产:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="营业收入:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="净利润:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="融资规模:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									<el-col>
+										<el-form-item label="资产负债率:">
+											<el-input size="small" placeholder="请输入"></el-input>
+						                </el-form-item>
+									</el-col>
+									 </div>
+								</el-row>	
+							
+							</el-form> 
 						</div>
-						
 					</el-card>
+
 				</div>
 				
 			</el-tab-pane>
@@ -191,27 +378,333 @@
 					<el-card class="box-card" shadow='nevner'>
 						<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-                                 <el-button type="default" size="medium">编辑</el-button>
+                                 <el-button type="default" size="medium" @click="hgpj = true">编辑</el-button>
 								 <el-button type="primary" size="medium">保存</el-button>
                              </div>
 							<div class="card-title">风险评估</div>
 						</div>
 						
+						<!--惠国评级-->
+						<el-dialog title="惠国评级" :visible.sync="hgpj" width="30%">
+                            <el-form :model="form">
+                               <el-form-item label="惠国评分" >
+                                   <el-input  placeholder="请输入内容"></el-input>
+                               </el-form-item>
+                               <el-form-item label="先前评级" >
+                                   <el-input placeholder="请输入内容"></el-input>
+                               </el-form-item>
+                            </el-form>
+                            <div slot="footer" class="dialog-footer">
+                               <el-button @click="hgpj = false">取 消</el-button>
+                               <el-button type="primary">确 定</el-button>
+                            </div>
+                        </el-dialog>
 						
+						<div>
+							<div class="assess">
+								<div class="as">
+									<span>资信评分</span>
+									<span>相关风险度</span>
+								</div>
+								<div class="ss">
+									<span>76.88</span>
+								</div>
+								<div class="se">
+										<img src="../../../../image/11.jpg"/>
+					<div class="percent">
+						<span>1</span>
+						<span>100</span>
+					</div>
+								</div>
+								<div class="es">
+									<span>高风险....低于平均风险....低风险</span>
+								</div>
+							</div>
+							<div class="assess">
+								<div class="ass">惠国评级</div>
+								<div class="ess">A+</div>
+								<div class="ass">先前评级</div>
+								<div class="ess">A-</div>
+								<div class="ass">风险水平</div>
+								<div class="ess">低于平均风险</div>
+							</div>
+						</div>
 
 
 					</el-card>
+				
+				    <el-card class="box-card" shadow='nevner'>
+				    		<div slot="header" class="clearfix">
+							<div class="card-right-wrap">
+                                 <el-button type="default" size="medium" @click="credit= true">编辑</el-button>
+								 <el-button type="primary" size="medium">保存</el-button>
+                             </div>
+							<div class="card-title">资信维度结构</div>
+						</div>
+						<!--资信维度-->
+						<el-dialog title="资信维度" :visible.sync="credit" width="30%">
+                            <el-form :model="form" label-width="30%">
+                               <el-form-item label="行业发展性">
+                                   <el-input  placeholder="请输入内容"></el-input>
+                               </el-form-item>
+                               <el-form-item label="盈利能力" >
+                                   <el-input placeholder="请输入内容"></el-input>
+                               </el-form-item>
+                                <el-form-item label="核心团队素质性" >
+                                   <el-input placeholder="请输入内容"></el-input>
+                               </el-form-item>
+                                <el-form-item label="运营能力" >
+                                   <el-input placeholder="请输入内容"></el-input>
+                               </el-form-item>
+                                <el-form-item label="规范性和风险性" >
+                                   <el-input placeholder="请输入内容"></el-input>
+                               </el-form-item>
+                                <el-form-item label="成长能力" >
+                                   <el-input placeholder="请输入内容"></el-input>
+                               </el-form-item>
+                                <el-form-item label="实力规模" >
+                                   <el-input placeholder="请输入内容"></el-input>
+                               </el-form-item>
+                                <el-form-item label="技术与创新" >
+                                   <el-input placeholder="请输入内容"></el-input>
+                               </el-form-item>
+                                <el-form-item label="偿债能力" >
+                                   <el-input placeholder="请输入内容"></el-input>
+                               </el-form-item>
+                                <el-form-item label="市场与渠道" >
+                                   <el-input placeholder="请输入内容"></el-input>
+                               </el-form-item>
+                            </el-form>
+                            <div slot="footer" class="dialog-footer">
+                               <el-button @click="credit = false">取 消</el-button>
+                               <el-button type="primary">确 定</el-button>
+                            </div>
+                        </el-dialog>
+				    
+				    <div>
+				    	<div class="structure">
+				    		<div class="stru">
+				    			<div class="str"><span>D</span></div>
+				    			<div class="div"></div>
+				    		</div>
+				    		<div class="ture">
+				    			<div class="tu">
+				    				<img src="../../../../image/11.jpg"/>
+					<div class="percent">
+						<span>1</span>
+						<span>100</span>
+					</div>
+								</div>
+								<div class="re">
+									<span>高风险....低于平均风险....低风险</span>
+								</div>
+				    		</div>
+				    	</div>
+				    		<div class="structure">
+				    		<div class="stru">
+				    			<div class="str"><span>P</span></div>
+				    			<div class="div"></div>
+				    		</div>
+				    		<div class="ture">
+				    			<div class="tu">
+				    				<img src="../../../../image/11.jpg"/>
+					<div class="percent">
+						<span>1</span>
+						<span>100</span>
+					</div>
+								</div>
+								<div class="re">
+									<span>高风险....低于平均风险....低风险</span>
+								</div>
+				    		</div>
+				    	</div>
+				    		<div class="structure">
+				    		<div class="stru">
+				    			<div class="str"><span>T</span></div>
+				    			<div class="div"></div>
+				    		</div>
+				    		<div class="ture">
+				    			<div class="tu">
+				    				<img src="../../../../image/11.jpg"/>
+					<div class="percent">
+						<span>1</span>
+						<span>100</span>
+					</div>
+								</div>
+								<div class="re">
+									<span>高风险....低于平均风险....低风险</span>
+								</div>
+				    		</div>
+				    	</div>
+				    		<div class="structure">
+				    		<div class="stru">
+				    			<div class="str"><span>O</span></div>
+				    			<div class="div"></div>
+				    		</div>
+				    		<div class="ture">
+				    			<div class="tu">
+				    				<img src="../../../../image/11.jpg"/>
+					<div class="percent">
+						<span>1</span>
+						<span>100</span>
+					</div>
+								</div>
+								<div class="re">
+									<span>高风险....低于平均风险....低风险</span>
+								</div>
+				    		</div>
+				    	</div>
+				    		<div class="structure">
+				    		<div class="stru">
+				    			<div class="str"><span>R</span></div>
+				    			<div class="div"></div>
+				    		</div>
+				    		<div class="ture">
+				    			<div class="tu">
+				    				<img src="../../../../image/11.jpg"/>
+					<div class="percent">
+						<span>1</span>
+						<span>100</span>
+					</div>
+								</div>
+								<div class="re">
+									<span>高风险....低于平均风险....低风险</span>
+								</div>
+				    		</div>
+				    	</div>
+				    		<div class="structure">
+				    		<div class="stru">
+				    			<div class="str"><span>G</span></div>
+				    			<div class="div"></div>
+				    		</div>
+				    		<div class="ture">
+				    			<div class="tu">
+				    				<img src="../../../../image/11.jpg"/>
+					<div class="percent">
+						<span>1</span>
+						<span>100</span>
+					</div>
+								</div>
+								<div class="re">
+									<span>高风险....低于平均风险....低风险</span>
+								</div>
+				    		</div>
+				    	</div>
+				    		<div class="structure">
+				    		<div class="stru">
+				    			<div class="str"><span>C</span></div>
+				    			<div class="div"></div>
+				    		</div>
+				    		<div class="ture">
+				    			<div class="tu">
+				    				<img src="../../../../image/11.jpg"/>
+					<div class="percent">
+						<span>1</span>
+						<span>100</span>
+					</div>
+								</div>
+								<div class="re">
+									<span>高风险....低于平均风险....低风险</span>
+								</div>
+				    		</div>
+				    	</div>
+				    		<div class="structure">
+				    		<div class="stru">
+				    			<div class="str"><span>I</span></div>
+				    			<div class="div"></div>
+				    		</div>
+				    		<div class="ture">
+				    			<div class="tu">
+				    				<img src="../../../../image/11.jpg"/>
+					<div class="percent">
+						<span>1</span>
+						<span>100</span>
+					</div>
+								</div>
+								<div class="re">
+									<span>高风险....低于平均风险....低风险</span>
+								</div>
+				    		</div>
+				    	</div>
+				    		<div class="structure">
+				    		<div class="stru">
+				    			<div class="str"><span>S</span></div>
+				    			<div class="div"></div>
+				    		</div>
+				    		<div class="ture">
+				    			<div class="tu">
+				    				<img src="../../../../image/11.jpg"/>
+					<div class="percent">
+						<span>1</span>
+						<span>100</span>
+					</div>
+								</div>
+								<div class="re">
+									<span>高风险....低于平均风险....低风险</span>
+								</div>
+				    		</div>
+				    	</div>
+				    		<div class="structure">
+				    		<div class="stru">
+				    			<div class="str"><span>M</span></div>
+				    			<div class="div"></div>
+				    		</div>
+				    		<div class="ture">
+				    			<div class="tu">
+				    				<img src="../../../../image/11.jpg"/>
+					<div class="percent">
+						<span>1</span>
+						<span>100</span>
+					</div>
+								</div>
+								<div class="re">
+									<span>高风险....低于平均风险....低风险</span>
+								</div>
+				    		</div>
+				    	</div>
+				    </div>
+				    
+				    </el-card>
+				
+				    <el-card class="box-card" shadow='nevner'>
+				    	<div slot="header" class="clearfix">
+					<div class="card-title">授信建议</div>
+					<div class="card-right-wrap">
+						<el-button  type="primary" size="medium">保存</el-button>
+					</div>
+				</div>
+				<div class="text-editor">
+					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
+				</div>
+				    </el-card>
+				    
+				    <el-card class="box-card" shadow='nevner'>
+				    	<div slot="header" class="clearfix">
+					<div class="card-title">融资用途</div>
+					<div class="card-right-wrap">
+						<el-button  type="primary" size="medium">保存</el-button>
+					</div>
+				</div>
+				<div class="text-editor">
+					<quill-editor :value="textEditorContent" :maxSize="10240"></quill-editor>
+				</div>
+				    </el-card>
 				</div>
 			</el-tab-pane>
+		
 		</el-tabs>
 	</div>
 </template>
 
 
 <script>
+	import quillEditor from "@/components/form/quillEditor.vue";
 export default {
   data() {
     return {
+    	 hgpj: false,
+    	 credit:false,
+    	textEditorContent: "",
 	  activeName: "first",
       labelPosition: "right",
       form: {
@@ -245,8 +738,17 @@ export default {
   },
   mounted() {
 	  this.loadQyjbxxData();
+	  this.redact();
   },
   methods: {
+  	   //点击标签页触发事件
+      handleClick(tab, event) {
+        //   console.log(tab, event);
+      },
+//    惠国评级
+      redact:async function() {
+      	console.log(11);
+      },
     // 获取企业得基本信息接口
     loadQyjbxxData: async function() {
       let params = {
@@ -338,6 +840,9 @@ export default {
 	    this.$message({ message: res.data.resultMsg, type: "warning" });
 	  }
   }
+  },
+  components: {
+    "quill-editor": quillEditor
   }
 };
 </script>
@@ -346,5 +851,178 @@ export default {
 .el-date-editor.el-input,
 .el-date-editor.el-input__inner {
   width: 100%;
+}
+$width: 100%;
+$display: inline-block;
+.check{
+	/*border: 1px solid red;*/
+	width: $width;
+	display: $display;
+}
+.check span{
+	margin-left: 5%;
+}
+$width: 20%;
+$margin-left: 10%;
+.check .el-col{
+	/*border: 1px solid red;*/
+	width: $width;
+	margin-left: $margin-left;
+}
+.assess{
+	border: 1px solid #CCCCCC;
+	width: 25%;
+	height: 150px;
+	float: left;
+	margin-left: 4%;
+	margin-bottom: 2%;
+}
+.ass{
+	border: 1px solid #CCCCCC;
+	width: 34%;
+	float: left;
+	padding: 4.3%;
+	/*color: #1D1D1D;*/
+	font-weight: bold;
+}
+.ess{
+	border: 1px solid #CCCCCC;
+	background: #F6F6F6;
+	color: #1790FF;
+	width: 66%;
+	float: left;
+	padding: 4.3%;
+}
+.as{
+	/*border: 1px solid red;*/
+	width: 100%;
+	margin-top: 3%;
+}
+.as span{
+	font-size: 15px;
+	margin-left: 3%;
+}
+.as span~span{
+	font-size: 13px;
+	color: #A6A6A6;
+	float: right;
+	margin-right: 3%;
+}
+.ss{
+	/*border: 1px solid red;*/
+	width: 100%;
+	text-align: center;
+	font-size: 30px;
+}
+.se{
+	/*border: 1px solid red;*/
+	width: 100%;
+}
+
+.percent{
+	/*border: 1px solid black;*/
+	width: 95%;
+	height: 20px;
+	margin-left: 2.5%;
+	/*margin-top: 4%;*/
+	margin-bottom: 2%;
+	border-radius: 15px;
+	
+	background: -webkit-linear-gradient(left, #FF7770 , #74E039);
+    background: -o-linear-gradient(right, #FF7770, #74E039);
+    background: -moz-linear-gradient(right, #FF7770, #74E039);
+    background: linear-gradient(to right, #FF7770 , #74E039);
+}
+.percent span{
+	float: left;
+	margin-left: 2%;
+}
+.percent span~span{
+	float: right;
+	margin-right: 2%;
+}
+
+.es{
+	/*border: 1px solid red;*/
+	width: 100%;
+	text-align: center;
+	font-size: 13px;
+	color: #A6A6A6;
+}
+
+	.card-title{
+		width: 80%;
+		float: left;
+		margin-top: 1%;
+		font-size: 15px;
+		font-weight: bold;
+	}
+.text-editor .ql-editor {
+  height: 300px;
+}
+$width: 80%;
+$float: left;
+.el-input{
+	width: $width;
+	float: $float;
+}
+.structure{
+	border: 1px solid #1790FF;
+	width: 35%;
+	height: 120px;
+	float: left;
+	margin-left: 5%;
+	margin-bottom: 2%;
+}
+.stru{
+	/*border: 1px solid red;*/
+	width: 25%;
+	height: 120px;
+	float: left;
+}
+.ture{
+	/*border: 1px solid red;*/
+	width: 75%;
+	height: 120px;
+	float: left;
+}
+.str{
+	background: #1790FF;
+	width: 85%;
+	height: 120px;
+	text-align: center;
+	float: left;
+}
+.str span{
+	color: white;
+	line-height: 120px;
+	font-size: 50px;
+}
+.div{
+    width: 0px;
+    height: 0px;
+    float: left;
+    margin-top: 47%;
+    border-width: 8px;
+    border-style: dashed dashed dashed solid;
+border-color: transparent transparent transparent #1790FF;
+}
+.tu{
+	/*border: 1px solid red;*/
+	width: 100%;
+	text-align: center;
+	margin-top: 8%;
+}
+.re{
+	/*border: 1px solid red;*/
+	width: 100%;
+	text-align: center;
+	font-size: 13px;
+	color: #A6A6A6;
+}
+img{
+	position: relative;
+	top: 16px;
+	left: 15px;
 }
 </style>

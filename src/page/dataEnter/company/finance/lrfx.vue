@@ -42,7 +42,7 @@
 						</div>
 						<!-- 表格容器 -->
 						<div>
-							<el-table :data="tableData_1" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%">
+							<el-table :data="tableData_1" v-loading.body="listLoading" border fit highlight-current-row show-summary :summary-method="getSummaries" style="width: 100%;">
 								
 								<el-table-column  :label="tableData_1_columns.sbmc" width="127">
 									<template slot-scope="scope">
@@ -51,47 +51,77 @@
 									</template>
 								</el-table-column>
 								<el-table-column  :label="tableData_1_columns.year1" prop="year1" width="127">
+										<el-table-column  :label="tableData_1_columns.sre1" prop="sre1" width="70">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.year1" :class="Object.keys(tableData_1_columns)[2]" v-if="scope.row.edit" size="small"></el-input>
-										<span v-else>{{ scope.row.year1}}</span>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.sre1" :class="Object.keys(tableData_1_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.sre1}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column  :label="tableData_1_columns.zb1" prop="zb1" width="127">
+									<el-table-column  :label="tableData_1_columns.zb1" prop="zb1" >
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zb1" :class="Object.keys(tableData_1_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zb1}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column  :label="tableData_1_columns.year2" prop="year2" width="127">
+									<el-table-column  :label="tableData_1_columns.mll1" prop="mll1" width="70">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.year2" :class="Object.keys(tableData_1_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
-										<span v-else>{{ scope.row.year2}}</span>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.mll1" :class="Object.keys(tableData_1_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.mll1}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column  :label="tableData_1_columns.zb2" prop="zb2" width="127">
+									
+								</el-table-column>
+								
+								<el-table-column  :label="tableData_1_columns.year2" prop="year2" width="127">
+									<el-table-column  :label="tableData_1_columns.sre2" prop="sre2" width="70">
+									<template slot-scope="scope">
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.sre2" :class="Object.keys(tableData_1_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.sre2}}</span>
+									</template>
+								</el-table-column>
+									<el-table-column  :label="tableData_1_columns.zb2" prop="zb2">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zb2" :class="Object.keys(tableData_1_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zb2}}</span>
 									</template>
 								</el-table-column>
-								<el-table-column  :label="tableData_1_columns.year3" prop="year3" width="127">
+									<el-table-column  :label="tableData_1_columns.mll2" prop="mll2" width="70">
 									<template slot-scope="scope">
-										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.year3" :class="Object.keys(tableData_1_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
-										<span v-else>{{ scope.row.year3}}</span>
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.mll2" :class="Object.keys(tableData_1_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.mll2}}</span>
 									</template>
 								</el-table-column>
-									<el-table-column  :label="tableData_1_columns.zb3" prop="zb3" width="127">
+								</el-table-column>
+								
+								<el-table-column  :label="tableData_1_columns.year3" prop="year3" width="127">
+										<el-table-column  :label="tableData_1_columns.sre3" prop="sre3" width="70">
+									<template slot-scope="scope">
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.sre3" :class="Object.keys(tableData_1_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.sre3}}</span>
+									</template>
+								</el-table-column>
+										<el-table-column  :label="tableData_1_columns.zb3" prop="zb3">
 									<template slot-scope="scope">
 										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.zb3" :class="Object.keys(tableData_1_columns)[4]" v-if="scope.row.edit" size="small"></el-input>
 										<span v-else>{{ scope.row.zb3}}</span>
 									</template>
 								</el-table-column>
+									<el-table-column  :label="tableData_1_columns.mll3" prop="mll3" width="70">
+									<template slot-scope="scope">
+										<el-input class="edit-input cellItem el-form-item" v-model.number="scope.row.mll3" :class="Object.keys(tableData_1_columns)[3]" v-if="scope.row.edit" size="small"></el-input>
+										<span v-else>{{ scope.row.mll3}}</span>
+									</template>
+								</el-table-column>
+								</el-table-column>
+								
 								<el-table-column align="center" label="操作">
 									<template slot-scope="scope">
 										<v-tableOperation :scope="scope" :tableData="tableData_1" v-on:verify="verify1" v-on:acceptDelRow='acceptDelRow1'></v-tableOperation>
 									</template>
 								</el-table-column>
 							</el-table>
+
+							
 							<v-tabelAddBtn :tableData="tableData_1" :tableData_columns="tableData_1_columns"></v-tabelAddBtn>
 						</div>
 					</el-card>
@@ -145,12 +175,18 @@ export default {
       updateData_1: [],
       tableData_1_columns: {
         sbmc: "收入类别",
-        year1:"2014",
-        zb1:"占比(%)",
-         year2:"2015",
-        zb2:"占比(%)",
-         year3:"2015",
-        zb3:"占比(%)",
+        year1:"2015年",
+        sre1:"收入额",
+        zb1:"占营业收入比例(%)",
+        mll1:"毛利率",
+        year2:"2016年",
+        sre2:"收入额",
+        zb2:"占营业收入比例(%)",
+        mll2:"毛利率",
+        year3:"2017年",
+        sre3:"收入额",
+        zb3:"占营业收入比例(%)",
+        mll3:"毛利率",
         edit: false
       },
       activeName: "first",
@@ -161,24 +197,33 @@ export default {
       	sbmc:[
       	{ required: true, message: "不能为空" }
       	],
-      	year1:[
-      	{ required: true, message: "不能为空" }
+      	sre1:[
+      	{}
       	],
       	zb1:[
       	{ required: true, message: "不能为空" }
       	],
-      	year2:[
-      	{ required: true, message: "不能为空" }
+      	mll1:[
+      	{required: true, message: "不能为空"}
+      	],
+      	sre2:[
+      	{required: true, message: "不能为空"}
       	],
       	zb2:[
       	{ required: true, message: "不能为空" }
       	],
-      	year3:[
-      	{ required: true, message: "不能为空" }
+      	mll2:[
+      	{required: true, message: "不能为空"}
+      	],
+      	sre3:[
+      	{required: true, message: "不能为空"}
       	],
       	zb3:[
       	{ required: true, message: "不能为空" }
       	],
+      	mll3:[
+      	{required: true, message: "不能为空"}
+      	]
       },
 }
   },
@@ -283,27 +328,15 @@ export default {
 .text-editor .ql-editor {
   height: 200px;
 }
-.el-table th {
-    border-bottom: 1px solid #ebeef5;
+
+/*.el-table{
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     text-align: center;
-    background: #F4F3F3;
-    color: black;
-}
-/*$float: left;
-$padding: 8px;
-$margin-left: 5px;
-.el-table .el-button{
-	float: $float;
-	padding: $padding;
-	margin-left: $margin-left;
-}
-$padding: 8px;
-$margin-left: 5px;
-.el-table .el-button+.el-button{
-	padding: $padding;
-	margin-left: $margin-left;
-}
-.el-table .cell, .el-table th div, .el-table--border td:first-child .cell, .el-table--border th:first-child .cell{
-	padding-left: 0px;
 }*/
+
 </style>

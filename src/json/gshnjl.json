@@ -5,16 +5,20 @@
 		"data": {
 			"rows": [
 				{
-			"name":2001,
+			"name":"用水记录",
 			"idNumber":238945188508138884,
 			"phone":13387649098
 			},
 			{
-			"name":2001,
+		    "name":"用电记录",
+			"idNumber":238945188508138884,
+			"phone":13387649098
+			},
+		{
+		    "name":"用天热气记录",
 			"idNumber":238945188508138884,
 			"phone":13387649098
 			}
-		
 		  ]
 		},
 		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzY1MTY3MjAsImlhdCI6MTUzMDUxNjcyMH0.O-qww3k41rgLhQ0PQjsEAFcJp-2BL6ckPCk7SWtssso"

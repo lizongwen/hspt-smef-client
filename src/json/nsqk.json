@@ -5,79 +5,81 @@
 		"data": {
 			"rows": [
 				{
-            "project":"实缴额",
+			"project1":"增值税",
+            "project2":"实缴额",
 			"year1":4111,
 			"year2":2000,
 			"year3":6
 			},
 			{
-			"project":"退税额",
+			"project1":"增值税",
+			"project2":"退税额",
 			"year1":4111,
 			"year2":2000,
 			"year3":6
 			},
 				{
-            "project":"企业所得税",
+            "project2":"企业所得税",
 			"year1":4111,
 			"year2":2000,
 			"year3":6
 			},
 				{
-            "project":"城建税",
+            "project2":"城建税",
 			"year1":4111,
 			"year2":2000,
 			"year3":6
 			},
 				{
-            "project":"土地使用税",
+            "project2":"土地使用税",
 			"year1":4111,
 			"year2":2000,
 			"year3":6
 			},
 				{
-            "project":"房产税",
+            "project2":"房产税",
 			"year1":4111,
 			"year2":2000,
 			"year3":6
 			},
 				{
-            "project":"印花税",
+            "project2":"印花税",
 			"year1":4111,
 			"year2":2000,
 			"year3":6
 			},
 				{
-            "project":"营业税",
+            "project2":"营业税",
 			"year1":4111,
 			"year2":2000,
 			"year3":6
 			},
 				{
-            "project":"教育费附加税",
+            "project2":"教育费附加税",
 			"year1":4111,
 			"year2":2000,
 			"year3":6
 			},
 				{
-            "project":"地方教育附加",
+            "project2":"地方教育附加",
 			"year1":4111,
 			"year2":2000,
 			"year3":6
 			},
 				{
-            "project":"个人所得税",
+            "project2":"个人所得税",
 			"year1":4111,
 			"year2":2000,
 			"year3":6
 			},
 				{
-            "project":"水利基金",
+            "project2":"水利基金",
 			"year1":4111,
 			"year2":2000,
 			"year3":6
 			},
 				{
-            "project":"其他税费",
+            "project2":"其他税费",
 			"year1":4111,
 			"year2":2000,
 			"year3":6
