@@ -439,6 +439,8 @@ options: [{
     },
     
     getValue: function(value){
+//	alert(this.value.label)
+//	this.options.value.label=""
     this.searchForm.searchInput=value.label
     },
     
