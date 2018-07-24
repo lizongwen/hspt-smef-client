@@ -21,10 +21,10 @@
 						<tr>
 							<th>项目</th>
 							<th>2015年</th>
-							<th>变化</th>
+							<!--<th>变化</th>
 							<th>2016年</th>
 							<th>变化</th>
-							<th>2017年</th>
+							<th>2017年</th>-->
 						</tr>
 						</table>
 						<table lay-skin="line">
