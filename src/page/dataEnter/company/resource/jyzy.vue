@@ -444,15 +444,15 @@ export default {
       },
       //-----------------------------规则-------------------------------------//
       rules_tdxx: {
-        syzh: [{ required: true, message: "土地证号是必填项" }],
-        zl: [{ required: true, message: "坐落是必填项" }],
-        yt: [{ required: true, message: "用途是必填项" }],
-        qdjg: [{ required: true, message: "取得价格是必填项" }],
-        syqlx: [{ required: true, message: "使用权类型是必填项" }],
-        zzrq: [{ required: true, message: "终止日期是必填项" }],
-        mj: [{ required: true, message: "面积是必填项" }],
-        ywtxql: [{ required: true, message: "有无他项权利是必填项" }],
-        rzed: [{ required: true, message: "融资额度是必填项" }]
+        // syzh: [{ required: true, message: "土地证号是必填项" }],
+        // zl: [{ required: true, message: "坐落是必填项" }],
+        // yt: [{ required: true, message: "用途是必填项" }],
+        // qdjg: [{ required: true, message: "取得价格是必填项" }],
+        // syqlx: [{ required: true, message: "使用权类型是必填项" }],
+        // zzrq: [{ required: true, message: "终止日期是必填项" }],
+        // mj: [{ required: true, message: "面积是必填项" }],
+        // ywtxql: [{ required: true, message: "有无他项权利是必填项" }],
+        // rzed: [{ required: true, message: "融资额度是必填项" }]
       },
       rules_fcxx: {
         fqzh: [{ required: true, message: "房产证号是必填项" }],

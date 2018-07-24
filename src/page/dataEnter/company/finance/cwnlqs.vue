@@ -668,41 +668,59 @@ options: [{
 </script>
 
 <style lang="scss">
+	$width: 100%;
+  $background: #f4f3f3;
+  $border-collapse: collapse;
 table {
-  width: 100%;
-  background: #f4f3f3;
-  border-collapse: collapse;
+  width: $width;
+  background: $background;
+  border-collapse: $border-collapse;
 }
+$border-bottom: 1px solid #d8d8d8;
 table tr {
-  border-bottom: 1px solid #d8d8d8;
+  border-bottom: $border-bottom;
 }
+ $height: 40px;
+  $text-align: left;
+  $padding-left: 20px;
 table tr th {
-  height: 40px;
-  text-align: left;
-  padding-left: 20px;
+  height: $height;
+  text-align: $text-align;
+  padding-left: $padding-left;
 }
+$height: 40px;
+  $text-align: left;
+  $padding-left: 20px;
+  $background: white;
 table tr td {
-  height: 40px;
-  text-align: left;
-  padding-left: 20px;
-  background: white;
+  height: $height;
+  text-align: $text-align;
+  padding-left: $padding-left;
+  background: $background;
 }
+$margin-top: 20px;
 .clear {
-  /*border-top: 1px solid #F6F6F6;
-	border-bottom: 1px solid #F6F6F6;*/
-  margin-top: 20px;
+  margin-top: $margin-top;
 }
+$margin-top: 20px;
 .clearfix {
-  margin-top: 20px;
+  margin-top: $margin-top;
 }
+  $width: 100%;
+  $height: 200px;
+  $background: #eef9ff;
+  $margin-top: 20px;
+  $margin-bottom: 20px;
+  $text-align: center;
+  $line-height: 200px;
 .img {
-  width: 100%;
-  height: 200px;
-  background: #eef9ff;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  text-align: center;
-  line-height: 200px;
+  width: $width;
+  height: $height;
+  background: $background;
+  margin-top: $margin-top;
+  margin-bottom:  $margin-bottom;
+  text-align: $text-align;
+  line-height: $line-height;
 }
 .text-editor {
   margin-top: 15px;
@@ -710,7 +728,10 @@ table tr td {
 .text-editor .ql-editor {
   height: 200px;
 }
-$width: 30%;$height: 45px;$position: relative;$left: 70%;
+$width: 30%;
+$height: 45px;
+$position: relative;
+$left: 70%;
 .select{
 	width: $width;
 	height: $height;

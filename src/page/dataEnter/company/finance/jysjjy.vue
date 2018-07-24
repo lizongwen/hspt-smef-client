@@ -288,28 +288,41 @@ import quillEditor from "@/components/form/quillEditor.vue";
 </script>
 
 <style lang="scss">
+	$width: 100%;
+		$background: white;
+		$padding: 20px;
 		.clear{
-		width: 100%;
-		background: white;
-		padding: 20px;
+		width: $width;
+		background: $background;
+		padding: $padding;
 	}
+	$padding-bottom: 20px;
 	.clearf{
-		padding-bottom: 20px;
+		padding-bottom: $padding-bottom;
 	}
+	$font-size: 15px;
+	$font-weight: bolder;
 .card-title{
-	font-size: 15px;
-	font-weight: bolder;
+	font-size: $font-size;
+	font-weight: $font-weight;
 }
+$width: 100%;
+	$height: 200px;
+	$background: #EEF9FF;
+	$margin-top: 20px;
+	$margin-bottom: 20px;
+	$text-align: center;
+	$line-height:200px;
 .img{
-	width: 100%;
-	height: 200px;
-	background: #EEF9FF;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	text-align: center;
-	line-height:200px;
+	width: $width;
+	height: $height;
+	background: $background;
+	margin-top: $margin-top;
+	margin-bottom: $margin-bottom;
+	text-align: $text-align;
+	line-height:$line-height;
 }
-table {
+/*table {
   width: 100%;
   background: #f4f3f3;
   border-collapse: collapse;
@@ -327,5 +340,35 @@ table tr td {
   text-align: left;
   padding-left: 20px;
   background: white;
+}*/
+$width: 100%;
+  $background: #f4f3f3;
+  $border-collapse: collapse;
+table {
+  width: $width;
+  background: $background;
+  border-collapse: $border-collapse;
+}
+$border-bottom: 1px solid #d8d8d8;
+table tr {
+  border-bottom: $border-bottom;
+}
+ $height: 40px;
+  $text-align: left;
+  $padding-left: 20px;
+table tr th {
+  height: $height;
+  text-align: $text-align;
+  padding-left: $padding-left;
+}
+$height: 40px;
+  $text-align: left;
+  $padding-left: 20px;
+  $background: white;
+table tr td {
+  height: $height;
+  text-align: $text-align;
+  padding-left: $padding-left;
+  background: $background;
 }
 </style>

@@ -336,31 +336,96 @@
                               
                               <table border="1" cellspacing="0" cellpadding="0" style="text-align: center;">
                               	<tr>
-                              		<th>项目</th>
+                              		<th colspan="2">项目</th>
                               		<th>2015年</th>
                               		<th>2016年</th>
                               		<th>2017年</th>
                               	</tr>
                              
                               	<tr>
-                              		<td>企业所得税</td>
-                              		<td>企业所得税</td>
-                              		<td>企业所得税</td>
-                              		<td>企业所得税</td>
-                              		<td>企业所得税</td>
+                              		<td rowspan="2">增值税</td>
+                              		<td>实缴额</td>
+                              		<td></td>
+                              		<td></td>
+                              		<td></td>
                               	</tr>
                               	<tr>
-                              		<td>企业所得税</td>
-                              		<td>企业所得税</td>
-                              		<td>企业所得税</td>
-                              		<td>企业所得税</td>
-                              		<td>企业所得税</td>
+                              		<td>退税额</td>
+                              		<td></td>
+                              		<td></td>
+                              		<td></td>
                               	</tr>
                               	<tr>
-                              		<td>企业所得税</td>
-                              		<td>企业所得税</td>
-                              		<td>企业所得税</td>
-                              		<td>企业所得税</td>
+                              		<td colspan="2">企业所得税</td>
+                              		<td></td>
+                              		<td></td>
+                              		<td></td>
+                              	</tr>
+                              	<tr>
+                              		<td colspan="2">城建税</td>
+                              		<td></td>
+                              		<td></td>
+                              		<td></td>
+                              	</tr>
+                              	<tr>
+                              		<td colspan="2">土地使用税</td>
+                              		<td></td>
+                              		<td></td>
+                              		<td></td>
+                              	</tr>
+                              	<tr>
+                              		<td colspan="2">房产税</td>
+                              		<td></td>
+                              		<td></td>
+                              		<td></td>
+                              	</tr>
+                              	<tr>
+                              		<td colspan="2">印花税</td>
+                              		<td></td>
+                              		<td></td>
+                              		<td></td>
+                              	</tr>
+                              	<tr>
+                              		<td colspan="2">营业税</td>
+                              		<td></td>
+                              		<td></td>
+                              		<td></td>
+                              	</tr>
+                              	<tr>
+                              		<td colspan="2">教育费附加税</td>
+                              		<td></td>
+                              		<td></td>
+                              		<td></td>
+                              	</tr>
+                              	<tr>
+                              		<td colspan="2">地方教育附加</td>
+                              		<td></td>
+                              		<td></td>
+                              		<td></td>
+                              	</tr>
+                              	<tr>
+                              		<td colspan="2">个人所得税</td>
+                              		<td></td>
+                              		<td></td>
+                              		<td></td>
+                              	</tr>
+                              	<tr>
+                              		<td colspan="2">水利基金</td>
+                              		<td></td>
+                              		<td></td>
+                              		<td></td>
+                              	</tr>
+                              	<tr>
+                              		<td colspan="2">其他税费</td>
+                              		<td></td>
+                              		<td></td>
+                              		<td></td>
+                              	</tr>
+                              	<tr>
+                              		<td colspan="2">合计</td>
+                              		<td></td>
+                              		<td></td>
+                              		<td></td>
                               	</tr>
                               </table>
                              
@@ -392,87 +457,14 @@ export default {
 data() {
       return {
       	textEditorContent: "",
-      	tableData: [
-      	{
-      		project:"实缴额",
-      		
-      	},
-      	{
-      		project:"退税额",
-      		
-      	},
-      	{
-      		project:"企业所得税"
-      	},
-      	{
-      		project:"城建税"
-      	},
-      	{
-      		project:"土地使用税"
-      	},
-      	{
-      		project:"房产税"
-      	},
-      	{
-      		project:"印花税"
-      	},
-      	{
-      		project:"营业税"
-      	},
-      	{
-      		project:"教育费附加税"
-      	},
-      	{
-      		project:"地方教育费附加"
-      	},
-      	{
-      		project:"个人所得税"
-      	},
-      	{
-      		project:"水利基金"
-      	},
-      	{
-      		project:"其他税费"
-      	}
-      	],
-        tableData_columns: {
-        project: "项目",
-        year1:"2015",  
-        year2:"2016",
-        year3:"2017"    
-      },
- 
-   }
+      }
+
     },
      mounted() {
-    this.getNsqk();
+//  this.getNsqk();
   },
    methods: {
-   	//合并列
-// 	   arraySpanMethod({ row, column, rowIndex, columnIndex }) {
-//      if (rowIndex % 2 === 0) {
-//        if (columnIndex === 0) {
-//          return [1, 2];
-//        } else if (columnIndex === 1) {
-//          return [0, 0];
-//        }
-//      }
-//    },
-// 	 objectSpanMethod({ row, column, rowIndex, columnIndex }) {
-//      if (columnIndex === 0) {
-//        if (rowIndex % 2 === 0) {
-//          return {
-//            rowspan: 2,
-//            colspan: 1
-//          };
-//        } else {
-//          return {
-//            rowspan: 0,
-//            colspan: 0
-//          };
-//        }
-//      }
-//    },
+   	
    
 
 
@@ -566,47 +558,50 @@ $height: 30px;
 	float: left;
 	margin-left: 70px;
 }
+$width: 100%;
+$background: #f4f3f3;
+$border-collapse: collapse;
+ $text-align: center;
 table {
-  width: 100%;
-  background: #f4f3f3;
-  border-collapse: collapse;
+  width: $width;
+  background: $background;
+  border-collapse: $border-collapse;
+  text-align: $text-align;
 }
 /*table tr {
   border-bottom: 1px solid #d8d8d8;
 }*/
+$width: 25%;
+$height: 40px;
+$text-align: center;
+$padding-left: 20px;
 table tr th {
-  height: 40px;
-  text-align: left;
-  padding-left: 20px;
+  width: $width;
+  height: $height;
+  text-align: $text-align;
+  padding-left: $padding-left;
 }
+ $height: 40px;
+ $text-align: center;
+ $padding-left: 20px;
+ $background: white;
 table tr td {
-  height: 40px;
-  text-align: left;
-  padding-left: 20px;
-  background: white;
+  height: $height;
+  text-align:  $text-align;
+  padding-left: $padding-left;
+  background: $background;
 }
- /*.el-table th {
-    border-bottom: 1px solid #ebeef5;
-    text-align: center;
-    background: #F4F3F3;
-    color: black;
-}
-.el-table td{
-	border-bottom: 1px solid #ebeef5;
-    text-align: center;
-    background: white;
-    color: black;
-}*/                                                                                                   
+
+$margin-top: 20px;                                                                                                  
 .clearfix{
-	margin-top: 20px;
+	margin-top: $margin-top;
 }
+$margin-top: 15px;  
 .text-editor {
-	margin-top: 15px;
+	margin-top: $margin-top;
 }
 .text-editor .ql-editor {
   height: 200px;
 }
-.cell{
-	/*border: 1px solid red;*/
-}
+
 </style>

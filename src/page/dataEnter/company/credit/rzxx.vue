@@ -6,7 +6,7 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <el-button @click="saveBankInfo" class="save" type="primary" size="medium">保存</el-button>
+                <el-button @click="saveBankInfo" class="save" type="primary" size="medium" :loading="loadingStatus_bank">保存</el-button>
               </div>
               <div class="card-title">主要往来银行信息</div>
             </div>
@@ -58,7 +58,7 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <el-button @click="saveYhwjqxded" class="save" type="primary" size="medium">保存</el-button>
+                <el-button @click="saveYhwjqxded" class="save" type="primary" size="medium" :loading="loadingStatus_xd">保存</el-button>
               </div>
               <div class="card-title">银行未结清信贷额度</div>
             </div>
@@ -131,7 +131,7 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <el-button class="save" type="primary" size="medium" @click="saveWjqyhcdhp">保存</el-button>
+                <el-button class="save" type="primary" size="medium" @click="saveWjqyhcdhp" :loading="loadingStatus_cdhp">保存</el-button>
               </div>
               <div class="card-title">未结清银行承兑汇票</div>
             </div>
@@ -214,7 +214,7 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <el-button class="save" type="primary" size="medium" @click="saveXyz">保存</el-button>
+                <el-button class="save" type="primary" size="medium" @click="saveXyz" :loading="loadingStatus_xyz">保存</el-button>
               </div>
               <div class="card-title">信用证</div>
             </div>
@@ -297,7 +297,7 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <el-button  class="save" type="primary" size="medium" @click="saveWdqbh">保存</el-button>
+                <el-button  class="save" type="primary" size="medium" @click="saveWdqbh" :loading="loadingStatus_wdqbh">保存</el-button>
               </div>
               <div class="card-title">未到期的保函</div>
             </div>
@@ -361,7 +361,7 @@
           <el-card class="box-card" shadow='nevner'>
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <el-button @click="saveDcdyxx" class="save" type="primary" size="medium">保存</el-button>
+                <el-button @click="saveDcdyxx" class="save" type="primary" size="medium" :loading="loadingStatus_dcdy">保存</el-button>
               </div>
               <div class="card-title">动产融资信息</div>
             </div>
@@ -511,7 +511,7 @@
           <el-card class="box-card">
             <div slot="header" class="clearfix">
               <div class="card-right-wrap">
-                <el-button @click="saveXj" class="save" type="primary" size="medium">保存</el-button>
+                <el-button @click="saveXj" class="save" type="primary" size="medium" :loading="loadingStatus_yxfz">保存</el-button>
               </div>
               <div class="card-title">小结</div>
             </div>
@@ -538,6 +538,7 @@
         activeName: "first",
         listLoading: false,
         textarea: "",
+        loadingStatus_bank: false,
         addData_bank: [],
         updateData_bank: [],
         deleteData_bank: [],
@@ -552,6 +553,7 @@
         }, //表格列字段
         rules_bank: {},
 
+        loadingStatus_xd: false,
         addData_xd: [],
         updateData_xd: [],
         deleteData_xd: [],
@@ -569,7 +571,7 @@
         }, //表格列字段
         rules_xd:{},
 
-
+        loadingStatus_cdhp: false,
         addData_cdhp: [],
         updateData_cdhp: [],
         deleteData_cdhp: [],
@@ -588,6 +590,8 @@
         }, //表格列字段
         rules_cdhp:{},
 
+
+        loadingStatus_xyz: false,
         addData_xyz: [],
         updateData_xyz: [],
         deleteData_xyz: [],
@@ -606,6 +610,8 @@
         }, //表格列字段
         rules_xyz: {},
 
+
+        loadingStatus_wdqbh: false,
         addData_wdqbh: [],
         updateData_wdqbh: [],
         deleteData_wdqbh: [],
@@ -622,6 +628,7 @@
         rules_wdqbh: {},
 
 
+        loadingStatus_dcdy: false,
         addData_dcdy: [],
         updateData_dcdy: [],
         deleteData_dcdy: [],
@@ -640,7 +647,7 @@
         }, //表格列字段
         rules_dcdy: {},
 
-
+        loadingStatus_yxfz: false,
         addData_yxfz: [],
         updateData_yxfz: [],
         deleteData_yxfz: [],
@@ -694,9 +701,15 @@
       },
       //保存主要往来银行信息
       saveBankInfo: async function () {
+        this.loadingStatus_bank = true;
         this.tableData_bank.forEach((item, index) => {
           if (item.id == null) {
-            this.addData_bank.push(item);
+            if(item.yhmc != null &&
+              item.yhzhlb != null &&
+              item.zh != null &&
+              item.zhsypl != null){
+              this.addData_bank.push(item);
+            }
           }
         });
         let params = {
@@ -714,12 +727,13 @@
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
           this.getBankInfo();
-          this.deleteData_bank = [];
-          this.updateData_bank = [];
-          this.addData_bank = [];
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadingStatus_bank = false;
+        this.deleteData_bank = [];
+        this.updateData_bank = [];
+        this.addData_bank = [];
       },
       //接受主要往来银行删除的数据
       acceptDelRow_bank(val) {
@@ -756,9 +770,18 @@
       },
       //保存银行未结清信贷额度信息
       saveYhwjqxded: async function () {
+        this.loadingStatus_xd = true;
         this.tableData_xd.forEach((item, index) => {
           if (item.id == null) {
-            this.addData_xd.push(item);
+            if(item.yhmc != null &&
+              item.cxsj != null &&
+              item.xdedlx != null &&
+              item.dydb != null &&
+              item.sxed != null &&
+              item.dkye != null &&
+              item.dkcb != null){
+              this.addData_xd.push(item);
+            }
           }
         });
         let params = {
@@ -775,13 +798,14 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
-          this.deleteData_xd = [];
-          this.updateData_xd = [];
-          this.addData_xd = [];
           this.getYhwjqxded();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadingStatus_xd = false;
+        this.deleteData_xd = [];
+        this.updateData_xd = [];
+        this.addData_xd = [];
       },
       //接受银行未结清信贷额度删除的数据
       acceptDelRow_xd(val) {
@@ -820,9 +844,19 @@
       },
       //保存未结清银行承兑汇票信息
       saveWjqyhcdhp: async function () {
+        this.loadingStatus_cdhp = true;
         this.tableData_cdhp.forEach((item, index) => {
           if (item.id == null) {
-            this.addData_cdhp.push(item);
+            if(item.yhmc != null &&
+              item.bs != null &&
+              item.dqrxy30t != null &&
+              item.dqrxy60t != null &&
+              item.dqrxydy90t != null &&
+              item.dqrdy90t != null &&
+              item.hj != null &&
+              item.ck != null){
+              this.addData_cdhp.push(item);
+            }
           }
         });
         let params = {
@@ -839,13 +873,14 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
-          this.deleteData_cdhp = [];
-          this.updateData_cdhp = [];
-          this.addData_cdhp= [];
           this.getWjqyhcdhp();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadingStatus_cdhp = false;
+        this.deleteData_cdhp = [];
+        this.updateData_cdhp = [];
+        this.addData_cdhp= [];
       },
       //接受未结清银行承兑汇票删除的数据
       acceptDelRow_cdhp(val) {
@@ -883,9 +918,19 @@
       },
       //保存信用证信息
       saveXyz: async function () {
+        this.loadingStatus_xyz = true;
         this.tableData_xyz.forEach((item, index) => {
           if (item.id == null) {
-            this.addData_xyz.push(item);
+            if(item.yhmc != null &&
+              item.bs != null &&
+              item.dqrxy30t != null &&
+              item.dqrxy60t != null &&
+              item.dqrxydy90t != null &&
+              item.dqrdy90t != null &&
+              item.hj != null &&
+              item.ck != null){
+              this.addData_xyz.push(item);
+            }
           }
         });
         let params = {
@@ -902,13 +947,14 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
-          this.deleteData_xyz = [];
-          this.updateData_xyz = [];
-          this.addData_xyz= [];
           this.getXyz();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadingStatus_xyz = false;
+        this.deleteData_xyz = [];
+        this.updateData_xyz = [];
+        this.addData_xyz= [];
       },
       //接受信用证删除的数据
       acceptDelRow_xyz(val) {
@@ -947,9 +993,16 @@
       },
       //保存未到期的保函信息
       saveWdqbh: async function () {
+        this.loadingStatus_wdqbh = true;
         this.tableData_wdqbh.forEach((item, index) => {
           if (item.id == null) {
-            this.addData_wdqbh.push(item);
+            if(item.yhmc != null &&
+              item.klsj != null &&
+              item.dqsj != null &&
+              item.je != null &&
+              item.ck != null){
+              this.addData_wdqbh.push(item);
+            }
           }
         });
         let params = {
@@ -966,13 +1019,14 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
-          this.deleteData_wdqbh = [];
-          this.updateData_wdqbh = [];
-          this.addData_wdqbh= [];
           this.getWdqbh();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadingStatus_wdqbh = false;
+        this.deleteData_wdqbh = [];
+        this.updateData_wdqbh = [];
+        this.addData_wdqbh= [];
       },
       //接受未到期的保函数据
       acceptDelRow_wdqbh(val) {
@@ -1012,9 +1066,19 @@
 
       //保存动产融资信息
       saveDcdyxx: async function () {
+        this.loadingStatus_dcdy = true;
         this.tableData_dcdy.forEach((item, index) => {
           if (item.id == null) {
-            this.addData_dcdy.push(item);
+            if(item.djrq != null &&
+              item.djh != null &&
+              item.bdbzqlx != null &&
+              item.bdbzqse != null &&
+              item.zwqx != null &&
+              item.dyqr != null &&
+              item.djjg != null &&
+              item.zt != null){
+              this.addData_dcdy.push(item);
+            }
           }
         });
         let params = {
@@ -1030,13 +1094,14 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
-          this.deleteData_dcdy = [];
-          this.updateData_dcdy = [];
-          this.addData_dcdy = [];
           this.getDcdyxx();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadingStatus_dcdy = false;
+        this.deleteData_dcdy = [];
+        this.updateData_dcdy = [];
+        this.addData_dcdy = [];
       },
 
       //接受动产融资删除的数据
@@ -1076,9 +1141,17 @@
 
       //保存其他融资信息
       saveYxfz: async function () {
+        this.loadingStatus_yxfz = true;
         this.tableData_yxfz.forEach((item, index) => {
           if (item.id == null) {
-            this.addData_yxfz.push(item);
+            if(item.jkjg != null &&
+              item.jksj != null &&
+              item.jkje != null &&
+              item.dqsj != null &&
+              item.zxfs != null &&
+              item.rzyt != null){
+              this.addData_yxfz.push(item);
+            }
           }
         });
         let params = {
@@ -1095,13 +1168,14 @@
         );
         if (res.data.resultCode == "0") {
           this.$message({message: res.data.resultMsg, type: "success"});
-          this.deleteData_yxfz = [];
-          this.updateData_yxfz = [];
-          this.addData_yxfz = [];
           this.getYxfz();
         } else {
           this.$message({message: res.data.resultMsg, type: "warning"});
         }
+        this.loadingStatus_yxfz = false;
+        this.deleteData_yxfz = [];
+        this.updateData_yxfz = [];
+        this.addData_yxfz = [];
       },
       //接受其他融资删除的数据
       acceptDelRow_yxfz(val) {

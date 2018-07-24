@@ -483,7 +483,7 @@ textEditorContent: "",
 </script>
 
 <style lang="scss">
-table{
+/*table{
 	width: 100%;
 	background:#F4F3F3;
 	border-collapse:collapse;
@@ -502,9 +502,42 @@ table tr td{
 	padding-left: 20px;
 	background: white;
 
+}*/
+$width: 100%;
+$background: #f4f3f3;
+$border-collapse: collapse;
+table {
+  width: $width;
+  background: $background;
+  border-collapse: $border-collapse;
 }
+$border-bottom: 1px solid #d8d8d8;
+table tr {
+  border-bottom: $border-bottom;
+}
+
+$height: 40px;
+$text-align: left;
+$padding-left: 20px;
+table tr th {
+
+  height: $height;
+  text-align: $text-align;
+  padding-left: $padding-left;
+}
+ $height: 40px;
+ $text-align: left;
+ $padding-left: 20px;
+ $background: white;
+table tr td {
+  height: $height;
+  text-align:  $text-align;
+  padding-left: $padding-left;
+  background: $background;
+}
+$margin-top: 30px;;
 .clearfix{
-	margin-top: 30px;;
+	margin-top: $margin-top;;
 }
 .text-editor {
 	margin-top: 15px;

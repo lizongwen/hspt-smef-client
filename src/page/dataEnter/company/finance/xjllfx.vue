@@ -262,14 +262,15 @@ export default {
 </script>
 
 <style lang="scss">
+	
+	    $width: 100%;
+		$background:white;
+		$padding: 20px;
 	.clear{
-		width: 100%;
-		background: white;
-		padding: 20px;
+		width: $width;
+		background: $background;
+		padding: $padding;
 	}
-	/*.clearf{
-		padding-bottom: 20px;
-	}*/
 .card-title{
 	font-size: 15px;
 	font-weight: bolder;
@@ -277,7 +278,7 @@ export default {
 .card-title{
 	font-size: 15px;
 }
-.img{
+/*.img{
 	width: 100%;
 	height: 200px;
 	background: #EEF9FF;
@@ -285,6 +286,22 @@ export default {
 	margin-bottom: 20px;
 	text-align: center;
 	line-height:200px;
+}*/
+    $width: 100%;
+	$height: 200px;
+	$background: #EEF9FF;
+	$margin-top: 20px;
+	$margin-bottom: 20px;
+	$text-align: center;
+	$line-height:200px;
+.img{
+	width: $width;
+	height: $height;
+	background: $background;
+	margin-top: $margin-top;
+	margin-bottom: $margin-bottom;
+	text-align: $text-align;
+	line-height:$line-height;
 }
 .text-editor {
 	margin-top: 15px;
@@ -292,17 +309,24 @@ export default {
 .text-editor .ql-editor {
   height: 200px;
 }
+  $border-bottom: 1px solid #ebeef5;
+  $text-align: center;
+  $background: #F4F3F3;
+  $color: black;
 .el-table th {
-    border-bottom: 1px solid #ebeef5;
-    text-align: center;
-    background: #F4F3F3;
-    color: black;
+    border-bottom: $border-bottom;
+    text-align: $text-align;
+    background: $background;
+    color: $color;
 }
+$float: left;
+$padding: 8px;
 .el-table .el-button{
-	float: left;
-	padding: 8px;
+	float: $float;
+	padding: $padding;
 }
+$padding: 8px;
 .el-table .el-button+.el-button{
-	padding: 8px;
+	padding: $padding;
 }
 </style>

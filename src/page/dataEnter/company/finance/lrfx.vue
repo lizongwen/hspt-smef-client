@@ -310,17 +310,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$font-size: 15px;
 .card-title{
-	font-size: 15px;
+	font-size: $font-size;
 }
+$width: 100%;
+	$height: 200px;
+	$background: #EEF9FF;
+	$margin-top: 20px;
+	$margin-bottom: 20px;
+	$text-align: center;
+	$line-height:200px;
 .img{
-	width: 100%;
-	height: 200px;
-	background: #EEF9FF;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	text-align: center;
-	line-height:200px;
+	width: $width;
+	height: $height;
+	background: $background;
+	margin-top: $margin-top;
+	margin-bottom: $margin-bottom;
+	text-align: $text-align;
+	line-height:$line-height;
 }
 .text-editor {
 	margin-top: 15px;
@@ -329,14 +337,5 @@ export default {
   height: 200px;
 }
 
-/*.el-table{
-    white-space: nowrap;
-    overflow: hidden;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    text-align: center;
-}*/
 
 </style>
