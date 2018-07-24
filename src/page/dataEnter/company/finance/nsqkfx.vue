@@ -573,21 +573,21 @@ table {
 }*/
 $width: 25%;
 $height: 40px;
-$text-align: center;
+
 $padding-left: 20px;
 table tr th {
   width: $width;
   height: $height;
-  text-align: $text-align;
+
   padding-left: $padding-left;
 }
  $height: 40px;
- $text-align: center;
+
  $padding-left: 20px;
  $background: white;
 table tr td {
   height: $height;
-  text-align:  $text-align;
+
   padding-left: $padding-left;
   background: $background;
 }

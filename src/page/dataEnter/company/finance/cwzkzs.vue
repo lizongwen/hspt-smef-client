@@ -73,13 +73,18 @@ textEditorContent: "",
 </script>
 
 <style lang="scss">
+	/*$width: 80%;
+		$float: left;
+		$margin-top: 1%;
+		$font-size: 15px;
+		$font-weight: bold;
 	.card-title{
-		width: 80%;
-		float: left;
-		margin-top: 1%;
-		font-size: 15px;
-		font-weight: bold;
-	}
+		width: $width;
+		float: $float;
+		margin-top: $margin-top;
+		font-size: $font-size;
+		font-weight: $font-weight;
+	}*/
 .text-editor .ql-editor {
   height: 300px;
 }

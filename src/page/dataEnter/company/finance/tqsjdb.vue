@@ -549,10 +549,12 @@ $border-bottom: 1px solid #d8d8d8;
 table tr {
   border-bottom: $border-bottom;
 }
+$width:230px;
 $height: 40px;
 $text-align: left;
 $padding-left: 20px;
 table tr th {
+	width: $width;
   height: $height;
   text-align: $text-align;
   padding-left: $padding-left;
