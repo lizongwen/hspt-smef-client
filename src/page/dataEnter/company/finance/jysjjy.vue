@@ -1,7 +1,7 @@
 <template>
   <div>
   	<div class="clear">
-							<div class="card-title">纳税情况与分析</div>
+							<div class="card-title">经营相关数据分析</div>
 						</div>
     <div style="margin-bottom: 20px;">
       <el-card class="box-card" shadow='nevner'>
@@ -50,26 +50,63 @@
 								</tr>
 								<tr>
 									<td>用水记录</td>
-									<td>-</td>
-									<td>-</td>
+									<td>
+										<span v-if="!edit1">-</span>
+										<input v-else type="text" />
+									</td>
+									<td>
+										<span v-if="!edit1">-</span>
+										<input v-else type="text" />
+									</td>
 								  <td>
-								  	<span class="button">编辑</span>
+								  	<div v-if="!edit1">
+								  		<el-button type="primary" class="button"  @click="editClick(1)">编辑</el-button>
+								  	</div>
+								  	<div v-if="edit1">
+								  		<el-button type="primary" class="button">确定</el-button>
+							        <el-button type="primary" class="button" @click="cancelClick(1)">取消</el-button>
+								  	</div>
 								  </td>
 								</tr>
 								<tr>
 									<td>用天然气记录</td>
-									<td>-</td>
-									<td>-</td>
+									<td>
+										<span v-if="!edit2">-</span>
+										<input v-else type="text" />
+									</td>
+									<td>
+										<span v-if="!edit2">-</span>
+										<input v-else type="text" />
+									</td>
 							 <td>
-							 	<span class="button">确定</span>
-							 	<span class="button">取消</span>
+							<div v-if="!edit2">
+								  		<el-button type="primary" class="button"  @click="editClick(2)">编辑</el-button>
+								  	</div>
+								  	<div v-if="edit2">
+								  		<el-button type="primary" class="button">确定</el-button>
+							        <el-button type="primary" class="button" @click="cancelClick(2)">取消</el-button>
+								  	</div>
 							 </td>
 								</tr>
 								<tr>
 									<td>用电记录</td>
-									<td>-</td>
-									<td>-</td>
-								 <td></td>
+									<td>
+										<span v-if="!edit3">-</span>
+										<input v-else type="text" />
+									</td>
+									<td>
+										<span v-if="!edit3">-</span>
+										<input v-else type="text" />
+									</td>
+								 <td>
+								 	<div v-if="!edit3">
+								  		<el-button type="primary" class="button"  @click="editClick(3)">编辑</el-button>
+								  	</div>
+								  	<div v-if="edit3">
+								  		<el-button type="primary" class="button">确定</el-button>
+							        <el-button type="primary" class="button" @click="cancelClick(3)">取消</el-button>
+								  	</div>
+								 </td>
 								</tr>
 								
 							</table>
@@ -258,25 +295,49 @@ import quillEditor from "@/components/form/quillEditor.vue";
         activeName: "first",
         listLoading: false,
         textEditorContent: "",
-        tableData_1: [], //表格数据
-        deleteData_1: [],
-        addData_1: [],
-        updateData_1: [],
-        tableData_1_columns: {
-          name: "类别",
-          idNumber: "时间",
-          phone: "是否正常",
-          edit: false
-        },
+        edit1: false,
+        edit2: false,
+        edit3: false,
+        attr:0
+//      tableData_1: [], //表格数据
+//      deleteData_1: [],
+//      addData_1: [],
+//      updateData_1: [],
+//      tableData_1_columns: {
+//        name: "类别",
+//        idNumber: "时间",
+//        phone: "是否正常",
+//        edit: false
+//      },
 
       };
     },
     
         mounted() {
       this.getZrrdgd();
-
+//       this.editClick();
     },
       methods: {
+      //修改
+      editClick:async function(attr){
+     if(attr==1){
+     	this.edit1= true
+     }else if(attr==2){
+     	this.edit2= true
+     }else if(attr==3){
+     	this.edit3= true
+     }	
+      },
+       //取消
+      cancelClick:async function(attr){
+						 if(attr==1){
+						     	this.edit1= false
+						     }else if(attr==2){
+						     	this.edit2= false
+						     }else if(attr==3){
+						     	this.edit3= false
+						     }
+      },
       
      getZrrdgd:async function(){
      	let params = {
@@ -404,8 +465,10 @@ table tr td {
   padding-left: $padding-left;
   background: $background;
 }
-$color:#1790FF;
-.button{
-	color: $color;
+$height: 35px;
+	$line-height: 0;
+.el-button{
+	height: $height;
+	line-height:$line-height;
 }
 </style>

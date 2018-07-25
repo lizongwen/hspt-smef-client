@@ -5,10 +5,10 @@
             	
             		<el-form :inline="true" :model="searchForm" class="demo-form-inline">
 					<!--<el-button>行业选择</el-button>-->
-					 <el-select  placeholder="行业选择" @change="getValue">
+					 <el-select v-model="value" placeholder="行业选择" @change="getValue">
                         <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item" ></el-option>
                      </el-select>
-					<el-input v-model="searchForm.searchInput" placeholder="请输入内容"></el-input>
+					<!--<el-input v-model="searchForm.searchInput" placeholder="请输入内容"></el-input>-->
 					
 					<el-button type="primary">确定</el-button>
 					</el-form>
@@ -730,7 +730,7 @@ $margin-top: 20px;
 .text-editor .ql-editor {
   height: 200px;
 }
-$width: 30%;
+$width: 70%;
 $height: 45px;
 $position: relative;
 $left: 70%;

@@ -20,7 +20,7 @@
                         </colgroup>
 						<tr>
 							<th>项目</th>
-							<th>2015年</th>
+							<th style="text-align: center;">2015年</th>
 							<!--<th>变化</th>
 							<th>2016年</th>
 							<th>变化</th>
