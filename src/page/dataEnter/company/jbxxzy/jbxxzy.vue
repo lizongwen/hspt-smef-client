@@ -410,7 +410,7 @@
 									<span>76.88</span>
 								</div>
 								<div class="se">
-										<img src="../../../../image/11.jpg"/>
+										<img src="../../../../image/12.png" style="left: 15px;"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -489,7 +489,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/11.jpg"/>
+				    				<img src="../../../../image/12.png" style="left: 15px;"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -507,7 +507,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/11.jpg"/>
+				    				<img src="../../../../image/12.png" style="left: 35px;"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -525,7 +525,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/11.jpg"/>
+				    				<img src="../../../../image/12.png" style="left: 85px;"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -543,7 +543,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/11.jpg"/>
+				    				<img src="../../../../image/12.png" style="left: 65px;"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -561,7 +561,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/11.jpg"/>
+				    				<img src="../../../../image/12.png" style="left: 55px;"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -579,7 +579,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/11.jpg"/>
+				    				<img src="../../../../image/12.png" style="left: 35px;"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -597,7 +597,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/11.jpg"/>
+				    				<img src="../../../../image/12.png" style="left: 65px;"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -615,7 +615,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/11.jpg"/>
+				    				<img src="../../../../image/12.png" style="left: 55px;"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -633,7 +633,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/11.jpg"/>
+				    				<img src="../../../../image/12.png" style="left: 20px;"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -651,7 +651,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/11.jpg"/>
+				    				<img src="../../../../image/12.png" style="left: 15px;"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -901,6 +901,7 @@ $margin-left: 10%;
 .as span{
 	font-size: 15px;
 	margin-left: 3%;
+	
 }
 .as span~span{
 	font-size: 13px;
@@ -936,10 +937,12 @@ $margin-left: 10%;
 .percent span{
 	float: left;
 	margin-left: 2%;
+	color: white;
 }
 .percent span~span{
 	float: right;
 	margin-right: 2%;
+	color: white;
 }
 
 .es{
@@ -1012,6 +1015,7 @@ border-color: transparent transparent transparent #1790FF;
 	width: 100%;
 	text-align: center;
 	margin-top: 8%;
+	display: inline-block;
 }
 .re{
 	/*border: 1px solid red;*/
@@ -1023,6 +1027,6 @@ border-color: transparent transparent transparent #1790FF;
 img{
 	position: relative;
 	top: 16px;
-	left: 15px;
+	
 }
 </style>

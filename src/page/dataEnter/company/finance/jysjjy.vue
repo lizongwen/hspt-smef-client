@@ -122,8 +122,7 @@
 						<div class="clear">
 								<div slot="header" class="clearfix">
 							<div class="card-right-wrap">
-								<el-button type="default" size="medium">上传数据</el-button>
-								
+								<el-button type="default" size="medium" @click="skip">上传数据</el-button>
 							</div>
 							<div class="card-title">图表视图</div>
 						</div>
@@ -338,7 +337,12 @@ import quillEditor from "@/components/form/quillEditor.vue";
 						     	this.edit3= false
 						     }
       },
-      
+  
+    //跳转
+    skip() {
+        this.$router.push({path: "jysjsc"});
+     },
+    
      getZrrdgd:async function(){
      	let params = {
         creditCode: sessionStorage.getItem("creditCode"),

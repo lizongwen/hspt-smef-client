@@ -41,6 +41,7 @@ import yynl from '@/json/yynlzkfx.json'
 import cznl from '@/json/cznlzkfx.json'
 import chzhnl from '@/json/cengzang.json'
 import nsqk from '@/json/nsqk.json'
+import df from '@/json/dftj.json'
 
 
 // 获取 mock.Random 对象
@@ -238,4 +239,8 @@ Mock.mock("/hspt-web-api/data_entry/cwzk/cwnlqsfx/chzhnlzkfx/list", 'post', func
 //获取成长能力状况分析
 Mock.mock("/hspt-web-api/data_entry/cwzk/nsqkyfx/nsqk/list", 'post', function (req) {
 	return nsqk;
+});
+//获取电费
+Mock.mock("/hspt-web-api/data_entry/cwzk/jyxgsjfx/df/list", 'post', function (req) {
+	return df;
 });

@@ -1,0 +1,46 @@
+{
+	"resultCode": "0",
+	"resultData": {
+		
+		"data": {
+			"rows": [
+				{
+			"nf":2001,
+			"yy":1,
+			"ey":2,
+			"say":3,
+			"siy":4,
+			"wy":5,
+			"ly":6,
+			"qy":7,
+			"by":8,
+			"jy":9,
+			"shy":10,
+			"syy":11,
+			"sry":12,
+			"zj":20000
+			},
+			{
+			"nf":2001,
+			"yy":4111,
+			"ey":2,
+			"say":2000,
+			"siy":5555,
+			"wy":6,
+			"ly":20000,
+			"qy":20000,
+			"by":20000,
+			"jy":20000,
+			"shy":20000,
+			"syy":20000,
+			"sry":12,
+			"zj":20000
+			}
+		  ]
+		},
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzY1MTY3MjAsImlhdCI6MTUzMDUxNjcyMH0.O-qww3k41rgLhQ0PQjsEAFcJp-2BL6ckPCk7SWtssso"
+	},
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "查询成功"
+}

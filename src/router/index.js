@@ -306,6 +306,7 @@ let router = new Router({
 						},
 						component: () => import('@/page/dataEnter/company/finance/jysjjy.vue')
 					},
+					
 					{
 						path: 'finance/cwzkzs',//财务状况综述
 						name: 'cwzkzs',
@@ -331,6 +332,14 @@ let router = new Router({
 							index: '5-11'
 						},
 						component: () => import('@/page/dataEnter/company/finance/glgscwsj.vue')
+					},
+					{
+						path: 'finance/jysjsc',//经营数据上传
+						name: 'jysjsc',
+						meta: {
+							index: '5-12'
+						},
+						component: () => import('@/page/dataEnter/company/finance/jysjsc.vue')
 					},
 					{
 						path: 'risk/fxxfx',//风险性分析
