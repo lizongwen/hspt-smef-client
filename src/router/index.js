@@ -341,6 +341,14 @@ let router = new Router({
 						},
 						component: () => import('@/page/dataEnter/company/finance/jysjsc.vue')
 					},
+						{
+						path: 'finance/nssjsc',//纳税数据上传
+						name: 'nssjsc',
+						meta: {
+							index: '5-13'
+						},
+						component: () => import('@/page/dataEnter/company/finance/nssjsc.vue')
+					},
 					{
 						path: 'risk/fxxfx',//风险性分析
 						name: 'fxxfx',

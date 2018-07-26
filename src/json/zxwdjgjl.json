@@ -1,0 +1,23 @@
+
+{
+	"resultCode": "0",
+	"resultData": {
+		"data": 
+			{
+				"dis1": -43,
+				"dis2": -40,
+				"dis3": -30,
+				"dis4": -20,
+				"dis5": -10,
+				"dis6": 0,
+				"dis7": 10,
+				"dis8": 20,
+				"dis9": 30,
+				"dis10": 43
+			},
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzY1MTY3MjAsImlhdCI6MTUzMDUxNjcyMH0.O-qww3k41rgLhQ0PQjsEAFcJp-2BL6ckPCk7SWtssso"
+	},
+	"resultListData": [],
+	"resultMapData": {},
+	"resultMsg": "成功"
+}

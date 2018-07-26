@@ -42,6 +42,7 @@ import cznl from '@/json/cznlzkfx.json'
 import chzhnl from '@/json/cengzang.json'
 import nsqk from '@/json/nsqk.json'
 import df from '@/json/dftj.json'
+import zxwd from '@/json/zxwdjgjl.json'
 
 
 // 获取 mock.Random 对象
@@ -243,4 +244,8 @@ Mock.mock("/hspt-web-api/data_entry/cwzk/nsqkyfx/nsqk/list", 'post', function (r
 //获取电费
 Mock.mock("/hspt-web-api/data_entry/cwzk/jyxgsjfx/df/list", 'post', function (req) {
 	return df;
+});
+//获取资信维度结构
+Mock.mock("/hspt-web-api/data_entry/cwzk/jbxxjzy/zxwd/list", 'post', function (req) {
+	return zxwd;
 });

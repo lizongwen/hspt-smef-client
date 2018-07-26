@@ -507,7 +507,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/12.png" style="left: 35px;"/>
+				    				<img src="../../../../image/12.png" style="left:35px"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -733,12 +733,25 @@ export default {
         zzq: "", // 著作权
         wz: "", // 网站
         wzba: "" // 网站备案
+      },
+      form_zx:{
+      	dis1:'',
+		dis2:'',
+		dis3:'',
+		dis4:'',
+		dis5:'',
+		dis6:'',
+		dis7:'',
+		dis8:'',
+		dis9:'',
+		dis10:''
       }
     };
   },
   mounted() {
 	  this.loadQyjbxxData();
 	  this.redact();
+	  this.getDist();
   },
   methods: {
   	   //点击标签页触发事件
@@ -749,6 +762,30 @@ export default {
       redact:async function() {
       	console.log(11);
       },
+      
+      //资信维度距离
+      getDist:async function() {
+      	 let params = {
+        creditCode: sessionStorage.getItem("creditCode"),
+        token: sessionStorage.getItem("token")
+      };
+      const res = await this.$http.post(
+        "/hspt-web-api/data_entry/cwzk/jbxxjzy/zxwd/list",
+        params
+      );
+      console.log(res.data.resultData)
+      this.form_zx.dis1 = res.data.resultData.dis1
+      this.form_zx.dis2 = res.data.resultData.dis2
+      this.form_zx.dis3 = res.data.resultData.dis3
+      this.form_zx.dis4 = res.data.resultData.dis4
+      this.form_zx.dis5 = res.data.resultData.dis5
+      this.form_zx.dis6 = res.data.resultData.dis6
+      this.form_zx.dis7 = res.data.resultData.dis7
+      this.form_zx.dis8 = res.data.resultData.dis8
+      this.form_zx.dis9 = res.data.resultData.dis9
+      this.form_zx.dis10 = res.data.resultData.dis10
+      },
+      
     // 获取企业得基本信息接口
     loadQyjbxxData: async function() {
       let params = {
@@ -872,16 +909,16 @@ $margin-left: 10%;
 .assess{
 	border: 1px solid #CCCCCC;
 	width: 25%;
-	height: 150px;
+	height: 175px;
 	float: left;
 	margin-left: 4%;
 	margin-bottom: 2%;
 }
 .ass{
 	border: 1px solid #CCCCCC;
-	width: 34%;
+	width: 33%;
 	float: left;
-	padding: 4.3%;
+	padding: 5.6%;
 	/*color: #1D1D1D;*/
 	font-weight: bold;
 }
@@ -889,9 +926,9 @@ $margin-left: 10%;
 	border: 1px solid #CCCCCC;
 	background: #F6F6F6;
 	color: #1790FF;
-	width: 66%;
+	width: 67%;
 	float: left;
-	padding: 4.3%;
+	padding: 5.6%;
 }
 .as{
 	/*border: 1px solid red;*/
@@ -918,6 +955,8 @@ $margin-left: 10%;
 .se{
 	/*border: 1px solid red;*/
 	width: 100%;
+	/*height: 35%;*/
+	display: inline-block;
 }
 
 .percent{
