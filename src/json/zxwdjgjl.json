@@ -4,16 +4,16 @@
 	"resultData": {
 		"data": 
 			{
-				"dis1": -43,
-				"dis2": -40,
-				"dis3": -30,
-				"dis4": -20,
-				"dis5": -10,
-				"dis6": 0,
-				"dis7": 10,
-				"dis8": 20,
-				"dis9": 30,
-				"dis10": 43
+				"dis1": "10%",
+				"dis2": "20%",
+				"dis3": "30%",
+				"dis4": "40%",
+				"dis5": "50%",
+				"dis6": "60%",
+				"dis7": "70%",
+				"dis8": "80%",
+				"dis9": "90%",
+				"dis10": "15%"
 			},
 		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmluY2lwYWwiOiJhaXRpbWUiLCJleHAiOjE1MzY1MTY3MjAsImlhdCI6MTUzMDUxNjcyMH0.O-qww3k41rgLhQ0PQjsEAFcJp-2BL6ckPCk7SWtssso"
 	},

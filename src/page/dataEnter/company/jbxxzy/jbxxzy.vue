@@ -489,7 +489,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/12.png" style="left: 15px;"/>
+				    				<img src="../../../../image/12.png" :style="{'left':dis1}" />
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -507,7 +507,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/12.png" style="left:35px"/>
+				    				<img src="../../../../image/12.png" :style="{'left':dis2}"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -525,7 +525,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/12.png" style="left: 85px;"/>
+				    				<img src="../../../../image/12.png" :style="{'left':dis3}"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -543,7 +543,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/12.png" style="left: 65px;"/>
+				    				<img src="../../../../image/12.png" :style="{'left':dis4}"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -561,7 +561,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/12.png" style="left: 55px;"/>
+				    				<img src="../../../../image/12.png" :style="{'left':dis5}"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -579,7 +579,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/12.png" style="left: 35px;"/>
+				    				<img src="../../../../image/12.png" :style="{'left':dis6}"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -597,7 +597,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/12.png" style="left: 65px;"/>
+				    				<img src="../../../../image/12.png" :style="{'left':dis7}"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -615,7 +615,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/12.png" style="left: 55px;"/>
+				    				<img src="../../../../image/12.png" :style="{'left':dis8}""/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -633,7 +633,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/12.png" style="left: 20px;"/>
+				    				<img src="../../../../image/12.png" :style="{'left':dis9}"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -651,7 +651,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/12.png" style="left: 15px;"/>
+				    				<img src="../../../../image/12.png" :style="{'left':dis10}"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>
@@ -734,18 +734,19 @@ export default {
         wz: "", // 网站
         wzba: "" // 网站备案
       },
-      form_zx:{
+      
       	dis1:'',
-		dis2:'',
-		dis3:'',
-		dis4:'',
-		dis5:'',
-		dis6:'',
-		dis7:'',
-		dis8:'',
-		dis9:'',
-		dis10:''
-      }
+      	dis2:'',
+      	dis3:'',
+      	dis4:'',
+      	dis5:'',
+      	dis6:'',
+      	dis7:'',
+      	dis8:'',
+      	dis9:'',
+      	dis10:'',
+      	
+     
     };
   },
   mounted() {
@@ -773,17 +774,18 @@ export default {
         "/hspt-web-api/data_entry/cwzk/jbxxjzy/zxwd/list",
         params
       );
-      console.log(res.data.resultData)
-      this.form_zx.dis1 = res.data.resultData.dis1
-      this.form_zx.dis2 = res.data.resultData.dis2
-      this.form_zx.dis3 = res.data.resultData.dis3
-      this.form_zx.dis4 = res.data.resultData.dis4
-      this.form_zx.dis5 = res.data.resultData.dis5
-      this.form_zx.dis6 = res.data.resultData.dis6
-      this.form_zx.dis7 = res.data.resultData.dis7
-      this.form_zx.dis8 = res.data.resultData.dis8
-      this.form_zx.dis9 = res.data.resultData.dis9
-      this.form_zx.dis10 = res.data.resultData.dis10
+//    console.log(res.data.resultData)
+       
+      this.dis1 = res.data.resultData.data.dis1
+      this.dis2 = res.data.resultData.data.dis2
+      this.dis3 = res.data.resultData.data.dis3
+      this.dis4 = res.data.resultData.data.dis4
+      this.dis5 = res.data.resultData.data.dis5
+      this.dis6 = res.data.resultData.data.dis6
+      this.dis7 = res.data.resultData.data.dis7
+      this.dis8 = res.data.resultData.data.dis8
+      this.dis9 = res.data.resultData.data.dis9
+      this.dis10 = res.data.resultData.data.dis10
       },
       
     // 获取企业得基本信息接口
@@ -1052,7 +1054,7 @@ border-color: transparent transparent transparent #1790FF;
 .tu{
 	/*border: 1px solid red;*/
 	width: 100%;
-	text-align: center;
+	/*text-align: center;*/
 	margin-top: 8%;
 	display: inline-block;
 }
