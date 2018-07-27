@@ -615,7 +615,7 @@
 				    		</div>
 				    		<div class="ture">
 				    			<div class="tu">
-				    				<img src="../../../../image/12.png" :style="{'left':dis8}""/>
+				    				<img src="../../../../image/12.png" :style="{'left':dis8}"/>
 					<div class="percent">
 						<span>1</span>
 						<span>100</span>

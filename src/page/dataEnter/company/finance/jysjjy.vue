@@ -51,19 +51,23 @@
 								<tr>
 									<td>用水记录</td>
 									<td>
-										<span v-if="!edit1">-</span>
-										<input v-else type="text" />
+										<span v-if="!edit1">{{time1}}</span>
+										<!--<input v-else type="text" />-->
+										<el-date-picker v-else v-model="value1" type="year" placeholder="选择年" value-format="yyyy"></el-date-picker>
 									</td>
 									<td>
-										<span v-if="!edit1">-</span>
-										<input v-else type="text" />
+										<span v-if="!edit1">{{normal1}}</span>
+										<!--<input v-else type="text" />-->
+										<el-select v-else v-model="value" placeholder="请选择">
+                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                    </el-select>
 									</td>
 								  <td>
 								  	<div v-if="!edit1">
 								  		<el-button type="primary" class="button"  @click="editClick(1)">编辑</el-button>
 								  	</div>
 								  	<div v-if="edit1">
-								  		<el-button type="primary" class="button">确定</el-button>
+								  		<el-button type="primary" class="button" @click="confirmClick(1)">确定</el-button>
 							        <el-button type="primary" class="button" @click="cancelClick(1)">取消</el-button>
 								  	</div>
 								  </td>
@@ -71,19 +75,23 @@
 								<tr>
 									<td>用天然气记录</td>
 									<td>
-										<span v-if="!edit2">-</span>
-										<input v-else type="text" />
+										<span v-if="!edit2">{{time2}}</span>
+										<!--<input v-else type="text" />-->
+										<el-date-picker v-else v-model="value2" type="year" placeholder="选择年" value-format="yyyy"></el-date-picker>
 									</td>
 									<td>
-										<span v-if="!edit2">-</span>
-										<input v-else type="text" />
+										<span v-if="!edit2">{{normal2}}</span>
+										<!--<input v-else type="text" />-->
+										<el-select v-else v-model="value" placeholder="请选择">
+                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                    </el-select>
 									</td>
 							 <td>
 							<div v-if="!edit2">
 								  		<el-button type="primary" class="button"  @click="editClick(2)">编辑</el-button>
 								  	</div>
 								  	<div v-if="edit2">
-								  		<el-button type="primary" class="button">确定</el-button>
+								  		<el-button type="primary" class="button" @click="confirmClick(2)">确定</el-button>
 							        <el-button type="primary" class="button" @click="cancelClick(2)">取消</el-button>
 								  	</div>
 							 </td>
@@ -91,19 +99,23 @@
 								<tr>
 									<td>用电记录</td>
 									<td>
-										<span v-if="!edit3">-</span>
-										<input v-else type="text" />
+										<span v-if="!edit3">{{time3}}</span>
+										<!--<input v-else type="text" />-->
+										<el-date-picker v-else v-model="value3" type="year" placeholder="选择年" value-format="yyyy"></el-date-picker>
 									</td>
 									<td>
-										<span v-if="!edit3">-</span>
-										<input v-else type="text" />
+										<span v-if="!edit3">{{normal3}}</span>
+										<!--<input v-else type="text" />-->
+										<el-select v-else v-model="value" placeholder="请选择">
+                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                    </el-select>
 									</td>
 								 <td>
 								 	<div v-if="!edit3">
 								  		<el-button type="primary" class="button"  @click="editClick(3)">编辑</el-button>
 								  	</div>
 								  	<div v-if="edit3">
-								  		<el-button type="primary" class="button">确定</el-button>
+								  		<el-button type="primary" class="button" @click="confirmClick(3)">确定</el-button>
 							        <el-button type="primary" class="button" @click="cancelClick(3)">取消</el-button>
 								  	</div>
 								 </td>
@@ -297,18 +309,25 @@ import quillEditor from "@/components/form/quillEditor.vue";
         edit1: false,
         edit2: false,
         edit3: false,
-        attr:0
-//      tableData_1: [], //表格数据
-//      deleteData_1: [],
-//      addData_1: [],
-//      updateData_1: [],
-//      tableData_1_columns: {
-//        name: "类别",
-//        idNumber: "时间",
-//        phone: "是否正常",
-//        edit: false
-//      },
-
+        attr:0,
+        value: '',
+        value1: '',
+        value2: '',
+        value3: '',
+        time1:'',
+        time2:'',
+        time3:'',
+         normal1:'',
+         normal2:'',
+         normal3:'',
+options: [{
+          value: '是',
+          label: '是'
+        }, {
+          value: '否',
+          label: '否'
+        }],
+        
       };
     },
     
@@ -337,7 +356,22 @@ import quillEditor from "@/components/form/quillEditor.vue";
 						     	this.edit3= false
 						     }
       },
-  
+  //确定
+  confirmClick:async function(attr){
+  	if(attr==1){
+  		this.time1=this.value1
+  		this.normal1=this.value
+  			this.edit1= false
+  	}else if(attr==2){
+  		this.time2=this.value2
+  		this.normal2=this.value
+  		this.edit2= false
+  	}else if(attr==3){
+  		this.time3=this.value3
+  		this.normal3=this.value
+  		this.edit3= false
+  	}
+  },
     //跳转
     skip() {
         this.$router.push({path: "jysjsc"});
@@ -474,5 +508,9 @@ $height: 35px;
 .el-button{
 	height: $height;
 	line-height:$line-height;
+}
+$width: 110px;
+.el-input--prefix .el-input__inner{
+	width: $width;
 }
 </style>
